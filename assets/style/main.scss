@@ -1,0 +1,59 @@
+@use './base.css';
+@use './reset.css';
+@use './transitions.scss';
+
+body {
+    background-color: #dedede;
+    min-height: calc(100vh - 2rem);
+    margin: 1rem;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-flow: column;
+}
+
+// html {
+//     scrollbar-gutter: stable;
+// }
+
+html::-webkit-scrollbar {
+    display: none;
+}
+
+html {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+// #app {
+//     min-height: calc(100vh - 2rem);
+//     margin: 1rem;
+//     border-radius: 0.5rem;
+//     display: flex;
+//     flex-flow: column;
+// }
+
+a {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    text-decoration: none;
+    color: #000;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+// .flex-start {
+//     align-items: start !important;
+//     justify-content: start !important;
+//     background-color: red !important;
+//   }
+
+.center {
+    height: 80vh;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+}

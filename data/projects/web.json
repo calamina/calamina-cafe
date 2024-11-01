@@ -1,0 +1,587 @@
+[
+    {
+        "id": 1,
+        "name": "atlast",
+        "link": "https://atlast.calamina.cafe",
+        "img": "atlast.png",
+        "imgs": [
+            "atlast-edit.png",
+            "atlast-search.png"
+        ],
+        "description": [
+            "Library application used to save and mark cultural works.",
+            "The app uses the wikipedia API to get data.",
+            "Offline for now because no server to stock the data :("
+        ],
+        "tech": {
+            "tools": [
+                "vue",
+                "strapi"
+            ],
+            "languages": [
+                "html",
+                "scss",
+                "typescript"
+            ],
+            "colors": [
+                "#lelele",
+                "#tetete"
+            ],
+            "fonts": [
+                "apercu mono regular"
+            ],
+            "icons": [
+                "tabler"
+            ]
+        },
+        "features": [
+            "Authentication with JWT token",
+            "Custom notification & alert",
+            "Interface customization",
+            "Wikipedia API for search and data",
+            "User search and library compare"
+        ]
+    },
+    {
+        "id": 2,
+        "name": "constellation",
+        "link": "/constellation",
+        "img": "constellation.png",
+        "imgs": [
+            "constellation-top.png"
+        ],
+        "description": [
+            "3D experiment showing rotating planets."
+        ],
+        "tech": {
+            "tools": [
+                "threejs"
+            ],
+            "languages": [
+                "html",
+                "scss",
+                "typescript"
+            ],
+            "colors": [
+                "#lelele",
+                "#tetete"
+            ]
+        },
+        "features": [
+            "3D scene you can rotate",
+            "Random movements for each planet"
+        ]
+    },
+    {
+        "id": 3,
+        "name": "jade",
+        "link": "/jade",
+        "img": "jade.png",
+        "imgs": [
+            "jade-search.png",
+            "jade-links.png",
+            "jade-mobile.png"
+        ],
+        "description": [
+            "Startpage with fake depth and 3D."
+        ],
+        "tech": {
+            "tools": [
+                "vue"
+            ],
+            "languages": [
+                "html",
+                "scss",
+                "typescript"
+            ],
+            "colors": [
+                "#lelele",
+                "#tetete"
+            ],
+            "icons": [
+                "tabler"
+            ]
+        },
+        "features": [
+            "Random catchphrase generator",
+            "Animated layers mimicking 3D",
+            "Instant results on different search engines"
+        ]
+    },
+    {
+        "id": 4,
+        "name": "netstart",
+        "link": "/netstart",
+        "img": "netstart.png",
+        "imgs": [
+            "netstart-bangs.png",
+            "netstart-themes.png",
+            "netstart-work.png",
+            "netstart-mobile.png"
+        ],
+        "description": [
+            "Startpage with different categories.",
+            "It uses localStorage to save NSFW status and color theme."
+        ],
+        "tech": {
+            "tools": [
+                "vue"
+            ],
+            "languages": [
+                "html",
+                "scss",
+                "typescript"
+            ],
+            "colors": [
+                "#lelele",
+                "#tetete"
+            ],
+            "icons": [
+                "tabler"
+            ]
+        },
+        "features": [
+            "Search mimicking DuckDuckGo bangs, with instant results on several search engines",
+            "4 different themes, each available in light or dark",
+            "A 'nsfw' button, toggling an additional category and marked links",
+            "Themes and nsfw state are stored in local storage for persistance"
+        ]
+    },
+    {
+        "id": 5,
+        "name": "pixilate",
+        "link": "/pixilate",
+        "img": "pixilate.png",
+        "imgs": [
+            "pixilate-adn.png",
+            "pixilate-adnpretty.png",
+            "pixilate-large.png",
+            "pixilate-fillfall.png",
+            "pixilate-adn.png",
+            "pixilate-path.png",
+            "pixilate-draw.png"
+        ],
+        "description": [
+            "Pixel generator / drawing app with different customization options and presets."
+        ],
+        "tech": {
+            "tools": [
+                "p5js"
+            ],
+            "languages": [
+                "html",
+                "css",
+                "javascript"
+            ],
+            "colors": [
+                "#lelele",
+                "#tetete"
+            ],
+            "icons": [
+                "tabler"
+            ]
+        },
+        "features": [
+            "Many animated presets to choose from",
+            "Animated mode, and population mode for instant pixel generation",
+            "Drawing mode !",
+            "Many shape customization options"
+        ]
+    },
+    {
+        "id": 6,
+        "name": "planet",
+        "link": "/planet",
+        "img": "planet.png",
+        "imgs": [
+            "planet-exploding.png",
+            "planet-zooming.png"
+        ],
+        "description": [
+            "3D planet rotating, zooming and exploding depending on the scroll position."
+        ],
+        "tech": {
+            "tools": [
+                "threejs"
+            ],
+            "languages": [
+                "html",
+                "scss",
+                "typescript"
+            ],
+            "colors": [
+                "#lelele",
+                "#tetete"
+            ]
+        },
+        "features": [
+            "Scroll interactions",
+            "Highlight color picker"
+        ]
+    },
+    {
+        "id": 7,
+        "name": "calamina1",
+        "link": "/calamina1",
+        "img": "calamina1.png",
+        "imgs": [
+            "calamina1-bordercolor.png",
+            "calamina1-projects.png",
+            "calamina1-mobileproject.png",
+            "calamina1-mobilemenu.png",
+            "calamina1-mobile.png"
+        ],
+        "description": [
+            "One of many attemps at making a personnal website / portfolio."
+        ],
+        "tech": {
+            "tools": [
+                "vue"
+            ],
+            "languages": [
+                "html",
+                "scss",
+                "typescript"
+            ],
+            "colors": [
+                "#lelele",
+                "#tetete"
+            ],
+            "icons": [
+                "tabler"
+            ]
+        },
+        "features": []
+    },
+    {
+        "id": 8,
+        "name": "calamina2",
+        "link": "/calamina2",
+        "img": "calamina2.png",
+        "imgs": [
+            "calamina2-hello.png",
+            "calamina2-projects.png",
+            "calamina2-projects-alt-translate.png",
+            "calamina2-projects-full.png",
+            "calamina2-projects-picture.png"
+        ],
+        "description": [
+            "Another personnal website attempt, with a word pattern generator"
+        ],
+        "tech": {
+            "tools": [
+                "vue",
+                "p5js"
+            ],
+            "languages": [
+                "html",
+                "scss",
+                "typescript"
+            ],
+            "colors": [
+                "#lelele",
+                "#tetete"
+            ],
+            "icons": [
+                "tabler"
+            ]
+        },
+        "features": []
+    },
+    {
+        "id": 9,
+        "name": "animation",
+        "link": "/animation",
+        "img": "animation.png",
+        "imgs": [
+            "animation-alt.png",
+            "animation-quote.png",
+            "animation-image.png"
+        ],
+        "description": [
+            "Project based on four animated movies with incredibly long production times."
+        ],
+        "tech": {
+            "tools": [
+                "vue"
+            ],
+            "languages": [
+                "html",
+                "scss",
+                "typescript"
+            ],
+            "colors": [
+                "#lelele",
+                "#tetete"
+            ],
+            "icons": [
+                "utf8"
+            ]
+        },
+        "features": []
+    },
+    {
+        "id": 10,
+        "name": "chaser",
+        "link": "/chaser",
+        "img": "chaser.png",
+        "imgs": [],
+        "description": [
+            "Pure CSS/HTML animation."
+        ],
+        "tech": {
+            "languages": [
+                "html",
+                "scss"
+            ],
+            "colors": [
+                "#lelele",
+                "#tetete"
+            ]
+        },
+        "features": []
+    },
+    {
+        "id": 11,
+        "name": "flora",
+        "link": "/flora",
+        "img": "flora.png",
+        "imgs": [
+            "flora-library.png",
+            "flora-news.png"
+        ],
+        "description": [
+            "Startpage implementing a media list and a news view."
+        ],
+        "tech": {
+            "tools": [
+                "vue"
+            ],
+            "languages": [
+                "html",
+                "scss",
+                "javascript"
+            ],
+            "colors": [
+                "#lelele",
+                "#tetete"
+            ]
+        },
+        "features": []
+    },
+    {
+        "id": 12,
+        "name": "fatcat",
+        "link": "/fatcat",
+        "img": "fatcat.png",
+        "imgs": [
+            "fatcat-alt.png"
+        ],
+        "description": [
+            "Another startpage with shortcuts."
+        ],
+        "tech": {
+            "languages": [
+                "html",
+                "scss",
+                "javascript"
+            ],
+            "colors": [
+                "#lelele",
+                "#tetete"
+            ],
+            "icons": [
+                "???"
+            ]
+        },
+        "features": []
+    },
+    {
+        "id": 13,
+        "name": "perpetua",
+        "link": "/perpetua",
+        "img": "perpetua.png",
+        "imgs": [
+            "perpetua-active.png",
+            "perpetua-active-alt.png"
+        ],
+        "description": [
+            "Small gallery gathering looping gifs from animated movies."
+        ],
+        "tech": {
+            "languages": [
+                "html",
+                "scss",
+                "javascript"
+            ],
+            "colors": [
+                "#lelele",
+                "#tetete"
+            ]
+        },
+        "features": []
+    },
+    {
+        "id": 14,
+        "name": "sorrow",
+        "link": "/sorrow",
+        "img": "sorrow.png",
+        "imgs": [
+            "sorrow-alt.png",
+            "sorrow-menu.png"
+        ],
+        "description": [
+            "Stories about some famous animals whose lives were remarkable (sometimes not in a good way :')"
+        ],
+        "tech": {
+            "languages": [
+                "html",
+                "scss",
+                "javascript"
+            ],
+            "colors": [
+                "#lelele",
+                "#tetete"
+            ]
+        },
+        "features": []
+    },
+    {
+        "id": 15,
+        "name": "biosphere2",
+        "link": "/biosphere2",
+        "img": "biosphere2.png",
+        "imgs": [
+            "biosphere2-content.png",
+            "biosphere2-content-alt.png",
+            "biosphere2-mobile.png"
+        ],
+        "description": [
+            "Website about the Biosphere2 project."
+        ],
+        "tech": {
+            "languages": [
+                "html",
+                "scss",
+                "javascript"
+            ],
+            "colors": [
+                "#lelele",
+                "#tetete"
+            ]
+        },
+        "features": []
+    },
+    {
+        "id": 16,
+        "name": "bath",
+        "link": "/bath",
+        "img": "bath.png",
+        "imgs": [
+            "bath-alt.png"
+        ],
+        "description": [
+            "Small 3D experiment with voxels and shading."
+        ],
+        "tech": {
+            "tools": [
+                "threejs",
+                "magickaVoxel"
+            ],
+            "languages": [
+                "html",
+                "scss",
+                "typescript"
+            ],
+            "colors": [
+                "#lelele",
+                "#tetete"
+            ]
+        },
+        "features": []
+    },
+    {
+        "id": 17,
+        "name": "words",
+        "link": "/words",
+        "img": "words.png",
+        "imgs": [
+            "words-alt.png"
+        ],
+        "description": [
+            "Gallery of unusual and interesting words and concepts found on wikipedia."
+        ],
+        "tech": {
+            "tools": [
+                "vue"
+            ],
+            "languages": [
+                "html",
+                "scss",
+                "typescript"
+            ],
+            "colors": [
+                "#lelele",
+                "#tetete"
+            ]
+        },
+        "features": []
+    },
+    {
+        "id": 18,
+        "name": "colors",
+        "link": "/colors",
+        "img": "colors.png",
+        "imgs": [
+            "bmp.png",
+            "mummy-brown.png",
+            "ikb.png",
+            "eigengrau.png"
+        ],
+        "description": [
+            "Gallery of interesting colors and their stories."
+        ],
+        "tech": {
+            "tools": [
+                "vue"
+            ],
+            "languages": [
+                "html",
+                "scss",
+                "typescript"
+            ],
+            "colors": [
+                "#lelele",
+                "#tetete"
+            ]
+        },
+        "features": [
+            "Keyboard navigation"
+        ]
+    },
+    {
+        "id": 19,
+        "name": "consola",
+        "link": "/consola",
+        "img": "consola.png",
+        "imgs": [
+            "consola-full.png"
+        ],
+        "description": [
+            "First startpage ever made !"
+        ],
+        "tech": {
+            "tools": [],
+            "languages": [
+                "html",
+                "scss",
+                "javascript"
+            ],
+            "colors": [
+                "#lelele",
+                "#tetete"
+            ]
+        },
+        "features": []
+    }
+]

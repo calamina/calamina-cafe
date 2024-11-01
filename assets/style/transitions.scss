@@ -1,0 +1,42 @@
+// APPEAR
+.appear-enter-active,
+.appear-leave-active {
+    transition: opacity 0.3s;
+}
+
+.appear-enter-from,
+.appear-leave-to {
+    opacity: 0;
+}
+
+// SLIDETORIGHT
+.slideToRight-enter-active,
+.slideToRight-leave-active {
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.slideToRight-enter-from {
+    transform: translateX(-2rem);
+    opacity: 0;
+}
+
+.slideToRight-leave-to {
+    transform: translateX(2rem);
+    opacity: 0;
+}
+
+// SLIDETOLEFT
+.slideToLeft-enter-active,
+.slideToLeft-leave-active {
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.slideToLeft-enter-from {
+    transform: translateX(2rem);
+    opacity: 0;
+}
+
+.slideToLeft-leave-to {
+    transform: translateX(-2rem);
+    opacity: 0;
+}
