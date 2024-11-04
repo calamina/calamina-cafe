@@ -6,7 +6,6 @@ import { useImageUtils } from '~/utils/imageUtils';
 
 import type { ProjectModel } from '@/models/project';
 import web from '@/data/projects/web.json'
-import IconLink from '@/components/icons/iconLink.vue';
 
 const route = useRoute()
 const router = useRouter()
@@ -51,7 +50,7 @@ const images = useImageUtils().getCoverAndImages(project.value.name)
   <div class="project" v-if="project">
     <Teleport to="body">
       <transition name="appear">
-        <ImageViewer v-if="imgView" :projectName="project.name" :selected="imgView" :images="gallery"
+        <ImageViewer v-if="imgView" :selected="imgView" :images="gallery"
           @unfocus="imgView = null" />
       </transition>
     </Teleport>
@@ -65,7 +64,7 @@ const images = useImageUtils().getCoverAndImages(project.value.name)
         <a class="project-link" :href="project.link" target="_blank">
           visit
           <IconComponent :small="true">
-            <IconLink />
+            <IconsLink />
           </IconComponent>
         </a>
       </div>

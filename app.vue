@@ -1,9 +1,28 @@
 <script setup lang="ts">
+import type { RouteLocationNormalizedLoadedGeneric } from 'vue-router';
+
 // TODO:: add utility to manage route transitions depending on route hash (useRouteTransition())
 const route = useRoute()
 
 const isProjectRoute = ref(false)
 const project: Ref<string> = ref(route.params?.project as string)
+
+watch(route, () => {
+  useHead({
+    title: `${formatRouteName(route)} ~ calamina cafe`,
+    meta: [
+      { name: 'description', content: 'Grégoire Belliere\'s Portfolio' },
+      { name: 'robots', content: 'index,follow' },
+      { name: 'googlebot', content: 'index,follow' },
+    ],
+  })
+})
+
+const formatRouteName = (route: RouteLocationNormalizedLoadedGeneric): string => {
+  if (route.name === 'index') return 'home'
+  else if (route.params?.project) return route.params?.project as string
+  else return String(route.name)
+}
 
 watch(
   () => route.params?.project,

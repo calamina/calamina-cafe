@@ -10,6 +10,11 @@ export default defineNuxtConfig({
       mode: 'out-in',
       // duration: {enter: 0.4, leave: 0.4},
       // appear: true
+    },
+    head: {
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.svg' }
+      ]
     }
   },
 })

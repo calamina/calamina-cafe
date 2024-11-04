@@ -2,17 +2,8 @@
 import { onMounted, ref, type Ref } from 'vue';
 import { onKeyStroke } from '@vueuse/core'
 
-import IconTouch from '@/components/icons/iconTouch.vue';
-import IconEye from '@/components/icons/iconEye.vue';
-import IconComponent from './iconComponent.vue';
-import IconPrevious from './icons/iconPrevious.vue';
-import IconNext from './icons/iconNext.vue';
-import ButtonBrackets from './buttonBrackets.vue';
-import TextBrackets from './textBrackets.vue';
-
-const { selected, projectName, images } = defineProps<{
+const { selected, images } = defineProps<{
     selected: HTMLImageElement | null
-    projectName: string
     images: HTMLImageElement[]
 }>()
 const emits = defineEmits(['unfocus'])
@@ -20,11 +11,8 @@ const emits = defineEmits(['unfocus'])
 const image: Ref<HTMLImageElement | null> = ref(selected)
 const imgSwipeTransition: Ref<string> = ref('imgSwipeNext');
 
-// const allImages = useImageUtils().getAllProjectImages(projectName)
-
 onMounted(() => {
     document.documentElement.style.overflow = "hidden"
-    console.debug(images)
 })
 
 onKeyStroke('ArrowLeft', () => prevImg())
@@ -57,7 +45,7 @@ function exit() {
             <div class="options">
                 <TextBrackets>
                     <IconComponent>
-                        <IconEye />
+                        <IconsEye />
                     </IconComponent>
                     Fullscreen mode
                 </TextBrackets>
@@ -65,16 +53,16 @@ function exit() {
                 <div>
                     <TextBrackets>
                         <IconComponent>
-                            <IconTouch />
+                            <IconsTouch />
                         </IconComponent>
                         or Escape to exit
                     </TextBrackets>
                     <TextBrackets>
                         <IconComponent>
-                            <IconPrevious />
+                            <IconsPrevious />
                         </IconComponent>
                         <IconComponent>
-                            <IconNext />
+                            <IconsNext />
                         </IconComponent>
                         to navigate
                     </TextBrackets>
@@ -86,14 +74,14 @@ function exit() {
             <div class="options">
                 <ButtonBrackets @click="prevImg()">
                     <IconComponent>
-                        <IconPrevious />
+                        <IconsIconPrevious />
                     </IconComponent>
                     previous
                 </ButtonBrackets>
                 <ButtonBrackets @click="prevImg()">
                     next
                     <IconComponent>
-                        <IconNext />
+                        <IconsIconNext />
                     </IconComponent>
                 </ButtonBrackets>
             </div>

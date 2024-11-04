@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import type { ProjectModel } from '@/models/project';
-import IconPrevious from '../icons/iconPrevious.vue';
-import IconNext from '../icons/iconNext.vue';
 
 const { previous, next, source } = defineProps<{
     previous: ProjectModel
@@ -17,7 +15,7 @@ const webImages = useImageUtils().getImages('web')
     <div class="navigation">
         <RouterLink class="prev" v-if="previous" :to="{ params: { project: previous.name } }">
             <IconComponent>
-                <IconPrevious />
+                <IconsIconPrevious />
             </IconComponent>
             <h2> {{ previous.name }}</h2>
             <img class="mini" :class="{ minismall: small }" :src="webImages[previous.name]" alt="project picture">
@@ -26,7 +24,7 @@ const webImages = useImageUtils().getImages('web')
             <img class="mini" :class="{ minismall: small }" :src="webImages[next.name]" alt="project picture">
             <h2>{{ next.name }}</h2>
             <IconComponent>
-                <IconNext />
+                <IconsIconNext />
             </IconComponent>
         </RouterLink>
     </div>

@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import IconComponent from '@/components/iconComponent.vue';
-import IconGithub from '@/components/icons/iconGithub.vue';
-import IconLinkedin from '@/components/icons/iconLinkedin.vue';
-import IconSenscritique from '@/components/icons/iconSenscritique.vue';
-import IconWikipedia from '@/components/icons/iconWikipedia.vue';
-import IconYoutube from '@/components/icons/iconYoutube.vue';
+import IconGithub from '~/components/icons/Github.vue';
+import IconLinkedin from '~/components/icons/Linkedin.vue';
+import IconSenscritique from '~/components/icons/Senscritique.vue';
+import IconWikipedia from '~/components/icons/Wikipedia.vue';
+import IconYoutube from '~/components/icons/Youtube.vue';
 import { useHead } from '@unhead/vue';
 
 useHead({
