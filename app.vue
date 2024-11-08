@@ -35,7 +35,7 @@ watch(
 </script>
 
 <template>
-  <div>
+  <div class="app">
     <header>
       <nav>
         <NuxtLink to="/">home</NuxtLink>
@@ -54,6 +54,12 @@ watch(
 
     <main>
       <NuxtPage />
+      <!-- <NuxtPage :transition="{
+        name: 'appear',
+        // name: 'page',
+        mode: 'out-in',
+        appear: true,
+      }" /> -->
     </main>
 
     <footer>
@@ -65,6 +71,25 @@ watch(
 </template>
 
 <style scoped lang="scss">
+.app {
+  display: flex;
+  flex-flow: column;
+  padding: 1rem;
+  // min-height: '100vh';
+  justify-content: space-between;
+  min-height: calc(100vh - 2rem);
+  // margin: 1rem;
+  display: flex;
+  flex-flow: column;
+}
+
+// TODO :: remove focus when changing page ?
+a:focus {
+  outline: none;
+  text-decoration: underline;
+  background-color: #fff;
+}
+
 nav {
   display: flex;
   gap: 2.5rem;
@@ -81,9 +106,7 @@ main {
   padding: 1rem;
   display: flex;
   height: 100%;
-  // align-items: center;
   justify-content: center;
-  overflow-y: hidden;
 }
 
 footer {
@@ -113,10 +136,9 @@ footer {
 }
 
 // TRANSITIONS
-
 .sublink-enter-active,
 .sublink-leave-active {
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .sublink-enter-from {

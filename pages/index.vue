@@ -1,22 +1,7 @@
 <script setup lang="ts">
-import IconComponent from '@/components/iconComponent.vue';
-import IconGithub from '~/components/icons/Github.vue';
-import IconLinkedin from '~/components/icons/Linkedin.vue';
-import IconSenscritique from '~/components/icons/Senscritique.vue';
-import IconWikipedia from '~/components/icons/Wikipedia.vue';
-import IconYoutube from '~/components/icons/Youtube.vue';
-import { useHead } from '@unhead/vue';
-
-useHead({
-  title: 'home ~ calamina cafe',
-  meta: [
-    {
-      name: 'description',
-      content: 'My page description',
-    },
-  ],
-})
-
+definePageMeta({
+  pageTransition: transitionConfig,
+});
 </script>
 
 <template>

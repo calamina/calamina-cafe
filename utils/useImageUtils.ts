@@ -8,7 +8,8 @@ export const useImageUtils = () => {
 
         switch (path) {
             case "web":
-                glob = import.meta.glob('~/assets/img/web/mini/*', { eager: true });
+                glob = import.meta.glob('~/assets/img/web/*', { eager: true });
+                // glob = import.meta.glob('~/assets/img/web/mini/*', { eager: true });
                 break;
             case "phone":
                 glob = import.meta.glob('~/assets/img/phone/*', { eager: true });
@@ -56,81 +57,106 @@ export const useImageUtils = () => {
         const data: { cover: Record<string, unknown> | null, imgs: Record<string, unknown> | null } | null = { cover: null, imgs: null }
 
         switch (path) {
-            case PROJECT.atlast:
+            case PROJECT.WEB.atlast:
                 data.imgs = import.meta.glob('~/assets/img/web/atlast/*', { eager: true });
                 data.cover = import.meta.glob('~/assets/img/web/atlast*', { eager: true });
                 break;
-            case PROJECT.netstart:
+            case PROJECT.WEB.netstart:
                 data.imgs = import.meta.glob('~/assets/img/web/netstart/*', { eager: true });
                 data.cover = import.meta.glob('~/assets/img/web/netstart*', { eager: true });
                 break;
-            case PROJECT.constellation:
+            case PROJECT.WEB.constellation:
                 data.imgs = import.meta.glob('~/assets/img/web/constellation/*', { eager: true });
                 data.cover = import.meta.glob('~/assets/img/web/constellation*', { eager: true });
                 break;
-            case PROJECT.jade:
+            case PROJECT.WEB.jade:
                 data.imgs = import.meta.glob('~/assets/img/web/jade/*', { eager: true });
                 data.cover = import.meta.glob('~/assets/img/web/jade*', { eager: true });
                 break;
-            case PROJECT.pixilate:
+            case PROJECT.WEB.pixilate:
                 data.imgs = import.meta.glob('~/assets/img/web/pixilate/*', { eager: true });
                 data.cover = import.meta.glob('~/assets/img/web/pixilate*', { eager: true });
                 break;
-            case PROJECT.planet:
+            case PROJECT.WEB.planet:
                 data.imgs = import.meta.glob('~/assets/img/web/planet/*', { eager: true });
                 data.cover = import.meta.glob('~/assets/img/web/planet*', { eager: true });
                 break;
-            case PROJECT.calamina1:
+            case PROJECT.WEB.calamina1:
                 data.imgs = import.meta.glob('~/assets/img/web/calamina1/*', { eager: true });
                 data.cover = import.meta.glob('~/assets/img/web/calamina1*', { eager: true });
                 break;
-            case PROJECT.calamina2:
+            case PROJECT.WEB.calamina2:
                 data.imgs = import.meta.glob('~/assets/img/web/calamina2/*', { eager: true });
                 data.cover = import.meta.glob('~/assets/img/web/calamina2*', { eager: true });
                 break;
-            case PROJECT.animation:
+            case PROJECT.WEB.animation:
                 data.imgs = import.meta.glob('~/assets/img/web/animation/*', { eager: true });
                 data.cover = import.meta.glob('~/assets/img/web/animation*', { eager: true });
                 break;
-            case PROJECT.chaser:
+            case PROJECT.WEB.chaser:
                 data.imgs = import.meta.glob('~/assets/img/web/chaser/*', { eager: true });
                 data.cover = import.meta.glob('~/assets/img/web/chaser*', { eager: true });
                 break;
-            case PROJECT.flora:
+            case PROJECT.WEB.flora:
                 data.imgs = import.meta.glob('~/assets/img/web/flora/*', { eager: true });
                 data.cover = import.meta.glob('~/assets/img/web/flora*', { eager: true });
                 break;
-            case PROJECT.fatcat:
+            case PROJECT.WEB.fatcat:
                 data.imgs = import.meta.glob('~/assets/img/web/fatcat/*', { eager: true });
                 data.cover = import.meta.glob('~/assets/img/web/fatcat*', { eager: true });
                 break;
-            case PROJECT.perpetua:
+            case PROJECT.WEB.perpetua:
                 data.imgs = import.meta.glob('~/assets/img/web/perpetua/*', { eager: true });
                 data.cover = import.meta.glob('~/assets/img/web/perpetua*', { eager: true });
                 break;
-            case PROJECT.sorrow:
+            case PROJECT.WEB.sorrow:
                 data.imgs = import.meta.glob('~/assets/img/web/sorrow/*', { eager: true });
                 data.cover = import.meta.glob('~/assets/img/web/sorrow*', { eager: true });
                 break;
-            case PROJECT.biosphere2:
+            case PROJECT.WEB.biosphere2:
                 data.imgs = import.meta.glob('~/assets/img/web/biosphere2/*', { eager: true });
                 data.cover = import.meta.glob('~/assets/img/web/biosphere2*', { eager: true });
                 break;
-            case PROJECT.bath:
+            case PROJECT.WEB.bath:
                 data.imgs = import.meta.glob('~/assets/img/web/bath/*', { eager: true });
                 data.cover = import.meta.glob('~/assets/img/web/bath*', { eager: true });
                 break;
-            case PROJECT.words:
+            case PROJECT.WEB.words:
                 data.imgs = import.meta.glob('~/assets/img/web/words/*', { eager: true });
                 data.cover = import.meta.glob('~/assets/img/web/words*', { eager: true });
                 break;
-            case PROJECT.colors:
+            case PROJECT.WEB.colors:
                 data.imgs = import.meta.glob('~/assets/img/web/colors/*', { eager: true });
                 data.cover = import.meta.glob('~/assets/img/web/colors*', { eager: true });
                 break;
-            case PROJECT.consola:
+            case PROJECT.WEB.consola:
                 data.imgs = import.meta.glob('~/assets/img/web/consola/*', { eager: true });
                 data.cover = import.meta.glob('~/assets/img/web/consola*', { eager: true });
+                break;
+
+            case PROJECT.PHONE.cityscape:
+                data.imgs = import.meta.glob('~/assets/img/phone/cityscape/*', { eager: true });
+                data.cover = import.meta.glob('~/assets/img/phone/cityscape*', { eager: true });
+                break;
+            case PROJECT.PHONE.crystal:
+                data.imgs = import.meta.glob('~/assets/img/phone/crystal/*', { eager: true });
+                data.cover = import.meta.glob('~/assets/img/phone/crystal*', { eager: true });
+                break;
+            case PROJECT.PHONE.dots:
+                data.imgs = import.meta.glob('~/assets/img/phone/dots/*', { eager: true });
+                data.cover = import.meta.glob('~/assets/img/phone/dots*', { eager: true });
+                break;
+            case PROJECT.PHONE.end:
+                data.imgs = import.meta.glob('~/assets/img/phone/end/*', { eager: true });
+                data.cover = import.meta.glob('~/assets/img/phone/end*', { eager: true });
+                break;
+            case PROJECT.PHONE.nuit:
+                data.imgs = import.meta.glob('~/assets/img/phone/nuit/*', { eager: true });
+                data.cover = import.meta.glob('~/assets/img/phone/nuit*', { eager: true });
+                break;
+            case PROJECT.PHONE.warm:
+                data.imgs = import.meta.glob('~/assets/img/phone/warm/*', { eager: true });
+                data.cover = import.meta.glob('~/assets/img/phone/warm*', { eager: true });
                 break;
             default: return null
         }

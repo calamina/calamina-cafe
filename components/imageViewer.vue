@@ -9,7 +9,7 @@ const { selected, images } = defineProps<{
 const emits = defineEmits(['unfocus'])
 
 const image: Ref<HTMLImageElement | null> = ref(selected)
-const imgSwipeTransition: Ref<string> = ref('imgSwipeNext');
+const imgSwipeTransition: Ref<string> = ref('slideToLeft');
 
 onMounted(() => {
     document.documentElement.style.overflow = "hidden"
@@ -45,7 +45,7 @@ function exit() {
             <div class="options">
                 <TextBrackets>
                     <IconComponent>
-                        <IconsEye />
+                        <IconEye />
                     </IconComponent>
                     Fullscreen mode
                 </TextBrackets>
@@ -53,35 +53,35 @@ function exit() {
                 <div>
                     <TextBrackets>
                         <IconComponent>
-                            <IconsTouch />
+                            <IconTouch />
                         </IconComponent>
                         or Escape to exit
                     </TextBrackets>
                     <TextBrackets>
                         <IconComponent>
-                            <IconsPrevious />
+                            <IconPrevious />
                         </IconComponent>
                         <IconComponent>
-                            <IconsNext />
+                            <IconNext />
                         </IconComponent>
                         to navigate
                     </TextBrackets>
                 </div>
             </div>
             <transition :name="imgSwipeTransition" mode="out-in">
-                <img @click="exit()" :src="image.src" :alt="image.alt">
+                <img @click="exit()" :src="image.src" :alt="image.alt" :key="image.src">
             </transition>
             <div class="options">
                 <ButtonBrackets @click="prevImg()">
                     <IconComponent>
-                        <IconsIconPrevious />
+                        <IconPrevious />
                     </IconComponent>
                     previous
                 </ButtonBrackets>
                 <ButtonBrackets @click="prevImg()">
                     next
                     <IconComponent>
-                        <IconsIconNext />
+                        <IconNext />
                     </IconComponent>
                 </ButtonBrackets>
             </div>
@@ -97,8 +97,9 @@ function exit() {
     left: 0;
     height: 100vh;
     width: 100%;
-    padding: 1rem;
-    background-color: #c5c5c5;
+    padding: 1rem 0;
+    backdrop-filter: blur(15px);
+    background-color: #dedede55;
 }
 
 .imageView {
@@ -108,16 +109,21 @@ function exit() {
     flex-flow: column;
     align-items: center;
     justify-content: center;
-    background-color: #dedede;
     gap: 0.5rem;
-    padding: 1rem 0;
     overflow: hidden;
 
     .options {
         display: flex;
         justify-content: space-between;
         align-items: start;
-        width: calc(100% - 2rem);
+        width: 100%;
+        padding: 0 1rem;
+
+        div {
+            display: flex;
+            flex-flow: column;
+            align-items: end;
+        }
     }
 
     img {

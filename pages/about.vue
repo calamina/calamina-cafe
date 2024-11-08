@@ -1,3 +1,9 @@
+<script setup lang="ts">
+definePageMeta({
+  pageTransition: transitionConfig,
+});
+</script>
+
 <template>
     <div class="center">
         <div class="content">

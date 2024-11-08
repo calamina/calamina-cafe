@@ -1,30 +1,31 @@
 <script setup lang="ts">
 import type { ProjectModel } from '@/models/project';
 
-const { previous, next, source } = defineProps<{
-    previous: ProjectModel
-    next: ProjectModel
-    source: string
+const { previous, next, small, source } = defineProps<{
+    previous: ProjectModel | null
+    next: ProjectModel | null
     small?: boolean
+    source: string
 }>()
 
-const webImages = useImageUtils().getImages('web')
+const { getImages } = useImageUtils()
+const images = getImages(source)
 </script>
 
 <template>
     <div class="navigation">
         <RouterLink class="prev" v-if="previous" :to="{ params: { project: previous.name } }">
             <IconComponent>
-                <IconsIconPrevious />
+                <IconPrevious />
             </IconComponent>
             <h2> {{ previous.name }}</h2>
-            <img class="mini" :class="{ minismall: small }" :src="webImages[previous.name]" alt="project picture">
+            <img class="mini" :class="{ minismall: small }" :src="images[previous.name]" alt="project picture">
         </RouterLink>
         <RouterLink class="next" v-if="next" :to="{ params: { project: next.name } }">
-            <img class="mini" :class="{ minismall: small }" :src="webImages[next.name]" alt="project picture">
+            <img class="mini" :class="{ minismall: small }" :src="images[next.name]" alt="project picture">
             <h2>{{ next.name }}</h2>
             <IconComponent>
-                <IconsIconNext />
+                <IconNext />
             </IconComponent>
         </RouterLink>
     </div>

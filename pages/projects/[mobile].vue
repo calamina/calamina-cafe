@@ -1,24 +1,17 @@
 <script setup lang="ts">
+import type { ProjectModel } from '@/models/project';
 import { onMounted, ref, type Ref } from 'vue';
 import { useRoute } from 'vue-router';
+import mobile from '@/data/projects/mobile.json'
 import { onKeyStroke } from '@vueuse/core'
-import type { ProjectModel } from '@/models/project';
-import web from '@/data/projects/web.json'
-
-definePageMeta({
-  middleware: 'routing',
-  pageTransition: {
-    name: 'appear',
-    mode: 'out-in',
-  }
-})
+import ProjectData from '@/components/project/projectData.vue';
 
 const route = useRoute()
 
-const projects: Ref<ProjectModel[]> = ref(web)
-const project: Ref<ProjectModel> = ref(projects.value.find(project => project.name === route.params.project) ?? projects.value[0])
-const previous: ProjectModel | null = projects.value.find(res => res.id === (project.value.id - 1)) ?? null
-const next: ProjectModel | null = projects.value.find(res => res.id === (project.value.id + 1)) ?? null
+const projects: Ref<ProjectModel[]> = ref(mobile);
+const project: Ref<ProjectModel> = ref(projects.value.find(project => project.name === route.params.mobile) ?? projects.value[0])
+const previous: ProjectModel | null = projects.value.find(res => res.id === (project.value.id - 1)) ?? null;
+const next: ProjectModel | null = projects.value.find(res => res.id === (project.value.id + 1)) ?? null;
 
 const imgView: Ref<HTMLImageElement | null> = ref(null)
 const gallery: Ref<HTMLImageElement[]> = ref([])
@@ -31,7 +24,7 @@ onMounted(() => {
 onKeyStroke('ArrowLeft', () => {
   if (!imgView.value) {
     previous ?
-      navigateTo({ params: { project: previous?.name, type: "web" } }) :
+      navigateTo({ params: { mobile: previous?.name } }) :
       navigateTo({ name: 'projects' })
   }
 })
@@ -39,7 +32,7 @@ onKeyStroke('ArrowLeft', () => {
 onKeyStroke('ArrowRight', () => {
   if (!imgView.value) {
     next ?
-      navigateTo({ params: { project: next?.name, type: "web" } }) :
+      navigateTo({ params: { mobile: next?.name } }) :
       navigateTo({ name: 'projects' })
   }
 })
@@ -66,12 +59,6 @@ const images = getCoverAndImages(project.value.name)
           <!-- <span class="count">{{ project.id }}/{{ projects.length }}</span> -->
           {{ project.name }}
         </h1>
-        <a class="project-link" :href="project.link" target="_blank">
-          visit
-          <IconComponent :small="true">
-            <IconLink />
-          </IconComponent>
-        </a>
       </div>
       <div class="description">
         <p v-for="section in project.description">{{ section }}</p>
@@ -80,47 +67,38 @@ const images = getCoverAndImages(project.value.name)
     </div>
     <div class="gallery">
       <img @click="(event) => focusImage(event)" class="cover img" :src="images?.cover" alt="project picture">
-      <!-- <div v-if="project.features?.length" class="features">
-        <h2>Features</h2>
-        <p v-for="section in project.features">{{ section }}</p>
-      </div> -->
       <div class="gallerita" v-if="project.imgs" :class="{ tata: project.imgs.length < 2 }">
         <div v-for="image in images?.imgs">
           <img @click="(event) => focusImage(event)" class="img" :src="image" alt=":(">
         </div>
       </div>
     </div>
-    <ProjectNavigation :previous="previous" :next="next" :source="'web'" />
+    <ProjectNavigation :previous="previous" :next="next" :source="'phone'" :small="true" />
   </div>
 </template>
 
 <style lang="scss" scoped>
 .project {
-  position: relative;
   display: flex;
   flex-flow: column;
-  align-items: center;
   padding: 2rem 0;
   width: calc(100vw - 8rem);
   gap: 3rem;
   overflow: auto;
-
-  // display: grid;
-  // grid-template-columns: 40% 60%;
+  align-items: center;
 }
 
 .info {
   display: flex;
   flex-flow: column;
   max-width: 50rem;
-  width: 50vw;
 }
 
 .gallery {
   display: flex;
   flex-flow: column;
   max-width: 70rem;
-  // padding: 1rem;
+  padding: 1rem;
   width: 100%;
   gap: 1rem;
 }
@@ -129,8 +107,10 @@ const images = getCoverAndImages(project.value.name)
   display: block;
   background-color: #d5d5d5;
   padding: 1rem;
-  width: 100%;
-  height: auto;
+  width: auto;
+  object-fit: contain;
+  max-height: 40rem;
+  // height: auto;
 }
 
 .gallerita {
@@ -161,22 +141,22 @@ const images = getCoverAndImages(project.value.name)
   }
 }
 
-// .features {
-//   padding: 2.5rem 0 2rem;
+.features {
+  padding: 2.5rem 0 2rem;
 
-//   h2 {
-//     font-size: 1.5rem;
-//     padding-bottom: 1rem;
-//   }
+  h2 {
+    font-size: 1.5rem;
+    padding-bottom: 1rem;
+  }
 
-//   p {
-//     padding: 0.5rem 0;
+  p {
+    padding: 0.5rem 0;
 
-//     &:not(:last-of-type) {
-//       border-bottom: 1px solid #c5c5c5;
-//     }
-//   }
-// }
+    &:not(:last-of-type) {
+      border-bottom: 1px solid #c5c5c5;
+    }
+  }
+}
 
 .title {
   display: flex;
@@ -196,48 +176,6 @@ const images = getCoverAndImages(project.value.name)
   max-width: 40rem;
 }
 
-.navigation {
-  gap: 1rem;
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-
-  a {
-    display: flex;
-  }
-}
-
-.prev {
-  justify-self: flex-start;
-}
-
-.next {
-  grid-column: 2;
-  justify-self: flex-end;
-}
-
-.prev,
-.next {
-  background-color: #d5d5d5;
-  padding: 1rem;
-  justify-content: center;
-  transition: padding 0.3s;
-
-  &:hover {
-    padding: 1rem 2rem;
-
-    .mini {
-      filter: none;
-    }
-  }
-}
-
-.mini {
-  width: 150px;
-  height: auto;
-  filter: grayscale(1);
-  transition: filter 0.3s;
-}
-
 h1 {
   text-transform: capitalize;
   font-size: 3rem;
@@ -247,13 +185,109 @@ h1 {
   cursor: url("~/assets/img/svg/EyeIn.svg") 16 16, pointer;
 }
 
-// MEDIA QUERIES
-@media (max-width: 1250px) {
-  .project {
-    width: 100%;
+.overlay {
+  position: fixed;
+  z-index: 200;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  padding: 1rem;
+  background-color: #c5c5c5;
+}
+
+.imageView {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #dedede;
+  gap: 0.5rem;
+  padding: 1rem 0;
+
+  .options {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    // display: grid;
+    // grid-template-columns: repeat(3, 1fr);
+    width: calc(100% - 2rem);
+
+    p {
+      display: flex;
+      gap: 0.25rem;
+      align-items: center;
+    }
+
+    button {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      padding-top: 0.5rem;
+      display: flex;
+      gap: 0.25rem;
+      align-items: center;
+    }
   }
 
-  .info {
+  img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    cursor: url("/EyeOff.svg") 16 16, pointer;
+  }
+}
+
+.imgFocus-enter-active,
+.imgFocus-leave-active {
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.imgFocus-enter-from {
+  // transform: translateY(-2rem);
+  opacity: 0;
+}
+
+.imgFocus-leave-to {
+  // transform: translateY(2rem);
+  opacity: 0;
+}
+
+.imgSwipeNext-enter-active,
+.imgSwipeNext-leave-active {
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.imgSwipeNext-enter-from {
+  transform: translateX(-5rem);
+  opacity: 0;
+}
+
+.imgSwipeNext-leave-to {
+  transform: translateX(5rem);
+  opacity: 0;
+}
+
+.imgSwipePrev-enter-active,
+.imgSwipePrev-leave-active {
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.imgSwipePrev-enter-from {
+  transform: translateX(5rem);
+  opacity: 0;
+}
+
+.imgSwipePrev-leave-to {
+  transform: translateX(-5rem);
+  opacity: 0;
+}
+
+
+@media (max-width: 1250px) {
+  .project {
     width: 100%;
   }
 

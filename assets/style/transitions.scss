@@ -12,31 +12,31 @@
 // SLIDETORIGHT
 .slideToRight-enter-active,
 .slideToRight-leave-active {
-    transition: transform 0.3s, opacity 0.3s;
+    transition: transform 0.2s, opacity 0.2s;
 }
 
 .slideToRight-enter-from {
-    transform: translateX(-2rem);
+    transform: translateX(1rem);
     opacity: 0;
 }
 
 .slideToRight-leave-to {
-    transform: translateX(2rem);
+    transform: translateX(-1rem);
     opacity: 0;
 }
 
 // SLIDETOLEFT
 .slideToLeft-enter-active,
 .slideToLeft-leave-active {
-    transition: transform 0.3s, opacity 0.3s;
+    transition: transform 0.2s, opacity 0.2s;
 }
 
 .slideToLeft-enter-from {
-    transform: translateX(2rem);
+    transform: translateX(-1rem);
     opacity: 0;
 }
 
 .slideToLeft-leave-to {
-    transform: translateX(-2rem);
+    transform: translateX(1rem);
     opacity: 0;
 }

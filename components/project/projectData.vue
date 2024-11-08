@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import type { ProjectDataModel } from '@/models/projectData';
+import gsap from 'gsap';
 import { defineProps } from 'vue';
 
-const props = defineProps<{
+const { data } = defineProps<{
     data: ProjectDataModel,
 }>()
 </script>
