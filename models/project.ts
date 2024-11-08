@@ -1,12 +1,12 @@
-import type { ProjectDataModel } from "./projectData"
+import type { ProjectTech } from "./ProjectTech"
 
-export type ProjectModel = {
+export type Project = {
     id: number,
     name: string,
     link?: string,
     img: string,
     imgs?: string[],
     description?: string[],
-    tech?: ProjectDataModel,
+    tech?: ProjectTech,
     features?: string[],
 }

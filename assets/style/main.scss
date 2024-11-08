@@ -38,3 +38,11 @@ a {
     align-items: center;
     justify-content: center;
 }
+
+.lookin {
+    cursor: url("~/assets/img/svg/EyeIn.svg") 16 16, pointer;
+}
+
+.lookout {
+    cursor: url("~/assets/img/svg/EyeOff.svg") 16 16, pointer;
+}

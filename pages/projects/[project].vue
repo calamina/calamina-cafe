@@ -2,8 +2,6 @@
 import { onMounted, ref, type Ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { onKeyStroke } from '@vueuse/core'
-import type { ProjectModel } from '@/models/project';
-import web from '@/data/projects/web.json'
 
 definePageMeta({
   middleware: 'routing',
@@ -14,11 +12,8 @@ definePageMeta({
 })
 
 const route = useRoute()
-
-const projects: Ref<ProjectModel[]> = ref(web)
-const project: Ref<ProjectModel> = ref(projects.value.find(project => project.name === route.params.project) ?? projects.value[0])
-const previous: ProjectModel | null = projects.value.find(res => res.id === (project.value.id - 1)) ?? null
-const next: ProjectModel | null = projects.value.find(res => res.id === (project.value.id + 1)) ?? null
+const project = useWebProjects().project(route.params.project as string)
+const { previous, next } = useWebProjects().neighbours(project?.value?.id)
 
 const imgView: Ref<HTMLImageElement | null> = ref(null)
 const gallery: Ref<HTMLImageElement[]> = ref([])
@@ -26,12 +21,13 @@ const gallery: Ref<HTMLImageElement[]> = ref([])
 onMounted(() => {
   document.scrollingElement!.scrollTop = 0
   gallery.value = Array.from(document.querySelectorAll('.img')) as HTMLImageElement[]
+  console.debug(previous.value, next.value)
 })
 
 onKeyStroke('ArrowLeft', () => {
   if (!imgView.value) {
     previous ?
-      navigateTo({ params: { project: previous?.name, type: "web" } }) :
+      navigateTo({ params: { project: previous?.value?.name, type: "web" } }) :
       navigateTo({ name: 'projects' })
   }
 })
@@ -39,7 +35,7 @@ onKeyStroke('ArrowLeft', () => {
 onKeyStroke('ArrowRight', () => {
   if (!imgView.value) {
     next ?
-      navigateTo({ params: { project: next?.name, type: "web" } }) :
+      navigateTo({ params: { project: next?.value?.name, type: "web" } }) :
       navigateTo({ name: 'projects' })
   }
 })
@@ -47,9 +43,6 @@ onKeyStroke('ArrowRight', () => {
 function focusImage(e: MouseEvent) {
   imgView.value = e.target as HTMLImageElement
 }
-
-const { getCoverAndImages } = useImageUtils()
-const images = getCoverAndImages(project.value.name)
 </script>
 
 <template>
@@ -66,7 +59,7 @@ const images = getCoverAndImages(project.value.name)
           <!-- <span class="count">{{ project.id }}/{{ projects.length }}</span> -->
           {{ project.name }}
         </h1>
-        <a class="project-link" :href="project.link" target="_blank">
+        <a class="project-link" :href="project?.link" target="_blank">
           visit
           <IconComponent :small="true">
             <IconLink />
@@ -79,14 +72,14 @@ const images = getCoverAndImages(project.value.name)
       <ProjectData v-if="project.tech" :data="project.tech" />
     </div>
     <div class="gallery">
-      <img @click="(event) => focusImage(event)" class="cover img" :src="images?.cover" alt="project picture">
+      <NuxtImg @click="(event: MouseEvent) => focusImage(event)" class="cover lookin" :src="'/img/web/' + project.img" alt="project picture" />
       <!-- <div v-if="project.features?.length" class="features">
         <h2>Features</h2>
         <p v-for="section in project.features">{{ section }}</p>
       </div> -->
       <div class="gallerita" v-if="project.imgs" :class="{ tata: project.imgs.length < 2 }">
-        <div v-for="image in images?.imgs">
-          <img @click="(event) => focusImage(event)" class="img" :src="image" alt=":(">
+        <div v-for="image in project.imgs">
+          <NuxtImg @click="(event: MouseEvent) => focusImage(event)" class="lookin" :src="'/img/web/' + project.name + '/' + image" alt=":(" />
         </div>
       </div>
     </div>
@@ -104,9 +97,6 @@ const images = getCoverAndImages(project.value.name)
   width: calc(100vw - 8rem);
   gap: 3rem;
   overflow: auto;
-
-  // display: grid;
-  // grid-template-columns: 40% 60%;
 }
 
 .info {
@@ -120,7 +110,6 @@ const images = getCoverAndImages(project.value.name)
   display: flex;
   flex-flow: column;
   max-width: 70rem;
-  // padding: 1rem;
   width: 100%;
   gap: 1rem;
 }
@@ -241,10 +230,6 @@ const images = getCoverAndImages(project.value.name)
 h1 {
   text-transform: capitalize;
   font-size: 3rem;
-}
-
-.img {
-  cursor: url("~/assets/img/svg/EyeIn.svg") 16 16, pointer;
 }
 
 // MEDIA QUERIES

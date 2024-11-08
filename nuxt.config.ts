@@ -2,7 +2,15 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-  modules: ['@vueuse/nuxt', '@pinia/nuxt', '@nuxt/image', '@nuxt/eslint'],
+  modules: [
+    '@vueuse/nuxt',
+    '@pinia/nuxt',
+    '@nuxt/image',
+    '@nuxt/eslint',
+    '@nuxtjs/sitemap',
+    '@nuxtjs/color-mode',
+    '@nuxt/icon'
+  ],
   css: ['~/assets/style/main.scss'],
   // pages: true,
   app: {
@@ -16,4 +24,16 @@ export default defineNuxtConfig({
       ]
     }
   },
+  image: {
+    format: ['webp']
+  },
+  site: {
+    url: 'https://calamina.cafe',
+    name: 'Calamina Cafe'
+  },
+  sitemap: {
+    urls: [
+      'https://calamina.cafe/projects/atlast',
+     ]
+  }
 })

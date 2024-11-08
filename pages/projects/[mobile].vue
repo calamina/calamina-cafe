@@ -1,17 +1,13 @@
 <script setup lang="ts">
-import type { ProjectModel } from '@/models/project';
 import { onMounted, ref, type Ref } from 'vue';
 import { useRoute } from 'vue-router';
-import mobile from '@/data/projects/mobile.json'
 import { onKeyStroke } from '@vueuse/core'
 import ProjectData from '@/components/project/projectData.vue';
 
 const route = useRoute()
 
-const projects: Ref<ProjectModel[]> = ref(mobile);
-const project: Ref<ProjectModel> = ref(projects.value.find(project => project.name === route.params.mobile) ?? projects.value[0])
-const previous: ProjectModel | null = projects.value.find(res => res.id === (project.value.id - 1)) ?? null;
-const next: ProjectModel | null = projects.value.find(res => res.id === (project.value.id + 1)) ?? null;
+const project = usePhoneProjects().project(route.params.mobile as string)
+const { previous, next } = usePhoneProjects().neighbours(project?.value?.id)
 
 const imgView: Ref<HTMLImageElement | null> = ref(null)
 const gallery: Ref<HTMLImageElement[]> = ref([])
@@ -24,7 +20,7 @@ onMounted(() => {
 onKeyStroke('ArrowLeft', () => {
   if (!imgView.value) {
     previous ?
-      navigateTo({ params: { mobile: previous?.name } }) :
+      navigateTo({ params: { mobile: previous?.value?.name } }) :
       navigateTo({ name: 'projects' })
   }
 })
@@ -32,7 +28,7 @@ onKeyStroke('ArrowLeft', () => {
 onKeyStroke('ArrowRight', () => {
   if (!imgView.value) {
     next ?
-      navigateTo({ params: { mobile: next?.name } }) :
+      navigateTo({ params: { mobile: next?.value?.name } }) :
       navigateTo({ name: 'projects' })
   }
 })
@@ -42,7 +38,7 @@ function focusImage(e: MouseEvent) {
 }
 
 const { getCoverAndImages } = useImageUtils()
-const images = getCoverAndImages(project.value.name)
+const images = getCoverAndImages(project?.value?.name)
 </script>
 
 <template>
@@ -66,14 +62,14 @@ const images = getCoverAndImages(project.value.name)
       <ProjectData v-if="project.tech" :data="project.tech" />
     </div>
     <div class="gallery">
-      <img @click="(event) => focusImage(event)" class="cover img" :src="images?.cover" alt="project picture">
+      <img @click="(event) => focusImage(event)" class="cover img lookin" :src="images?.cover" alt="project picture">
       <div class="gallerita" v-if="project.imgs" :class="{ tata: project.imgs.length < 2 }">
         <div v-for="image in images?.imgs">
-          <img @click="(event) => focusImage(event)" class="img" :src="image" alt=":(">
+          <img @click="(event) => focusImage(event)" class="img lookin" :src="image" alt=":(">
         </div>
       </div>
     </div>
-    <ProjectNavigation :previous="previous" :next="next" :source="'phone'" :small="true" />
+    <!-- <ProjectNavigation :previous="previous" :next="next" :source="'phone'" :small="true" /> -->
   </div>
 </template>
 
@@ -181,10 +177,6 @@ h1 {
   font-size: 3rem;
 }
 
-.img {
-  cursor: url("~/assets/img/svg/EyeIn.svg") 16 16, pointer;
-}
-
 .overlay {
   position: fixed;
   z-index: 200;
@@ -236,7 +228,6 @@ h1 {
     object-fit: contain;
     width: 100%;
     height: 100%;
-    cursor: url("/EyeOff.svg") 16 16, pointer;
   }
 }
 

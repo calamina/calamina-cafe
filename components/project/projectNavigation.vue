@@ -1,15 +1,16 @@
 <script setup lang="ts">
-import type { ProjectModel } from '@/models/project';
+import type { Project } from '@/models/project';
 
 const { previous, next, small, source } = defineProps<{
-    previous: ProjectModel | null
-    next: ProjectModel | null
+    previous: Project | null
+    next: Project | null
     small?: boolean
     source: string
 }>()
 
-const { getImages } = useImageUtils()
-const images = getImages(source)
+// const { getImages } = useImageUtils()
+// const images = getImages(source)
+const images = []
 </script>
 
 <template>

@@ -69,7 +69,7 @@ function exit() {
                 </div>
             </div>
             <transition :name="imgSwipeTransition" mode="out-in">
-                <img @click="exit()" :src="image.src" :alt="image.alt" :key="image.src">
+                <img @click="exit()" :src="image.src" :alt="image.alt" :key="image.src" class="lookout">
             </transition>
             <div class="options">
                 <ButtonBrackets @click="prevImg()">
@@ -130,7 +130,6 @@ function exit() {
         object-fit: contain;
         width: 100%;
         height: 100%;
-        cursor: url("~/assets/img/svg/EyeOff.svg") 16 16, pointer;
     }
 }
 </style>

@@ -2,7 +2,7 @@
     {
         "id": 1,
         "name": "cityscape",
-        "img": "cityscape.jpg",
+        "img": "/img/phone/cityscape.jpg",
         "imgs": [],
         "description": [
             "..."
@@ -24,7 +24,7 @@
     {
         "id": 2,
         "name": "warm",
-        "img": "warm.jpg",
+        "img": "/img/phone/warm.jpg",
         "imgs": [],
         "description": [
             "..."
@@ -46,7 +46,7 @@
     {
         "id": 3,
         "name": "crystal",
-        "img": "crystal.jpg",
+        "img": "/img/phone/crystal.jpg",
         "imgs": [],
         "description": [
             "..."
@@ -68,7 +68,7 @@
     {
         "id": 4,
         "name": "end",
-        "img": "end.png",
+        "img": "/img/phone/end.png",
         "imgs": [],
         "description": [
             "..."
@@ -90,7 +90,7 @@
     {
         "id": 5,
         "name": "nuit",
-        "img": "nuit.jpg",
+        "img": "/img/phone/nuit.jpg",
         "imgs": [],
         "description": [
             "..."
@@ -112,7 +112,7 @@
     {
         "id": 6,
         "name": "dots",
-        "img": "dots.jpg",
+        "img": "/img/phone/dots.jpg",
         "imgs": [],
         "description": [
             "..."

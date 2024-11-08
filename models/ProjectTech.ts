@@ -1,4 +1,4 @@
-export type ProjectDataModel = {
+export type ProjectTech = {
     tools?: string[],
     languages?: string[]
     colors?: string[]

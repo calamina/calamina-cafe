@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import type { RouteLocationNormalizedLoadedGeneric } from 'vue-router';
-
-// TODO:: add utility to manage route transitions depending on route hash (useRouteTransition())
 const route = useRoute()
 
 const isProjectRoute = ref(false)
@@ -24,14 +22,17 @@ const formatRouteName = (route: RouteLocationNormalizedLoadedGeneric): string =>
   else return String(route.name)
 }
 
-watch(
-  () => route.params?.project,
-  (newId, oldId) => {
-    isProjectRoute.value = !!newId
-    project.value = newId as string;
-    // react to route changes...
-  }
-)
+// watch(
+//   () => route.params?.project,
+//   (newId, oldId) => {
+//     isProjectRoute.value = !!newId
+//     project.value = newId as string;
+//     // react to route changes...
+//   }
+// )
+
+// const colorMode = useColorMode()
+// console.debug(colorMode.preference)
 </script>
 
 <template>
@@ -54,12 +55,6 @@ watch(
 
     <main>
       <NuxtPage />
-      <!-- <NuxtPage :transition="{
-        name: 'appear',
-        // name: 'page',
-        mode: 'out-in',
-        appear: true,
-      }" /> -->
     </main>
 
     <footer>
@@ -75,20 +70,19 @@ watch(
   display: flex;
   flex-flow: column;
   padding: 1rem;
-  // min-height: '100vh';
+  min-height: '100vh';
   justify-content: space-between;
   min-height: calc(100vh - 2rem);
-  // margin: 1rem;
   display: flex;
   flex-flow: column;
 }
 
 // TODO :: remove focus when changing page ?
-a:focus {
-  outline: none;
-  text-decoration: underline;
-  background-color: #fff;
-}
+// a:focus {
+//   outline: none;
+//   text-decoration: underline;
+//   background-color: #fff;
+// }
 
 nav {
   display: flex;
