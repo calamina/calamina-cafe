@@ -21,17 +21,42 @@ const bracketsSize = computed(() => { return { '--size': size ?? 20 + 'px' } })
     </NuxtLink>
 </template>
 <style scoped lang="scss">
+a {
+  position: relative;
+  padding: 0.5rem;
+  width: 100%;
+  height: 100%;
+
+  &:focus {
+    outline: none;
+
+    .wrapper {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  &:hover {
+    .wrapper {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
+
 .bracketWrap {
     position: relative;
     border: 1px solid transparent;
+    padding: 0.5rem;
 
-    &:hover .overlay, &:focus .overlay {
+    &:hover .overlay,
+    &:focus .overlay {
         opacity: 1;
         transform: scale(1);
     }
 }
 
-.content:focus + .overlay {
+.content:focus+.overlay {
     opacity: 1;
     transform: scale(1);
 }

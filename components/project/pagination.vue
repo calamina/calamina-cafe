@@ -1,33 +1,26 @@
 <script setup lang="ts">
 import type { Project } from '@/models/project';
 
-const { previous, next, small, source } = defineProps<{
+const { previous, next, small } = defineProps<{
     previous: Project | null
     next: Project | null
     small?: boolean
-    source: string
 }>()
 
-// const { getImages } = useImageUtils()
-// const images = getImages(source)
 const images = []
 </script>
 
 <template>
     <div class="navigation">
         <RouterLink class="prev" v-if="previous" :to="{ params: { project: previous.name } }">
-            <IconComponent>
-                <IconPrevious />
-            </IconComponent>
+            <Icon name="tabler:arrow-left-bar" style="color: black" />
             <h2> {{ previous.name }}</h2>
             <img class="mini" :class="{ minismall: small }" :src="images[previous.name]" alt="project picture">
         </RouterLink>
         <RouterLink class="next" v-if="next" :to="{ params: { project: next.name } }">
             <img class="mini" :class="{ minismall: small }" :src="images[next.name]" alt="project picture">
             <h2>{{ next.name }}</h2>
-            <IconComponent>
-                <IconNext />
-            </IconComponent>
+            <Icon name="tabler:arrow-right-bar" style="color: black" />
         </RouterLink>
     </div>
 </template>

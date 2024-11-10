@@ -21,21 +21,20 @@ const gallery: Ref<HTMLImageElement[]> = ref([])
 onMounted(() => {
   document.scrollingElement!.scrollTop = 0
   gallery.value = Array.from(document.querySelectorAll('.img')) as HTMLImageElement[]
-  console.debug(previous.value, next.value)
 })
 
 onKeyStroke('ArrowLeft', () => {
   if (!imgView.value) {
-    previous ?
-      navigateTo({ params: { project: previous?.value?.name, type: "web" } }) :
+    previous.value ?
+      navigateTo({ params: { project: previous?.value?.name } }) :
       navigateTo({ name: 'projects' })
   }
 })
 
 onKeyStroke('ArrowRight', () => {
   if (!imgView.value) {
-    next ?
-      navigateTo({ params: { project: next?.value?.name, type: "web" } }) :
+    next.value ?
+      navigateTo({ params: { project: next?.value?.name } }) :
       navigateTo({ name: 'projects' })
   }
 })
@@ -61,29 +60,31 @@ function focusImage(e: MouseEvent) {
         </h1>
         <a class="project-link" :href="project?.link" target="_blank">
           visit
-          <IconComponent :small="true">
-            <IconLink />
-          </IconComponent>
+          <Icon name="tabler:link" style="color: black" />
         </a>
       </div>
       <div class="description">
         <p v-for="section in project.description">{{ section }}</p>
       </div>
-      <ProjectData v-if="project.tech" :data="project.tech" />
+      <ProjectTech v-if="project.tech" :data="project.tech" />
     </div>
     <div class="gallery">
-      <NuxtImg @click="(event: MouseEvent) => focusImage(event)" class="cover lookin" :src="'/img/web/' + project.img" alt="project picture" />
+      <button @click="(event: MouseEvent) => focusImage(event)">
+        <NuxtImg class="cover lookin" :src="project.img" alt="project picture" />
+      </button>
       <!-- <div v-if="project.features?.length" class="features">
         <h2>Features</h2>
         <p v-for="section in project.features">{{ section }}</p>
       </div> -->
       <div class="gallerita" v-if="project.imgs" :class="{ tata: project.imgs.length < 2 }">
-        <div v-for="image in project.imgs">
-          <NuxtImg @click="(event: MouseEvent) => focusImage(event)" class="lookin" :src="'/img/web/' + project.name + '/' + image" alt=":(" />
-        </div>
+        <button v-for="image in project.imgs" @click="(event: MouseEvent) => focusImage(event)">
+            <div >
+            <NuxtImg class="lookin" :src="'/img/web/' + project.name + '/' + image" alt=":(" />
+          </div>
+          </button>
       </div>
     </div>
-    <ProjectNavigation :previous="previous" :next="next" :source="'web'" />
+    <ProjectNavigation :previous="previous" :next="next" />
   </div>
 </template>
 
@@ -147,6 +148,20 @@ function focusImage(e: MouseEvent) {
 
   img {
     max-height: 35rem;
+  }
+}
+
+button {
+  display: flex;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid transparent;
+
+  &:focus, &:hover, &:active {
+    border: 1px solid #000;
   }
 }
 

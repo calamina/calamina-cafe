@@ -20,33 +20,23 @@ definePageMeta({
       </section>
       <nav>
         <a target=”_blank” href="https://github.com/calamina">
-          <IconComponent>
-            <IconGithub />
-          </IconComponent>
+          <Icon name="tabler:brand-github" style="color: black" />
           github
         </a>
         <a target=”_blank” href="https://linkedin.com">
-          <IconComponent>
-            <IconLinkedin />
-          </IconComponent>
+          <Icon name="tabler:brand-linkedin" style="color: black" />
           linkedin
         </a>
         <a target=”_blank” href="https://en.wikipedia.org/wiki/User:Eveneit">
-          <IconComponent>
-            <IconWikipedia />
-          </IconComponent>
+          <Icon name="tabler:notebook" style="color: black" />
           wikipedia
         </a>
         <a target=”_blank” href="https://www.youtube.com/@calamina">
-          <IconComponent>
-            <IconYoutube />
-          </IconComponent>
+          <Icon name="tabler:brand-youtube" style="color: black" />
           youtube
-        </a>
-        <a target=”_blank” href="https://www.senscritique.com/calamina">
-          <IconComponent>
-            <IconSenscritique />
-          </IconComponent>
+          </a>
+          <a target=”_blank” href="https://www.senscritique.com/calamina">
+          <Icon name="tabler:bookmark" style="color: black" />
           senscritique
         </a>
       </nav>

@@ -44,26 +44,18 @@ function exit() {
         <div class="imageView">
             <div class="options">
                 <TextBrackets>
-                    <IconComponent>
-                        <IconEye />
-                    </IconComponent>
+                    <Icon name="tabler:eye" style="color: black" />
                     Fullscreen mode
                 </TextBrackets>
                 <TextBrackets>{{ images.indexOf(image) + 1 }} / {{ images.length }}</TextBrackets>
                 <div>
                     <TextBrackets>
-                        <IconComponent>
-                            <IconTouch />
-                        </IconComponent>
+                        <Icon name="tabler:hand-click" style="color: black" />
                         or Escape to exit
                     </TextBrackets>
                     <TextBrackets>
-                        <IconComponent>
-                            <IconPrevious />
-                        </IconComponent>
-                        <IconComponent>
-                            <IconNext />
-                        </IconComponent>
+                        <Icon name="tabler:arrow-left-bar" style="color: black" />
+                        <Icon name="tabler:arrow-right-bar" style="color: black" />
                         to navigate
                     </TextBrackets>
                 </div>
@@ -73,16 +65,12 @@ function exit() {
             </transition>
             <div class="options">
                 <ButtonBrackets @click="prevImg()">
-                    <IconComponent>
-                        <IconPrevious />
-                    </IconComponent>
+                    <Icon name="tabler:arrow-left-bar" style="color: black" />
                     previous
                 </ButtonBrackets>
                 <ButtonBrackets @click="prevImg()">
                     next
-                    <IconComponent>
-                        <IconNext />
-                    </IconComponent>
+                    <Icon name="tabler:arrow-right-bar" style="color: black" />
                 </ButtonBrackets>
             </div>
         </div>

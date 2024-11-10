@@ -27,6 +27,14 @@ export default defineNuxtConfig({
   image: {
     format: ['webp']
   },
+  icon: {
+    size: '1.25rem', // default <Icon> size applied
+    // class: 'icon', // default <Icon> class applied
+    // mode: 'css', // default <Icon> mode applied
+    // aliases: {
+    //   'nuxt': 'logos:nuxt-icon',
+    // }
+  },
   site: {
     url: 'https://calamina.cafe',
     name: 'Calamina Cafe'

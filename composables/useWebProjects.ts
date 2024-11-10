@@ -10,14 +10,14 @@ export const useWebProjects = () => {
     ) as { [K in string]: K };
 
     const project = (name: string) => {
-        return ref(webProjects.find(project => project.name = name))
+        return ref(webProjects.find(project => project.name === name))
     }
 
     const neighbours = (id: number | undefined) => {
         if (!id) return { next: ref(null), previous: ref(null) }
 
-        const previous = ref(webProjects.find(project => project.id = id - 1))
-        const next = ref(webProjects.find(project => project.id = id + 1))
+        const previous = ref(webProjects.find(project => project.id === id - 1) ?? null)
+        const next = ref(webProjects.find(project => project.id === id + 1) ?? null)
 
         return { previous, next }
     }

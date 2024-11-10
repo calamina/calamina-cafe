@@ -6,6 +6,7 @@ const isProjectRoute = ref(false)
 const project: Ref<string> = ref(route.params?.project as string)
 
 watch(route, () => {
+  console.debug(route)
   useHead({
     title: `${formatRouteName(route)} ~ calamina cafe`,
     meta: [
@@ -22,14 +23,13 @@ const formatRouteName = (route: RouteLocationNormalizedLoadedGeneric): string =>
   else return String(route.name)
 }
 
-// watch(
-//   () => route.params?.project,
-//   (newId, oldId) => {
-//     isProjectRoute.value = !!newId
-//     project.value = newId as string;
-//     // react to route changes...
-//   }
-// )
+watch(
+  () => route.params?.project,
+  (newId, oldId) => {
+    isProjectRoute.value = !!newId
+    project.value = newId as string;
+  }
+)
 
 // const colorMode = useColorMode()
 // console.debug(colorMode.preference)

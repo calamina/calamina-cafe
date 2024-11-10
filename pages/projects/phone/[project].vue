@@ -4,9 +4,16 @@ import { useRoute } from 'vue-router';
 import { onKeyStroke } from '@vueuse/core'
 import ProjectData from '@/components/project/projectData.vue';
 
-const route = useRoute()
+definePageMeta({
+  middleware: 'routing',
+  pageTransition: {
+    name: 'appear',
+    mode: 'out-in',
+  }
+})
 
-const project = usePhoneProjects().project(route.params.mobile as string)
+const route = useRoute()
+const project = usePhoneProjects().project(route.params.project as string)
 const { previous, next } = usePhoneProjects().neighbours(project?.value?.id)
 
 const imgView: Ref<HTMLImageElement | null> = ref(null)
@@ -19,16 +26,16 @@ onMounted(() => {
 
 onKeyStroke('ArrowLeft', () => {
   if (!imgView.value) {
-    previous ?
-      navigateTo({ params: { mobile: previous?.value?.name } }) :
+    previous.value ?
+      navigateTo({ params: { project: previous?.value?.name } }) :
       navigateTo({ name: 'projects' })
   }
 })
 
 onKeyStroke('ArrowRight', () => {
   if (!imgView.value) {
-    next ?
-      navigateTo({ params: { mobile: next?.value?.name } }) :
+    next.value ?
+      navigateTo({ params: { project: next?.value?.name } }) :
       navigateTo({ name: 'projects' })
   }
 })
@@ -36,9 +43,6 @@ onKeyStroke('ArrowRight', () => {
 function focusImage(e: MouseEvent) {
   imgView.value = e.target as HTMLImageElement
 }
-
-const { getCoverAndImages } = useImageUtils()
-const images = getCoverAndImages(project?.value?.name)
 </script>
 
 <template>
@@ -59,17 +63,18 @@ const images = getCoverAndImages(project?.value?.name)
       <div class="description">
         <p v-for="section in project.description">{{ section }}</p>
       </div>
-      <ProjectData v-if="project.tech" :data="project.tech" />
+      <ProjectTech v-if="project.tech" :data="project.tech" />
     </div>
     <div class="gallery">
-      <img @click="(event) => focusImage(event)" class="cover img lookin" :src="images?.cover" alt="project picture">
+      <NuxtImg @click="(event) => focusImage(event)" class="cover img lookin" :src="project.img"
+        alt="project picture" />
       <div class="gallerita" v-if="project.imgs" :class="{ tata: project.imgs.length < 2 }">
-        <div v-for="image in images?.imgs">
-          <img @click="(event) => focusImage(event)" class="img lookin" :src="image" alt=":(">
+        <div v-for="image in project.imgs">
+          <NuxtImg @click="(event) => focusImage(event)" class="img lookin" :src="image" alt=":(" />
         </div>
       </div>
     </div>
-    <!-- <ProjectNavigation :previous="previous" :next="next" :source="'phone'" :small="true" /> -->
+    <ProjectNavigation :previous="previous" :next="next" :small="true" />
   </div>
 </template>
 
