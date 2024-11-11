@@ -80,7 +80,7 @@ a {
     width: 100%;
     flex: 1;
     padding: 0.5rem;
-    background-color: #fff;
+    background-color: var(--bg-light);
 
     p:last-of-type {
       display: inline-block;
@@ -99,7 +99,7 @@ img {
   width: 100%;
   align-items: center;
   justify-content: center;
-  border: 4px solid #fff;
+  border: 4px solid var(--light);
   aspect-ratio: 1.77;
   transition: border-color 0.3s;
 }

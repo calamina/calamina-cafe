@@ -14,7 +14,7 @@ const images = []
     <div class="navigation">
         <SelectBrackets class="prev" v-if="previous" :to="{ params: { project: previous.name } }">
             <div class="link-wrapper">
-                <Icon name="tabler:arrow-left-bar" style="color: black" />
+                <Icon name="tabler:arrow-left-bar"  />
                 <h2> {{ previous.name }}</h2>
                 <img class="mini" :class="{ minismall: small }" :src="previous.img" alt="project picture">
             </div>
@@ -23,7 +23,7 @@ const images = []
             <div class="link-wrapper">
                 <img class="mini" :class="{ minismall: small }" :src="next.img" alt="project picture">
                 <h2>{{ next.name }}</h2>
-                <Icon name="tabler:arrow-right-bar" style="color: black" />
+                <Icon name="tabler:arrow-right-bar"  />
             </div>
         </SelectBrackets>
     </div>
@@ -61,7 +61,7 @@ const images = []
     display: flex;
     align-items: center;
     gap: 1rem;
-    background-color: #d5d5d5;
+    background-color: var(--bg-darker0);
     padding: 1rem;
     justify-content: center;
 }

@@ -28,8 +28,8 @@ export default defineNuxtConfig({
     format: ['webp']
   },
   icon: {
-    size: '1.25rem', // default <Icon> size applied
-    // class: 'icon', // default <Icon> class applied
+    size: '1.25rem',
+    class: 'icon', 
     // mode: 'css', // default <Icon> mode applied
     // aliases: {
     //   'nuxt': 'logos:nuxt-icon',

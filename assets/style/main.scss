@@ -1,10 +1,10 @@
-@use './base.css';
-@use './reset.css';
+@use './themes.scss';
+@use './base.scss';
+@use './reset.scss';
 @use './transitions.scss';
 
 body {
-    background-color: #dedede;
-    // background-color: #eee;
+    background-color: var(--bg);
     // background: radial-gradient(circle, #eee, rgba(181, 179, 213, 0.1) 86%), url('~/assets/img/svg/noise.svg');
     // background-attachment: fixed;
 }
@@ -23,7 +23,7 @@ a {
     align-items: center;
     gap: .5rem;
     text-decoration: none;
-    color: #000;
+    color: var(--color);
 
     &:hover {
         outline: none;
@@ -39,10 +39,32 @@ a {
     justify-content: center;
 }
 
+p,
+h1,
+h2,
+h3,
+h4,
+span,
+button,
+.icon {
+    color: var(--color);
+}
+
 .lookin {
     cursor: url("~/assets/img/svg/EyeIn.svg") 16 16, pointer;
 }
 
 .lookout {
     cursor: url("~/assets/img/svg/EyeOff.svg") 16 16, pointer;
+}
+
+button {
+    display: flex;
+    align-items: center;
+    // justify-content: center;
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    outline: none;
+    cursor: pointer;
 }

@@ -38,11 +38,11 @@
 
 <style lang="scss"scoped>
 pre {
-  background-color: #eaeaea;
+  background-color: var(bg-lighter);
   padding: 1rem;
   letter-spacing: -2px;
   line-height: 0.95rem;
   font-size: 0.8rem;
-  color: #960843;
+  color: var(--color-error);
 }
 </style>

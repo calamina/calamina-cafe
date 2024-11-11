@@ -31,7 +31,7 @@ const message = computed(() => error.statusCode === 404 ? 'Page not found' : err
 h1,
 a,
 span {
-  color: #960843;
+  color: var(--color-error);
 }
 
 a {

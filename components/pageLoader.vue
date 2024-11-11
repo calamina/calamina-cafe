@@ -27,7 +27,7 @@ div {
   flex-flow: column;
   justify-content: center;
   z-index: 500;
-  background-color: #dedede;
+  background-color: var(--bg);
   width: 100vw;
   height: 100vh
 }

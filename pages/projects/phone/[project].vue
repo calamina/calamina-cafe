@@ -106,7 +106,7 @@ function focusImage(e: MouseEvent) {
 
 .cover {
   display: block;
-  background-color: #d5d5d5;
+  background-color: var(--bg-darker0);
   padding: 1rem;
   width: auto;
   object-fit: contain;
@@ -130,7 +130,7 @@ function focusImage(e: MouseEvent) {
   div {
     display: flex;
     padding: 1rem;
-    background-color: #d5d5d5;
+    background-color: var(--bg-darker0);
     align-items: center;
     justify-content: center;
     object-fit: contain;
@@ -154,7 +154,7 @@ function focusImage(e: MouseEvent) {
     padding: 0.5rem 0;
 
     &:not(:last-of-type) {
-      border-bottom: 1px solid #c5c5c5;
+      border-bottom: 1px solid var(--bg-darker);
     }
   }
 }
@@ -165,7 +165,7 @@ function focusImage(e: MouseEvent) {
 }
 
 .project-link {
-  background-color: #c5c5c5;
+  background-color: var(--bg-darker);
   padding: 0 0.5rem;
   border-radius: 0.5rem;
   align-items: center;
@@ -190,7 +190,7 @@ h1 {
   height: 100vh;
   width: 100%;
   padding: 1rem;
-  background-color: #c5c5c5;
+  background-color: var(--bg-darker);
 }
 
 .imageView {
@@ -200,7 +200,7 @@ h1 {
   flex-flow: column;
   align-items: center;
   justify-content: center;
-  background-color: #dedede;
+  background-color: var(--bg);
   gap: 0.5rem;
   padding: 1rem 0;
 

@@ -80,7 +80,7 @@ a {
     left: 1px;
     right: 1px;
     bottom: 1px;
-    background-color: #dedede;
+    background-color: var(--bg);
 }
 
 .select {
@@ -93,13 +93,13 @@ a {
     grid-template-columns: var(--size) var(--size);
     grid-template-rows: var(--size) var(--size);
     gap: calc(100% - (var(--size) * 2));
-    background-color: #ccc;
+    background-color: var(--bg-darker);
 
     span {
         display: block;
         width: var(--size);
         height: var(--size);
-        background-color: #000;
+        background-color: var(--black);
     }
 }
 </style>

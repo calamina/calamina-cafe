@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import type { ProjectDataModel } from '@/models/projectData';
 import gsap from 'gsap';
 import { defineProps } from 'vue';
+import type { ProjectTech } from '~/models/ProjectTech';
 
 const { data } = defineProps<{
-    data: ProjectDataModel,
+    data: ProjectTech,
 }>()
 </script>
 
@@ -32,12 +32,12 @@ h2 {
     transition: padding-left 0.2s, background-color 0.2s;
 
     &:not(:last-of-type) {
-        border-bottom: 1px solid #c5c5c5;
+        border-bottom: 1px solid var(--bg-darker);
     }
 
     &:hover {
         padding-left: 0.25rem;
-        background-color: #d5d5d5;
+        background-color: var(--bg);
     }
 }
 
@@ -53,7 +53,7 @@ h2 {
 }
 
 .tag {
-    background-color: #c5c5c5;
+    background-color: var(--bg-darker);
     padding: 0 0.5rem;
     // border-radius: 0.5rem;
 }

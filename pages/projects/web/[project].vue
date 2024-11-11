@@ -60,7 +60,7 @@ function focusImage(e: MouseEvent) {
         </h1>
         <a class="project-link" :href="project?.link" target="_blank">
           visit
-          <Icon name="tabler:link" style="color: black" />
+          <Icon name="tabler:link"  />
         </a>
       </div>
       <div class="description">
@@ -117,7 +117,7 @@ function focusImage(e: MouseEvent) {
 
 .cover {
   display: block;
-  background-color: #d5d5d5;
+  background-color: var(--bg-darker0);
   padding: 1rem;
   width: 100%;
   height: auto;
@@ -139,7 +139,7 @@ function focusImage(e: MouseEvent) {
   div {
     display: flex;
     padding: 1rem;
-    background-color: #d5d5d5;
+    background-color: var(--bg-darker0);
     align-items: center;
     justify-content: center;
     object-fit: contain;
@@ -164,19 +164,17 @@ button {
   &:focus,
   &:hover,
   &:active {
-    border: 1px solid #000;
+    border: 1px solid var(--black);
 
     &:after {
       display: block;
       content: "zoom";
       pointer-events: none;
       position: absolute;
-      background-color: #d5d5d5;
-      background-color: #000;
-      color: #fff;
-      border-left: 1rem solid #d5d5d5;
-      border-bottom: 1rem solid #d5d5d5;
-      // border: 1rem solid #d5d5d5;
+      background-color: var(--black);
+      color: var(--color-lightest);
+      border-left: 1rem solid var(--bg-darker0);
+      border-bottom: 1rem solid var(--bg-darker0);
       padding: 0.25rem 2rem;
       top: 1rem;
       right: 1rem;
@@ -207,8 +205,8 @@ button {
 }
 
 .project-link {
-  background-color: #c5c5c5;
-  padding: 0 0.5rem;
+  background-color: var(--bg-darker);
+  padding: 0.25rem 0.75rem;
   border-radius: 0.5rem;
   align-items: center;
   width: fit-content;
@@ -240,7 +238,7 @@ button {
 
 .prev,
 .next {
-  background-color: #d5d5d5;
+  background-color: var(--bg-darker0);
   padding: 1rem;
   justify-content: center;
   transition: padding 0.3s;
