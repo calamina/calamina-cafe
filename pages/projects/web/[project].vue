@@ -78,10 +78,10 @@ function focusImage(e: MouseEvent) {
       </div> -->
       <div class="gallerita" v-if="project.imgs" :class="{ tata: project.imgs.length < 2 }">
         <button v-for="image in project.imgs" @click="(event: MouseEvent) => focusImage(event)">
-            <div >
+          <div>
             <NuxtImg class="lookin" :src="'/img/web/' + project.name + '/' + image" alt=":(" />
           </div>
-          </button>
+        </button>
       </div>
     </div>
     <ProjectNavigation :previous="previous" :next="next" />
@@ -159,9 +159,28 @@ button {
   margin: 0;
   padding: 0;
   border: 1px solid transparent;
+  position: relative;
 
-  &:focus, &:hover, &:active {
+  &:focus,
+  &:hover,
+  &:active {
     border: 1px solid #000;
+
+    &:after {
+      display: block;
+      content: "zoom";
+      pointer-events: none;
+      position: absolute;
+      background-color: #d5d5d5;
+      background-color: #000;
+      color: #fff;
+      border-left: 1rem solid #d5d5d5;
+      border-bottom: 1rem solid #d5d5d5;
+      // border: 1rem solid #d5d5d5;
+      padding: 0.25rem 2rem;
+      top: 1rem;
+      right: 1rem;
+    }
   }
 }
 
