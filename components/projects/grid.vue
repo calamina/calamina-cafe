@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { Project } from '~/models/project';
+
 const { projects, type, vertical } = defineProps<{
   projects: Project[]
   type: string
@@ -99,7 +101,7 @@ img {
   width: 100%;
   align-items: center;
   justify-content: center;
-  border: 4px solid var(--light);
+  border: 4px solid var(--white);
   aspect-ratio: 1.77;
   transition: border-color 0.3s;
 }

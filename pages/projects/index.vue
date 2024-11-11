@@ -11,6 +11,7 @@ const phoneProjects = usePhoneProjects().data
   <div class="content">    
     <ProjectsGrid v-if="webProjects" :projects="webProjects" type="web"></ProjectsGrid>
     <ProjectsGrid v-if="phoneProjects" :projects="phoneProjects" type="phone" :vertical="true"></ProjectsGrid>
+    <!-- <h2>Music ...</h2> -->
   </div>
 </template>
 

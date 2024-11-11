@@ -8,7 +8,7 @@ definePageMeta({
   <div class="center">
     <div class="content">
       <section>
-        <h1>> calamina.cafe</h1>
+        <h1>calamina.cafe</h1>
       </section>
       <section>
         <p>Hello and welcome :) </p>
@@ -16,7 +16,7 @@ definePageMeta({
         <p>Work in progress !</p>
       </section>
       <section>
-        <a href="mailto:gbelliere@gmail.com">gbelliere@gmail.com</a>
+        contact me @ <a href="mailto:gbelliere@gmail.com">gbelliere@gmail.com</a>
       </section>
       <nav>
         <a target=”_blank” href="https://github.com/calamina">
@@ -34,8 +34,8 @@ definePageMeta({
         <a target=”_blank” href="https://www.youtube.com/@calamina">
           <Icon name="tabler:brand-youtube" />
           youtube
-          </a>
-          <a target=”_blank” href="https://www.senscritique.com/calamina">
+        </a>
+        <a target=”_blank” href="https://www.senscritique.com/calamina">
           <Icon name="tabler:bookmark" />
           senscritique
         </a>
@@ -52,11 +52,17 @@ definePageMeta({
   gap: 2rem;
 }
 
+h1 {
+  font-size: 6rem;
+  line-height: 6.5rem;
+}
+
 nav {
   width: 100%;
   display: flex;
-  flex-flow: column;
+  // flex-flow: column;
   gap: .5rem;
+  gap: 3rem;
 }
 
 section {
