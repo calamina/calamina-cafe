@@ -86,8 +86,9 @@ function exit() {
     height: 100vh;
     width: 100%;
     padding: 1rem 0;
-    backdrop-filter: blur(15px);
-    background-color: #dedede55;
+    // backdrop-filter: blur(15px);
+    // background-color: #dedede55;
+    background-color: #dedede;
 }
 
 .imageView {
