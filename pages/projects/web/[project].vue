@@ -164,14 +164,14 @@ button {
   &:focus,
   &:hover,
   &:active {
-    border: 1px solid var(--black);
+    border: 1px solid var(--bg-darkest);
 
     &:after {
       display: block;
       content: "zoom";
       pointer-events: none;
       position: absolute;
-      background-color: var(--black);
+      background-color: var(--bg-darkest);
       color: var(--color-lightest);
       border-left: 1rem solid var(--bg-darker0);
       border-bottom: 1rem solid var(--bg-darker0);

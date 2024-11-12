@@ -33,7 +33,7 @@ definePageMeta({
 h1 {
   font-size: 6rem;
   line-height: 6.5rem;
-  padding-bottom: 3rem;
+  letter-spacing: -6px;
 }
 
 p a {

@@ -1,33 +1,45 @@
 :root {
-    --color: #000;
-    --color-lightest: #fff;
-    --color-light: #a5a5a5;
-    --color-error: #960843;
-    --bg: #dedede;
-    --bg-darker0: #d5d5d5;
-    --bg-darker: #c5c5c5;
-    --bg-light: #fff;
-    --bg-lighter: #eaeaea;
-    --border-color: #ddd;
+    /* Grey */
+    --Grey-0: #ffffff;
+    --Grey-50: #f6f6f6;
+    --Grey-100: #eaeaea;
+    --Grey-200: #dedede;
+    --Grey-300: #d5d5d5;
+    --Grey-400: #c5c5c5;
+    --Grey-500: #a5a5a5;
+    --Grey-600: #666666;
+    --Grey-700: #323232;
+    --Grey-800: #242424;
+    --Grey-1000: #181818;
 
-    --white: #fff;
-    --black: #000;
+    /* Red */
+    --red: #960843;
+
+    --color: var(--Grey-1000);
+    --color-lightest: var(--Grey-100);
+    --color-light: var(--Grey-500);
+    --color-error: var(--red);
+    --bg: var(--Grey-200);
+    --bg-darker0: var(--Grey-300);
+    --bg-darker: var(--Grey-400);
+    --bg-darkest: var(--Grey-1000);
+    --bg-light: var(--Grey-100);
+    --bg-lighter: var(--Grey-50);
+    --border-color: var(--Grey-200);
 }
 
 .dark-mode {
-    --color: #666666;
-    --color-lightest: #fff;
-    --color-light: #a5a5a5;
-    --color-error: #960843;
-    --bg-light: #fff;
-    --bg: #242424;
-    --bg-darker0: #181818;
-    --bg-darker: #323232;
-    --bg-lighter: #323232;
-    --border-color: #ddd;
-
-    --white: #fff;
-    --black: #000;
+    --color: var(--Grey-600);
+    --color-lightest: var(--Grey-100);
+    --color-light: var(--Grey-500);
+    --color-error: var(--red);
+    --bg: var(--Grey-800);
+    --bg-darker0: var(--Grey-700);
+    --bg-darker: var(--Grey-700);
+    --bg-darkest: var(--Grey-600);
+    --bg-light: var(--Grey-100);
+    --bg-lighter: var(--Grey-700);
+    --border-color: var(--Grey-200);
 }
 
 // .sepia-mode {

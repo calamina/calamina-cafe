@@ -16,7 +16,7 @@ definePageMeta({
         <p>Work in progress !</p>
       </section>
       <section>
-        contact me @ <a href="mailto:gbelliere@gmail.com">gbelliere@gmail.com</a>
+        <span>contact me @ </span><a class="mail" href="mailto:gbelliere@gmail.com">gbelliere@gmail.com</a>
       </section>
       <nav>
         <a target=”_blank” href="https://github.com/calamina">
@@ -55,6 +55,7 @@ definePageMeta({
 h1 {
   font-size: 6rem;
   line-height: 6.5rem;
+  letter-spacing: -6px;
 }
 
 nav {
@@ -69,6 +70,11 @@ section {
   width: 100%;
 }
 
+// TODO :: utility class for text links needing underline all the time
+.mail {
+  text-decoration: underline;
+}
+
 @media (max-width: 1250px) {
   h1 {
     font-size: 4rem;
@@ -77,6 +83,7 @@ section {
 
   nav {
     flex-flow: column;
+    gap: 1rem;
   }
 }
 </style>

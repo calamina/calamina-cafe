@@ -99,7 +99,7 @@ a {
         display: block;
         width: var(--size);
         height: var(--size);
-        background-color: var(--black);
+        background-color: var(--bg-darkest);
     }
 }
 </style>

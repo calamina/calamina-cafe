@@ -45,7 +45,7 @@ const routeName = computed(() => type === 'web' ? 'projects-web-project' : 'proj
   max-width: 70rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1rem;
+  gap: 0.5rem;
   align-items: center;
 
   &-phone {
@@ -82,7 +82,7 @@ a {
     width: 100%;
     flex: 1;
     padding: 0.5rem;
-    background-color: var(--bg-light);
+    background-color: var(--bg-lighter);
 
     p:last-of-type {
       display: inline-block;
@@ -101,7 +101,7 @@ img {
   width: 100%;
   align-items: center;
   justify-content: center;
-  border: 4px solid var(--white);
+  border: 4px solid var(--bg-lighter);
   aspect-ratio: 1.77;
   transition: border-color 0.3s;
 }

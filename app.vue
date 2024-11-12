@@ -88,9 +88,8 @@ onClickOutside(theme, () => themeOpen.value = false)
   display: flex;
   flex-flow: column;
   padding: 1rem;
-  min-height: '100vh';
   justify-content: space-between;
-  min-height: calc(100vh - 2rem);
+  min-height: 100vh;
   display: flex;
   flex-flow: column;
 }
