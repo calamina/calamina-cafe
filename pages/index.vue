@@ -68,4 +68,15 @@ nav {
 section {
   width: 100%;
 }
+
+@media (max-width: 1250px) {
+  h1 {
+    font-size: 4rem;
+    line-height: 4.25;
+  }
+
+  nav {
+    flex-flow: column;
+  }
+}
 </style>

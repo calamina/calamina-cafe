@@ -4,6 +4,7 @@ export type Project = {
     id: number,
     name: string,
     link?: string,
+    mini: string,
     img: string,
     imgs?: string[],
     description?: string[],

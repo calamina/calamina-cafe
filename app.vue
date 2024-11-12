@@ -17,11 +17,13 @@ const formatRouteName = computed(() => {
 useHead({
   title: formatRouteName,
   meta: [
-    { name: 'lang', content: 'en-US' },
     { name: 'description', content: 'Grégoire Belliere\'s Portfolio' },
     { name: 'robots', content: 'index,follow' },
     { name: 'googlebot', content: 'index,follow' },
   ],
+  htmlAttrs: {
+    lang: 'en',
+  }
 })
 
 const colorMode = useColorMode()
@@ -47,7 +49,7 @@ onClickOutside(theme, () => themeOpen.value = false)
         </div>
       </nav>
       <div class="theme" ref="theme">
-        <button @click="themeOpen = !themeOpen" :class="{ 'activetheme': themeOpen }">
+        <button title="theme picker" @click="themeOpen = !themeOpen" :class="{ 'activetheme': themeOpen }">
           <Icon name="tabler:moon-2" />
         </button>
         <transition name="page">

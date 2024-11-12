@@ -2,6 +2,7 @@
     {
         "id": 1,
         "name": "cityscape",
+        "mini": "/img/phone/mini/cityscape.jpg",
         "img": "/img/phone/cityscape.jpg",
         "imgs": [],
         "description": [
@@ -24,6 +25,7 @@
     {
         "id": 2,
         "name": "warm",
+        "mini": "/img/phone/mini/warm.jpg",
         "img": "/img/phone/warm.jpg",
         "imgs": [],
         "description": [
@@ -46,6 +48,7 @@
     {
         "id": 3,
         "name": "crystal",
+        "mini": "/img/phone/mini/crystal.jpg",
         "img": "/img/phone/crystal.jpg",
         "imgs": [],
         "description": [
@@ -68,6 +71,7 @@
     {
         "id": 4,
         "name": "end",
+        "mini": "/img/phone/mini/end.png",
         "img": "/img/phone/end.png",
         "imgs": [],
         "description": [
@@ -90,6 +94,7 @@
     {
         "id": 5,
         "name": "nuit",
+        "mini": "/img/phone/mini/nuit.jpg",
         "img": "/img/phone/nuit.jpg",
         "imgs": [],
         "description": [
@@ -112,6 +117,7 @@
     {
         "id": 6,
         "name": "dots",
+        "mini": "/img/phone/mini/dots.jpg",
         "img": "/img/phone/dots.jpg",
         "imgs": [],
         "description": [

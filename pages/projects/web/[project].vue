@@ -69,7 +69,7 @@ function focusImage(e: MouseEvent) {
       <ProjectTech v-if="project.tech" :data="project.tech" />
     </div>
     <div class="gallery">
-      <button @click="(event: MouseEvent) => focusImage(event)">
+      <button title="cover picture" @click="(event: MouseEvent) => focusImage(event)">
         <NuxtImg class="cover lookin img" :src="project.img" alt="project picture" />
       </button>
       <!-- <div v-if="project.features?.length" class="features">
@@ -77,7 +77,7 @@ function focusImage(e: MouseEvent) {
         <p v-for="section in project.features">{{ section }}</p>
       </div> -->
       <div class="gallerita" v-if="project.imgs" :class="{ tata: project.imgs.length < 2 }">
-        <button v-for="image in project.imgs" @click="(event: MouseEvent) => focusImage(event)">
+        <button title="gallery picture" v-for="image in project.imgs" @click="(event: MouseEvent) => focusImage(event)">
           <div>
             <NuxtImg class="lookin img" :src="'/img/web/' + project.name + '/' + image" alt=":(" />
           </div>
