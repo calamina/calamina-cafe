@@ -1,0 +1,120 @@
+@use './themes.scss';
+@use './reset.scss';
+@use './transitions.scss';
+
+@font-face {
+    font-family: 'Apercu';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/apercuMonoMedium.ttf') format('woff2');
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: 'Apercu Light';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/apercuMono.ttf') format('woff2');
+    font-display: swap;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    font-weight: normal;
+    font-size: 17px;
+    font-family: 'Apercu', monospace;
+  }
+  
+  @media (max-width: 1250px) {
+    * {
+      font-size: 13px;
+    }
+  }
+
+body {
+    background-color: var(--bg);
+    // background: radial-gradient(circle, #eee, rgba(181, 179, 213, 0.1) 86%), url('~/assets/img/svg/noise.svg');
+    // background-attachment: fixed;
+}
+
+html {
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: var(--scroll-color) transparent;
+    scrollbar-gutter: stable;
+}
+
+a {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    text-decoration: none;
+    color: var(--color);
+
+    &:hover {
+        outline: none;
+        text-decoration: underline;
+    }
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+.center {
+    flex: 1;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+span,
+button,
+.icon {
+    color: var(--color);
+}
+
+.lookin {
+    cursor: url("~/assets/img/svg/EyeIn.svg") 16 16, pointer;
+}
+
+.lookout {
+    cursor: url("~/assets/img/svg/EyeOff.svg") 16 16, pointer;
+}
+
+button {
+    display: flex;
+    align-items: center;
+    // justify-content: center;
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+input[type="search"] {
+    border: none;
+    outline: none;
+    box-shadow: none;
+    // border-bottom: 1px solid #000;
+    // background-color: transparent;
+
+    background-color: var(--bg-darker);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.5rem;
+
+    &::placeholder {
+        color: var(--color);
+        opacity: 0.6;
+    }
+}
