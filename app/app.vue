@@ -46,7 +46,11 @@ useHead({
       <Contact />
       <Socials /> -->
     </footer>
-    <div class="transition"></div>
+    <!-- <div class="transition">
+      <p class="lel">
+        hehe
+      </p>
+    </div> -->
   </div>
 </template>
 
@@ -65,9 +69,17 @@ useHead({
   top: 0;
   z-index: 300;
   width: 100vw;
+  display: flex;
   height: 100vh;
   background-color: var(--bg-darker);
   transform: translateX(-100vw);
+  align-items: center;
+  justify-content: center;
+}
+
+.lel {
+  transform-origin: 50% 50%;
+  animation: rotate 0.6s ease infinite;
 }
 
 .page-enter-active,
@@ -79,6 +91,16 @@ useHead({
 .page-leave-to {
   opacity: 0;
   transform: translateY(4vh);
+}
+
+// ANIMATION
+@keyframes rotate {
+  from {
+    transform: rotate(0)
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 // MEDIA QUERIES

@@ -1,33 +1,46 @@
-import gsap from 'gsap';
+import gsap, { Power2 } from 'gsap';
 import type { TransitionProps } from 'vue';
 
 const { toggleTransitionComplete } = useTransitionComposable();
 
-const duration = 0.5;
+const duration = 0.4;
 
 const pageTransition: TransitionProps = {
     name: 'page-transiton',
     mode: 'out-in',
     onEnter: (el: Element, done: () => void) => {
         const lel = document.querySelector('.transition')
+        gsap.set(lel, {
+            translateX: 0
+        });
+        gsap.set(el, {
+            translateX: '5rem'
+        });
         gsap
             .timeline({
-                // paused: true,
                 onComplete() {
                     toggleTransitionComplete(true);
-                    done();
+                    done;
                 },
             })
             .to(lel, {
                 translateX: '-100vw',
-                duration
+                duration: duration / 2,
+                ease: Power2.easeInOut,
             })
-            // .pause(0.5)
-        // .play();
+            .to(el, {
+                translateX: 0,
+                duration: duration / 2,
+            }, '<')
     },
     onLeave: (el: Element, done: () => void) => {
         const lel = document.querySelector('.transition')
-
+        gsap.set(lel, {
+            translateX: '-100vw'
+        });
+        gsap.set(el, {
+            translateX: 0
+        });
         toggleTransitionComplete(false);
         gsap
             .timeline({
@@ -36,9 +49,18 @@ const pageTransition: TransitionProps = {
             })
             .to(lel, {
                 translateX: 0,
-                duration
+                duration: duration / 2,
+                ease: Power2.easeInOut,
             })
-            // .pause(0.5)
+            .to(el, {
+                translateX: '5rem',
+                duration: duration / 2,
+            }, '<')
+            .to(lel, {
+                translateX: 0,
+                duration: duration 
+            })
+        // .pause(0.5)
         // .play();
     },
 };

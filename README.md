@@ -3,11 +3,14 @@
 hey :)
 
 # DOING
+- REFACTOR [mobile] to md
+- make new page transitions !!!
 - Project img hover ... padding or not ..., border or not ...
+- Fix / remake project navigation
 - Replace img props with real images (like atlast)
 - Fix gallery bug when pressing enter on button (wrong event ...)
-- REFACTOR [mobile] to md
 - replace 'projects' with 'work' 
+- make responsive again
 
 # TODO 
 - fix mobile version

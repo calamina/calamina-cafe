@@ -1,15 +1,15 @@
 <script setup lang="ts">
 
-// definePageMeta({
-//   middleware: 'routing',
-//   pageTransition: {
-//     name: 'appear',
-//     mode: 'out-in',
-//   }
-// })
 definePageMeta({
-  pageTransition: transitionConfig,
-});
+  middleware: 'routing',
+  pageTransition: {
+    name: 'appear',
+    mode: 'out-in',
+  }
+})
+// definePageMeta({
+//   pageTransition: transitionConfig,
+// });
 
 const { project } = useRoute().params
 const path = `web/${project}`
