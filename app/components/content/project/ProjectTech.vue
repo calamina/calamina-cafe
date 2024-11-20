@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ProjectTech } from '~/app/models/ProjectTech';
+import type { ProjectTech } from '../../../models/ProjectTech';
 
 const { tech } = defineProps<{
     tech: ProjectTech,
@@ -8,7 +8,7 @@ const { tech } = defineProps<{
 
 <template>
     <div class="tech">
-        <div class="category tw-flex tw-items-baseline tw-py-2" v-for="category in Object.entries(tech ?? {})">
+        <div class="category tw-flex tw-items-baseline tw-py-1" v-for="category in Object.entries(tech ?? {})">
             <slot />
             <p class="category-title tw-capitalize">{{ category[0] }}</p>
             <div class="tw-flex tw-pt-1 tw-gap-2">

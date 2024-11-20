@@ -10,11 +10,11 @@ const { direction } = defineProps<{
       <Icon name="tabler:brand-github" />
       github
     </a>
-    <a target=”_blank” href="https://linkedin.com">
+    <a target=”_blank” href="https://www.linkedin.com/in/gregoire-belliere/">
       <Icon name="tabler:brand-linkedin" />
       linkedin
     </a>
-    <a target=”_blank” href="https://en.wikipedia.org/wiki/User:Eveneit">
+    <a target=”_blank” href="https://en.wikipedia.org/wiki/User:Calamina *">
       <Icon name="tabler:notebook" />
       wikipedia
     </a>

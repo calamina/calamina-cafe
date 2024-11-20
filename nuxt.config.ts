@@ -1,10 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  srcDir: 'app/',
-  // components: ['~/app/components'],
-  compatibilityDate: '2024-04-03',
-  // devtools: { enabled: true },
-  devtools: { enabled: false },
   modules: [
     '@vueuse/nuxt',
     '@pinia/nuxt',
@@ -16,7 +11,19 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@nuxtjs/tailwindcss'
   ],
+
+  srcDir: 'app/',
+
+  tailwindcss: {
+    viewer: false
+  },
+
+  compatibilityDate: '2024-04-03',
+
+  devtools: { enabled: false },
+
   css: ['~/assets/style/main.scss'],
+  
   app: {
     head: {
       link: [
@@ -24,10 +31,8 @@ export default defineNuxtConfig({
       ]
     }
   },
+  
   content: {
-    // experimental: {
-    //   search: true
-    // },
     markdown: {
       rehypePlugins: [
         'rehype-unwrap-images'
@@ -41,23 +46,21 @@ export default defineNuxtConfig({
       }
     }
   },
+  
   image: {
     format: ['webp']
   },
+  
   icon: {
     size: '1.25rem',
     class: 'icon',
   },
+  
   site: {
     url: 'https://calamina.cafe',
     name: 'Calamina Cafe'
   },
-  sitemap: {
-    urls: [
-      'https://calamina.cafe/projects/atlast',
-    ]
-  },
-
+  
   vite: {
     css: {
       preprocessorOptions: {

@@ -36,7 +36,7 @@ const bracketsSize = computed(() => { return { '--size': size ?? 20 + 'px' } })
 <style scoped lang="scss">
 a {
   position: relative;
-  padding: 0.5rem;
+//   padding: 0.5rem;
   width: 100%;
   height: 100%;
 
@@ -57,18 +57,20 @@ a {
   }
 }
 
+button, a {
+    border-radius: 0.5rem;
+    overflow: hidden;
+    // border: 1px solid transparent;
 
-::slotted(img) {
-  display: block;
-  border: 4px solid red;
-  padding: 7rem;
-  background-color: red;
+    // &:focus, &:hover {
+    //     border: 1px solid var(--bg-darkest);
+    // }
 }
 
 .bracketWrap {
     position: relative;
-    border: 1px solid transparent;
-    padding: 0.5rem;
+    // border: 1px solid transparent;
+    // padding: 0.5rem;
 
     &:hover .overlay,
     &:focus .overlay {
@@ -90,10 +92,10 @@ a {
 .overlay {
     z-index: -1;
     position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
+    top: -0.5rem;
+    left: -0.5rem;
+    bottom: -0.5rem;
+    right: -0.5rem;
     opacity: 0;
     transform: scale(1.05);
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);

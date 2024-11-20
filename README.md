@@ -3,13 +3,13 @@
 hey :)
 
 # DOING
+- Project img hover ... padding or not ..., border or not ...
 - Replace img props with real images (like atlast)
 - Fix gallery bug when pressing enter on button (wrong event ...)
 - REFACTOR [mobile] to md
 - replace 'projects' with 'work' 
 
 # TODO 
-- fix imageviewer click on div = fucked up
 - fix mobile version
 
 - WRITE ABOUT

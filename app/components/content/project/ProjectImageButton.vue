@@ -8,6 +8,6 @@
 .borderButton {
   display: flex;
   justify-content: center;
-  background-color: #cecece66;
+  background-color: var(--bg-darker0);
 }
 </style>

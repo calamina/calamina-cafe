@@ -8,31 +8,31 @@
     font-weight: 400;
     src: url('../fonts/apercuMonoMedium.ttf') format('woff2');
     font-display: swap;
-  }
-  
-  @font-face {
+}
+
+@font-face {
     font-family: 'Apercu Light';
     font-style: normal;
     font-weight: 400;
     src: url('../fonts/apercuMono.ttf') format('woff2');
     font-display: swap;
-  }
-  
-  *,
-  *::before,
-  *::after {
+}
+
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     font-weight: normal;
     font-size: 17px;
     font-family: 'Apercu', monospace;
-  }
-  
-  @media (max-width: 1250px) {
+}
+
+@media (max-width: 1250px) {
     * {
-      font-size: 13px;
+        font-size: 13px;
     }
-  }
+}
 
 body {
     background-color: var(--bg);
@@ -116,5 +116,18 @@ input[type="search"] {
     &::placeholder {
         color: var(--color);
         opacity: 0.6;
+    }
+}
+
+p,
+a,
+span,
+h1,
+h2,
+h3,
+h4 {
+    &::selection {
+        // color: red;
+        background-color: var(--color-light);
     }
 }

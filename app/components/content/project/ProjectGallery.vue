@@ -22,17 +22,24 @@ function focusImage(e: MouseEvent) {
       <ImageViewer v-if="imgView" :selected="imgView" :images="gallery" @unfocus="imgView = null" />
     </transition>
   </Teleport>
-  <div class="gallery tw-grid tw-gap-4 tw-grid-cols-2 tw-max-w-6xl tw-w-full" v-if="$slots.default">
-    <slot />
+  <!-- <div class="gallery tw-grid tw-gap-4 tw-grid-cols-2 tw-max-w-6xl tw-w-2/3 tw-ml-auto" v-if="$slots.default"> -->
+  <div class="tw-flex tw-flex-col tw-w-2/3 tw-ml-auto tw-gap-2  tw-pb-6">
+    <div class="gallery tw-grid tw-gap-2 tw-grid-cols-2" v-if="$slots.default">
+    <!-- <div class="gallery tw-grid tw-gap-2 tw-grid-cols-1" v-if="$slots.default"> -->
+      <slot />
+      </div>
+    <ProjectNavigation />
   </div>
 </template>
 
 <style lang="scss" scoped>
 .gallery {
+  overflow: hidden;
+
   &>:first-child {
     grid-column: span 2;
-  } 
+  }
+
   // TODO : 1 col for small devices ?
 }
-
 </style>
