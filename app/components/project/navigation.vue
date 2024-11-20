@@ -1,11 +1,20 @@
 <script setup lang="ts">
-import type { Project } from '~/app/models/project';
-
-const { previous, next, small } = defineProps<{
-    previous: Project | null
-    next: Project | null
+const { small } = defineProps<{
     small?: boolean
 }>()
+
+let previous: any = null
+let next: any = null
+
+const { project } = useRoute().params
+const path = `/web/${project}`
+
+await queryContent('web').findSurround(path).then(
+  res => {
+    previous = res[0]
+    next = res[1]
+  }
+)
 </script>
 
 <template>
@@ -14,12 +23,12 @@ const { previous, next, small } = defineProps<{
             <div class="link-wrapper">
                 <Icon name="tabler:arrow-left-bar"  />
                 <h2> {{ previous.name }}</h2>
-                <img class="mini" :class="{ minismall: small }" :src="previous.img" alt="project picture">
+                <img class="mini" :class="{ minismall: small }" :src="previous.mini" alt="project picture">
             </div>
         </SelectBrackets>
         <SelectBrackets class="next" v-if="next" :to="{ params: { project: next.name } }">
             <div class="link-wrapper">
-                <img class="mini" :class="{ minismall: small }" :src="next.img" alt="project picture">
+                <img class="mini" :class="{ minismall: small }" :src="next.mini" alt="project picture">
                 <h2>{{ next.name }}</h2>
                 <Icon name="tabler:arrow-right-bar"  />
             </div>
@@ -50,6 +59,8 @@ const { previous, next, small } = defineProps<{
 
 .prev,
 .next {
+    cursor: pointer;
+    width: fit-content;
     &:hover .mini {
         filter: none;
     }

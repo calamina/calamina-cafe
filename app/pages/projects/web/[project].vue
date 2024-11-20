@@ -20,7 +20,7 @@ onMounted(() => document.scrollingElement!.scrollTop = 0)
       <template #not-found>
       </template>
     </ContentDoc>
-    <ProjectNavigationAlt :path />
+    <ProjectNavigation :path />
   </div>
 </template>
 
