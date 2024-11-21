@@ -1,9 +1,8 @@
 <script setup lang="ts">
 
-const { projects, type, vertical } = defineProps<{
+const { projects, type } = defineProps<{
   projects: any[]
   type: string
-  vertical?: boolean
 }>()
 
 const { setProjectName } = useProjectStore();
@@ -18,7 +17,7 @@ const routeName = computed(() => type === 'web' ? 'projects-web-project' : 'proj
       <h2>{{ type }}</h2>
       <span>[ {{ projects.length }} projects ]</span>
     </div>
-    <div class="img-grid" :class="{ 'img-grid-phone': vertical }">
+    <div class="img-grid" :class="{ 'img-grid-phone': type === 'phone' }">
       <SelectBrackets v-for="project in projects" class="lookin"
         :to="{ name: routeName, params : { project: project.name} }" @click="setProjectName(project.name)">
         <NuxtImg class="img" :src="project.mini" preload alt=":(" />

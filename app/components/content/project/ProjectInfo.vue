@@ -1,30 +1,24 @@
 <script setup lang="ts">
 import type { ProjectTech } from '../../../models/ProjectTech';
-// import type { ProjectTech } from '~/app/models/ProjectTech';
 
-const { name, url, tech } = defineProps<{
+const { name, url = null, tech } = defineProps<{
   name: string
-  url: string
   tech: ProjectTech
+  url?: string
 }>()
 </script>
 
 <template>
-  <div class="tw-flex tw-flex-col tw-gap-1 tw-w-1/3 tw-fixed tw-px-4 tw-pt-16 tw-pb-4 tw-top-0 tw-h-full tw-left-0">
+  <div class="tw-flex tw-flex-col tw-gap-1 xl:tw-w-1/3 xl:tw-fixed tw-px-4 xl:tw-px-8  xl:tw-pt-16 tw-pb-4 xl:tw-top-0 xl:tw-h-full xl:tw-left-0">
     <div class="tw-flex tw-pt-8 tw-pb-8">
-      <p class="lel">🟂</p>
       <p class="lel">✦</p>
-      <p class="lel">🟒</p>
-      <!-- <p class="lel">🟆</p> -->
+      <p class="lel">✦</p>
+      <p class="lel">✦</p>
     </div>
-    <!-- <p class="lel">🟆</p> -->
-    <!-- <p class="lel">🟎</p> -->
-    <!-- <p class="lel">1 / 18</p> -->
     <ProjectName :name />
-    <ProjectLink :url />
+    <ProjectLink v-if="url":url="url" />
     <slot />
     <ProjectTech :tech />
-    <!-- <ProjectNavigation :small=true /> -->
   </div>
 </template>
 
@@ -34,9 +28,6 @@ const { name, url, tech } = defineProps<{
   background-color: var(--bg-darker);
   padding: 1rem;
   width: fit-content;
-  // margin-top: 3rem;
-  // margin-bottom: 2rem;
-  // border-radius: 0.5rem;
   border-radius: 100%;
   font-size: 2rem;
   line-height: 6rem;

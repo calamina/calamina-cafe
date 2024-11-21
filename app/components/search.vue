@@ -25,7 +25,7 @@ watch(results, () => results.value?.length ? activate() : deactivate())
 </script>
 
 <template>
-  <div class="search" ref="searchbox">
+  <div class="search tw-hidden xl:tw-flex" ref="searchbox">
     <input type="search" v-model="search" id="search" placeholder="ctrl + k">
     <Icon name="tabler:search" />
     <transition name="appear">
@@ -53,7 +53,7 @@ input[type="search"] {
 }
 
 .search {
-  display: flex;
+  // display: flex;
   align-items: center;
   gap: 0.5rem;
   position: relative;

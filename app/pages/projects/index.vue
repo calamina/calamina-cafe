@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { QueryBuilderParams } from '@nuxt/content';
-
 // definePageMeta({
 //   pageTransition: transitionConfig,
 // });
@@ -12,21 +11,22 @@ definePageMeta({
   }
 })
 
-const query: QueryBuilderParams = { 
-  path: '/web', 
-  // sort: [{ id: 1 }] 
+const weblist: QueryBuilderParams = { 
+  path: `/${WEB}`, 
+  }
+  const phonelist: QueryBuilderParams = { 
+  path: `/${PHONE}`, 
 }
 
-// const webProjects = useWebProjects().data
-// const phoneProjects = usePhoneProjects().data
 </script>
 
 <template>
   <div class="content">
-    <!-- <ProjectsGrid v-if="webProjects" :projects="webProjects" type="web"></ProjectsGrid> -->
-    <!-- <ProjectsGrid v-if="phoneProjects" :projects="phoneProjects" type="phone" :vertical="true"></ProjectsGrid> -->
-    <ContentList :query v-slot="{ list }">
-      <ProjectsGrid :projects="list" type="web" />
+    <ContentList :query="weblist" v-slot="{ list }">
+      <ProjectsGrid :projects="list" :type="WEB" />
+    </ContentList>
+    <ContentList :query="phonelist" v-slot="{ list }">
+      <ProjectsGrid :projects="list" :type="PHONE" />
     </ContentList>
   </div>
 </template>

@@ -1,15 +1,14 @@
 <script setup lang="ts">
-const { small } = defineProps<{
-    small?: boolean
-}>()
-
 let previous: any = null
 let next: any = null
 
-const { project } = useRoute().params
-const path = `/web/${project}`
+const {fullPath} = useRoute()
+const type = fullPath.includes(WEB) ? WEB : PHONE
 
-await queryContent('web').findSurround(path).then(
+const { project } = useRoute().params
+const path = `/${type}/${project}`
+
+await queryContent(type).findSurround(path).then(
     res => {
         previous = res[0]
         next = res[1]
@@ -23,12 +22,12 @@ await queryContent('web').findSurround(path).then(
             <div class="link-wrapper">
                 <Icon name="tabler:arrow-left-bar" />
                 <h2> {{ previous.name }}</h2>
-                <img class="mini" :class="{ small: 'minismall' }" :src="previous.mini" alt="project picture">
+                <img class="mini tw-w-1/2 xl:tw-w-72" :class="{ 'minismall': type === PHONE }" :src="previous.mini" alt="project picture">
             </div>
         </SelectBrackets>
         <SelectBrackets class="next" v-if="next" :to="{ params: { project: next.name } }">
             <div class="link-wrapper">
-                <img class="mini" :class="{ small: 'minismall' }" :src="next.mini" alt="project picture">
+                <img class="mini tw-w-1/2 xl:tw-w-72" :class="{ 'minismall': type === PHONE }" :src="next.mini" alt="project picture">
                 <h2>{{ next.name }}</h2>
                 <Icon name="tabler:arrow-right-bar" />
             </div>
@@ -94,9 +93,6 @@ await queryContent('web').findSurround(path).then(
 }
 
 .mini {
-    width: 150px;
-    width: 300px;
-    // width: 50px;
     height: 100%;
     filter: grayscale(1);
     transition: filter 0.3s;

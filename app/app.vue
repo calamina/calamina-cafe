@@ -105,9 +105,9 @@ useHead({
 
 // MEDIA QUERIES
 @media (max-width: 1250px) {
-  main {
-    padding: 0;
-  }
+  // main {
+  //   padding: 0;
+  // }
 
   nav {
     gap: 1.5rem;

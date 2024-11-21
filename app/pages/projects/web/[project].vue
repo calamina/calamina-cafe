@@ -12,26 +12,19 @@ definePageMeta({
 // });
 
 const { project } = useRoute().params
-const path = `web/${project}`
+const path = `${WEB}/${project}`
 
 onMounted(() => document.scrollingElement!.scrollTop = 0)
 </script>
 
 <template>
   <div class="tw-w-full tw-relative">
-    <ContentDoc :path class="mdcontent">
+    <ContentDoc :path class="tw-flex tw-flex-col xl:tw-flex-row">
       <template #not-found>
+        <p>AEUGHHHHHHHHH what are you doing heerrreeee !</p>
       </template>
       </ContentDoc>
   </div>
 </template>
 
-<style lang="scss">
-.mdcontent {
-  display: flex;
-  // flex-flow: column;
-  // align-items: center;
-  // gap: 3rem;
-  // padding: 3rem 0 0 0;
-}
-</style>
+<style lang="scss" scoped></style>

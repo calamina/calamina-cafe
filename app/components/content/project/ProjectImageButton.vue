@@ -9,5 +9,6 @@
   display: flex;
   justify-content: center;
   background-color: var(--bg-darker0);
+  max-height: 85vh;
 }
 </style>
