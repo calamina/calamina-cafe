@@ -14,14 +14,21 @@ export default defineNuxtConfig({
 
   ssr: true,
 
-  nitro: {
-    prerender: {       
-      crawlLinks: true,       
-      routes: ["/", "/about", "/projects", "/sitemap.xml"],     
-      // routes: ["/", "/about", "/projects", "/sitemap.xml", "/robots.txt"],     
-    },
-    srcDir: '/app',
-    static: true,
+  // nitro: {
+  //   prerender: {       
+  //     crawlLinks: true,       
+  //     routes: ["/", "/about", "/projects", "/sitemap.xml"],     
+  //     // routes: ["/", "/about", "/projects", "/sitemap.xml", "/robots.txt"],     
+  //   },
+  //   srcDir: '/app',
+  //   // static: true,
+  // },
+
+  routeRules: {
+    '/': { prerender: true },
+    '/about': { prerender: true },
+    '/projects/**': { isr: true },
+    '/sitemap.xml': { prerender: true },
   },
 
   srcDir: 'app/',
