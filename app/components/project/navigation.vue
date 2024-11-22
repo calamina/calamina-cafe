@@ -2,18 +2,18 @@
 let previous: any = null
 let next: any = null
 
-const {fullPath} = useRoute()
+const { fullPath } = useRoute()
 const type = fullPath.includes(WEB) ? WEB : PHONE
 
 const { project } = useRoute().params
 const path = `/${type}/${project}`
 
-await queryContent(type).findSurround(path).then(
-    res => {
+await useAsyncData('prevnext', () => queryContent(type)
+    .findSurround(path)
+    .then(res => {
         previous = res[0]
         next = res[1]
-    }
-)
+    }))
 </script>
 
 <template>
@@ -23,12 +23,14 @@ await queryContent(type).findSurround(path).then(
                 <Icon name="tabler:arrow-left-bar" />
                 <h2> {{ previous.name }}</h2>
                 <!-- <img class="mini tw-w-1/2 xl:tw-w-72" :class="{ 'minismall': type === PHONE }" :src="previous.mini" loading="lazy" alt="project picture"> -->
-                <NuxtImg class="mini tw-w-1/2 xl:tw-w-72" :class="{ 'minismall': type === PHONE }" :src="previous.mini" loading="lazy" alt="project picture" />
+                <NuxtImg class="mini tw-w-1/2 xl:tw-w-72" :class="{ 'minismall': type === PHONE }" :src="previous.mini"
+                    loading="lazy" alt="project picture" />
             </div>
         </SelectBrackets>
         <SelectBrackets class="next" v-if="next" :to="{ params: { project: next.name } }">
             <div class="link-wrapper">
-                <NuxtImg class="mini tw-w-1/2 xl:tw-w-72" :class="{ 'minismall': type === PHONE }" :src="next.mini" loading="lazy" alt="project picture" />
+                <NuxtImg class="mini tw-w-1/2 xl:tw-w-72" :class="{ 'minismall': type === PHONE }" :src="next.mini"
+                    loading="lazy" alt="project picture" />
                 <!-- <img class="mini tw-w-1/2 xl:tw-w-72" :class="{ 'minismall': type === PHONE }" :src="next.mini" loading="lazy" alt="project picture"> -->
                 <h2>{{ next.name }}</h2>
                 <Icon name="tabler:arrow-right-bar" />
