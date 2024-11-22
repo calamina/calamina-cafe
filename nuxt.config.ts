@@ -61,6 +61,7 @@ export default defineNuxtConfig({
 
   image: {
     format: ['webp'],
+    provider: 'vercel'
   },
 
   icon: {
