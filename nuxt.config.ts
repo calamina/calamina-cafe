@@ -12,6 +12,18 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss'
   ],
 
+  ssr: true,
+
+  nitro: {
+    prerender: {       
+      crawlLinks: true,       
+      routes: ["/", "/about", "/projects", "/sitemap.xml"],     
+      // routes: ["/", "/about", "/projects", "/sitemap.xml", "/robots.txt"],     
+    },
+    srcDir: '/app',
+    static: true,
+  },
+
   srcDir: 'app/',
 
   tailwindcss: {
@@ -23,7 +35,7 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
 
   css: ['~/assets/style/main.scss'],
-  
+
   app: {
     head: {
       link: [
@@ -31,7 +43,7 @@ export default defineNuxtConfig({
       ]
     }
   },
-  
+
   content: {
     markdown: {
       rehypePlugins: [
@@ -46,21 +58,21 @@ export default defineNuxtConfig({
       }
     }
   },
-  
+
   image: {
-    format: ['webp']
+    format: ['webp'],
   },
-  
+
   icon: {
     size: '1.25rem',
     class: 'icon',
   },
-  
+
   site: {
     url: 'https://calamina.cafe',
     name: 'Calamina Cafe'
   },
-  
+
   vite: {
     css: {
       preprocessorOptions: {

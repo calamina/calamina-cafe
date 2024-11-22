@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 definePageMeta({
   middleware: 'routing',
   pageTransition: {
@@ -12,18 +11,21 @@ definePageMeta({
 // });
 
 const { project } = useRoute().params
-const path = `${WEB}/${project}`
+const path = `/${WEB}/${project}`
+const { data } = await useAsyncData(path, () => queryContent(path).findOne())
+
+if (!data.value) {
+  throw createError({
+    statusCode: 404, message: 'Page not found'
+  })
+}
 
 onMounted(() => document.scrollingElement!.scrollTop = 0)
 </script>
 
 <template>
   <div class="tw-w-full tw-relative">
-    <ContentDoc :path class="tw-flex tw-flex-col xl:tw-flex-row">
-      <template #not-found>
-        <p>AEUGHHHHHHHHH what are you doing heerrreeee !</p>
-      </template>
-      </ContentDoc>
+    <ContentRenderer v-if="data" :value="data" />
   </div>
 </template>
 
