@@ -1,13 +1,11 @@
 <script setup lang="ts">
-// definePageMeta({
-//   pageTransition: transitionConfig,
-// });
 definePageMeta({
   middleware: 'routing',
-  pageTransition: {
-    name: 'appear',
-    mode: 'out-in',
-  }
+  pageTransition: transitionConfig,
+  // pageTransition: {
+  //   name: 'appear',
+  //   mode: 'out-in',
+  // }
 })
 </script>
 
@@ -19,9 +17,10 @@ definePageMeta({
       <p>
         Currently employed full time at
         <NuxtLink to="https://fr.linkedin.com/company/akuiteo" target="_blank">Akuiteo</NuxtLink>.
-        </p>
+      </p>
       <hr>
-      <p>CV : web + <NuxtLink to="https://google.com">pdf</NuxtLink></p>
+      <p>CV : web + <NuxtLink to="https://google.com">pdf</NuxtLink>
+      </p>
       <hr>
       <p>contact :)</p>
       <hr>

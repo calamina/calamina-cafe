@@ -1,14 +1,12 @@
 <script setup lang="ts">
 definePageMeta({
   middleware: 'routing',
-  pageTransition: {
-    name: 'appear',
-    mode: 'out-in',
-  }
+  pageTransition: transitionConfig,
+  // pageTransition: {
+  //   name: 'appear',
+  //   mode: 'out-in',
+  // }
 })
-// definePageMeta({
-//   pageTransition: transitionConfig,
-// });
 
 const { project } = useRoute().params
 const path = `/${WEB}/${project}`
@@ -24,7 +22,7 @@ onMounted(() => document.scrollingElement!.scrollTop = 0)
 </script>
 
 <template>
-  <div class="tw-w-full tw-relative">
+  <div class="tw-w-full">
     <ContentRenderer v-if="data" :value="data" />
   </div>
 </template>

@@ -3,6 +3,7 @@ import type { RouteLocationNormalizedLoadedGeneric } from 'vue-router';
 
 const route: Ref<RouteLocationNormalizedLoadedGeneric> = useRouter().currentRoute
 const project = computed(() => route.value.params?.project as string)
+const { loading } = storeToRefs(useLoadingStore())
 
 const formatRouteName = computed(() => {
   let title = ''
@@ -30,12 +31,17 @@ useHead({
   <div class="app tw-flex tw-flex-col tw-justify-between tw-min-h-screen">
     <AppHeader :project />
 
-    <main class="tw-flex tw-flex-grow tw-p-4 tw-pt-16 tw-h-full tw-justify-center tw-overflow-hidden">
+    <main class="tw-flex tw-flex-grow tw-m-4 tw-mt-16 tw-h-full tw-justify-center tw-overflow-hidden">
+      <Transition name="appear">
+        <div class="transition" v-if="loading">
+          <p class="star tw-text-3xl">✦</p>
+        </div>
+      </Transition>
       <NuxtPage />
     </main>
 
     <!-- <footer class="tw-flex tw-flex-col tw-p-10 tw-gap-6 tw-h-96 tw-justify-end"> -->
-    <footer v-if="!project"class="tw-flex tw-flex-col tw-p-4 tw-gap-6 tw-items-end">
+    <footer v-if="!project" class="tw-flex tw-flex-col tw-p-4 tw-gap-6 tw-items-end">
       <div class="tw-flex tw-gap-2">
         <span>©</span>
         <a target=”_blank” href="https://github.com/calamina">calamina</a>
@@ -46,11 +52,6 @@ useHead({
       <Contact />
       <Socials /> -->
     </footer>
-    <!-- <div class="transition">
-      <p class="lel">
-        hehe
-      </p>
-    </div> -->
   </div>
 </template>
 
@@ -67,19 +68,26 @@ useHead({
 .transition {
   position: fixed;
   top: 0;
-  z-index: 300;
+  z-index: 100;
   width: 100vw;
   display: flex;
   height: 100vh;
-  background-color: var(--bg-darker);
-  transform: translateX(-100vw);
+  padding-bottom: 4rem;
+  background-color: #dedede55;
+  backdrop-filter: blur(10px);
   align-items: center;
   justify-content: center;
 }
 
-.lel {
+.star {
+  display: flex;
+  justify-content: center;
   transform-origin: 50% 50%;
-  animation: rotate 0.6s ease infinite;
+  width: fit-content;
+  height: 20px;
+  width: 20px;
+  line-height: 26px;
+  animation: rotate 0.6s infinite;
 }
 
 .page-enter-active,
@@ -95,10 +103,10 @@ useHead({
 
 // ANIMATION
 @keyframes rotate {
-  from {
+  0% {
     transform: rotate(0)
   }
-  to {
+  100% {
     transform: rotate(360deg);
   }
 }

@@ -1,15 +1,16 @@
 <script setup lang="ts">
-// definePageMeta({
-//   pageTransition: transitionConfig,
-// });
-
 definePageMeta({
   middleware: 'routing',
-  pageTransition: {
-    name: 'appear',
-    mode: 'out-in',
-  }
-})
+  pageTransition: transitionConfig,
+});
+
+// definePageMeta({
+//   middleware: 'routing',
+//   pageTransition: {
+//     name: 'appear',
+//     mode: 'out-in',
+//   }
+// })
 </script>
 
 <template>

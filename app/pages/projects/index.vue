@@ -1,15 +1,16 @@
 <script setup lang="ts">
 import type { QueryBuilderParams } from '@nuxt/content';
-// definePageMeta({
-//   pageTransition: transitionConfig,
-// });
 definePageMeta({
   middleware: 'routing',
-  pageTransition: {
-    name: 'appear',
-    mode: 'out-in',
-  }
-})
+  pageTransition: transitionConfig,
+});
+// definePageMeta({
+//   middleware: 'routing',
+//   pageTransition: {
+//     name: 'appear',
+//     mode: 'out-in',
+//   }
+// })
 
 const weblist: QueryBuilderParams = { 
   path: `/${WEB}`, 
