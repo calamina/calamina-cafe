@@ -5,8 +5,6 @@ const { projects, type } = defineProps<{
   type: string
 }>()
 
-const { setProjectName } = useProjectStore();
-
 const routeName = computed(() => type === 'web' ? 'projects-web-project' : 'projects-phone-project')
 </script>
 
@@ -19,7 +17,7 @@ const routeName = computed(() => type === 'web' ? 'projects-web-project' : 'proj
     </div>
     <div class="img-grid" :class="{ 'img-grid-phone': type === 'phone' }">
       <SelectBrackets v-for="project in projects" class="lookin"
-        :to="{ name: routeName, params : { project: project.name} }" @click="setProjectName(project.name)">
+        :to="{ name: routeName, params : { project: project.name} }">
         <NuxtImg class="img" :src="project.mini" preload alt=":(" />
         <div class="info">
           <p>{{ project.name }}</p>

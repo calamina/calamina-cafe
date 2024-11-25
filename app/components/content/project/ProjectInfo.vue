@@ -53,28 +53,23 @@ const { name, url = null, tech } = defineProps<{
   // align-items: center;
   justify-content: center;
   transform-origin: 50% 50%;
-  width: fit-content; 
-  // SMOL
-  height: 20px;
-  width: 20px;
-  line-height: 22px;
-  // BIG
+  width: fit-content;
   height: 20px;
   width: 20px;
   line-height: 26px;
 }
 
 .stars :nth-child(1) {
-  animation: rotate 6s  cubic-bezier(.68,-0.01,.37,1) infinite;
+  animation: rotate 6s cubic-bezier(.68, -0.01, .37, 1) infinite;
 }
 
 .stars :nth-child(2) {
-  animation: rotate 6s 0.1s cubic-bezier(.68,-0.01,.37,1) infinite;
+  animation: rotate 6s 0.1s cubic-bezier(.68, -0.01, .37, 1) infinite;
 
 }
 
 .stars :nth-child(3) {
-  animation: rotate 6s 0.2s cubic-bezier(.68,-0.01,.37,1) infinite;
+  animation: rotate 6s 0.2s cubic-bezier(.68, -0.01, .37, 1) infinite;
 
 }
 
@@ -90,6 +85,15 @@ const { name, url = null, tech } = defineProps<{
 
   100% {
     transform: rotate(360deg);
+  }
+}
+
+// MEDIA QUERIES
+@media (max-width: 1250px) {
+  .star {
+    height: 20px;
+    width: 20px;
+    line-height: 22px;
   }
 }
 </style>

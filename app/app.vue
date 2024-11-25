@@ -3,7 +3,6 @@ import type { RouteLocationNormalizedLoadedGeneric } from 'vue-router';
 
 const route: Ref<RouteLocationNormalizedLoadedGeneric> = useRouter().currentRoute
 const project = computed(() => route.value.params?.project as string)
-const { loading } = storeToRefs(useLoadingStore())
 
 const formatRouteName = computed(() => {
   let title = ''
@@ -32,11 +31,7 @@ useHead({
     <AppHeader :project />
 
     <main class="tw-flex tw-flex-grow tw-m-4 tw-mt-16 tw-h-full tw-justify-center tw-overflow-hidden">
-      <Transition name="appear">
-        <div class="transition" v-if="loading">
-          <p class="star tw-text-3xl">✦</p>
-        </div>
-      </Transition>
+      <AppTransition />
       <NuxtPage />
     </main>
 
@@ -65,31 +60,6 @@ useHead({
 //   background-color: var(--bg-darker0)
 // }
 
-.transition {
-  position: fixed;
-  top: 0;
-  z-index: 100;
-  width: 100vw;
-  display: flex;
-  height: 100vh;
-  padding-bottom: 4rem;
-  background-color: #dedede55;
-  backdrop-filter: blur(10px);
-  align-items: center;
-  justify-content: center;
-}
-
-.star {
-  display: flex;
-  justify-content: center;
-  transform-origin: 50% 50%;
-  width: fit-content;
-  height: 20px;
-  width: 20px;
-  line-height: 26px;
-  animation: rotate 0.6s infinite;
-}
-
 .page-enter-active,
 .page-leave-active {
   transition: opacity 0.4s, transform 0.4s;
@@ -99,16 +69,6 @@ useHead({
 .page-leave-to {
   opacity: 0;
   transform: translateY(4vh);
-}
-
-// ANIMATION
-@keyframes rotate {
-  0% {
-    transform: rotate(0)
-  }
-  100% {
-    transform: rotate(360deg);
-  }
 }
 
 // MEDIA QUERIES
