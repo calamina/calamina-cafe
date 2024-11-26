@@ -27,7 +27,10 @@ export default defineNuxtConfig({
   routeRules: {
     '/': { prerender: true },
     '/about': { prerender: true },
-    '/projects/**': { isr: true },
+    '/projects': { isr: true },
+    // '/projects/**': { isr: true },
+    '/projects/web/**': { isr: true },
+    '/projects/phone/**': { isr: true },
     '/sitemap.xml': { prerender: true },
   },
 
