@@ -55,11 +55,10 @@ const leave = (el: Element, done: () => void) => {
     onComplete: done
   })
 }
-
 </script>
 
 <template>
-  <Transition @enter="enter" @leave="leave">
+  <Transition @enter="enter" @leave="leave" appear>
     <div class="transition" v-if="visible">
       <div class="pane tw-flex tw-items-end tw-justify-center">
         <p class="load">l</p>
