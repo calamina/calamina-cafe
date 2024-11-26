@@ -4,6 +4,8 @@ hey :)
 
 # DOING
 - remake select for project gallery and remove radius
+- replace alt (atlast-search...) on all images
+- add ASCI threejs scene(s) :)
 - Project img hover ... padding or not ..., border or not ...
 - Fix / remake project navigation / image buttons
 - add page appear transitions
