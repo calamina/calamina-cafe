@@ -1,25 +1,27 @@
-// import gsap from 'gsap';
 import type { TransitionProps } from 'vue';
 import { useRouteStore } from '../stores/route.js';
+// import gsap from 'gsap';
 
 const pageTransition: TransitionProps = {
     name: 'page-transiton',
     mode: 'out-in',
-    onEnter: (el: Element, done: () => void) => {
-        done()
-    },
+    // onBeforeLeave() {
+    //     useRouteStore().setLoading(true)
+    // },
     onLeave: (el: Element, done: () => void) => {
+        // gsap.to(el, {
+        //     opacity: 0,
+        //     translateY: '1rem',
+        //     duration: 0.8,
+        //     onComplete: done
+        // })
         setTimeout(() => {
             done()
-        }, 600);
+        }, 800);
     },
-
-    onBeforeLeave() {
-        useRouteStore().setLoading(true)
-    },
-    onAfterEnter() {
+    onEnter() {
         useRouteStore().setLoading(false)
-        console.debug(useRouteStore().loading)
+        console.debug('heheh not loading')
     },
 };
 
