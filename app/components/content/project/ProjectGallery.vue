@@ -34,7 +34,8 @@ function focusImage(e: MouseEvent) {
 
 <style lang="scss" scoped>
 .gallery {
-  overflow: hidden;
+  // overflow: hidden;
+  // padding: 1rem;
 
   &>:first-child {
     grid-column: span 2;

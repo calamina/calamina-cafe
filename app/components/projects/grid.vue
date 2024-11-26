@@ -43,8 +43,9 @@ const routeName = computed(() => type === 'web' ? 'projects-web-project' : 'proj
   max-width: 70rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 0.5rem;
+  gap: 1rem;
   align-items: center;
+  padding-bottom: 2rem;
 
   &-phone {
     grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));

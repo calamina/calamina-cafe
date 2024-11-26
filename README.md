@@ -3,7 +3,8 @@
 hey :)
 
 # DOING
-- remake select for project gallery, add online indicator ?
+- remove pictures from selectBrackets, make own component
+- rename SELECTBRACKETS
 
 # TODO 
 - fix navigation buttons : boring RN

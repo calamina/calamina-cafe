@@ -20,7 +20,10 @@ const bracketsSize = computed(() => { return { '--size': size ?? 20 + 'px' } })
             <div class="mask"></div>
         </div>
     </NuxtLink>
-    <button v-else class="bracketWrap">
+    <button v-else>
+        <slot class="content"></slot>
+    </button>
+    <!-- <button v-else class="bracketWrap">
         <slot class="content"></slot>
         <div class="overlay" aria-hidden="true">
             <div class="select" :style="bracketsSize">
@@ -31,7 +34,7 @@ const bracketsSize = computed(() => { return { '--size': size ?? 20 + 'px' } })
             </div>
             <div class="mask"></div>
         </div>
-    </button>
+    </button> -->
 </template>
 <style scoped lang="scss">
 a {
@@ -57,14 +60,21 @@ a {
   }
 }
 
-button, a {
+// button, a {
+button {
+    // padding: 0.5rem;
     border-radius: 0.5rem;
     overflow: hidden;
-    // border: 1px solid transparent;
+    // border: 6px solid transparent;
 
+    &:focus {
+        outline: 1px solid var(--Grey-800)
+    }
     // &:focus, &:hover {
     //     border: 1px solid var(--bg-darkest);
     // }
+
+
 }
 
 .bracketWrap {
@@ -109,6 +119,7 @@ button, a {
     right: 1px;
     bottom: 1px;
     background-color: var(--bg);
+    border-radius: 0.25rem;
 }
 
 .select {
@@ -122,6 +133,8 @@ button, a {
     grid-template-rows: var(--size) var(--size);
     gap: calc(100% - (var(--size) * 2));
     background-color: var(--bg-darker);
+    border-radius: calc(0.25rem + 1px);
+    overflow: hidden;
 
     span {
         display: block;
