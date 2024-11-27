@@ -22,9 +22,11 @@ await queryContent(type)
             <SelectBrackets class="button" :to="{ params: { project: previous.name } }">
                 <Icon name="tabler:arrow-left-bar" />
                 <h2>{{ previous.name }}</h2>
+                <img class="mini" :class="{ 'minismall': type === PHONE }" :src="previous.mini" rel="preload"
+                    alt="project picture">
             </SelectBrackets>
         </div>
-        <div v-else class="prev">
+        <div v-else class="empty">
             <SelectBrackets class="button" :to="{ name: 'projects' }">
                 <Icon name="tabler:arrow-left-bar" />
                 <h2>back to projects</h2>
@@ -32,11 +34,13 @@ await queryContent(type)
         </div>
         <div v-if="next" class="next">
             <SelectBrackets class="button" :to="{ params: { project: next.name } }">
+                <img class="mini" :class="{ 'minismall': type === PHONE }" :src="next.mini" rel="preload"
+                    alt="project picture">
                 <h2>{{ next.name }}</h2>
                 <Icon name="tabler:arrow-right-bar" />
             </SelectBrackets>
         </div>
-        <div v-else class="next">
+        <div v-else class="empty">
             <SelectBrackets class="button" :to="{ name: 'projects' }">
                 <h2>back to projects</h2>
                 <Icon name="tabler:arrow-right-bar" />
@@ -56,15 +60,36 @@ await queryContent(type)
 
 .prev {
     justify-self: flex-start;
+
+    .button {
+        padding-left: 1rem;
+    }
+
+    .mini {
+        padding-left: 0.5rem;
+        border-top-right-radius: 0.5rem;
+        border-bottom-right-radius: 0.5rem;
+    }
 }
 
 .next {
     grid-column: 2;
     justify-self: flex-end;
+
+    .button {
+        padding-right: 1rem;
+    }
+
+    .mini {
+        padding-right: 0.5rem;
+        border-top-left-radius: 0.5rem;
+        border-bottom-left-radius: 0.5rem;
+    }
 }
 
 .prev,
-.next {
+.next,
+.empty {
     padding: 0.5rem;
     width: fit-content;
     height: 100%;
@@ -74,9 +99,13 @@ await queryContent(type)
     }
 }
 
+.empty .button {
+    padding: 1rem;
+    background-color: transparent;
+}
+
 .button {
-    // border-radius: 0.5rem;
-    padding: 1.5rem;
+    border-radius: 0.5rem;
     background-color: var(--bg-darker0);
 }
 
@@ -93,6 +122,7 @@ await queryContent(type)
 }
 
 .mini {
+    max-width: 14rem;
     height: 100%;
     filter: grayscale(1);
     transition: filter 0.3s;
