@@ -139,6 +139,7 @@ const leave = (el: Element, done: () => void) => {
   font-size: 3rem;
   font-size: 8rem;
   padding-bottom: 1rem;
+  user-select: none;
 }
 
 // MEDIA QUERIES
