@@ -19,32 +19,32 @@ await queryContent(type)
 <template>
     <div class="navigation">
         <div v-if="previous" class="prev">
-            <SelectBrackets class="button" :to="{ params: { project: previous.name } }">
+            <highlightButton class="button" :to="{ params: { project: previous.name } }">
                 <Icon name="tabler:arrow-left-bar" />
                 <h2>{{ previous.name }}</h2>
                 <img class="mini" :class="{ 'minismall': type === PHONE }" :src="previous.mini" rel="preload"
                     alt="project picture">
-            </SelectBrackets>
+            </highlightButton>
         </div>
         <div v-else class="empty">
-            <SelectBrackets class="button" :to="{ name: 'projects' }">
+            <highlightButton class="button" :to="{ name: 'projects' }">
                 <Icon name="tabler:arrow-left-bar" />
                 <h2>back to projects</h2>
-            </SelectBrackets>
+            </highlightButton>
         </div>
         <div v-if="next" class="next">
-            <SelectBrackets class="button" :to="{ params: { project: next.name } }">
+            <highlightButton class="button" :to="{ params: { project: next.name } }">
                 <img class="mini" :class="{ 'minismall': type === PHONE }" :src="next.mini" rel="preload"
                     alt="project picture">
                 <h2>{{ next.name }}</h2>
                 <Icon name="tabler:arrow-right-bar" />
-            </SelectBrackets>
+            </highlightButton>
         </div>
         <div v-else class="empty">
-            <SelectBrackets class="button" :to="{ name: 'projects' }">
+            <highlightButton class="button" :to="{ name: 'projects' }">
                 <h2>back to projects</h2>
                 <Icon name="tabler:arrow-right-bar" />
-            </SelectBrackets>
+            </highlightButton>
         </div>
     </div>
 </template>
