@@ -1,14 +1,13 @@
 <script setup lang="ts">
-const { size, button } = defineProps<{
+const { size } = defineProps<{
     size?: number
-    button?: boolean
 }>()
 
 const bracketsSize = computed(() => { return { '--size': size ?? 20 + 'px' } })
 </script>
 
 <template>
-    <NuxtLink v-if="!button" class="bracketWrap">
+    <NuxtLink class="bracketWrap">
         <slot class="content"></slot>
         <div class="overlay" aria-hidden="true">
             <div class="select" :style="bracketsSize">
@@ -20,26 +19,10 @@ const bracketsSize = computed(() => { return { '--size': size ?? 20 + 'px' } })
             <div class="mask"></div>
         </div>
     </NuxtLink>
-    <button v-else>
-        <slot class="content"></slot>
-    </button>
-    <!-- <button v-else class="bracketWrap">
-        <slot class="content"></slot>
-        <div class="overlay" aria-hidden="true">
-            <div class="select" :style="bracketsSize">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <div class="mask"></div>
-        </div>
-    </button> -->
 </template>
 <style scoped lang="scss">
 a {
   position: relative;
-//   padding: 0.5rem;
   width: 100%;
   height: 100%;
 
@@ -60,27 +43,8 @@ a {
   }
 }
 
-// button, a {
-button {
-    // padding: 0.5rem;
-    border-radius: 0.5rem;
-    overflow: hidden;
-    // border: 6px solid transparent;
-
-    &:focus, &:hover {
-        outline: 1px solid var(--Grey-800)
-    }
-    // &:focus, &:hover {
-    //     border: 1px solid var(--bg-darkest);
-    // }
-
-
-}
-
 .bracketWrap {
     position: relative;
-    // border: 1px solid transparent;
-    // padding: 0.5rem;
 
     &:hover .overlay,
     &:focus .overlay {

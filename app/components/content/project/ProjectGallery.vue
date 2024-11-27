@@ -6,13 +6,16 @@ const buttons: Ref<HTMLButtonElement[]> = ref([])
 onMounted(() => {
   buttons.value = Array.from(document.querySelector('.gallery')?.querySelectorAll('button') ?? [])
   buttons.value.forEach(button => {
-    button.addEventListener('click', (e: MouseEvent) => focusImage(e))
+    button.addEventListener('click', (e: MouseEvent) => {
+      const imgEvent = (e.target instanceof HTMLButtonElement ? e.target.children[0] : e.target) as HTMLImageElement | null
+      focusImage(imgEvent)
+    })
   });
   gallery.value = Array.from(document.querySelector('.gallery')?.querySelectorAll('img') ?? [])
 })
 
-function focusImage(e: MouseEvent) {
-  imgView.value = e.target as HTMLImageElement
+function focusImage(e: HTMLImageElement | null) {
+  imgView.value = e
 }
 </script>
 
