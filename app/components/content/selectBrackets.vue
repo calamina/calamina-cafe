@@ -67,7 +67,7 @@ button {
     overflow: hidden;
     // border: 6px solid transparent;
 
-    &:focus {
+    &:focus, &:hover {
         outline: 1px solid var(--Grey-800)
     }
     // &:focus, &:hover {

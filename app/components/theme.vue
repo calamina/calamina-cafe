@@ -12,6 +12,7 @@ const closeTheme = () => themeOpen.value = false
 const { activate, deactivate } = useFocusTrap(theme)
 watch(themeOpen, () => themeOpen.value ? activate() : deactivate())
 
+console.debug(colorMode.value)
 </script>
 
 <template>
@@ -22,15 +23,15 @@ watch(themeOpen, () => themeOpen.value ? activate() : deactivate())
     </button>
     <transition name="page">
       <div class="theme-menu" v-if="themeOpen">
-        <button @click="colorMode.preference = 'system'">
+        <button @click="colorMode.preference = 'system'" :class="{ active: colorMode.preference === 'system' }">
           <Icon name="tabler:moon-stars" />
           System
         </button>
-        <button @click="colorMode.preference = 'light'">
+        <button @click="colorMode.preference = 'light'" :class="{ active: colorMode.preference === 'light' }">
           <Icon name="tabler:moon" />
           Light
         </button>
-        <button @click="colorMode.preference = 'dark'">
+        <button @click="colorMode.preference = 'dark'" :class="{ active: colorMode.preference === 'dark' }">
           <Icon name="tabler:moon-filled" />
           Dark
         </button>
@@ -54,6 +55,10 @@ watch(themeOpen, () => themeOpen.value ? activate() : deactivate())
     &.theme-picker:hover {
       background-color: var(--bg-darker);
     }
+  }
+
+  & .active {
+    text-decoration: underline;
   }
 }
 

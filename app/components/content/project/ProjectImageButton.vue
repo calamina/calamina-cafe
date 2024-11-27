@@ -9,6 +9,7 @@
   display: flex;
   justify-content: center;
   background-color: var(--bg-darker0);
+  outline-offset: -1px;
   max-height: 85vh;
 }
 </style>

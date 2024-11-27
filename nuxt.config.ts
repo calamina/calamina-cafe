@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   modules: [
     '@vueuse/nuxt',
     '@pinia/nuxt',
-    '@nuxt/image',
+    // '@nuxt/image',
     '@nuxt/eslint',
     '@nuxtjs/sitemap',
     '@nuxtjs/color-mode',
@@ -42,7 +42,7 @@ export default defineNuxtConfig({
 
   compatibilityDate: '2024-04-03',
 
-  devtools: { enabled: false },
+  // devtools: { enabled: false },
 
   css: ['~/assets/style/main.scss'],
 
@@ -60,19 +60,18 @@ export default defineNuxtConfig({
         'rehype-unwrap-images'
       ]
     },
-    highlight: {
-      theme: {
-        default: 'github-light',
-        dark: 'github-dark',
-        sepia: 'monokai'
-      }
-    }
+    // highlight: {
+    //   theme: {
+    //     default: 'github-light',
+    //     dark: 'github-dark',
+    //     sepia: 'monokai'
+    //   }
+    // }
   },
 
-  image: {
-    format: ['webp'],
-    // provider: 'vercel'
-  },
+  // image: {
+  //   format: ['webp'],
+  // },
 
   icon: {
     size: '1.25rem',

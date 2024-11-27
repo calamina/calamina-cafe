@@ -18,7 +18,8 @@ const routeName = computed(() => type === 'web' ? 'projects-web-project' : 'proj
     <div class="img-grid" :class="{ 'img-grid-phone': type === 'phone' }">
       <SelectBrackets v-for="project in projects" class="lookin"
         :to="{ name: routeName, params : { project: project.name} }">
-        <NuxtImg class="img" :src="project.mini" rel="preload" alt=":(" />
+        <img class="img" :src="project.mini" rel="preload" alt=":(" />
+        <!-- <NuxtImg class="img" :src="project.mini" rel="preload" alt=":(" /> -->
         <div class="info">
           <p>{{ project.name }}</p>
           <p>{{ project.id < 10 ? '0' + project.id : project.id }}</p>
