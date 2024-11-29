@@ -5,7 +5,6 @@ const { resetChanged, visited } = useRouteStore()
 const { changedRoute, firstVisit, loading } = storeToRefs(useRouteStore())
 
 onMounted(() => {
-  setTimeout(() => visited(), 500)
   const load = document.querySelectorAll('.load');
   gsap.timeline({
     repeat: -1,
@@ -22,6 +21,8 @@ onMounted(() => {
       ease: 'power2.inOut',
       stagger: 0.05,
     }, '<0.4')
+  setTimeout(() => visited(), 500)
+  // visited()
 })
 
 const visible = computed(() => firstVisit.value ? true : loading.value)

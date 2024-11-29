@@ -15,6 +15,10 @@ const formatRouteName = computed(() => {
 
 useHead({
   title: formatRouteName,
+  link: [
+    { rel: 'icon', type: 'image/x-icon', href: '/favicon.svg' },
+    { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+  ],
   meta: [
     { name: 'description', content: 'Grégoire Belliere\'s Portfolio' },
     { name: 'robots', content: 'index,follow' },

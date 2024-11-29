@@ -22,7 +22,7 @@ const weblist: QueryBuilderParams = {
 </script>
 
 <template>
-  <div class="content">
+  <div class="tw-flex tw-flex-col tw-gap-8 tw-w-full">
     <ContentList :query="weblist" v-slot="{ list }">
       <ProjectsGrid :projects="list" :type="WEB" />
     </ContentList>
@@ -33,13 +33,6 @@ const weblist: QueryBuilderParams = {
 </template>
 
 <style lang="scss" scoped>
-.content {
-  display: flex;
-  flex-flow: column;
-  gap: 2rem;
-  width: 100%;
-}
-
 h1 {
   text-transform: capitalize;
   font-size: 3rem;

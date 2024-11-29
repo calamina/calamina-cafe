@@ -9,6 +9,8 @@ hey :)
 A bit of everything
 
 # TODO 
+- fix projects (aerg)
+
 - add page appear transitions
 - Add mini nav around prject name ??
 - add github/vercel data for projects ?

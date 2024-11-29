@@ -11,8 +11,6 @@ const closeTheme = () => themeOpen.value = false
 
 const { activate, deactivate } = useFocusTrap(theme)
 watch(themeOpen, () => themeOpen.value ? activate() : deactivate())
-
-console.debug(colorMode.value)
 </script>
 
 <template>
