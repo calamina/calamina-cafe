@@ -38,21 +38,21 @@ definePageMeta({
   gap: 2rem;
 }
 
-h1 {
-  font-size: 6rem;
-  line-height: 6.5rem;
-  letter-spacing: -6px;
-}
+// h1 {
+// font-size: 1rem;
+//   line-height: 6.5rem;
+//   letter-spacing: -6px;
+// }
 
 section {
   width: 100%;
 }
 
 @media (max-width: 1250px) {
-  h1 {
-    font-size: 4rem;
-    line-height: 4.25;
-  }
+  // h1 {
+  //   font-size: 4rem;
+  //   line-height: 4.25;
+  // }
 
   nav {
     flex-flow: column;

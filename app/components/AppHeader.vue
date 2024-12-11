@@ -16,7 +16,7 @@ const isLargeScreen = useMediaQuery('(min-width: 1280px)')
         <NuxtLink to="/projects" :class="{ 'route-active': project }">projects</NuxtLink>
         <transition name="sublink" mode="out-in">
           <div class="tw-gap-2 tw-hidden xl:tw-flex" v-if="project.length" :key="project">
-          <!-- <div class="tw-flex tw-gap-2" v-if="project.length && isLargeScreen" :key="project"> -->
+            <!-- <div class="tw-flex tw-gap-2" v-if="project.length && isLargeScreen" :key="project"> -->
             <p>:</p>
             <p class="sublink">{{ project }}</p>
           </div>

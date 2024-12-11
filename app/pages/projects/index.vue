@@ -32,9 +32,4 @@ const weblist: QueryBuilderParams = {
   </div>
 </template>
 
-<style lang="scss" scoped>
-h1 {
-  text-transform: capitalize;
-  font-size: 3rem;
-}
-</style>
+<style lang="scss" scoped></style>

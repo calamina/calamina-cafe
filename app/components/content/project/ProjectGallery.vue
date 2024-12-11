@@ -21,12 +21,13 @@ function focusImage(e: HTMLImageElement | null) {
 
 <template>
   <Teleport to="body">
-    <transition name="appear">
+    <!-- TODO : test gsap flip -->
+    <!-- <transition name="appear"> -->
       <ImageViewer v-if="imgView" :selected="imgView" :images="gallery" @unfocus="imgView = null" />
-    </transition>
+    <!-- </transition> -->
   </Teleport>
   <div class="tw-flex tw-flex-col xl:tw-w-2/3 xl:tw-ml-auto tw-gap-2 tw-pb-6">
-    <div class="gallery tw-grid tw-gap-2 tw-grid-cols-2" v-if="$slots.default">
+    <div class="gallery tw-flex tw-flex-col tw-gap-2 tw-grid-cols-1 xl:tw-grid xl:tw-grid-cols-2" v-if="$slots.default">
       <slot />
     </div>
     <ProjectNavigation />

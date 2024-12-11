@@ -12,7 +12,7 @@ const routeName = computed(() => type === 'web' ? 'projects-web-project' : 'proj
   <div class="wrapper">
     <!-- TODO :: export header ? -->
     <div class="header">
-      <h2>{{ type }}</h2>
+      <h2 class=" tw-flex tw-items-center"><span class="star tw-text-3xl tw-h-8 tw-pr-2">✦</span>{{ type }}</h2>
       <span>[ {{ projects.length }} projects ]</span>
     </div>
     <div class="img-grid" :class="{ 'img-grid-phone': type === 'phone' }">
@@ -58,9 +58,13 @@ const routeName = computed(() => type === 'web' ? 'projects-web-project' : 'proj
 }
 
 h2 {
-  font-size: 1.5rem;
-  font-size: 6rem;
-  line-height: 6.5rem;
+  // font-size: 1.5rem;
+  // font-size: 6rem;
+  // line-height: 6.5rem;
+  // font-size: 6rem;
+  // line-height: 6.5rem;
+  font-size: 3rem;
+  line-height: 1;
 }
 
 .header {
@@ -109,7 +113,7 @@ img {
 @media (max-width: 1250px) {
   .img-grid {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    max-width: 100%;
+    max-width: calc(100% - 2rem);
   }
 
   .header {

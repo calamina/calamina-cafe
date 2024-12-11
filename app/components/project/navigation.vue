@@ -133,4 +133,38 @@ await queryContent(type)
     width: auto;
     object-fit: contain;
 }
+
+@media (max-width: 1250px) {
+
+    .next .button,
+    .prev .button {
+        display: flex;
+        flex-flow: column-reverse;
+        // max-width: 7rem;
+        width: 100%;
+        padding: 0;
+        padding-bottom: 0.5rem
+    }
+
+    .next .button {
+        flex-flow: column;
+    }
+
+    .prev,
+    .next {
+        width: 100%;
+    }
+
+    .next .mini,
+    .prev .mini {
+        max-width: 100%;
+        padding: 0;
+        border-top-right-radius: 0.5rem;
+        border-bottom-left-radius: 0;
+    }
+
+    .minismall {
+        max-height: unset;
+    }
+}
 </style>

@@ -5,11 +5,17 @@ const { error } = defineProps<{
 }>()
 
 const message = computed(() => error.statusCode === 404 ? 'Page not found' : error.statusMessage)
+
+const { setLoading, setChanged } = useRouteStore()
+onBeforeUnmount(() => {
+  setLoading(false)
+  setChanged()
+})
 </script>
 
 <template>
   <div class="wrapper">
-    <h1>[ {{ error.statusCode }} error ] {{ message }}</h1>
+    <h1>[ {{ error.statusCode }} error ]<br> {{ message }}</h1>
     <p>Woopsi, you shouldn't be here ...<br> That may be my fault, or that may be yours :^)</p>
     <NuxtLink to="/">Go back home !</NuxtLink>
     <Flower />
@@ -32,6 +38,10 @@ h1,
 a,
 span {
   color: var(--color-error);
+}
+
+h1 {
+  text-align: center;
 }
 
 a {
