@@ -5,12 +5,6 @@ const { error } = defineProps<{
 }>()
 
 const message = computed(() => error.statusCode === 404 ? 'Page not found' : error.statusMessage)
-
-const { setLoading, setChanged } = useRouteStore()
-onBeforeUnmount(() => {
-  setLoading(false)
-  setChanged()
-})
 </script>
 
 <template>

@@ -6,19 +6,19 @@
 hey :)
 
 # DOING
-A bit of everything
+- homepage shader !!!
+- add ASCI threejs scene(s) :)
+
+- A bit of everything
 
 # TODO 
+- fix "back to projects" in mobile view
+- fix fullscreen image view for mobile + other browsers
 - fix projects (aerg)
+- add info to projects (creation - update)
 
 - add page appear transitions
-- Add mini nav around prject name ??
-- add github/vercel data for projects ?
 - proper alt on images / proper images (highlights, etc)
-- fix img viewer on small devices / chrome
-- add ASCI threejs scene(s) :)
 - WRITE ABOUT
 - WRITE HOME
 - single component for [project] + [mobile]
-- Check if bg-color is better than backdrop for menu (or combine)
-- replace 'projects' with 'work'  ??

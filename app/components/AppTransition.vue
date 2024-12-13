@@ -2,7 +2,7 @@
 import gsap from 'gsap';
 
 const { resetChanged, visited } = useRouteStore()
-const { changedRoute, firstVisit, loading } = storeToRefs(useRouteStore())
+const { firstVisit, loading } = storeToRefs(useRouteStore())
 
 onMounted(() => {
   const load = document.querySelectorAll('.load');
@@ -22,16 +22,9 @@ onMounted(() => {
       stagger: 0.05,
     }, '<0.4')
   setTimeout(() => visited(), 500)
-  // visited()
 })
 
 const visible = computed(() => firstVisit.value ? true : loading.value)
-
-watch(loading, () => {
-  loading.value && changedRoute.value ?
-    document.querySelector('html')?.classList.add('hideScroll') :
-    document.querySelector('html')?.classList.remove('hideScroll')
-})
 
 const enter = (el: Element, done: () => void) => {
   const panes = el.querySelectorAll('.pane');
@@ -131,11 +124,14 @@ const leave = (el: Element, done: () => void) => {
 .pane {
   width: 100%;
   height: 100%;
-  background-color: var(--bg-darkest);
+  // background-color: var(--bg-darkest);
+  background-color: var(--bg);
+  background-color: var(--Grey-400);
+  // maybe 450 test
 }
 
 .load {
-  color: var(--bg);
+  // color: var(--bg);
   font-size: 1.5rem;
   font-size: 3rem;
   font-size: 8rem;

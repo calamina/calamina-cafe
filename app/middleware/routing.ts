@@ -1,11 +1,11 @@
 const { setChanged, setLoading } = useRouteStore()
-const { firstVisit } = storeToRefs(useRouteStore())
+const { firstVisit, fromTo, isProject } = storeToRefs(useRouteStore())
 
 export default defineNuxtRouteMiddleware
-  ((_to, _from) => {
+  ((to, from) => {
     setChanged()
-    document.documentElement.style.overflow = "visible"
-    if(!firstVisit.value) {
+    fromTo.value = { from: from.fullPath, to: to.fullPath }
+    if (!firstVisit.value && !isProject.value) {
       setLoading(true)
     }
   })

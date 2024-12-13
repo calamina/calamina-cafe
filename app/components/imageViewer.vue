@@ -68,8 +68,11 @@ function exit() {
                     <Icon name="tabler:arrow-left-bar" />
                     previous
                 </ButtonBrackets>
-                <ButtonBrackets @click="exit()">close ?</ButtonBrackets>
-                <ButtonBrackets @click="prevImg()">
+                <ButtonBrackets @click="exit()">
+                    close
+                    <Icon name="tabler:eye-off" />
+                </ButtonBrackets>
+                <ButtonBrackets @click="nextImg()">
                     next
                     <Icon name="tabler:arrow-right-bar" />
                 </ButtonBrackets>

@@ -2,11 +2,7 @@
 definePageMeta({
   middleware: 'routing',
   pageTransition: transitionConfig,
-  // pageTransition: {
-  //   name: 'appear',
-  //   mode: 'out-in',
-  // }
-})
+ })
 
 const { project } = useRoute().params
 const path = `/${WEB}/${project}`
@@ -17,8 +13,6 @@ if (!data.value) {
     statusCode: 404, message: 'Page not found'
   })
 }
-
-onMounted(() => document.scrollingElement!.scrollTop = 0)
 </script>
 
 <template>

@@ -3,7 +3,6 @@ export default defineNuxtConfig({
   modules: [
     '@vueuse/nuxt',
     '@pinia/nuxt',
-    // '@nuxt/image',
     '@nuxt/eslint',
     '@nuxtjs/sitemap',
     '@nuxtjs/color-mode',
@@ -14,35 +13,32 @@ export default defineNuxtConfig({
 
   ssr: true,
 
-  // nitro: {
-  //   prerender: {       
-  //     crawlLinks: true,       
-  //     routes: ["/", "/about", "/projects", "/sitemap.xml"],     
-  //     // routes: ["/", "/about", "/projects", "/sitemap.xml", "/robots.txt"],     
-  //   },
-  //   srcDir: '/app',
-  //   // static: true,
-  // },
-
-  routeRules: {
-    '/': { prerender: true },
-    '/about': { prerender: true },
-    '/projects': { isr: true },
-    // '/projects/**': { isr: true },
-    '/projects/web/**': { isr: true },
-    '/projects/phone/**': { isr: true },
-    '/sitemap.xml': { prerender: true },
+  nitro: {
+    // prerender: {       
+    //   crawlLinks: true,       
+    //   routes: ["/", "/about", "/projects", "/sitemap.xml"],     
+    //   // routes: ["/", "/about", "/projects", "/sitemap.xml", "/robots.txt"],     
+    // },
+    srcDir: '/app',
+    static: true,
   },
+
+  // routeRules: {
+  //   '/': { prerender: true },
+  //   '/about': { prerender: true },
+  //   '/projects': { isr: true },
+  //   '/projects/web/**': { isr: true },
+  //   '/projects/phone/**': { isr: true },
+  //   '/sitemap.xml': { prerender: true },
+  // },
 
   srcDir: 'app/',
 
-  tailwindcss: {
-    viewer: false
-  },
-
+  
   compatibilityDate: '2024-04-03',
-
-  // devtools: { enabled: false },
+  
+  tailwindcss: { viewer: false },
+  devtools: { enabled: false },
 
   css: ['~/assets/style/main.scss'],
 
