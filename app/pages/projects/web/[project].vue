@@ -17,7 +17,7 @@ if (!data.value) {
 
 <template>
   <div class="tw-w-full">
-    <ContentRenderer v-if="data" :value="data" />
+    <ContentRenderer v-if="data" :value="data" class="xl:tw-grid xl:tw-grid-cols-10 xl:tw-gap-4"/>
   </div>
 </template>
 

@@ -26,7 +26,8 @@ useHead({
   ],
   htmlAttrs: {
     lang: 'en',
-  }
+  class: 'xl:tw-overscroll-y-none',
+  },
 })
 </script>
 
@@ -34,7 +35,8 @@ useHead({
   <div class="app tw-flex tw-flex-col tw-justify-between tw-min-h-screen">
     <AppHeader :project />
 
-    <main class="tw-flex tw-flex-grow tw-m-4 tw-mt-16 tw-h-full tw-justify-center tw-overflow-hidden">
+    <!-- <main class="tw-flex tw-flex-grow tw-m-4 tw-mt-16 tw-h-full tw-justify-center tw-overflow-hidden"> -->
+    <main class="tw-flex tw-flex-grow tw-mx-4 tw-mt-16 tw-h-full tw-justify-center">
       <AppTransition />
       <NuxtPage />
     </main>
@@ -52,9 +54,46 @@ useHead({
       <Socials /> -->
     </footer>
   </div>
+  <!-- DEV ONLY GUIDES -->
+  <!-- <div class="grid">
+    <div class="guide"></div>
+    <div class="guide"></div>
+    <div class="guide"></div>
+    <div class="guide"></div>
+    <div class="guide"></div>
+    <div class="guide"></div>
+    <div class="guide"></div>
+    <div class="guide"></div>
+    <div class="guide"></div>
+    <div class="guide"></div>
+  </div> -->
 </template>
 
 <style scoped lang="scss">
+// DEV ONLY GUIDES
+// .grid {
+//   position: fixed;
+//   z-index: -1;
+//   z-index: 999;
+//   top: 1rem;
+//   bottom: 1rem;
+//   left: 0;
+//   width: 100%;
+//   height: calc(100vh - 2rem);
+//   gap: 0 1rem;
+//   padding: 0 1rem;
+//   display: grid;
+//   grid-template-columns: repeat(10, 1fr);
+//   pointer-events: none;
+  
+//   .guide {
+//     width: 100%;
+//     height: 100%;
+//     background-color: #00ffff22;
+//     border: 1px solid #00000033;
+//   }
+// }
+
 .app {
   min-height: 100vh;
   // min-height: calc(100vh + 18rem);

@@ -132,9 +132,10 @@ const leave = (el: Element, done: () => void) => {
 
 .load {
   // color: var(--bg);
-  font-size: 1.5rem;
-  font-size: 3rem;
-  font-size: 8rem;
+  // font-size: 1.5rem;
+  // font-size: 3rem;
+  // font-size: 8rem;
+  font-size: 4rem;
   padding-bottom: 1rem;
   user-select: none;
 }

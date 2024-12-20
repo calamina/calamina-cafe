@@ -22,8 +22,8 @@ await queryContent(type)
             <highlightButton class="button" :to="{ params: { project: previous.name } }">
                 <Icon name="tabler:arrow-left-bar" />
                 <h2>{{ previous.name }}</h2>
-                <img class="mini" :class="{ 'minismall': type === PHONE }" :src="previous.mini" rel="preload"
-                    alt="project picture">
+                <!-- <img class="mini" :class="{ 'minismall': type === PHONE }" :src="previous.mini" rel="preload"
+                    alt="project picture"> -->
             </highlightButton>
         </div>
         <div v-else class="empty">
@@ -32,10 +32,13 @@ await queryContent(type)
                 <h2>back to projects</h2>
             </highlightButton>
         </div>
+
+        <p class="id">{{ previous ? previous?.id + 1 : 1 }} / 19</p>
+
         <div v-if="next" class="next">
             <highlightButton class="button" :to="{ params: { project: next.name } }">
-                <img class="mini" :class="{ 'minismall': type === PHONE }" :src="next.mini" rel="preload"
-                    alt="project picture">
+                <!-- <img class="mini" :class="{ 'minismall': type === PHONE }" :src="next.mini" rel="preload"
+                    alt="project picture"> -->
                 <h2>{{ next.name }}</h2>
                 <Icon name="tabler:arrow-right-bar" />
             </highlightButton>
@@ -51,19 +54,22 @@ await queryContent(type)
 
 <style lang="scss" scoped>
 .navigation {
-    padding: 0 0.5rem;
+    width: 100%;
+    margin-top: auto;
+    // padding: 0 0.5rem;
     gap: 0.5rem;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: auto;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    padding-bottom: 0.5rem;
 }
 
 .prev {
     justify-self: flex-start;
 
-    .button {
-        padding-left: 1rem;
-    }
+    // .button {
+    //     padding-left: 1rem;
+    // }
 
     .mini {
         padding-left: 0.5rem;
@@ -72,13 +78,16 @@ await queryContent(type)
     }
 }
 
-.next {
+.id {
     grid-column: 2;
-    justify-self: flex-end;
+    height: fit-content;
+    text-align: center;
+    width: 100%;
+}
 
-    .button {
-        padding-right: 1rem;
-    }
+.next {
+    grid-column: 3;
+    justify-self: flex-end;
 
     .mini {
         padding-right: 0.5rem;
@@ -90,9 +99,17 @@ await queryContent(type)
 .prev,
 .next,
 .empty {
-    padding: 0.5rem;
+    // padding: 0.5rem;
     width: fit-content;
+    width: 100%;
     height: 100%;
+    overflow: hidden;
+
+    h2 {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
 
     &:hover .mini {
         filter: none;
@@ -105,7 +122,9 @@ await queryContent(type)
 }
 
 .button {
+    padding: 0.5rem 1rem;
     border-radius: 0.5rem;
+    justify-content: center;
     background-color: var(--bg-darker0);
 }
 
@@ -123,6 +142,7 @@ await queryContent(type)
 
 .mini {
     max-width: 14rem;
+    // max-width: 5rem;
     height: 100%;
     filter: grayscale(1);
     transition: filter 0.3s;

@@ -8,8 +8,9 @@ const { name } = defineProps<{
   <h1 class="tw-capitalize tw-text-5xl">{{ name }}</h1>
 </template>
 
-<style>
+<style lang="scss" scoped>
   h1 {
     white-space: nowrap;
+    letter-spacing: -3px;
   }
 </style>

@@ -12,7 +12,11 @@ const routeName = computed(() => type === 'web' ? 'projects-web-project' : 'proj
   <div class="wrapper">
     <!-- TODO :: export header ? -->
     <div class="header">
-      <h2 class=" tw-flex tw-items-center"><span class="star tw-text-3xl tw-h-8 tw-pr-2">✦</span>{{ type }}</h2>
+      <h2 class="tw-flex tw-items-center tw-gap-2">
+        <Icon name="tabler:folder" size="2.75rem" />
+        <!-- <span class="star tw-text-3xl tw-h-8 tw-pr-2">✦</span> -->
+        {{ type }}
+      </h2>
       <span>[ {{ projects.length }} projects ]</span>
     </div>
     <div class="img-grid" :class="{ 'img-grid-phone': type === 'phone' }">

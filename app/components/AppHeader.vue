@@ -8,7 +8,7 @@ const isLargeScreen = useMediaQuery('(min-width: 1280px)')
 
 <template>
   <header
-    class="tw-flex tw-fixed tw-top-0 tw-items-center tw-py-4 tw-pl-8 tw-pr-4 tw-justify-between tw-z-50 tw-w-full">
+    class="tw-flex tw-fixed tw-top-0 tw-items-center tw-py-4 tw-px-4 tw-h-16 tw-justify-between tw-z-50 tw-w-full">
     <nav class="tw-flex tw-gap-8">
       <NuxtLink to="/">home</NuxtLink>
       <NuxtLink to="/about">about</NuxtLink>

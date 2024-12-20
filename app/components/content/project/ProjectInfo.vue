@@ -10,8 +10,9 @@ const { name, url = null, tech } = defineProps<{
 
 <template>
   <div
-    class="info tw-flex tw-flex-col tw-gap-1 xl:tw-w-1/3 xl:tw-fixed tw-px-4 xl:tw-px-8  xl:tw-pt-16 tw-pb-4 xl:tw-top-0 xl:tw-h-full xl:tw-left-0">
-    <div class="stars tw-flex tw-pt-6 tw-pb-6">
+    class="info tw-flex tw-flex-col tw-gap-1 xl:tw-col-start-1 xl:tw-col-end-5 xl:tw-sticky xl:tw-top-16 xl:tw-left-0">
+    <!-- class="info tw-flex tw-flex-col tw-gap-1 xl:tw-w-1/3 xl:tw-fixed tw-px-4 xl:tw-px-8 xl:tw-pt-16 tw-pb-4 xl:tw-top-0 xl:tw-h-full xl:tw-left-0"> -->
+    <div class="stars tw-flex tw-pb-4">
       <p class="star tw-text-3xl">✦</p>
       <p class="star tw-text-3xl">✦</p>
       <p class="star tw-text-3xl">✦</p>
@@ -20,10 +21,15 @@ const { name, url = null, tech } = defineProps<{
     <ProjectLink v-if="url" :url="url" />
     <slot />
     <ProjectTech :tech />
+    <ProjectNavigation />
   </div>
 </template>
 
 <style lang="scss" scoped>
+.info {
+  height: calc(100vh - 4.5rem);
+}
+
 :slotted(p) {
   padding: 1.5rem 0;
   text-justify: distribute;
