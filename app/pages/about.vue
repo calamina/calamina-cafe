@@ -33,13 +33,10 @@ definePageMeta({
 .content {
   display: flex;
   flex-flow: column;
-  gap: 1rem;
 }
 
 h1 {
-  font-size: 6rem;
-  line-height: 6.5rem;
-  letter-spacing: -6px;
+  padding-bottom: 2rem;
 }
 
 p a {

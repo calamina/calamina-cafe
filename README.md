@@ -6,10 +6,9 @@
 hey :)
 
 # DOING
-- finish navigation move
+- finish navigation move (mobile projects fix)
 - add numbering between prev/next
 - remove mini, and name, no need for query ? :'(
-- put navigation back in gallery for mobile !
 
 - homepage shader !!!
 - add ASCI threejs scene(s) :)

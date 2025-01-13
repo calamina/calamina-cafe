@@ -13,15 +13,16 @@ const routeName = computed(() => type === 'web' ? 'projects-web-project' : 'proj
     <!-- TODO :: export header ? -->
     <div class="header">
       <h2 class="tw-flex tw-items-center tw-gap-2">
-        <Icon name="tabler:folder" size="2.75rem" />
+        <Icon name="tabler:folder" size="1.3rem" />
+        <!-- <Icon name="tabler:folder" size="2.75rem" /> -->
         <!-- <span class="star tw-text-3xl tw-h-8 tw-pr-2">✦</span> -->
         {{ type }}
+        <span class="tw-opacity-60 tw-pl-2">[{{ projects.length }} projects]</span>
       </h2>
-      <span>[ {{ projects.length }} projects ]</span>
     </div>
     <div class="img-grid" :class="{ 'img-grid-phone': type === 'phone' }">
       <highlightButton v-for="project in projects" class="lookin"
-        :to="{ name: routeName, params : { project: project.name} }">
+        :to="{ name: routeName, params: { project: project.name } }">
         <img class="img" :src="project.mini" rel="preload" alt=":(" />
         <!-- <NuxtImg class="img" :src="project.mini" rel="preload" alt=":(" /> -->
         <div class="info">
@@ -67,7 +68,7 @@ h2 {
   // line-height: 6.5rem;
   // font-size: 6rem;
   // line-height: 6.5rem;
-  font-size: 3rem;
+  // font-size: 3rem;
   line-height: 1;
 }
 
