@@ -21,7 +21,7 @@ const { name, url = null, tech } = defineProps<{
     <ProjectLink v-if="url" :url="url" />
     <slot />
     <ProjectTech :tech />
-    <ProjectNavigation />
+    <ProjectNavigation class="!tw-hidden xl:!tw-grid" />
   </div>
 </template>
 
@@ -83,6 +83,9 @@ const { name, url = null, tech } = defineProps<{
     height: 20px;
     width: 20px;
     line-height: 22px;
+  }
+  .info {
+    height: fit-content;
   }
 }
 </style>

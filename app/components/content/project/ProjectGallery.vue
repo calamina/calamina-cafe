@@ -31,7 +31,7 @@ function focusImage(e: HTMLImageElement | null) {
     <div class="gallery tw-flex tw-flex-col tw-gap-2 tw-grid-cols-1 xl:tw-grid xl:tw-grid-cols-2" v-if="$slots.default">
       <slot />
     </div>
-    <!-- <ProjectNavigation /> -->
+    <ProjectNavigation class="!tw-grid xl:!tw-hidden" />
   </div>
 </template>
 
