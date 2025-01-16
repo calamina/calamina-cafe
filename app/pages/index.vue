@@ -27,8 +27,14 @@ const test = ref(false)
       </section>
       <Contact />
       <Socials />
-      <Ascii v-if="test" />
-      <button @click="test = true">test</button>
+      <ClientOnly fallback-tag="span">
+        <Ascii />
+        <template #fallback>
+          <p>Loading ascii ...</p>
+        </template>
+      </ClientOnly>
+      <!-- <Ascii v-if="test" /> -->
+      <!-- <button @click="test = true">test</button> -->
     </div class="content">
   </div>
 </template>
