@@ -11,6 +11,7 @@ definePageMeta({
 //     mode: 'out-in',
 //   }
 // })
+const test = ref(false)
 </script>
 
 <template>
@@ -26,6 +27,8 @@ definePageMeta({
       </section>
       <Contact />
       <Socials />
+      <Ascii v-if="test" />
+      <button @click="test = true">test</button>
     </div class="content">
   </div>
 </template>
