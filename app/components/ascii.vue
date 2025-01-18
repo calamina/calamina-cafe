@@ -1,47 +1,49 @@
 <script setup lang="ts">
 import * as THREE from 'three/webgpu'
 import { uv, vec2, texture, attribute, uniform, color, pow, mix, step, floor, vec3 } from 'three/tsl'
-// import { OrbitControls } from 'three/examples/jsm/Addons.js';
 import { Fn } from 'three/src/nodes/TSL.js';
 
 const container = ref()
-const ascii = ref(false)
+const ascii = ref(true)
 
-const pallete = [
-  '#dedede',
-  '#16C47F',
-  '#FFD65A',
-  '#F93827',
-  '#FF9D23',
-  '#FFFFFF',
-]
 // const pallete = [
-//   '#212121',
-//   '#A35C7A',
-//   '#C890A7',
-//   '#FBF5E5',
-//   '#FFFFFF',
+//   '#16C47F',
+//   '#FFD65A',
+//   '#F93827',
+//   '#FF9D23',
+//   // '#FFFFFF',
 // ]
+const pallete = [
+  '#242424',
+  '#545454',
+  '#848484',
+  '#b4b4b4',
+]
 
 // const chars = " *o&8@#"
 const chars = " `.-':_,^=;><+!rc*/z?sLTv)J7(|Fi{C}fI31tlu[neoZ5Yxjya]2ESwqkP6h9d4VpOGbUAKXHm8RD#$Bg0MNWQ%&@"
-
 const length = chars.length
-let cube: THREE.Mesh | null = null
+
+let object: THREE.Mesh | null = null
 
 let time: number = 0
 let isPlaying: boolean = true
 
 let scene2: THREE.Scene | null = null
-let meshtop: THREE.Mesh | null = null
-let camera2: THREE.PerspectiveCamera | null = null
+let camera2: THREE.OrthographicCamera | null = null
+// let camera2: THREE.PerspectiveCamera | null = null
 let renderTarget: THREE.RenderTarget | null = null
+const size = 5;
+const aspect = window.innerWidth / window.innerHeight;
 var mouse = new THREE.Vector2();
 
 const scene = new THREE.Scene()
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.01, 1000)
-camera.position.set(0, 0, 3.8)
-// const camera = new THREE.OrthographicCamera( - 1, 1, 1, - 1, 0, 1 )
+// const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.01, 1000)
+// camera.position.set(0, 0, 3.8)
+
+
+const camera = new THREE.OrthographicCamera(size * aspect / - 2, size * aspect / 2, size / 2, size / - 2, -1000, 1000);
+
 const renderer = new THREE.WebGPURenderer({
   // antialias: true,
   alpha: true
@@ -49,44 +51,53 @@ const renderer = new THREE.WebGPURenderer({
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 renderer.setSize(window.innerWidth, window.innerHeight)
 renderer.setClearColor(0xffffff, 0)
-// renderer.setClearColor(0x000000, 1)
-// const controls = new OrbitControls(camera, renderer.domElement)
 
 function onWindowResize() {
-  camera.aspect = window.innerWidth / window.innerHeight
-  camera.updateProjectionMatrix()
+  const newAspect = window.innerWidth / window.innerHeight;
+
+  camera.left = (size * newAspect) / -2;
+  camera.right = (size * newAspect) / 2;
+  camera2!.left = (size * newAspect) / -2;
+  camera2!.right = (size * newAspect) / 2;
+
+  camera.updateProjectionMatrix();
+  camera2?.updateProjectionMatrix();
+
   renderer.setSize(window.innerWidth, window.innerHeight)
-  init()
 }
 
-function onMouseMove(event: MouseEvent) {
-  if (!camera2) return
+function onMouseMove(event: PointerEvent) {
   event.preventDefault();
+  if (!camera2) return
+
   mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
   mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
 
-  var vector = new THREE.Vector3(mouse.x, mouse.y, 0.5);
+  var vector = new THREE.Vector3(mouse.x, mouse.y, 0.01);
   vector.unproject(camera2);
   var dir = vector.sub(camera2.position).normalize();
-  var distance = - camera.position.z / dir.z;
-  var pos = camera.position.clone().add(dir.multiplyScalar(distance));
-  cube?.position.copy(new THREE.Vector3(pos.x, -pos.y, pos.z));
+  // var distance = - camera2.position.z / dir.z;
+  var distance = 350;
+  var pos = camera2.position.clone().add(dir.multiplyScalar(distance));
+  const posFixed = new THREE.Vector3(pos.x, -pos.y, pos.z)
+  object?.position.copy(posFixed);
+  // object?.position.copy(pos);
 }
 
 function secondScene() {
   scene2 = new THREE.Scene()
-  camera2 = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.01, 1000)
-  camera2.position.set(0, 0, 3.8)
+  // camera2 = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.01, 1000)
+  camera2 = new THREE.OrthographicCamera(size * aspect / - 2, size * aspect / 2, size / 2, size / - 2, 0.1, 1000);
+  camera2.position.set(0, 0, 1)
+
   renderTarget = new THREE.RenderTarget(window.innerWidth, window.innerHeight)
 
-  cube = new THREE.Mesh(
-    // new THREE.BoxGeometry(1, 1, 1),
-    new THREE.SphereGeometry(1, 1),
+  object = new THREE.Mesh(
+    new THREE.SphereGeometry(1, 2, 2),
     new THREE.MeshPhysicalMaterial({ color: 0xff88ff })
   )
-  cube.position.set(0, 0, 0)
-  cube.position.y = 1000;
-  scene2.add(cube)
+  object.position.set(0, 0, 0)
+  scene2.add(object)
 
   addLights(scene2)
 }
@@ -95,14 +106,14 @@ function addObjects() {
   const rows = Math.floor(window.innerWidth / 16)
   const cols = Math.floor(window.innerHeight / 16)
   const instances = rows * cols
-  const size = 0.1
+  const size = 0.135
 
-  const material = getMaterial({
+  const material = asciiAndColorShader({
     asciiTexture: createAsciiTexture(),
-    length,
     scene: renderTarget?.texture
   })
 
+  // const geometry = new THREE.PlaneGeometry(0.1, 0.1, 1, 1)
   const geometry = new THREE.PlaneGeometry(size, size, 1, 1)
   const positions = new Float32Array(instances * 3)
   const uv = new Float32Array(instances * 2)
@@ -142,13 +153,38 @@ function addLights(scene: THREE.Scene) {
   scene.add(light2)
 }
 
-function getMaterial({
+function createAsciiTexture() {
+  const canvas = document.createElement('canvas')
+  const ctx = canvas.getContext('2d')
+  canvas.width = length * 64
+  canvas.height = 64
+
+  if (ctx) {
+    // ctx.fillStyle = "#c5c5c5"
+    // ctx.fillRect(0, 0, canvas.width, canvas.height)
+
+    ctx.globalAlpha = 0.5
+    ctx.fillStyle = "#fff"
+    // ctx.font = "40px Apercu"
+    ctx.font = "bold 40px Apercu"
+    ctx.textAlign = "center"
+    ctx.textRendering = "optimizeLegibility"
+
+    for (let i = 0; i < length; i++) {
+      ctx.fillText(chars[i], 32 + i * 64, 48)
+    }
+  }
+
+  const asciiTexture = new THREE.Texture(canvas)
+  asciiTexture.needsUpdate = true
+  return asciiTexture
+}
+
+function asciiAndColorShader({
   asciiTexture,
-  length,
   scene
 }: {
   asciiTexture: THREE.Texture;
-  length: number;
   scene: THREE.Texture | undefined
 }) {
   const uColor1 = uniform(color(pallete[0]))
@@ -158,6 +194,7 @@ function getMaterial({
   const uColor5 = uniform(color(pallete[4]))
 
   const material = new THREE.NodeMaterial()
+  material.transparent = true
 
   const asciiCode = Fn(() => {
     if (!scene) return
@@ -173,41 +210,15 @@ function getMaterial({
 
     let finalColor: any = uColor1
     finalColor = mix(finalColor, uColor2, step(0.2, brigthness))
-    finalColor = mix(finalColor, uColor3, step(0.35, brigthness))
-    finalColor = mix(finalColor, uColor4, step(0.7, brigthness))
-    finalColor = mix(finalColor, uColor5, step(0.9, brigthness))
+    finalColor = mix(finalColor, uColor3, step(0.4, brigthness))
+    finalColor = mix(finalColor, uColor4, step(0.6, brigthness))
+    finalColor = mix(finalColor, uColor5, step(0.8, brigthness))
 
     return asciiCode.mul(finalColor)
   })
 
   material.colorNode = asciiCode()
   return material
-}
-
-function createAsciiTexture() {
-  const canvas = document.createElement('canvas')
-  const ctx = canvas.getContext('2d')
-  canvas.width = length * 48
-  canvas.height = 48
-  // canvas.style.backgroundColor = "rgba(0, 0, 0, 0)"
-
-  if (ctx) {
-    ctx.fillStyle = "#ffffff"
-    ctx.fillRect(0, 0, canvas.width, canvas.height)
-
-    ctx.fillStyle = "#000000"
-    ctx.font = "bold 40px Apercu"
-    ctx.textAlign = "center"
-    // ctx.textBaseline = "middle"
-
-    for (let i = 0; i < length; i++) {
-      ctx.fillText(chars[i], 16 + i * 48, 32)
-    }
-  }
-
-  const asciiTexture = new THREE.Texture(canvas)
-  asciiTexture.needsUpdate = true
-  return asciiTexture
 }
 
 function stop() {
@@ -227,10 +238,12 @@ function render() {
   if (!isPlaying) return
 
   time += 0.01
-  if (cube) {
-    cube.rotation.x = Math.sin(time)
-    cube.rotation.y = Math.sin(time)
-    cube.rotation.z = Math.sin(time)
+
+  if (object) {
+    const pow = 3
+    object.rotation.x = Math.sin(time * pow)
+    object.rotation.y = Math.sin(time * pow)
+    object.rotation.z = Math.sin(time * pow)
   }
 
   requestAnimationFrame(render)
@@ -243,14 +256,14 @@ function render() {
   renderer.renderAsync(scene, camera)
 }
 
-
 function init() {
-  container.value.appendChild(renderer.domElement);
+  container?.value?.appendChild(renderer.domElement);
   secondScene()
   addObjects()
   window.addEventListener("resize", onWindowResize)
-  window.addEventListener("mousemove", onMouseMove, false)
+  window.addEventListener("pointermove", onMouseMove)
   render()
+  window.addEventListener("pointerover", onMouseMove, { once: true })
 }
 
 function toggleAscii() {
@@ -261,13 +274,17 @@ function toggleAscii() {
 }
 
 onMounted(() => {
-  init()
+  setTimeout(() => init(), 200)
 });
+
+onUnmounted(() => {
+  renderer.dispose()
+})
 </script>
 
 <template>
   <div>
-    <div class="ascii" v-if="ascii" ref="container"></div>
+    <div class="ascii" v-if="ascii" ref="container" id="container"></div>
     <div class="buttons">
       <button v-if="ascii" @click="isPlaying ? stop() : play()">PLAY / PAUSE</button>
       <button @click="toggleAscii">{{ ascii ? 'HIDE ASCII' : 'SHOW ASCII' }}</button>
@@ -286,7 +303,6 @@ onMounted(() => {
 }
 
 .buttons {
-  height: 4rem;
   position: fixed;
   top: calc(100vh - 4rem);
   left: 1rem;
@@ -296,6 +312,8 @@ onMounted(() => {
 }
 
 button {
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
   z-index: 999;
   background-color: #dedede;
 }
