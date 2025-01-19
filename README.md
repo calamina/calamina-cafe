@@ -6,12 +6,12 @@
 hey :)
 
 # DOING
+- fix mobile projects (fixed project f*ed up)
 - finish navigation move (mobile projects fix)
-- add numbering between prev/next
-- remove mini, and name, no need for query ? :'(
 
-- homepage shader !!!
-- add ASCI threejs scene(s) :)
+- fix ascii window resize
+- fix ascii performance
+- fix ascii rendering ? (font aliasing)
 
 - A bit of everything
 

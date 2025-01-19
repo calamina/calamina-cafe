@@ -11,7 +11,6 @@ definePageMeta({
 //     mode: 'out-in',
 //   }
 // })
-const test = ref(false)
 </script>
 
 <template>
@@ -27,15 +26,13 @@ const test = ref(false)
       </section>
       <Contact />
       <Socials />
-      <ClientOnly fallback-tag="span">
-        <Ascii />
-        <template #fallback>
-          <p>Loading ascii ...</p>
-        </template>
-      </ClientOnly>
-      <!-- <Ascii v-if="test" /> -->
-      <!-- <button @click="test = true">test</button> -->
-    </div class="content">
+    </div>
+    <ClientOnly fallback-tag="span">
+      <Ascii />
+      <template #fallback>
+        <p>Loading ascii ...</p>
+      </template>
+    </ClientOnly>
   </div>
 </template>
 
