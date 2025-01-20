@@ -3,41 +3,36 @@ import * as THREE from 'three/webgpu'
 import { uv, vec2, texture, attribute, uniform, color, pow, mix, step, floor } from 'three/tsl'
 import { Fn } from 'three/src/nodes/TSL.js';
 
-const container = useTemplateRef("container")
-
-// const pallete = [
-//   '#484884',
-//   '#8484b4',
-//   '#b4b4d0',
-//   '#d0d0ff',
-// ]
+// Data
 const pallete = [
   '#484848',
   '#848484',
   '#b4b4b4',
   '#d0d0d0',
 ]
-
 // const chars = " .*o&8@#"
 const chars = " `.-':_,^=;><+!rc*/z?sLTv)J7(|Fi{C}fI31tlu[neoZ5Yxjya]2ESwqkP6h9d4VpOGbUAKXHm8RD#$Bg0MNWQ%&@"
 const length = chars.length
-
-let object: THREE.Mesh | null = null
-
-let time: number = 0
-
-let scene2: THREE.Scene | null = null
-let camera2: THREE.OrthographicCamera | null = null
-let renderTarget: THREE.RenderTarget | null = null
 const size = 5;
 const aspect = window.innerWidth / window.innerHeight;
-var mouse = new THREE.Vector2();
+let time = 0
 
-const scene = new THREE.Scene()
-const camera = new THREE.OrthographicCamera(size * aspect / - 2, size * aspect / 2, size / 2, size / - 2, -1000, 1000);
-const renderer = new THREE.WebGPURenderer({
-  alpha: true
-})
+// THREE Data
+const asciiScene = new THREE.Scene()
+const shapeScene = new THREE.Scene()
+
+const camera = new THREE.OrthographicCamera(size * aspect / - 2, size * aspect / 2, size / 2, size / - 2, -10, 1000);
+const camera2 = new THREE.OrthographicCamera(size * aspect / - 2, size * aspect / 2, size / 2, size / - 2, -10, 1000);
+
+const object = new THREE.Mesh(
+  new THREE.SphereGeometry(0.6, 2, 2),
+  new THREE.MeshPhysicalMaterial({ color: 0xffffff })
+)
+shapeScene.add(object)
+addLights(shapeScene)
+
+const renderTarget = new THREE.RenderTarget(window.innerWidth, window.innerHeight)
+const renderer = new THREE.WebGPURenderer({ alpha: true })
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 renderer.setSize(window.innerWidth, window.innerHeight)
 renderer.setClearColor(0xffffff, 0)
@@ -47,46 +42,32 @@ function onWindowResize() {
 
   camera.left = (size * newAspect) / -2;
   camera.right = (size * newAspect) / 2;
-  camera2!.left = (size * newAspect) / -2;
-  camera2!.right = (size * newAspect) / 2;
-
   camera.updateProjectionMatrix();
-  camera2?.updateProjectionMatrix();
+
+  camera2.left = (size * newAspect) / -2;
+  camera2.right = (size * newAspect) / 2;
+  camera2.updateProjectionMatrix();
 
   renderer.setSize(window.innerWidth, window.innerHeight)
 }
 
 function onMouseMove(event: PointerEvent) {
-  event.preventDefault();
-  if (!camera2) return
-
+  const mouse = new THREE.Vector2();
   mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
   mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
 
-  var vector = new THREE.Vector3(mouse.x, mouse.y, 0.01);
+  const vector = new THREE.Vector3(mouse.x, mouse.y, 0.01);
   vector.unproject(camera2);
-  var dir = vector.sub(camera2.position).normalize();
-  var distance = 350;
-  var pos = camera2.position.clone().add(dir.multiplyScalar(distance));
+
+  const dir = vector.sub(camera2.position).normalize();
+  const distance = 300;
+  const pos = camera2.position.clone().add(dir.multiplyScalar(distance));
+
   const posFixed = new THREE.Vector3(pos.x, -pos.y, pos.z)
-  object?.position.copy(posFixed);
-}
-
-function secondScene() {
-  scene2 = new THREE.Scene()
-  camera2 = new THREE.OrthographicCamera(size * aspect / - 2, size * aspect / 2, size / 2, size / - 2, 0.1, 1000);
-  camera2.position.set(0, 0, 1)
-
-  renderTarget = new THREE.RenderTarget(window.innerWidth, window.innerHeight)
-
-  object = new THREE.Mesh(
-    new THREE.SphereGeometry(0.6, 2, 2),
-    new THREE.MeshPhysicalMaterial({ color: 0xffffff })
-  )
-  object.position.set(0, 0, 0)
-  scene2.add(object)
-
-  addLights(scene2)
+  const object2 = object.clone()
+  object2.userData = { time }
+  shapeScene.add(object2)
+  object.position.copy(posFixed)
 }
 
 function addObjects() {
@@ -96,8 +77,8 @@ function addObjects() {
   const size = 0.135
 
   const material = asciiAndColorShader({
-    asciiTexture: createAsciiTexture(),
-    scene: renderTarget?.texture
+    asciiTexture: asciiTexture(),
+    scene: renderTarget.texture
   })
 
   const geometry = new THREE.PlaneGeometry(size, size, 1, 1)
@@ -126,39 +107,28 @@ function addObjects() {
 
   mesh.instanceMatrix.needsUpdate = true
   geometry.setAttribute('pixelUv', new THREE.InstancedBufferAttribute(uv, 2))
-
-  scene.add(mesh)
+  asciiScene.add(mesh)
 }
 
 function addLights(scene: THREE.Scene) {
   const light = new THREE.AmbientLight(0xffffff, 0.4)
-  scene.add(light)
-
   const light2 = new THREE.DirectionalLight(0xffffff, 1.5)
-  light2.position.set(1, 1, 0.866)
+
+  scene.add(light)
   scene.add(light2)
+  light2.position.set(1, 1, 0.866)
 }
 
-function createAsciiTexture() {
+const asciiTexture = () => {
   const canvas = document.createElement('canvas')
   const ctx = canvas.getContext('2d')
   canvas.width = length * 64
   canvas.height = 64
 
   if (ctx) {
-    // toggle for back colored 'pixels', maybe 000 the text and disable transparent on material
-    // also add #dedede color at top of palette so the back seems transparent.
-
-    // ctx.fillStyle = "#fff"
-    // ctx.fillRect(0, 0, canvas.width, canvas.height)
-    // ctx.globalAlpha = 0.5
-    // ctx.fillStyle = "#fff"
-    // ctx.font = "bold 40px Apercu"
     ctx.fillStyle = "#fff"
     ctx.font = "40px Apercu"
     ctx.textAlign = "center"
-    ctx.textRendering = "optimizeLegibility"
-
     for (let i = 0; i < length; i++) {
       ctx.fillText(chars[i], 32 + i * 64, 48)
     }
@@ -169,13 +139,7 @@ function createAsciiTexture() {
   return asciiTexture
 }
 
-function asciiAndColorShader({
-  asciiTexture,
-  scene
-}: {
-  asciiTexture: THREE.Texture;
-  scene: THREE.Texture | undefined
-}) {
+function asciiAndColorShader({ asciiTexture, scene }: { asciiTexture: THREE.Texture; scene: THREE.Texture }) {
   const uColor1 = uniform(color(pallete[0]))
   const uColor2 = uniform(color(pallete[1]))
   const uColor3 = uniform(color(pallete[2]))
@@ -186,11 +150,8 @@ function asciiAndColorShader({
   material.transparent = true
 
   const asciiCode = Fn(() => {
-    if (!scene) return
     const textureColor = texture(scene, attribute('pixelUv'))
-
     const brigthness = pow(textureColor.r, 1.2)
-
     const asciiUv = vec2(
       uv().x.div(length).add(floor(brigthness.mul(length)).div(length)),
       uv().y
@@ -204,8 +165,6 @@ function asciiAndColorShader({
     finalColor = mix(finalColor, uColor5, step(0.8, brigthness))
 
     return asciiCode.mul(finalColor)
-    // return finalColor
-    // return asciiCode
   })
 
   material.colorNode = asciiCode()
@@ -215,48 +174,41 @@ function asciiAndColorShader({
 function render() {
   time += 0.01
 
-  if (object) {
-    const pow = 2
-    object.rotation.x = Math.sin(time * pow)
-    object.rotation.y = Math.sin(time * pow)
-    object.rotation.z = Math.sin(time * pow)
-  }
+  shapeScene.children = shapeScene.children.filter(child =>
+    !child?.userData?.time || (time - child.userData?.time < 0.20)
+  )
 
+  const pow = 2
+  object.rotation.x = Math.sin(time * pow)
+  object.rotation.y = Math.sin(time * pow)
+  object.rotation.z = Math.sin(time * pow)
   requestAnimationFrame(render)
-  if (renderTarget && scene2 && camera2) {
-    renderer.setRenderTarget(renderTarget)
-    renderer.renderAsync(scene2, camera2)
-  }
+
+  renderer.setRenderTarget(renderTarget)
+  renderer.renderAsync(shapeScene, camera2)
 
   renderer.setRenderTarget(null)
-  renderer.renderAsync(scene, camera)
+  renderer.renderAsync(asciiScene, camera)
 }
 
 function init() {
-  container?.value?.appendChild(renderer.domElement);
-  secondScene()
-  addObjects()
+  document.getElementById('container')?.appendChild(renderer.domElement);
   window.addEventListener("resize", onWindowResize)
   window.addEventListener("pointermove", onMouseMove)
+  addObjects()
   render()
-  window.addEventListener("pointerover", onMouseMove, { once: true })
 }
 
-onMounted(() => {
-  setTimeout(() => init(), 200)
-});
+onMounted(() => init());
 
 onBeforeUnmount(() => {
-  if (renderer?.domElement)
-    renderer.domElement.style.display = "none"
+  if (renderer?.domElement) renderer.domElement.style.display = "none"
   renderer?.dispose()
 })
 </script>
 
 <template>
-  <div>
-    <div class="ascii" ref="container" id="container"></div>
-  </div>
+  <div class="ascii" id="container"></div>
 </template>
 
 <style lang="scss" scoped>
