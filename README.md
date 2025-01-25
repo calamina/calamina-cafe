@@ -6,7 +6,9 @@
 hey :)
 
 # DOING
-- fix mobile project padding
+- fix project grid : keep experimenting
+  - try fixed left menu ?
+- fix mobile image ratio 
 
 - fix ascii window resize
 - fix ascii performance

@@ -84,6 +84,7 @@ a {
     bottom: 1px;
     background-color: var(--bg);
     border-radius: 0.25rem;
+    border-radius: 0.5rem;
 }
 
 .select {
@@ -97,7 +98,8 @@ a {
     grid-template-rows: var(--size) var(--size);
     gap: calc(100% - (var(--size) * 2));
     background-color: var(--bg-darker);
-    border-radius: calc(0.25rem + 1px);
+    // border-radius: calc(0.25rem + 1px);
+    border-radius: calc(0.5rem + 1px);
     overflow: hidden;
 
     span {

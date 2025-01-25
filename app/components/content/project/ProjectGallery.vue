@@ -26,12 +26,11 @@ function focusImage(e: HTMLImageElement | null) {
       <ImageViewer v-if="imgView" :selected="imgView" :images="gallery" @unfocus="imgView = null" />
     <!-- </transition> -->
   </Teleport>
-  <!-- <div class="tw-flex tw-flex-col xl:tw-w-2/3 xl:tw-ml-auto tw-gap-2 tw-pb-2"> -->
-  <div class="tw-flex tw-flex-col tw-gap-2 tw-pb-4 xl:tw-col-start-5 xl:tw-col-end-11">
-    <div class="gallery tw-flex tw-flex-col tw-gap-2 tw-grid-cols-1 xl:tw-grid xl:tw-grid-cols-2" v-if="$slots.default">
+  <div class="tw-flex tw-flex-col tw-gap-2 xl:tw-pb-4 xl:tw-col-start-5 xl:tw-col-end-11">
+    <div class="gallery tw-flex tw-flex-col tw-gap-2 tw-grid-cols-1 tw-pt-8 xl:tw-pt-0 xl:tw-grid xl:tw-grid-cols-2" v-if="$slots.default">
       <slot />
     </div>
-    <ProjectNavigation class="!tw-grid xl:!tw-hidden" />
+    <ProjectNavigation class="!tw-grid xl:!tw-hidden tw-pt-2" />
   </div>
 </template>
 

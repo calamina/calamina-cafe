@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { Project } from '~/models/project';
 
 const { projects, type } = defineProps<{
   projects: any[]
@@ -6,23 +7,29 @@ const { projects, type } = defineProps<{
 }>()
 
 const routeName = computed(() => type === 'web' ? 'projects-web-project' : 'projects-phone-project')
+
+onMounted(() => {
+  console.debug(projects)
+})
 </script>
 
 <template>
-  <div class="wrapper">
+  <div class="tw-w-full tw-items-center tw-flex tw-flex-col tw-gap-4">
     <!-- TODO :: export header ? -->
-    <div class="header">
+    <div class="header tw-z-50 tw-sticky tw-top-4">
       <h2 class="tw-flex tw-items-center tw-gap-2">
-        <Icon name="tabler:folder" size="1.3rem" />
-        <!-- <Icon name="tabler:folder" size="2.75rem" /> -->
-        <!-- <span class="star tw-text-3xl tw-h-8 tw-pr-2">✦</span> -->
-        {{ type }}
+        <div class="tw-flex tw-items-center tw-gap-2">
+          <!-- <span class="star tw-text-3xl tw-h-8 tw-pr-2">✦</span> -->
+          <Icon name="tabler:folder" size="1.3rem" />
+          {{ type }}
+        </div>
         <span class="tw-opacity-60 tw-pl-2">[{{ projects.length }} projects]</span>
       </h2>
     </div>
     <div class="img-grid" :class="{ 'img-grid-phone': type === 'phone' }">
-      <highlightButton v-for="project in projects" class="lookin"
+      <highlightButton v-for="project in projects" class="lookin tw-rounded-2xl"
         :to="{ name: routeName, params: { project: project.name } }">
+        <!-- <img class="img" :src="project.img" rel="preload" alt=":(" /> -->
         <img class="img" :src="project.mini" rel="preload" alt=":(" />
         <!-- <NuxtImg class="img" :src="project.mini" rel="preload" alt=":(" /> -->
         <div class="info">
@@ -35,26 +42,25 @@ const routeName = computed(() => type === 'web' ? 'projects-web-project' : 'proj
 </template>
 
 <style lang="scss" scoped>
-.wrapper {
-  width: 100%;
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  gap: 1rem;
-}
-
 .img-grid {
   position: relative;
   width: 100%;
-  max-width: 70rem;
+  // width: 90%;
+  // max-width: 70rem;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  // grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(510px, 1fr));
+  // grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
   gap: 1rem;
+  gap: 2rem;
   align-items: center;
-  padding-bottom: 2rem;
+  padding: 0 2rem 2rem;
+  // padding-bottom: 2rem;
 
   &-phone {
-    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    // grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    // grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
 
     .img {
       aspect-ratio: 0.45;
@@ -63,19 +69,20 @@ const routeName = computed(() => type === 'web' ? 'projects-web-project' : 'proj
 }
 
 h2 {
-  // font-size: 1.5rem;
-  // font-size: 6rem;
-  // line-height: 6.5rem;
-  // font-size: 6rem;
-  // line-height: 6.5rem;
-  // font-size: 3rem;
   line-height: 1;
 }
 
 .header {
-  padding: 0 0.5rem;
-  width: 100%;
-  max-width: 70rem;
+  padding: 0.5rem 1rem;
+  width: 340px;
+  // background-color: var(--bg);
+  border-radius: 0.5rem;
+  backdrop-filter: blur(10px);
+
+  h2 {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 a {
@@ -85,6 +92,8 @@ a {
   gap: 0;
 
   .info {
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -111,6 +120,8 @@ img {
   align-items: center;
   justify-content: center;
   border: 4px solid var(--bg-lighter);
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
   aspect-ratio: 1.77;
   transition: border-color 0.3s;
 }

@@ -22,7 +22,7 @@ const weblist: QueryBuilderParams = {
 </script>
 
 <template>
-  <div class="tw-flex tw-flex-col tw-gap-8 tw-w-full">
+  <div class="tw-flex tw-flex-col tw-gap-4 tw-w-full">
     <ContentList :query="weblist" v-slot="{ list }">
       <ProjectsGrid :projects="list" :type="WEB" />
     </ContentList>

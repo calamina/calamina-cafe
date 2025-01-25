@@ -55,7 +55,7 @@ useHead({
     </footer>
   </div>
   <!-- DEV ONLY GUIDES -->
-  <!-- <div class="grid">
+  <div class="grid">
     <div class="guide"></div>
     <div class="guide"></div>
     <div class="guide"></div>
@@ -66,7 +66,7 @@ useHead({
     <div class="guide"></div>
     <div class="guide"></div>
     <div class="guide"></div>
-  </div> -->
+  </div>
 </template>
 
 <style scoped lang="scss">

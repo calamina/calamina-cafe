@@ -124,10 +124,7 @@ const leave = (el: Element, done: () => void) => {
 .pane {
   width: 100%;
   height: 100%;
-  // background-color: var(--bg-darkest);
-  background-color: var(--bg);
-  background-color: var(--Grey-400);
-  // maybe 450 test
+  background-color: var(--bg-darker);
 }
 
 .load {
