@@ -6,8 +6,7 @@
 hey :)
 
 # DOING
-- fix mobile projects (fixed project f*ed up)
-- finish navigation move (mobile projects fix)
+- fix mobile project padding
 
 - fix ascii window resize
 - fix ascii performance

@@ -10,7 +10,7 @@ const pageTransition: TransitionProps = {
         const { isProject } = storeToRefs(useRouteStore());
         if (!isProject.value) return setTimeout(() => { done() }, 800)
 
-        const startTime = performance.now()
+        // const startTime = performance.now()
         const title = document.querySelector('h1')
         const link = document.querySelector('.project-link')
         const gallery = document.querySelector('.gallery')
@@ -23,8 +23,8 @@ const pageTransition: TransitionProps = {
             defaults: { duration: 0.3, ease: "power2.out" },
             onComplete: () => {
                 done()
-                const endTime = performance.now()
-                console.debug(endTime - startTime + 'ms')
+                // const endTime = performance.now()
+                // console.debug(endTime - startTime + 'ms')
             },
         })
         timeline
