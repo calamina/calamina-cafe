@@ -13,17 +13,13 @@ definePageMeta({
   <div class="center">
     <div class="content">
       <h1>about</h1>
-      <hr>
       <p>
         Currently employed full time at
         <NuxtLink to="https://fr.linkedin.com/company/akuiteo" target="_blank">Akuiteo</NuxtLink>.
       </p>
-      <hr>
       <p>CV : web + <NuxtLink to="https://google.com">pdf</NuxtLink>
       </p>
-      <hr>
       <p>contact :)</p>
-      <hr>
       <!-- useTimeAgo etc. -->
     </div>
   </div>

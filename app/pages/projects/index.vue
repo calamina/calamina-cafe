@@ -1,24 +1,17 @@
 <script setup lang="ts">
 import type { QueryBuilderParams } from '@nuxt/content';
+
 definePageMeta({
   middleware: 'routing',
   pageTransition: transitionConfig,
 });
-// definePageMeta({
-//   middleware: 'routing',
-//   pageTransition: {
-//     name: 'appear',
-//     mode: 'out-in',
-//   }
-// })
 
-const weblist: QueryBuilderParams = { 
-  path: `/${WEB}`, 
-  }
-  const phonelist: QueryBuilderParams = { 
-  path: `/${PHONE}`, 
+const weblist: QueryBuilderParams = {
+  path: `/${WEB}`,
 }
-
+const phonelist: QueryBuilderParams = {
+  path: `/${PHONE}`,
+}
 </script>
 
 <template>
@@ -31,5 +24,3 @@ const weblist: QueryBuilderParams = {
     </ContentList>
   </div>
 </template>
-
-<style lang="scss" scoped></style>

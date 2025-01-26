@@ -66,6 +66,8 @@ useHead({
     <div class="guide"></div>
     <div class="guide"></div>
     <div class="guide"></div>
+    <div class="guide"></div>
+    <div class="guide"></div>
   </div>
 </template>
 
@@ -83,7 +85,7 @@ useHead({
 //   gap: 0 1rem;
 //   padding: 0 1rem;
 //   display: grid;
-//   grid-template-columns: repeat(10, 1fr);
+//   grid-template-columns: repeat(12, 1fr);
 //   pointer-events: none;
   
 //   .guide {
