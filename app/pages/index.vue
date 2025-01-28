@@ -54,7 +54,7 @@ section {
   width: 100%;
 }
 
-@media (max-width: 1250px) {
+@media (max-width: 1280px) {
   // h1 {
   //   font-size: 4rem;
   //   line-height: 4.25;

@@ -138,7 +138,7 @@ const leave = (el: Element, done: () => void) => {
 }
 
 // MEDIA QUERIES
-@media (max-width: 1250px) {
+@media (max-width: 1280px) {
   .load {
     font-size: 4rem;
   }

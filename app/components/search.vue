@@ -3,8 +3,8 @@ import { useFocusTrap } from '@vueuse/integrations/useFocusTrap'
 const search = ref('')
 const searchbox = ref(null)
 
-const query = await useAsyncData('web', () => queryContent('/web').find())
-const results = computed(() => query.data.value?.filter(res => res._path?.includes(search.value) && search.value !== ''))
+const { data: query } = await useAsyncData(() => queryCollection('web').all())
+const results = computed(() => query.value?.filter(res => res.path?.includes(search.value) && search.value !== ''))
 
 const { ctrl, k } = useMagicKeys({
   passive: false,
@@ -30,8 +30,8 @@ watch(results, () => results.value?.length ? activate() : deactivate())
     <Icon name="tabler:search" />
     <transition name="appear">
       <div class="results" v-if="results?.length">
-        <NuxtLink v-for="res in results" :to="'/projects/web/' + res.name" @click="search = ''">
-          {{ res.name }}
+        <NuxtLink v-for="res in results" :to="'/projects/web/' + res.title.toLowerCase()" @click="search = ''">
+          {{ res.title }}
         </NuxtLink>
       </div>
       <div class="results" v-else-if="search !== ''">

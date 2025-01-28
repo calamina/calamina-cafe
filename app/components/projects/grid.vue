@@ -1,16 +1,11 @@
 <script setup lang="ts">
-import type { Project } from '~/models/project';
-
+import type { PhoneCollectionItem, WebCollectionItem } from '@nuxt/content';
 const { projects, type } = defineProps<{
-  projects: any[]
+  projects: WebCollectionItem[] | PhoneCollectionItem[] | null
   type: string
 }>()
 
 const routeName = computed(() => type === 'web' ? 'projects-web-project' : 'projects-phone-project')
-
-onMounted(() => {
-  console.debug(projects)
-})
 </script>
 
 <template>
@@ -22,15 +17,15 @@ onMounted(() => {
             <Icon name="tabler:folder" size="1.3rem" />
             {{ type }}
           </div>
-          <span class="tw-opacity-60 tw-pl-2">[{{ projects.length }} projects]</span>
+          <span class="tw-opacity-60 tw-pl-2">[{{ projects?.length }} projects]</span>
         </h2>
       </div>
-      <highlightButton v-for="project in projects" class="lookin tw-rounded-2xl"
+      <highlightButton v-for="project in projects" id="project" class="lookin tw-rounded-2xl"
         :to="{ name: routeName, params: { project: project.name } }">
-        <img class="img" :src="project.mini" rel="preload" alt=":(" />
+        <img class="img" :src="(project.mini as any)" rel="preload" alt=":(" />
         <div class="info">
           <p>{{ project.name }}</p>
-          <p>{{ project.id < 10 ? '0' + project.id : project.id }}</p>
+          <p>{{ project.num < 10 ? '0' + project?.num : project?.num }}</p>
         </div>
       </highlightButton>
     </div>
@@ -118,7 +113,7 @@ img {
   transition: border-color 0.3s;
 }
 
-@media (max-width: 1250px) {
+@media (max-width: 1280px) {
   .img-grid {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     max-width: calc(100% - 2rem);

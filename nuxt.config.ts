@@ -1,39 +1,25 @@
+import rehypeUnwrapImages from "rehype-unwrap-images";
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: [
     '@vueuse/nuxt',
     '@pinia/nuxt',
     '@nuxt/eslint',
-    '@nuxtjs/sitemap',
     '@nuxtjs/color-mode',
     '@nuxt/icon',
     '@nuxt/content',
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
   ],
 
   ssr: true,
 
   nitro: {
-    // prerender: {       
-    //   crawlLinks: true,       
-    //   routes: ["/", "/about", "/projects", "/sitemap.xml"],     
-    //   // routes: ["/", "/about", "/projects", "/sitemap.xml", "/robots.txt"],     
-    // },
     srcDir: '/app',
     static: true,
   },
 
-  // routeRules: {
-  //   '/': { prerender: true },
-  //   '/about': { prerender: true },
-  //   '/projects': { isr: true },
-  //   '/projects/web/**': { isr: true },
-  //   '/projects/phone/**': { isr: true },
-  //   '/sitemap.xml': { prerender: true },
-  // },
-
   srcDir: 'app/',
-
 
   compatibilityDate: '2024-04-03',
 
@@ -51,11 +37,17 @@ export default defineNuxtConfig({
   },
 
   content: {
-    markdown: {
-      rehypePlugins: [
-        'rehype-unwrap-images'
-      ]
+    database: {
+      type: 'sqlite',
+      filename: './content.db',
     },
+    // build: {
+    //   markdown: {
+    //     rehypePlugins: {
+    //       'rehype-unwrap-images': {rehypeUnwrapImages},
+    //     }
+    //   }
+    // },
     // highlight: {
     //   theme: {
     //     default: 'github-light',
@@ -65,18 +57,15 @@ export default defineNuxtConfig({
     // }
   },
 
-  // image: {
-  //   format: ['webp'],
-  // },
-
   icon: {
     size: '1.25rem',
     class: 'icon',
   },
 
-  site: {
-    url: 'https://calamina.cafe',
-    name: 'Calamina Cafe'
+  router: {
+    options: {
+      scrollBehaviorType: 'smooth'
+    }
   },
 
   vite: {

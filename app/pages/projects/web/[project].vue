@@ -6,7 +6,7 @@ definePageMeta({
 
 const { project } = useRoute().params
 const path = `/${WEB}/${project}`
-const { data } = await useAsyncData(path, () => queryContent(path).findOne())
+const { data } = await useAsyncData(() => queryCollection(WEB).path(path).first())
 
 if (!data.value) {
   throw createError({

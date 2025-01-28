@@ -2,8 +2,6 @@
 const { project = '' } = defineProps<{
   project: string
 }>()
-
-const isLargeScreen = useMediaQuery('(min-width: 1280px)')
 </script>
 
 <template>
@@ -24,9 +22,7 @@ const isLargeScreen = useMediaQuery('(min-width: 1280px)')
       </div>
     </nav>
     <div class="tw-flex tw-gap-6">
-      <Search />
-      <!-- TODO :: fix ? wtf -->
-      <!-- <Search v-if="isLargeScreen" /> -->
+      <Search class="tw-hidden md:tw-block" />
       <Theme />
     </div>
   </header>

@@ -117,7 +117,7 @@ useHead({
 }
 
 // MEDIA QUERIES
-@media (max-width: 1250px) {
+@media (max-width: 1280px) {
   // main {
   //   padding: 0;
   // }

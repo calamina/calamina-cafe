@@ -1,29 +1,19 @@
 <script setup lang="ts">
-let previous: any = null
-let next: any = null
-
 const { fullPath } = useRoute()
 const type = fullPath.includes(WEB) ? WEB : PHONE
 
 const { project } = useRoute().params
 const path = `/${type}/${project}`
 
-await queryContent(type)
-    .findSurround(path)
-    .then(res => {
-        previous = res[0]
-        next = res[1]
-    })
+const { data: nav } = await useAsyncData(() => queryCollectionItemSurroundings(type, path, {fields: ['title', 'num']}).order('num', 'ASC'))
 </script>
 
 <template>
     <div class="navigation">
-        <div v-if="previous" class="prev">
-            <highlightButton class="button" :to="{ params: { project: previous.name } }">
+        <div v-if="nav?.[0]" class="prev">
+            <highlightButton class="button" :to="{ params: { project: nav[0].title.toLowerCase() } }">
                 <Icon name="tabler:arrow-left-bar" />
-                <h2>{{ previous.name }}</h2>
-                <!-- <img class="mini" :class="{ 'minismall': type === PHONE }" :src="previous.mini" rel="preload"
-                    alt="project picture"> -->
+                <h2>{{ nav[0].title }}</h2>
             </highlightButton>
         </div>
         <div v-else class="empty">
@@ -33,13 +23,11 @@ await queryContent(type)
             </highlightButton>
         </div>
 
-        <p class="id">{{ previous ? previous?.id + 1 : 1 }} / 19</p>
+        <p class="id">{{ nav?.[0] ? nav[0]?.num + 1 : 1 }} / 19</p>
 
-        <div v-if="next" class="next">
-            <highlightButton class="button" :to="{ params: { project: next.name } }">
-                <!-- <img class="mini" :class="{ 'minismall': type === PHONE }" :src="next.mini" rel="preload"
-                    alt="project picture"> -->
-                <h2>{{ next.name }}</h2>
+        <div v-if="nav?.[1]" class="next">
+            <highlightButton class="button" :to="{ params: { project: nav[1].title.toLowerCase() } }">
+                <h2>{{ nav[1].title }}</h2>
                 <Icon name="tabler:arrow-right-bar" />
             </highlightButton>
         </div>
@@ -66,10 +54,6 @@ await queryContent(type)
 
 .prev {
     justify-self: flex-start;
-
-    // .button {
-    //     padding-left: 1rem;
-    // }
 
     .mini {
         padding-left: 0.5rem;
@@ -154,7 +138,7 @@ await queryContent(type)
     object-fit: contain;
 }
 
-@media (max-width: 1250px) {
+@media (max-width: 1280px) {
 
     .next .button,
     .prev .button {
