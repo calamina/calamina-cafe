@@ -1,6 +1,5 @@
-import rehypeUnwrapImages from "rehype-unwrap-images";
+// import rehypeUnwrapImages from "rehype-unwrap-images";
 
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: [
     '@vueuse/nuxt',
@@ -12,16 +11,12 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
   ],
 
-  ssr: true,
-
   nitro: {
     srcDir: '/app',
     static: true,
   },
 
   srcDir: 'app/',
-
-  compatibilityDate: '2024-04-03',
 
   tailwindcss: { viewer: false },
   devtools: { enabled: false },
@@ -37,10 +32,6 @@ export default defineNuxtConfig({
   },
 
   content: {
-    database: {
-      type: 'sqlite',
-      filename: './content.db',
-    },
     // build: {
     //   markdown: {
     //     rehypePlugins: {
