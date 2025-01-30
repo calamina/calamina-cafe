@@ -1,7 +1,5 @@
 <script setup lang="ts">
-const { project = '' } = defineProps<{
-  project: string
-}>()
+const route = useRoute()
 </script>
 
 <template>
@@ -11,12 +9,11 @@ const { project = '' } = defineProps<{
       <NuxtLink to="/">home</NuxtLink>
       <NuxtLink to="/about">about</NuxtLink>
       <div class="tw-flex tw-gap-2">
-        <NuxtLink to="/projects" :class="{ 'route-active': project }">projects</NuxtLink>
+        <NuxtLink to="/projects" :class="{ 'route-active': route.params.project }">projects</NuxtLink>
         <transition name="sublink" mode="out-in">
-          <div class="tw-gap-2 tw-hidden xl:tw-flex" v-if="project.length" :key="project">
-            <!-- <div class="tw-flex tw-gap-2" v-if="project.length && isLargeScreen" :key="project"> -->
+          <div class="tw-gap-2 tw-hidden xl:tw-flex" v-if="route.params.project" :key="(route.params.project as string)">
             <p>:</p>
-            <p class="sublink">{{ project }}</p>
+            <p class="sublink">{{ route.params.project }}</p>
           </div>
         </transition>
       </div>

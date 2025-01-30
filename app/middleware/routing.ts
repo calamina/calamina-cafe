@@ -3,6 +3,8 @@ const { firstVisit, fromTo, isProject } = storeToRefs(useRouteStore())
 
 export default defineNuxtRouteMiddleware
   ((to, from) => {
+    window.scrollTo({top: 0})
+
     if(to.path === from.path) {
       setLoading(false)
       return

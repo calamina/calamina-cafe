@@ -3,7 +3,7 @@ import { defineCollection, defineContentConfig, z } from '@nuxt/content'
 export default defineContentConfig({
   collections: {
     web: defineCollection({
-      source: 'web/*.md',
+      source: 'projects/web/*.md',
       type: 'page',
       schema: z.object({
         num: z.number(),
@@ -12,7 +12,7 @@ export default defineContentConfig({
       })
     }),
     phone: defineCollection({
-      source: 'phone/*.md',
+      source: 'projects/phone/*.md',
       type: 'page',
       schema: z.object({
         num: z.number(),

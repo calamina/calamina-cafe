@@ -17,10 +17,8 @@ export default defineNuxtConfig({
   },
 
   srcDir: 'app/',
-
   tailwindcss: { viewer: false },
   devtools: { enabled: false },
-
   css: ['~/assets/style/main.scss'],
 
   app: {
@@ -53,11 +51,11 @@ export default defineNuxtConfig({
     class: 'icon',
   },
 
-  router: {
-    options: {
-      scrollBehaviorType: 'smooth'
-    }
-  },
+  // router: {
+  //   options: {
+  //     scrollBehaviorType: 'smooth'
+  //   }
+  // },
 
   vite: {
     css: {
@@ -68,4 +66,6 @@ export default defineNuxtConfig({
       },
     }
   },
+
+  compatibilityDate: '2025-01-29',
 })

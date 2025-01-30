@@ -33,7 +33,7 @@ useHead({
 
 <template>
   <div class="app tw-flex tw-flex-col tw-justify-between tw-min-h-screen">
-    <AppHeader :project />
+    <AppHeader />
 
     <!-- <main class="tw-flex tw-flex-grow tw-m-4 tw-mt-16 tw-h-full tw-justify-center tw-overflow-hidden"> -->
     <main class="tw-flex tw-flex-grow tw-mx-4 tw-mt-16 tw-h-full tw-justify-center">
@@ -55,7 +55,7 @@ useHead({
     </footer>
   </div>
   <!-- DEV ONLY GUIDES -->
-  <div class="grid">
+  <!-- <div class="grid">
     <div class="guide"></div>
     <div class="guide"></div>
     <div class="guide"></div>
@@ -68,7 +68,7 @@ useHead({
     <div class="guide"></div>
     <div class="guide"></div>
     <div class="guide"></div>
-  </div>
+  </div> -->
 </template>
 
 <style scoped lang="scss">

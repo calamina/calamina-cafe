@@ -1,15 +1,14 @@
 <script setup lang="ts">
-const { fullPath } = useRoute()
-const type = fullPath.includes(WEB) ? WEB : PHONE
+const route = useRoute()
+const type = route.path.includes(WEB) ? WEB : PHONE
 
-const { project } = useRoute().params
-const path = `/${type}/${project}`
-
-const { data: nav } = await useAsyncData(() => queryCollectionItemSurroundings(type, path, {fields: ['title', 'num']}).order('num', 'ASC'))
+const { data: nav } = await useAsyncData(() =>
+    queryCollectionItemSurroundings(type, route.path, { fields: ['title', 'num'] }).order('num', 'ASC')
+)
 </script>
 
 <template>
-    <div class="navigation">
+    <div class="navigation tw-grid tw-grid-cols-3 tw-items-center tw-pb-2">
         <div v-if="nav?.[0]" class="prev">
             <highlightButton class="button" :to="{ params: { project: nav[0].title.toLowerCase() } }">
                 <Icon name="tabler:arrow-left-bar" />
@@ -25,7 +24,7 @@ const { data: nav } = await useAsyncData(() => queryCollectionItemSurroundings(t
 
         <p class="id">{{ nav?.[0] ? nav[0]?.num + 1 : 1 }} / 19</p>
 
-        <div v-if="nav?.[1]" class="next">
+        <div v-if="nav?.[1]" :key="route.path" class="next">
             <highlightButton class="button" :to="{ params: { project: nav[1].title.toLowerCase() } }">
                 <h2>{{ nav[1].title }}</h2>
                 <Icon name="tabler:arrow-right-bar" />
@@ -41,17 +40,6 @@ const { data: nav } = await useAsyncData(() => queryCollectionItemSurroundings(t
 </template>
 
 <style lang="scss" scoped>
-.navigation {
-    width: 100%;
-    margin-top: auto;
-    // padding: 0 0.5rem;
-    gap: 0.5rem;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    align-items: center;
-    padding-bottom: 0.5rem;
-}
-
 .prev {
     justify-self: flex-start;
 

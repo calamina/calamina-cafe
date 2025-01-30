@@ -4,8 +4,6 @@ const { projects, type } = defineProps<{
   projects: WebCollectionItem[] | PhoneCollectionItem[] | null
   type: string
 }>()
-
-const routeName = computed(() => type === 'web' ? 'projects-web-project' : 'projects-phone-project')
 </script>
 
 <template>
@@ -21,7 +19,7 @@ const routeName = computed(() => type === 'web' ? 'projects-web-project' : 'proj
         </h2>
       </div>
       <highlightButton v-for="project in projects" id="project" class="lookin tw-rounded-2xl"
-        :to="{ name: routeName, params: { project: project.name } }">
+        :to="project.path">
         <img class="img" :src="(project.mini as any)" rel="preload" alt=":(" />
         <div class="info">
           <p>{{ project.name }}</p>
