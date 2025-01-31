@@ -1,16 +1,20 @@
 <script setup lang="ts">
+const { path = '' } = defineProps<{
+  path: string | undefined
+}>()
+
 const route = useRoute()
 const type = route.path.includes(WEB) ? WEB : PHONE
 
 const { data: nav } = await useAsyncData(() =>
-    queryCollectionItemSurroundings(type, route.path, { fields: ['title', 'num'] }).order('num', 'ASC')
+    queryCollectionItemSurroundings(type, path, { fields: ['title', 'num'] }).order('num', 'ASC')
 )
 </script>
 
 <template>
     <div class="navigation tw-grid tw-grid-cols-3 tw-items-center tw-pb-2">
-        <div v-if="nav?.[0]" class="prev">
-            <highlightButton class="button" :to="{ params: { project: nav[0].title.toLowerCase() } }">
+        <div v-if="nav?.[0]" :key="nav[0].path" class="prev">
+            <highlightButton class="button" :to="nav[0].path">
                 <Icon name="tabler:arrow-left-bar" />
                 <h2>{{ nav[0].title }}</h2>
             </highlightButton>
@@ -24,8 +28,8 @@ const { data: nav } = await useAsyncData(() =>
 
         <p class="id">{{ nav?.[0] ? nav[0]?.num + 1 : 1 }} / 19</p>
 
-        <div v-if="nav?.[1]" :key="route.path" class="next">
-            <highlightButton class="button" :to="{ params: { project: nav[1].title.toLowerCase() } }">
+        <div v-if="nav?.[1]" :key="nav[1].path" class="next">
+            <highlightButton class="button" :to="nav[1].path">
                 <h2>{{ nav[1].title }}</h2>
                 <Icon name="tabler:arrow-right-bar" />
             </highlightButton>
