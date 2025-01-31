@@ -6,6 +6,9 @@
 hey :)
 
 # DOING
+- fix navigation :'(
+- fix page transitions (+ css @enter)
+
 - fix project grid : keep experimenting
   - try fixed left menu ?
 - fix mobile image ratio 

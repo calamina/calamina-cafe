@@ -19,7 +19,7 @@
       <Contact />
       <Socials />
     </div>
-    <ClientOnly fallback-tag="span">
+    <ClientOnly>
       <Ascii />
       <template #fallback>
         <p>Loading ascii ...</p>

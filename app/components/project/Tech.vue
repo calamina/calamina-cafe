@@ -39,6 +39,7 @@ const { tech } = defineProps<{
 .tag {
     background-color: var(--bg-darker);
     padding: 0 0.5rem;
+    border-radius: 0.5rem;
 }
 
 .tools {

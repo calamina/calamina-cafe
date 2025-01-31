@@ -9,8 +9,6 @@ const pageTransition: TransitionProps = {
     onLeave: (el: Element, done: () => void) => {
         const { isProject } = storeToRefs(useRouteStore());
         if (!isProject.value) return setTimeout(() => { done() }, 800)
-
-        // const startTime = performance.now()
         const title = document.querySelector('h1')
         const link = document.querySelector('.project-link')
         const gallery = document.querySelector('.gallery')

@@ -5,7 +5,6 @@ const type = route.path.includes(WEB) ? WEB : PHONE
 const { data: nav } = await useAsyncData(() =>
     queryCollectionItemSurroundings(type, route.path, { fields: ['title', 'num'] }).order('num', 'ASC')
 )
-console.debug(nav)
 </script>
 
 <template>

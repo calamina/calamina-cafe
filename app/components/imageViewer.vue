@@ -48,7 +48,20 @@ function exit() {
                     Fullscreen mode
                 </TextBrackets>
                 <TextBrackets>{{ images.indexOf(image) + 1 }} / {{ images.length }}</TextBrackets>
-                <div>
+                <ButtonBrackets :type="'alert'" @click="exit()">
+                    close
+                    <Icon name="tabler:eye-off" />
+                </ButtonBrackets>
+            </div>
+            <transition :name="imgSwipeTransition" mode="out-in">
+                <img @click="exit()" :src="image.src" :alt="image.alt" :key="image.src" class="lookout">
+            </transition>
+            <div class="options">
+                <ButtonBrackets :type="'classic'" @click="prevImg()">
+                    <Icon name="tabler:arrow-left-bar" />
+                    previous
+                </ButtonBrackets>
+                <div class="tw-flex tw-gap-8">
                     <TextBrackets>
                         <Icon name="tabler:hand-click" />
                         or Escape to exit
@@ -59,20 +72,7 @@ function exit() {
                         to navigate
                     </TextBrackets>
                 </div>
-            </div>
-            <transition :name="imgSwipeTransition" mode="out-in">
-                <img @click="exit()" :src="image.src" :alt="image.alt" :key="image.src" class="lookout">
-            </transition>
-            <div class="options">
-                <ButtonBrackets @click="prevImg()">
-                    <Icon name="tabler:arrow-left-bar" />
-                    previous
-                </ButtonBrackets>
-                <ButtonBrackets @click="exit()">
-                    close
-                    <Icon name="tabler:eye-off" />
-                </ButtonBrackets>
-                <ButtonBrackets @click="nextImg()">
+                <ButtonBrackets :type="'classic'" @click="nextImg()">
                     next
                     <Icon name="tabler:arrow-right-bar" />
                 </ButtonBrackets>
@@ -89,9 +89,6 @@ function exit() {
     left: 0;
     height: 100vh;
     width: 100%;
-    // padding: 1rem 0;
-    // padding: 1rem;
-    // backdrop-filter: blur(15px);
     background-color: var(--bg);
 }
 
@@ -102,32 +99,14 @@ function exit() {
     flex-flow: column;
     align-items: center;
     justify-content: center;
-    // gap: 0.5rem;
-    // border: 1px solid #000;
     overflow: hidden;
 
     .options {
-        // display grid for perfect center alignment ?
         display: flex;
         justify-content: space-between;
-        align-items: start;
+        align-items: center;
         width: 100%;
-        // padding: 0 1rem;
         padding: 1rem;
-
-        // &:first-of-type {
-        // border-bottom: 1px solid #000;
-        // }
-
-        // &:last-of-type {
-        // border-top: 1px solid #000;
-        // }
-
-        div {
-            display: flex;
-            flex-flow: column;
-            align-items: end;
-        }
     }
 
     img {
