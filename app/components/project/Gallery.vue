@@ -17,13 +17,10 @@ onMounted(() => {
 function focusImage(e: HTMLImageElement | null) {
   imgView.value = e
 }
-
-const { project } = useRoute().params
 </script>
 
 <template>
   <Teleport to="body">
-    <!-- TODO : test gsap flip -->
       <ImageViewer v-if="imgView" :selected="imgView" :images="gallery" @unfocus="imgView = null" />
   </Teleport>
   <div class="tw-flex tw-flex-col tw-gap-2 xl:tw-pb-2 xl:tw-col-start-5 xl:tw-col-end-11">

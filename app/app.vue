@@ -26,7 +26,7 @@ useHead({
   ],
   htmlAttrs: {
     lang: 'en',
-  class: 'xl:tw-overscroll-y-none',
+    class: 'xl:tw-overscroll-y-none',
   },
 })
 </script>
@@ -87,7 +87,7 @@ useHead({
 //   display: grid;
 //   grid-template-columns: repeat(12, 1fr);
 //   pointer-events: none;
-  
+
 //   .guide {
 //     width: 100%;
 //     height: 100%;
@@ -98,7 +98,6 @@ useHead({
 
 .app {
   min-height: 100vh;
-  // min-height: calc(100vh + 18rem);
 }
 
 // footer {
@@ -118,10 +117,6 @@ useHead({
 
 // MEDIA QUERIES
 @media (max-width: 1280px) {
-  // main {
-  //   padding: 0;
-  // }
-
   nav {
     gap: 1.5rem;
   }

@@ -18,7 +18,7 @@ const { projects, type } = defineProps<{
           <span class="tw-opacity-60 tw-pl-2">[{{ projects?.length }} projects]</span>
         </h2>
       </div>
-      <highlightButton v-for="project in projects" id="project" class="lookin tw-rounded-2xl"
+      <highlightButton v-for="project in projects" :id="project.name" class="lookin tw-rounded-2xl"
         :to="project.path">
         <img class="img" :src="(project.mini as any)" rel="preload" alt=":(" />
         <div class="info">
