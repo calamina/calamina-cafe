@@ -6,8 +6,6 @@ const { name, url = null, tech } = defineProps<{
   tech: ProjectTech
   url?: string
 }>()
-
-const { project } = useRoute().params
 </script>
 
 <template>
@@ -33,6 +31,22 @@ const { project } = useRoute().params
 :slotted(p) {
   padding: 1.5rem 0;
   text-justify: distribute;
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.3s 0.1s, transform 0.3s 0.1s;
+}
+
+.stars {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+@starting-style {
+  :slotted(p), .stars {
+    opacity: 0;
+    transform: translateX(-0.5rem)
+  }
 }
 
 .star {

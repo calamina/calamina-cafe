@@ -41,8 +41,21 @@ function focusImage(e: HTMLImageElement | null) {
     grid-column: span 2;
   }
 
-  // &>button {
-  //   grid-column: span 2;
-  // }
+  &>button {
+    opacity: 1;
+    transition: opacity 0.5s;
+  }
+}
+
+@for $i from 1 through 20 {
+    .gallery>button:nth-of-type(#{$i}) {
+        transition-delay: 0.05s + 0.1s * $i;
+    }
+}
+
+@starting-style {
+    .gallery>button {
+        opacity: 0;
+    }
 }
 </style>

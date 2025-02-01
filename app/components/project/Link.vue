@@ -15,5 +15,15 @@ const { url } = defineProps<{
 <style lang="scss" scoped>
 .project-link {
   background-color: var(--bg-darker);
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.3s 0.05s, transform 0.3s 0.05s;
+}
+
+@starting-style {
+  .project-link {
+    opacity: 0;
+    transform: translateX(-0.5rem)
+  }
 }
 </style>

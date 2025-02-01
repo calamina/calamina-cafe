@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ProjectTech } from '../../../models/ProjectTech';
+import type { ProjectTech } from '../../models/ProjectTech';
 
 const { tech } = defineProps<{
     tech: ProjectTech,
@@ -20,7 +20,9 @@ const { tech } = defineProps<{
 
 <style lang="scss" scoped>
 .category {
-    transition: padding-left 0.2s, background-color 0.2s;
+    transition: padding-left 0.2s, background-color 0.2s, opacity 0.3s, transform 0.3s;
+    opacity: 1;
+    transform: translateX(0);
 
     &:not(:last-of-type) {
         border-bottom: 1px solid var(--bg-darker);
@@ -29,6 +31,19 @@ const { tech } = defineProps<{
     &:hover {
         padding-left: 0.25rem;
         background-color: var(--bg);
+    }
+}
+
+@for $i from 1 through 20 {
+    .category:nth-of-type(#{$i}) {
+        transition-delay: 0.1s + (0.025s * $i);
+    }
+}
+
+@starting-style {
+    .category {
+        opacity: 0;
+        transform: translateX(-0.5rem);
     }
 }
 

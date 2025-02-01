@@ -1,45 +1,26 @@
 <script setup lang="ts">
-// const { path = '', type = 'web' } = defineProps<{
-// TODO :: test with prop type
-const { path = '' } = defineProps<{
-  path: string | undefined
-//   type: 'web' | 'phone'
-}>()
-
 const route = useRoute()
 const type = route.path.includes(WEB) ? WEB : PHONE
 
 const { data: nav } = await useAsyncData(() =>
-    queryCollectionItemSurroundings(type, path, { fields: ['title', 'num'] }).order('num', 'ASC')
+    queryCollectionItemSurroundings(type, route.path, { fields: ['title', 'num'] }).order('num', 'ASC')
 )
 </script>
 
 <template>
     <div class="navigation tw-grid tw-grid-cols-3 tw-items-center tw-pb-2">
-        <div v-if="nav?.[0]" :key="nav[0].path" class="prev">
-            <highlightButton class="button" :to="nav[0].path">
+        <div :key="nav?.[0]?.path" class="prev">
+            <highlightButton class="button" :to="nav?.[0]?.path ?? { name: 'projects' }">
                 <Icon name="tabler:arrow-left-bar" />
-                <h2>{{ nav[0].title }}</h2>
-            </highlightButton>
-        </div>
-        <div v-else class="empty">
-            <highlightButton class="button" :to="{ name: 'projects' }">
-                <Icon name="tabler:arrow-left-bar" />
-                <h2>back to projects</h2>
+                <h2>{{ nav?.[0]?.title ?? 'back to projects'}}</h2>
             </highlightButton>
         </div>
 
-        <p class="id">{{ nav?.[0] ? nav[0]?.num + 1 : 1 }} / 19</p>
+        <p class="id">{{ nav?.[0] ? nav?.[0]?.num + 1 : 1 }} / 19</p>
 
-        <div v-if="nav?.[1]" :key="nav[1].path" class="next">
-            <highlightButton class="button" :to="nav[1].path">
-                <h2>{{ nav[1].title }}</h2>
-                <Icon name="tabler:arrow-right-bar" />
-            </highlightButton>
-        </div>
-        <div v-else class="empty">
-            <highlightButton class="button" :to="{ name: 'projects' }">
-                <h2>back to projects</h2>
+        <div :key="nav?.[1].path" class="next">
+            <highlightButton class="button" :to="nav?.[1]?.path ?? { name: 'projects' }">
+                <h2>{{ nav?.[1]?.title ?? 'back to projects' }}</h2>
                 <Icon name="tabler:arrow-right-bar" />
             </highlightButton>
         </div>
@@ -136,7 +117,8 @@ const { data: nav } = await useAsyncData(() =>
 @media (max-width: 1280px) {
 
     .next .button,
-    .prev .button {
+    .prev .button,
+    .empty .button {
         display: flex;
         flex-flow: column-reverse;
         // max-width: 7rem;

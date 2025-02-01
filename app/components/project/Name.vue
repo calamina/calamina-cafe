@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const { name } = defineProps<{
-    name: string
+  name: string
 }>()
 </script>
 
@@ -9,8 +9,18 @@ const { name } = defineProps<{
 </template>
 
 <style lang="scss" scoped>
+h1 {
+  white-space: nowrap;
+  letter-spacing: -3px;
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+@starting-style {
   h1 {
-    white-space: nowrap;
-    letter-spacing: -3px;
+    opacity: 0;
+    transform: translateX(-0.5rem)
   }
+}
 </style>

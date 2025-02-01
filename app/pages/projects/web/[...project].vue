@@ -14,7 +14,7 @@ if (!page) {
 }
 
 useSeoMeta({
-  title: page.value?.title,
+  title: 'calamina ~ ' + page.value?.title,
   description: page.value?.description
 })
 </script>
@@ -23,8 +23,7 @@ useSeoMeta({
   <div class="tw-w-full tw-gap-2 tw-flex tw-flex-col">
     <ContentRenderer v-if="page" :value="page" class="xl:tw-grid xl:tw-grid-cols-10 xl:tw-gap-4" />
     <ClientOnly>
-      <ProjectNavigation v-if="page" :path="page.path"
-      class=" xl:tw-fixed xl:tw-left-2 xl:tw-pr-2 xl:tw-bottom-0 xl:tw-w-2/5" />
+      <ProjectNavigation v-if="page" class="content xl:tw-fixed xl:tw-left-2 xl:tw-pr-2 xl:tw-bottom-0 xl:tw-w-2/5" />
     </ClientOnly>
   </div>
 </template>

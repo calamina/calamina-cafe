@@ -57,7 +57,7 @@ function exit() {
                 <img @click="exit()" :src="image.src" :alt="image.alt" :key="image.src" class="lookout">
             </transition>
             <div class="options">
-                <ButtonBrackets :type="'classic'" @click="prevImg()">
+                <ButtonBrackets :type="'classic'" @click="prevImg()" v-if="images.length > 1">
                     <Icon name="tabler:arrow-left-bar" />
                     previous
                 </ButtonBrackets>
@@ -72,7 +72,7 @@ function exit() {
                         to navigate
                     </TextBrackets>
                 </div>
-                <ButtonBrackets :type="'classic'" @click="nextImg()">
+                <ButtonBrackets :type="'classic'" @click="nextImg()" v-if="images.length > 1">
                     next
                     <Icon name="tabler:arrow-right-bar" />
                 </ButtonBrackets>
