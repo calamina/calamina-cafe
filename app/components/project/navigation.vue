@@ -18,7 +18,7 @@ const { data: nav } = await useAsyncData(() =>
 
         <p class="id">{{ nav?.[0] ? nav?.[0]?.num + 1 : 1 }} / 19</p>
 
-        <div :key="nav?.[1].path" class="next">
+        <div :key="nav?.[1]?.path" class="next">
             <highlightButton class="button" :to="nav?.[1]?.path ?? { name: 'projects' }">
                 <h2>{{ nav?.[1]?.title ?? 'back to projects' }}</h2>
                 <Icon name="tabler:arrow-right-bar" />
