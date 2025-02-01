@@ -1,6 +1,9 @@
 <script setup lang="ts">
+// const { path = '', type = 'web' } = defineProps<{
+// TODO :: test with prop type
 const { path = '' } = defineProps<{
   path: string | undefined
+//   type: 'web' | 'phone'
 }>()
 
 const route = useRoute()
@@ -93,7 +96,7 @@ const { data: nav } = await useAsyncData(() =>
 }
 
 .empty .button {
-    padding: 1rem;
+    padding: 0.5rem 1rem;
     background-color: transparent;
 }
 

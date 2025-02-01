@@ -37,7 +37,7 @@ useHead({
 
     <!-- <main class="tw-flex tw-flex-grow tw-m-4 tw-mt-16 tw-h-full tw-justify-center tw-overflow-hidden"> -->
     <main class="tw-flex tw-flex-grow tw-mx-4 tw-mt-16 tw-h-full tw-justify-center">
-      <AppTransition />
+      <!-- <AppTransition /> -->
       <NuxtPage />
     </main>
 

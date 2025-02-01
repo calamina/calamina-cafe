@@ -1,4 +1,4 @@
-// import rehypeUnwrapImages from "rehype-unwrap-images";
+import rehypeUnwrapImages from "rehype-unwrap-images";
 
 export default defineNuxtConfig({
   modules: [
@@ -30,13 +30,11 @@ export default defineNuxtConfig({
   },
 
   content: {
-    // build: {
-    //   markdown: {
-    //     rehypePlugins: {
-    //       'rehype-unwrap-images': {rehypeUnwrapImages},
-    //     }
-    //   }
-    // },
+    build: {
+      markdown: {
+        rehypePlugins: { 'rehype-unwrap-images': { rehypeUnwrapImages } }
+      }
+    },
     // highlight: {
     //   theme: {
     //     default: 'github-light',

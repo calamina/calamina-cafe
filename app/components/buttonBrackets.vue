@@ -21,8 +21,8 @@ button {
     gap: 0.5rem;
     align-items: center;
 
-    &.alert {
-        background-color: hsl(2, 50%, 77%);
-    }
+    // &.alert {
+    //     background-color: hsl(2, 50%, 77%);
+    // }
 }
 </style>

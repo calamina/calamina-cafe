@@ -4,21 +4,21 @@ const route = useRoute()
 
 <template>
   <header
-    class="tw-flex tw-fixed tw-top-0 tw-items-center tw-py-4 tw-px-4 tw-h-16 tw-justify-between tw-z-50 tw-w-full">
+    class="tw-flex tw-fixed tw-top-0 tw-items-center tw-py-4 tw-px-4 tw-h-16 tw-justify-between tw-z-50 tw-w-full tw-pointer-events-none">
     <nav class="tw-flex tw-gap-8">
-      <NuxtLink to="/">home</NuxtLink>
-      <NuxtLink to="/about">about</NuxtLink>
-      <div class="tw-flex tw-gap-2">
+      <NuxtLink class="tw-pointer-events-auto" to="/">home</NuxtLink>
+      <NuxtLink class="tw-pointer-events-auto" to="/about">about</NuxtLink>
+      <div class="tw-flex tw-gap-2 tw-pointer-events-auto">
         <NuxtLink to="/projects" :class="{ 'route-active': route.params.project }">projects</NuxtLink>
         <transition name="sublink" mode="out-in">
-          <div class="tw-gap-2 tw-hidden xl:tw-flex" v-if="route.params.project" :key="(route.params.project as string)">
+          <div class="tw-gap-2 tw-hidden xl:tw-flex" v-if="route.params.project?.length" :key="(route.params.project[0])">
             <p>:</p>
-            <p class="sublink">{{ route.params.project }}</p>
+            <p class="sublink">{{ route.params.project[0] }}</p>
           </div>
         </transition>
       </div>
     </nav>
-    <div class="tw-flex tw-gap-6">
+    <div class="tw-flex tw-gap-6 tw-pointer-events-auto">
       <Search class="tw-hidden md:tw-block" />
       <Theme />
     </div>
