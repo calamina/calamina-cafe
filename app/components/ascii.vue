@@ -3,6 +3,8 @@ import * as THREE from 'three/webgpu'
 import { uv, vec2, texture, attribute, uniform, color, pow, mix, step, floor } from 'three/tsl'
 import { Fn } from 'three/src/nodes/TSL.js';
 
+// let container: HTMLElement = document.querySelector('#container') as HTMLElement;
+
 // Data
 const pallete = [
   '#484848',
@@ -14,7 +16,9 @@ const pallete = [
 const chars = " `.-':_,^=;><+!rc*/z?sLTv)J7(|Fi{C}fI31tlu[neoZ5Yxjya]2ESwqkP6h9d4VpOGbUAKXHm8RD#$Bg0MNWQ%&@"
 const length = chars.length
 const size = 5;
-const aspect = window.innerWidth / window.innerHeight;
+const aspect = 1;
+// const aspect = container?.clientWidth / container?.clientHeight;
+// const aspect = document.innerWidth / document.innerHeight;
 let time = 0
 
 // THREE Data
@@ -31,25 +35,31 @@ const object = new THREE.Mesh(
 shapeScene.add(object)
 addLights(shapeScene)
 
-const renderTarget = new THREE.RenderTarget(window.innerWidth, window.innerHeight)
+const renderTarget = new THREE.RenderTarget(510, 510)
+// const renderTarget = new THREE.RenderTarget(window.innerWidth, window.innerHeight)
 const renderer = new THREE.WebGPURenderer({ alpha: true })
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-renderer.setSize(window.innerWidth, window.innerHeight)
+renderer.setPixelRatio(1)
+// renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+console.debug(window.devicePixelRatio)
+renderer.setSize(510, 510)
+// renderer.setSize(window.innerWidth, window.innerHeight)
 renderer.setClearColor(0xffffff, 0)
 
-function onWindowResize() {
-  const newAspect = window.innerWidth / window.innerHeight;
+// function onWindowResize() {
+//   // const newAspect = container?.clientWidth / container?.clientHeight;
+//   // const newAspect = window.innerWidth / window.innerHeight;
 
-  camera.left = (size * newAspect) / -2;
-  camera.right = (size * newAspect) / 2;
-  camera.updateProjectionMatrix();
+//   camera.left = (size * newAspect) / -2;
+//   camera.right = (size * newAspect) / 2;
+//   camera.updateProjectionMatrix();
 
-  camera2.left = (size * newAspect) / -2;
-  camera2.right = (size * newAspect) / 2;
-  camera2.updateProjectionMatrix();
+//   camera2.left = (size * newAspect) / -2;
+//   camera2.right = (size * newAspect) / 2;
+//   camera2.updateProjectionMatrix();
 
-  renderer.setSize(window.innerWidth, window.innerHeight)
-}
+//   renderer.setSize(container?.clientWidth, container?.clientHeight)
+//   // renderer.setSize(window.innerWidth, window.innerHeight)
+// }
 
 function onMouseMove(event: PointerEvent) {
   const mouse = new THREE.Vector2();
@@ -193,13 +203,18 @@ function render() {
 
 function init() {
   document.getElementById('container')?.appendChild(renderer.domElement);
-  window.addEventListener("resize", onWindowResize)
   window.addEventListener("pointermove", onMouseMove)
   addObjects()
   render()
+  // container = document.querySelector('#container') as HTMLElement
+  // window.addEventListener("resize", onWindowResize)
 }
 
 onMounted(() => init());
+// onMounted(() => {
+//   init()
+//   onWindowResize()
+// });
 
 onBeforeUnmount(() => {
   if (renderer?.domElement) renderer.domElement.style.display = "none"
@@ -208,16 +223,25 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div class="ascii" id="container"></div>
+  <div class="ascii" id="container">
+    <!-- todo :: state click play/pause ? and center rotate -->
+    <div class="state tw-absolute tw-top-2 tw-left-2 tw-w-2 tw-h-2 tw-rounded-lg"></div>
+  </div>
 </template>
 
 <style lang="scss" scoped>
 .ascii {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: calc(100vw);
-  height: calc(100vh);
+  position: relative;
+  border: 2px solid var(--bg-darker0);
+  border-radius: 0.5rem;
+  height: 80%;
+  width: 30rem;
+  height: 30rem;
+  position: relative;
   z-index: -1;
+}
+
+.state {
+  background-color: hsl(288, 50%, 77%);
 }
 </style>

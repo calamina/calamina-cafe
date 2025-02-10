@@ -4,17 +4,26 @@ import type { ProjectTech } from '../../models/ProjectTech';
 const { tech } = defineProps<{
     tech: ProjectTech,
 }>()
+
+const categs = Object.entries(tech).filter(entry => entry[0] !== "colors") 
 </script>
 
 <template>
     <div class="tech">
-        <div class="category tw-flex tw-items-baseline tw-py-1" v-for="category in Object.entries(tech ?? {})">
+        <div class="category tw-flex tw-items-baseline tw-pt-1 tw-pb-2" v-for="category in categs">
             <slot />
             <p class="category-title tw-capitalize">{{ category[0] }}</p>
             <div class="tw-flex tw-pt-1 tw-gap-2">
                 <span class="tag" :class="category[0]" v-for="entry in category[1]">{{ entry }}</span>
             </div>
         </div>
+        <!-- <div class="category tw-flex tw-items-baseline tw-py-1">
+            <slot />
+            <p class="category-title tw-capitalize">Colors</p>
+            <div class="tw-flex tw-pt-1 tw-gap-2">
+                <span class="tw-w-4 tw-h-4 tw-rounded-full" :class="tech.colors" :style="{backgroundColor: color}" v-for="color in tech.colors"></span>
+            </div>
+        </div> -->
     </div>
 </template>
 

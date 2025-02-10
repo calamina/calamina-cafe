@@ -5,7 +5,8 @@ const { direction } = defineProps<{
 </script>
 
 <template>
-  <nav class="tw-flex tw-w-full tw-gap-12" :class="{'tw-flex-col' : direction === 'col'}">
+  <nav class="tw-flex tw-flex-col tw-w-full tw-gap-2" :class="{'tw-flex-col' : direction === 'col'}">
+  <!-- <nav class="tw-flex tw-w-full tw-gap-12" :class="{'tw-flex-col' : direction === 'col'}"> -->
     <a target=”_blank” href="https://github.com/calamina">
       <Icon name="tabler:brand-github" />
       github

@@ -5,8 +5,17 @@
 // });
 </script>
 
+<!-- .center {
+  flex: 1;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+} -->
+
 <template>
-  <div class="center">
+  <div class="tw-flex tw-flex-col tw-gap-4 tw-items-center xl:tw-flex-row">
+  <!-- <div class="center"> -->
     <div class="content">
       <section>
         <h1>calamina.cafe</h1>
@@ -19,10 +28,13 @@
       <Contact />
       <Socials />
     </div>
+
     <ClientOnly>
       <Ascii />
       <template #fallback>
-        <p>Loading ascii ...</p>
+        <div class="loader">
+          <p>Loading ascii ...</p>
+        </div>
       </template>
     </ClientOnly>
   </div>
@@ -34,6 +46,18 @@
   flex-flow: column;
   align-items: center;
   gap: 2rem;
+}
+
+.loader {
+  border: 2px solid var(--bg-darker0);
+  border-radius: 0.5rem;
+  height: 80%;
+  width: 30rem;
+  height: 30rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 // h1 {

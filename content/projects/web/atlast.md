@@ -17,10 +17,19 @@ tech:
       - 'scss'
       - 'typescript'
     colors:
-      - '#lelele'
-      - '#tetete'
+      - '#fff'
+      - '#efefef'
+      - '#323232'
+      - '#dfcfe8'
+      - '#dc6389'
+      - '#b97749cc'
+      - '#a4dc6366'
+      - '#dca86366'
+      - '#63cedc66'
+      - '#88888866'
+      - '#b6cccf66'
     fonts:
-      - 'apercu mono regular'
+      - 'contax'
     icons:
       - 'tabler'
 ---

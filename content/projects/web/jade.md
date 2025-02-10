@@ -19,9 +19,9 @@ tech:
       - '#lelele'
       - '#tetete'
     fonts:
-      - 'apercu mono regular'
+      - 'Cascadia Code'
     icons:
-      - 'tabler'
+      - 'Font Awesome'
 ---
 Startpage with fake depth and 3D.
 ::
