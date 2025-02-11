@@ -61,10 +61,12 @@ a {
     gap: .5rem;
     text-decoration: none;
     color: var(--color);
+    width: fit-content;
 
     &:hover {
         outline: none;
-        text-decoration: underline;
+        background-color: hsl(288, 50%, 77%);
+        // text-decoration: underline;
     }
 }
 

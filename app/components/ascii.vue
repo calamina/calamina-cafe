@@ -6,12 +6,26 @@ import { Fn } from 'three/src/nodes/TSL.js';
 // let container: HTMLElement = document.querySelector('#container') as HTMLElement;
 
 // Data
-const pallete = [
-  '#484848',
-  '#848484',
-  '#b4b4b4',
-  '#d0d0d0',
+// const pallete = [
+//   '#484848',
+//   '#848484',
+//   '#b4b4b4',
+//   '#d0d0d0',
+// ]
+let pallete = [
+  '#a7bee2',
+  '#d6a7e2',
+  '#e2a9a7',
+  '#e2d8a7',
+  '#a7e2be',
 ]
+// const pallete = [
+//   '#6c86ac',
+//   '#a06cac',
+//   '#ac6e6c',
+//   '#aca26c',
+//   '#6cac86',
+// ]
 // const chars = " .*o&8@#"
 const chars = " `.-':_,^=;><+!rc*/z?sLTv)J7(|Fi{C}fI31tlu[neoZ5Yxjya]2ESwqkP6h9d4VpOGbUAKXHm8RD#$Bg0MNWQ%&@"
 const length = chars.length
@@ -81,8 +95,10 @@ function onMouseMove(event: PointerEvent) {
 }
 
 function addObjects() {
-  const rows = Math.floor(window.innerWidth / 16)
-  const cols = Math.floor(window.innerHeight / 16)
+  const rows = Math.floor(510 / 8)
+  const cols = Math.floor(510 / 8)
+  // const rows = Math.floor(window.innerWidth / 16)
+  // const cols = Math.floor(window.innerHeight / 16)
   const instances = rows * cols
   const size = 0.135
 
@@ -137,7 +153,7 @@ const asciiTexture = () => {
 
   if (ctx) {
     ctx.fillStyle = "#fff"
-    ctx.font = "40px Apercu"
+    ctx.font = "60px Apercu"
     ctx.textAlign = "center"
     for (let i = 0; i < length; i++) {
       ctx.fillText(chars[i], 32 + i * 64, 48)
@@ -185,7 +201,7 @@ function render() {
   time += 0.01
 
   shapeScene.children = shapeScene.children.filter(child =>
-    !child?.userData?.time || (time - child.userData?.time < 0.20)
+    !child?.userData?.time || (time - child.userData?.time < 0.25)
   )
 
   const pow = 2
@@ -210,11 +226,22 @@ function init() {
   // window.addEventListener("resize", onWindowResize)
 }
 
-onMounted(() => init());
-// onMounted(() => {
-//   init()
-//   onWindowResize()
-// });
+// onMounted(() => init());
+onMounted(() => {
+  init()
+  const links = document.querySelectorAll('a')
+  links.forEach(link => {
+    link.addEventListener("mouseover", () => {
+      object.geometry.scale(1.4, 1.4, 1.4)
+      setTimeout(() => {
+        object.geometry.scale(1 / 1.4, 1 / 1.4, 1 / 1.4)
+      }, 400);
+    });
+    // link.addEventListener("mouseout", () => {
+    //   object.geometry.scale(1 / 1.4, 1 / 1.4, 1 / 1.4)
+    // });
+  })
+});
 
 onBeforeUnmount(() => {
   if (renderer?.domElement) renderer.domElement.style.display = "none"

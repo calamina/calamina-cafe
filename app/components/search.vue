@@ -45,6 +45,7 @@ watch(results, () => results.value?.length ? activate() : deactivate())
 input[type="search"] {
   padding-right: 2rem;
   padding-left: 0.75rem;
+  color: var(--color);
 }
 
 .icon {

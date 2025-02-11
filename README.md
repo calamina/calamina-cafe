@@ -9,9 +9,10 @@ hey :)
 - fix mobile image ratio 
 - fix strange tailwind behaviour between breakpoints 
 
-- ??? Maybe keep ascii contained !! in jail !!
+- test ascii colors
+- test ascii resize ease
 - fix ascii window resize
-- fix ascii performance
+- fix ascii performance ??
 - fix ascii rendering ? (font aliasing)
 
 # TODO 
