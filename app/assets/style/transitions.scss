@@ -1,13 +1,30 @@
 // APPEAR
 .appear-enter-active,
 .appear-leave-active {
-    transition: opacity 0.3s;
+    transition: opacity 0.15s, transform 0.15s;
 }
 
-.appear-enter-from,
+.appear-enter-from {
+    opacity: 0;
+    transform: translateY(-0.5rem);
+}
+
 .appear-leave-to {
     opacity: 0;
+    transform: translateY(0.5rem);
 }
+
+// FADE
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.15s;
+}
+
+// .fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
+
 
 // SLIDETORIGHT
 .slideToRight-enter-active,

@@ -10,9 +10,7 @@ hey :)
 - fix strange tailwind behaviour between breakpoints 
 
 - test ascii colors
-- test ascii resize ease
 - fix ascii window resize
-- fix ascii performance ??
 - fix ascii rendering ? (font aliasing)
 
 # TODO 

@@ -3,6 +3,8 @@
 //   middleware: 'routing',
 //   pageTransition: transitionConfig,
 // });
+definePageMeta({ pageTransition: { name: 'appear', mode: 'out-in' } })
+
 </script>
 
 <!-- .center {
@@ -15,8 +17,8 @@
 
 <template>
   <div class="tw-flex tw-flex-col tw-gap-4 tw-items-center xl:tw-flex-row">
-  <!-- <div class="center"> -->
-    <div class="content">
+    <!-- <div class="center"> -->
+    <div class="content tw-w-96">
       <section>
         <h1>calamina.cafe</h1>
       </section>
@@ -46,6 +48,15 @@
   flex-flow: column;
   align-items: center;
   gap: 2rem;
+  opacity: 1;
+  transform: translateY(0);
+  transition: transform 0.3s;
+}
+
+@starting-style {
+  .content {
+    transform: translateY(-1rem);
+  }
 }
 
 .loader {

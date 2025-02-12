@@ -24,7 +24,8 @@ onMounted(() => {
   setTimeout(() => visited(), 500)
 })
 
-const visible = computed(() => firstVisit.value ? true : loading.value)
+const visible = computed(() => firstVisit.value)
+// const visible = computed(() => firstVisit.value ? true : loading.value)
 
 const enter = (el: Element, done: () => void) => {
   const panes = el.querySelectorAll('.pane');
@@ -71,6 +72,7 @@ const leave = (el: Element, done: () => void) => {
 
 <template>
   <Transition @enter="enter" @leave="leave">
+    <!-- <div class="transition" v-if="visible"> -->
     <div class="transition" v-if="visible">
       <div class="pane tw-flex tw-items-end tw-justify-center">
         <p class="load">l</p>

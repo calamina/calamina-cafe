@@ -2,23 +2,29 @@
 import * as THREE from 'three/webgpu'
 import { uv, vec2, texture, attribute, uniform, color, pow, mix, step, floor } from 'three/tsl'
 import { Fn } from 'three/src/nodes/TSL.js';
+import gsap from 'gsap';
+import Stats from 'stats.js'
+
+// var stats = new Stats();
+// stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
+// document.body.appendChild(stats.dom);
 
 // let container: HTMLElement = document.querySelector('#container') as HTMLElement;
 
 // Data
-// const pallete = [
-//   '#484848',
-//   '#848484',
-//   '#b4b4b4',
-//   '#d0d0d0',
-// ]
-let pallete = [
-  '#a7bee2',
-  '#d6a7e2',
-  '#e2a9a7',
-  '#e2d8a7',
-  '#a7e2be',
+const pallete = [
+  '#484848',
+  '#848484',
+  '#b4b4b4',
+  '#d0d0d0',
 ]
+// let pallete = [
+//   '#a7bee2',
+//   '#d6a7e2',
+//   '#e2a9a7',
+//   '#e2d8a7',
+//   '#a7e2be',
+// ]
 // const pallete = [
 //   '#6c86ac',
 //   '#a06cac',
@@ -198,6 +204,7 @@ function asciiAndColorShader({ asciiTexture, scene }: { asciiTexture: THREE.Text
 }
 
 function render() {
+  // stats.begin();
   time += 0.01
 
   shapeScene.children = shapeScene.children.filter(child =>
@@ -208,6 +215,13 @@ function render() {
   object.rotation.x = Math.sin(time * pow)
   object.rotation.y = Math.sin(time * pow)
   object.rotation.z = Math.sin(time * pow)
+
+  shapeScene.children.filter(child => child?.userData?.time).forEach(child => {
+    child.rotation.x = Math.sin(time * pow)
+    child.rotation.y = Math.sin(time * pow)
+    child.rotation.z = Math.sin(time * pow)
+  });
+
   requestAnimationFrame(render)
 
   renderer.setRenderTarget(renderTarget)
@@ -215,6 +229,7 @@ function render() {
 
   renderer.setRenderTarget(null)
   renderer.renderAsync(asciiScene, camera)
+  // stats.end();
 }
 
 function init() {
@@ -226,21 +241,39 @@ function init() {
   // window.addEventListener("resize", onWindowResize)
 }
 
-// onMounted(() => init());
 onMounted(() => {
   init()
-  const links = document.querySelectorAll('a')
-  links.forEach(link => {
-    link.addEventListener("mouseover", () => {
-      object.geometry.scale(1.4, 1.4, 1.4)
-      setTimeout(() => {
-        object.geometry.scale(1 / 1.4, 1 / 1.4, 1 / 1.4)
-      }, 400);
-    });
+  //   const container = document.querySelector('#container') as HTMLElement
+  //   const links = document.querySelectorAll('a')
+  //   links.forEach(link => {
+  //     link.addEventListener("mouseover", () => {
+  //       container.style.borderColor = "hsl(288, 50%, 77%)"
+  //     })
+  //     link.addEventListener("mouseout", () => {
+  //       container.style.borderColor = "var(--bg-darker0)"
+  // })
+// })
+  // const links = document.querySelectorAll('a')
+  // links.forEach(link => {
+    // link.addEventListener("mouseover", () => {
+    //   gsap.to(object.rotation, { duration: 0.8, z: Math.PI*2 })
+    //   shapeScene.children.filter(child => child?.userData?.time).forEach(child => {
+    //     if (child) { gsap.to(child?.rotation, { duration: 0.8, z: Math.PI*2 }) }
+    //   });
+    // })
+    // link.addEventListener("mouseover", () => {
+    //   gsap.to(object.scale, { duration: 0.25, x: 2, y: 2, z: 2, })
+    //   shapeScene.children.filter(child => child?.userData?.time).forEach(child => {
+    //     if (child) { gsap.to(child?.scale, { duration: 0.25, x: 2, y: 2, z: 2, }) }
+    //   });
+    // })
     // link.addEventListener("mouseout", () => {
-    //   object.geometry.scale(1 / 1.4, 1 / 1.4, 1 / 1.4)
+    //   gsap.to(object.scale, { duration: 0.25, x: 1, y: 1, z: 1, })
+    //   shapeScene.children.filter(child => child?.userData?.time).forEach(child => {
+    //     if (child) { gsap.to(child?.scale, { duration: 0.25, x: 1, y: 1, z: 1, }) }
+    //   });
     // });
-  })
+  // })
 });
 
 onBeforeUnmount(() => {
