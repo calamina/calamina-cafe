@@ -35,7 +35,8 @@ const { projects, type } = defineProps<{
   position: relative;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(510px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  // grid-template-columns: repeat(auto-fill, minmax(510px, 1fr));
   grid-auto-rows: auto;
   gap: 1rem;
   align-items: center;

@@ -32,17 +32,17 @@ useHead({
 </script>
 
 <template>
-  <div class="app tw-flex tw-flex-col tw-justify-between tw-min-h-screen">
-    <AppHeader />
+  <div class="app tw-flex tw-flex-col tw-justify-between tw-items-center tw-min-h-screen">
+    <AppHeader class="tw-max-w-6xl"/>
 
     <!-- <main class="tw-flex tw-flex-grow tw-m-4 tw-mt-16 tw-h-full tw-justify-center tw-overflow-hidden"> -->
-    <main class="tw-flex tw-flex-grow tw-mx-4 tw-mt-16 tw-h-full tw-justify-center">
+    <main class="tw-flex tw-flex-grow tw-mx-4 tw-mt-16 tw-h-full tw-justify-center tw-max-w-6xl">
       <AppTransition />
       <NuxtPage />
     </main>
 
     <!-- <footer class="tw-flex tw-flex-col tw-p-10 tw-gap-6 tw-h-96 tw-justify-end"> -->
-    <footer v-if="!project" class="tw-flex tw-flex-col tw-p-4 tw-gap-6 tw-items-end">
+    <footer v-if="!project" class="tw-flex tw-flex-col tw-p-4 tw-gap-6 tw-items-end tw-max-w-6xl tw-w-full">
       <div class="tw-flex tw-gap-2">
         <span>©</span>
         <a target=”_blank” href="https://github.com/calamina">calamina</a>

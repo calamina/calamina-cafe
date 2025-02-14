@@ -67,22 +67,54 @@ const categs = Object.entries(tech).filter(entry => entry[0] !== "colors")
 }
 
 .tools {
-    background-color: hsl(50, 50%, 77%)
+    background-color: hsl(50, 50%, 77%);
+    background-color: #e2d8a7
 }
 
 .languages {
-    background-color: hsl(144, 50%, 77%)
+    background-color: hsl(144, 50%, 77%);
+    background-color: #a7e2be
 }
 
 .colors {
-    background-color: hsl(216, 50%, 77%)
+    background-color: hsl(216, 50%, 77%);
+    background-color: #a7bee2
 }
 
 .fonts {
-    background-color: hsl(288, 50%, 77%)
+    background-color: hsl(288, 50%, 77%);
+    background-color: #d6a7e2;
 }
 
 .icons {
-    background-color: hsl(2, 50%, 77%)
+    background-color: hsl(2, 50%, 77%);
+    background-color: #e2a9a7;
 }
+.tools {
+    background-color: hsl(50, 50%, 77%);
+    background-color: #e2d8a7
+}
+
+
+
+// .languages {
+//     background-color: hsl(144, 28%, 55%);
+//     background-color: #6cac86;
+// }
+// .colors {
+//     background-color: hsl(216, 28%, 55%);
+//     background-color: #6c86ac;
+// }
+// .fonts {
+//     background-color: hsl(288, 28%, 55%);
+//     background-color: #a06cac;
+// }
+// .icons {
+//     background-color: hsl(2, 28%, 55%);
+//     background-color: #ac6e6c;
+// }
+// .tools {
+//     background-color: hsl(50, 28%, 55%);
+//     background-color: #aca26c;
+// }
 </style>

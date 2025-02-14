@@ -53,11 +53,11 @@ definePageMeta({ pageTransition: { name: 'appear', mode: 'out-in' } })
   transition: transform 0.3s;
 }
 
-@starting-style {
-  .content {
-    transform: translateY(-1rem);
-  }
-}
+// @starting-style {
+//   .content {
+//     transform: translateY(-1rem);
+//   }
+// }
 
 .loader {
   border: 2px solid var(--bg-darker0);

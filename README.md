@@ -6,6 +6,9 @@
 hey :)
 
 # DOING
+- add toggle for max length !!!
+- test and fix dates intervals on about (2020 - 2021)
+
 - fix mobile image ratio 
 - fix strange tailwind behaviour between breakpoints 
 
