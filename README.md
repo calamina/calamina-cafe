@@ -7,6 +7,7 @@ hey :)
 
 # DOING
 - add toggle for max length !!!
+- dark theme invert color and color-lighter (about)!
 - test and fix dates intervals on about (2020 - 2021)
 
 - fix mobile image ratio 

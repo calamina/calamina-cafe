@@ -162,6 +162,11 @@ definePageMeta({ pageTransition: { name: 'appear', mode: 'out-in' } })
   }
 }
 
+.dark-mode .techlink:hover {
+  background-color: var(--bg-darker0);
+  color: var(--highlight);
+}
+
 // .loader {
 //   border: 2px solid var(--bg-darker0);
 //   border-radius: 0.5rem;

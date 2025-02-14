@@ -34,9 +34,12 @@
 }
 
 .dark-mode {
-    --color: var(--Grey-600);
+    --color: var(--Grey-500);
     --color-lightest: var(--Grey-100);
-    --color-light: var(--Grey-500);
+    --color-light: var(--Grey-600);
+    // --color: var(--Grey-600);
+    // --color-lightest: var(--Grey-100);
+    // --color-light: var(--Grey-500);
     --color-error: var(--red);
     --bg: var(--Grey-800);
     --bg-darker0: var(--Grey-700);
