@@ -13,11 +13,14 @@ hey :)
 - fix mobile image ratio 
 - fix strange tailwind behaviour between breakpoints 
 
-- test ascii colors
-- fix ascii window resize
 - fix ascii rendering ? (font aliasing)
 
 # TODO 
+- test ascii colors
+- fix ascii window resize
+- webgl fallback
+
+- fix mobile focus trap
 - fix fullscreen image view for mobile + other browsers
 - fix projects (aerg)
 - add info to projects (creation - update)

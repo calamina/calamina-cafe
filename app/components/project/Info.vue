@@ -10,14 +10,14 @@ const { name, url = null, tech } = defineProps<{
 
 <template>
   <div
-    class="info tw-flex tw-flex-col tw-gap-1 xl:tw-col-start-1 xl:tw-col-end-5 xl:tw-sticky xl:tw-top-16 xl:tw-left-0">
+       class="info tw-flex tw-flex-col tw-gap-1 xl:tw-col-start-1 xl:tw-col-end-5 xl:tw-sticky xl:tw-top-16 xl:tw-left-0">
     <div class="stars tw-flex tw-pb-4">
       <p class="star tw-text-3xl">✦</p>
       <p class="star tw-text-3xl">✦</p>
       <p class="star tw-text-3xl">✦</p>
     </div>
     <ProjectName :name />
-    <ProjectLink v-if="url" :url="url" />
+    <LinkIcon v-if="url" :url="url" />
     <slot />
     <ProjectTech :tech />
   </div>
@@ -43,7 +43,9 @@ const { name, url = null, tech } = defineProps<{
 }
 
 @starting-style {
-  :slotted(p), .stars {
+
+  :slotted(p),
+  .stars {
     opacity: 0;
     transform: translateX(-0.5rem)
   }
@@ -98,6 +100,7 @@ const { name, url = null, tech } = defineProps<{
     width: 20px;
     line-height: 22px;
   }
+
   .info {
     height: fit-content;
   }
