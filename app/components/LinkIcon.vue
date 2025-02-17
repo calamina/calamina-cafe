@@ -7,7 +7,7 @@ const { url, label } = defineProps<{
 </script>
 
 <template>
-  <a class="project-link tw-flex tw-content-center tw-rounded-lg tw-items-center tw-w-fit tw-px-3 tw-py-1"
+  <a class="project-link tw-flex tw-content-center tw-rounded-lg tw-items-center tw-w-fit tw-px-3 tw-pt-1 tw-pb-[0.15rem]"
      :href="url" target="_blank">
     {{ label ?? 'visit' }}
     <Icon :name="icon ?? 'tabler:link'" />

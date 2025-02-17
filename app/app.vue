@@ -33,10 +33,10 @@ useHead({
 
 <template>
   <div class="app tw-flex tw-flex-col tw-justify-between tw-items-center tw-min-h-screen">
-    <AppHeader class="tw-max-w-6xl"/>
+    <AppHeader class="tw-max-w-6xl" />
 
     <!-- <main class="tw-flex tw-flex-grow tw-m-4 tw-mt-16 tw-h-full tw-justify-center tw-overflow-hidden"> -->
-    <main class="tw-flex tw-flex-grow tw-mx-4 tw-mt-16 tw-h-full tw-justify-center tw-max-w-6xl">
+    <main class="tw-flex tw-flex-grow tw-mx-4 tw-mt-16 tw-h-full tw-justify-center tw-max-w-6xl tw-w-full">
       <AppTransition />
       <NuxtPage />
     </main>

@@ -11,7 +11,7 @@
 
 <template>
     <NuxtLink :to="url" target="_blank" class="tw-flex tw-items-start tw-flex-col tw-w-fit">
-        <p class="tw-rounded-lg tw-bg-[var(--bg-darker)] tw-px-3 tw-py-1 tw-w-full">
+        <p class="tw-rounded-lg tw-bg-[var(--bg-darker0)] tw-px-3 tw-py-1 tw-w-full">
             {{ label }}
         </p>
         <div
