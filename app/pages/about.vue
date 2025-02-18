@@ -22,22 +22,35 @@ definePageMeta({ pageTransition: { name: 'appear', mode: 'out-in' } })
           </div>
         </article>
         <article class="tw-pt-6">
-          <div class="tw-grid tw-grid-cols-[auto_auto_auto] tw-w-fit tw-gap-y-0 tw-gap-x-2">
-            <p class="tw-py-[2px]">Series</p>
-            <p class="tw-py-[2px]">Movie</p>
-            <p class="tw-py-[2px]">Comics</p>
-            <LinkLabelImage url="https://en.wikipedia.org/wiki/Severance_(TV_series)"
-                            label="Severance"
-                            src="https://media.senscritique.com/media/000020547893/0/severance.png"
-                            alt="severance series" />
-            <LinkLabelImage url="https://en.wikipedia.org/wiki/Flow_(2024_film)"
-                            label="Flow (not that great)"
-                            src="https://media.senscritique.com/media/000022302763/0/flow_le_chat_qui_navait_plus_peur_de_leau.png"
-                            alt="flow movie" />
-            <LinkLabelImage url="http://www.brechtevens.com/comics"
-                            label="Le Roi Méduse"
-                            src="https://media.senscritique.com/media/000021828238/0/le_roi_meduse.jpg"
-                            alt="le roi méduse comics" />
+          <div class="tw-grid tw-grid-cols-[auto_auto_auto_auto] tw-w-fit tw-gap-y-0 tw-gap-x-2">
+            <div class="tw-flex tw-flex-col">
+              <p class="tw-py-[2px]">Series</p>
+              <LinkLabelImage url="https://en.wikipedia.org/wiki/Severance_(TV_series)"
+                              label="Severance"
+                              src="https://media.senscritique.com/media/000020547893/0/severance.png"
+                              alt="severance series" />
+            </div>
+            <div class="tw-flex tw-flex-col">
+              <p class="tw-py-[2px]">Movie</p>
+              <LinkLabelImage url="https://en.wikipedia.org/wiki/Flow_(2024_film)"
+                              label="Flow (not that great)"
+                              src="https://media.senscritique.com/media/000022302763/0/flow_le_chat_qui_navait_plus_peur_de_leau.png"
+                              alt="flow movie" />
+            </div>
+            <div class="tw-flex tw-flex-col">
+              <p class="tw-py-[2px]">Comics</p>
+              <LinkLabelImage url="http://www.brechtevens.com/comics"
+                              label="Le Roi Méduse"
+                              src="https://media.senscritique.com/media/000021828238/0/le_roi_meduse.jpg"
+                              alt="le roi méduse comics" />
+            </div>
+            <div class="tw-flex tw-flex-col">
+              <p class="tw-py-[2px]">Animated Series</p>
+              <LinkLabelImage url="https://www.senscritique.com/serie/time_shadows/45584027"
+                              label="Summertime Rendering"
+                              src="https://media.senscritique.com/media/000021203484/0/time_shadows.jpg"
+                              alt="Summertime Rendering comics" />
+            </div>
           </div>
         </article>
       </section>
@@ -326,7 +339,7 @@ definePageMeta({ pageTransition: { name: 'appear', mode: 'out-in' } })
           Resume
           <Icon name="tabler:database" />
         </h2>
-        <div class="tw-grid tw-grid-cols-[auto_2px_auto] tw-gap-8 tw-gap-y-10 tw-mb-24">
+        <div class="tw-grid tw-grid-cols-[auto_2px_1fr] tw-gap-8 tw-gap-y-10 tw-mb-24">
           <h3 class="tw-py-2 tw-w-fit">Jobs & Internships</h3>
           <div class="tw-h-full tw-bg-[var(--bg-darker0)] tw-w-[2px]" />
           <div class="tw-flex tw-flex-col tw-gap-6 tw-flex-w-full">

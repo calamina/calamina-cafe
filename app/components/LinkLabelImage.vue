@@ -14,9 +14,11 @@
         <p class="tw-rounded-lg tw-bg-[var(--bg-darker0)] tw-px-3 tw-py-1 tw-w-full">
             {{ label }}
         </p>
+        <!-- <img class="tw-object-cover tw-w-full tw-rounded-lg" :src
+             :alt="alt + ' cover'"> -->
         <div
-             class="tw-rounded-lg tw-overflow-hidden tw-h-full tw-w-full tw-flex tw-justify-center tw-bg-[var(--bg-darker0)]">
-            <img class="tw-object-cover tw-max-w-40" :src
+             class="tw-rounded-lg tw-overflow-hidden tw-w-full tw-flex tw-justify-center tw-bg-[var(--bg-darker0)]  tw-h-60">
+            <img class="tw-object-cover" :src
                  :alt="alt + ' cover'">
         </div>
     </NuxtLink>
