@@ -1,10 +1,5 @@
 <script setup lang="ts">
 definePageMeta({ pageTransition: { name: 'fade', mode: 'out-in' } })
-// definePageMeta({
-//   middleware: 'routing',
-//   pageTransition: transitionConfig,
-// })
-
 const route = useRoute()
 const { data: page } = await useAsyncData(route.path, () => queryCollection(PHONE).path(route.path).first())
 

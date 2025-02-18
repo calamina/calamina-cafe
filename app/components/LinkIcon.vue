@@ -7,7 +7,7 @@ const { url, label } = defineProps<{
 </script>
 
 <template>
-  <a class="project-link tw-flex tw-content-center tw-rounded-lg tw-items-center tw-w-fit tw-px-3 tw-pt-1 tw-pb-[0.15rem]"
+  <a class="tw-flex tw-content-center tw-rounded-lg tw-items-center tw-w-fit tw-px-3 tw-pt-1 tw-pb-[0.15rem]"
      :href="url" target="_blank">
     {{ label ?? 'visit' }}
     <Icon :name="icon ?? 'tabler:link'" />
@@ -15,7 +15,7 @@ const { url, label } = defineProps<{
 </template>
 
 <style lang="scss" scoped>
-.project-link {
+a {
   background-color: var(--bg-darker0);
   opacity: 1;
   transform: translateX(0);
@@ -26,13 +26,13 @@ const { url, label } = defineProps<{
   }
 }
 
-.dark-mode .project-link:hover {
+.dark-mode a:hover {
   background-color: var(--bg-darker0);
   color: var(--highlight);
 }
 
 @starting-style {
-  .project-link {
+  a {
     opacity: 0;
     transform: translateX(-0.5rem)
   }

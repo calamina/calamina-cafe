@@ -32,4 +32,9 @@ a:hover {
         background-color: var(--highlight);
     }
 }
+
+.dark-mode a:hover p {
+    background-color: var(--bg-darker0);
+    color: var(--highlight);
+}
 </style>

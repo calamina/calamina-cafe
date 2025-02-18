@@ -6,6 +6,7 @@
 hey :)
 
 # DOING
+- about / last seen / find a way to display phrase ('last media watched :')
 - add toggle for max length !!!
 - dark theme invert color and color-lighter (about)!
 - test and fix dates intervals on about (2020 - 2021)

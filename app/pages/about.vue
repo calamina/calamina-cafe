@@ -1,58 +1,13 @@
 <script setup lang="ts">
 definePageMeta({ pageTransition: { name: 'appear', mode: 'out-in' } })
+const { data: page } = await useAsyncData(() => queryCollection('about').first())
 </script>
 
 <template>
   <div class="tw-flex tw-flex-col tw-gap-4 tw-items-center xl:tw-flex-row tw-w-full">
     <div class="content tw-w-full">
-      <section class="tw-pt-12 tw-pb-28">
-        <h2 class="tw-pb-6 tw-flex tw-items-center tw-gap-2">
-          Now
-          <Icon name="tabler:mood-smile" />
-        </h2>
-        <article>
-          <p>Working on solo projects :)</p>
-          <p>Mainly focusing on / learning about these tools at the moment</p>
-          <div class="tw-flex tw-items-baseline tw-gap-2 tw-py-2">
-            <LinkIcon url="https://vuejs.org/" label="vue/nuxt" icon="tabler:brand-vue" />
-            <LinkIcon url="https://astro.build/" label="astro" icon="tabler:brand-astro" />
-            <LinkIcon url="https://threejs.org/" label="threejs" icon="tabler:brand-threejs" />
-            <LinkIcon url="https://gsap.com/" label="gsap" icon="tabler:clover" />
-            <LinkIcon url="https://p5js.org/" label="p5js" icon="tabler:asterisk-simple" />
-          </div>
-        </article>
-        <article class="tw-pt-6">
-          <div class="tw-grid tw-grid-cols-[auto_auto_auto_auto] tw-w-fit tw-gap-y-0 tw-gap-x-2">
-            <div class="tw-flex tw-flex-col">
-              <p class="tw-py-[2px]">Series</p>
-              <LinkLabelImage url="https://en.wikipedia.org/wiki/Severance_(TV_series)"
-                              label="Severance"
-                              src="https://media.senscritique.com/media/000020547893/0/severance.png"
-                              alt="severance series" />
-            </div>
-            <div class="tw-flex tw-flex-col">
-              <p class="tw-py-[2px]">Movie</p>
-              <LinkLabelImage url="https://en.wikipedia.org/wiki/Flow_(2024_film)"
-                              label="Flow (not that great)"
-                              src="https://media.senscritique.com/media/000022302763/0/flow_le_chat_qui_navait_plus_peur_de_leau.png"
-                              alt="flow movie" />
-            </div>
-            <div class="tw-flex tw-flex-col">
-              <p class="tw-py-[2px]">Comics</p>
-              <LinkLabelImage url="http://www.brechtevens.com/comics"
-                              label="Le Roi Méduse"
-                              src="https://media.senscritique.com/media/000021828238/0/le_roi_meduse.jpg"
-                              alt="le roi méduse comics" />
-            </div>
-            <div class="tw-flex tw-flex-col">
-              <p class="tw-py-[2px]">Animated Series</p>
-              <LinkLabelImage url="https://www.senscritique.com/serie/time_shadows/45584027"
-                              label="Summertime Rendering"
-                              src="https://media.senscritique.com/media/000021203484/0/time_shadows.jpg"
-                              alt="Summertime Rendering comics" />
-            </div>
-          </div>
-        </article>
+      <section class="tw-pb-28">
+        <ContentRenderer v-if="page" :value="page" class="tw-pt-6" />
       </section>
 
       <section class="tw-pb-28 tw-w-full">
@@ -131,10 +86,6 @@ definePageMeta({ pageTransition: { name: 'appear', mode: 'out-in' } })
                               label="L'Homme qui plantait des arbres"
                               src="https://media.senscritique.com/media/000017328335/0/l_homme_qui_plantait_des_arbres.jpg"
                               alt="L'Homme qui plantait des arbres movie" />
-              <!-- <LinkImageLabel url=""
-                              label="The Old Mill"
-                              src="https://media.senscritique.com/media/000008120062/0/le_vieux_moulin.jpg"
-                              alt="The Old Mill movie" /> -->
               <LinkImageLabel url=""
                               label="Ginga no Uo URSA minor BLUE"
                               src="https://media.senscritique.com/media/000007033921/0/ginga_no_uo_ursa_minor_blue.jpg"
@@ -334,7 +285,7 @@ definePageMeta({ pageTransition: { name: 'appear', mode: 'out-in' } })
         </article>
       </section>
 
-      <div>
+      <!-- <div>
         <h2 class="tw-pb-6 tw-flex tw-items-center tw-gap-2">
           Resume
           <Icon name="tabler:database" />
@@ -349,59 +300,58 @@ definePageMeta({ pageTransition: { name: 'appear', mode: 'out-in' } })
                 <p class="!tw-text-[var(--color-light]">↑</p>
                 <p>2022</p>
               </template>
-              <template #name>Akuiteo</template>
-              <template #desc>Full stack developpement, angular 18 and java spring </template>
-              <template #lang>html / ts / css / java</template>
-            </AboutMoment>
-            <AboutMoment>
-              <template #date>2022</template>
-              <template #name>SQLI</template>
-              <template #desc>Full stack developpement, angular 13 and java spring </template>
-              <template #lang>html / ts / css / java</template>
-            </AboutMoment>
-            <AboutMoment>
-              <template #date>2021</template>
-              <template #name>Kweerty</template>
-              <template #desc>UI/UX design and Front-end developpement</template>
-              <template #lang>html / ts / css / figma</template>
-            </AboutMoment>
-            <AboutMoment>
-              <template #date>2020</template>
-              <template #name>Yesouicom</template>
-              <template #desc>UI/UX design and Front-end developpement</template>
-              <template #lang>html / ts / css / figma</template>
-            </AboutMoment>
-            <AboutMoment>
-              <template #date>2018</template>
-              <template #name>SDIS Moselle</template>
-              <template #desc>IT support and management</template>
-            </AboutMoment>
-          </div>
-          <h3 class="tw-py-2 tw-w-fit">Studies</h3>
-          <div class="tw-h-full tw-bg-[var(--bg-darker0)] tw-w-[2px]" />
-          <div class="tw-flex tw-flex-col tw-gap-4 tw-w-full">
-            <AboutMoment>
-              <template #date>2022</template>
-              <template #name>Lyon2 University</template>
-              <template #desc>CIM (multimedia conception & integration) Master degree</template>
-              <template #lang>html / ts / css / java</template>
-            </AboutMoment>
-            <AboutMoment>
-              <!-- <template #date>2019 - 2021</template> -->
-              <template #date>2021</template>
-              <template #name>DUCCI</template>
-              <template #desc>Frontend developpement & UI/UX Design</template>
-              <template #lang>html / ts / css / java / adobe suite / figma</template>
-            </AboutMoment>
-            <AboutMoment>
-              <template #date>2017</template>
-              <template #name>IT DUT</template>
-              <template #desc>Full stack developpement formation</template>
-              <template #lang>html / javascript / css / java / cobol / Ocaml / ... </template>
-            </AboutMoment>
-          </div>
-        </div>
-      </div>
+<template #name>Akuiteo</template>
+<template #desc>Full stack developpement, angular 18 and java spring </template>
+<template #lang>html / ts / css / java</template>
+</AboutMoment>
+<AboutMoment>
+  <template #date>2022</template>
+  <template #name>SQLI</template>
+  <template #desc>Full stack developpement, angular 13 and java spring </template>
+  <template #lang>html / ts / css / java</template>
+</AboutMoment>
+<AboutMoment>
+  <template #date>2021</template>
+  <template #name>Kweerty</template>
+  <template #desc>UI/UX design and Front-end developpement</template>
+  <template #lang>html / ts / css / figma</template>
+</AboutMoment>
+<AboutMoment>
+  <template #date>2020</template>
+  <template #name>Yesouicom</template>
+  <template #desc>UI/UX design and Front-end developpement</template>
+  <template #lang>html / ts / css / figma</template>
+</AboutMoment>
+<AboutMoment>
+  <template #date>2018</template>
+  <template #name>SDIS Moselle</template>
+  <template #desc>IT support and management</template>
+</AboutMoment>
+</div>
+<h3 class="tw-py-2 tw-w-fit">Studies</h3>
+<div class="tw-h-full tw-bg-[var(--bg-darker0)] tw-w-[2px]" />
+<div class="tw-flex tw-flex-col tw-gap-4 tw-w-full">
+  <AboutMoment>
+    <template #date>2022</template>
+    <template #name>Lyon2 University</template>
+    <template #desc>CIM (multimedia conception & integration) Master degree</template>
+    <template #lang>html / ts / css / java</template>
+  </AboutMoment>
+  <AboutMoment>
+    <template #date>2021</template>
+    <template #name>DUCCI</template>
+    <template #desc>Frontend developpement & UI/UX Design</template>
+    <template #lang>html / ts / css / java / adobe suite / figma</template>
+  </AboutMoment>
+  <AboutMoment>
+    <template #date>2017</template>
+    <template #name>IT DUT</template>
+    <template #desc>Full stack developpement formation</template>
+    <template #lang>html / javascript / css / java / cobol / Ocaml / ... </template>
+  </AboutMoment>
+</div>
+</div>
+</div> -->
 
     </div>
   </div>
@@ -418,6 +368,5 @@ definePageMeta({ pageTransition: { name: 'appear', mode: 'out-in' } })
 
 h2 {
   font-size: 1.5rem;
-  // font-family: 'Apercu Light', monospace;
 }
 </style>

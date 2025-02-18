@@ -2,6 +2,14 @@ import { defineCollection, defineContentConfig, z } from '@nuxt/content'
 
 export default defineContentConfig({
   collections: {
+    about: defineCollection({
+      source: 'about/*.md',
+      type: 'page',
+      schema: z.object({
+        num: z.number(),
+        name: z.string(),
+      })
+    }),
     web: defineCollection({
       source: 'projects/web/*.md',
       type: 'page',

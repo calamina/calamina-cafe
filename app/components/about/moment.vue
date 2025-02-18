@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+
+</script>
 
 <template>
     <div class="tw-flex tw-gap-8 tw-content-center hover:tw-bg-[var(--bg-darker0)] tw-rounded-lg tw-p-2">

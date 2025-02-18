@@ -39,4 +39,12 @@ a {
         }
     }
 }
+
+.dark-mode a:hover {
+    background-color: var(--bg-darker0);
+
+    p {
+        color: var(--highlight);
+    }
+}
 </style>

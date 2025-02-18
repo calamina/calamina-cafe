@@ -1,24 +1,11 @@
 <script setup lang="ts">
-// definePageMeta({
-//   middleware: 'routing',
-//   pageTransition: transitionConfig,
-// });
 definePageMeta({ pageTransition: { name: 'appear', mode: 'out-in' } })
-
 </script>
 
-<!-- .center {
-  flex: 1;
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  justify-content: center;
-} -->
-
 <template>
-  <div class="tw-flex tw-flex-col tw-gap-4 tw-items-center xl:tw-flex-row">
+  <div class="tw-flex tw-flex-col tw-gap-4 tw-justify-between tw-items-center xl:tw-flex-row tw-w-full">
     <!-- <div class="center"> -->
-    <div class="content tw-w-96">
+    <div class="content">
       <section>
         <h1>calamina.cafe</h1>
       </section>
