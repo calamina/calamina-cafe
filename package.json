@@ -1,40 +1,24 @@
 {
-  "name": "nuxt-app",
-  "private": true,
+  "name": "calamina-cafe",
   "type": "module",
+  "version": "0.0.1",
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "dependencies": {
-    "@nuxt/content": "https://pkg.pr.new/@nuxt/content@3046",
-    "@nuxt/eslint": "^0.6.1",
-    "@nuxt/icon": "^1.7.0",
-    "@nuxtjs/color-mode": "^3.5.2",
-    "@nuxtjs/tailwindcss": "^6.12.2",
-    "@pinia/nuxt": "^0.6.1",
-    "@types/three": "^0.172.0",
-    "@vueuse/core": "^11.2.0",
-    "@vueuse/integrations": "^11.2.0",
-    "@vueuse/nuxt": "^11.2.0",
-    "focus-trap": "^7.6.2",
-    "gsap": "^3.12.5",
-    "nuxt": "^3.15.3",
-    "pg": "^8.13.1",
-    "pinia": "^2.2.5",
-    "rehype-unwrap-images": "^1.0.0",
-    "stats.js": "^0.17.0",
-    "three": "^0.172.0",
-    "vue": "latest",
-    "vue-router": "latest"
+    "@astrojs/vue": "^5.0.6",
+    "@types/three": "^0.173.0",
+    "@vueuse/core": "^12.7.0",
+    "@vueuse/integrations": "^12.7.0",
+    "astro": "^5.3.0",
+    "focus-trap": "^7.6.4",
+    "three": "^0.173.0",
+    "vue": "^3.5.13"
   },
   "devDependencies": {
-    "@iconify-json/tabler": "^1.2.8",
-    "@types/pg": "^8.11.11",
-    "sass-embedded": "^1.83.4",
-    "typescript": "^5.6.3"
+    "sass-embedded": "^1.85.0"
   }
 }
