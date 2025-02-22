@@ -49,7 +49,6 @@ addLights(shapeScene)
 const renderTarget = new THREE.RenderTarget(510, 510)
 const renderer = new THREE.WebGPURenderer({ alpha: true })
 renderer.setPixelRatio(1)
-console.debug(window.devicePixelRatio)
 renderer.setSize(510, 510)
 renderer.setClearColor(0xffffff, 0)
 

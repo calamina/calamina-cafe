@@ -4,7 +4,7 @@ import { useFocusTrap } from '@vueuse/integrations/useFocusTrap'
 import { ref, watch } from 'vue'
 import IconImg from './IconImg.vue'
 
-const colorMode = useColorMode()
+const colorMode = useColorMode({emitAuto: true})
 const themeOpen = ref(false)
 const theme = ref(null)
 onClickOutside(theme, () => closeTheme())
@@ -14,6 +14,11 @@ const closeTheme = () => themeOpen.value = false
 
 const { activate, deactivate } = useFocusTrap(theme)
 watch(themeOpen, () => themeOpen.value ? activate() : deactivate())
+
+function setMode(mode: 'light'|'dark'|'auto') {
+  colorMode.value = mode;
+  themeOpen.value = false
+}
 </script>
 
 <template>
@@ -24,15 +29,15 @@ watch(themeOpen, () => themeOpen.value ? activate() : deactivate())
     </button>
     <transition name="page">
       <div class="theme-menu" v-if="themeOpen">
-        <button @click="colorMode = 'auto'" :class="{ active: colorMode === 'auto' }">
+        <button @click="setMode('auto')" :class="{ active: colorMode === 'auto' }">
           <IconImg name="tabler:moon-stars" />
           System
         </button>
-        <button @click="colorMode = 'light'" :class="{ active: colorMode === 'light' }">
+        <button @click="setMode('light')" :class="{ active: colorMode === 'light' }">
           <IconImg name="tabler:moon" />
           Light
         </button>
-        <button @click="colorMode = 'dark'" :class="{ active: colorMode === 'dark' }">
+        <button @click="setMode('dark')" :class="{ active: colorMode === 'dark' }">
           <IconImg name="tabler:moon-filled" />
           Dark
         </button>
@@ -67,17 +72,19 @@ watch(themeOpen, () => themeOpen.value ? activate() : deactivate())
   z-index: 200;
   background-color: var(--bg-darker);
   position: absolute;
-  top: 0;
+  // top: 5rem;
   right: 0;
   display: flex;
   flex-flow: column;
   align-items: start;
   gap: 0.25rem;
   padding: 0.5rem;
-  position: absolute;
   right: 0rem;
-  top: 3rem;
+  padding-right: 0.5rem;
+  top: 2.65rem;
   border-radius: 0.5rem;
+  // TODO::investigate :(
+  width: 9rem;
 
   button {
     gap: 0.75rem;

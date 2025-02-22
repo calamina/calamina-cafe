@@ -1,32 +1,20 @@
 ---
-import AsciiScene from "../components/AsciiScene.vue";
-import LinkContact from "../components/LinkContact.vue";
-import SocialsList from "../components/SocialsList.vue";
+import LinkList from "../components/LinkList.vue";
+import MediaRecent from "../components/MediaRecent.vue";
 import Main from "../layouts/Main.astro";
+import { getCollection } from "astro:content";
+
+const links = await getCollection('aboutLinks').then(links => links.map(link => link.data));
+const medias = await getCollection('aboutMedia').then(medias => medias.map(media => media.data));
 ---
 
 <Main>
 	<div class="wrapper">
 		<div class="content">
-			<section>
-				<h1>calamina.cafe</h1>
-			</section>
-			<section>
-				<p>Hello and welcome :)</p>
-				<p>Personal space of Grégoire Belliere</p>
-				<p>Work in progress !</p>
-			</section>
-			<LinkContact />
-			<SocialsList />
+			<LinkList links={links} />
+			<MediaRecent medias={medias} />
+			<!-- <MediaRecent medias={medias} title="Last media seen" /> -->
 		</div>
-
-		<!-- timeout 500ms and show ascii after ? -->
-		<AsciiScene client:only />
-		<template #fallback>
-			<div class="loader">
-				<p>Loading ascii ...</p>
-			</div>
-		</template>
 	</div>
 </Main>
 
@@ -43,7 +31,7 @@ import Main from "../layouts/Main.astro";
 	.content {
 		display: flex;
 		flex-flow: column;
-		align-items: center;
+		align-items: start;
 		gap: 2rem;
 		opacity: 1;
 		transform: translateY(0);

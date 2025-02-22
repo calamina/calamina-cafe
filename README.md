@@ -30,3 +30,4 @@ hey :)
 - WRITE ABOUT
 - WRITE HOME
 - single component for [project] + [mobile]
+# TODO
