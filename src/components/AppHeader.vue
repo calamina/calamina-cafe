@@ -6,23 +6,22 @@ import ThemeSwitch from './ThemeSwitch.vue';
 </script>
 
 <template>
-  <header
-          class="tw-flex tw-fixed tw-top-0 tw-items-center tw-py-4 tw-px-4 tw-h-16 tw-justify-between tw-z-50 tw-w-full tw-pointer-events-none xl:tw-px-0">
-    <nav class="tw-flex tw-gap-8">
-      <a class="tw-pointer-events-auto" href="/">home</a>
-      <a class="tw-pointer-events-auto" href="/about">about</a>
-      <div class="tw-flex tw-gap-2 tw-pointer-events-auto">
-        <!-- <NuxtLink to="/projects" :class="{ 'route-active': route.params.project }">projects</NuxtLink>
+  <header>
+    <nav>
+      <a href="/">home</a>
+      <a href="/about">about</a>
+      <!-- <div class="tw-flex tw-gap-2 tw-pointer-events-auto">
+        <NuxtLink to="/projects" :class="{ 'route-active': route.params.project }">projects</NuxtLink>
         <transition name="sublink" mode="out-in">
           <div class="tw-gap-2 tw-hidden xl:tw-flex" v-if="route.params.project?.length"
                :key="(route.params.project[0])">
             <p>:</p>
             <p class="sublink">{{ route.params.project[0] }}</p>
           </div>
-        </transition> -->
-      </div>
+        </transition>
+      </div> -->
     </nav>
-    <div class="tw-flex tw-gap-6 tw-pointer-events-auto">
+    <div class="actions">
       <SearchBar class="tw-hidden md:tw-block" />
       <ThemeSwitch />
     </div>
@@ -30,6 +29,36 @@ import ThemeSwitch from './ThemeSwitch.vue';
 </template>
 
 <style lang="scss" scoped>
+//  tw-h-16 xl:tw-px-0">
+header {
+  max-width: 60rem;
+  position: fixed;
+  display: flex;
+  top: 0;
+  height: 4rem;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+  z-index: 50;
+  pointer-events: none;
+}
+
+nav {
+  display: flex;
+  gap: 1rem;
+}
+
+a {
+  pointer-events: auto;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+  pointer-events: auto;
+}
+
 .router-link-active,
 .route-active {
   text-decoration: underline;
@@ -59,5 +88,11 @@ import ThemeSwitch from './ThemeSwitch.vue';
 .sublink-leave-to {
   opacity: 0;
   transform: translateX(0.25rem);
+}
+
+@media (min-width: 1280px) {
+  header {
+    padding: 0.5rem 0;
+  }
 }
 </style>

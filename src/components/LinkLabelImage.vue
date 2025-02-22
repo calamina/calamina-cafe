@@ -1,36 +1,59 @@
-<script
-        setup
-        lang="ts">
-        const { url, label, src, alt } = defineProps<{
-            url: string,
-            label: string,
-            src: string,
-            alt: string,
-        }>()
+<script setup lang="ts">
+const { url, label, src, alt } = defineProps<{
+    url: string,
+    label: string,
+    src: string,
+    alt: string,
+}>()
 </script>
 
 <template>
-    <NuxtLink :to="url" target="_blank" class="tw-flex tw-items-start tw-flex-col tw-w-fit">
-        <p class="tw-rounded-lg tw-bg-[var(--bg-darker0)] tw-px-3 tw-py-1 tw-w-full">
-            {{ label }}
-        </p>
-        <!-- <img class="tw-object-cover tw-w-full tw-rounded-lg" :src
-             :alt="alt + ' cover'"> -->
-        <div
-             class="tw-rounded-lg tw-overflow-hidden tw-w-full tw-flex tw-justify-center tw-bg-[var(--bg-darker0)]  tw-h-60">
-            <img class="tw-object-cover" :src
-                 :alt="alt + ' cover'">
+    <a :href="url" target="_blank">
+        <p> {{ label }}</p>
+        <div>
+            <img :src :alt="alt + ' cover'">
         </div>
-    </NuxtLink>
+    </a>
 </template>
 
 <style lang="scss" scoped>
-a:hover {
-    background-color: transparent;
+a {
+    display: flex;
+    flex-flow: column;
+    align-items: start;
+    width: fit-content;
 
-    p {
-        background-color: var(--highlight);
+    &:hover {
+        background-color: transparent;
+
+        p {
+            background-color: var(--highlight);
+        }
     }
+}
+
+p {
+    border-radius: 0.5rem;
+    background-color: var(--bg-darker0);
+    padding: 0.25rem 0.5rem;
+    width: 100%;
+}
+
+div {
+    display: flex;
+    justify-content: center;
+    background-color: var(--bg-darker0);
+    height: 12rem;
+    overflow: hidden;
+    width: 100%;
+    border-radius: 0.5rem;
+}
+
+img {
+    object-fit: cover;
+    // width: 100%;
+    width: auto;
+    height: 100%;
 }
 
 .dark-mode a:hover p {

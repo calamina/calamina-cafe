@@ -28,9 +28,9 @@ onKeyStroke('Escape', () => emptySearch())
 </script>
 
 <template>
-  <div class="search tw-hidden xl:tw-flex" ref="searchbox">
+  <div class="search" ref="searchbox">
     <input type="search" v-model="search" id="search" placeholder="ctrl + k">
-    <IconImg name="tabler:search" />
+    <IconImg class="icon" name="tabler:search" />
     <!-- <transition name="appear">
       <div class="results" v-if="results?.length">
         <NuxtLink v-for="res in results" :to="'/projects/web/' + res.title.toLowerCase()" @click="search = ''">
@@ -45,22 +45,22 @@ onKeyStroke('Escape', () => emptySearch())
 </template>
 
 <style lang="scss" scoped>
-input[type="search"] {
-  padding-right: 2rem;
-  padding-left: 0.75rem;
-  color: var(--color);
-}
-
-.icon {
-  position: absolute;
-  right: 0.5rem;
-}
-
 .search {
   // display: flex;
   align-items: center;
   gap: 0.5rem;
   position: relative;
+}
+
+input[type="search"] {
+  padding: 0.4rem 2rem 0.25rem 0.75rem;
+  color: var(--color);
+}
+
+.icon {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
 }
 
 .results {

@@ -1,12 +1,9 @@
 <script setup lang="ts">
 import IconImg from "./IconImg.vue";
-const { direction } = defineProps<{
-  direction?: string
-}>()
 </script>
 
 <template>
-  <nav class="tw-flex tw-flex-col tw-w-full tw-gap-2" :class="{ 'tw-flex-col': direction === 'col' }">
+  <nav>
     <a target=”_blank” href="https://github.com/calamina">
       <IconImg name="tabler:brand-github" />
       github
@@ -29,3 +26,12 @@ const { direction } = defineProps<{
     </a>
   </nav>
 </template>
+
+<style scoped lang="scss">
+nav {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  gap: 0.5rem;
+}
+</style>

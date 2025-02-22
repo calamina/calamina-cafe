@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import IconImg from './IconImg.vue';
+
 const { url, label } = defineProps<{
   url: string
   label?: string
@@ -7,15 +9,20 @@ const { url, label } = defineProps<{
 </script>
 
 <template>
-  <a class="tw-flex tw-content-center tw-rounded-lg tw-items-center tw-w-fit tw-px-3 tw-pt-1 tw-pb-[0.15rem]"
-     :href="url" target="_blank">
+  <a :href="url" target="_blank">
     {{ label ?? 'visit' }}
-    <Icon :name="icon ?? 'tabler:link'" />
+    <IconImg :name="icon ?? 'tabler:link'" />
   </a>
 </template>
 
 <style lang="scss" scoped>
 a {
+  display: flex;
+  align-content: center;
+  border-radius: 0.5rem;
+  align-items: center;
+  width: fit-content;
+  padding: 0.25rem 0.5rem 0.15rem;
   background-color: var(--bg-darker0);
   opacity: 1;
   transform: translateX(0);
