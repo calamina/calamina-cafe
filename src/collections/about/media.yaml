@@ -1,0 +1,27 @@
+- id: '1'
+  type: "Series"
+  url: "https://en.wikipedia.org/wiki/Severance_(TV_series)"
+  label: "Severance"
+  src: "https://media.senscritique.com/media/000020547893/0/severance.png"
+  alt: "severance series"
+
+- id: '2'
+  type: "Movie"
+  url: "https://en.wikipedia.org/wiki/Flow_(2024_film)"
+  label: "Flow (not that great)"
+  src: "https://media.senscritique.com/media/000022302763/0/flow_le_chat_qui_navait_plus_peur_de_leau.png"
+  alt: "flow movie"
+
+- id: '3'
+  type: "Comics"
+  url: "http://www.brechtevens.com/comics"
+  label: "Le Roi Méduse"
+  src: "https://media.senscritique.com/media/000021828238/0/le_roi_meduse.jpg"
+  alt: "le roi méduse comics"
+
+- id: '4'
+  type: "Animated Series"
+  url: "https://www.senscritique.com/serie/time_shadows/45584027"
+  label: "Summertime Rendering"
+  src: "https://media.senscritique.com/media/000021203484/0/time_shadows.jpg"
+  alt: "Summertime Rendering comics"
