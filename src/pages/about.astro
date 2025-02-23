@@ -1,39 +1,45 @@
 ---
+import type { Link } from "../models/Link";
+import type { Media } from "../models/Media";
+import { query } from "../utils";
+import Main from "../layouts/Main.astro";
 import LinkList from "../components/LinkList.vue";
 import MediaRecent from "../components/MediaRecent.vue";
 import Favorites from "../components/about/Favorites.astro";
-import Main from "../layouts/Main.astro";
-import { query } from "../utils";
+import Timeline from "../components/Timeline.astro";
+import SectionTitle from "../components/SectionTitle.vue";
 
-const links = await query("aboutLinks");
-const medias = await query("aboutMedia");
+const links = await query<Link>("aboutLinks");
+const medias = await query<Media>("aboutMedia");
 ---
 
 <Main>
-	<div class="wrapper">
-		<div class="content">
+	<div class="content">
+		<section class="now">
+			<SectionTitle name="now" icon="tabler:mood-smile" />
 			<LinkList links={links} />
 			<MediaRecent medias={medias} />
+		</section>
+
+		<section>
+			<SectionTitle name="favorites" icon="tabler:heart" />
 			<Favorites />
-		</div>
+		</section>
+
+		<section>
+			<SectionTitle name="resume" icon="tabler:database" />
+			<Timeline />
+		</section>
 	</div>
 </Main>
 
 <style scoped lang="scss">
-	.wrapper {
-		display: flex;
-		flex-flow: column;
-		gap: 0.5rem;
-		justify-content: space-between;
-		align-items: center;
-		width: 100%;
-	}
-
 	.content {
 		display: flex;
 		flex-flow: column;
 		align-items: start;
-		gap: 2rem;
+		padding-top: 2rem;
+		gap: 4rem;
 		opacity: 1;
 		transform: translateY(0);
 		transition: transform 0.3s;
