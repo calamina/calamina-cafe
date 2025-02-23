@@ -1,11 +1,12 @@
 ---
 import LinkList from "../components/LinkList.vue";
 import MediaRecent from "../components/MediaRecent.vue";
+import Favorites from "../components/about/Favorites.astro";
 import Main from "../layouts/Main.astro";
-import { getCollection } from "astro:content";
+import { query } from "../utils";
 
-const links = await getCollection('aboutLinks').then(links => links.map(link => link.data));
-const medias = await getCollection('aboutMedia').then(medias => medias.map(media => media.data));
+const links = await query("aboutLinks");
+const medias = await query("aboutMedia");
 ---
 
 <Main>
@@ -13,7 +14,7 @@ const medias = await getCollection('aboutMedia').then(medias => medias.map(media
 		<div class="content">
 			<LinkList links={links} />
 			<MediaRecent medias={medias} />
-			<!-- <MediaRecent medias={medias} title="Last media seen" /> -->
+			<Favorites />
 		</div>
 	</div>
 </Main>

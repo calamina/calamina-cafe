@@ -5,7 +5,6 @@ export const MediaSchema = z.object({
   url: z.string(),
   label: z.string(),
   src: z.string(),
-  alt: z.string(),
   type: z.string().optional()
 })
 

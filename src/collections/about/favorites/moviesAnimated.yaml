@@ -1,0 +1,24 @@
+- id: "1"
+  url: ""
+  label: "Les Aventures du prince Ahmed"
+  src: "https://media.senscritique.com/media/000018487296/0/les_aventures_du_prince_ahmed.jpg"
+
+- id: "2"
+  url: ""
+  label: "The Thief and the Cobbler"
+  src: "https://media.senscritique.com/media/000017024040/0/le_voleur_et_le_cordonnier.jpg"
+
+- id: "3"
+  url: ""
+  label: "Fehérlófia"
+  src: "https://media.senscritique.com/media/000017261406/0/le_fils_de_la_jument_blanche.jpg"
+
+- id: "4"
+  url: ""
+  label: "Belladonna"
+  src: "https://media.senscritique.com/media/000019795881/0/belladonna.jpg"
+
+- id: "5"
+  url: ""
+  label: "Le Roi et l'Oiseau"
+  src: "https://media.senscritique.com/media/000012351309/0/le_roi_et_l_oiseau.jpg"
