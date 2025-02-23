@@ -1,0 +1,31 @@
+- id: "1"
+  date: "now"
+  name: "Akuiteo"
+  desc: "Full stack developpement, angular 18 and java spring"
+  info: "html / ts / css / java"
+  start: "2022"
+  actual: true
+
+- id: "2"
+  date: "2022"
+  name: "SQLI"
+  desc: "Full stack developpement, angular 13 and java spring"
+  info: "html / ts / css / java"
+
+- id: "3"
+  date: "2021"
+  name: "Kweerty"
+  desc: "UI/UX design and Front-end developpement"
+  info: "html / ts / css / figma"
+
+- id: "4"
+  date: "2020"
+  name: "Yesouicom"
+  desc: "UI/UX design and Front-end developpement"
+  info: "html / ts / css / figma"
+
+- id: "5"
+  date: "2018"
+  name: "SDIS Moselle"
+  desc: "IT support and management"
+  # start: ""

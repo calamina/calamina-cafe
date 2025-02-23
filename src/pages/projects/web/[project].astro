@@ -1,0 +1,22 @@
+---
+// const projects = ['atlast', '...']
+
+// const makePaths = () => {
+//   const res: any[] = []
+//   projects.forEach(project => {
+//     res.push({params: {project: project}})
+//   })
+//   return res;
+// }
+export function getStaticPaths() {
+  return [
+    { params: { project: "atlast" } },
+    { params: { project: "rover" } },
+    { params: { project: "spot" } },
+  ];
+}
+
+const { project } = Astro.params;
+---
+
+<div>Good dog, {project}!</div>

@@ -47,7 +47,6 @@ Offline for now because no server to stock the data :(
   ::
   ::imageButton
     ![atlast-search](/img/web/atlast/atlast-search.avif){rel="preload"}
-    ![atlast-search](/img/web/atlast/atlast-search.avif){rel="preload"}
   :: 
 ::
 

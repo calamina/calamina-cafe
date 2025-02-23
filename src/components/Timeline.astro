@@ -1,0 +1,23 @@
+---
+import { query } from "../utils";
+import type { Moment } from "../models/Moment";
+import TimelineSection from "./about/TimelineSection.vue";
+
+const jobs = await query<Moment>("jobs");
+const studies = await query<Moment>("studies");
+---
+
+<div>
+  <TimelineSection moments={jobs} title="Jobs & internships" />
+  <TimelineSection moments={studies} title="Studies" />
+</div>
+
+<style scoped lang="scss">
+  div {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 2px 1fr;
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+</style>

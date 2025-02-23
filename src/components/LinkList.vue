@@ -5,8 +5,6 @@ import LinkIcon from './LinkIcon.vue'
 const { links } = defineProps<{
     links: Link[]
 }>()
-
-console.debug(links)
 </script>
 
 <template>

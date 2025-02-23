@@ -1,4 +1,6 @@
 <script setup lang='ts'>
+import IconImg from './IconImg.vue';
+
 const { name, icon } = defineProps<{
     name: string
     icon?: string
@@ -6,14 +8,19 @@ const { name, icon } = defineProps<{
 </script>
 
 <template>
-    <h2 class="tw-pb-6 tw-flex tw-items-center tw-gap-2">
+    <h2>
         {{ name }}
-        <Icon v-if="icon" :name="icon" />
+        <IconImg v-if="icon" :name="icon" />
     </h2>
 </template>
 
 <style scoped lang='scss'>
 h2 {
     font-size: 1.5rem;
+    display: flex;
+    margin-bottom: 1rem;
+    align-items: center;
+    gap: 0.5rem;
+    text-transform: capitalize;
 }
 </style>

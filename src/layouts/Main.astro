@@ -2,41 +2,18 @@
 import "../assets/style/main.scss";
 import AppHeader from "../components/AppHeader.vue";
 import AppFooter from "../components/AppFooter.vue";
+import Base from "./Base.astro";
 ---
 
-<!doctype html>
-<html lang="en" light-mode>
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>calamina cafe</title>
-	</head>
-
-	<body>
-		<AppHeader client:load />
-		<main>
-			<slot />
-		</main>
-		<AppFooter />
-	</body>
-</html>
+<Base>
+	<AppHeader client:load />
+	<main>
+		<slot />
+	</main>
+	<AppFooter />
+</Base>
 
 <style>
-	html {
-		overscroll-behavior-y: none;
-	}
-
-	body {
-		/* app tw-flex tw-flex-col tw-justify-between tw-items-center tw-min-h-screen */
-		display: flex;
-		flex-flow: column;
-		justify-content: space-between;
-		align-items: center;
-		min-height: 100vh;
-	}
-
 	main {
 		max-width: 70rem;
 		display: flex;
