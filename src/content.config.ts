@@ -2,6 +2,7 @@ import { defineCollection, z } from 'astro:content';
 import { file } from 'astro/loaders';
 import { LinkSchema } from './models/Link';
 import { MediaSchema } from './models/Media';
+import { MomentSchema } from './models/Moment';
 
 // ABOUT
 const aboutLinks = defineCollection({
@@ -47,4 +48,14 @@ const favGames = defineCollection({
   schema: MediaSchema,
 });
 
-export const collections = { aboutLinks, aboutMedia, favMovies, favMoviesAnimated, favMoviesShort, favSeries, favSeriesAnimated, favBooks, favBooksVisual, favGames };
+// RESUME
+const jobs = defineCollection({
+  loader: file("src/collections/about/resume/jobs.yaml"),
+  schema: MomentSchema,
+});
+const studies = defineCollection({
+  loader: file("src/collections/about/resume/studies.yaml"),
+  schema: MomentSchema,
+});
+
+export const collections = { aboutLinks, aboutMedia, favMovies, favMoviesAnimated, favMoviesShort, favSeries, favSeriesAnimated, favBooks, favBooksVisual, favGames, jobs, studies };

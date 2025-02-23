@@ -1,15 +1,16 @@
 ---
+import type { Media } from "../../models/Media";
 import { query } from "../../utils";
 import Favorite from "./Favorite.vue";
 
-const movies = await query("favMovies");
-const moviesAnimated = await query("favMoviesAnimated");
-const moviesShort = await query("favMoviesShort");
-const series = await query("favSeries");
-const seriesAnimated = await query("favSeriesAnimated");
-const books = await query("favBooks");
-const booksVisual = await query("favBooksVisual");
-const games = await query("favGames");
+const movies = await query<Media>("favMovies");
+const moviesAnimated = await query<Media>("favMoviesAnimated");
+const moviesShort = await query<Media>("favMoviesShort");
+const series = await query<Media>("favSeries");
+const seriesAnimated = await query<Media>("favSeriesAnimated");
+const books = await query<Media>("favBooks");
+const booksVisual = await query<Media>("favBooksVisual");
+const games = await query<Media>("favGames");
 ---
 
 <div class="grid">
