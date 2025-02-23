@@ -1,0 +1,24 @@
+- id: "1"
+  url: ""
+  label: "World of Tomorrow"
+  src: "https://media.senscritique.com/media/000017015428/0/world_of_tomorrow.jpg"
+
+- id: "2"
+  url: ""
+  label: "Magnetic Rose"
+  src: "https://media.senscritique.com/media/000017903909/0/magnetic_rose.jpg"
+
+- id: "3"
+  url: ""
+  label: "Sabina"
+  src: "https://media.senscritique.com/media/000009077928/0/sabina.jpg"
+
+- id: "4"
+  url: ""
+  label: "L'Homme qui plantait des arbres"
+  src: "https://media.senscritique.com/media/000017328335/0/l_homme_qui_plantait_des_arbres.jpg"
+
+- id: "5"
+  url: ""
+  label: "Ginga no Uo URSA minor BLUE"
+  src: "https://media.senscritique.com/media/000007033921/0/ginga_no_uo_ursa_minor_blue.jpg"

@@ -1,0 +1,49 @@
+- id: "1"
+  url: "https://www.senscritique.com/serie/mononoke/487023"
+  label: "Mononoke"
+  src: "https://media.senscritique.com/media/000000071700/0/mononoke.jpg"
+
+- id: "2"
+  url: "https://www.senscritique.com/serie/mushishi/487652"
+  label: "Mushishi"
+  src: "https://media.senscritique.com/media/000004349370/0/mushishi.jpg"
+
+- id: "3"
+  url: "https://www.senscritique.com/serie/l_odyssee_de_kino/19393"
+  label: "Kino no Tabi"
+  src: "https://media.senscritique.com/media/000000099034/0/l_odyssee_de_kino.jpg"
+
+- id: "4"
+  url: "https://www.senscritique.com/serie/revolutionary_girl_utena/140680"
+  label: "Revolutionary Girl Utena"
+  src: "https://media.senscritique.com/media/000006512922/0/revolutionary_girl_utena.jpg"
+
+- id: "5"
+  url: "https://www.senscritique.com/serie/silly_symphonies/208184"
+  label: "Silly Symphonies"
+  src: "https://media.senscritique.com/media/000017601843/0/silly_symphonies.jpg"
+
+- id: "6"
+  url: "https://www.senscritique.com/serie/ping_pong/21525566"
+  label: "Ping Pong The Animation"
+  src: "https://media.senscritique.com/media/000021132321/0/ping_pong.jpg"
+
+- id: "7"
+  url: "https://www.senscritique.com/serie/xavier_renegade_angel/431563"
+  label: "Xavier: Renegade Angel"
+  src: "https://media.senscritique.com/media/000006564731/0/xavier_renegade_angel.jpg"
+
+- id: "8"
+  url: "https://www.senscritique.com/serie/kaiba/402696"
+  label: "Kaiba"
+  src: "https://media.senscritique.com/media/000006507591/0/kaiba.jpg"
+
+- id: "9"
+  url: "https://www.senscritique.com/serie/ranking_of_kings/43399233"
+  label: "Ranking of Kings"
+  src: "https://media.senscritique.com/media/000020709494/0/ranking_of_kings.jpg"
+
+- id: "10"
+  url: "https://www.senscritique.com/serie/scavengers_reign/48034502"
+  label: "Scavengers Reign"
+  src: "https://media.senscritique.com/media/000021643755/0/scavengers_reign.jpg"

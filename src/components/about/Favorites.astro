@@ -1,0 +1,34 @@
+---
+import { query } from "../../utils";
+import Favorite from "./Favorite.vue";
+
+const movies = await query("favMovies");
+const moviesAnimated = await query("favMoviesAnimated");
+const moviesShort = await query("favMoviesShort");
+const series = await query("favSeries");
+const seriesAnimated = await query("favSeriesAnimated");
+const books = await query("favBooks");
+const booksVisual = await query("favBooksVisual");
+const games = await query("favGames");
+---
+
+<div class="grid">
+  <Favorite title="Movies" medias={movies} />
+  <Favorite title="Animated movies" medias={moviesAnimated} />
+  <Favorite title="Short movies" medias={moviesShort} />
+  <Favorite title="Series" medias={series} />
+  <Favorite title="Animated series" medias={seriesAnimated} size="large" />
+  <Favorite title="Books" medias={books} />
+  <Favorite title="Visual books" medias={booksVisual} size="large" />
+  <Favorite title="Games" medias={games} size="full" />
+</div>
+
+<style scoped lang="scss">
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+    width: 100%;
+    padding-bottom: 2rem;
+  }
+</style>

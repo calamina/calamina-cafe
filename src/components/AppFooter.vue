@@ -22,7 +22,7 @@
 
 <style lang="css" scoped>
 footer {
-    max-width: 60rem;
+    max-width: 70rem;
     width: 100%;
     display: flex;
     flex-flow: column;

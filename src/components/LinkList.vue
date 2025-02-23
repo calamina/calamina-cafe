@@ -1,8 +1,9 @@
 <script setup lang='ts'>
+import type { Link } from '../models/Link';
 import LinkIcon from './LinkIcon.vue'
 
 const { links } = defineProps<{
-    links: any[]
+    links: Link[]
 }>()
 
 console.debug(links)

@@ -1,25 +1,19 @@
 <script setup lang='ts'>
-import type { Media } from '../models/Media';
+import type { CollectionEntry } from 'astro:content';
 import LinkLabelImage from './LinkLabelImage.vue';
 
-const { medias, title } = defineProps<{
-    medias: Media[]
+const { medias } = defineProps<{
+    medias: (CollectionEntry<"aboutMedia">["data"])[]
     title?: string
 }>()
 </script>
 
 <template>
-    <article class="wrapper">
-        <!-- <p v-if="title" class="title">{{ title }} :</p> -->
-        <!-- <div class="wrapper"> -->
-            <div v-for="media in medias" class="media">
-                <p class="type">{{ media.type }}</p>
-                <LinkLabelImage :url="media.url"
-                                :label="media.label"
-                                :src=media.src
-                                :alt="media.alt" />
-            </div>
-        <!-- </div> -->
+    <article class="medias">
+        <div v-for="media in medias" class="media">
+            <p class="type">{{ media.type }}</p>
+            <LinkLabelImage :url="media.url" :label="media.label" :src=media.src :alt="media.label + 'cover'" />
+        </div>
     </article>
 </template>
 
@@ -28,7 +22,7 @@ const { medias, title } = defineProps<{
     padding-bottom: 0.5rem;
 }
 
-.wrapper {
+.medias {
     display: flex;
     flex-wrap: 1;
     width: fit-content;
@@ -36,7 +30,7 @@ const { medias, title } = defineProps<{
 }
 
 .media {
-    display: flex ;
+    display: flex;
     flex-direction: column;
 }
 

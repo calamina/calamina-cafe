@@ -1,24 +1,24 @@
-- id: '1'
-  url: 'https://vuejs.org/'
-  label: 'vue/nuxt'
-  icon: 'tabler:brand-vue'
+- id: "1"
+  url: "https://vuejs.org/"
+  label: "vue/nuxt"
+  icon: "tabler:brand-vue"
 
-- id: '2'
-  url: 'https://astro.build/'
-  label: 'astro'
-  icon: 'tabler:brand-astro'
+- id: "2"
+  url: "https://astro.build/"
+  label: "astro"
+  icon: "tabler:brand-astro"
 
-- id: '3'
-  url: 'https://threejs.org/'
-  label: 'threejs'
-  icon: 'tabler:brand-threejs'
+- id: "3"
+  url: "https://threejs.org/"
+  label: "threejs"
+  icon: "tabler:brand-threejs"
 
-- id: '4'
-  url: 'https://gsap.com/'
-  label: 'gsap'
-  icon: 'tabler:clover'
+- id: "4"
+  url: "https://gsap.com/"
+  label: "gsap"
+  icon: "tabler:clover"
 
-- id: '5'
-  url: 'https://p5js.org/'
-  label: 'p5js'
-  icon: 'tabler:asterisk-simple'
+- id: "5"
+  url: "https://p5js.org/"
+  label: "p5js"
+  icon: "tabler:asterisk-simple"

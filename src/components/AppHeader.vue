@@ -31,7 +31,7 @@ import ThemeSwitch from './ThemeSwitch.vue';
 <style lang="scss" scoped>
 //  tw-h-16 xl:tw-px-0">
 header {
-  max-width: 60rem;
+  max-width: 70rem;
   position: fixed;
   display: flex;
   top: 0;

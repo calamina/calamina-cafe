@@ -1,0 +1,49 @@
+- id: "1"
+  url: "https://www.senscritique.com/bd/l_ere_des_cristaux/18263943"
+  label: "Hōseki no Kuni"
+  src: "https://media.senscritique.com/media/000022095222/0/l_ere_des_cristaux.jpg"
+
+- id: "2"
+  url: "https://www.senscritique.com/bd/nausicaa_de_la_vallee_du_vent_tome_1/35714"
+  label: "Kaze no Tani no Nausicaa"
+  src: "https://media.senscritique.com/media/000016348293/0/nausicaa_de_la_vallee_du_vent_tome_1.jpg"
+
+- id: "3"
+  url: "https://www.senscritique.com/bd/calvin_et_hobbes/150545"
+  label: "Calvin and Hobbes"
+  src: "https://media.senscritique.com/media/000021565432/0/calvin_et_hobbes.jpg"
+
+- id: "4"
+  url: "https://www.senscritique.com/bd/berserk/267858"
+  label: "Berserk"
+  src: "https://media.senscritique.com/media/000005359259/0/berserk.jpg"
+
+- id: "5"
+  url: "https://www.senscritique.com/bd/donjon/25201904"
+  label: "Donjon"
+  src: "https://media.senscritique.com/media/000016942749/0/donjon.jpg"
+
+- id: "6"
+  url: "https://www.senscritique.com/bd/asterios_polyp/394538"
+  label: "Asterios Polyp"
+  src: "https://media.senscritique.com/media/000015521652/0/asterios_polyp.jpg"
+
+- id: "7"
+  url: "https://www.senscritique.com/bd/le_roi_meduse/71387155"
+  label: "Le Roi Méduse"
+  src: "https://media.senscritique.com/media/000021828238/0/le_roi_meduse.jpg"
+
+- id: "8"
+  url: "https://www.senscritique.com/bd/in_humus/32107144"
+  label: "In-Humus"
+  src: "https://media.senscritique.com/media/000017726535/0/in_humus.jpg"
+
+- id: "9"
+  url: "https://www.senscritique.com/bd/le_discours_de_la_panthere/43155964"
+  label: "Le Discours de la panthère"
+  src: "https://media.senscritique.com/media/000020079829/0/le_discours_de_la_panthere.jpg"
+
+- id: "10"
+  url: "https://www.senscritique.com/bd/planetes_l_integrale/125931"
+  label: "Planetes : L'Intégrale"
+  src: "https://media.senscritique.com/media/000013193365/0/planetes_l_integrale.jpg"
