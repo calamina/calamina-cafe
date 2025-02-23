@@ -1,31 +1,30 @@
-<script
-        setup
-        lang="ts">
-        const { url, label, src, alt } = defineProps<{
-            url: string,
-            label: string,
-            src: string,
-            alt: string,
-            date?: string
-        }>()
+<script setup lang="ts">
+const { url, label, src } = defineProps<{
+    url: string,
+    label: string,
+    src: string,
+    date?: string
+}>()
 </script>
 
 <template>
-    <!-- <NuxtLink :to="url" target="_blank" class="tw-flex tw-items-start tw-flex-row tw-w-full tw-max-w-80"> -->
-    <NuxtLink :to="url" target="_blank"
-              class="tw-flex tw-items-center tw-flex-row tw-w-full tw-justify-start tw-shrink">
-        <img class="tw-rounded-lg tw-object-cover tw-h-12 tw-w-12 tw-shrink-0" :src
-             :alt="alt + ' cover'">
-        <div
-             class="tw-flex tw-flex-col tw-leading-[1.25rem] tw-w-fit tw-overflow-hidden tw-shrink">
-            <p class="tw-text-ellipsis tw-text-nowrap tw-overflow-hidden">{{ label }}</p>
-            <span class="tw-text-[var(--color-light)]">1988</span>
+    <a :href="url" target="_blank">
+        <img :src :alt="label + ' cover'">
+        <div>
+            <p>{{ label }}</p>
+            <span>1988</span>
         </div>
-    </NuxtLink>
+    </a>
 </template>
 
 <style lang="scss" scoped>
 a {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    width: 100%;
+    justify-content: start;
+    flex-shrink: 1;
     background-color: var(--bg-darker0);
     border-radius: 0.5rem;
     padding-right: 0.5rem;
@@ -38,6 +37,33 @@ a {
             opacity: 0.4;
         }
     }
+}
+
+img {
+    border-radius: 0.5rem;
+    object-fit: cover;
+    height: 3rem;
+    width: 3rem;
+    flex-shrink: 0;
+}
+
+div {
+    display: flex;
+    flex-flow: column;
+    line-height: 1.25rem;
+    width: fit-content;
+    overflow: hidden;
+    flex-shrink: 1;
+}
+
+p {
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
+    overflow: hidden;
+}
+
+span {
+    color: var(--color-light)
 }
 
 .dark-mode a:hover {

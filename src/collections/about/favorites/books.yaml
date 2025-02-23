@@ -1,0 +1,24 @@
+- id: "1"
+  url: "https://www.senscritique.com/livre/Gilgamesh/10837390"
+  label: "Gilgamesh"
+  src: "https://media.senscritique.com/media/000006287297/0/Gilgamesh.jpg"
+
+- id: "2"
+  url: "https://www.senscritique.com/livre/moumine_le_troll/197"
+  label: "Moumine le troll"
+  src: "https://media.senscritique.com/media/000000067836/0/moumine_le_troll.jpg"
+
+- id: "3"
+  url: "https://www.senscritique.com/livre/l_homme_qui_prenait_sa_femme_pour_un_chapeau/429018"
+  label: "The Man Who Mistook His Wife for a Hat"
+  src: "https://media.senscritique.com/media/000017620684/0/l_homme_qui_prenait_sa_femme_pour_un_chapeau.jpg"
+
+- id: "4"
+  url: "https://www.senscritique.com/livre/la_maison_des_feuilles/367357"
+  label: "House of Leaves"
+  src: "https://media.senscritique.com/media/000009176874/0/la_maison_des_feuilles.jpg"
+
+- id: "5"
+  url: "https://www.senscritique.com/livre/la_nuit_des_temps/209456"
+  label: "La Nuit des temps"
+  src: "https://media.senscritique.com/media/000016623783/0/la_nuit_des_temps.jpg"

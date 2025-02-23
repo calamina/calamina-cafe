@@ -1,0 +1,24 @@
+- id: "1"
+  url: ""
+  label: "In the Mood for Love"
+  src: "https://media.senscritique.com/media/000020197781/0/in_the_mood_for_love.jpg"
+
+- id: "2"
+  url: ""
+  label: "Lost in Translation"
+  src: "https://media.senscritique.com/media/000006098072/0/lost_in_translation.jpg"
+
+- id: "3"
+  url: ""
+  label: "Vertigo"
+  src: "https://media.senscritique.com/media/000004888043/0/sueurs_froides.jpg"
+
+- id: "4"
+  url: ""
+  label: "One Flew Over the Cuckoo's Nest"
+  src: "https://media.senscritique.com/media/000016145216/0/vol_au_dessus_d_un_nid_de_coucou.jpg"
+
+- id: "5"
+  url: ""
+  label: "Les Nibelungen"
+  src: "https://media.senscritique.com/media/000022358379/0/les_nibelungen.jpg"

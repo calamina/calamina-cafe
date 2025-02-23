@@ -13,4 +13,38 @@ const aboutMedia = defineCollection({
   schema: MediaSchema,
 });
 
-export const collections = { aboutLinks, aboutMedia };
+// FAVORITES
+const favMovies = defineCollection({
+  loader: file("src/collections/about/favorites/movies.yaml"),
+  schema: MediaSchema,
+});
+const favMoviesAnimated = defineCollection({
+  loader: file("src/collections/about/favorites/moviesAnimated.yaml"),
+  schema: MediaSchema,
+});
+const favMoviesShort = defineCollection({
+  loader: file("src/collections/about/favorites/moviesShort.yaml"),
+  schema: MediaSchema,
+});
+const favSeries = defineCollection({
+  loader: file("src/collections/about/favorites/series.yaml"),
+  schema: MediaSchema,
+});
+const favSeriesAnimated = defineCollection({
+  loader: file("src/collections/about/favorites/seriesAnimated.yaml"),
+  schema: MediaSchema,
+});
+const favBooks = defineCollection({
+  loader: file("src/collections/about/favorites/books.yaml"),
+  schema: MediaSchema,
+});
+const favBooksVisual = defineCollection({
+  loader: file("src/collections/about/favorites/booksVisual.yaml"),
+  schema: MediaSchema,
+});
+const favGames = defineCollection({
+  loader: file("src/collections/about/favorites/games.yaml"),
+  schema: MediaSchema,
+});
+
+export const collections = { aboutLinks, aboutMedia, favMovies, favMoviesAnimated, favMoviesShort, favSeries, favSeriesAnimated, favBooks, favBooksVisual, favGames };

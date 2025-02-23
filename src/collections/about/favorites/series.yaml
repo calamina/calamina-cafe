@@ -1,0 +1,24 @@
+- id: "1"
+  url: "https://www.senscritique.com/serie/twin_peaks/75730"
+  label: "Twin Peaks"
+  src: "https://media.senscritique.com/media/000019930054/0/twin_peaks.jpg"
+
+- id: "2"
+  url: "https://www.senscritique.com/serie/oz/198281"
+  label: "Oz"
+  src: "https://media.senscritique.com/media/000019276536/0/oz.jpg"
+
+- id: "3"
+  url: "https://www.senscritique.com/serie/predateurs/17840276"
+  label: "The Hunt"
+  src: "https://media.senscritique.com/media/000012382643/0/predateurs.jpg"
+
+- id: "4"
+  url: "https://www.senscritique.com/serie/planete_terre/417261"
+  label: "Planet Earth"
+  src: "https://media.senscritique.com/media/000006507385/0/planete_terre.jpg"
+
+- id: "5"
+  url: "https://www.senscritique.com/serie/severance/40631247"
+  label: "Severance"
+  src: "https://media.senscritique.com/media/000020547893/0/severance.png"
