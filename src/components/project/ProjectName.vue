@@ -5,11 +5,14 @@ const { name } = defineProps<{
 </script>
 
 <template>
-  <h1 class="tw-capitalize tw-text-5xl">{{ name }}</h1>
+  <h1>{{ name }}</h1>
 </template>
 
 <style lang="scss" scoped>
 h1 {
+  text-transform: capitalize;
+  font-size: 3rem;
+  line-height: 3rem;
   white-space: nowrap;
   letter-spacing: -3px;
   opacity: 1;

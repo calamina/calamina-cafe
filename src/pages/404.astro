@@ -1,10 +1,9 @@
 ---
 import ErrorFlower from "../components/ErrorFlower.vue";
-import Base from "../layouts/Base.astro";
-import Main from "../layouts/Main.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<Base>
+<BaseLayout>
   <div class="wrapper">
     <h1>[ 404 error ]<br /> Page not found</h1>
     <p>
@@ -15,7 +14,7 @@ import Main from "../layouts/Main.astro";
     <ErrorFlower />
     <p>Art by <span>Susie Oviatt</span></p>
   </div>
-</Base>
+</BaseLayout>
 
 <style scoped lang="scss">
   .wrapper {

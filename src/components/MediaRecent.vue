@@ -1,9 +1,10 @@
 <script setup lang='ts'>
 import type { CollectionEntry } from 'astro:content';
 import LinkLabelImage from './LinkLabelImage.vue';
+import type { Media } from '../models/Media';
 
 const { medias } = defineProps<{
-    medias: (CollectionEntry<"aboutMedia">["data"])[]
+    medias: Media[]
     title?: string
 }>()
 </script>

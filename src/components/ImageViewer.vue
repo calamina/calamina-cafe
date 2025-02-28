@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { onMounted, ref, type Ref } from 'vue';
 import { onKeyStroke } from '@vueuse/core'
+import ButtonBrackets from './ButtonBrackets.vue';
+import TextBrackets from './TextBrackets.vue';
+import IconImg from './IconImg.vue';
 
 const { selected, images } = defineProps<{
     selected: HTMLImageElement | null
@@ -44,37 +47,37 @@ function exit() {
         <div class="imageView">
             <div class="options">
                 <TextBrackets>
-                    <Icon name="tabler:eye" />
+                    <IconImg name="tabler:eye" />
                     Fullscreen mode
                 </TextBrackets>
                 <TextBrackets>{{ images.indexOf(image) + 1 }} / {{ images.length }}</TextBrackets>
                 <ButtonBrackets :type="'alert'" @click="exit()">
                     close
-                    <Icon name="tabler:eye-off" />
+                    <IconImg name="tabler:eye-off" />
                 </ButtonBrackets>
             </div>
-            <transition :name="imgSwipeTransition" mode="out-in">
-                <img @click="exit()" :src="image.src" :alt="image.alt" :key="image.src" class="lookout">
-            </transition>
+            <Transition :name="imgSwipeTransition" mode="out-in">
+                <img class="image lookout" @click="exit()" :src="image.src" :alt="image.alt" :key="image.src">
+            </Transition>
             <div class="options">
                 <ButtonBrackets :type="'classic'" @click="prevImg()" v-if="images.length > 1">
-                    <Icon name="tabler:arrow-left-bar" />
+                    <IconImg name="tabler:arrow-left-bar" />
                     previous
                 </ButtonBrackets>
                 <div class="tw-flex tw-gap-8">
                     <TextBrackets>
-                        <Icon name="tabler:hand-click" />
+                        <IconImg name="tabler:hand-click" />
                         or Escape to exit
                     </TextBrackets>
                     <TextBrackets>
-                        <Icon name="tabler:arrow-left-bar" />
-                        <Icon name="tabler:arrow-right-bar" />
+                        <IconImg name="tabler:arrow-left-bar" />
+                        <IconImg name="tabler:arrow-right-bar" />
                         to navigate
                     </TextBrackets>
                 </div>
                 <ButtonBrackets :type="'classic'" @click="nextImg()" v-if="images.length > 1">
                     next
-                    <Icon name="tabler:arrow-right-bar" />
+                    <IconImg name="tabler:arrow-right-bar" />
                 </ButtonBrackets>
             </div>
         </div>
@@ -109,10 +112,11 @@ function exit() {
         padding: 1rem;
     }
 
-    img {
-        object-fit: contain;
-        width: 100%;
-        height: 100%;
-    }
+}
+
+.image {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
 }
 </style>

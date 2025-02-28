@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { ProjectTech } from '../../models/ProjectTech';
+import type { Tech } from '../../../#old/app/models/ProjectTech';
 
 const { tech } = defineProps<{
-    tech: ProjectTech,
+    tech: Tech,
 }>()
 
 const categs = Object.entries(tech).filter(entry => entry[0] !== "colors") 
@@ -10,28 +10,23 @@ const categs = Object.entries(tech).filter(entry => entry[0] !== "colors")
 
 <template>
     <div class="tech">
-        <div class="category tw-flex tw-items-baseline tw-pt-1 tw-pb-2" v-for="category in categs">
+        <div class="category" v-for="category in categs">
             <slot />
-            <p class="category-title tw-capitalize">{{ category[0] }}</p>
-            <div class="tw-flex tw-pt-1 tw-gap-2">
+            <p class="category-title">{{ category[0] }}</p>
+            <div class="taggroup">
                 <span class="tag" :class="category[0]" v-for="entry in category[1]">{{ entry }}</span>
             </div>
         </div>
-        <!-- <div class="category tw-flex tw-items-baseline tw-py-1">
-            <slot />
-            <p class="category-title tw-capitalize">Colors</p>
-            <div class="tw-flex tw-pt-1 tw-gap-2">
-                <span class="tw-w-4 tw-h-4 tw-rounded-full" :class="tech.colors" :style="{backgroundColor: color}" v-for="color in tech.colors"></span>
-            </div>
-        </div> -->
     </div>
 </template>
 
 <style lang="scss" scoped>
 .category {
-    transition: padding-left 0.2s, background-color 0.2s, opacity 0.3s, transform 0.3s;
-    opacity: 1;
-    transform: translateX(0);
+    display: flex;
+    align-items: baseline;
+    padding-top: 0.25rem;
+    padding-bottom: 0.5rem;
+    transition: padding-left 0.2s;
 
     &:not(:last-of-type) {
         border-bottom: 1px solid var(--bg-darker);
@@ -39,25 +34,18 @@ const categs = Object.entries(tech).filter(entry => entry[0] !== "colors")
 
     &:hover {
         padding-left: 0.25rem;
-        background-color: var(--bg);
-    }
-}
-
-@for $i from 1 through 20 {
-    .category:nth-of-type(#{$i}) {
-        transition-delay: 0.1s + (0.025s * $i);
-    }
-}
-
-@starting-style {
-    .category {
-        opacity: 0;
-        transform: translateX(-0.5rem);
     }
 }
 
 .category-title {
+    text-transform: capitalize;
     width: 12ch;
+}
+
+.taggroup {
+    display: flex;
+    padding-top: 0.25rem;
+    gap: 0.5rem;
 }
 
 .tag {
@@ -90,31 +78,9 @@ const categs = Object.entries(tech).filter(entry => entry[0] !== "colors")
     background-color: hsl(2, 50%, 77%);
     background-color: #e2a9a7;
 }
+
 .tools {
     background-color: hsl(50, 50%, 77%);
     background-color: #e2d8a7
 }
-
-
-
-// .languages {
-//     background-color: hsl(144, 28%, 55%);
-//     background-color: #6cac86;
-// }
-// .colors {
-//     background-color: hsl(216, 28%, 55%);
-//     background-color: #6c86ac;
-// }
-// .fonts {
-//     background-color: hsl(288, 28%, 55%);
-//     background-color: #a06cac;
-// }
-// .icons {
-//     background-color: hsl(2, 28%, 55%);
-//     background-color: #ac6e6c;
-// }
-// .tools {
-//     background-color: hsl(50, 28%, 55%);
-//     background-color: #aca26c;
-// }
 </style>
