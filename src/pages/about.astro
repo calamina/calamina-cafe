@@ -2,20 +2,20 @@
 import type { Link } from "../models/Link";
 import type { Media } from "../models/Media";
 import { query } from "../utils";
-import Main from "../layouts/Main.astro";
 import LinkList from "../components/LinkList.vue";
 import MediaRecent from "../components/MediaRecent.vue";
 import Favorites from "../components/about/Favorites.astro";
 import Timeline from "../components/Timeline.astro";
 import SectionTitle from "../components/SectionTitle.vue";
+import MainLayout from "../layouts/MainLayout.astro";
 
-const links = await query<Link>("aboutLinks");
-const medias = await query<Media>("aboutMedia");
+const links = await query<Link>("nowLinks");
+const medias = await query<Media>("nowMedia");
 ---
 
-<Main>
+<MainLayout>
 	<div class="content">
-		<section class="now">
+		<section>
 			<SectionTitle name="now" icon="tabler:mood-smile" />
 			<LinkList links={links} />
 			<MediaRecent medias={medias} />
@@ -31,7 +31,7 @@ const medias = await query<Media>("aboutMedia");
 			<Timeline />
 		</section>
 	</div>
-</Main>
+</MainLayout>
 
 <style scoped lang="scss">
 	.content {

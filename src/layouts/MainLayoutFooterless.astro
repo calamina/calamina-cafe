@@ -1,24 +1,22 @@
 ---
 import "../assets/style/main.scss";
 import AppHeader from "../components/AppHeader.vue";
-import AppFooter from "../components/AppFooter.vue";
-import Base from "./Base.astro";
+import BaseLayout from "./BaseLayout.astro";
 ---
 
-<Base>
+<BaseLayout>
 	<AppHeader client:load />
 	<main>
 		<slot />
 	</main>
-	<AppFooter />
-</Base>
+</BaseLayout>
 
 <style>
 	main {
 		max-width: 70rem;
 		display: flex;
 		flex-grow: 1;
-		margin: 4rem 1rem;
+		margin: 4rem 1rem 0;
 		height: 100%;
 		justify-content: center;
 		width: 100%;

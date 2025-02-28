@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed } from 'vue';
+
 const { size } = defineProps<{
     size?: number
 }>()
@@ -7,7 +9,7 @@ const bracketsSize = computed(() => { return { '--size': size ?? 20 + 'px' } })
 </script>
 
 <template>
-    <NuxtLink class="bracketWrap">
+    <a class="bracketWrap">
         <slot class="content"></slot>
         <div class="overlay" aria-hidden="true">
             <div class="select" :style="bracketsSize">
@@ -18,29 +20,29 @@ const bracketsSize = computed(() => { return { '--size': size ?? 20 + 'px' } })
             </div>
             <div class="mask"></div>
         </div>
-    </NuxtLink>
+    </a>
 </template>
 <style scoped lang="scss">
 a {
-  position: relative;
-  width: 100%;
-  height: 100%;
+    position: relative;
+    width: 100%;
+    height: 100%;
 
-  &:focus {
-    outline: none;
+    &:focus {
+        outline: none;
 
-    .wrapper {
-      opacity: 1;
-      transform: scale(1);
+        .wrapper {
+            opacity: 1;
+            transform: scale(1);
+        }
     }
-  }
 
-  &:hover {
-    .wrapper {
-      opacity: 1;
-      transform: scale(1);
+    &:hover {
+        .wrapper {
+            opacity: 1;
+            transform: scale(1);
+        }
     }
-  }
 }
 
 .bracketWrap {

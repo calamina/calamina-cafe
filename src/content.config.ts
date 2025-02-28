@@ -1,16 +1,17 @@
 import { defineCollection, z } from 'astro:content';
-import { file } from 'astro/loaders';
+import { file, glob } from 'astro/loaders';
 import { LinkSchema } from './models/Link';
 import { MediaSchema } from './models/Media';
 import { MomentSchema } from './models/Moment';
+import { ProjectSchema } from './models/Project';
 
 // ABOUT
-const aboutLinks = defineCollection({
-  loader: file("src/collections/about/links.yaml"),
+const nowLinks = defineCollection({
+  loader: file("src/collections/about/now/links.yaml"),
   schema: LinkSchema,
 });
-const aboutMedia = defineCollection({
-  loader: file("src/collections/about/media.yaml"),
+const nowMedia = defineCollection({
+  loader: file("src/collections/about/now/media.yaml"),
   schema: MediaSchema,
 });
 
@@ -58,4 +59,10 @@ const studies = defineCollection({
   schema: MomentSchema,
 });
 
-export const collections = { aboutLinks, aboutMedia, favMovies, favMoviesAnimated, favMoviesShort, favSeries, favSeriesAnimated, favBooks, favBooksVisual, favGames, jobs, studies };
+// PROJECT
+const webProjects = defineCollection({
+  loader: glob({ pattern: "**/*.yaml", base: "./src/collections/projects/web/" }),
+  schema: ProjectSchema
+});
+
+export const collections = { nowLinks, nowMedia, favMovies, favMoviesAnimated, favMoviesShort, favSeries, favSeriesAnimated, favBooks, favBooksVisual, favGames, jobs, studies, webProjects };

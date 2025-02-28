@@ -1,4 +1,4 @@
-export type ProjectTech = {
+export type Tech = {
     tools?: string[],
     languages?: string[]
     colors?: string[]

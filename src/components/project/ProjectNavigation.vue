@@ -1,33 +1,48 @@
 <script setup lang="ts">
-const route = useRoute()
-const type = route.path.includes(WEB) ? WEB : PHONE
+import type { Project } from '../../models/Project';
+import ButtonHighlight from '../ButtonHighlight.vue';
+import IconImg from '../IconImg.vue';
 
-const { data: nav } = await useAsyncData(() =>
-    queryCollectionItemSurroundings(type, route.path, { fields: ['title', 'num'] }).order('num', 'ASC')
-)
+const { path, next, prev, total } = defineProps<{
+    path: string
+    next: Project | null
+    prev: Project | null
+    total: number
+}>()
 </script>
 
 <template>
-    <div class="navigation tw-grid tw-grid-cols-3 tw-items-center tw-pb-2">
-        <div :key="nav?.[0]?.path" class="prev">
-            <highlightButton class="button" :to="nav?.[0]?.path ?? { name: 'projects' }">
-                <Icon name="tabler:arrow-left-bar" />
-                <h2>{{ nav?.[0]?.title ?? 'back to projects'}}</h2>
-            </highlightButton>
+    <div class="navigation">
+        <div :key="prev?.url" class="prev">
+            <!-- <ButtonHighlight class="button" :href="(path + prev?.name) ?? { name: 'projects' }"> -->
+            <ButtonHighlight class="button" :href="prev ? path + prev?.name : '/projects'">
+                <IconImg name="tabler:arrow-left-bar" />
+                <h2>{{ prev?.name ?? 'back to projects' }}</h2>
+            </ButtonHighlight>
         </div>
 
-        <p class="id">{{ nav?.[0] ? nav?.[0]?.num + 1 : 1 }} / 19</p>
+        <!-- todo count projects -->
+        <p class="id">{{ prev ? prev?.num + 1 : 1 }} / {{ total }}</p>
 
-        <div :key="nav?.[1]?.path" class="next">
-            <highlightButton class="button" :to="nav?.[1]?.path ?? { name: 'projects' }">
-                <h2>{{ nav?.[1]?.title ?? 'back to projects' }}</h2>
-                <Icon name="tabler:arrow-right-bar" />
-            </highlightButton>
+        <div :key="next?.url" class="next">
+            <ButtonHighlight class="button" :href="next ? path + next?.name : '/projects'">
+                <h2>{{ next?.name ?? 'back to projects' }}</h2>
+                <IconImg name="tabler:arrow-right-bar" />
+            </ButtonHighlight>
         </div>
     </div>
 </template>
 
 <style lang="scss" scoped>
+.navigation {
+    margin-top: auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0px, 1fr));
+    align-items: center;
+    padding-bottom: 0.5rem;
+    width: 100%;
+}
+
 .prev {
     justify-self: flex-start;
 

@@ -1,22 +1,83 @@
 ---
-// const projects = ['atlast', '...']
+import MainLayoutFooterless from "../../../layouts/MainLayoutFooterless.astro";
+import { queryOne, queryPrevious, queryNext } from "../../../utils";
+import type { Project } from "../../../models/Project";
+import ProjectInfo from "../../../components/project/ProjectInfo.vue";
+import ProjectGallery from "../../../components/project/ProjectGallery.vue";
+import { Image } from "astro:assets";
+import ButtonImage from "../../../components/ButtonImage.vue";
+import { getCollection } from "astro:content";
+import ProjectNavigation from "../../../components/project/ProjectNavigation.vue";
 
-// const makePaths = () => {
-//   const res: any[] = []
-//   projects.forEach(project => {
-//     res.push({params: {project: project}})
-//   })
-//   return res;
-// }
-export function getStaticPaths() {
-  return [
-    { params: { project: "atlast" } },
-    { params: { project: "rover" } },
-    { params: { project: "spot" } },
-  ];
+const projects = await getCollection("webProjects");
+const total = projects.length;
+
+export async function getStaticPaths() {
+  const projects = await getCollection("webProjects");
+  return projects.map((project) => ({
+    params: { project: project.data.name },
+  }));
 }
 
 const { project } = Astro.params;
+const { num, name, url, tech, description } =
+  (await queryOne<Project>("webProjects", project)) ?? {};
+
+const prev = await queryPrevious("webProjects", num ?? 0);
+const next = await queryNext("webProjects", num ?? 0);
+
+// TODO:: REFACTO IMAGE GETTER -----
+const lels = Object.entries(
+  import.meta.glob<{ default: ImageMetadata; eager: true }>(
+    "/src/assets/img/content/projects/web/**/*.avif",
+  ),
+);
+
+const hehe = lels
+  .filter((lel) => lel[0].includes(project) && !lel[0].includes("mini"))
+  .map((lel) => lel[1]);
+// ----------------------------------
 ---
 
-<div>Good dog, {project}!</div>
+<MainLayoutFooterless>
+  <div class="project">
+    <ProjectInfo name={name} url={url} tech={tech} description={description}>
+      <!-- ADD CONSTANTS FOR PATH -->
+      <ProjectNavigation
+        prev={prev}
+        next={next}
+        total={total}
+        path="/projects/web/"
+      />
+    </ProjectInfo>
+    <ProjectGallery client:only>
+      {
+        hehe.map((item) => (
+          <ButtonImage>
+            <Image src={item()} alt={"lel"} loading={"eager"} />
+          </ButtonImage>
+        ))
+      }
+    </ProjectGallery>
+  </div>
+</MainLayoutFooterless>
+
+<style scoped lang="scss">
+  .project {
+    width: 100%;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  @media (min-width: 1280px) {
+    .project {
+      display: grid;
+      grid-template-columns: repeat(10, minmax(0px, 1fr));
+      gap: 0.5rem;
+    }
+  }
+</style>
