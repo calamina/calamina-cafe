@@ -1,0 +1,20 @@
+num: 14
+name: "sorrow"
+url: "https://sorrow.calamina.cafe"
+online: false
+tech:
+  languages:
+  - 'html'
+  - 'scss'
+  - 'typescript'
+  colors:
+  - '#lelele'
+  - '#tetete'
+  fonts:
+  - 'apercu mono regular'
+  icons:
+  - 'utf8 special chars'
+
+description:
+- Stories about famous animals whose lives were remarkable.
+- (sometimes not in a good way :')

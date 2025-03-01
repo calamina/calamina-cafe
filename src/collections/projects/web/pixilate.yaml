@@ -1,0 +1,21 @@
+num: 5
+name: "pixilate"
+url: "https://pixilate.calamina.cafe"
+online: true
+tech:
+  tools:
+  - 'p5js'
+  languages:
+  - 'html'
+  - 'css'
+  - 'javascript'
+  colors:
+  - '#lelele'
+  - '#tetete'
+  fonts:
+  - 'apercu mono regular'
+  icons:
+  - 'tabler'
+
+description:
+- Pixel generator / drawing app with different customization options and presets.

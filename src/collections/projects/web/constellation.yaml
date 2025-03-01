@@ -1,0 +1,21 @@
+num: 2
+name: "constellation"
+url: "https://constellation.calamina.cafe"
+online: true
+tech:
+  tools:
+  - 'threejs'
+  languages:
+  - 'html'
+  - 'scss'
+  - 'typescript'
+  colors:
+  - '#lelele'
+  - '#tetete'
+  fonts:
+  - '/'
+  icons:
+  - '/'
+
+description:
+- 3D experiment showing rotating planets.

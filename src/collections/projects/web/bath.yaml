@@ -1,0 +1,18 @@
+num: 16
+name: "bath"
+url: "https://bath.calamina.cafe"
+online: false
+tech:
+  tools:
+  - 'threejs'
+  - 'magickaVoxel'
+  languages:
+  - 'html'
+  - 'scss'
+  - 'typescript'
+  colors:
+  - '#lelele'
+  - '#tetete'
+
+description:
+- Small 3D experiment with voxels and shading.

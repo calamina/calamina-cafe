@@ -1,0 +1,21 @@
+num: 6
+name: "planet"
+url: "https://planet.calamina.cafe"
+online: true
+tech:
+  tools:
+  - 'threejs'
+  languages:
+  - 'html'
+  - 'scss'
+  - 'typescript'
+  colors:
+  - '#lelele'
+  - '#tetete'
+  fonts:
+  - 'apercu mono regular'
+  icons:
+  - '/'
+
+description:
+- 3D planet rotating, zooming and exploding depending on the scroll position.

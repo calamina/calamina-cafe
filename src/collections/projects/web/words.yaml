@@ -1,6 +1,6 @@
-num: 4
-name: "netstart"
-url: "https://net.calamina.cafe"
+num: 17
+name: "words"
+url: "https://words.calamina.cafe"
 online: true
 tech:
   tools:
@@ -9,6 +9,7 @@ tech:
   - 'html'
   - 'scss'
   - 'typescript'
+  - 'json'
   colors:
   - '#lelele'
   - '#tetete'
@@ -18,5 +19,4 @@ tech:
   - 'tabler'
 
 description:
-- Startpage with different categories.
-- It uses localStorage to save NSFW status and color theme.
+- Gallery of unusual and interesting words and concepts found on wikipedia.

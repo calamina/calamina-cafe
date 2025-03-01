@@ -1,19 +1,24 @@
 <script setup lang="ts">
-const { name } = defineProps < {
+const { name, disabled } = defineProps<{
     name: string
-} > ()
+    disabled?: boolean
+}>()
 
 const src = `https://api.iconify.design/${name}.svg`
 </script>
 
 <template>
-    <img :src />
+    <img :src :class="{ 'disabled': disabled }" />
 </template>
 
-<style>
+<style scoped lang="scss">
 img {
     width: 1.25rem;
     height: 1.25rem;
     color: var(--color);
+
+    &.disabled {
+        opacity: 0.25;
+    }
 }
 </style>

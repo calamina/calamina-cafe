@@ -1,0 +1,21 @@
+num: 9
+name: "animation"
+url: "https://animation.calamina.cafe"
+online: false
+tech:
+  tools:
+  - 'vue'
+  languages:
+  - 'html'
+  - 'scss'
+  - 'typescript'
+  colors:
+  - '#lelele'
+  - '#tetete'
+  fonts:
+  - 'apercu mono regular'
+  icons:
+  - 'utf8 special chars'
+
+description:
+- Project based on four animated movies with incredibly long production times.

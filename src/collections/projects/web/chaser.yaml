@@ -1,0 +1,18 @@
+num: 10
+name: "chaser"
+url: "https://chaser.calamina.cafe"
+online: false
+tech:
+  languages:
+  - 'html'
+  - 'scss'
+  colors:
+  - '#lelele'
+  - '#tetete'
+  fonts:
+  - '/'
+  icons:
+  - '/'
+
+description:
+- Pure CSS/HTML animation.

@@ -6,6 +6,9 @@
 hey :)
 
 # DOING
+- Clean images folder (no need for mini)
+- check todos in code :)
+
 - about / last seen / find a way to display phrase ('last media watched :')
 - add toggle for max length !!!
 - dark theme invert color and color-lighter (about)!

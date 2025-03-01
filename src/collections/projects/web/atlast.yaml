@@ -1,6 +1,7 @@
 num: 1
 name: "atlast"
 url: "https://atlast.calamina.cafe"
+online: false
 tech:
   tools:
   - "vue"
@@ -15,12 +16,6 @@ tech:
   - "#323232"
   - "#dfcfe8"
   - "#dc6389"
-  - "#b97749cc"
-  - "#a4dc6366"
-  - "#dca86366"
-  - "#63cedc66"
-  - "#88888866"
-  - "#b6cccf66"
   fonts:
   - "contax"
   icons:

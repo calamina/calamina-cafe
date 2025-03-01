@@ -20,7 +20,7 @@ export async function getStaticPaths() {
 }
 
 const { project } = Astro.params;
-const { num, name, url, tech, description } =
+const { num, name, url, tech, description, online } =
   (await queryOne<Project>("webProjects", project)) ?? {};
 
 const prev = await queryPrevious("webProjects", num ?? 0);
@@ -41,7 +41,13 @@ const hehe = lels
 
 <MainLayoutFooterless>
   <div class="project">
-    <ProjectInfo name={name} url={url} tech={tech} description={description}>
+    <ProjectInfo
+      name={name}
+      url={url}
+      tech={tech}
+      description={description}
+      online={online}
+    >
       <!-- ADD CONSTANTS FOR PATH -->
       <ProjectNavigation
         prev={prev}
