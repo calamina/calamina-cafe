@@ -1,11 +1,21 @@
 ---
+import { getCollection } from "astro:content";
 import MainLayout from "../../layouts/MainLayout.astro";
+
+const projects = await getCollection("webProjects").then((projects) =>
+    projects.map((project) => project.data.name),
+);
 ---
 
 <MainLayout>
     <div class="content">
-        hello :)
-        <a href="/projects/web/atlast">atlast</a>
-        <a href="/projects/web/netstart">netstart</a>
+        {projects.map((item) => <a href={"/projects/web/" + item}>{item}</a>)}
     </div>
 </MainLayout>
+
+<style scoped lang="scss">
+    .content {
+        display: flex;
+        flex-flow: column;
+    }
+</style>

@@ -11,7 +11,7 @@ export const queryFilter = async <T>(collection: CollectionKey, filterFunction: 
   getCollection(collection, filterFunction())?.then(results => results as T);
 
 export const queryPrevious = async (collection: CollectionKey, num: number) =>
-  getCollection(collection, ({ data }) => (data as Project).num === (num - 1))?.then(results => results[0]?.data as Project);
+  getCollection(collection, ({ data }) => (data as Project)?.num === (num - 1))?.then(results => results[0]?.data as Project);
 
 export const queryNext = async (collection: CollectionKey, num: number) =>
-  getCollection(collection, ({ data }) => (data as Project).num === (num + 1))?.then(results => results[0]?.data as Project);
+  getCollection(collection, ({ data }) => (data as Project)?.num === (num + 1))?.then(results => results[0]?.data as Project);

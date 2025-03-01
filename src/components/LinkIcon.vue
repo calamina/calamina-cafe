@@ -1,17 +1,18 @@
 <script setup lang="ts">
 import IconImg from './IconImg.vue';
 
-const { url, label } = defineProps<{
+const { url, label, online } = defineProps<{
   url: string
   label?: string
   icon?: string
+  online?: boolean
 }>()
 </script>
 
 <template>
-  <a :href="url" target="_blank">
+  <a :href="online ? url : undefined" target="_blank" :inert="!online" :class="{ 'disabled': !online }">
     {{ label ?? 'visit' }}
-    <IconImg :name="icon ?? 'tabler:link'" />
+    <IconImg :name="icon ?? 'tabler:link'" :disabled="!online" />
   </a>
 </template>
 
@@ -30,6 +31,17 @@ a {
 
   &:hover {
     background-color: var(--highlight);
+  }
+
+  &.disabled {
+    // opacity: 0.2;
+    color: var(--color-light);
+
+    & IconImg {
+      opacity: 0.5;
+      color: var(--color-light);
+
+    }
   }
 }
 

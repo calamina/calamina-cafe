@@ -1,0 +1,19 @@
+num: 12
+name: "fatcat"
+url: "https://fatcat.calamina.cafe"
+online: false
+tech:
+  languages:
+  - 'html'
+  - 'scss'
+  - 'javascript'
+  colors:
+  - '#lelele'
+  - '#tetete'
+  fonts:
+  - 'apercu mono regular'
+  icons:
+  - 'utf8 special chars'
+
+description:
+- Another startpage with shortcuts.

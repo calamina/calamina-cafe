@@ -1,0 +1,19 @@
+num: 13
+name: "perpetua"
+url: "https://perpetua.calamina.cafe"
+online: false
+tech:
+  languages:
+  - 'html'
+  - 'scss'
+  - 'typescript'
+  colors:
+  - '#lelele'
+  - '#tetete'
+  fonts:
+  - 'apercu mono regular'
+  icons:
+  - 'tabler'
+
+description:
+- Small gallery gathering looping gifs from animated movies.

@@ -1,14 +1,16 @@
-num: 4
-name: "netstart"
-url: "https://net.calamina.cafe"
-online: true
+num: 8
+name: "calamina2"
+url: "https://calamina2.calamina.cafe"
+online: false
 tech:
   tools:
   - 'vue'
+  - 'p5js'
   languages:
   - 'html'
   - 'scss'
   - 'typescript'
+  - 'json'
   colors:
   - '#lelele'
   - '#tetete'
@@ -18,5 +20,4 @@ tech:
   - 'tabler'
 
 description:
-- Startpage with different categories.
-- It uses localStorage to save NSFW status and color theme.
+- Another personnal website attempt, with a word pattern generator.

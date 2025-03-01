@@ -1,6 +1,6 @@
-num: 4
-name: "netstart"
-url: "https://net.calamina.cafe"
+num: 11
+name: "flora"
+url: "https://flora.calamina.cafe"
 online: true
 tech:
   tools:
@@ -18,5 +18,4 @@ tech:
   - 'tabler'
 
 description:
-- Startpage with different categories.
-- It uses localStorage to save NSFW status and color theme.
+- Startpage implementing a media list and a news view.

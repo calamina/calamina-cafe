@@ -1,0 +1,19 @@
+num: 15
+name: "biosphere2"
+url: "https://biosphere2.calamina.cafe"
+online: false
+tech:
+  languages:
+  - 'html'
+  - 'scss'
+  - 'typescript'
+  colors:
+  - '#lelele'
+  - '#tetete'
+  fonts:
+  - 'apercu mono regular'
+  icons:
+  - 'tabler'
+
+description:
+- Website about the Biosphere2 project.

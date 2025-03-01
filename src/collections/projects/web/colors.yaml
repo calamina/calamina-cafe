@@ -1,7 +1,7 @@
-num: 4
-name: "netstart"
-url: "https://net.calamina.cafe"
-online: true
+num: 18
+name: "colors"
+url: "https://colors.calamina.cafe"
+online: false
 tech:
   tools:
   - 'vue'
@@ -18,5 +18,4 @@ tech:
   - 'tabler'
 
 description:
-- Startpage with different categories.
-- It uses localStorage to save NSFW status and color theme.
+- Gallery of unusual and interesting colors and concepts found on wikipedia.

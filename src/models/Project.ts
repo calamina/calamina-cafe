@@ -4,6 +4,7 @@ export const ProjectSchema = z.object({
     num: z.number(),
     name: z.string(),
     url: z.string().optional(),
+    online: z.boolean().optional().default(true),
     description: z.array(z.string()),
     tech: z.object({
         tools: z.array(z.string()).optional(),
