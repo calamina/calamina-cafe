@@ -1,12 +1,12 @@
 ---
 import "../assets/style/main.scss";
-import AppHeader from "../components/AppHeader.vue";
+import AppHeader from "../components/AppHeader.astro";
 import AppFooter from "../components/AppFooter.vue";
 import BaseLayout from "./BaseLayout.astro";
 ---
 
 <BaseLayout>
-	<AppHeader client:load />
+	<AppHeader />
 	<main>
 		<slot />
 	</main>

@@ -1,21 +1,26 @@
 ---
-import { getCollection } from "astro:content";
 import MainLayout from "../../layouts/MainLayout.astro";
+import ProjectsGrid from "../../components/projects/ProjectsGrid.vue";
+import { query } from "../../utils";
+import type { Project } from "../../models/Project";
 
-const projects = await getCollection("webProjects").then((projects) =>
-    projects.map((project) => project.data.name),
-);
+const webProjects = await query<Project>("webProjects");
+const phoneProjects = await query<Project>("phoneProjects");
 ---
 
 <MainLayout>
+    <!-- Sidebar -->
     <div class="content">
-        {projects.map((item) => <a href={"/projects/web/" + item}>{item}</a>)}
+        <ProjectsGrid projects={webProjects} type="web" client:load />
+        <ProjectsGrid projects={phoneProjects} type="phone" client:load />
     </div>
 </MainLayout>
 
 <style scoped lang="scss">
     .content {
+        width: 100%;
         display: flex;
         flex-flow: column;
+        gap: 2rem;
     }
 </style>

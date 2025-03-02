@@ -17,6 +17,7 @@ const { name, icon } = defineProps<{
 <style scoped lang='scss'>
 h2 {
     font-size: 3rem;
+    line-height: 3rem;
     display: flex;
     margin-bottom: 1rem;
     // align-items: center;

@@ -1,0 +1,89 @@
+---
+import AppHeaderProject from "./AppHeaderProject.vue";
+import SearchBar from "./SearchBar.vue";
+import ThemeSwitch from "./ThemeSwitch.vue";
+
+const { project } = Astro.params;
+const route = Astro.originPathname;
+
+console.log(route);
+const activeRoute = (): number => {
+  if (route === "/") return 1;
+  if (route.includes("about")) return 2;
+  if (route.includes("projects")) return 3;
+  return 0;
+};
+---
+
+<header>
+  <nav>
+    <a href="/" class:list={activeRoute() === 1 ? "active" : []}>home</a>
+    <a href="/about" class:list={activeRoute() === 2 ? "active" : []}>about</a>
+    <div class="projects">
+      <a href="/projects" class:list={activeRoute() === 3 ? "active" : []}
+        >projects</a
+      >
+      <AppHeaderProject project={project} />
+    </div>
+    <div class="actions">
+      <SearchBar class="tw-hidden md:tw-block" client:load />
+      <ThemeSwitch client:load />
+    </div>
+  </nav>
+
+  <style lang="scss" scoped>
+    //  tw-h-16 xl:tw-px-0">
+    header {
+      max-width: 70rem;
+      position: fixed;
+      display: flex;
+      top: 0;
+      height: 4rem;
+      width: 100%;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem;
+      z-index: 50;
+      pointer-events: none;
+    }
+
+    nav {
+      display: flex;
+      gap: 1.25rem;
+      width: 100%;
+      align-items: center;
+    }
+
+    a {
+      pointer-events: auto;
+      height: fit-content;
+    }
+
+    .projects {
+      display: flex;
+      gap: 0.25rem;
+      pointer-events: auto;
+      margin-right: auto;
+    }
+
+    .actions {
+      display: flex;
+      gap: 0.5rem;
+      pointer-events: auto;
+    }
+
+    .active {
+      text-decoration: underline;
+    }
+
+    .subtype {
+      color: var(--color-light);
+    }
+
+    @media (min-width: 1280px) {
+      header {
+        padding: 0.5rem 0;
+      }
+    }
+  </style>
+</header>
