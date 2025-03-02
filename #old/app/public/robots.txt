@@ -1,8 +1,0 @@
-User-agent: Googlbebot
-Disallow: /nogooglebot/
-
-User-agent: DuckDuckBot
-Disallow: /noduckduckbot/
-
-User-agent: *
-Allow: /

@@ -1,18 +1,22 @@
 <script setup lang="ts">
 import IconImg from './IconImg.vue';
 
-const { url, label, online } = defineProps<{
+const { url, label, online = undefined } = defineProps<{
   url: string
   label?: string
   icon?: string
   online?: boolean
 }>()
+
+const disabled = online === undefined ? false : !online
+console.log(online)
 </script>
 
 <template>
-  <a :href="online ? url : undefined" target="_blank" :inert="!online" :class="{ 'disabled': !online }">
+  <a :href="disabled ? undefined : url" target="_blank" :inert="disabled"
+     :class="{ 'disabled': disabled }">
     {{ label ?? 'visit' }}
-    <IconImg :name="icon ?? 'tabler:link'" :disabled="!online" />
+    <IconImg :name="icon ?? 'tabler:link'" :disabled="disabled" />
   </a>
 </template>
 

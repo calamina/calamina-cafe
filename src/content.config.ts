@@ -64,5 +64,9 @@ const webProjects = defineCollection({
   loader: glob({ pattern: "**/*.yaml", base: "./src/collections/projects/web/" }),
   schema: ProjectSchema
 });
+const phoneProjects = defineCollection({
+  loader: glob({ pattern: "**/*.yaml", base: "./src/collections/projects/phone/" }),
+  schema: ProjectSchema
+});
 
-export const collections = { nowLinks, nowMedia, favMovies, favMoviesAnimated, favMoviesShort, favSeries, favSeriesAnimated, favBooks, favBooksVisual, favGames, jobs, studies, webProjects };
+export const collections = { nowLinks, nowMedia, favMovies, favMoviesAnimated, favMoviesShort, favSeries, favSeriesAnimated, favBooks, favBooksVisual, favGames, jobs, studies, webProjects, phoneProjects };
