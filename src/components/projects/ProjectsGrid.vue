@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import type { Project } from '../../models/Project';
-import { ref } from 'vue';
+import { computed } from 'vue';
 import IconImg from '../IconImg.vue';
+import { ProjectsFilters } from '../../stores/projectsFilters';
+import { useStore } from '@nanostores/vue';
+import type { GetImageResult } from 'astro';
 
 const { projects, type } = defineProps<{
   projects: Project[]
@@ -9,25 +12,39 @@ const { projects, type } = defineProps<{
 }>()
 
 const url = '/projects/' + type + '/'
-const selectedProject = ref<string | undefined>(undefined)
-const images = Object.entries(
+const imgs = Object.entries(
   type === 'web'
     ? import.meta.glob<{ eager: true }>("/src/assets/img/content/projects/web/*.avif")
     : import.meta.glob<{ eager: true }>("/src/assets/img/content/projects/phone/*.avif")
 );
 
-const getImg = (name: string) => images
+const getImg = (name: string) => imgs
   .filter((lel) => lel[0].includes(name)).map(test => test[0])[0]
+
+const filters = useStore(ProjectsFilters)
+const filterType = type + 'Active' as 'webActive' | 'phoneActive'
+
+const filteredProjects = computed(() =>
+  projects
+    .filter(project => filters.value.offline ? project :
+      (project.online === undefined || project.online === true))
+    .sort((a, b): number => {
+      if (filters.value.sort === 'date') {
+        return ((a?.updated?.getTime() ?? a?.created?.getTime()) ?? 0) - ((b?.updated?.getTime() ?? b?.created?.getTime()) ?? 0)
+      }
+      if (filters.value.sort === 'alpha') {
+        return a?.name.toUpperCase() > b?.name.toUpperCase() ? 1 : 0
+      }
+      return 1
+    }))
+
 </script>
 
 <template>
-  <div class="wrapper">
-    <h2>{{ type }}</h2>
+  <div class="wrapper" v-if="filters[filterType]">
+    <!-- <h2>{{ type }}</h2> -->
     <div class="projects">
-      <a class="project" @mouseover="selectedProject = project.name" @mouseout="selectedProject = undefined"
-         v-for="project in projects"
-         :href="url + project.name">
-
+      <a class="project" v-for="project in filteredProjects" :href="url + project.name">
         <img class="projectImg" :src="getImg(project.name)" alt="">
         <div class="tags">
           <p class="tag" v-for="tag of project.tech?.tools">{{ tag }}</p>
@@ -35,11 +52,10 @@ const getImg = (name: string) => images
         <div class="info">
           <p class="name">
             {{ project.name }}
-            <span class="status" :class="{ 'online': project.online }"></span>
+            <span v-if="project.online !== undefined" class="status" :class="{ 'online': project.online }"></span>
           </p>
           <button>
             <IconImg class="iconImg" name="tabler:dots-diagonal" />
-            <!-- <IconImg class="iconImg" name="tabler:pill" /> -->
           </button>
         </div>
       </a>
@@ -67,12 +83,14 @@ h2 {
   gap: 1rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  // grid-template-columns: 1fr 1fr;
+  // grid-template-columns: 1fr;
 
-  &:hover>:not(:hover) {
-    // TODO:: test ideas !!
-    // opacity: 0.2;
-    // filter: grayscale(1);
-  }
+  // &:hover>:not(:hover) {
+  // TODO:: test ideas !!
+  // opacity: 0.2;
+  // filter: grayscale(1);
+  // }
 }
 
 .project {
@@ -106,11 +124,12 @@ h2 {
 }
 
 .projectImg {
-  max-height: 20rem;
+  max-height: 15rem;
   width: 100%;
-  min-height: 6rem;
   border-radius: 0.5rem;
   object-fit: cover;
+  object-fit: contain;
+  background-color: var(--bg-darker0);
   flex: 1;
   overflow: hidden;
 }

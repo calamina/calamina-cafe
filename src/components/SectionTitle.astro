@@ -1,0 +1,27 @@
+---
+import IconImg from "./IconImg.astro";
+
+interface Props {
+    name: string;
+    icon?: string;
+}
+
+const { name, icon } = Astro.props;
+---
+
+<h2>
+    {name}
+    {icon && <IconImg name={icon} />}
+</h2>
+
+<style scoped lang="scss">
+    h2 {
+        font-size: 3rem;
+        line-height: 3rem;
+        display: flex;
+        margin-bottom: 1rem;
+        align-items: baseline;
+        gap: 0.5rem;
+        text-transform: capitalize;
+    }
+</style>

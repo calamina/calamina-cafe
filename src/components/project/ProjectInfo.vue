@@ -5,7 +5,7 @@ import ProjectName from './ProjectName.vue';
 import ProjectTech from './ProjectTech.vue';
 
 
-const { name, url = null, tech, description, online } = defineProps<{
+const { name, url = null, tech, description, online = undefined } = defineProps<{
   name: string | undefined
   tech: Project["tech"] | undefined
   description: string[] | undefined

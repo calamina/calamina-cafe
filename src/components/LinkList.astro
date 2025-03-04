@@ -1,0 +1,28 @@
+---
+import type { Link } from "../models/Link";
+import LinkIcon from "./LinkIcon.vue";
+
+export interface Props {
+    links: Link[];
+}
+const { links } = Astro.props;
+---
+
+<template>
+    <div>
+        {
+            links.map((link) => (
+                <LinkIcon url={link.url} label={link.label} icon={link.icon} />
+            ))
+        }
+    </div>
+</template>
+
+<style scoped lang="scss">
+    div {
+        display: flex;
+        align-items: baseline;
+        gap: 0.5rem;
+        padding: 0.5rem 0;
+    }
+</style>

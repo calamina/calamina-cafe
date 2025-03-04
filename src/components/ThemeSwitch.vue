@@ -4,7 +4,7 @@ import { useFocusTrap } from '@vueuse/integrations/useFocusTrap'
 import { ref, watch } from 'vue'
 import IconImg from './IconImg.vue'
 
-const colorMode = useColorMode({emitAuto: true})
+const colorMode = useColorMode({ emitAuto: true })
 const themeOpen = ref(false)
 const theme = ref(null)
 onClickOutside(theme, () => closeTheme())
@@ -15,7 +15,7 @@ const closeTheme = () => themeOpen.value = false
 const { activate, deactivate } = useFocusTrap(theme)
 watch(themeOpen, () => themeOpen.value ? activate() : deactivate())
 
-function setMode(mode: 'light'|'dark'|'auto') {
+function setMode(mode: 'light' | 'dark' | 'auto') {
   colorMode.value = mode;
   themeOpen.value = false
 }

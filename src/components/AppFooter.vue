@@ -22,7 +22,7 @@
 
 <style lang="css" scoped>
 footer {
-    max-width: 70rem;
+    max-width: var(--app-width);
     width: 100%;
     display: flex;
     flex-flow: column;
