@@ -1,0 +1,49 @@
+---
+import LinkLabelImage from "./LinkLabelImage.astro";
+import type { Media } from "../models/Media";
+
+export interface Props {
+    medias: Media[];
+    title?: string;
+}
+
+const { medias } = Astro.props;
+---
+
+<article class="medias">
+    {
+        medias.map((media) => (
+            <div class="media">
+                <p class="type">{media.type}</p>
+                <LinkLabelImage
+                    url={media.url}
+                    label={media.label}
+                    src={media.src}
+                    alt={media.label + "cover"}
+                />
+            </div>
+        ))
+    }
+</article>
+
+<style scoped lang="scss">
+    .title {
+        padding-bottom: 0.5rem;
+    }
+
+    .medias {
+        display: flex;
+        flex-wrap: 1;
+        width: fit-content;
+        gap: 0.5rem;
+    }
+
+    .media {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .type {
+        padding: 2px 0;
+    }
+</style>

@@ -2,11 +2,11 @@
 import type { Link } from "../models/Link";
 import type { Media } from "../models/Media";
 import { query } from "../utils";
-import LinkList from "../components/LinkList.vue";
-import MediaRecent from "../components/MediaRecent.vue";
+import LinkList from "../components/LinkList.astro";
+import MediaRecent from "../components/MediaRecent.astro";
 import Favorites from "../components/about/Favorites.astro";
 import Timeline from "../components/Timeline.astro";
-import SectionTitle from "../components/SectionTitle.vue";
+import SectionTitle from "../components/SectionTitle.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 
 const links = await query<Link>("nowLinks");

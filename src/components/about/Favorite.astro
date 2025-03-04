@@ -1,0 +1,57 @@
+---
+import LinkImageLabel from "../LinkImageLabel.astro";
+import type { Media } from "../../models/Media";
+
+export interface Props {
+  title: string;
+  medias: Media[];
+  size?: "large" | "full";
+}
+
+const { medias, title, size } = Astro.props;
+
+const span = size && (size === "large" ? "large" : "full");
+const display = size && (size === "large" ? "gridtwo" : "gridthree");
+---
+
+<div class:list={[span]}>
+  <h3>{title}</h3>
+  <div class="medias" class:list={[display]}>
+    {
+      medias.map((media) => (
+        <LinkImageLabel url={media.url} label={media.label} src={media.src} />
+      ))
+    }
+  </div>
+</div>
+
+<style scoped lang="scss">
+  h3 {
+    margin-bottom: 0.5rem;
+  }
+
+  .medias {
+    display: flex;
+    flex-flow: column;
+    gap: 0.5rem;
+    width: 100%;
+
+    &.gridtwo {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    &.gridthree {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .large {
+    grid-column: span 2;
+  }
+
+  .full {
+    grid-column: span 3;
+  }
+</style>

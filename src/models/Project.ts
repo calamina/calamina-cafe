@@ -6,7 +6,7 @@ export const ProjectSchema = z.object({
     updated: z.date().optional(),
     name: z.string(),
     url: z.string().optional(),
-    online: z.boolean().optional().default(true),
+    online: z.boolean().optional(),
     description: z.array(z.string()),
     tech: z.object({
         tools: z.array(z.string()).optional(),

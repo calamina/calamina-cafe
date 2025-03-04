@@ -1,4 +1,7 @@
 :root {
+    --app-width: 70rem;
+    // --app-width: 100vw;
+
     /* Grey */
     --Grey-0: #ffffff;
     --Grey-50: #f6f6f6;
@@ -18,7 +21,7 @@
     // COLORS
     --highlight: hsl(288, 50%, 77%);
 
-    
+
     --color: var(--Grey-1000);
     --color-lightest: var(--Grey-100);
     --color-light: var(--Grey-500);

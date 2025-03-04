@@ -1,0 +1,71 @@
+---
+import { Image } from "astro:assets";
+
+export interface Props {
+    url: string;
+    label: string;
+    src: string;
+    alt: string;
+}
+
+const { url, label, src, alt } = Astro.props;
+---
+
+<a href={url} target="_blank">
+    <p>{label}</p>
+    <div>
+        <Image
+            src={src}
+            alt={alt + " cover"}
+            height={500}
+            width={500}
+            loading={"eager"}
+        />
+    </div>
+</a>
+
+<style lang="scss" scoped>
+    a {
+        display: flex;
+        flex-flow: column;
+        align-items: start;
+        width: fit-content;
+
+        &:hover {
+            background-color: transparent;
+
+            p {
+                background-color: var(--highlight);
+            }
+        }
+    }
+
+    p {
+        border-radius: 0.5rem;
+        background-color: var(--bg-darker0);
+        padding: 0.25rem 0.5rem;
+        width: 100%;
+    }
+
+    div {
+        display: flex;
+        justify-content: center;
+        background-color: var(--bg-darker0);
+        height: 12rem;
+        overflow: hidden;
+        width: 100%;
+        border-radius: 0.5rem;
+    }
+
+    img {
+        object-fit: cover;
+        // width: 100%;
+        width: auto;
+        height: 100%;
+    }
+
+    .dark-mode a:hover p {
+        background-color: var(--bg-darker0);
+        color: var(--highlight);
+    }
+</style>

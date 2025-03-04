@@ -20,13 +20,9 @@ import MainLayout from "../layouts/MainLayout.astro";
 			<SocialsList />
 		</div>
 
-		<!-- timeout 500ms and show ascii after ? -->
-		<AsciiScene client:only />
-		<template #fallback>
-			<div class="loader">
-				<p>Loading ascii ...</p>
-			</div>
-		</template>
+		<AsciiScene client:only>
+			<div slot="fallback" class="loader">Loading ascii ...</div>
+		</AsciiScene>
 	</div>
 </MainLayout>
 

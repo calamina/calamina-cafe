@@ -1,4 +1,4 @@
-import { getCollection, getEntry, type CollectionKey, type DataEntry } from "astro:content";
+import { getCollection, getEntry, type CollectionKey } from "astro:content";
 import type { Project } from "./models/Project";
 
 export const query = async <T>(collection: CollectionKey) =>
