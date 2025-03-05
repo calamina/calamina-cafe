@@ -6,9 +6,12 @@ import * as compiler from "vue/compiler-sfc";
 
 import mdx from '@astrojs/mdx';
 
+import sitemap from '@astrojs/sitemap';
+
 // https://astro.build/config
 export default defineConfig({
-  integrations: [vue({ compiler }), mdx()],
+  integrations: [vue({ compiler }), mdx(), sitemap()],
+  site: 'https://calamina.cafe',
   image: {
     domains: ['calamina.cafe', 'senscritique.com'],
     remotePatterns: [{

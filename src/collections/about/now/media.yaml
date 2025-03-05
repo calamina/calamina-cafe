@@ -6,9 +6,9 @@
 
 - id: "2"
   type: "Movie"
-  url: "https://en.wikipedia.org/wiki/Flow_(2024_film)"
-  label: "Flow (not that great)"
-  src: "https://media.senscritique.com/media/000022302763/0/flow_le_chat_qui_navait_plus_peur_de_leau.png"
+  url: "https://www.senscritique.com/film/inu_oh/39710045"
+  label: "Inu-Oh"
+  src: "https://media.senscritique.com/media/000021043858/300/inu_oh.png"
 
 - id: "3"
   type: "Comics"
