@@ -12,7 +12,13 @@ const { url, label, src } = Astro.props;
 ---
 
 <a href={url} target="_blank">
-    <Image src={src} alt={label + " cover"} width="50" height="50" />
+    <Image
+        src={src}
+        alt={label + " cover"}
+        width={50}
+        height={50}
+        format={"avif"}
+    />
     <div>
         <p>{label}</p>
         <span>1988</span>

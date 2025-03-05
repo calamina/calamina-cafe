@@ -34,10 +34,11 @@ const getImg = (name: string) =>
           <Image
             class="projectImg"
             src={getImg(project.name)}
-            alt={project.name + "cover"}
+            alt={project.name + " cover"}
             width={300}
             height={300}
             loading={"lazy"}
+            format={"avif"}
           />
           <div class="tags">
             {project.tech?.tools?.map((tag) => (
