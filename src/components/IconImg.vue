@@ -8,7 +8,7 @@ const src = `https://api.iconify.design/${name}.svg`
 </script>
 
 <template>
-    <img :src :class="{ 'disabled': disabled }" />
+    <img :src :class="{ 'disabled': disabled }" :alt="name + icon" />
 </template>
 
 <style scoped lang="scss">
