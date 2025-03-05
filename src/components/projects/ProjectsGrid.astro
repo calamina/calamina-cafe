@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import type { Project } from "../../models/Project";
-import IconImg from "../IconImg.astro";
+import { Icon } from "astro-icon/components";
 
 const { projects, type } = Astro.props;
 
@@ -61,8 +61,13 @@ Object.entries(
                 />
               )}
             </p>
-            <button>
-              <IconImg name="tabler:dots-diagonal" class="iconImg" />
+            <button aria-label="go to project page">
+              <Icon
+                name="tabler:dots-diagonal"
+                class="iconImg"
+                height={20}
+                width={20}
+              />
             </button>
           </div>
         </a>

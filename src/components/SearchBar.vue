@@ -2,7 +2,6 @@
 import { onClickOutside, onKeyStroke, useMagicKeys } from '@vueuse/core'
 import { useFocusTrap } from '@vueuse/integrations/useFocusTrap'
 import { ref, watch } from 'vue'
-import IconImg from './IconImg.vue'
 const search = ref('')
 const searchbox = ref(null)
 
@@ -30,7 +29,9 @@ onKeyStroke('Escape', () => emptySearch())
 <template>
   <div class="search" ref="searchbox">
     <input type="search" v-model="search" id="search" placeholder="ctrl + k">
-    <IconImg class="icon" name="tabler:search" />
+    <div class="icon">
+      <slot />
+    </div>
     <!-- <transition name="appear">
       <div class="results" v-if="results?.length">
         <NuxtLink v-for="res in results" :to="'/projects/web/' + res.title.toLowerCase()" @click="search = ''">
@@ -55,11 +56,13 @@ onKeyStroke('Escape', () => emptySearch())
 input[type="search"] {
   padding: 0.4rem 2rem 0.25rem 0.75rem;
   color: var(--color);
+  height: 100%;
 }
 
+// TODO:: fix icon for smaller sizes
 .icon {
   position: absolute;
-  top: 0.5rem;
+  top: 0.65rem;
   right: 0.5rem;
 }
 

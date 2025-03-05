@@ -8,9 +8,11 @@ import mdx from '@astrojs/mdx';
 
 import sitemap from '@astrojs/sitemap';
 
+import icon from 'astro-icon';
+
 // https://astro.build/config
 export default defineConfig({
-  integrations: [vue({ compiler }), mdx(), sitemap()],
+  integrations: [vue({ compiler }), mdx(), sitemap(), icon()],
   site: 'https://calamina.cafe',
   image: {
     domains: ['calamina.cafe', 'senscritique.com'],

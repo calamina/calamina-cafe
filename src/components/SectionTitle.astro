@@ -1,5 +1,5 @@
 ---
-import IconImg from "./IconImg.astro";
+import { Icon } from "astro-icon/components";
 
 interface Props {
     name: string;
@@ -11,7 +11,7 @@ const { name, icon } = Astro.props;
 
 <h2>
     {name}
-    {icon && <IconImg name={icon} />}
+    {icon && <Icon name={icon} height={22} width={22} />}
 </h2>
 
 <style scoped lang="scss">

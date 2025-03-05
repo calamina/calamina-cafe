@@ -25,20 +25,20 @@ function setMode(mode: 'light' | 'dark' | 'auto') {
   <div class="theme" ref="theme">
     <button title="theme picker" @click="themeOpen = !themeOpen" class="theme-picker"
             :class="{ 'activetheme': themeOpen }">
-      <IconImg name="tabler:moon-2" />
+      <slot />
     </button>
     <transition name="page">
       <div class="theme-menu" v-if="themeOpen">
         <button @click="setMode('auto')" :class="{ active: colorMode === 'auto' }">
-          <IconImg name="tabler:moon-stars" />
+          <slot name="system" />
           System
         </button>
         <button @click="setMode('light')" :class="{ active: colorMode === 'light' }">
-          <IconImg name="tabler:moon" />
+          <slot name="light" />
           Light
         </button>
         <button @click="setMode('dark')" :class="{ active: colorMode === 'dark' }">
-          <IconImg name="tabler:moon-filled" />
+          <slot name="dark" />
           Dark
         </button>
       </div>
