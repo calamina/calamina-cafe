@@ -25,7 +25,7 @@ function setMode(mode: 'light' | 'dark' | 'auto') {
   <div class="theme" ref="theme">
     <button title="theme picker" @click="themeOpen = !themeOpen" class="theme-picker"
             :class="{ 'activetheme': themeOpen }">
-      <IconImg name="tabler:moon-2" width="24" height="24" />
+      <IconImg name="tabler:moon-2" />
     </button>
     <transition name="page">
       <div class="theme-menu" v-if="themeOpen">

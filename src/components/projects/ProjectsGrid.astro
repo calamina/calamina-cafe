@@ -11,18 +11,24 @@ export interface Props {
 }
 
 const url = "/projects/" + type + "/";
-const imgs = Object.entries(
+
+const pictures: Record<
+  string,
+  () => Promise<{ default: ImageMetadata; eager: true }>
+> = {};
+
+Object.entries(
   type === "web"
-    ? import.meta.glob<{ eager: true }>(
+    ? import.meta.glob<{ default: ImageMetadata; eager: true }>(
         "/src/assets/img/content/projects/web/*.avif",
       )
-    : import.meta.glob<{ eager: true }>(
+    : import.meta.glob<{ default: ImageMetadata; eager: true }>(
         "/src/assets/img/content/projects/phone/*.avif",
       ),
-);
-
-const getImg = (name: string) =>
-  imgs.filter((lel) => lel[0].includes(name)).map((test) => test[0])[0];
+).map((img) => {
+  const name = img[0]?.split("/")?.pop()?.split(".")?.[0] ?? "notfound";
+  pictures[name] = img[1];
+});
 ---
 
 <div class="wrapper">
@@ -33,10 +39,10 @@ const getImg = (name: string) =>
         <a class="project" href={url + project.name}>
           <Image
             class="projectImg"
-            src={getImg(project.name)}
+            src={pictures[project.name]()}
             alt={project.name + " cover"}
-            width={300}
-            height={300}
+            width={350}
+            height={255}
             loading={"lazy"}
             format={"avif"}
           />
