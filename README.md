@@ -6,10 +6,11 @@
 hey :)
 
 # DOING
-- Fix theme switcher (blinking on page change)
-- Fix dark theme hover states 
-- Clean images folder (no need for mini)
 - check todos in code :)
+- Fix theme switcher (blinking on page change)
+- Fix dark theme hover states
+- Fix navigation not ordered 
+- Clean images folder (no need for mini)
 
 - about / last seen / find a way to display phrase ('last media watched :')
 - add toggle for max length !!!

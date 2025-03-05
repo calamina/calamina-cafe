@@ -51,6 +51,7 @@ function focusImage(e: HTMLImageElement | null) {
     grid-column: span 2;
   }
 
+  // TODO:: fix second element not taking full space
   & *>button:nth-last-child(-n+2):first-child,
   & *>button:nth-last-child(-n+2):first-child~button {
     grid-column: span 2;
@@ -70,6 +71,7 @@ function focusImage(e: HTMLImageElement | null) {
     // xl:tw-pt-0 xl:tw-grid xl:tw-grid-cols-2
     padding-top: 0;
     display: grid;
+    // grid-template-columns: minmax(0px, 1fr);
     grid-template-columns: repeat(2, minmax(0px, 1fr));
   }
 }
