@@ -4,36 +4,6 @@ import ProjectsGrid from "../../components/projects/ProjectsGrid.astro";
 import ProjectsFilters from "../../components/projects/ProjectsFilters.vue";
 import { query } from "../../utils";
 import type { Project } from "../../models/Project";
-// import { getImage } from "astro:assets";
-
-// const imagesFiles: Record<string, MediaImage> = import.meta.glob(
-//     "/src/assets/img/content/projects/web/*.avif",
-//     { eager: true },
-// );
-
-// const kek = async (imageFiles: Record<string, MediaImage>) => {
-//     const images = Object.entries(imageFiles).map(([path]) => ({
-//         src: path,
-//         alt: path.split("/").pop()?.split(".")[0],
-//     }));
-//     const optimizedImages = await Promise.all(
-//         images.map(async (image) => {
-//             const optimizedImage = await getImage({
-//                 src: image.src,
-//                 format: "webp",
-//                 alt: image.alt,
-//                 width: 200,
-//                 height: 200,
-//             });
-//             return optimizedImage;
-//         }),
-//     );
-
-//     return optimizedImages;
-// };
-
-// const AAH = await kek(imagesFiles);
-// console.log(AAH);
 
 const webProjects = await query<Project>("webProjects");
 const phoneProjects = await query<Project>("phoneProjects");

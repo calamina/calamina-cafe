@@ -6,6 +6,8 @@
 hey :)
 
 # DOING
+- Fix theme switcher (blinking on page change)
+- Fix dark theme hover states 
 - Clean images folder (no need for mini)
 - check todos in code :)
 
