@@ -1,0 +1,16 @@
+num: 6
+name: "dots"
+created: "15/03/2025"
+tech:
+  tools:
+  - 'KLWP'
+  colors:
+  - '#lelele'
+  - '#tetete'
+  fonts:
+  - 'apercu mono regular'
+  icons:
+  - 'tabler'
+
+description:
+- Grid based.

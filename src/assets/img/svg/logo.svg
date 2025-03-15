@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   width="144mm"
-   height="21.600056mm"
-   viewBox="0 0 144 21.600055"
+   viewBox="0 0 145 22.25"
    version="1.1"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
    <defs />
-   <g transform="translate(-18.38958,-57.620814)">
+   <g transform="translate(-18,-57.1)">
       <path
          style="fill:#d6a7e2;fill-opacity:1;stroke:none;"
          d="m 36.38958,58.420866 c 0,0 16.999999,-4.999999 16.999999,10.000001 v 10.000004 c 0,0 -5,0 -5,-5.000003 0,0 -5,2.842413 -12,4.842413 v -5.842413 c 0,-7.000001 16.000001,0.999994 15.999999,-4.000001 -3e-6,-10 -13.999999,-5 -15.999999,-3 z" />

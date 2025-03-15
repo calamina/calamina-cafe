@@ -1,5 +1,5 @@
-num: 6
-name: "dots"
+num: 8
+name: "box"
 tech:
   tools:
   - 'KLWP'
@@ -7,9 +7,10 @@ tech:
   - '#lelele'
   - '#tetete'
   fonts:
-  - 'apercu mono regular'
+  - 'IBM Plex Mono'
+  - 'Montserrat'
   icons:
-  - 'tabler'
+  - 'Reev Dark'
 
 description:
 - Grid based.
