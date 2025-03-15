@@ -41,21 +41,42 @@ const filteredProjects = computed(() =>
 </script>
 
 <template>
-  <div class="wrapper" v-if="filters[filterType]">
+  <div
+    class="wrapper"
+    v-if="filters[filterType]"
+  >
     <!-- <h2>{{ type }}</h2> -->
     <div class="projects">
-      <a class="project" v-for="project in filteredProjects" :href="url + project.name">
-        <img class="projectImg" :src="getImg(project.name)" alt="">
+      <a
+        class="project"
+        v-for="project in filteredProjects"
+        :href="url + project.name"
+      >
+        <img
+          class="projectImg"
+          :src="getImg(project.name)"
+          alt=""
+        >
         <div class="tags">
-          <p class="tag" v-for="tag of project.tech?.tools">{{ tag }}</p>
+          <p
+            class="tag"
+            v-for="tag of project.tech?.tools"
+          >{{ tag }}</p>
         </div>
         <div class="info">
           <p class="name">
             {{ project.name }}
-            <span v-if="project.online !== undefined" class="status" :class="{ 'online': project.online }"></span>
+            <span
+              v-if="project.online !== undefined"
+              class="status"
+              :class="{ 'online': project.online }"
+            ></span>
           </p>
           <button>
-            <IconImg class="iconImg" name="tabler:dots-diagonal" />
+            <IconImg
+              class="iconImg"
+              name="tabler:dots-diagonal"
+            />
           </button>
         </div>
       </a>
@@ -118,8 +139,23 @@ h2 {
     }
 
     .iconImg {
-      transform: rotate(180deg);
+      // transform: rotate(180deg);
+      animation: helico 0.3s infinite;
     }
+  }
+}
+
+@keyframes helico {
+  0% {
+    transform: rotate(0);
+  }
+
+  33% {
+    transform: rotate(180deg);
+  }
+
+  66% {
+    transform: rotate(0);
   }
 }
 

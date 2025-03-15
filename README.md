@@ -5,35 +5,24 @@
 
 hey :)
 
-# DOING
+# TODO
 - check todos in code :)
-- Fix theme switcher (blinking on page change)
+- Fix project view on mobile + dark theme
+- add toggle for max length !!!??? bring bck projects in full view !!
+- Fix theme switcher (blinking on page change / ok with swup)
 - Fix dark theme hover states
 - Fix navigation not ordered 
-- Clean images folder (no need for mini)
-
-- about / last seen / find a way to display phrase ('last media watched :')
-- add toggle for max length !!!
-- dark theme invert color and color-lighter (about)!
-- test and fix dates intervals on about (2020 - 2021)
-
 - fix mobile image ratio 
-- fix strange tailwind behaviour between breakpoints 
-
 - fix ascii rendering ? (font aliasing)
-
-# TODO 
-- test ascii colors
-- fix ascii window resize
 - webgl fallback
-
 - fix mobile focus trap
 - fix fullscreen image view for mobile + other browsers
-- fix projects (aerg)
-- add info to projects (creation - update)
-
-- proper alt on images / proper images (highlights, etc)
-- WRITE ABOUT
-- WRITE HOME
 - single component for [project] + [mobile]
-# TODO
+
+# DATA
+- Clean images folder (no need for mini)
+- fix & complete projects (aerg)
+- complete about
+- proper alt on images / proper images (highlights, etc)
+- add info to projects (creation - update)
+- WRITE HOME

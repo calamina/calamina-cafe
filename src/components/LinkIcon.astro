@@ -12,8 +12,7 @@ const { url, label, online = undefined, icon } = Astro.props;
 const disabled = online === undefined ? false : !online;
 ---
 
-<a
-  href={disabled ? undefined : url}
+<a  href={disabled ? undefined : url}
   target="_blank"
   inert={disabled}
   class:list={[{ disabled: disabled }]}
@@ -23,7 +22,7 @@ const disabled = online === undefined ? false : !online;
     width={20}
     height={20}
     name={icon ?? "tabler:link"}
-    disabled={disabled}
+    aria-disabled={disabled}
   />
 </a>
 

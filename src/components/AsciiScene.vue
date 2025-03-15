@@ -215,7 +215,10 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div class="ascii" id="container">
+  <div
+    class="ascii"
+    id="container"
+  >
     <div class="state tw-absolute tw-top-2 tw-left-2 tw-w-2 tw-h-2 tw-rounded-lg"></div>
   </div>
 </template>
@@ -225,7 +228,7 @@ onBeforeUnmount(() => {
   position: relative;
   border: 2px solid var(--bg-darker0);
   border-radius: 0.5rem;
-  height: 80%;
+  // height: 80%;
   width: 30rem;
   height: 30rem;
   position: relative;

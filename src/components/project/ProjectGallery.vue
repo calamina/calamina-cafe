@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref, Teleport, type Ref } from 'vue'
+import { onMounted, ref, type Ref } from 'vue'
 import ImageViewer from '../ImageViewer.vue';
 
 const imgView: Ref<HTMLImageElement | null> = ref(null)
@@ -24,7 +24,12 @@ function focusImage(e: HTMLImageElement | null) {
 
 <template>
   <Teleport to="body">
-    <ImageViewer v-if="imgView" :selected="imgView" :images="gallery" @unfocus="imgView = null" />
+    <ImageViewer
+      v-if="imgView"
+      :selected="imgView"
+      :images="gallery"
+      @unfocus="imgView = null"
+    />
   </Teleport>
   <div class="wrapper">
     <div class="gallery">

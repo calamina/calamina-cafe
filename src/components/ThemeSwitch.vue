@@ -2,7 +2,6 @@
 import { onClickOutside, onKeyStroke, useColorMode } from '@vueuse/core'
 import { useFocusTrap } from '@vueuse/integrations/useFocusTrap'
 import { ref, watch } from 'vue'
-import IconImg from './IconImg.vue'
 
 const colorMode = useColorMode({ emitAuto: true })
 const themeOpen = ref(false)
@@ -22,22 +21,41 @@ function setMode(mode: 'light' | 'dark' | 'auto') {
 </script>
 
 <template>
-  <div class="theme" ref="theme">
-    <button title="theme picker" @click="themeOpen = !themeOpen" class="theme-picker"
-            :class="{ 'activetheme': themeOpen }">
+  <div
+    ref="theme"
+    class="theme"
+  >
+    <button
+      title="theme picker"
+      class="theme-picker"
+      :class="{ 'activetheme': themeOpen }"
+      @click="themeOpen = !themeOpen"
+    >
       <slot />
     </button>
     <transition name="page">
-      <div class="theme-menu" v-if="themeOpen">
-        <button @click="setMode('auto')" :class="{ active: colorMode === 'auto' }">
+      <div
+        v-if="themeOpen"
+        class="theme-menu"
+      >
+        <button
+          :class="{ active: colorMode === 'auto' }"
+          @click="setMode('auto')"
+        >
           <slot name="system" />
           System
         </button>
-        <button @click="setMode('light')" :class="{ active: colorMode === 'light' }">
+        <button
+          :class="{ active: colorMode === 'light' }"
+          @click="setMode('light')"
+        >
           <slot name="light" />
           Light
         </button>
-        <button @click="setMode('dark')" :class="{ active: colorMode === 'dark' }">
+        <button
+          :class="{ active: colorMode === 'dark' }"
+          @click="setMode('dark')"
+        >
           <slot name="dark" />
           Dark
         </button>

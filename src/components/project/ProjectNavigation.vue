@@ -1,4 +1,7 @@
-<script setup lang="ts">
+<script
+    setup
+    lang="ts"
+>
 import type { Project } from '../../models/Project';
 import ButtonHighlight from '../ButtonHighlight.vue';
 import IconImg from '../IconImg.vue';
@@ -21,7 +24,6 @@ const { path, next, prev, total } = defineProps<{
             </ButtonHighlight>
         </div>
 
-        <!-- todo count projects -->
         <p class="id">{{ prev ? prev?.num + 1 : 1 }} / {{ total }}</p>
 
         <div :key="next?.url" class="next">
@@ -33,7 +35,10 @@ const { path, next, prev, total } = defineProps<{
     </div>
 </template>
 
-<style lang="scss" scoped>
+<style
+    lang="scss"
+    scoped
+>
 .navigation {
     margin-top: auto;
     display: grid;

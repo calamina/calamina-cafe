@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import type { Project } from "../../models/Project";
 import { Icon } from "astro-icon/components";
+import type { ImageMetadata } from "astro";
 
 const { projects, type } = Astro.props;
 
@@ -120,6 +121,19 @@ Object.entries(
         transform: rotate(180deg);
         transition: transform 0.3s;
       }
+    }
+  }
+
+  html.dark a:hover {
+    background-color: transparent;
+
+    p {
+      color: var(--highlight);
+    }
+
+    button {
+      background-color: var(--bg-darker);
+      color: var(--highlight);
     }
   }
 

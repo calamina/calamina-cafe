@@ -1,7 +1,7 @@
 ---
 import MainLayoutFooterless from "../../layouts/MainLayoutFooterless.astro";
 import ProjectsGrid from "../../components/projects/ProjectsGrid.astro";
-import ProjectsFilters from "../../components/projects/ProjectsFilters.vue";
+// import ProjectsFilters from "../../components/projects/ProjectsFilters.vue";
 import { query } from "../../utils";
 import type { Project } from "../../models/Project";
 
@@ -35,5 +35,6 @@ const phoneProjects = await query<Project>("phoneProjects");
         display: flex;
         flex-flow: column;
         gap: 1rem;
+        padding-bottom: 3rem;
     }
 </style>
