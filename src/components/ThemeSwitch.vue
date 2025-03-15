@@ -2,6 +2,11 @@
 import { onClickOutside, onKeyStroke, useColorMode } from '@vueuse/core'
 import { useFocusTrap } from '@vueuse/integrations/useFocusTrap'
 import { ref, watch } from 'vue'
+import Icon from './Icon.vue'
+import IconMoon from './Icons/IconMoon.vue'
+import IconMoonHalf from './Icons/IconMoonHalf.vue'
+import IconMoonHalfFilled from './Icons/IconMoonHalfFilled.vue'
+import IconMoonStars from './Icons/IconMoonStars.vue'
 
 const colorMode = useColorMode({ emitAuto: true })
 const themeOpen = ref(false)
@@ -19,44 +24,24 @@ function setMode(mode: 'light' | 'dark' | 'auto') {
   themeOpen.value = false
 }
 </script>
-
 <template>
-  <div
-    ref="theme"
-    class="theme"
-  >
-    <button
-      title="theme picker"
-      class="theme-picker"
-      :class="{ 'activetheme': themeOpen }"
-      @click="themeOpen = !themeOpen"
-    >
-      <slot />
+  <div ref="theme" class="theme">
+    <button title="theme picker" class="theme-picker" :class="{ 'activetheme': themeOpen }"
+      @click="themeOpen = !themeOpen">
+      <Icon :icon="IconMoon" />
     </button>
     <transition name="page">
-      <div
-        v-if="themeOpen"
-        class="theme-menu"
-      >
-        <button
-          :class="{ active: colorMode === 'auto' }"
-          @click="setMode('auto')"
-        >
-          <slot name="system" />
+      <div v-if="themeOpen" class="theme-menu">
+        <button :class="{ active: colorMode === 'auto' }" @click="setMode('auto')">
+          <Icon :icon="IconMoonStars" />
           System
         </button>
-        <button
-          :class="{ active: colorMode === 'light' }"
-          @click="setMode('light')"
-        >
-          <slot name="light" />
+        <button :class="{ active: colorMode === 'light' }" @click="setMode('light')">
+          <Icon :icon="IconMoonHalf" />
           Light
         </button>
-        <button
-          :class="{ active: colorMode === 'dark' }"
-          @click="setMode('dark')"
-        >
-          <slot name="dark" />
+        <button :class="{ active: colorMode === 'dark' }" @click="setMode('dark')">
+          <Icon :icon="IconMoonHalfFilled" />
           Dark
         </button>
       </div>
@@ -99,7 +84,7 @@ function setMode(mode: 'light' | 'dark' | 'auto') {
   padding: 0.5rem;
   right: 0rem;
   padding-right: 0.5rem;
-  top: 2.65rem;
+  top: 2.75rem;
   border-radius: 0.5rem;
   // TODO::investigate :(
   width: 9rem;

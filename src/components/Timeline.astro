@@ -7,17 +7,23 @@ const jobs = await query<Moment>("jobs");
 const studies = await query<Moment>("studies");
 ---
 
-<div>
+<div class="timeline">
   <TimelineSection moments={jobs} title="Jobs & internships" />
   <TimelineSection moments={studies} title="Studies" />
 </div>
 
 <style scoped lang="scss">
-  div {
+  .timeline {
     width: 100%;
     display: grid;
     grid-template-columns: auto 2px 1fr;
     gap: 2rem;
-    margin-bottom: 4rem;
+    padding-bottom: 2rem;
+  }
+
+  @media (max-width: 1280px) {
+    .timeline {
+      // gap: 1rem;
+    }
   }
 </style>

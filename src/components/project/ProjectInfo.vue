@@ -4,7 +4,6 @@ import LinkIcon from '../LinkIcon.vue';
 import ProjectName from './ProjectName.vue';
 import ProjectTech from './ProjectTech.vue';
 
-
 const { name, url = null, tech, description, online = undefined } = defineProps<{
   name: string | undefined
   tech: Project["tech"] | undefined
@@ -33,6 +32,11 @@ const { name, url = null, tech, description, online = undefined } = defineProps<
   gap: 0.25rem;
   height: calc(100vh - 4rem);
   flex: 1;
+  grid-column-start: 1;
+  grid-column-end: 5;
+  position: sticky;
+  top: 4rem;
+  left: 0;
 }
 
 .description {
@@ -46,16 +50,13 @@ const { name, url = null, tech, description, online = undefined } = defineProps<
 @media (max-width: 1280px) {
   .info {
     height: fit-content;
+    position: relative;
+    top: 0;
+    padding-bottom: 0.75rem;
   }
-}
 
-@media (min-width: 1280px) {
-  .info {
-    grid-column-start: 1;
-    grid-column-end: 5;
-    position: sticky;
-    top: 4rem;
-    left: 0;
+  .description {
+    padding: 0.5rem 0;
   }
 }
 </style>

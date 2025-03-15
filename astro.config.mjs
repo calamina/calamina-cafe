@@ -3,7 +3,6 @@ import { defineConfig } from 'astro/config';
 import vue from '@astrojs/vue';
 import * as compiler from "vue/compiler-sfc";
 import sitemap from '@astrojs/sitemap';
-import icon from 'astro-icon';
 // import mdx from '@astrojs/mdx';
 // import swup from '@swup/astro';
 
@@ -13,7 +12,6 @@ export default defineConfig({
     vue({ compiler }), 
     // mdx(), 
     sitemap(), 
-    icon(), 
     // swup({morph: ["header"]})
   ],
   site: 'https://calamina.cafe',

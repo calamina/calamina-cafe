@@ -215,11 +215,8 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div
-    class="ascii"
-    id="container"
-  >
-    <div class="state tw-absolute tw-top-2 tw-left-2 tw-w-2 tw-h-2 tw-rounded-lg"></div>
+  <div class="ascii" id="container">
+    <div class="state" />
   </div>
 </template>
 
@@ -237,5 +234,11 @@ onBeforeUnmount(() => {
 
 .state {
   background-color: hsl(288, 50%, 77%);
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 0.5rem;
 }
 </style>

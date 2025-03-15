@@ -1,5 +1,5 @@
 <template>
-    <pre role="img" aria-label="ASCII Flower">
+  <pre role="img" aria-label="ASCII Flower">
                                 ....
                             ,;;'''';;,                    ,;;;;,
                   ,        ;;'      `;;,               .,;;;'   ;
@@ -36,7 +36,7 @@
     </pre>
 </template>
 
-<style lang="scss"scoped>
+<style lang="scss" scoped>
 pre {
   background-color: var(--bg-light);
   padding: 1rem;

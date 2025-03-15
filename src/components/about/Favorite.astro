@@ -1,6 +1,7 @@
 ---
-import LinkImageLabel from "../LinkImageLabel.astro";
+import LinkImageLabel from "../LinkImageLabel.vue";
 import type { Media } from "../../models/Media";
+import { Image } from "astro:assets";
 
 export interface Props {
   title: string;
@@ -19,7 +20,15 @@ const display = size && (size === "large" ? "gridtwo" : "gridthree");
   <div class="medias" class:list={[display]}>
     {
       medias.map((media) => (
-        <LinkImageLabel url={media.url} label={media.label} src={media.src} />
+        <LinkImageLabel url={media.url} label={media.label} src={media.src}>
+          <Image
+            src={media.src}
+            alt={media.label + " cover"}
+            width={50}
+            height={50}
+            format={"avif"}
+          />
+        </LinkImageLabel>
       ))
     }
   </div>
@@ -29,6 +38,14 @@ const display = size && (size === "large" ? "gridtwo" : "gridthree");
   h3 {
     margin-bottom: 0.5rem;
     border-bottom: 2px solid var(--bg-darker);
+  }
+
+  img {
+    border-radius: 0.5rem;
+    object-fit: cover;
+    height: 1.5rem;
+    width: 1.5rem;
+    flex-shrink: 0;
   }
 
   .medias {

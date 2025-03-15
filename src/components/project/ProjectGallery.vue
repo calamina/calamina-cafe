@@ -24,12 +24,7 @@ function focusImage(e: HTMLImageElement | null) {
 
 <template>
   <Teleport to="body">
-    <ImageViewer
-      v-if="imgView"
-      :selected="imgView"
-      :images="gallery"
-      @unfocus="imgView = null"
-    />
+    <ImageViewer v-if="imgView" :selected="imgView" :images="gallery" @unfocus="imgView = null" />
   </Teleport>
   <div class="wrapper">
     <div class="gallery">
@@ -44,13 +39,17 @@ function focusImage(e: HTMLImageElement | null) {
   flex-flow: column;
   gap: 0.5rem;
   width: 100%;
+  padding-bottom: 0.5rem;
+  grid-column-start: 5;
+  grid-column-end: 11;
 }
 
 .gallery {
-  display: flex;
-  flex-flow: column;
+  display: grid;
   gap: 0.5rem;
-  padding-top: 2rem;
+  padding-top: 0;
+  // grid-template-columns: minmax(0px, 1fr);
+  grid-template-columns: repeat(2, minmax(0px, 1fr));
 
   & *>:first-child {
     grid-column: span 2;
@@ -64,20 +63,15 @@ function focusImage(e: HTMLImageElement | null) {
 
 }
 
-@media (min-width: 1280px) {
+@media (max-width: 1280px) {
   .wrapper {
-    //  xl:tw-pb-2 xl:tw-col-start-5 xl:tw-col-end-11
-    padding-bottom: 0.5rem;
-    grid-column-start: 5;
-    grid-column-end: 11;
+    padding-bottom: 0;
   }
 
   .gallery {
-    // xl:tw-pt-0 xl:tw-grid xl:tw-grid-cols-2
-    padding-top: 0;
-    display: grid;
-    // grid-template-columns: minmax(0px, 1fr);
-    grid-template-columns: repeat(2, minmax(0px, 1fr));
+    display: flex;
+    flex-flow: column;
+    padding-top: 0rem;
   }
 }
 </style>

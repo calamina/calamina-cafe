@@ -5,7 +5,7 @@ const { type = null } = defineProps<{
 </script>
 
 <template>
-    <button :class="{'alert': type === 'alert'}">
+    <button :class="{ 'alert': type === 'alert' }">
         <slot />
     </button>
 </template>

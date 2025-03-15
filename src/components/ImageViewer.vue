@@ -1,12 +1,14 @@
-<script
-  setup
-  lang="ts"
->
+<script setup lang="ts">
 import { onMounted, ref, type Ref } from 'vue';
 import { onKeyStroke } from '@vueuse/core'
 import ButtonBrackets from './ButtonBrackets.vue';
 import TextBrackets from './TextBrackets.vue';
-import IconImg from './IconImg.vue';
+import IconEye from './Icons/IconEye.vue';
+import IconEyeOff from './Icons/IconEyeOff.vue';
+import IconArrowLeft from './Icons/IconArrowLeft.vue';
+import IconHandClick from './Icons/IconHandClick.vue';
+import IconArrowRight from './Icons/IconArrowRight.vue';
+import Icon from './Icon.vue';
 
 const { selected, images } = defineProps<{
   selected: HTMLImageElement | null
@@ -50,13 +52,13 @@ function exit() {
     <div class="imageView">
       <div class="options">
         <TextBrackets>
-          <IconImg name="tabler:eye" />
+          <Icon :icon="IconEye" size="1.25rem" />
           Fullscreen mode
         </TextBrackets>
         <TextBrackets>{{ images.indexOf(image) + 1 }} / {{ images.length }}</TextBrackets>
         <ButtonBrackets :type="'alert'" @click="exit()">
           close
-          <IconImg name="tabler:eye-off" />
+          <Icon :icon="IconEyeOff" size="1.25rem" />
         </ButtonBrackets>
       </div>
       <Transition :name="imgSwipeTransition" mode="out-in">
@@ -64,33 +66,30 @@ function exit() {
       </Transition>
       <div class="options">
         <ButtonBrackets :type="'classic'" @click="prevImg()" v-if="images.length > 1">
-          <IconImg name="tabler:arrow-left-bar" />
+          <Icon :icon="IconArrowLeft" size="1.25rem" />
           previous
         </ButtonBrackets>
         <div class="tw-flex tw-gap-8">
           <TextBrackets>
-            <IconImg name="tabler:hand-click" />
+            <Icon :icon="IconHandClick" size="1.25rem" />
             or Escape to exit
           </TextBrackets>
           <TextBrackets>
-            <IconImg name="tabler:arrow-left-bar" />
-            <IconImg name="tabler:arrow-right-bar" />
+            <Icon :icon="IconArrowLeft" size="1.25rem" />
+            <Icon :icon="IconArrowRight" size="1.25rem" />
             to navigate
           </TextBrackets>
         </div>
         <ButtonBrackets :type="'classic'" @click="nextImg()" v-if="images.length > 1">
           next
-          <IconImg name="tabler:arrow-right-bar" />
+          <Icon :icon="IconArrowRight" size="1.25rem" />
         </ButtonBrackets>
       </div>
     </div>
   </div>
 </template>
 
-<style
-  lang="scss"
-  scoped
->
+<style lang="scss" scoped>
 .overlay {
   position: fixed;
   z-index: 200;

@@ -20,14 +20,14 @@ const phoneProjects = await query<Project>("phoneProjects");
 </MainLayoutFooterless>
 
 <style scoped lang="scss">
-    .grid {
-        width: 100%;
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0px, 1fr));
-        position: relative;
-        padding-bottom: 2rem;
-        gap: 1rem;
-    }
+    // .grid {
+    //     width: 100%;
+    //     display: grid;
+    //     grid-template-columns: repeat(4, minmax(0px, 1fr));
+    //     position: relative;
+    //     padding-bottom: 2rem;
+    //     gap: 1rem;
+    // }
 
     .content {
         grid-column: span 3;
@@ -36,5 +36,11 @@ const phoneProjects = await query<Project>("phoneProjects");
         flex-flow: column;
         gap: 1rem;
         padding-bottom: 3rem;
+    }
+
+    @media (max-width: 1280px) {
+        .content {
+            padding: 0 1rem 1rem;
+        }
     }
 </style>

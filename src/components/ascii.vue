@@ -1,4 +1,5 @@
-<pre>
+<template>
+  <pre>
  .    o .   .           *  * +        +            '        .         .         .             o   '   \          '  .        
                                  +                     '            .               /           +      \   ' +            *  
                            +        .  .     |                         .           /   .                *         *    +     
@@ -10,7 +11,7 @@
                .     '                         '        . .                                                    .        +    
   .     .          .    o  *   *      '             '        o        '       . * .                   .                      
 </pre>
-
+</template>
 <!-- <pre>
           8                w                          d8b            
 .d8b .d88 8 .d88 8d8b.d8b. w 8d8b. .d88    .d8b .d88  8'  .d88b      
@@ -137,19 +138,20 @@ _____________\////////___\////////\//__\/////////___\////////\//__\///___\///___
 </pre> -->
 
 <style scoped lang="scss">
-  pre {
-    color: var(--color-light);
-    display: block;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0.5rem;
-    padding: 0.5rem;
-    border: 2px solid var(--bg-darker0);
-    height: fit-content;
-    width: 100%;
-    font-size: 12px;
-    line-height: 9px;
-    overflow: hidden;
-  }
+pre {
+  color: var(--color-light);
+  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  // border: 2px solid var(--bg-darker0);
+  background-color: var(--bg-darker0);
+  height: fit-content;
+  width: 100%;
+  font-size: 12px;
+  line-height: 9px;
+  overflow: hidden;
+}
 </style>

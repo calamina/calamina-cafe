@@ -2,12 +2,15 @@
 import type { Link } from "../models/Link";
 import type { Media } from "../models/Media";
 import { query } from "../utils";
-import LinkList from "../components/LinkList.astro";
+import LinkList from "../components/LinkList.vue";
 import MediaRecent from "../components/MediaRecent.astro";
 import Favorites from "../components/about/Favorites.astro";
 import Timeline from "../components/Timeline.astro";
-import SectionTitle from "../components/SectionTitle.astro";
+import SectionTitle from "../components/SectionTitle.vue";
 import MainLayout from "../layouts/MainLayout.astro";
+import IconSmile from "../components/Icons/IconSmile.vue";
+import IconHeart from "../components/Icons/IconHeart.vue";
+import IconDatabase from "../components/Icons/IconDatabase.vue";
 
 const links = await query<Link>("nowLinks");
 const medias = await query<Media>("nowMedia");
@@ -16,19 +19,19 @@ const medias = await query<Media>("nowMedia");
 <MainLayout>
 	<div class="content">
 		<section>
-			<SectionTitle name="now" icon="tabler:mood-smile" />
+			<SectionTitle name="now" icon={IconSmile} />
 			<!-- <p>Working with these tools at the moment :</p> -->
-			<LinkList links={links} />
+			<LinkList links={links} client:only />
 			<MediaRecent medias={medias} />
 		</section>
 
 		<section>
-			<SectionTitle name="favorites" icon="tabler:heart" />
+			<SectionTitle name="favorites" icon={IconHeart} />
 			<Favorites />
 		</section>
 
 		<section>
-			<SectionTitle name="resume" icon="tabler:database" />
+			<SectionTitle name="resume" icon={IconDatabase} />
 			<Timeline />
 		</section>
 	</div>
@@ -40,6 +43,7 @@ const medias = await query<Media>("nowMedia");
 		flex-flow: column;
 		align-items: start;
 		// padding-top: 2rem;
+		padding: 0;
 		gap: 4rem;
 		opacity: 1;
 		transform: translateY(0);
@@ -62,9 +66,9 @@ const medias = await query<Media>("nowMedia");
 		width: 100%;
 	}
 
-	@media (min-width: 1280px) {
-		.wrapper {
-			flex-flow: row;
+	@media (max-width: 1280px) {
+		.content {
+			padding: 0 1rem;
 		}
 	}
 </style>

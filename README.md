@@ -6,17 +6,14 @@
 hey :)
 
 # TODO
-- check todos in code :)
-- Fix project view on mobile + dark theme
-- add toggle for max length !!!??? bring bck projects in full view !!
-- Fix theme switcher (blinking on page change / ok with swup)
-- Fix dark theme hover states
-- Fix navigation not ordered 
 - fix mobile image ratio 
-- fix ascii rendering ? (font aliasing)
-- webgl fallback
+- Fix navigation not ordered
 - fix mobile focus trap
 - fix fullscreen image view for mobile + other browsers
+- check todos in code :)
+- add toggle for max length !!!??? bring bck projects in full view !!
+- fix ascii rendering ? (font aliasing)
+- webgl fallback
 - single component for [project] + [mobile]
 
 # DATA

@@ -25,16 +25,16 @@ function toggleActive(key: 'webActive' | 'phoneActive' | 'offline', value?: stri
 
         <h3>order</h3>
         <button @click="ProjectsFilters.setKey('sort', 'date')"
-                :class="{ 'inactive': filters.sort !== 'date' }">Date</button>
+            :class="{ 'inactive': filters.sort !== 'date' }">Date</button>
         <!-- <button @click="ProjectsFilters.setKey('sort', 'num')" :class="{ 'inactive': filters.sort !== 'num' }">Num</button> -->
         <button @click="ProjectsFilters.setKey('sort', 'alpha')"
-                :class="{ 'inactive': filters.sort !== 'alpha' }">Alpha</button>
+            :class="{ 'inactive': filters.sort !== 'alpha' }">Alpha</button>
 
         <h3>direction</h3>
         <button @click="ProjectsFilters.setKey('order', 'asc')"
-                :class="{ 'inactive': filters.order !== 'asc' }">Asc</button>
+            :class="{ 'inactive': filters.order !== 'asc' }">Asc</button>
         <button @click="ProjectsFilters.setKey('order', 'desc')"
-                :class="{ 'inactive': filters.order !== 'desc' }">Desc</button>
+            :class="{ 'inactive': filters.order !== 'desc' }">Desc</button>
     </aside>
 </template>
 

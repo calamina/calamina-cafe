@@ -1,7 +1,5 @@
 ---
 import "../assets/style/main.scss";
-// import logo from "../assets/img/svg/testRe.svg";
-// import { Image } from "astro:assets";
 // import { ClientRouter } from "astro:transitions";
 ---
 
@@ -19,11 +17,22 @@ import "../assets/style/main.scss";
 		<link rel="sitemap" href="/sitemap-index.xml" />
 		<title>calamina cafe</title>
 		<!-- <ClientRouter /> -->
-	</head>
+		<script is:inline>
+			const theme =
+				localStorage?.getItem("vueuse-color-scheme") ??
+				(window.matchMedia("(prefers-color-scheme: dark)").matches
+					? "dark"
+					: "light");
 
+			if (theme === "light") {
+				document.documentElement.classList.remove("dark");
+			} else {
+				document.documentElement.classList.add("dark");
+			}
+		</script>
+	</head>
 	<body>
 		<slot />
-		<!-- <Image src={logo} alt={"calamina logo"} /> -->
 	</body>
 </html>
 

@@ -54,6 +54,10 @@ const categs = Object.entries(tech).filter(entry => entry[0] !== "colors")
     border-radius: 0.5rem;
 }
 
+html.dark .tag {
+    color: var(--bg-darker);
+}
+
 .tools {
     background-color: hsl(50, 50%, 77%);
     background-color: #e2d8a7

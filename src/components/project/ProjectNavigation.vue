@@ -1,25 +1,24 @@
-<script
-    setup
-    lang="ts"
->
+<script setup lang="ts">
 import type { Project } from '../../models/Project';
 import ButtonHighlight from '../ButtonHighlight.vue';
-import IconImg from '../IconImg.vue';
+import Icon from '../Icon.vue';
+import IconArrowLeft from '../Icons/IconArrowLeft.vue';
+import IconArrowRight from '../Icons/IconArrowRight.vue';
 
-const { path, next, prev, total } = defineProps<{
+const { path, next, prev, total, mobile } = defineProps<{
     path: string
     next: Project | null
     prev: Project | null
     total: number
+    mobile?: boolean
 }>()
 </script>
 
 <template>
-    <div class="navigation">
+    <div class="navigation" :class="{ 'mobile': mobile }">
         <div :key="prev?.url" class="prev">
-            <!-- <ButtonHighlight class="button" :href="(path + prev?.name) ?? { name: 'projects' }"> -->
             <ButtonHighlight class="button" :href="prev ? path + prev?.name : '/projects'">
-                <IconImg name="tabler:arrow-left-bar" />
+                <Icon :icon="IconArrowLeft" size="1.5rem" />
                 <h2>{{ prev?.name ?? 'back to projects' }}</h2>
             </ButtonHighlight>
         </div>
@@ -29,16 +28,13 @@ const { path, next, prev, total } = defineProps<{
         <div :key="next?.url" class="next">
             <ButtonHighlight class="button" :href="next ? path + next?.name : '/projects'">
                 <h2>{{ next?.name ?? 'back to projects' }}</h2>
-                <IconImg name="tabler:arrow-right-bar" />
+                <Icon :icon="IconArrowRight" size="1.5rem" />
             </ButtonHighlight>
         </div>
     </div>
 </template>
 
-<style
-    lang="scss"
-    scoped
->
+<style lang="scss" scoped>
 .navigation {
     margin-top: auto;
     display: grid;
@@ -46,6 +42,10 @@ const { path, next, prev, total } = defineProps<{
     align-items: center;
     padding-bottom: 0.5rem;
     width: 100%;
+
+    &.mobile {
+        display: none;
+    }
 }
 
 .prev {
@@ -135,6 +135,13 @@ const { path, next, prev, total } = defineProps<{
 }
 
 @media (max-width: 1280px) {
+    .navigation:not(.mobile) {
+        display: none;
+    }
+
+    .navigation.mobile {
+        display: flex;
+    }
 
     .next .button,
     .prev .button,

@@ -65,4 +65,28 @@ div {
 span {
     color: var(--color-light)
 }
+
+@media (max-width: 1280px) {
+    .moment {
+        // flex-flow: column;
+        // align-items: start;
+        gap: 1.5rem;
+        padding-top: 0;
+    }
+
+    // .moment {
+    //     flex-flow: column;
+    //     align-items: start;
+    //     gap: 0;
+    //     padding-top: 0;
+    // }
+
+    // .date {
+    //     flex-flow: row;
+    //     gap: 1rem;
+    //     background-color: var(--bg-darker0);
+    //     padding: 0.25rem 0.5rem;
+    //     border-radius: 0.5rem;
+    // }
+}
 </style>

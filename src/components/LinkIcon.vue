@@ -1,7 +1,13 @@
 <script setup lang="ts">
-import IconImg from './IconImg.vue';
+import Icon from './Icon.vue';
+import IconAsterisk from './Icons/IconAsterisk.vue';
+import IconAstro from './Icons/IconAstro.vue';
+import IconClover from './Icons/IconClover.vue';
+import IconLink from './Icons/IconLink.vue';
+import IconThree from './Icons/IconThree.vue';
+import IconVue from './Icons/IconVue.vue';
 
-const { url, label, online = undefined } = defineProps<{
+const { url, label, online = undefined, icon } = defineProps<{
   url: string
   label?: string
   icon?: string
@@ -9,14 +15,16 @@ const { url, label, online = undefined } = defineProps<{
 }>()
 
 const disabled = online === undefined ? false : !online
-console.log(online)
+
+const icons = [IconVue, IconAsterisk, IconThree, IconClover, IconAstro]
+const iconComponent = icons.find(iconComponent => icon && iconComponent.__file?.slice(0, -4).toLowerCase().includes(icon))
 </script>
 
 <template>
-  <a :href="disabled ? undefined : url" target="_blank" :inert="disabled"
-     :class="{ 'disabled': disabled }">
+  <a :href="disabled ? undefined : url" target="_blank" :inert="disabled" :class="{ 'disabled': disabled }">
     {{ label ?? 'visit' }}
-    <IconImg :name="icon ?? 'tabler:link'" :disabled="disabled" />
+    <Icon v-if="iconComponent" :icon="iconComponent" :class="{ 'disabled': disabled }" />
+    <Icon v-else :icon="IconLink" :class="{ 'disabled': disabled }" />
   </a>
 </template>
 
@@ -38,26 +46,17 @@ a {
   }
 
   &.disabled {
-    // opacity: 0.2;
     color: var(--color-light);
+    opacity: 0.5;
 
-    & IconImg {
+    svg {
       opacity: 0.5;
-      color: var(--color-light);
-
     }
   }
 }
 
-.dark-mode a:hover {
+html.dark a:hover {
   background-color: var(--bg-darker0);
   color: var(--highlight);
-}
-
-@starting-style {
-  a {
-    opacity: 0;
-    transform: translateX(-0.5rem)
-  }
 }
 </style>

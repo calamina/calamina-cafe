@@ -70,6 +70,9 @@ const hehe = lels
 
 <style scoped lang="scss">
   .project {
+    display: grid;
+    grid-template-columns: repeat(10, minmax(0px, 1fr));
+    gap: 0.5rem;
     width: 100%;
   }
 
@@ -81,9 +84,9 @@ const hehe = lels
 
   @media (min-width: 1280px) {
     .project {
-      display: grid;
-      grid-template-columns: repeat(10, minmax(0px, 1fr));
-      gap: 0.5rem;
+      display: flex;
+      flex-flow: column;
+      padding: 0 0.5rem;
     }
   }
 </style>
