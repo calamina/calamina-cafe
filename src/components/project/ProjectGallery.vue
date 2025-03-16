@@ -2,8 +2,8 @@
 import { onMounted, ref, type Ref } from 'vue'
 import ImageViewer from '../ImageViewer.vue';
 
-const { type } = defineProps<{
-  type: "phone" | "web"
+const { type = "web" } = defineProps<{
+  type?: "phone" | "web"
 }>()
 
 const imgView: Ref<HTMLImageElement | null> = ref(null)

@@ -13,7 +13,7 @@ export interface Props {
 
 const pictures: Record<
   string,
-  () => Promise<{ default: ImageMetadata; eager: true }>
+  Promise<{ default: ImageMetadata; eager: true }>
 > = {};
 
 Object.entries(
@@ -26,7 +26,7 @@ Object.entries(
       ),
 ).map((img) => {
   const name = img[0]?.split("/")?.pop()?.split(".")?.[0] ?? "notfound";
-  pictures[name] = img[1];
+  pictures[name] = img[1]();
 });
 ---
 
@@ -38,8 +38,8 @@ Object.entries(
         <ProjectsGridProject project={project} type={type}>
           <Image
             class="projectImg"
-            src={pictures[project.name]()}
-            alt={project.name + " cover"}
+            src={pictures[project.name]}
+            alt={project.name + " cover image"}
             width={350}
             height={255}
             loading={"lazy"}

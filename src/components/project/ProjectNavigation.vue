@@ -5,7 +5,8 @@ import Icon from '../Icon.vue';
 import IconArrowLeft from '../Icons/IconArrowLeft.vue';
 import IconArrowRight from '../Icons/IconArrowRight.vue';
 
-const { path, next, prev, total, mobile } = defineProps<{
+const { index, path, next, prev, total, mobile } = defineProps<{
+    index: number
     path: string
     next: Project | null
     prev: Project | null
@@ -23,7 +24,7 @@ const { path, next, prev, total, mobile } = defineProps<{
             </ButtonHighlight>
         </div>
 
-        <p class="id">{{ prev ? prev?.num + 1 : 1 }} / {{ total }}</p>
+        <p class="id">{{ index + 1 }} / {{ total }}</p>
 
         <div :key="next?.url" class="next">
             <ButtonHighlight class="button" :href="next ? path + next?.name : '/projects'">

@@ -1,6 +1,6 @@
 ---
 import MainLayoutFooterless from "../../../layouts/MainLayoutFooterless.astro";
-import { queryOne, queryPrevious, queryNext } from "../../../utils";
+import { queryOne, getPaths } from "../../../utils";
 import type { Project } from "../../../models/Project";
 import ProjectInfo from "../../../components/project/ProjectInfo.vue";
 import ProjectGallery from "../../../components/project/ProjectGallery.vue";
@@ -12,19 +12,19 @@ import ProjectNavigation from "../../../components/project/ProjectNavigation.vue
 const projects = await getCollection("phoneProjects");
 const total = projects.length;
 
-export async function getStaticPaths() {
-  const projects = await getCollection("phoneProjects");
-  return projects.map((project) => ({
-    params: { project: project.data.name },
-  }));
-}
+export const getStaticPaths = async () => {
+  return getPaths("webProjects");
+};
 
 const { project } = Astro.params;
 const { num, name, url, tech, description, online } =
   (await queryOne<Project>("phoneProjects", project)) ?? {};
 
-const prev = await queryPrevious("phoneProjects", num ?? 0);
-const next = await queryNext("phoneProjects", num ?? 0);
+const index = projects.findIndex((_project) => _project.data.name === name);
+const { prev, next } = {
+  prev: projects[index - 1]?.data ?? null,
+  next: projects[index + 1]?.data ?? null,
+};
 
 const images = () => {
   const files = Object.entries(
@@ -54,6 +54,7 @@ const isVerticalImage = (
     >
       <!-- ADD CONSTANTS FOR PATH -->
       <ProjectNavigation
+        index={index}
         prev={prev}
         next={next}
         total={total}
@@ -74,6 +75,14 @@ const isVerticalImage = (
         ))
       }
     </ProjectGallery>
+    <ProjectNavigation
+      index={index}
+      prev={prev}
+      next={next}
+      total={total}
+      path="/projects/phone/"
+      mobile={true}
+    />
   </div>
 </MainLayoutFooterless>
 
