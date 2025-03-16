@@ -71,6 +71,7 @@ function focusImage(e: HTMLImageElement | null) {
 @media (max-width: 1280px) {
   .wrapper {
     padding-bottom: 0;
+    flex: 1;
   }
 
   .gallery {

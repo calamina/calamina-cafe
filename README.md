@@ -9,6 +9,7 @@ hey :)
 - fix mobile focus trap
 - fix fullscreen image view for mobile + other browsers
 - check todos in code :)
+- fix theme still flashing in phone
 - add toggle for max length !!!??? bring bck projects in full view !!
 - refacto css variables (radius / gaps / etc) // clean themes
 - fix ascii rendering ? (font aliasing) + webgl fallback

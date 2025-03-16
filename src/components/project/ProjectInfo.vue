@@ -49,7 +49,8 @@ const { name, url = null, tech, description, online = undefined } = defineProps<
 // MEDIA QUERIES
 @media (max-width: 1280px) {
   .info {
-    height: fit-content;
+    height: auto;
+    flex: 0;
     position: relative;
     top: 0;
     padding-bottom: 0.75rem;
