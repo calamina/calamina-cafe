@@ -1,5 +1,7 @@
+import type { ImageMetadata } from "astro";
 import { getCollection, getEntry, type CollectionKey } from "astro:content";
 
+// QUERIES
 export const query = async <T>(collection: CollectionKey) =>
   getCollection(collection).then(results => results.map(result => result.data) as T[]);
 
@@ -15,3 +17,8 @@ export const getPaths = async (collection: "webProjects" | "phoneProjects") => {
     params: { project: project.data.name },
   }));
 }
+
+// IMAGES
+export const isVerticalImage = (
+  image: Promise<{ default: ImageMetadata; eager: true }>,
+) => image.then((img) => img.default.width / img.default.height < 1);

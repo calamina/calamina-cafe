@@ -1,6 +1,6 @@
 ---
 import MainLayoutFooterless from "../../../layouts/MainLayoutFooterless.astro";
-import { queryOne, getPaths } from "../../../utils";
+import { queryOne, getPaths, isVerticalImage } from "../../../utils";
 import type { Project } from "../../../models/Project";
 import ProjectInfo from "../../../components/project/ProjectInfo.vue";
 import ProjectGallery from "../../../components/project/ProjectGallery.vue";
@@ -26,7 +26,6 @@ const { prev, next } = {
   prev: projects[index - 1]?.data ?? null,
   next: projects[index + 1]?.data ?? null,
 };
-console.debug(index);
 
 const images = () => {
   const files = Object.entries(
@@ -39,10 +38,6 @@ const images = () => {
     .filter((file) => file[0].includes(project) && !file[0].includes("mini"))
     .map((file) => file[1]().then((lul) => lul));
 };
-
-const isVerticalImage = (
-  image: Promise<{ default: ImageMetadata; eager: true }>,
-) => image.then((img) => img.default.width / img.default.height < 1);
 ---
 
 <MainLayoutFooterless>

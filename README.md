@@ -6,7 +6,7 @@
 hey :)
 
 # TODO
-- Fix navigation not ordered
+- add template / wrapper for [project]
 - fix mobile focus trap
 - fix low contrasts on resume (dark mode)
 - fix fullscreen image view for mobile + other browsers

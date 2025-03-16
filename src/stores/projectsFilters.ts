@@ -4,7 +4,7 @@ export interface ProjectsFilters {
     webActive: boolean
     phoneActive: boolean
     offline: boolean
-    sort: 'num' | 'date' | 'alpha'
+    sort: 'date' | 'alpha'
     order: 'asc' | 'desc'
 }
 

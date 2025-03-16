@@ -3,14 +3,12 @@ import { defineConfig } from 'astro/config';
 import vue from '@astrojs/vue';
 import * as compiler from "vue/compiler-sfc";
 import sitemap from '@astrojs/sitemap';
-// import mdx from '@astrojs/mdx';
 // import swup from '@swup/astro';
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [
     vue({ compiler }), 
-    // mdx(), 
     sitemap(), 
     // swup({morph: ["header"]})
   ],

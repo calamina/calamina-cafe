@@ -1,9 +1,6 @@
 <script setup lang='ts'>
-import type { fill } from 'three/src/extras/TextureUtils.js';
-import type { Component } from 'vue';
-
 const { icon, size = "18px", color = "var(--color)" } = defineProps<{
-  icon: Component | string | any
+  icon: any
   size?: string
   color?: string
 }>()
