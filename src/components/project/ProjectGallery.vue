@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { onMounted, ref, type Ref } from 'vue'
 import ImageViewer from '../ImageViewer.vue';
+import { ProjectType } from '../../utils/enum';
 
-const { type = "web" } = defineProps<{
-  type?: "phone" | "web"
+const { type = ProjectType.WEB } = defineProps<{
+  type?: ProjectType
 }>()
 
 const imgView: Ref<HTMLImageElement | null> = ref(null)
@@ -31,7 +32,7 @@ function focusImage(e: HTMLImageElement | null) {
     <ImageViewer v-if="imgView" :selected="imgView" :images="gallery" @unfocus="imgView = null" />
   </Teleport>
   <div class="wrapper">
-    <div class="gallery" :class="{ 'mobile': type === 'phone' }">
+    <div class="gallery" :class="{ 'mobile': type === ProjectType.PHONE }">
       <slot />
     </div>
   </div>

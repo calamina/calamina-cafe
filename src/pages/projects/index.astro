@@ -2,19 +2,20 @@
 import MainLayoutFooterless from "../../layouts/MainLayoutFooterless.astro";
 import ProjectsGrid from "../../components/projects/ProjectsGrid.astro";
 // import ProjectsFilters from "../../components/projects/ProjectsFilters.vue";
-import { query } from "../../utils";
+import { query } from "../../utils/utils.ts";
 import type { Project } from "../../models/Project";
+import { ProjectCollection, ProjectType } from "../../utils/enum";
 
-const webProjects = await query<Project>("webProjects");
-const phoneProjects = await query<Project>("phoneProjects");
+const webProjects = await query<Project>(ProjectCollection.WEB);
+const phoneProjects = await query<Project>(ProjectCollection.PHONE);
 ---
 
 <MainLayoutFooterless>
     <!-- <div class="grid"> -->
     <!-- <ProjectsFilters client:load /> -->
     <div class="content">
-        <ProjectsGrid projects={webProjects} type="web" />
-        <ProjectsGrid projects={phoneProjects} type="phone" />
+        <ProjectsGrid projects={webProjects} type={ProjectType.WEB} />
+        <ProjectsGrid projects={phoneProjects} type={ProjectType.PHONE} />
     </div>
     <!-- </div> -->
 </MainLayoutFooterless>

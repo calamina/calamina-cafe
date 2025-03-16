@@ -1,5 +1,5 @@
 ---
-import { query } from "../utils";
+import { query } from "../utils/utils.ts";
 import type { Moment } from "../models/Moment";
 import TimelineSection from "./about/TimelineSection.vue";
 
@@ -19,11 +19,5 @@ const studies = await query<Moment>("studies");
     grid-template-columns: auto 2px 1fr;
     gap: 2rem;
     padding-bottom: 2rem;
-  }
-
-  @media (max-width: 1280px) {
-    .timeline {
-      // gap: 1rem;
-    }
   }
 </style>

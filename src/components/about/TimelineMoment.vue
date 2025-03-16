@@ -66,6 +66,21 @@ span {
     color: var(--color-light)
 }
 
+// DARK
+html.dark .moment {
+
+    span,
+    .date p {
+        color: var(--color);
+        opacity: 0.8;
+    }
+
+    .date.actual p {
+        opacity: 1;
+    }
+}
+
+// MOBILE
 @media (max-width: 1280px) {
     .moment {
         // flex-flow: column;

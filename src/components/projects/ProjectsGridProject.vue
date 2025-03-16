@@ -8,7 +8,7 @@ const { project, type } = defineProps<{
   type: string
 }>()
 
-const url = "/projects/" + type + "/";
+const url = "/projects/" + type.toLowerCase() + "/";
 </script>
 
 <template>

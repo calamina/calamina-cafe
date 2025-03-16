@@ -1,0 +1,102 @@
+---
+import MainLayoutFooterless from "../layouts/MainLayoutFooterless.astro";
+import type { Project } from "../models/Project";
+import ProjectInfo from "../components/project/ProjectInfo.vue";
+import ProjectGallery from "../components/project/ProjectGallery.vue";
+import { Image } from "astro:assets";
+import ButtonImage from "../components/ButtonImage.vue";
+import { getCollection } from "astro:content";
+import ProjectNavigation from "../components/project/ProjectNavigation.vue";
+import { queryOne, getSurroundingProjects } from "../utils/utils.ts";
+import { isVerticalImage, getProjectImages } from "../utils/images";
+import { ProjectCollection, ProjectType } from "../utils/enum";
+
+export interface Props {
+  project: string;
+  type: ProjectType;
+}
+const { project, type } = Astro.props;
+const path = `/projects/${type.toLowerCase()}/`;
+const collection: ProjectCollection = ProjectCollection[type];
+
+const projects = await getCollection(collection);
+const { name, url, tech, description, online } =
+  (await queryOne<Project>(collection, project)) ?? {};
+
+const total = projects.length;
+const index = projects.findIndex((p) => p.data.name === name);
+const { prev, next } = getSurroundingProjects(index, projects);
+
+const images = getProjectImages(type, project);
+---
+
+<MainLayoutFooterless>
+  <div class="project">
+    <ProjectInfo
+      name={name}
+      url={url}
+      tech={tech}
+      description={description}
+      online={online}
+    >
+      <ProjectNavigation
+        index={index}
+        prev={prev}
+        next={next}
+        total={total}
+        path={path}
+      />
+    </ProjectInfo>
+    <ProjectGallery type={type} client:only>
+      {
+        images.map((image) => (
+          <ButtonImage>
+            <Image
+              src={image}
+              alt={name + " gallery image"}
+              loading={"eager"}
+              class:list={[{ mobile: isVerticalImage(image) }]}
+            />
+          </ButtonImage>
+        ))
+      }
+    </ProjectGallery>
+    <ProjectNavigation
+      index={index}
+      prev={prev}
+      next={next}
+      total={total}
+      path={path}
+      mobile={true}
+    />
+  </div>
+</MainLayoutFooterless>
+
+<style scoped lang="scss">
+  .project {
+    display: grid;
+    grid-template-columns: repeat(10, minmax(0px, 1fr));
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  img.mobile {
+    width: auto;
+    height: 100%;
+    max-height: 85vh;
+  }
+
+  @media (max-width: 1280px) {
+    .project {
+      display: flex;
+      flex-flow: column;
+      padding: 0 0.5rem;
+    }
+  }
+</style>

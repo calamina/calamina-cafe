@@ -1,6 +1,6 @@
 ---
 import type { Media } from "../../models/Media";
-import { query } from "../../utils";
+import { query } from "../../utils/utils.ts";
 import Favorite from "./Favorite.astro";
 
 const movies = await query<Media>("favMovies");
