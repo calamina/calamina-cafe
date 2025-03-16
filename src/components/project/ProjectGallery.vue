@@ -2,6 +2,10 @@
 import { onMounted, ref, type Ref } from 'vue'
 import ImageViewer from '../ImageViewer.vue';
 
+const { type } = defineProps<{
+  type: "phone" | "web"
+}>()
+
 const imgView: Ref<HTMLImageElement | null> = ref(null)
 const gallery: Ref<HTMLImageElement[]> = ref([])
 const buttons: Ref<HTMLButtonElement[]> = ref([])
@@ -27,7 +31,7 @@ function focusImage(e: HTMLImageElement | null) {
     <ImageViewer v-if="imgView" :selected="imgView" :images="gallery" @unfocus="imgView = null" />
   </Teleport>
   <div class="wrapper">
-    <div class="gallery">
+    <div class="gallery" :class="{ 'mobile': type === 'phone' }">
       <slot />
     </div>
   </div>
@@ -51,6 +55,7 @@ function focusImage(e: HTMLImageElement | null) {
   // grid-template-columns: minmax(0px, 1fr);
   grid-template-columns: repeat(2, minmax(0px, 1fr));
 
+  // &:not(.mobile) *>:first-child {
   & *>:first-child {
     grid-column: span 2;
   }
@@ -60,7 +65,6 @@ function focusImage(e: HTMLImageElement | null) {
   & *>button:nth-last-child(-n+2):first-child~button {
     grid-column: span 2;
   }
-
 }
 
 @media (max-width: 1280px) {

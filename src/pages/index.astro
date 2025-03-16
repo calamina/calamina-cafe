@@ -5,24 +5,18 @@ import LinkContact from "../components/LinkContact.vue";
 import SocialsList from "../components/SocialsList.vue";
 import MainLayout from "../layouts/MainLayout.astro";
 import logo from "../assets/img/svg/logo.svg";
-// import Ascii from "../components/ascii.astro";
-// import logo2 from "../assets/img/svg/calaminaLOGO.svg";
-// import logo3 from "../assets/img/svg/testmono.svg";
+import Icon from "../components/Icon.vue";
+import IconSmile from "../components/Icons/IconSmile.vue";
 ---
 
 <MainLayout>
   <div class="box">
     <h1><Image src={logo} alt={"calamina logo"} loading={"eager"} /></h1>
-    <!-- <Ascii /> -->
     <div class="wrapper">
       <AsciiScene client:only="vue">
         <div slot="fallback" class="loader">Loading ascii ...</div>
       </AsciiScene>
       <div class="content">
-        <!-- <section>
-          <h1>calamina.cafe</h1>
-          <Image src={logo} alt={"calamina logo"} />
-        </section> -->
         <section>
           <p>Hello and welcome :)</p>
           <p>Personal space of Grégoire Belliere</p>
@@ -30,9 +24,9 @@ import logo from "../assets/img/svg/logo.svg";
         </section>
         <LinkContact />
         <SocialsList />
+        <Icon icon={IconSmile} color="var(--highlight)" size="2.5rem" />
       </div>
     </div>
-    <!-- <Ascii /> -->
   </div>
 </MainLayout>
 

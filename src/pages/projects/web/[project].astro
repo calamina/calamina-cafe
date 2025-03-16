@@ -27,17 +27,21 @@ const { num, name, url, tech, description, online } =
 const prev = await queryPrevious("webProjects", num ?? 0);
 const next = await queryNext("webProjects", num ?? 0);
 
-// TODO:: REFACTO IMAGE GETTER -----
-const lels = Object.entries(
-  import.meta.glob<{ default: ImageMetadata; eager: true }>(
-    "/src/assets/img/content/projects/web/**/*.avif",
-  ),
-);
+const images = () => {
+  const files = Object.entries(
+    import.meta.glob<{ default: ImageMetadata; eager: true }>(
+      "/src/assets/img/content/projects/web/**/*.avif",
+    ),
+  );
 
-const hehe = lels
-  .filter((lel) => lel[0].includes(project) && !lel[0].includes("mini"))
-  .map((lel) => lel[1]);
-// ----------------------------------
+  return files
+    .filter((file) => file[0].includes(project) && !file[0].includes("mini"))
+    .map((file) => file[1]().then((lul) => lul));
+};
+
+const isVerticalImage = (
+  image: Promise<{ default: ImageMetadata; eager: true }>,
+) => image.then((img) => img.default.width / img.default.height < 1);
 ---
 
 <MainLayoutFooterless>
@@ -59,9 +63,14 @@ const hehe = lels
     </ProjectInfo>
     <ProjectGallery client:only="vue">
       {
-        hehe.map((item) => (
+        images().map((image) => (
           <ButtonImage>
-            <Image src={item()} alt={"lel"} loading={"eager"} />
+            <Image
+              src={image}
+              alt={name + "gallery image"}
+              loading={"eager"}
+              class:list={[{ mobile: isVerticalImage(image) }]}
+            />
           </ButtonImage>
         ))
       }
@@ -88,6 +97,12 @@ const hehe = lels
     width: 100%;
     height: auto;
     object-fit: contain;
+  }
+
+  img.mobile {
+    width: auto;
+    height: 100%;
+    max-height: 85vh;
   }
 
   @media (max-width: 1280px) {

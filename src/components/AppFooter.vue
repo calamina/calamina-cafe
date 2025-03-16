@@ -8,7 +8,7 @@ import IconCC from './Icons/IconCC.vue';
     <footer>
         <div class="sep"></div>
         <div class="info">
-            <Icon :icon=IconCC />
+            <!-- <Icon :icon=IconCC /> -->
             <a target="_blank" href="https://github.com/calamina">calamina</a>
             <span>~ 2024</span>
         </div>

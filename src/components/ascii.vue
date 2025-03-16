@@ -1,5 +1,5 @@
 <template>
-  <pre>
+  <pre inert aria-hidden="true">
  .    o .   .           *  * +        +            '        .         .         .             o   '   \          '  .        
                                  +                     '            .               /           +      \   ' +            *  
                            +        .  .     |                         .           /   .                *         *    +     
