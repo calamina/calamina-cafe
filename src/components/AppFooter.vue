@@ -23,7 +23,7 @@ footer {
     display: flex;
     flex-flow: column;
     padding: 0.5rem 1rem 1rem;
-    margin-top: 6rem;
+    margin-top: 1rem;
     gap: 1rem;
 }
 

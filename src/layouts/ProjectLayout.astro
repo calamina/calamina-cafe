@@ -10,6 +10,7 @@ import ProjectNavigation from "../components/project/ProjectNavigation.vue";
 import { queryOne, getSurroundingProjects } from "../utils/utils.ts";
 import { isVerticalImage, getProjectImages } from "../utils/images";
 import { ProjectCollection, ProjectType } from "../utils/enum";
+import MainLayout from "./MainLayout.astro";
 
 export interface Props {
   project: string;
@@ -49,7 +50,8 @@ const images = getProjectImages(type, project);
     }
   }
 </script> -->
-<MainLayoutFooterless>
+<MainLayout>
+  <!-- <MainLayoutFooterless> -->
   <div class="project" data-touch={{ total, path, prev, next }}>
     <ProjectInfo
       name={name}
@@ -68,11 +70,11 @@ const images = getProjectImages(type, project);
     </ProjectInfo>
     <ProjectGallery type={type} client:only>
       {
-        images.map((image) => (
+        images.map((image, index) => (
           <ButtonImage>
             <Image
               src={image}
-              alt={name + " gallery image"}
+              alt={`${name} gallery picture ${index + 1}`}
               loading={"eager"}
               class:list={[{ mobile: isVerticalImage(image) }]}
             />
@@ -89,7 +91,7 @@ const images = getProjectImages(type, project);
       mobile={true}
     />
   </div>
-</MainLayoutFooterless>
+</MainLayout>
 
 <style scoped lang="scss">
   .project {

@@ -22,10 +22,10 @@ export interface Props {
           <Image
             class="projectImg"
             src={getImage(project.name, type)}
-            alt={project.name + " cover image"}
+            alt={project.name + " cover"}
             width={350}
             height={255}
-            loading={"lazy"}
+            loading={"eager"}
             format={"avif"}
           />
         </ProjectsGridProject>

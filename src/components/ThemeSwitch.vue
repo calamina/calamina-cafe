@@ -60,6 +60,10 @@ function setMode(mode: 'light' | 'dark' | 'auto') {
     padding: 0.5rem;
     border-radius: 0.5rem;
 
+    &.theme-picker {
+      background-color: var(--bg-darker0);
+    }
+
     &.activetheme,
     &.theme-picker:hover {
       background-color: var(--bg-darker);
