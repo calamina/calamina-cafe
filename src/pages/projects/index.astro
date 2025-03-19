@@ -5,14 +5,12 @@ import ProjectsGrid from "../../components/projects/ProjectsGrid.astro";
 import { query } from "../../utils/utils.ts";
 import type { Project } from "../../models/Project";
 import { ProjectCollection, ProjectType } from "../../utils/enum";
-import MainLayout from "../../layouts/MainLayout.astro";
 
 const webProjects = await query<Project>(ProjectCollection.WEB);
 const phoneProjects = await query<Project>(ProjectCollection.PHONE);
 ---
 
-<!-- <MainLayoutFooterless> -->
-<MainLayout>
+<MainLayoutFooterless>
     <!-- <div class="grid"> -->
     <!-- <ProjectsFilters client:load /> -->
     <div class="content">
@@ -20,7 +18,7 @@ const phoneProjects = await query<Project>(ProjectCollection.PHONE);
         <ProjectsGrid projects={phoneProjects} type={ProjectType.PHONE} />
     </div>
     <!-- </div> -->
-</MainLayout>
+</MainLayoutFooterless>
 
 <style scoped lang="scss">
     // .grid {
