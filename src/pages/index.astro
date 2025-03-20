@@ -1,15 +1,14 @@
 ---
-import { Image } from "astro:assets";
 import AsciiScene from "../components/AsciiScene.vue";
 import LinkContact from "../components/LinkContact.vue";
 import SocialsList from "../components/SocialsList.vue";
 import MainLayout from "../layouts/MainLayout.astro";
-import logo from "../assets/img/svg/logo.svg";
+import AppLogo from "../components/AppLogo.vue";
 ---
 
 <MainLayout>
   <div class="box">
-    <h1><Image src={logo} alt={"calamina logo"} loading={"eager"} /></h1>
+    <h1><AppLogo alt="calamina logo" /></h1>
     <div class="wrapper">
       <AsciiScene client:only="vue">
         <div slot="fallback" class="loader">Loading ascii ...</div>
@@ -62,11 +61,6 @@ import logo from "../assets/img/svg/logo.svg";
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-
-  img {
-    height: fit-content;
-    width: 100%;
   }
 
   section {

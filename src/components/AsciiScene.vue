@@ -233,7 +233,7 @@ onBeforeUnmount(() => {
 }
 
 .state {
-  background-color: hsl(288, 50%, 77%);
+  background-color: var(--highlight);
   position: absolute;
   top: 0.5rem;
   left: 0.5rem;

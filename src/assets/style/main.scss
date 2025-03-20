@@ -63,7 +63,7 @@ a {
 
     &:hover {
         outline: none;
-        background-color: hsl(288, 50%, 77%);
+        background-color: var(--highlight);
         border-radius: 0.5rem;
         // text-decoration: underline;
     }
@@ -74,8 +74,8 @@ Icon {
 }
 
 .dark a:hover {
-    color: hsl(288, 50%, 77%);
     background-color: var(--bg-darker);
+    color: var(--highlight);
 }
 
 .center {
