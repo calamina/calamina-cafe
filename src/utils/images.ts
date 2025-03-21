@@ -1,9 +1,7 @@
 import type { ImageMetadata } from "astro";
 import { ProjectType } from "./enum";
 
-export const isVerticalImage = (
-  image: Promise<{ default: ImageMetadata }>,
-) => image.then((img) => img.default.width / img.default.height < 1);
+export const isVerticalImage = (image: { default: ImageMetadata }) => image.default.width / image.default.height < 1;
 
 export const getProjectImages = (type: ProjectType, project: string) => {
   return (type === ProjectType.WEB ? webImages : phoneImages)

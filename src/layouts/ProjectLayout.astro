@@ -68,16 +68,18 @@ const images = getProjectImages(type, project);
     </ProjectInfo>
     <ProjectGallery type={type} client:only>
       {
-        images.map((image, index) => (
-          <ButtonImage>
-            <Image
-              src={image}
-              alt={`${name} gallery picture ${index + 1}`}
-              loading={"eager"}
-              class:list={[{ mobile: isVerticalImage(image) }]}
-            />
-          </ButtonImage>
-        ))
+        images.map((image, index) =>
+          image.then((img) => (
+            <ButtonImage>
+              <Image
+                src={image}
+                alt={`${name} gallery picture ${index + 1}`}
+                loading={"eager"}
+                class:list={[{ mobile: isVerticalImage(img) }]}
+              />
+            </ButtonImage>
+          )),
+        )
       }
     </ProjectGallery>
     <ProjectNavigation
