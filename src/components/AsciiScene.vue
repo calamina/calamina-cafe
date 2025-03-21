@@ -58,17 +58,7 @@ function onMouseMove(event: PointerEvent) {
   mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
 
   const vector = new THREE.Vector3(mouse.x, mouse.y, 0.01);
-  vector.unproject(camera2);
-
-  const dir = vector.sub(camera2.position).normalize();
-  const distance = 300;
-  const pos = camera2.position.clone().add(dir.multiplyScalar(distance));
-
-  const posFixed = new THREE.Vector3(pos.x, -pos.y, pos.z)
-  const object2 = object.clone()
-  object2.userData = { time }
-  shapeScene.add(object2)
-  object.position.copy(posFixed)
+  draw(vector, 300)
 }
 
 function onDeviceRotate(event: DeviceOrientationEvent) {
@@ -76,11 +66,14 @@ function onDeviceRotate(event: DeviceOrientationEvent) {
   position.x = event.gamma ?? 0
   position.y = event.beta ?? 0
 
-  const vector = new THREE.Vector3(position.x - 50, position.y, 0.01);
+  const vector = new THREE.Vector3(position.x, - position.y + 40, 0.01);
+  draw(vector, 10)
+}
+
+function draw(vector: THREE.Vector3, distance: number) {
   vector.unproject(camera2);
 
   const dir = vector.sub(camera2.position).normalize();
-  const distance = 300;
   const pos = camera2.position.clone().add(dir.multiplyScalar(distance));
 
   const posFixed = new THREE.Vector3(pos.x, -pos.y, pos.z)
@@ -220,8 +213,12 @@ function render() {
 
 function init() {
   document.getElementById('container')?.appendChild(renderer.domElement);
-  window.addEventListener("pointermove", onMouseMove)
-  window.addEventListener("deviceorientation", onDeviceRotate)
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  if (isMobile) {
+    window.addEventListener("deviceorientation", onDeviceRotate)
+  } else {
+    window.addEventListener("pointermove", onMouseMove)
+  }
   addObjects()
   render()
 }
