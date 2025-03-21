@@ -30,7 +30,7 @@ function setMode(mode: 'light' | 'dark' | 'auto') {
       @click="themeOpen = !themeOpen">
       <Icon :icon="IconMoon" />
     </button>
-    <transition name="page">
+    <transition name="appear">
       <div v-if="themeOpen" class="theme-menu">
         <button :class="{ active: colorMode === 'auto' }" @click="setMode('auto')">
           <Icon :icon="IconMoonStars" />

@@ -4,8 +4,11 @@ import { uv, vec2, texture, attribute, uniform, color, pow, mix, step, floor } f
 import { Fn } from 'three/src/nodes/TSL.js';
 import { onBeforeUnmount, onMounted } from 'vue';
 
+const highlight = window.getComputedStyle(document.body).getPropertyValue('--highlight');
+console.debug(highlight)
 // Data
 const pallete = [
+  // highlight,
   '#484848',
   '#848484',
   '#b4b4b4',
