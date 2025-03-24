@@ -14,19 +14,20 @@ const url = "/projects/" + type.toLowerCase() + "/";
 <template>
   <a class="project" :href="url + project.name">
     <slot></slot>
-    <div class="tags">
+    <div></div>
+    <!-- <div class="tags">
       <p v-for="tag in project.tech?.tools" class="tag">
         {{ tag }}</p>
-    </div>
-    <div class="info">
-      <p class="name">
-        {{ project.name }}
-        <span v-if="project.online" class="status" :class="{ 'online': project.online }" />
-      </p>
-      <button aria-label="go to project page">
+    </div> -->
+    <!-- <div class="info"> -->
+    <p class="name">
+      {{ project.name }}
+      <!-- <span v-if="project.online" class="status" :class="{ 'online': project.online }" /> -->
+    </p>
+    <!-- <button aria-label="go to project page">
         <Icon :icon=IconDotsDiagonal size="1.25rem" />
-      </button>
-    </div>
+      </button> -->
+    <!-- </div> -->
   </a>
 </template>
 <style lang="scss" scoped>
@@ -34,12 +35,16 @@ const url = "/projects/" + type.toLowerCase() + "/";
   position: relative;
   display: flex;
   flex-flow: column;
-  width: 100%;
+  // width: 100%;
+  // width: 40vw;
   gap: 0.5rem;
+  gap: 0;
   overflow: hidden;
   border-radius: 0.5rem;
   text-transform: capitalize;
   align-items: start;
+  display: grid;
+  // grid-template-columns: repeat(2, 1fr);
 
   &:hover {
     background-color: inherit;
@@ -88,13 +93,21 @@ button {
   background-color: var(--bg-darker0);
 }
 
+// .name {
+//   padding: 0.25rem 0.5rem;
+//   display: block;
+//   // width: 100%;
+//   // background-color: var(--bg-darker0);
+//   border-radius: 0.5rem;
+//   position: relative;
+// }
+
 .name {
-  padding: 0.25rem 0.5rem;
-  display: block;
-  width: 100%;
-  background-color: var(--bg-darker0);
-  border-radius: 0.5rem;
-  position: relative;
+  position: absolute;
+  background-color: var(--bg);
+  bottom: 0;
+  left: 0;
+  padding: 0.25rem 0.4rem 0 0;
 }
 
 .tags {
@@ -127,6 +140,9 @@ button {
 }
 
 @media (max-width: 1280px) {
+  .project {
+    width: 100%;
+  }
 
   .project,
   .info {

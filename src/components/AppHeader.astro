@@ -88,9 +88,12 @@ const activeRoute = (): ROUTES => {
       color: var(--color-light);
     }
 
-    @media (min-width: 1280px) {
+    @media (max-width: 1280px) {
+      .actions {
+        display: none;
+      }
       header {
-        padding: 0.5rem 0;
+        padding: 0 1rem;
       }
     }
   </style>
