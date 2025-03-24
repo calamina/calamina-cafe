@@ -18,19 +18,19 @@ const { index, path, next, prev, total, mobile } = defineProps<{
 <template>
     <div class="navigation" :class="{ 'mobile': mobile }">
         <div :key="prev?.url" class="prev">
-            <ButtonHighlight class="button" :href="prev ? path + prev?.name : '/projects'">
+            <a class="button" :href="prev ? path + prev?.name : '/projects'">
                 <Icon :icon="IconArrowLeft" size="1.5rem" />
                 <h2>{{ prev?.name ?? 'back to projects' }}</h2>
-            </ButtonHighlight>
+            </a>
         </div>
 
         <p class="id">{{ index + 1 }} / {{ total }}</p>
 
         <div :key="next?.url" class="next">
-            <ButtonHighlight class="button" :href="next ? path + next?.name : '/projects'">
+            <a class="button" :href="next ? path + next?.name : '/projects'">
                 <h2>{{ next?.name ?? 'back to projects' }}</h2>
                 <Icon :icon="IconArrowRight" size="1.5rem" />
-            </ButtonHighlight>
+            </a>
         </div>
     </div>
 </template>
@@ -106,6 +106,7 @@ const { index, path, next, prev, total, mobile } = defineProps<{
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     justify-content: center;
+    width: 100%;
     background-color: var(--bg-darker0);
 }
 
@@ -142,6 +143,7 @@ const { index, path, next, prev, total, mobile } = defineProps<{
 
     .navigation.mobile {
         display: flex;
+        padding-bottom: 3rem;
     }
 
     .next .button,

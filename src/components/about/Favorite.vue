@@ -16,18 +16,13 @@ const display = size && (size === "large" ? "gridtwo" : "gridthree");
 <template>
   <div :class="{ 'span': span }">
     <h3>{{ title }}</h3>
-    <div class="medias" class:list={[display]}>
+    <div class="medias" :class={ display }>
       <LinkImageLabel v-for="media in medias" :url="media.url" :label="media.label" :src="media.src" />
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
-h3 {
-  margin-bottom: 0.5rem;
-  border-bottom: 2px solid var(--bg-darker);
-}
-
 .medias {
   display: flex;
   flex-flow: column;
