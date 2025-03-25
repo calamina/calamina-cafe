@@ -1,14 +1,18 @@
 <script setup lang="ts">
 import { onClickOutside, onKeyStroke, useMagicKeys } from '@vueuse/core'
 import { useFocusTrap } from '@vueuse/integrations/useFocusTrap'
-import { ref, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import Icon from './Icon.vue'
 import IconSearch from './Icons/IconSearch.vue'
+
+const { list } = defineProps<{
+  list: any[]
+}>()
+
 const search = ref('')
 const searchbox = ref(null)
 
-// const { data: query } = await useAsyncData(() => queryCollection('web').all())
-// const results = computed(() => query.value?.filter(res => res.path?.includes(search.value) && search.value !== ''))
+const results = computed(() => list?.filter(res => (res.name.includes(search.value) || res.desc.includes(search.value)) && search.value !== ''))
 
 const { ctrl, k } = useMagicKeys({
   passive: false,
@@ -24,30 +28,31 @@ const emptySearch = () => search.value = "";
 onClickOutside(searchbox, () => emptySearch())
 onKeyStroke('Escape', () => emptySearch())
 
-// const { activate, deactivate } = useFocusTrap(searchbox)
-// watch(results, () => results.value?.length ? activate() : deactivate())
+
+const { activate, deactivate } = useFocusTrap(searchbox)
+watch(results, () => results.value?.length ? activate() : deactivate())
 </script>
 
 <template>
   <div class="search" ref="searchbox">
     <input type="search" v-model="search" id="search" placeholder="ctrl + k">
     <Icon :icon="IconSearch" />
-    <!-- <transition name="appear">
+    <transition name="appear">
       <div class="results" v-if="results?.length">
-        <NuxtLink v-for="res in results" :to="'/projects/web/' + res.title.toLowerCase()" @click="search = ''">
-          {{ res.title }}
-        </NuxtLink>
+        <a v-for="res in results" :href="res.url" @click="search = ''">
+          {{ res.name }}
+        </a>
       </div>
       <div class="results" v-else-if="search !== ''">
         <p>No results :(</p>
       </div>
-    </transition> -->
+    </transition>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .search {
-  // display: flex;
+  display: flex;
   align-items: center;
   gap: 0.5rem;
   position: relative;
