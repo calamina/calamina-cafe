@@ -7,39 +7,40 @@ import AppLogo from "../components/AppLogo.vue";
 ---
 
 <MainLayout>
-  <div class="box">
-    <h1><AppLogo alt="calamina logo" /></h1>
-    <div class="wrapper">
-      <AsciiScene client:only="vue">
-        <div slot="fallback" class="loader">Loading ascii ...</div>
-      </AsciiScene>
-      <div class="content">
-        <section>
-          <p>Hello and welcome :)</p>
-          <p>Personal space of Grégoire Belliere</p>
-          <p>Work in progress !</p>
-        </section>
-        <LinkContact />
-        <SocialsList />
-      </div>
+  <!-- <div class="box"> -->
+  <div class="wrapper">
+    <AsciiScene client:only="vue">
+      <div slot="fallback" class="loader">Loading ascii ...</div>
+    </AsciiScene>
+    <div class="content">
+      <h1><AppLogo alt="calamina logo" /></h1>
+      <section>
+        <p>Hello and welcome :)</p>
+        <p>Personal space of Grégoire Belliere</p>
+        <p>Work in progress !</p>
+      </section>
+      <LinkContact />
+      <SocialsList />
     </div>
   </div>
+  <!-- </div> -->
 </MainLayout>
 
 <style scoped lang="scss">
-  .box {
-    width: 100%;
-    display: flex;
-    flex-flow: column;
-    gap: 1rem;
-    padding: 0 0 3rem;
-    padding-bottom: 3rem;
-  }
+  // .box {
+  //   width: 100%;
+  //   display: flex;
+  //   flex-flow: column;
+  //   gap: 1rem;
+  //   padding: 0 0 3rem;
+  //   padding-bottom: 3rem;
+  // }
 
   .wrapper {
     display: grid;
     grid-template-columns: 30rem 1fr;
-    gap: 4rem;
+    // gap: 4rem;
+    gap: 1rem;
     width: 100%;
     overflow-x: hidden;
   }

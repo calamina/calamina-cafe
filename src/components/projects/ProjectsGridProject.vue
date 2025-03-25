@@ -1,7 +1,7 @@
 <script setup lang='ts'>
 import type { Project } from '../../models/Project';
-import Icon from '../Icon.vue';
-import IconDotsDiagonal from '../Icons/IconDotsDiagonal.vue';
+// import Icon from '../Icon.vue';
+// import IconDotsDiagonal from '../Icons/IconDotsDiagonal.vue';
 
 const { project, type } = defineProps<{
   project: Project
@@ -13,17 +13,17 @@ const url = "/projects/" + type.toLowerCase() + "/";
 
 <template>
   <a class="project" :href="url + project.name">
+    <p class="name">
+      {{ project.name }}
+      <!-- <span v-if="project.online" class="status" :class="{ 'online': project.online }" /> -->
+    </p>
     <slot></slot>
-    <div></div>
+    <!-- <div></div> -->
     <!-- <div class="tags">
       <p v-for="tag in project.tech?.tools" class="tag">
         {{ tag }}</p>
     </div> -->
     <!-- <div class="info"> -->
-    <p class="name">
-      {{ project.name }}
-      <!-- <span v-if="project.online" class="status" :class="{ 'online': project.online }" /> -->
-    </p>
     <!-- <button aria-label="go to project page">
         <Icon :icon=IconDotsDiagonal size="1.25rem" />
       </button> -->
@@ -35,16 +35,16 @@ const url = "/projects/" + type.toLowerCase() + "/";
   position: relative;
   display: flex;
   flex-flow: column;
-  // width: 100%;
-  // width: 40vw;
-  gap: 0.5rem;
   gap: 0;
   overflow: hidden;
   border-radius: 0.5rem;
   text-transform: capitalize;
   align-items: start;
-  display: grid;
-  // grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+  height: 50vh;
+  width: 25rem;
+  transition: width 0.3s;
+
 
   &:hover {
     background-color: inherit;
@@ -103,10 +103,16 @@ button {
 // }
 
 .name {
-  position: absolute;
+  // position: absolute;
   background-color: var(--bg);
-  bottom: 0;
-  left: 0;
+  // bottom: 0;
+  // left: 0;
+  width: 100%;
+  // overflow: hidden;
+  justify-self: center;
+  text-align: center;
+  white-space: nowrap;
+  font-size: 3rem;
   padding: 0.25rem 0.4rem 0 0;
 }
 
