@@ -10,48 +10,6 @@ const webProjects = await query<Project>(ProjectCollection.WEB);
 const phoneProjects = await query<Project>(ProjectCollection.PHONE);
 ---
 
-<script>
-    const observer = new IntersectionObserver(
-        (entries) => {
-            for (const entry of entries) {
-                // (entry.target as HTMLElement).style.gridTemplateColumns =
-                //     entry.isIntersecting ? "1fr 1fr" : "1fr 0fr";
-                (entry.target as HTMLElement).style.width = entry.isIntersecting
-                    ? "60vw"
-                    : "35vw";
-            }
-        },
-        { threshold: 1 },
-    );
-
-    const elements = document.querySelectorAll(".project");
-    elements.forEach((element) => observer.observe(element));
-</script>
-<script>
-    import Lenis from "lenis";
-
-    const lenis = new Lenis({
-        infinite: true,
-        syncTouch: true,
-    });
-
-    function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
-
-    const repeatItems = (parentEl, total = 0) => {
-        const items = [...parentEl.children];
-        for (let i = 0; i <= total - 1; ++i) {
-            var cln = items[i].cloneNode(true);
-            parentEl.appendChild(cln);
-        }
-    };
-    repeatItems(document.querySelector(".content"), 2);
-</script>
-
 <MainLayoutFooterless>
     <!-- <div class="grid"> -->
     <!-- <ProjectsFilters client:load /> -->
@@ -90,11 +48,13 @@ const phoneProjects = await query<Project>(ProjectCollection.PHONE);
         display: flex;
         flex-flow: column;
         align-items: center;
-        gap: 0.25rem;
-        gap: 0;
+        gap: 2rem;
+        display: grid;
+        margin: 0 auto;
+        justify-content: center;
         // gap: 3rem;
         // padding: 5vh 0;
-        // padding: 5vh 0;
+        padding: 5vh 0;
     }
 
     @media (max-width: 1280px) {

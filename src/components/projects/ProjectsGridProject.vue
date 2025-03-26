@@ -1,5 +1,6 @@
 <script setup lang='ts'>
 import type { Project } from '../../models/Project';
+import { ProjectType } from '../../utils/enum';
 // import Icon from '../Icon.vue';
 // import IconDotsDiagonal from '../Icons/IconDotsDiagonal.vue';
 
@@ -15,19 +16,17 @@ const url = "/projects/" + type.toLowerCase() + "/";
   <a class="project" :href="url + project.name">
     <p class="name">
       {{ project.name }}
-      <!-- <span v-if="project.online" class="status" :class="{ 'online': project.online }" /> -->
     </p>
     <slot></slot>
-    <!-- <div></div> -->
-    <!-- <div class="tags">
-      <p v-for="tag in project.tech?.tools" class="tag">
-        {{ tag }}</p>
-    </div> -->
-    <!-- <div class="info"> -->
-    <!-- <button aria-label="go to project page">
-        <Icon :icon=IconDotsDiagonal size="1.25rem" />
-      </button> -->
-    <!-- </div> -->
+    <div class="info">
+      <p class="status">{{ type.toLowerCase() }}</p>
+      <div v-if="type === ProjectType.WEB" class="status">
+        <p>
+          {{ project.online ? "online" : "offline" }}
+        </p>
+        <div class="status-indicator" inert :class="{ 'online': project.online }" />
+      </div>
+    </div>
   </a>
 </template>
 <style lang="scss" scoped>
@@ -35,106 +34,38 @@ const url = "/projects/" + type.toLowerCase() + "/";
   position: relative;
   display: flex;
   flex-flow: column;
-  gap: 0;
-  overflow: hidden;
-  border-radius: 0.5rem;
+  gap: 0.5rem;
   text-transform: capitalize;
   align-items: start;
-  justify-content: center;
-  height: 50vh;
-  width: 25rem;
+  width: fit-content;
   transition: width 0.3s;
-
+  width: 40vw;
 
   &:hover {
-    background-color: inherit;
-
-    button {
-      background-color: var(--highlight);
-    }
-
-    button>* {
-      transform: rotate(180deg);
-      transition: transform 0.3s;
-    }
+    background-color: transparent;
   }
-}
-
-html.dark a:hover {
-  background-color: transparent;
-
-  p {
-    color: var(--highlight);
-  }
-
-  button {
-    background-color: var(--bg-darker);
-    color: var(--highlight);
-  }
-}
-
-.iconImg {
-  transition: transform 0.3s;
 }
 
 .info {
-  width: 100%;
   display: flex;
+  align-items: baseline;
   gap: 0.5rem;
 }
 
-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0.5rem;
-  width: 2.5rem;
-  height: auto;
-  background-color: var(--bg-darker0);
-}
-
-// .name {
-//   padding: 0.25rem 0.5rem;
-//   display: block;
-//   // width: 100%;
-//   // background-color: var(--bg-darker0);
-//   border-radius: 0.5rem;
-//   position: relative;
-// }
-
 .name {
-  // position: absolute;
-  background-color: var(--bg);
-  // bottom: 0;
-  // left: 0;
-  width: 100%;
-  // overflow: hidden;
-  justify-self: center;
-  text-align: center;
-  white-space: nowrap;
-  font-size: 3rem;
-  padding: 0.25rem 0.4rem 0 0;
-}
-
-.tags {
-  display: flex;
-  display: none;
-  right: 0;
-  background-color: var(--bg-darker0);
-  border-radius: 0.5rem;
-}
-
-.data {
-  width: 100%;
-  display: flex;
-  align-items: end;
-  gap: 0.25rem;
+  line-height: 1rem;
 }
 
 .status {
-  position: absolute;
-  right: 0.25rem;
-  top: 0.25rem;
+  padding: 0 0.75rem;
+  display: flex;
+  border-radius: 0.5rem;
+  gap: 0.5rem;
+  align-items: center;
+  background-color: var(--bg-darker0);
+}
+
+.status-indicator {
   width: 0.5rem;
   height: 0.5rem;
   border-radius: 0.5rem;
@@ -148,16 +79,7 @@ button {
 @media (max-width: 1280px) {
   .project {
     width: 100%;
-  }
-
-  .project,
-  .info {
     gap: 0.5rem;
-  }
-
-  .status {
-    top: 0.75rem;
-    right: 0.75rem;
   }
 }
 </style>

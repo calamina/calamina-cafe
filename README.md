@@ -6,10 +6,12 @@
 hey :)
 
 # TODO
-- bring bck projects in full view !!
+- fix projects in full view !!
+- fix lenis loop
+- fix about :(((
+- fix dark theme still flashing 
 
 - check todos in code :)
-- fix theme still flashing in phone
 - refacto css variables (radius / gaps / etc) // clean themes
 - fix ascii rendering ? (font aliasing) + webgl fallback
 
