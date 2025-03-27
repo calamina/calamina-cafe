@@ -43,8 +43,8 @@ const medias = await query<Media>("nowMedia");
 		flex-flow: column;
 		align-items: start;
 		// padding-top: 2rem;
-		padding: 0;
-		gap: 4rem;
+		padding: 2rem 0 0;
+		gap: 6rem;
 		opacity: 1;
 		transform: translateY(0);
 		transition: transform 0.3s;
@@ -64,6 +64,9 @@ const medias = await query<Media>("nowMedia");
 
 	section {
 		width: 100%;
+		display: flex;
+		flex-flow: column;
+		align-items: center;
 	}
 
 	@media (max-width: 1280px) {

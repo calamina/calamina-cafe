@@ -1,29 +1,24 @@
 <script setup lang='ts'>
-import type { Project } from '../../models/Project';
+import type { TypedProject } from '../../models/Types';
 import { ProjectType } from '../../utils/enum';
-// import Icon from '../Icon.vue';
-// import IconDotsDiagonal from '../Icons/IconDotsDiagonal.vue';
+import { getImage } from '../../utils/images';
 
-const { project, type } = defineProps<{
-  project: Project
-  type: string
+const { project } = defineProps<{
+  project: TypedProject
 }>()
 
-const url = "/projects/" + type.toLowerCase() + "/";
+const url = "/projects/" + project.type.toLowerCase() + "/";
+const lel = await getImage(project.name, project.type)
 </script>
 
 <template>
   <a class="project" :href="url + project.name">
-    <p class="name">
-      {{ project.name }}
-    </p>
-    <slot></slot>
+    <img :src="lel.default.src" :alt="`${project.name} cover`">
     <div class="info">
-      <p class="status">{{ type.toLowerCase() }}</p>
-      <div v-if="type === ProjectType.WEB" class="status">
-        <p>
-          {{ project.online ? "online" : "offline" }}
-        </p>
+      <p class="name"> {{ project.name }} </p>
+      <p class="status">{{ project.type.toLowerCase() }}</p>
+      <div v-if="project.type === ProjectType.WEB" class="status">
+        <p> {{ project.online ? "online" : "offline" }} </p>
         <div class="status-indicator" inert :class="{ 'online': project.online }" />
       </div>
     </div>
@@ -39,12 +34,22 @@ const url = "/projects/" + type.toLowerCase() + "/";
   align-items: start;
   width: fit-content;
   transition: width 0.3s;
-  width: 40vw;
+  width: 100%;
 
   &:hover {
     background-color: transparent;
   }
 }
+
+img {
+  height: 12rem;
+  width: auto;
+  width: 100%;
+  border-radius: 0.5rem;
+  object-fit: contain;
+  background-color: var(--bg-darker0);
+}
+
 
 .info {
   display: flex;
@@ -53,7 +58,10 @@ const url = "/projects/" + type.toLowerCase() + "/";
 }
 
 .name {
-  line-height: 1rem;
+  // line-height: 1rem;
+  padding: 0 0.75rem;
+  border-radius: 0.5rem;
+  background-color: var(--bg-darker0);
 }
 
 .status {

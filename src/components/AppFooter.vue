@@ -12,17 +12,18 @@ import IconCC from './Icons/IconCC.vue';
             <a target="_blank" href="https://github.com/calamina">calamina</a>
             <span>~ 2024</span>
         </div>
-        <Ascii />
+        <!-- <Ascii /> -->
     </footer>
 </template>
 
 <style lang="css" scoped>
 footer {
     max-width: var(--app-width);
+    /* background-color: var(--bg-darker0); */
     width: 100%;
     display: flex;
     flex-flow: column;
-    padding: 0.5rem 1rem 1rem;
+    padding: 1rem;
     margin-top: 1rem;
     gap: 1rem;
 }
@@ -44,9 +45,9 @@ a {
     text-decoration: underline;
 }
 
-@media (min-width: 1280px) {
+/* @media (max-width: 1280px) {
     footer {
         padding: 0.5rem 0 1rem;
     }
-}
+} */
 </style>

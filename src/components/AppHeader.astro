@@ -31,6 +31,7 @@ const list = projects.map((project: any) => ({
 ---
 
 <header>
+  <a href="/">calamina</a>
   <nav>
     <a href="/" class:list={[{ active: activeRoute() === ROUTES.home }]}>home</a
     >
@@ -44,68 +45,70 @@ const list = projects.map((project: any) => ({
       >
       <AppHeaderProject project={project} />
     </div>
-    <div class="actions">
-      <SearchBar list={list} client:load />
-      <ThemeSwitch client:load />
-    </div>
   </nav>
-
-  <style lang="scss" scoped>
-    header {
-      max-width: var(--app-width);
-      position: fixed;
-      display: flex;
-      top: 0;
-      height: 4rem;
-      width: 100%;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.5rem;
-      z-index: 50;
-      pointer-events: none;
-    }
-
-    nav {
-      display: flex;
-      gap: 1.25rem;
-      width: 100%;
-      align-items: center;
-    }
-
-    a {
-      pointer-events: auto;
-      height: fit-content;
-    }
-
-    .projects {
-      display: flex;
-      gap: 0.25rem;
-      pointer-events: auto;
-      margin-right: auto;
-    }
-
-    .actions {
-      display: flex;
-      gap: 0.5rem;
-      pointer-events: auto;
-    }
-
-    .active {
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-
-    .subtype {
-      color: var(--color-light);
-    }
-
-    @media (max-width: 1280px) {
-      .actions {
-        display: none;
-      }
-      header {
-        padding: 0 1rem;
-      }
-    }
-  </style>
+  <div class="actions">
+    <SearchBar list={list} client:load />
+    <ThemeSwitch client:load />
+  </div>
 </header>
+
+<style lang="scss" scoped>
+  header {
+    max-width: var(--app-width);
+    position: fixed;
+    display: flex;
+    top: 0;
+    height: 5rem;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem;
+    z-index: 50;
+    pointer-events: none;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  nav {
+    display: flex;
+    gap: 1.25rem;
+    justify-self: center;
+  }
+
+  a {
+    pointer-events: auto;
+    height: fit-content;
+  }
+
+  .projects {
+    display: flex;
+    gap: 0.25rem;
+    pointer-events: auto;
+    margin-right: auto;
+  }
+
+  .actions {
+    justify-self: end;
+    display: flex;
+    gap: 0.5rem;
+    pointer-events: auto;
+  }
+
+  .active {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .subtype {
+    color: var(--color-light);
+  }
+
+  @media (max-width: 1280px) {
+    .actions {
+      display: none;
+    }
+    header {
+      padding: 1rem;
+    }
+  }
+</style>

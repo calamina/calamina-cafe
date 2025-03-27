@@ -37,6 +37,7 @@ div {
     gap: 2.5rem;
     justify-content: start;
     width: 100%;
+    width: fit-content;
     border-radius: 0.5rem;
     padding: 0.5rem;
     line-height: 1.4rem;
