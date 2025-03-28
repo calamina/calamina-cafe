@@ -7,7 +7,6 @@ export interface TypedProject extends Project {
 
 export interface ProjectFilters {
   type: ProjectType | "ALL"
-  weboffline: boolean
   sort: 'date' | 'alpha'
-  order: 'asc' | 'desc'
+  order: "ASC" | "DESC"
 }

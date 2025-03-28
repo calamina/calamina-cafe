@@ -16,8 +16,8 @@ const lel = await getImage(project.name, project.type)
     <img :src="lel.default.src" :alt="`${project.name} cover`">
     <div class="info">
       <p class="name"> {{ project.name }} </p>
-      <p class="status">{{ project.type.toLowerCase() }}</p>
-      <div v-if="project.type === ProjectType.WEB" class="status">
+      <!-- <p class="status">{{ project.type.toLowerCase() }}</p> -->
+      <div v-if="project.type === ProjectType.WEB" class="status" :class="{ 'online': project.online }">
         <p> {{ project.online ? "online" : "offline" }} </p>
         <div class="status-indicator" inert :class="{ 'online': project.online }" />
       </div>
@@ -38,6 +38,10 @@ const lel = await getImage(project.name, project.type)
 
   &:hover {
     background-color: transparent;
+
+    & .name {
+      background-color: var(--highlight);
+    }
   }
 }
 
@@ -55,13 +59,17 @@ img {
   display: flex;
   align-items: baseline;
   gap: 0.5rem;
+  flex-flow: column;
 }
 
 .name {
   // line-height: 1rem;
   padding: 0 0.75rem;
   border-radius: 0.5rem;
+  font-size: 1.5rem;
+  line-height: 2rem;
   background-color: var(--bg-darker0);
+  transition: padding 0.25s;
 }
 
 .status {
@@ -69,8 +77,13 @@ img {
   display: flex;
   border-radius: 0.5rem;
   gap: 0.5rem;
+  // opacity: 0.6;
   align-items: center;
   background-color: var(--bg-darker0);
+
+  &:not(.online) p {
+    color: var(--color-light);
+  }
 }
 
 .status-indicator {

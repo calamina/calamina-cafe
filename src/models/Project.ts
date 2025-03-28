@@ -1,5 +1,4 @@
 import { z } from 'astro:content';
-import type { ProjectType } from '../utils/enum';
 
 export const ProjectSchema = z.object({
     created: z.date().optional(),

@@ -31,6 +31,10 @@
 @media (max-width: 1280px) {
     * {
         font-size: 13px;
+        
+        &::after, &::before {
+            font-size: 13px;
+        }
     }
 }
 

@@ -9,8 +9,8 @@ const { projects } = defineProps<{
 
 <template>
   <div class="projects">
-    <Suspense>
-      <ProjectsGridProject v-for="project in projects" :key="project.name" :project=project />
+    <Suspense v-for="project in projects">
+      <ProjectsGridProject :key="project.name" :project=project />
     </Suspense>
   </div>
 </template>
@@ -19,15 +19,16 @@ const { projects } = defineProps<{
 .projects {
   display: flex;
   flex-flow: column;
-  gap: 1.5rem 1rem;
-  align-items: center;
+  gap: 2.5rem 2rem;
+  // align-items: center;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
   width: 100%;
 }
 
-// @media (max-width: 1280px) {
-//   .projects {
-//     gap: 3rem;
-//   }
-// }</style>
+@media (max-width: 1280px) {
+  .projects {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

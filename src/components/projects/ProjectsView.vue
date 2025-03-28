@@ -1,6 +1,5 @@
 <script setup lang='ts'>
-import { computed, ref, type Ref } from "vue";
-import { ProjectType } from "../../utils/enum";
+import { computed, ref, watch, type Ref } from "vue";
 import ProjectsFilters from "./ProjectsFilters.vue";
 import ProjectsGrid from "./ProjectsGrid.vue";
 import type { ProjectFilters, TypedProject } from "../../models/Types";
@@ -11,32 +10,35 @@ const { projects } = defineProps<{
 
 const filters: Ref<ProjectFilters> = ref({
   sort: "alpha",
-  order: "asc",
   type: "ALL",
-  weboffline: true,
+  order: "ASC",
 })
+
+watch(filters, () => projects)
 
 const filteredProjects = computed(() =>
   projects
     .filter(project => filters.value.type === "ALL" || filters.value.type === project.type)
-    // .filter(project => project.type === ProjectType.WEB && !filters.value.weboffline ? project.online : project)
     .sort((a, b) => {
-      if (filters.value.sort === "alpha") {
-        return filters.value.order === "asc" ? -1 : 1
+      if (filters.value.order === "ASC") {
+        return a.name > b.name ? 1 : -1
+      } else {
+        return a.name < b.name ? 1 : -1
       }
-      return 1
-      // else {
-      //   return filters.value.order === "asc"
-      //     ? (a.created ?? 0) < (b.created ?? 0) ? -1 : 1
-      //     : (a.created ?? 0) > (b.created ?? 0) ? -1 : 1
-      // }
+    })
+    .sort((a, b) => {
+      if (filters.value.order === "ASC") {
+        return a.type < b.type ? 1 : -1
+      } else {
+        return a.type > b.type ? 1 : -1
+      }
     })
 )
 </script>
 
 <template>
   <div class="view">
-    <ProjectsFilters @update="(newFilters) => filters = newFilters" />
+    <ProjectsFilters :length="filteredProjects.length" @update="(newFilters) => filters = newFilters" />
     <ProjectsGrid :projects="filteredProjects" />
   </div>
 </template>
@@ -44,5 +46,6 @@ const filteredProjects = computed(() =>
 <style lang="scss" scoped>
 .view {
   width: 100%;
+  padding-bottom: 3rem;
 }
 </style>

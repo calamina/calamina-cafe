@@ -5,15 +5,15 @@ import { query } from "../../utils/utils.ts";
 import type { Project } from "../../models/Project";
 import { ProjectCollection, ProjectType } from "../../utils/enum";
 
-const webProjects = await query<Project>(ProjectCollection.WEB);
-const phoneProjects = await query<Project>(ProjectCollection.PHONE);
-const projects = [
-    ...webProjects.map((project) => ({ ...project, type: ProjectType.WEB })),
-    ...phoneProjects.map((project) => ({
-        ...project,
-        type: ProjectType.PHONE,
-    })),
-];
+const webProjects = await query<Project>(ProjectCollection.WEB).then((res) =>
+    res.map((project) => ({ ...project, type: ProjectType.WEB })),
+);
+
+const phoneProjects = await query<Project>(ProjectCollection.PHONE).then(
+    (res) => res.map((project) => ({ ...project, type: ProjectType.PHONE })),
+);
+
+const projects = [...webProjects, ...phoneProjects].sort();
 ---
 
 <MainLayoutFooterless>

@@ -44,7 +44,7 @@ function focusImage(e: HTMLImageElement | null) {
   flex-flow: column;
   gap: 0.5rem;
   width: 100%;
-  padding-bottom: 0.5rem;
+  padding-bottom: 1.5rem;
   grid-column-start: 5;
   grid-column-end: 11;
 }

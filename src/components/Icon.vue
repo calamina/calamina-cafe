@@ -6,17 +6,7 @@ const { icon, size = "18px", color = "var(--color)" } = defineProps<{
 }>()
 </script>
 
-
 <template>
   <component class="icon" :is="icon"
-    :style="{ 'height': size, 'width': size, 'color': color, 'stroke': color, 'fill': color }" />
+    :style="{ 'height': size, 'width': size, 'min-width': size, 'color': color, 'stroke': color, 'fill': color }" />
 </template>
-
-<style scoped lang='scss'>
-.icon {
-  width: vbind(size);
-  height: vbind(size);
-  fill: var(--color);
-  stroke: var(--color);
-}
-</style>

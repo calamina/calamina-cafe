@@ -7,11 +7,14 @@ const emit = defineEmits<{
     (e: 'update', value: ProjectFilters): ProjectFilters
 }>()
 
+const { length } = defineProps<{
+    length: number
+}>()
+
 const filters: Ref<ProjectFilters> = ref({
-    sort: "alpha",
-    order: "asc",
     type: "ALL",
-    weboffline: true,
+    sort: "alpha",
+    order: "ASC"
 })
 
 const webActive = computed(() => filters.value.type === ProjectType.WEB)
@@ -19,40 +22,52 @@ const phoneActive = computed(() => filters.value.type === ProjectType.PHONE)
 
 watch(filters, () => {
     emit('update', filters.value)
-    console.debug("hello")
 }, { deep: true })
 </script>
 
 <template>
-    <div class="filters">
-        <!-- <h2>Filters</h2> -->
-        <div class="filter">
-            <h3>type</h3>
-            <button @click="filters.type = 'ALL'" :class="{ 'inactive': phoneActive || webActive }">all</button>
-            <button @click="filters.type = ProjectType.WEB" :class="{ 'inactive': !webActive }">web</button>
-            <!-- <button v-if="webActive" @click="filters.weboffline = !filters.weboffline"                :class="{ 'inactive': !filters.weboffline }">offline</button> -->
-            <button @click="filters.type = ProjectType.PHONE" :class="{ 'inactive': !phoneActive }">phone</button>
-        </div>
-        <div class="filter">
+    <div class="wrapper">
+        <div class="filters">
+            <div class="filter">
+                <h3>type</h3>
+                <button @click="filters.type = 'ALL'" :class="{ 'inactive': phoneActive || webActive }">all</button>
+                <button @click="filters.type = ProjectType.WEB" :class="{ 'inactive': !webActive }">web</button>
+                <!-- <button v-if="webActive" @click="filters.weboffline = !filters.weboffline"                :class="{ 'inactive': !filters.weboffline }">offline</button> -->
+                <button @click="filters.type = ProjectType.PHONE" :class="{ 'inactive': !phoneActive }">phone</button>
+            </div>
+            <!-- <div class="filter">
             <h3>order</h3>
             <button @click="filters.sort = 'alpha'" :class="{ 'inactive': filters.sort !== 'alpha' }">Alpha</button>
-            <!-- <button @click="filters.sort = 'date'" :class="{ 'inactive': filters.sort !== 'date' }">Date</button> -->
-        </div>
+            <button @click="filters.sort = 'date'" :class="{ 'inactive': filters.sort !== 'date' }">Date</button>
+        </div> -->
 
-        <div class="filter">
-            <h3>direction</h3>
-            <button @click="filters.order = 'asc'" :class="{ 'inactive': filters.order !== 'asc' }">Asc</button>
-            <button @click="filters.order = 'desc'" :class="{ 'inactive': filters.order !== 'desc' }">Desc</button>
+            <div class="filter">
+                <h3>sort</h3>
+                <button @click="filters.order = 'ASC'" :class="{ 'inactive': filters.order !== 'ASC' }">Asc</button>
+                <button @click="filters.order = 'DESC'" :class="{ 'inactive': filters.order !== 'DESC' }">Desc</button>
+            </div>
+        </div>
+        <div class="title">
+            <h2>{{ filters.type.toLowerCase() }} projects</h2>
+            <p class="count">{{ length }}</p>
         </div>
     </div>
 </template>
 
 <style scoped lang='scss'>
+.wrapper {
+    display: flex;
+    align-items: end;
+    align-items: center;
+    padding: 2rem 2rem 3.5rem;
+    justify-content: space-between;
+}
+
 .filters {
     display: flex;
     flex-flow: column;
-    gap: 0.25rem;
-    padding: 2rem 2rem 4rem;
+    gap: 0.5rem;
+    width: fit-content;
 }
 
 .filter {
@@ -61,14 +76,21 @@ watch(filters, () => {
     align-items: center;
 }
 
-// h2 {
-//     font-size: 1rem;
-//     text-transform: capitalize;
-// }
+.title {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+h2 {
+    font-size: 3rem;
+    line-height: 3rem;
+    text-transform: capitalize;
+}
 
 h3 {
     position: relative;
-    width: 14ch;
+    width: 10ch;
     padding-right: 1rem;
 
     &::after {
@@ -80,6 +102,13 @@ h3 {
         padding-right: 1rem;
         // background-color: red;
     }
+}
+
+.count {
+    padding: 0.1rem 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--bg-darker0);
+    width: fit-content;
 }
 
 button {
@@ -95,6 +124,14 @@ button {
 
     &:hover {
         background-color: var(--highlight);
+    }
+}
+
+@media (max-width: 1280px) {
+    .wrapper {
+        flex-flow: column-reverse;
+        gap: 2rem;
+        padding-top: 1rem;
     }
 }
 </style>

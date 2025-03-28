@@ -6,9 +6,8 @@
 hey :)
 
 # TODO
-- fix projects in full view !!
-- fix lenis loop
 - fix about :(((
+- fix home :)))
 - fix dark theme still flashing 
 
 - check todos in code :)
@@ -17,6 +16,7 @@ hey :)
 
 # DATA
 - take new screens (same resolution)
+- add tools ? (flow / sites css ?)
 - WRITE HOME
   - add last projects
   - add link to now ?

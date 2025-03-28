@@ -105,7 +105,7 @@ const { index, path, next, prev, total, mobile } = defineProps<{
 .button {
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
-    justify-content: center;
+    justify-content: space-evenly;
     width: 100%;
     background-color: var(--bg-darker0);
 }
@@ -144,6 +144,7 @@ const { index, path, next, prev, total, mobile } = defineProps<{
     .navigation.mobile {
         display: flex;
         padding-bottom: 3rem;
+        padding-top: 3rem;
     }
 
     .next .button,
