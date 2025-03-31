@@ -243,7 +243,7 @@ onBeforeUnmount(() => {
 <style lang="scss" scoped>
 .ascii {
   position: relative;
-  border: 2px solid var(--bg-darker0);
+  // border: 2px solid var(--bg-darker0);
   border-radius: 0.5rem;
   // height: 80%;
   width: 30rem;

@@ -66,8 +66,8 @@ img {
   // line-height: 1rem;
   padding: 0 0.75rem;
   border-radius: 0.5rem;
-  font-size: 1.5rem;
-  line-height: 2rem;
+  // font-size: 1.5rem;
+  // line-height: 2rem;
   background-color: var(--bg-darker0);
   transition: padding 0.25s;
 }

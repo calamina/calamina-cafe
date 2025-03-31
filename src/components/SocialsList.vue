@@ -38,5 +38,6 @@ nav {
   flex-flow: column;
   width: 100%;
   gap: 0.5rem;
+  gap: 0.25rem;
 }
 </style>

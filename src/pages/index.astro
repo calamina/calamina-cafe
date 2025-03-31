@@ -12,7 +12,7 @@ import AppLogo from "../components/AppLogo.vue";
     <AsciiScene client:only="vue">
       <div slot="fallback" class="loader">Loading ascii ...</div>
     </AsciiScene>
-    <div class="content">
+    <!-- <div class="content">
       <h1><AppLogo alt="calamina logo" /></h1>
       <section>
         <p>Hello and welcome :)</p>
@@ -21,7 +21,7 @@ import AppLogo from "../components/AppLogo.vue";
       </section>
       <LinkContact />
       <SocialsList />
-    </div>
+    </div> -->
   </div>
   <!-- </div> -->
 </MainLayout>
@@ -37,13 +37,17 @@ import AppLogo from "../components/AppLogo.vue";
   // }
 
   .wrapper {
-    display: grid;
-    grid-template-columns: 30rem 1fr;
+    // display: grid;
+    // grid-template-columns: 30rem 1fr;
     // gap: 4rem;
+    height: calc(100vh - 5rem);
     padding: 2rem 0;
     gap: 1rem;
     width: 100%;
     overflow-x: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .content {
@@ -55,9 +59,8 @@ import AppLogo from "../components/AppLogo.vue";
   }
 
   .loader {
-    border: 2px solid var(--bg-darker0);
+    // border: 2px solid var(--bg-darker0);
     border-radius: 0.5rem;
-    height: 80%;
     width: 30rem;
     height: 30rem;
     position: relative;
@@ -77,14 +80,14 @@ import AppLogo from "../components/AppLogo.vue";
     img {
       padding: 0;
     }
-    .wrapper {
-      display: flex;
-      flex-flow: column;
-      gap: 0.5rem;
-      justify-content: space-between;
-      align-items: center;
-      padding-bottom: 2rem;
-    }
+    // .wrapper {
+    //   display: flex;
+    //   flex-flow: column;
+    //   gap: 0.5rem;
+    //   justify-content: space-between;
+    //   align-items: center;
+    //   padding-bottom: 2rem;
+    // }
   }
 
   // @media (max-width: 720px) {
