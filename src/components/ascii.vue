@@ -31,8 +31,8 @@
                                                                                        
 </pre> -->
 
-  <pre>
-   ___       ___       ___       ___       ___       ___       ___       ___            ___       ___       ___       ___            
+  <pre inert aria-hidden="true">
+   ___       ___       ___       ___       ___       ___       ___       ___            ___       ___       ___       ___
   /\  \     /\  \     /\__\     /\  \     /\__\     /\  \     /\__\     /\  \          /\  \     /\  \     /\  \     /\  \
  /::\  \   /::\  \   /:/  /    /::\  \   /::L_L_   _\:\  \   /:| _|_   /::\  \        /::\  \   /::\  \   /::\  \   /::\  \
 /:/\:\__\ /::\:\__\ /:/__/    /::\:\__\ /:/L:\__\ /\/::\__\ /::|/\__\ /::\:\__\      /:/\:\__\ /::\:\__\ /::\:\__\ /::\:\__\
@@ -97,8 +97,8 @@ pre {
   color: var(--color-light);
   display: block;
   display: flex;
-  align-items: center;
-  // justify-content: center;
+  align-items: start;
+  justify-content: center;
   // justify-content: end;
   border-radius: 0.5rem;
   padding: 0.5rem;

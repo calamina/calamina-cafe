@@ -12,16 +12,16 @@ import AppLogo from "../components/AppLogo.vue";
     <AsciiScene client:only="vue">
       <div slot="fallback" class="loader">Loading ascii ...</div>
     </AsciiScene>
-    <!-- <div class="content">
-      <h1><AppLogo alt="calamina logo" /></h1>
-      <section>
-        <p>Hello and welcome :)</p>
-        <p>Personal space of Grégoire Belliere</p>
-        <p>Work in progress !</p>
-      </section>
-      <LinkContact />
-      <SocialsList />
-    </div> -->
+    <div class="content">
+      <!-- <h1><AppLogo alt="calamina logo" /></h1> -->
+      <!-- <section> -->
+      <p>Hello and welcome :)</p>
+      <!-- <p>Personal space of Grégoire Belliere</p> -->
+      <p>This website is a work in progress !</p>
+      <!-- </section> -->
+      <!-- <LinkContact />
+      <SocialsList /> -->
+    </div>
   </div>
   <!-- </div> -->
 </MainLayout>
@@ -40,12 +40,13 @@ import AppLogo from "../components/AppLogo.vue";
     // display: grid;
     // grid-template-columns: 30rem 1fr;
     // gap: 4rem;
-    height: calc(100vh - 5rem);
+    // height: calc(100vh - 5rem);
     padding: 2rem 0;
     gap: 1rem;
     width: 100%;
     overflow-x: hidden;
     display: flex;
+    flex-flow: column;
     align-items: center;
     justify-content: center;
   }
@@ -53,9 +54,11 @@ import AppLogo from "../components/AppLogo.vue";
   .content {
     display: flex;
     flex-flow: column;
-    gap: 2rem;
-    opacity: 1;
-    height: 100%;
+    align-items: center;
+    justify-content: center;
+    // gap: 2rem;
+    // opacity: 1;
+    // height: 100%;
   }
 
   .loader {

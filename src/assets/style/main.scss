@@ -68,11 +68,11 @@ a {
     text-decoration: none;
     color: var(--color);
     width: fit-content;
+    border-radius: 0.5rem;
 
     &:hover {
         outline: none;
         background-color: var(--highlight);
-        border-radius: 0.5rem;
         // text-decoration: underline;
     }
 }
