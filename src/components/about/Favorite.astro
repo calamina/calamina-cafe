@@ -15,7 +15,7 @@ const span = size && (size === "large" ? "large" : "full");
 const display = size && (size === "large" ? "gridtwo" : "gridthree");
 ---
 
-<div class:list={[span]}>
+<div class="wrapper" class:list={[span]}>
   <h3>{title}</h3>
   <div class="medias" class:list={[display]}>
     {
@@ -35,6 +35,17 @@ const display = size && (size === "large" ? "gridtwo" : "gridthree");
 </div>
 
 <style scoped lang="scss">
+  .wrapper {
+    display: flex;
+    flex-flow: column;
+    gap: 0.5rem;
+  }
+
+  h3 {
+    font-size: 2rem;
+    line-height: 2rem;
+  }
+
   img {
     border-radius: 0.5rem;
     object-fit: cover;

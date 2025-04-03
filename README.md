@@ -24,3 +24,10 @@ hey :)
 - complete about
 - proper alt on images / proper images (highlights, etc)
 - add info to projects (creation - update)
+- add Quartier Lointain :3
+
+ /\_/\
+( ᵔ.ᵔ )
+ > ~ <   ,
+/  #  \ (
+\_Y—Y_/—°

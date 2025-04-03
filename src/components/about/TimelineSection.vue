@@ -33,6 +33,8 @@ div {
 h3 {
     padding: 0.25rem 0;
     width: fit-content;
+    font-size: 2rem;
+    line-height: 2rem;
 }
 
 .separator {

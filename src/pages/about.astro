@@ -18,6 +18,27 @@ const medias = await query<Media>("nowMedia");
 
 <MainLayout>
 	<div class="content">
+		<section class="intro">
+			<SectionTitle name="hey" />
+			<p>
+				Hello, I'm Grégoire.<br />
+				I'm a creative developper from Lyon, France.<br />
+				<!-- My main interests include (web)design, animated movies, graphic novels, and
+				random wikipedia articles. -->
+			</p>
+			<!-- <h2>Whaaat</h2>
+			<p>
+				calamina.cafe is the name of the first domain I ever purchased ~15 years
+				ago.
+				<span class="discreet">(and shortly abandonned afterwards woopsi)</span>
+				<br /><br />
+				For now I'm planning to use it as a portfolio to showcase my personnal projects.
+				<br />
+				I also have some ideas for posts but never really commited to that part.
+				(yet!)
+			</p> -->
+		</section>
+
 		<section>
 			<SectionTitle name="now" icon={IconSmile} />
 			<!-- <p>Working with these tools at the moment :</p> -->
@@ -38,35 +59,42 @@ const medias = await query<Media>("nowMedia");
 </MainLayout>
 
 <style scoped lang="scss">
+	section {
+		counter-increment: section;
+	}
+
+	.intro {
+		display: flex;
+		flex-flow: column;
+
+		p {
+			font-size: 2rem;
+			line-height: 2.25rem;
+		}
+
+		// p:first-of-type {
+		// 	text-indent: 50px;
+		// }
+	}
+
 	.content {
+		counter-reset: section;
 		display: flex;
 		flex-flow: column;
 		align-items: start;
 		// padding-top: 2rem;
-		padding: 2rem 0 0;
-		gap: 6rem;
+		padding: 2rem 0 3rem;
+		gap: 4rem;
 		opacity: 1;
 		transform: translateY(0);
 		transition: transform 0.3s;
-	}
-
-	.loader {
-		border: 2px solid var(--bg-darker0);
-		border-radius: 0.5rem;
-		height: 80%;
-		width: 30rem;
-		height: 30rem;
-		position: relative;
-		display: flex;
-		align-items: center;
-		justify-content: center;
 	}
 
 	section {
 		width: 100%;
 		display: flex;
 		flex-flow: column;
-		align-items: center;
+		// align-items: center;
 	}
 
 	@media (max-width: 1280px) {
