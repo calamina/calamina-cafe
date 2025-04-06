@@ -1,19 +1,40 @@
 - id: "1"
   date: "2022"
-  name: "Lyon 2 University"
+  name: "Master @ Lyon 2 Uni"
   desc: "CIM (multimedia conception & integration) Master degree"
-  info: "html / ts / css / java"
+  tools:
+    languages:
+    - "html"
+    - "ts"
+    - "css"
+    - "java"
 
 - id: "2"
   date: "2021"
-  name: "DUCCI"
+  name: "DUCCI @ Lyon 2 Uni"
   desc: "Frontend developpement & UI/UX Design"
-  info: "html / ts / css / java / adobe suite / figma"
+  tools:
+    languages:
+    - "html"
+    - "ts"
+    - "css"
+    - "java"
+    tools:
+    - "adobe suite"
+    - "figma"
   start: "2020"
 
 - id: "3"
   date: "2017"
-  name: "IT Bachelors"
+  name: "IT Bachelors @ Metz Uni"
   desc: "Full stack developpement formation"
-  info: "html / javascript / css / java / cobol / Ocaml / ... "
+  tools:
+    languages:
+    - "html"
+    - "js"
+    - "css"
+    - "java"
+    - "cobol"
+    - "Ocaml"
+    - "..."
   start: "2015"

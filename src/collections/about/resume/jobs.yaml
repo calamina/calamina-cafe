@@ -1,31 +1,68 @@
 - id: "1"
   date: "now"
   name: "Akuiteo"
-  desc: "Full stack developpement, angular 18 and java spring"
-  info: "html / ts / css / java"
+  desc: "Full stack developpement in an agile team"
+  tools:
+    languages:
+    - "html"
+    - "ts"
+    - "css"
+    - "java"
+    tools:
+    - "Angular 18"
+    - "Java Spring"
+    - "SQLS"
+    - "Postman"
   start: "2022"
   actual: true
+  url: "https://www.akuiteo.com/en/"
 
 - id: "2"
   date: "2022"
+  # start: "6mon"
   name: "SQLI"
-  desc: "Full stack developpement, angular 13 and java spring"
-  info: "html / ts / css / java"
+  desc: "Full stack developpement in an agile team"
+  tools:
+    tools:
+    - "Angular 14"
+    - "Java Spring"
+    languages:
+    - "html"
+    - "ts"
+    - "css"
+    - "java"
+  url: "https://www.sqli.com/fr-fr"
 
 - id: "3"
   date: "2021"
   name: "Kweerty"
+  # start: "2mon"
   desc: "UI/UX design and Front-end developpement"
-  info: "html / ts / css / figma"
+  tools:
+    languages:
+    - "html"
+    - "ts"
+    - "css"
+    tools:
+    - "figma"
+    - "vue"
 
 - id: "4"
   date: "2020"
+  # start: "2mon"
   name: "Yesouicom"
   desc: "UI/UX design and Front-end developpement"
-  info: "html / ts / css / figma"
+  tools:
+    languages:
+    - "html"
+    - "ts"
+    - "css"
+    tools:
+    - "figma"
 
 - id: "5"
   date: "2018"
+  start: "2016"
   name: "SDIS Moselle"
   desc: "IT support and management"
   # start: ""

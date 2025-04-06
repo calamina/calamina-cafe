@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import type { Tech } from '../../../#old/app/models/ProjectTech';
+import type { Project } from '../../models/Project';
+
 
 const { tech } = defineProps<{
-    tech: Tech,
+    tech: Project["tech"],
 }>()
 
 const categs = Object.entries(tech).filter(entry => entry[0] !== "colors") 

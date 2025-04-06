@@ -46,7 +46,7 @@ h3 {
 .moments {
     display: flex;
     flex-flow: column;
-    gap: 1rem;
+    gap: 3.5rem;
     width: 100%;
 }
 
