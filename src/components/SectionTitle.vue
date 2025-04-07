@@ -18,11 +18,13 @@ const { name, icon } = defineProps<{
 
 <style scoped lang="scss">
 h2 {
-    font-size: 4rem;
-    line-height: 4rem;
+    width: 100%;
+    font-size: 7rem;
+    line-height: 7rem;
     display: flex;
-    margin-bottom: 2rem;
-    align-items: end;
+    margin-bottom: 4rem;
+    align-items: center;
+    justify-content: center;
     gap: 1rem;
     text-transform: capitalize;
 

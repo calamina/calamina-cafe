@@ -41,14 +41,28 @@ h3 {
     padding: 1rem 1.5rem;
     padding: 1rem;
     width: fit-content;
-    width: 100%;
-    font-size: 2rem;
-    line-height: 2rem;
+    text-align: center;
+    width: 6.5rem;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
     border: 1px solid var(--bg-darker);
     border-radius: 0.5rem;
     // background-color: var(--bg-darker0);
     // background-color: var(--bg-light);
 }
+
+// h3 {
+//     padding: 1rem 1.5rem;
+//     padding: 1rem;
+//     width: fit-content;
+//     width: 100%;
+//     font-size: 2rem;
+//     line-height: 2rem;
+//     border: 1px solid var(--bg-darker);
+//     border-radius: 0.5rem;
+//     // background-color: var(--bg-darker0);
+//     // background-color: var(--bg-light);
+// }
 
 .separator {
     height: 100%;

@@ -48,13 +48,11 @@ div {
 .moment {
     position: relative;
     display: flex;
-    // gap: 3rem;
     justify-content: start;
     align-items: center;
     width: fit-content;
     border-radius: 0.5rem;
     padding: 1rem;
-    line-height: 1.4rem;
 
     &:has(.date.actual) {
         background-color: var(--bg-darker0);
@@ -74,7 +72,7 @@ div {
 
         // .dateline,
         // .momentlink {
-        //     background-color: var(--bg-light);
+        //     background-color: var(--bg-darker0);
         // }
     }
 
@@ -135,7 +133,7 @@ div {
     flex-flow: column;
     width: 100%;
     gap: 0.75em;
-    padding: 1.5rem 1.5rem 1rem;
+    padding: 1rem 1rem 0.75rem;
     border: 1px solid var(--bg-darker);
     border-radius: 0.5rem;
     background-color: var(--bg);

@@ -5,8 +5,11 @@
 
 hey :)
 
+# DOING
+- fix/refacto about :(((
+- one timeline ? with other events (travel?) and mixed jobs/studies
+
 # TODO
-- fix about :(((
 - fix home :)))
 - fix dark theme still flashing 
 
@@ -25,9 +28,3 @@ hey :)
 - proper alt on images / proper images (highlights, etc)
 - add info to projects (creation - update)
 - add Quartier Lointain :3
-
- /\_/\
-( ᵔ.ᵔ )
- > ~ <   ,
-/  #  \ (
-\_Y—Y_/—°
