@@ -11,7 +11,8 @@ const { moments } = defineProps<{
 <template>
     <div class="grid">
         <h3>{{ title }}</h3>
-        <div class="separator" inert />
+        <!-- <div class="separator" inert /> -->
+        <div class="momentslink" inert></div>
         <div class="moments">
             <TimelineMoment v-for="moment in moments" :moment="moment" />
         </div>
@@ -20,9 +21,15 @@ const { moments } = defineProps<{
 
 <style lang="scss" scoped>
 .grid {
-    grid-column: span 3;
-    display: grid;
-    grid-template-columns: subgrid;
+    width: fit-content;
+}
+
+.momentslink {
+    width: 1px;
+    height: 1rem;
+    min-height: 1rem;
+    background-color: var(--bg-darker);
+    margin-left: 3.25rem;
 }
 
 p,
@@ -31,10 +38,16 @@ div {
 }
 
 h3 {
-    padding: 0.25rem 0;
+    padding: 1rem 1.5rem;
+    padding: 1rem;
     width: fit-content;
+    width: 100%;
     font-size: 2rem;
     line-height: 2rem;
+    border: 1px solid var(--bg-darker);
+    border-radius: 0.5rem;
+    // background-color: var(--bg-darker0);
+    // background-color: var(--bg-light);
 }
 
 .separator {
@@ -46,8 +59,8 @@ h3 {
 .moments {
     display: flex;
     flex-flow: column;
-    gap: 3.5rem;
-    width: 100%;
+    // gap: 3.5rem;
+    width: fit-content;
 }
 
 @media (max-width: 1280px) {

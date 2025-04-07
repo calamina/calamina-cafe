@@ -11,6 +11,7 @@ const categs = Object.entries(moment.tools ?? {})
 
 <template>
     <div class="moment">
+        <div class="dateline" inert></div>
         <div class="date" :class="{ 'actual': moment.actual }">
             <p>{{ moment.date }}</p>
             <template v-if="moment.start">
@@ -18,10 +19,11 @@ const categs = Object.entries(moment.tools ?? {})
                 <p>{{ moment.start }}</p>
             </template>
         </div>
+        <div class="momentlink" inert></div>
         <div class="info">
             <div class="header">
                 <p class="name"> {{ moment.name }} </p>
-                <LinkIcon v-if="moment.url" :url="moment.url" />
+                <LinkIcon label="website" v-if="moment.url" :url="moment.url" />
             </div>
             <p class="desc">{{ moment.desc }}</p>
             <div v-if="categs.length" class="categories">
@@ -44,21 +46,41 @@ div {
 }
 
 .moment {
+    position: relative;
     display: flex;
-    gap: 3rem;
+    // gap: 3rem;
     justify-content: start;
-    width: 100%;
+    align-items: center;
+    width: fit-content;
     border-radius: 0.5rem;
-    padding: 0.5rem;
+    padding: 1rem;
     line-height: 1.4rem;
-    // background-color: var(--bg-darker0);
 
-    &:hover {
+    &:has(.date.actual) {
         background-color: var(--bg-darker0);
 
-        a {
-            background-color: var(--bg-darker);
+        .info {
+            border-color: var(--bg-darker0);
         }
+
+        .date {
+            background-color: var(--highlight);
+            border: 1px solid var(--bg-highlight);
+
+            p {
+                color: var(--text);
+            }
+        }
+
+        // .dateline,
+        // .momentlink {
+        //     background-color: var(--bg-light);
+        // }
+    }
+
+    &:last-of-type .dateline {
+        top: 0;
+        height: 60%;
     }
 }
 
@@ -67,30 +89,65 @@ div {
     flex-flow: column;
     align-items: center;
     justify-content: end;
-    height: 100%;
-    // border-right: 2px solid var(--bg-darker0);
-    // padding-right: 2rem;
+    height: fit-content;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--bg-darker);
+    border-radius: 0.5rem;
+    background-color: var(--bg);
+    background-color: var(--bg-darker0);
+
+    z-index: 1;
+    width: 5rem;
 
     & p {
         color: var(--color-light);
     }
 
     &.actual {
+        background-color: var(--bg-darker0);
+
         & p {
             color: var(--color);
         }
     }
 }
 
+.dateline {
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    background-color: var(--bg-darker);
+    left: 3.25rem;
+    z-index: 0;
+}
+
+.momentlink {
+    height: 1px;
+    width: 3rem;
+    min-width: 3rem;
+    width: 1.5rem;
+    min-width: 1.5rem;
+    background-color: var(--bg-darker);
+}
+
 .info {
     display: flex;
     flex-flow: column;
+    width: 100%;
     gap: 0.75em;
+    padding: 1.5rem 1.5rem 1rem;
+    border: 1px solid var(--bg-darker);
+    border-radius: 0.5rem;
+    background-color: var(--bg);
+    // background-color: var(--bg-light);
+
 }
 
 .header {
     display: flex;
-    gap: 1rem;
+    justify-content: space-between;
+    // flex-flow: column;
+    gap: 0.5rem;
 }
 
 span {
@@ -100,6 +157,10 @@ span {
 .name {
     font-size: 2rem;
     line-height: 2rem;
+}
+
+.desc {
+    padding: 0.5rem 0;
 }
 
 .categories {
@@ -136,7 +197,7 @@ span {
     display: inline-block;
     background-color: var(--bg-darker);
     color: var(--color);
-    padding: 0 0.5rem;
+    padding: 0.25rem 0.5rem 0.1rem;
     border-radius: 0.5rem;
 }
 

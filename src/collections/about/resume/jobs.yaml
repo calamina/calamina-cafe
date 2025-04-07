@@ -11,7 +11,6 @@
     tools:
     - "Angular 18"
     - "Java Spring"
-    - "SQLS"
     - "Postman"
   start: "2022"
   actual: true
