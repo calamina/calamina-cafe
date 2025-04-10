@@ -1,11 +1,17 @@
 ---
 import { query } from "../utils/utils.ts";
 import type { Moment } from "../models/Moment";
+import type { TypedMoment } from "../models/Types";
 import TimelineSection from "./about/TimelineSection.vue";
+import { MomentType } from "../utils/enum";
 
 const jobs = await query<Moment>("jobs");
 const studies = await query<Moment>("studies");
-const moments = [...jobs, ...studies];
+
+const moments: TypedMoment[] = [
+  ...jobs.map((job) => ({ ...job, type: MomentType.JOB })),
+  ...studies.map((study) => ({ ...study, type: MomentType.STUDIES })),
+].sort((a, b) => b.date - a.date);
 ---
 
 <div class="timeline">

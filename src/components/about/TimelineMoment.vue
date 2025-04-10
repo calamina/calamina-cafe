@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { Moment } from '../../models/Moment';
+import type { TypedMoment } from '../../models/Types';
 import LinkIcon from '../LinkIcon.vue';
 
 const { moment } = defineProps<{
-    moment: Moment
+    moment: TypedMoment
 }>()
 
 const categs = Object.entries(moment.tools ?? {}) 
@@ -13,7 +13,7 @@ const categs = Object.entries(moment.tools ?? {})
     <div class="moment">
         <div class="dateline" inert></div>
         <div class="date" :class="{ 'actual': moment.actual }">
-            <p>{{ moment.date }}</p>
+            <p>{{ moment.actual ? "now" : moment.date }}</p>
             <template v-if="moment.start">
                 <p>↑</p>
                 <p>{{ moment.start }}</p>
@@ -36,6 +36,8 @@ const categs = Object.entries(moment.tools ?? {})
                 </div>
             </div>
         </div>
+        <!-- <div class="momentlink"></div>
+        <p class="date">{{ moment.type }}</p> -->
     </div>
 </template>
 

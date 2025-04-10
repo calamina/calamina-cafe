@@ -1,5 +1,5 @@
 - id: "1"
-  date: "2022"
+  date: 2022
   name: "Master @ Lyon 2 Uni"
   desc: "CIM (multimedia conception & integration) Master degree"
   tools:
@@ -10,7 +10,7 @@
     - "java"
 
 - id: "2"
-  date: "2021"
+  date: 2021
   name: "DUCCI @ Lyon 2 Uni"
   desc: "Frontend developpement & UI/UX Design"
   tools:
@@ -22,10 +22,10 @@
     tools:
     - "adobe suite"
     - "figma"
-  start: "2020"
+  start: 2020
 
 - id: "3"
-  date: "2017"
+  date: 2017
   name: "IT Bachelors @ Metz Uni"
   desc: "Full stack developpement formation"
   tools:
@@ -34,4 +34,4 @@
     - "js"
     - "css"
     - "java"
-  start: "2015"
+  start: 2015

@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { Moment } from '../../models/Moment';
+import type { TypedMoment } from '../../models/Types';
 import TimelineMoment from './TimelineMoment.vue';
 
 const { moments } = defineProps<{
-    moments: Moment[]
+    moments: TypedMoment[]
     title: string
 }>()
 </script>

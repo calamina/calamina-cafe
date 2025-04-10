@@ -39,12 +39,12 @@ const medias = await query<Media>("nowMedia");
 			</p> -->
 		</section>
 
-		<section>
+		<!-- <div>
 			<SectionTitle name="now" icon={IconSmile} />
-			<!-- <p>Working with these tools at the moment :</p> -->
-			<LinkList links={links} client:only />
-			<MediaRecent medias={medias} />
-		</section>
+			<p>Working with these tools at the moment :</p>
+		<LinkList links={links} client:only />
+		<MediaRecent medias={medias} />
+	</div> -->
 
 		<section>
 			<SectionTitle name="favorites" icon={IconHeart} />
@@ -56,50 +56,50 @@ const medias = await query<Media>("nowMedia");
 			<Timeline />
 		</section>
 	</div>
-</MainLayout>
 
-<style scoped lang="scss">
-	section {
-		counter-increment: section;
-	}
-
-	.intro {
-		display: flex;
-		flex-flow: column;
-
-		p {
-			font-size: 2rem;
-			line-height: 2.25rem;
+	<style scoped lang="scss">
+		section {
+			counter-increment: section;
 		}
 
-		// p:first-of-type {
-		// 	text-indent: 50px;
-		// }
-	}
+		.intro {
+			display: flex;
+			flex-flow: column;
 
-	.content {
-		counter-reset: section;
-		display: flex;
-		flex-flow: column;
-		align-items: start;
-		// padding-top: 2rem;
-		padding: 2rem 0 3rem;
-		gap: 4rem;
-		opacity: 1;
-		transform: translateY(0);
-		transition: transform 0.3s;
-	}
+			p {
+				font-size: 2rem;
+				line-height: 2.25rem;
+			}
 
-	section {
-		width: 100%;
-		display: flex;
-		flex-flow: column;
-		// align-items: center;
-	}
+			// p:first-of-type {
+			// 	text-indent: 50px;
+			// }
+		}
 
-	@media (max-width: 1280px) {
 		.content {
-			padding: 0 1rem;
+			counter-reset: section;
+			display: flex;
+			flex-flow: column;
+			align-items: start;
+			// padding-top: 2rem;
+			padding: 2rem 0 3rem;
+			gap: 4rem;
+			opacity: 1;
+			transform: translateY(0);
+			transition: transform 0.3s;
 		}
-	}
-</style>
+
+		section {
+			width: 100%;
+			display: flex;
+			flex-flow: column;
+			// align-items: center;
+		}
+
+		@media (max-width: 1280px) {
+			.content {
+				padding: 0 1rem;
+			}
+		}
+	</style>
+</MainLayout>

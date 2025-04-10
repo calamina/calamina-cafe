@@ -1,5 +1,5 @@
 - id: "1"
-  date: "now"
+  date: 2025
   name: "Akuiteo"
   desc: "Full stack developpement in an agile team"
   tools:
@@ -12,12 +12,12 @@
     - "Angular 18"
     - "Java Spring"
     - "Postman"
-  start: "2022"
+  start: 2022
   actual: true
   url: "https://www.akuiteo.com/en/"
 
 - id: "2"
-  date: "2022"
+  date: 2022
   # start: "6mon"
   name: "SQLI"
   desc: "Full stack developpement in an agile team"
@@ -33,7 +33,7 @@
   url: "https://www.sqli.com/fr-fr"
 
 - id: "3"
-  date: "2021"
+  date: 2021
   name: "Kweerty"
   # start: "2mon"
   desc: "UI/UX design and Front-end developpement"
@@ -47,7 +47,7 @@
     - "vue"
 
 - id: "4"
-  date: "2020"
+  date: 2020
   # start: "2mon"
   name: "Yesouicom"
   desc: "UI/UX design and Front-end developpement"
@@ -60,8 +60,8 @@
     - "figma"
 
 - id: "5"
-  date: "2018"
-  start: "2016"
+  date: 2018
+  start: 2016
   name: "SDIS Moselle"
   desc: "IT support and computer park management"
   # start: ""
