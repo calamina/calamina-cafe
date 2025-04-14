@@ -15,6 +15,7 @@ const { links } = defineProps<{
 
 <style scoped lang="scss">
 div {
+    width: fit-content;
     display: flex;
     align-items: baseline;
     gap: 0.5rem;

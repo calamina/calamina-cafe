@@ -32,13 +32,16 @@ const { medias } = Astro.props;
     }
 
     .medias {
-        display: flex;
-        flex-wrap: 1;
-        width: fit-content;
+        width: 100%;
         gap: 0.5rem;
+        display: grid;
+        align-items: center;
+        justify-items: center;
+        grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
     }
 
     .media {
+        width: 100%;
         display: flex;
         flex-direction: column;
     }
