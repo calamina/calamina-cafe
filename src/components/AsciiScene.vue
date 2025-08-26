@@ -58,10 +58,10 @@ renderer.setClearColor(0xffffff, 0)
 function onMouseMove(event: PointerEvent) {
   const mouse = new THREE.Vector2();
   mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-  mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
+  mouse.y = (event.clientY / window.innerHeight) * 2 - 1;
 
-  const vector = new THREE.Vector3(mouse.x, mouse.y, 0.01);
-  draw(vector, 300)
+  const vector = new THREE.Vector3(mouse.x, - mouse.y, 0.01);
+  draw(vector, 200)
 }
 
 function onDeviceRotate(event: DeviceOrientationEvent) {
@@ -72,6 +72,11 @@ function onDeviceRotate(event: DeviceOrientationEvent) {
   const vector = new THREE.Vector3(position.x, - position.y + 40, 0.01);
   draw(vector, 10)
 }
+
+// function onWindowResize() {
+//   camera.updateProjectionMatrix()
+//   camera2.updateProjectionMatrix()
+// }
 
 function draw(vector: THREE.Vector3, distance: number) {
   vector.unproject(camera2);
@@ -222,8 +227,10 @@ function init() {
   } else {
     window.addEventListener("pointermove", onMouseMove)
   }
+  // window.addEventListener("resize", onWindowResize)
   addObjects()
   render()
+  // onWindowResize()
 }
 
 onMounted(() => init());
@@ -242,8 +249,9 @@ onBeforeUnmount(() => {
 
 <style lang="scss" scoped>
 .ascii {
+  overflow: visible;
   position: relative;
-  // border: 2px solid var(--bg-darker0);
+  border: 2px solid var(--bg-darker0);
   border-radius: 0.5rem;
   // height: 80%;
   width: 30rem;
