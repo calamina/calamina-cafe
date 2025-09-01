@@ -3,7 +3,6 @@ import { defineConfig } from 'astro/config';
 import vue from '@astrojs/vue';
 import * as compiler from "vue/compiler-sfc";
 import sitemap from '@astrojs/sitemap';
-// import swup from '@swup/astro';
 
 // https://astro.build/config
 export default defineConfig({
@@ -16,7 +15,6 @@ export default defineConfig({
         'https://www.calamina.cafe/',
       ],
     }), 
-    // swup({morph: ["header"]})
   ],
   site: 'https://calamina.cafe',
   output: "static",

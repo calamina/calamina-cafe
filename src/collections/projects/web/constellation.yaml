@@ -4,6 +4,8 @@ online: true
 tech:
   tools:
   - 'threejs'
+  - 'vite'
+  - 'gsap'
   languages:
   - 'html'
   - 'scss'
@@ -12,9 +14,9 @@ tech:
   - '#lelele'
   - '#tetete'
   fonts:
-  - '/'
+  - 'mononoki'
   icons:
-  - '/'
+  - 'utf8'
 
 description:
-- 3D experiment showing rotating planets.
+- 3D experiment showing rotating planets and their information.
