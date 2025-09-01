@@ -9,10 +9,17 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   integrations: [
     vue({ compiler }), 
-    sitemap(), 
+    sitemap({
+      customPages: [
+        'http://calamina.cafe/', 
+        'http://www.calamina.cafe/', 
+        'https://www.calamina.cafe/',
+      ],
+    }), 
     // swup({morph: ["header"]})
   ],
   site: 'https://calamina.cafe',
+  output: "static",
   image: {
     domains: ['calamina.cafe', 'senscritique.com'],
     remotePatterns: [{
