@@ -1,5 +1,5 @@
 <script setup lang='ts'>
-import { computed, ref, watch, type Ref } from "vue";
+import { computed, onMounted, ref, watch, type Ref } from "vue";
 import ProjectsFilters from "./ProjectsFilters.vue";
 import ProjectsGrid from "./ProjectsGrid.vue";
 import type { ProjectFilters, TypedProject } from "../../models/Types";
@@ -9,7 +9,7 @@ const { projects } = defineProps<{
 }>()
 
 const filters: Ref<ProjectFilters> = ref({
-  sort: "alpha",
+  sort: "date",
   type: "ALL",
   order: "ASC",
 })
@@ -20,20 +20,43 @@ const filteredProjects = computed(() =>
   projects
     .filter(project => filters.value.type === "ALL" || filters.value.type === project.type)
     .sort((a, b) => {
-      if (filters.value.order === "ASC") {
-        return a.name > b.name ? 1 : -1
-      } else {
-        return a.name < b.name ? 1 : -1
+      if (filters.value.sort === "date") {
+        if (filters.value.order === "ASC") {
+          return (new Date(b.updated ?? 0).getTime() - new Date(a.updated ?? 0).getTime())
+        } else {
+          return (new Date(a.updated ?? 0).getTime() - new Date(b.updated ?? 0).getTime())
+        }
+      }
+      else {
+        if (filters.value.order === "ASC") {
+          return a.name > b.name ? 1 : -1
+        } else {
+          return a.name < b.name ? 1 : -1
+        }
       }
     })
-    .sort((a, b) => {
-      if (filters.value.order === "ASC") {
-        return a.type < b.type ? 1 : -1
-      } else {
-        return a.type > b.type ? 1 : -1
-      }
-    })
+  // this sort is for separating web / phone
+  // remove if different pages / section for each type
+  // .sort((a, b) => {
+  //   if (filters.value.order === "ASC") {
+  //     return a.type < b.type ? 1 : -1
+  //   } else {
+  //     return a.type > b.type ? 1 : -1
+  //   }
+  // })
 )
+
+// github api call to check date /!\ STANDBY : restricted API call count aeugh
+// onMounted(() => {
+//   filteredProjects.value.map(async project => {
+//     if (project.git) {
+//     const git = await fetch("https://api.github.com/repos/calamina/" + (project.git || project.name))
+//     const res = await git.json()
+//     project.updated = res?.updated_at
+//     }
+//     console.debug(project.git, project.updated)
+//   })
+// })
 </script>
 
 <template>

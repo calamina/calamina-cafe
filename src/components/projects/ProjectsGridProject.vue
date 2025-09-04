@@ -2,6 +2,9 @@
 import type { TypedProject } from '../../models/Types';
 import { ProjectType } from '../../utils/enum';
 import { getImage } from '../../utils/images';
+import { useTimeAgo } from '@vueuse/core';
+import Icon from '../Icon.vue';
+import IconUpdate from '../Icons/IconUpdate.vue';
 
 const { project } = defineProps<{
   project: TypedProject
@@ -15,12 +18,20 @@ const lel = await getImage(project.name, project.type)
   <a class="project" :href="url + project.name">
     <img :src="lel.default.src" :alt="`${project.name} cover`">
     <div class="info">
-      <p class="name"> {{ project.name }} </p>
-      <!-- <p class="status">{{ project.type.toLowerCase() }}</p> -->
-      <div v-if="project.type === ProjectType.WEB" class="status" :class="{ 'online': project.online }">
-        <p> {{ project.online ? "online" : "offline" }} </p>
-        <div class="status-indicator" inert :class="{ 'online': project.online }" />
+      <div class="info-header">
+        <p class="name"> {{ project.name }} </p>
+        <div class="info-data">
+          <p class="date" v-if="project.updated">
+            <Icon :icon="IconUpdate" size="0.9rem" />
+            {{ useTimeAgo(project.updated) }}
+          </p>
+          <div v-if="project.type === ProjectType.WEB" class="status" :class="{ 'online': project.online }">
+            <p> {{ project.online ? "online" : "offline" }} </p>
+            <div class="status-indicator" inert :class="{ 'online': project.online }" />
+          </div>
+        </div>
       </div>
+      <!-- <p class="status">{{ project.type.toLowerCase() }}</p> -->
     </div>
   </a>
 </template>
@@ -60,6 +71,17 @@ img {
   align-items: baseline;
   gap: 0.5rem;
   flex-flow: column;
+  width: 100%;
+}
+
+.info-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.info-data {
+  display: flex;
 }
 
 .name {
@@ -70,6 +92,16 @@ img {
   // line-height: 2rem;
   background-color: var(--bg-darker0);
   transition: padding 0.25s;
+}
+
+.date {
+  padding: 0 0.75rem;
+  display: flex;
+  border-radius: 0.5rem;
+  gap: 0.5rem;
+  opacity: 0.5;
+  align-items: center;
+  text-transform: lowercase;
 }
 
 .status {

@@ -1,6 +1,7 @@
 name: "atlast"
 url: "https://atlast.calamina.cafe"
-online: false
+updated: "2025-09-01"
+online: true
 tech:
   tools:
   - "vue"
@@ -23,4 +24,4 @@ tech:
 description:
 - Library application used to save and mark cultural works.
 - The app uses the wikipedia API to get data.
-- Offline for now because no server to stock the data :(
+- Data stocked in the browser with indexedDB and exportable as JSON.

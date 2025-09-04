@@ -18,6 +18,7 @@ hey :)
 - fix ascii rendering ? (font aliasing) + webgl fallback
 
 # DATA
+- add github info (https://api.github.com/repos/calamina/words) /!\ STANDBY : shitty API call number restriction
 - take new screens (same resolution)
 - add tools ? (flow / sites css ?)
 - WRITE HOME
@@ -26,5 +27,4 @@ hey :)
 - fix & complete projects (aerg)
 - complete about
 - proper alt on images / proper images (highlights, etc)
-- add info to projects (creation - update)
 - add Quartier Lointain :3

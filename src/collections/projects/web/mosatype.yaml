@@ -1,0 +1,21 @@
+name: "mosatype"
+url: "https://mosatype.calamina.cafe"
+updated: "2025-09-04"
+online: true
+tools:
+- "vite"
+- "p5"
+languages:
+- "html"
+- "css"
+- "typescript"
+colors:
+- "#fff"
+fonts:
+- "Apercu Mono"
+icons:
+- "tabler"
+
+description:
+- 2D canvas displaying text on a colored background.
+- The user can opt for totally randomized data or precise settings.

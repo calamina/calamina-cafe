@@ -13,7 +13,7 @@ const { length } = defineProps<{
 
 const filters: Ref<ProjectFilters> = ref({
     type: "ALL",
-    sort: "alpha",
+    sort: "date",
     order: "ASC"
 })
 
@@ -35,14 +35,14 @@ watch(filters, () => {
                 <!-- <button v-if="webActive" @click="filters.weboffline = !filters.weboffline"                :class="{ 'inactive': !filters.weboffline }">offline</button> -->
                 <button @click="filters.type = ProjectType.PHONE" :class="{ 'inactive': !phoneActive }">phone</button>
             </div>
-            <!-- <div class="filter">
-            <h3>order</h3>
-            <button @click="filters.sort = 'alpha'" :class="{ 'inactive': filters.sort !== 'alpha' }">Alpha</button>
-            <button @click="filters.sort = 'date'" :class="{ 'inactive': filters.sort !== 'date' }">Date</button>
-        </div> -->
-
             <div class="filter">
                 <h3>sort</h3>
+                <button @click="filters.sort = 'date'" :class="{ 'inactive': filters.sort !== 'date' }">Date</button>
+                <button @click="filters.sort = 'alpha'" :class="{ 'inactive': filters.sort !== 'alpha' }">Alpha</button>
+            </div>
+
+            <div class="filter">
+                <h3>order</h3>
                 <button @click="filters.order = 'ASC'" :class="{ 'inactive': filters.order !== 'ASC' }">Asc</button>
                 <button @click="filters.order = 'DESC'" :class="{ 'inactive': filters.order !== 'DESC' }">Desc</button>
             </div>
