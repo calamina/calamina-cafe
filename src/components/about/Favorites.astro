@@ -13,6 +13,7 @@ const booksVisual = await query<Media>("favBooksVisual");
 const games = await query<Media>("favGames");
 ---
 
+<h2>₊˚⊹♡</h2>
 <div class="grid">
   <Favorite title="Movies" medias={movies} />
   <Favorite title="Animated movies" medias={moviesAnimated} />
@@ -28,8 +29,45 @@ const games = await query<Media>("favGames");
   .grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 2rem;
+    gap: 1px;
+    background-color: var(--bg-darker);
+    border: 1px solid var(--bg-darker);
     width: 100%;
-    padding-bottom: 2rem;
+    border-radius: 0.5rem;
+    margin-bottom: 2rem;
+  }
+
+  h2 {
+    width: 100%;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--bg-darker0);
+    padding: 1rem 1.5rem;
+    padding: 1rem;
+    padding: 0.5rem;
+    padding-bottom: 0.5rem;
+    width: fit-content;
+    text-align: center;
+    width: 6.5rem;
+    font-size: 1.25rem;
+    width: 100%;
+    line-height: 1.5rem;
+    border: 1px solid var(--bg-darker);
+    border-radius: 0.5rem;
+    color: var(--color-light);
+    margin-bottom: 1rem;
+    position: relative;
+
+    &::after {
+      bottom: -1rem;
+      position: absolute;
+      content: "";
+      display: block;
+      width: 1px;
+      height: 1rem;
+      min-height: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--bg-darker);
+    }
   }
 </style>

@@ -29,7 +29,7 @@ const { moments } = defineProps<{
     height: 1rem;
     min-height: 1rem;
     background-color: var(--bg-darker);
-    margin-left: 3.25rem;
+    margin-left: 2.4rem;
 }
 
 p,
@@ -40,29 +40,16 @@ div {
 h3 {
     padding: 1rem 1.5rem;
     padding: 1rem;
+    padding: 0.5rem;
     width: fit-content;
     text-align: center;
     width: 6.5rem;
-    font-size: 1.5rem;
+    width: 100%;
     line-height: 1.5rem;
     border: 1px solid var(--bg-darker);
     border-radius: 0.5rem;
-    // background-color: var(--bg-darker0);
-    // background-color: var(--bg-light);
+    color: var(--color-light);
 }
-
-// h3 {
-//     padding: 1rem 1.5rem;
-//     padding: 1rem;
-//     width: fit-content;
-//     width: 100%;
-//     font-size: 2rem;
-//     line-height: 2rem;
-//     border: 1px solid var(--bg-darker);
-//     border-radius: 0.5rem;
-//     // background-color: var(--bg-darker0);
-//     // background-color: var(--bg-light);
-// }
 
 .separator {
     height: 100%;
@@ -73,7 +60,6 @@ h3 {
 .moments {
     display: flex;
     flex-flow: column;
-    // gap: 3.5rem;
     width: fit-content;
 }
 
@@ -81,7 +67,7 @@ h3 {
     .grid {
         display: flex;
         flex-flow: column;
-        gap: 1rem;
+        // gap: 1rem;
     }
 
     h3 {

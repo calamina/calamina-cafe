@@ -24,7 +24,7 @@ a {
     width: 100%;
     justify-content: start;
     flex-shrink: 1;
-    background-color: var(--bg-darker0);
+    // background-color: var(--bg-darker0);
     border-radius: 0.5rem;
     padding-right: 0.5rem;
 

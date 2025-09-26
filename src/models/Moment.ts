@@ -2,15 +2,17 @@ import { z } from 'astro:content';
 
 export const MomentSchema = z.object({
   id: z.string(),
+  name: z.string().optional(),
   date: z.number(),
-  name: z.string(),
+  role: z.string().optional(),
+  company: z.string().optional(),
+  shortdesc: z.string().optional(),
   desc: z.string(),
   start: z.number().optional(),
-  tools: z.object({
-    tools: z.array(z.string()).optional(),
-    languages: z.array(z.string()).optional(),
-  }).optional(),
-  actual: z.boolean().optional(),
+  tools: z.array(z.string()).optional(),
+  languages: z.array(z.string()).optional(),
+  skills: z.array(z.string()).optional(),
+  now: z.boolean().optional(),
   url: z.string().optional()
 })
 

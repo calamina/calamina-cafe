@@ -1,67 +1,127 @@
 - id: "1"
+  now: true
   date: 2025
-  name: "Akuiteo"
-  desc: "Full stack developpement in an agile team"
+  # start: 2025
+  role: "Frontend developer"
+  company: "Cap Gemini"
+  # shortdesc: "Frontend developement in an agile team"
+  desc: |
+    1st mission @ CNAF just started :)
+  languages:
+  - "html"
+  - "typescript"
+  - "css"
   tools:
-    languages:
-    - "html"
-    - "ts"
-    - "css"
-    - "java"
-    tools:
-    - "Angular 18"
-    - "Java Spring"
-    - "Postman"
-  start: 2022
-  actual: true
-  url: "https://www.akuiteo.com/en/"
+  - "Angular"
+  - "Bootstrap"
+  - "Figma"
+  - "Postman"
+  - "SonarQube"
+  - "Gitlab"
+  - "Jenkins"
+  # skills:
+  # - "Maintenance days"
+  # - "Technical debt handling"
+  # - "Agile SCRUM Development, peer-programming, internal and customer demos"
+  # - "UI / UX propositions, existing components and services refactors"
+  # - "Unit and functional tests, API performance tests"
+  # - "Code review and production of technical documentation"
+  # - "Framework, libraries, and dependencies updates and maintaining"
+  # url: "https://www.akuiteo.com/en/"
 
 - id: "2"
-  date: 2022
-  # start: "6mon"
-  name: "SQLI"
-  desc: "Full stack developpement in an agile team"
+  date: 2025
+  start: 2023
+  role: "Frontend developer"
+  company: "Akuiteo"
+  # shortdesc: "Frontend developement in an agile team"
+  desc: |
+    Web development of the invoice dematerialization and the sales
+    section of the ERP produced by the company
+  languages:
+  - "html"
+  - "typescript"
+  - "css~sass"
   tools:
-    tools:
-    - "Angular 14"
-    - "Java Spring"
-    languages:
-    - "html"
-    - "ts"
-    - "css"
-    - "java"
-  url: "https://www.sqli.com/fr-fr"
+  - "Angular"
+  - "Material"
+  - "Tailwind"
+  - "Figma"
+  - "Github"
+  - "Postman"
+  - "Jenkins"
+  skills:
+  - "Creation of screens, components, services"
+  - "Maintenance and technical debt handling"
+  - "Agile SCRUM, peer & Mob programming"
+  - "UI / UX propositions"
+  - "Unit tests & API performance tests"
+  - "Production of technical documentation"
+  - "Libraries updates and maintenance"
+  url: "https://www.akuiteo.com/en/"
 
 - id: "3"
-  date: 2021
-  name: "Kweerty"
-  # start: "2mon"
-  desc: "UI/UX design and Front-end developpement"
+  date: 2022
+  # start: "6mon"
+  role: "Fullstack developer"
+  company: "SQLI"
+  desc: "Developement of an internal human resources management tool in an agile team"
   tools:
-    languages:
-    - "html"
-    - "ts"
-    - "css"
-    tools:
-    - "figma"
-    - "vue"
+  - "Angular"
+  - "Java Spring"
+  - "PostGre SQL"
+  - "Postman"
+  - "Gitlab"
+  languages:
+  - "html"
+  - "typescript"
+  - "css~sass"
+  - "java"
+  skills:
+  - Frontend performance improvements
+  - Technical debt reduction
+  - Agile SCRUM development
+  - Better interactions and animations
+  - Unit and functional tests (90% coverage)
+  url: "https://www.sqli.com/fr-fr"
 
 - id: "4"
-  date: 2020
-  # start: "2mon"
-  name: "Yesouicom"
-  desc: "UI/UX design and Front-end developpement"
+  date: 2021
+  role: "Frontend developer / UI&UX Designer"
+  company: "Kweerty"
+  desc: "Creation of wireframes & mockups and Frontend development for three showcase sites"
+  languages:
+  - "html"
+  - "typescript"
+  - "css~sass"
   tools:
-    languages:
-    - "html"
-    - "ts"
-    - "css"
-    tools:
-    - "figma"
+  - "Vue"
+  - "Figma"
+  - "Github"
+  skills:
+  - Specifications and user stories
+  - Wireframes, design system, components and mockups designs
+  - Interactive mockups and component libraries
+  - Web development of the components and pages
 
 - id: "5"
-  date: 2018
-  start: 2016
-  name: "SDIS Moselle"
-  desc: "IT support and computer park management"
-  # start: ""
+  date: 2020
+  # start: "2mon"
+  role: "Frontend developer / UI&UX Designer"
+  company: "Yesouicom"
+  desc: "UI/UX audits and developement for the company showcase site"
+  languages:
+  - "html"
+  - "javascript"
+  - "css"
+  tools:
+  - "Vue"
+  - "Figma"
+  - "Wordpress"
+  skills:
+  - UI audit — Accessibility, contrasts, animations, composition
+  - UX audit — User stories, better CTAs, pain points
+  - Technical audit — Performances(file sizes, FCP, plugins)
+  - Wireframe design and interactive mockup on Figma
+  - Development of the new website
+  - Technical documention

@@ -10,12 +10,12 @@ const route = Astro.originPathname;
 
 enum ROUTES {
   home = "/",
-  // about = "about",
+  about = "about",
   projects = "projects",
 }
 const activeRoute = (): ROUTES => {
   if (route === ROUTES.home) return ROUTES.home;
-  // if (route.includes(ROUTES.about)) return ROUTES.about;
+  if (route.includes(ROUTES.about)) return ROUTES.about;
   if (route.includes(ROUTES.projects)) return ROUTES.projects;
   return ROUTES.home;
 };
@@ -35,16 +35,12 @@ const list = projects.map((project: any) => ({
     ><span class="logotext">calamina</span>ᴗ<span class="logotext">cafe</span
     ></a
   >
-  <!-- <a class="logo" href="/"
-    ><span class="logotext">calamina</span>ᴗ<span class="logotext">cafe</span
-    ></a
-  > -->
   <nav>
     <a href="/" class:list={[{ active: activeRoute() === ROUTES.home }]}>home</a
     >
-    <!-- <a href="/about" class:list={[{ active: activeRoute() === ROUTES.about }]}
+    <a href="/about" class:list={[{ active: activeRoute() === ROUTES.about }]}
       >about</a
-    > -->
+    >
     <div class="projects">
       <a
         href="/projects"

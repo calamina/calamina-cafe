@@ -6,16 +6,16 @@ import TimelineSection from "./about/TimelineSection.vue";
 import { MomentType } from "../utils/enum";
 
 const jobs = await query<Moment>("jobs");
-const studies = await query<Moment>("studies");
+// const studies = await query<Moment>("studies");
 
 const moments: TypedMoment[] = [
   ...jobs.map((job) => ({ ...job, type: MomentType.JOB })),
-  ...studies.map((study) => ({ ...study, type: MomentType.STUDIES })),
+  // ...studies.map((study) => ({ ...study, type: MomentType.STUDIES })),
 ].sort((a, b) => b.date - a.date);
 ---
 
 <div class="timeline">
-  <TimelineSection moments={moments} title="???" />
+  <TimelineSection client:load moments={moments} title="? ⋆˚꩜｡ ?" />
   <!-- <TimelineSection moments={jobs} title="Jobs" />
   <TimelineSection moments={studies} title="Studies" /> -->
 </div>
