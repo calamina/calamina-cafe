@@ -1,0 +1,20 @@
+date= 2021-01-01
+role= "Frontend developer / UI&UX Designer"
+company= "Kweerty"
+desc= "Creation of wireframes & mockups and Frontend development for three showcase sites"
+languages = [
+  "html",
+  "typescript",
+  "css~sass",
+]
+tools = [
+  "Vue",
+  "Figma",
+  "Github",
+]
+skills = [
+  "Specifications and user stories",
+  "Wireframes, design system, components and mockups designs",
+  "Interactive mockups and component libraries",
+  "Web development of the components and pages",
+]

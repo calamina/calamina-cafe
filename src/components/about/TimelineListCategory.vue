@@ -12,7 +12,7 @@ const toggle = () => toggled.value = !toggled.value
 <template>
     <div class="wrapper">
         <div class="list" :class="{ 'short': !toggled }">
-            <span v-for="item in items">{{ item }}</span>
+            <p v-for="item in items">{{ item }}</p>
         </div>
         <button @click="toggle()">{{ toggled ? "-" : "+" }}</button>
     </div>
@@ -55,10 +55,10 @@ button {
     }
 }
 
-span {
+p {
     display: inline-block;
     position: relative;
-    color: var(--color);
+    color: var(--color-dim);
     padding: 0.25rem 0.5rem 0.1rem;
     border-radius: 0.5rem;
     padding-left: 1.75rem;

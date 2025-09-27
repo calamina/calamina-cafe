@@ -1,0 +1,31 @@
+# start= 2025
+# shortdesc= "Frontend developement in an agile team"
+now = true
+date = 2025-09-08
+role = "Frontend developer"
+company = "Cap Gemini"
+desc = "1st mission @ CNAF just started =)"
+url = "https=//www.akuiteo.com/en/"
+languages = [
+  "html",
+  "typescript",
+  "css"
+]
+tools = [
+  "Angular",
+  "Bootstrap",
+  "Figma",
+  "Postman",
+  "SonarQube",
+  "Gitlab",
+  "Jenkins",
+]
+skills = [
+  "Maintenance days",
+  "Technical debt handling",
+  "Agile SCRUM Development, peer-programming, internal and customer demos",
+  "UI / UX propositions, existing components and services refactors",
+  "Unit and functional tests, API performance tests",
+  "Code review and production of technical documentation",
+  "Framework, libraries, and dependencies updates and maintaining",
+]

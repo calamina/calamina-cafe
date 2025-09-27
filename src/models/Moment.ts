@@ -1,9 +1,8 @@
 import { z } from 'astro:content';
 
 export const MomentSchema = z.object({
-  id: z.string(),
   name: z.string().optional(),
-  date: z.number(),
+  date: z.date(),
   role: z.string().optional(),
   company: z.string().optional(),
   shortdesc: z.string().optional(),

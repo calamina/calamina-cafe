@@ -6,11 +6,11 @@
 hey :)
 
 # DOING
-- fix/refacto about :(((
-- one timeline ? with other events (travel?) and mixed jobs/studies
+- swap to TOML (aergh)
+- polish about !
 
 # TODO
-- fix home :)))
+- add stuff to home :)))
 - fix dark theme still flashing 
 
 - check todos in code :)
@@ -18,7 +18,7 @@ hey :)
 - fix ascii rendering ? (font aliasing) + webgl fallback
 
 # DATA
-- add github info (https://api.github.com/repos/calamina/words) /!\ STANDBY : shitty API call number restriction
+- add github info (https://api.github.com/repos/calamina/words) /!\ STANDBY : API calls restriction
 - take new screens (same resolution)
 - add tools ? (flow / sites css ?)
 - WRITE HOME

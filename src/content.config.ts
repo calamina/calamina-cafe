@@ -51,11 +51,8 @@ const favGames = defineCollection({
 
 // RESUME
 const jobs = defineCollection({
-  loader: file("src/collections/about/resume/jobs.yaml"),
-  schema: MomentSchema,
-});
-const studies = defineCollection({
-  loader: file("src/collections/about/resume/studies.yaml"),
+  // loader: file("src/collections/about/resume/jobs.yaml"),
+  loader: glob({ pattern: "**/*.toml", base: "./src/collections/about/resume/" }),
   schema: MomentSchema,
 });
 
@@ -69,4 +66,4 @@ const phoneProjects = defineCollection({
   schema: ProjectSchema
 });
 
-export const collections = { nowLinks, nowMedia, favMovies, favMoviesAnimated, favMoviesShort, favSeries, favSeriesAnimated, favBooks, favBooksVisual, favGames, jobs, studies, webProjects, phoneProjects };
+export const collections = { nowLinks, nowMedia, favMovies, favMoviesAnimated, favMoviesShort, favSeries, favSeriesAnimated, favBooks, favBooksVisual, favGames, jobs, webProjects, phoneProjects };

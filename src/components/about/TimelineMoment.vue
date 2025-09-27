@@ -13,7 +13,7 @@ const { moment } = defineProps<{
     <div class="moment">
         <div class="dateline" inert></div>
         <div class="date" :class="{ 'now': moment.now }">
-            <p>{{ moment.now ? "now" : moment.date }}</p>
+            <p>{{ moment.now ? "now" : moment.date.getFullYear() }}</p>
             <template v-if="moment.start">
                 <p>↑</p>
                 <p>{{ moment.start }}</p>

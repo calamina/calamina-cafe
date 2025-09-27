@@ -1,0 +1,23 @@
+# start= "2mon"
+date= 2020-01-01
+role= "Frontend developer / UI&UX Designer"
+company= "Yesouicom"
+desc= "UI/UX audits and developement for the company showcase site"
+languages = [
+  "html",
+  "javascript",
+  "css",
+]
+tools = [
+  "Vue",
+  "Figma",
+  "Wordpress",
+]
+skills = [
+  "UI audit — Accessibility, contrasts, animations, composition",
+  "UX audit — User stories, better CTAs, pain points",
+  "Technical audit — Performances(file sizes, FCP, plugins)",
+  "Wireframe design and interactive mockup on Figma",
+  "Development of the new website",
+  "Technical documention",
+]
