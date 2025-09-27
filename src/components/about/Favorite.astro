@@ -37,7 +37,7 @@ const display = size && (size === "large" ? "gridtwo" : "gridthree");
   </div>
 </div>
 
-<style scoped lang="scss">
+<style scoped>
   .wrapper {
     display: flex;
     flex-flow: column;
@@ -46,6 +46,11 @@ const display = size && (size === "large" ? "gridtwo" : "gridthree");
     // padding: 0.5rem;
     border-radius: 0.5rem;
     // border: 1px solid var(--bg-darker);
+
+    
+    @media (max-width: 1280px) {
+      grid-column: span 3;
+    }
   }
 
   .header {
