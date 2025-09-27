@@ -1,0 +1,29 @@
+<script src="../utils/ascii3d.ts"></script>
+
+<div class="ascii" id="container">
+  <div class="state"></div>
+</div>
+
+<style lang="scss" scoped>
+  .ascii {
+    overflow: visible;
+    position: relative;
+    border: 2px solid var(--bg-darker0);
+    border-radius: 0.5rem;
+    // height: 80%;
+    width: 30rem;
+    height: 30rem;
+    position: relative;
+    z-index: -1;
+  }
+
+  .state {
+    background-color: var(--highlight);
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 0.5rem;
+  }
+</style>

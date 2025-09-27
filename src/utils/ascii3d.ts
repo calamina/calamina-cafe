@@ -1,8 +1,6 @@
-<script setup lang="ts">
 import * as THREE from 'three/webgpu'
 import { uv, vec2, texture, attribute, uniform, color, pow, mix, step, floor } from 'three/tsl'
 import { Fn } from 'three/src/nodes/TSL.js';
-import { onBeforeUnmount, onMounted } from 'vue';
 
 // const highlight = window.getComputedStyle(document.body).getPropertyValue('--highlight');
 // console.debug(highlight)
@@ -14,21 +12,8 @@ const pallete = [
   '#b4b4b4',
   '#d0d0d0',
 ]
-// let pallete = [
-//   '#a7bee2',
-//   '#d6a7e2',
-//   '#e2a9a7',
-//   '#e2d8a7',
-//   '#a7e2be',
-// ]
-// const pallete = [
-//   '#6c86ac',
-//   '#a06cac',
-//   '#ac6e6c',
-//   '#aca26c',
-//   '#6cac86',
-// ]
-// const chars = " .*o&8@#"
+
+// const chars = " .:;!lH8@#"
 const chars = " `.-':_,^=;><+!rc*/z?sLTv)J7(|Fi{C}fI31tlu[neoZ5Yxjya]2ESwqkP6h9d4VpOGbUAKXHm8RD#$Bg0MNWQ%&@"
 const length = chars.length
 const size = 5;
@@ -60,8 +45,8 @@ function onMouseMove(event: PointerEvent) {
   mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
   mouse.y = (event.clientY / window.innerHeight) * 2 - 1;
 
-  const vector = new THREE.Vector3(mouse.x, - mouse.y, 0.01);
-  draw(vector, 200)
+  const vector = new THREE.Vector3(mouse.x, - mouse.y, 0.2);
+  draw(vector, 100)
 }
 
 function onDeviceRotate(event: DeviceOrientationEvent) {
@@ -73,10 +58,10 @@ function onDeviceRotate(event: DeviceOrientationEvent) {
   draw(vector, 10)
 }
 
-// function onWindowResize() {
-//   camera.updateProjectionMatrix()
-//   camera2.updateProjectionMatrix()
-// }
+function onWindowResize() {
+  camera.updateProjectionMatrix()
+  camera2.updateProjectionMatrix()
+}
 
 function draw(vector: THREE.Vector3, distance: number) {
   vector.unproject(camera2);
@@ -195,9 +180,9 @@ function asciiAndColorShader({ asciiTexture, scene }: { asciiTexture: THREE.Text
 function render() {
   time += 0.01
 
-  shapeScene.children = shapeScene.children.filter(child =>
-    !child?.userData?.time || (time - child.userData?.time < 0.25)
-  )
+  const objectsToRemove = shapeScene?.children?.filter(
+    child => time - child.userData?.time > 0.25)
+  objectsToRemove.forEach(object => shapeScene.remove(object))
 
   const pow = 2
   object.rotation.x = Math.sin(time * pow)
@@ -219,54 +204,30 @@ function render() {
   renderer.renderAsync(asciiScene, camera)
 }
 
-function init() {
-  document.getElementById('container')?.appendChild(renderer.domElement);
+function setDevice() {
   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
   if (isMobile) {
     window.addEventListener("deviceorientation", onDeviceRotate)
   } else {
     window.addEventListener("pointermove", onMouseMove)
   }
-  // window.addEventListener("resize", onWindowResize)
+}
+
+function init() {
+  document.getElementById('container')?.appendChild(renderer.domElement);
+  onresize = () => onWindowResize
+  setDevice()
   addObjects()
   render()
-  // onWindowResize()
+  onWindowResize()
+  renderer.clearAsync()
 }
 
-onMounted(() => init());
+init();
 
-onBeforeUnmount(() => {
-  if (renderer?.domElement) renderer.domElement.style.display = "none"
+onbeforeunload = () => {
+  asciiScene.clear().remove()
+  shapeScene.clear().remove()
   renderer?.dispose()
-})
-</script>
-
-<template>
-  <div class="ascii" id="container">
-    <div class="state" />
-  </div>
-</template>
-
-<style lang="scss" scoped>
-.ascii {
-  overflow: visible;
-  position: relative;
-  border: 2px solid var(--bg-darker0);
-  border-radius: 0.5rem;
-  // height: 80%;
-  width: 30rem;
-  height: 30rem;
-  position: relative;
-  z-index: -1;
+  if (renderer?.domElement) renderer.domElement.style.display = "none"
 }
-
-.state {
-  background-color: var(--highlight);
-  position: absolute;
-  top: 0.5rem;
-  left: 0.5rem;
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 0.5rem;
-}
-</style>
