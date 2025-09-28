@@ -5,8 +5,13 @@ const prettyRoute = path ? path[0].toUpperCase() + path.slice(1) + " — " : "";
 const title = prettyRoute + "calamina cafe";
 ---
 
-<!doctype html>
-<html lang="en" class="light-mode">
+<script>
+	const theme = localStorage.getItem("theme");
+	const html = document.documentElement;
+	if (theme) html.setAttribute("data-theme", theme);
+</script>
+
+<html lang="en" data-theme="system">
 	<head>
 		<title>{title}</title>
 		<meta charset="utf-8" />
@@ -22,7 +27,6 @@ const title = prettyRoute + "calamina cafe";
 			data-goatcounter="https://calamina.goatcounter.com/count"
 			async
 			src="//gc.zgo.at/count.js"></script>
-		<script src="../utils/themeSwitch.ts"></script>
 	</head>
 	<body>
 		<slot />

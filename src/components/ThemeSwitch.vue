@@ -1,49 +1,37 @@
 <script setup lang="ts">
-import { onClickOutside, onKeyStroke, useColorMode } from '@vueuse/core'
+import { onClickOutside, onKeyStroke } from '@vueuse/core'
 import { useFocusTrap } from '@vueuse/integrations/useFocusTrap'
-import { ref, watch } from 'vue'
+import { ref } from 'vue'
 import Icon from './Icon.vue'
 import IconMoon from './Icons/IconMoon.vue'
 import IconMoonHalf from './Icons/IconMoonHalf.vue'
 import IconMoonHalfFilled from './Icons/IconMoonHalfFilled.vue'
 import IconMoonStars from './Icons/IconMoonStars.vue'
+import ThemeSwitchButton from './ThemeSwitchButton.vue'
 
-const colorMode = useColorMode({ emitAuto: true })
-const themeOpen = ref(false)
-const theme = ref(null)
-onClickOutside(theme, () => closeTheme())
-onKeyStroke('Escape', () => closeTheme())
+const themePicker = ref(null)
+onClickOutside(themePicker, () => deactivate())
+onKeyStroke('Escape', () => deactivate())
 
-const closeTheme = () => themeOpen.value = false
+const { activate, deactivate, hasFocus } = useFocusTrap(themePicker)
 
-const { activate, deactivate } = useFocusTrap(theme)
-watch(themeOpen, () => themeOpen.value ? activate() : deactivate())
-
-function setMode(mode: 'light' | 'dark' | 'auto') {
-  colorMode.value = mode;
-  themeOpen.value = false
-}
 </script>
 <template>
-  <div ref="theme" class="theme">
-    <button title="theme picker" class="theme-picker" :class="{ 'activetheme': themeOpen }"
-      @click="themeOpen = !themeOpen">
+  <div ref="themePicker" class="theme">
+    <button title="theme picker" class="theme-picker" :class="{ 'activetheme': hasFocus }" @click="activate()">
       <Icon :icon="IconMoon" />
     </button>
     <transition name="appear">
-      <div v-if="themeOpen" class="theme-menu">
-        <button :class="{ active: colorMode === 'auto' }" @click="setMode('auto')">
+      <div v-if="hasFocus" class="theme-menu">
+        <ThemeSwitchButton theme="system" @clicked="deactivate()">
           <Icon :icon="IconMoonStars" />
-          System
-        </button>
-        <button :class="{ active: colorMode === 'light' }" @click="setMode('light')">
+        </ThemeSwitchButton>
+        <ThemeSwitchButton theme="light" @clicked="deactivate()">
           <Icon :icon="IconMoonHalf" />
-          Light
-        </button>
-        <button :class="{ active: colorMode === 'dark' }" @click="setMode('dark')">
+        </ThemeSwitchButton>
+        <ThemeSwitchButton theme="dark" @clicked="deactivate()">
           <Icon :icon="IconMoonHalfFilled" />
-          Dark
-        </button>
+        </ThemeSwitchButton>
       </div>
     </transition>
   </div>

@@ -1,9 +1,10 @@
 :root {
-    // --app-width: 70rem;
+    color-scheme: light dark;
     --app-width: 100vw;
-    // --app-width: calc(100vw - 2rem);
 
-    /* Grey */
+    // COLORS
+    --highlight: light-dark(#d6a7e2, hsl(173, 23%, 48%));
+    --red: #960843;
     --Grey-0: #ffffff;
     --Grey-50: #f9f6f6;
     --Grey-100: #edeaea;
@@ -16,51 +17,28 @@
     --Grey-800: #272424;
     --Grey-1000: #1b1818;
 
-    /* Red */
-    --red: #960843;
-
-    // COLORS
-    // --highlight: hsl(288, 50%, 77%);
-    --highlight: #d6a7e2;
-
-    --color: var(--Grey-1000);
-    --color-dim: var(--Grey-600);
+    // THEMES
+    --color: light-dark(var(--Grey-1000), var(--Grey-500));
+    --color-dim: light-dark(var(--Grey-600), var(--Grey-100));
     --color-lightest: var(--Grey-100);
-    --color-light: var(--Grey-500);
+    --color-light: light-dark(var(--Grey-500), var(--Grey-600));
     --color-error: var(--red);
-    --bg: var(--Grey-200);
-    --bg-darker0: var(--Grey-300);
-    --bg-darker: var(--Grey-400);
-    --bg-darkest: var(--Grey-1000);
-    --bg-light: var(--Grey-100);
-    --bg-lighter: var(--Grey-50);
-    --border-color: var(--Grey-200);
+    --bg: light-dark(var(--Grey-200), var(--Grey-800));
+    --bg-darker0: light-dark(var(--Grey-300), var(--Grey-700));
+    --bg-darker: light-dark(var(--Grey-400), var(--Grey-700));
+    --bg-darkest: light-dark(var(--Grey-1000), var(--Grey-600));
+    --bg-light: light-dark(var(--Grey-100), var(--Grey-100));
+    --bg-lighter: light-dark(var(--Grey-50), var(--Grey-700));
+    --border-color: light-dark(var(--Grey-200), var(--Grey-200));
     --scroll-color: var(--Grey-500);
 }
 
-.dark {
-    --color: var(--Grey-500);
-    --color-lightest: var(--Grey-100);
-    --color-light: var(--Grey-600);
-    // --color: var(--Grey-600);
-    // --color-lightest: var(--Grey-100);
-    // --color-light: var(--Grey-500);
-    --color-error: var(--red);
-    --bg: var(--Grey-800);
-    --bg-darker0: var(--Grey-700);
-    --bg-darker: var(--Grey-700);
-    --bg-darkest: var(--Grey-600);
-    --bg-light: var(--Grey-100);
-    --bg-lighter: var(--Grey-700);
-    --border-color: var(--Grey-200);
-
-    --highlight: hsl(173, 23%, 48%);
+html[data-theme="light"]{
+    color-scheme: light;
 }
-
-// .sepia-mode {
-//     --color: #433422;
-//     --color-secondary: #504231;
-//     --bg: #f1e7d0;
-//     --bg-secondary: #eae0c9;
-//     --border-color: #ded0bf;
-// }
+html[data-theme="dark"]{
+    color-scheme: dark;
+}
+html[data-theme="system"]{
+    color-scheme: light dark;
+}
