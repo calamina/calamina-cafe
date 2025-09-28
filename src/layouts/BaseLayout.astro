@@ -1,35 +1,28 @@
 ---
 import "../assets/style/main.scss";
-// import { ClientRouter } from "astro:transitions";
+const path = Astro.originPathname.slice(1, -1).split("/").pop();
+const prettyRoute = path ? path[0].toUpperCase() + path.slice(1) + " — " : "";
+const title = prettyRoute + "calamina cafe";
 ---
 
 <!doctype html>
 <html lang="en" class="light-mode">
 	<head>
-		<meta charset="UTF-8" />
+		<title>{title}</title>
+		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
 		<meta
 			name="description"
 			content="Welcome ~ calamina is Grégoire Belliere"
 		/>
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="sitemap" href="/sitemap-index.xml" />
-		<title>calamina cafe</title>
-		<!-- <ClientRouter /> -->
-		<script is:inline>
-			const theme =
-				localStorage?.getItem("vueuse-color-scheme") ??
-				(window.matchMedia("(prefers-color-scheme: dark)").matches
-					? "dark"
-					: "light");
-
-			if (theme === "light") {
-				document.documentElement.classList.remove("dark");
-			} else {
-				document.documentElement.classList.add("dark");
-			}
-		</script>
+		<script
+			is:inline
+			data-goatcounter="https://calamina.goatcounter.com/count"
+			async
+			src="//gc.zgo.at/count.js"></script>
+		<script src="../utils/themeSwitch.ts"></script>
 	</head>
 	<body>
 		<slot />
@@ -42,7 +35,6 @@ import "../assets/style/main.scss";
 	}
 
 	body {
-		/* app tw-flex tw-flex-col tw-justify-between tw-items-center tw-min-h-screen */
 		display: flex;
 		flex-flow: column;
 		justify-content: space-between;
@@ -59,10 +51,4 @@ import "../assets/style/main.scss";
 		justify-content: center;
 		width: 100%;
 	}
-
-	/* img {
-		width: 100%;
-		height: fit-content;
-		padding: 0 0.5rem;
-	} */
 </style>
