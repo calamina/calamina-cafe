@@ -14,7 +14,7 @@ const toggle = () => toggled.value = !toggled.value
         <div class="list" :class="{ 'short': !toggled }">
             <p v-for="item in items">{{ item }}</p>
         </div>
-        <button @click="toggle()">{{ toggled ? "-" : "+" }}</button>
+        <button @click="toggle()">{{ toggled ? "- hide" : "+ show" }} activities</button>
     </div>
 </template>
 
@@ -39,6 +39,7 @@ button {
     height: 1.5rem;
     border-radius: 0.5rem;
     margin-left: 2.25rem;
+    margin-left: 0.5rem;
 }
 
 .list {
@@ -52,6 +53,7 @@ button {
 
     &.short {
         max-height: 3.25rem;
+        max-height: 0rem;
     }
 }
 

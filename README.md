@@ -6,6 +6,7 @@
 hey :)
 
 # DOING
+- fix projects next/previous -> adapt to current sort order
 - swap to TOML (aergh)
 - polish about !
 
