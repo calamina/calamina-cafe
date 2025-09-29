@@ -56,6 +56,10 @@ watch(results, () => results.value?.length ? activate() : deactivate())
   align-items: center;
   gap: 0.5rem;
   position: relative;
+
+  @media (max-width: 1280px) {
+    display: none;
+  }
 }
 
 input[type="search"] {
