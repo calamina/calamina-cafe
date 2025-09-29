@@ -24,4 +24,4 @@ tech:
 description:
 - Library application used to save and mark cultural works.
 - The app uses the wikipedia API to get data.
-- Data stocked in the browser with indexedDB and exportable as JSON.
+- Data stored in the browser with indexedDB and exportable as JSON.

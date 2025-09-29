@@ -32,11 +32,11 @@ import ProjectLast from "../components/projects/ProjectLast.astro";
     gap: 1rem;
     width: 100%;
     overflow-x: hidden;
-    display: flex;
-    flex-flow: row;
-    align-items: center;
-    justify-content: center;
-    /* justify-content: space-evenly; */
+    height: fit-content;
+    width: fit-content;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    place-content: center;
 
     @media (max-width: 1280px) {
       flex-flow: column;
