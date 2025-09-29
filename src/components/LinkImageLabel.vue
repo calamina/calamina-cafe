@@ -16,7 +16,7 @@ const { url, label, src, date } = defineProps<{
     </a>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 a {
     display: flex;
     flex-flow: row;
@@ -24,7 +24,6 @@ a {
     width: 100%;
     justify-content: start;
     flex-shrink: 1;
-    // background-color: var(--bg-darker0);
     border-radius: 0.5rem;
     padding-right: 0.5rem;
 

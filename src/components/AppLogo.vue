@@ -20,7 +20,7 @@
   </svg>
 </template>
 
-<style scoped lang='scss'>
+<style scoped>
 svg {
   height: fit-content;
   width: 100%;

@@ -21,7 +21,7 @@ const categs = Object.entries(tech).filter(entry => entry[0] !== "colors")
     </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .category {
     display: flex;
     align-items: baseline;

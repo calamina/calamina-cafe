@@ -13,7 +13,7 @@ const { links } = defineProps<{
     </div>
 </template>
 
-<style scoped lang="scss">
+<style scoped>
 div {
     width: fit-content;
     display: flex;

@@ -14,7 +14,7 @@ const { name, items } = defineProps<{
     </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .category {
     width: 100%;
     display: flex;
@@ -29,7 +29,6 @@ const { name, items } = defineProps<{
 
 .category-title {
     text-transform: capitalize;
-    // width: 12ch;
     width: fit-content;
     flex-shrink: 0;
     padding: 0.25rem 0.5rem 0.1rem;

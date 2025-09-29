@@ -25,7 +25,7 @@ import SocialsList from './SocialsList.vue';
     </footer>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 footer {
     max-width: var(--app-width);
     background-color: var(--bg-darker0);
@@ -128,8 +128,8 @@ footer {
     }
 
     .ascii {
-        // font-size: 0.25rem;
-        // line-height: 0.25rem;
+        /* font-size: 0.25rem; */
+        /* line-height: 0.25rem; */
         font-size: 1vw;
         line-height: 1vw;
         align-items: center;

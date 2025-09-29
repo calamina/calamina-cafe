@@ -54,7 +54,7 @@ watch(filters, () => {
     </div>
 </template>
 
-<style scoped lang='scss'>
+<style scoped>
 .wrapper {
     display: flex;
     align-items: end;
@@ -100,7 +100,6 @@ h3 {
         top: 0;
         content: ":";
         padding-right: 1rem;
-        // background-color: red;
     }
 }
 

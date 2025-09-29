@@ -25,7 +25,7 @@ const { name, url = null, tech, description, online = undefined } = defineProps<
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .info {
   display: flex;
   flex-flow: column;

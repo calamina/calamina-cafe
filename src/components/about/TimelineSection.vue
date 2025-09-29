@@ -19,7 +19,7 @@ const { moments } = defineProps<{
     </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .grid {
     width: fit-content;
 }
@@ -67,7 +67,6 @@ h3 {
     .grid {
         display: flex;
         flex-flow: column;
-        // gap: 1rem;
     }
 
     h3 {

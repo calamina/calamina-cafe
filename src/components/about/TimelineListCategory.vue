@@ -18,7 +18,7 @@ const toggle = () => toggled.value = !toggled.value
     </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .wrapper {
     border: 1px solid var(--bg-darker);
     border-left: none;

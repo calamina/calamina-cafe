@@ -66,7 +66,7 @@ const filteredProjects = computed(() =>
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .view {
   width: 100%;
   padding-bottom: 3rem;

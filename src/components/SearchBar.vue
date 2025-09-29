@@ -50,7 +50,7 @@ watch(results, () => results.value?.length ? activate() : deactivate())
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .search {
   display: flex;
   align-items: center;
@@ -64,7 +64,7 @@ input[type="search"] {
   height: 100%;
 }
 
-// TODO:: fix icon for smaller sizes
+/* TODO:: fix icon for smaller sizes */
 .icon {
   position: absolute;
   top: 0.65rem;

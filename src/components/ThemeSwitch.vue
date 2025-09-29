@@ -18,7 +18,8 @@ const { activate, deactivate, hasFocus } = useFocusTrap(themePicker)
 </script>
 <template>
   <div ref="themePicker" class="theme">
-    <button title="theme picker" class="theme-picker" :class="{ 'activetheme': hasFocus }" @click="activate()">
+    <button title="theme picker" class="theme-picker" :class="{ 'activetheme': hasFocus }"
+      @click="hasFocus ? deactivate() : activate()">
       <Icon :icon="IconMoon" />
     </button>
     <transition name="appear">
@@ -37,7 +38,7 @@ const { activate, deactivate, hasFocus } = useFocusTrap(themePicker)
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .theme {
   display: flex;
   position: relative;
@@ -67,7 +68,6 @@ const { activate, deactivate, hasFocus } = useFocusTrap(themePicker)
   z-index: 200;
   background-color: var(--bg-darker);
   position: absolute;
-  // top: 5rem;
   right: 0;
   display: flex;
   flex-flow: column;
@@ -78,7 +78,6 @@ const { activate, deactivate, hasFocus } = useFocusTrap(themePicker)
   padding-right: 0.5rem;
   top: 2.75rem;
   border-radius: 0.5rem;
-  // TODO::investigate :(
   width: 9rem;
 
   button {

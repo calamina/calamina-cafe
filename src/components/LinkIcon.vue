@@ -33,7 +33,7 @@ const iconComponent = icons.find(iconComponent => icon && iconComponent.__file?.
   </p>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 a,
 p {
   display: flex;

@@ -1,6 +1,6 @@
-@use './themes.scss';
-@use './reset.scss';
-@use './transitions.scss';
+@import './themes.css';
+@import './reset.css';
+@import './transitions.css';
 
 @font-face {
     font-family: 'Apercu';
@@ -31,8 +31,9 @@
 @media (max-width: 1280px) {
     * {
         font-size: 13px;
-        
-        &::after, &::before {
+
+        &::after,
+        &::before {
             font-size: 13px;
         }
     }
@@ -49,17 +50,14 @@ html {
     scrollbar-gutter: stable;
     scroll-padding-top: 5rem;
     scroll-behavior: smooth;
-    // transition: scrollbar-color 0.1s;
-    // transition-delay: 0.6s;
+    transition: scrollbar-color 0.1s;
+    transition-delay: 0.6s;
 }
 
 main {
     padding: 0 1rem;
 }
 
-// .hideScroll {
-//     scrollbar-color: var(--bg-darkest) var(--bg-darkest);
-// }
 
 a {
     display: inline-flex;
@@ -73,7 +71,6 @@ a {
     &:hover {
         outline: none;
         background-color: var(--highlight);
-        // text-decoration: underline;
     }
 }
 
@@ -149,7 +146,6 @@ h4,
 h5,
 pre {
     &::selection {
-        // color: red;
         background-color: var(--color-light);
     }
 }

@@ -35,7 +35,7 @@ const { index, path, next, prev, total, mobile } = defineProps<{
     </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .navigation {
     margin-top: auto;
     display: grid;

@@ -1,4 +1,4 @@
-// APPEAR
+/* APPEAR */
 .appear-enter-active,
 .appear-leave-active {
     transition: opacity 0.15s, transform 0.15s;
@@ -14,19 +14,19 @@
     transform: translateY(0.5rem);
 }
 
-// FADE
+/* FADE */
 .fade-enter-active,
 .fade-leave-active {
     transition: opacity 0.15s;
 }
 
-// .fade-enter-from,
+/* .fade-enter-from, */
 .fade-leave-to {
     opacity: 0;
 }
 
 
-// SLIDETORIGHT
+/* SLIDETORIGHT */
 .slideToRight-enter-active,
 .slideToRight-leave-active {
     transition: transform 0.2s, opacity 0.2s;
@@ -42,7 +42,7 @@
     opacity: 0;
 }
 
-// SLIDETOLEFT
+/* SLIDETOLEFT */
 .slideToLeft-enter-active,
 .slideToLeft-leave-active {
     transition: transform 0.2s, opacity 0.2s;

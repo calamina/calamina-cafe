@@ -13,7 +13,7 @@ const { project = undefined } = defineProps<{
   </transition>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .project {
   display: flex;
   align-items: center;
@@ -30,7 +30,7 @@ const { project = undefined } = defineProps<{
   border-radius: 0.5rem;
 }
 
-// TRANSITIONS
+/* TRANSITIONS */
 .sublink-enter-active,
 .sublink-leave-active {
   transition: opacity 0.2s ease, transform 0.2s ease;

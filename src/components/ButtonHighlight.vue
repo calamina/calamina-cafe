@@ -22,7 +22,7 @@ const bracketsSize = computed(() => { return { '--size': size ?? 20 + 'px' } })
         </div>
     </a>
 </template>
-<style scoped lang="scss">
+<style scoped>
 a {
     position: relative;
     width: 100%;

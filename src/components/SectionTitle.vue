@@ -16,7 +16,7 @@ const { name, icon } = defineProps<{
     </h2> -->
 </template>
 
-<style scoped lang="scss">
+<style scoped>
 h2 {
     width: 100%;
     font-size: 4rem;

@@ -28,7 +28,7 @@
 			</div> -->
 </template>
 
-<style scoped lang='scss'>
+<style scoped>
 pre {
   visibility: hidden;
   font-size: 1.5rem;

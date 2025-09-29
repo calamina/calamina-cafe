@@ -35,7 +35,7 @@ const lel = await getImage(project.name, project.type)
     </div>
   </a>
 </template>
-<style lang="scss" scoped>
+<style scoped>
 .project {
   position: relative;
   display: flex;
@@ -82,14 +82,12 @@ img {
 
 .info-data {
   display: flex;
+  gap: 0.5rem;
 }
 
 .name {
-  // line-height: 1rem;
   padding: 0 0.75rem;
   border-radius: 0.5rem;
-  // font-size: 1.5rem;
-  // line-height: 2rem;
   background-color: var(--bg-darker0);
   transition: padding 0.25s;
 }
@@ -109,7 +107,6 @@ img {
   display: flex;
   border-radius: 0.5rem;
   gap: 0.5rem;
-  // opacity: 0.6;
   align-items: center;
   background-color: var(--bg-darker0);
 

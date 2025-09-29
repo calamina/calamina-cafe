@@ -61,7 +61,7 @@ function exit() {
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .overlay {
   position: fixed;
   z-index: 50;

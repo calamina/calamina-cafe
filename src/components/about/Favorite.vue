@@ -22,7 +22,7 @@ const display = size && (size === "large" ? "gridtwo" : "gridthree");
   </div>
 </template>
 
-<style scoped lang="scss">
+<style scoped>
 .medias {
   display: flex;
   flex-flow: column;

@@ -43,7 +43,7 @@ const { moment } = defineProps<{
     </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 p,
 div {
     line-height: 1.4rem;
@@ -137,20 +137,15 @@ div {
     display: flex;
     flex-flow: column;
     width: 100%;
-    // gap: 1.5rem;
-    // padding: 1rem 1rem 0.75rem;
     border: 1px solid var(--bg-darker);
     border-radius: 0.5rem;
     background-color: var(--bg);
-    // background-color: var(--bg-light);
-
 }
 
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    // flex-flow: column;
     gap: 0.5rem;
     border-bottom: 1px solid var(--bg-darker);
     padding: 0.75rem;
@@ -191,7 +186,7 @@ div {
     gap: 0rem;
 }
 
-// DARK
+/* DARK */
 html.dark .moment {
 
     span,
@@ -204,11 +199,4 @@ html.dark .moment {
         opacity: 1;
     }
 }
-
-// MOBILE
-// @media (max-width: 1280px) {
-//     .moment {
-//         gap: 1.5rem;
-//         padding-top: 0;
-//     }
-// }</style>
+</style>

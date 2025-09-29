@@ -15,12 +15,11 @@ const { projects } = defineProps<{
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .projects {
   display: flex;
   flex-flow: column;
   gap: 2.5rem 2rem;
-  // align-items: center;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
   width: 100%;

@@ -6,7 +6,7 @@
   </div>
 </template>
 
-<style scoped lang="scss">
+<style scoped>
 div {
   display: flex;
   width: 100%;
@@ -14,7 +14,6 @@ div {
 }
 
 a {
-  // text-decoration: underline;
   background-color: var(--highlight);
   padding: 0 0.25rem;
   transition: padding 0.15s;

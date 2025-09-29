@@ -92,21 +92,16 @@
 </template>
 
 
-<style scoped lang="scss">
+<style scoped>
 pre {
   color: var(--color-light);
   display: block;
   display: flex;
   align-items: start;
   justify-content: center;
-  // justify-content: end;
   border-radius: 0.5rem;
   padding: 0.5rem;
-  // border: 2px solid var(--bg-darker0);
-  // background-color: var(--bg-darker0);
-  // background-color: var(--bg-darker);
   height: fit-content;
-  // width: fit-content;
   width: 100%;
   font-size: 12px;
   line-height: 10px;

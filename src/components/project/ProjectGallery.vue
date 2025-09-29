@@ -38,7 +38,7 @@ function focusImage(e: HTMLImageElement | null) {
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .wrapper {
   display: flex;
   flex-flow: column;

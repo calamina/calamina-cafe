@@ -8,7 +8,7 @@ const { name } = defineProps<{
   <h1>{{ name }}</h1>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 h1 {
   text-transform: capitalize;
   font-size: 3rem;

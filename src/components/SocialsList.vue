@@ -32,7 +32,7 @@ import IconYoutube from './Icons/IconYoutube.vue';
   </nav>
 </template>
 
-<style scoped lang="scss">
+<style scoped>
 nav {
   display: flex;
   flex-flow: column;
