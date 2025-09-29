@@ -80,7 +80,6 @@ const { index, path, next, prev, total, mobile } = defineProps<{
 .prev,
 .next,
 .empty {
-    // padding: 0.5rem;
     width: fit-content;
     width: 100%;
     height: 100%;
@@ -111,7 +110,6 @@ const { index, path, next, prev, total, mobile } = defineProps<{
 }
 
 .link-wrapper {
-    // width: 100%;
     border-radius: 0.5rem;
     overflow: hidden;
     height: 100%;
@@ -124,7 +122,6 @@ const { index, path, next, prev, total, mobile } = defineProps<{
 
 .mini {
     max-width: 14rem;
-    // max-width: 5rem;
     height: 100%;
     filter: grayscale(1);
     transition: filter 0.3s;
@@ -152,7 +149,6 @@ const { index, path, next, prev, total, mobile } = defineProps<{
     .empty .button {
         display: flex;
         flex-flow: column-reverse;
-        // max-width: 7rem;
         width: 100%;
         padding: 0;
         padding-bottom: 0.5rem

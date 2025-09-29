@@ -47,7 +47,7 @@ const { name, url = null, tech, description, online = undefined } = defineProps<
   transform: translateX(0);
 }
 
-// MEDIA QUERIES
+/* MEDIA QUERIES */
 @media (max-width: 1280px) {
   .info {
     height: auto;

@@ -53,15 +53,14 @@ function focusImage(e: HTMLImageElement | null) {
   display: grid;
   gap: 0.5rem;
   padding-top: 0;
-  // grid-template-columns: minmax(0px, 1fr);
   grid-template-columns: repeat(2, minmax(0px, 1fr));
 
-  // &:not(.mobile) *>:first-child {
+  /* &:not(.mobile) *>:first-child { */
   & *>:first-child {
     grid-column: span 2;
   }
 
-  // TODO:: fix second element not taking full space
+  /* TODO:: fix second element not taking full space */
   & *>button:nth-last-child(-n+2):first-child,
   & *>button:nth-last-child(-n+2):first-child~button {
     grid-column: span 2;

@@ -68,20 +68,13 @@ const medias = await query<Media>("nowMedia");
 			flex-flow: column;
 
 			p {
-				// font-size: 2rem;
-				// line-height: 2.25rem;
 				max-width: 90rem;
-				// text-align: center;
 				text-wrap: balance;
 
 				&:not(:last-of-type) {
 					padding-bottom: 2rem;
 				}
 			}
-
-			// p:first-of-type {
-			// 	text-indent: 50px;
-			// }
 		}
 
 		.content {
@@ -89,7 +82,6 @@ const medias = await query<Media>("nowMedia");
 			display: flex;
 			flex-flow: column;
 			align-items: start;
-			// padding-top: 2rem;
 			padding: 2rem 0 3rem;
 			gap: 4rem;
 			opacity: 1;

@@ -45,28 +45,28 @@ pre {
   }
 }
 
-// @keyframes catstart {
-// 	0% {
-// 		visibility: visible;
-// 	}
-// 	49% {
-// 		visibility: visible;
-// 	}
-// 	50% {
-// 		visibility: hidden;
-// 	}
-// }
-// @keyframes catend {
-// 	0% {
-// 		visibility: hidden;
-// 	}
-// 	49% {
-// 		visibility: hidden;
-// 	}
-// 	50% {
-// 		visibility: visible;
-// 	}
-// }
+/* @keyframes catstart {
+  0% {
+    visibility: visible;
+  }
+  49% {
+    visibility: visible;
+  }
+  50% {
+    visibility: hidden;
+  }
+}
+@keyframes catend {
+  0% {
+    visibility: hidden;
+  }
+  49% {
+    visibility: hidden;
+  }
+  50% {
+    visibility: visible;
+  }
+} */
 @keyframes catstart {
   0% {
     visibility: visible;
