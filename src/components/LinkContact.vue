@@ -15,6 +15,7 @@ div {
 
 a {
   background-color: var(--highlight);
+  color: var(--color-hover);
   padding: 0 0.25rem;
   transition: padding 0.15s;
 }

@@ -40,4 +40,8 @@ nav {
   gap: 0.5rem;
   gap: 0.25rem;
 }
+
+nav a:hover * {
+  color: var(--color-hover);
+}
 </style>

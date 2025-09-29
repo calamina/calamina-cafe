@@ -3,7 +3,8 @@
     --app-width: 100vw;
 
     /* COLORS */
-    --highlight: light-dark(#d6a7e2, hsl(173, 23%, 48%));
+    --highlight: light-dark(oklch(80% 0.1 320), oklch(60% 0.1 300));
+
     --red: #960843;
     --Grey-0: #ffffff;
     --Grey-50: #f9f6f6;
@@ -20,17 +21,18 @@
     /* THEMES */
     --color: light-dark(var(--Grey-1000), var(--Grey-500));
     --color-dim: light-dark(var(--Grey-600), var(--Grey-100));
-    --color-lightest: var(--Grey-100);
+    --color-lightest: light-dark(var(--Grey-100), var(--Grey-800));
     --color-light: light-dark(var(--Grey-500), var(--Grey-600));
+    --color-hover: light-dark(var(--color), var(--bg));
     --color-error: var(--red);
-    --bg: light-dark(var(--Grey-200), var(--Grey-800));
-    --bg-darker0: light-dark(var(--Grey-300), var(--Grey-700));
-    --bg-darker: light-dark(var(--Grey-400), var(--Grey-700));
+    --bg: light-dark(var(--Grey-200), #282424);
+    --bg-darker0: light-dark(var(--Grey-300), #322d2d);
+    --bg-darker: light-dark(var(--Grey-400), #484444);
     --bg-darkest: light-dark(var(--Grey-1000), var(--Grey-600));
-    --bg-light: light-dark(var(--Grey-100), var(--Grey-100));
-    --bg-lighter: light-dark(var(--Grey-50), var(--Grey-700));
+    --bg-light: light-dark(var(--Grey-100), #181414);
+    --bg-lighter: light-dark(var(--Grey-50), #141010);
     --border-color: light-dark(var(--Grey-200), var(--Grey-200));
-    --scroll-color: var(--Grey-500);
+    --scroll-color: light-dark(var(--Grey-500), var(--Grey-700));
 }
 
 html[data-theme="light"] {

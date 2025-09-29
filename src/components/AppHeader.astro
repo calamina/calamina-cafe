@@ -90,7 +90,7 @@ const list = projects.map((project: any) => ({
     padding: 0.25rem 1rem;
     gap: 0.15rem;
     background-color: var(--highlight);
-    // color: var(--bg);
+    color: var(--color-hover);
 
     &:hover {
       .logotext {
@@ -107,6 +107,7 @@ const list = projects.map((project: any) => ({
   .logotext {
     width: 1ch;
     overflow: hidden;
+    color: var(--color-hover);
     transition: width 0.25s;
   }
 

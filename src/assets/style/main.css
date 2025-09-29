@@ -70,6 +70,7 @@ a {
 
     &:hover {
         outline: none;
+        color: var(--color-hover);
         background-color: var(--highlight);
     }
 }

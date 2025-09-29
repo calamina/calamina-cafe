@@ -52,6 +52,7 @@ const lel = await getImage(project.name, project.type)
 
     & .name {
       background-color: var(--highlight);
+      color: var(--color-hover);
     }
   }
 }
