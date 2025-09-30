@@ -76,16 +76,17 @@ function draw(vector: THREE.Vector3, distance: number) {
   object.position.copy(posFixed)
 }
 
+const asciiTexture = createAsciiTexture();
+const material = asciiAndColorShader({
+  asciiTexture,
+  scene: renderTarget.texture
+})
+
 function addObjects() {
   const rows = Math.floor(510 / 8)
   const cols = Math.floor(510 / 8)
   const instances = rows * cols
   const size = 0.135
-
-  const material = asciiAndColorShader({
-    asciiTexture: asciiTexture(),
-    scene: renderTarget.texture
-  })
 
   const geometry = new THREE.PlaneGeometry(size, size, 1, 1)
   const positions = new Float32Array(instances * 3)
@@ -125,7 +126,7 @@ function addLights(scene: THREE.Scene) {
   light2.position.set(1, 1, 0.866)
 }
 
-const asciiTexture = () => {
+function createAsciiTexture() {
   const canvas = document.createElement('canvas')
   const ctx = canvas.getContext('2d')
   canvas.width = length * 64
