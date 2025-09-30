@@ -67,7 +67,7 @@ function exit() {
   z-index: 50;
   top: 0;
   left: 0;
-  height: 100vh;
+  height: 100dvh;
   width: 100vw;
   background-color: var(--bg-darker);
   padding: 0.5rem;

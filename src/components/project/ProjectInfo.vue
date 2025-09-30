@@ -30,7 +30,7 @@ const { name, url = null, tech, description, online = undefined } = defineProps<
   display: flex;
   flex-flow: column;
   gap: 0.25rem;
-  height: calc(100vh - 5rem);
+  height: calc(100dvh - 5rem);
   flex: 1;
   grid-column-start: 1;
   grid-column-end: 5;
