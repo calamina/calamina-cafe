@@ -11,7 +11,7 @@ const jobs = await query<Moment>("jobs");
 const moments: TypedMoment[] = [
   ...jobs.map((job) => ({ ...job, type: MomentType.JOB })),
   // ...studies.map((study) => ({ ...study, type: MomentType.STUDIES })),
-].sort((a, b) => b.date.getMilliseconds() - a.date.getMilliseconds());
+].sort((a, b) => b.date.getTime() - a.date.getTime());
 ---
 
 <div class="timeline">

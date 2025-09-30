@@ -45,18 +45,6 @@ const filteredProjects = computed(() =>
   //   }
   // })
 )
-
-// github api call to check date /!\ STANDBY : restricted API call count aeugh
-// onMounted(() => {
-//   filteredProjects.value.map(async project => {
-//     if (project.git) {
-//     const git = await fetch("https://api.github.com/repos/calamina/" + (project.git || project.name))
-//     const res = await git.json()
-//     project.updated = res?.updated_at
-//     }
-//     console.debug(project.git, project.updated)
-//   })
-// })
 </script>
 
 <template>
