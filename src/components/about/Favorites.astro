@@ -1,7 +1,8 @@
 ---
 import type { Media } from "../../models/Media";
+import type { MediaList } from "../../models/MediaList";
 import { query } from "../../utils/utils.ts";
-import Favorite from "./Favorite.astro";
+import Favorite from "./Favorite.vue";
 
 const movies = await query<Media>("favMovies");
 const moviesAnimated = await query<Media>("favMoviesAnimated");
@@ -11,18 +12,32 @@ const seriesAnimated = await query<Media>("favSeriesAnimated");
 const books = await query<Media>("favBooks");
 const booksVisual = await query<Media>("favBooksVisual");
 const games = await query<Media>("favGames");
+
+const list: MediaList[] = [
+  { title: "Movies", medias: movies, toggled: true },
+  { title: "Animated movies", medias: moviesAnimated },
+  { title: "Short movies", medias: moviesShort },
+  { title: "Series", medias: series },
+  { title: "Animated series", medias: seriesAnimated, size: "large" },
+  { title: "Books", medias: books },
+  { title: "Graphic novels / Comics", medias: booksVisual, size: "large" },
+  { title: "Games", medias: games, size: "full" },
+];
 ---
 
 <h2>₊˚⊹♡</h2>
 <div class="grid">
-  <Favorite title="Movies" medias={movies} />
-  <Favorite title="Animated movies" medias={moviesAnimated} />
-  <Favorite title="Short movies" medias={moviesShort} />
-  <Favorite title="Series" medias={series} />
-  <Favorite title="Animated series" medias={seriesAnimated} size="large" />
-  <Favorite title="Books" medias={books} />
-  <Favorite title="Graphic novels / Comics" medias={booksVisual} size="large" />
-  <Favorite title="Games" medias={games} size="full" />
+  {
+    list.map((elt) => (
+      <Favorite
+        title={elt.title}
+        medias={elt.medias}
+        size={elt.size}
+        toggled={elt.toggled}
+        client:visible
+      />
+    ))
+  }
 </div>
 
 <style scoped>
