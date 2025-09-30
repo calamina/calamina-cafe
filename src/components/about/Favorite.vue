@@ -1,27 +1,35 @@
 <script setup lang="ts">
 import LinkImageLabel from "../LinkImageLabel.vue";
-import type { Media } from "../../models/Media";
 import { ref } from "vue";
 
-const { medias, title, size } = defineProps<{
-  title: string,
-  medias: Media[],
-  size?: 'large' | 'full'
-}>();
+type MediaList = {
+  title: string;
+  medias: {
+    id: string;
+    url: string;
+    label: string;
+    src: string;
+    type?: string | undefined;
+  }[];
+  toggled?: boolean | undefined;
+  size?: "large" | "full" | undefined;
+}
 
-const active = ref(false)
+
+const { medias, title, size, toggled } = defineProps<MediaList>();
+const active = ref(toggled ?? false)
 const toggle = () => active.value = !active.value
 </script>
 
 <template>
   <div class="wrapper" :class="{ large: size === 'large', full: size === 'full' }">
-    <div class="header">
+    <button class="header" @click="toggle()">
       <h3>{{ title }}</h3>
       <div class="action">
-        <button @click="toggle()">toggle</button>
+        <!-- <button @click="toggle()">toggle</button> -->
         <span>{{ medias.length }}</span>
       </div>
-    </div>
+    </button>
     <div class="medias" :class="{ 'active': active }">
       <LinkImageLabel v-for="media in medias" :url="media.url" :label="media.label">
         <img :src="media.src" :alt="media.label + 'cover'" width=50 height=50>
@@ -48,7 +56,7 @@ const toggle = () => active.value = !active.value
   gap: 0.5rem;
   width: 100%;
   padding: 0.5rem;
-  padding-top: 0;
+  /* padding-top: 0; */
   overflow: hidden;
   transition: max-height 0.2s, padding 0.2s;
 
@@ -61,7 +69,7 @@ const toggle = () => active.value = !active.value
     @media (max-width: 1280px) {
       max-height: 40rem;
       padding: 0.5rem;
-      padding-top: 0;
+      /* padding-top: 0; */
     }
   }
 }
@@ -109,6 +117,19 @@ const toggle = () => active.value = !active.value
   gap: 0.5rem;
   transition: border-bottom 0.2s;
   border-bottom: 0px solid transparent;
+  background-color: transparent;
+
+
+  &:hover {
+    background-color: var(--bg-darker0);
+
+    @media (min-width: 1280px) {
+      background-color: transparent;
+    }
+
+    /* background-color: transparent; */
+  }
+
   /* 
   @media (max-width: 1280px) {
     border-bottom: 0px solid transparent;

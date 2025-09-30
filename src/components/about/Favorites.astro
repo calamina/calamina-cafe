@@ -1,5 +1,6 @@
 ---
 import type { Media } from "../../models/Media";
+import type { MediaList } from "../../models/MediaList";
 import { query } from "../../utils/utils.ts";
 import Favorite from "./Favorite.vue";
 
@@ -12,15 +13,15 @@ const books = await query<Media>("favBooks");
 const booksVisual = await query<Media>("favBooksVisual");
 const games = await query<Media>("favGames");
 
-const list: { name: string; list: Media[]; size?: "large" | "full" }[] = [
-  { name: "Movies", list: movies },
-  { name: "Animated movies", list: moviesAnimated },
-  { name: "Short movies", list: moviesShort },
-  { name: "Series", list: series },
-  { name: "Animated series", list: seriesAnimated, size: "large" },
-  { name: "Books", list: books },
-  { name: "Graphic novels / Comics", list: booksVisual, size: "large" },
-  { name: "Games", list: games, size: "full" },
+const list: MediaList[] = [
+  { title: "Movies", medias: movies, toggled: true },
+  { title: "Animated movies", medias: moviesAnimated },
+  { title: "Short movies", medias: moviesShort },
+  { title: "Series", medias: series },
+  { title: "Animated series", medias: seriesAnimated, size: "large" },
+  { title: "Books", medias: books },
+  { title: "Graphic novels / Comics", medias: booksVisual, size: "large" },
+  { title: "Games", medias: games, size: "full" },
 ];
 ---
 
@@ -29,9 +30,10 @@ const list: { name: string; list: Media[]; size?: "large" | "full" }[] = [
   {
     list.map((elt) => (
       <Favorite
-        title={elt.name}
-        medias={elt.list}
+        title={elt.title}
+        medias={elt.medias}
         size={elt.size}
+        toggled={elt.toggled}
         client:visible
       />
     ))
