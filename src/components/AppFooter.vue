@@ -100,6 +100,16 @@ footer {
     }
 }
 
+@media (max-width: 1500px) {
+    footer {
+        gap: 0.5rem;
+    }
+
+    .ascii {
+        font-size: 0.75vw;
+    }
+}
+
 @media (max-width: 1280px) {
     footer {
         display: flex;

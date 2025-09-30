@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { Project } from '../../models/Project';
 
-
 const { tech } = defineProps<{
     tech: Project["tech"],
 }>()
@@ -53,6 +52,7 @@ const categs = Object.entries(tech).filter(entry => entry[0] !== "colors")
     background-color: var(--bg-darker);
     padding: 0 0.5rem;
     border-radius: 0.5rem;
+    color: var(--color-hover);
 }
 
 html.dark .tag {

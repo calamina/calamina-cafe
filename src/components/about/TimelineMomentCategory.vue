@@ -45,9 +45,9 @@ const { name, items } = defineProps<{
 .tag {
     display: inline-block;
     position: relative;
-    color: var(--color);
     padding: 0.25rem 0.5rem 0.1rem;
     border-radius: 0.5rem;
+    color: var(--color-hover);
 }
 
 .tools {
