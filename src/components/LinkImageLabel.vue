@@ -1,18 +1,14 @@
 <script setup lang='ts'>
-const { url, label, src, date } = defineProps<{
+const { url, label } = defineProps<{
     url: string;
     label: string;
-    src: string;
-    date?: string;
 }>()
 </script>
 
 <template>
     <a :href=url target="_blank">
         <slot />
-        <div>
-            <p>{{ label }}</p>
-        </div>
+        <p>{{ label }}</p>
     </a>
 </template>
 
@@ -30,37 +26,15 @@ a {
     &:hover {
         background-color: var(--highlight);
 
-        span {
-            color: var(--color);
-            opacity: 0.4;
+        p {
+            color: var(--color-hover);
         }
     }
-}
-
-div {
-    display: flex;
-    flex-flow: column;
-    line-height: 1.25rem;
-    width: fit-content;
-    overflow: hidden;
-    flex-shrink: 1;
 }
 
 p {
     text-overflow: ellipsis;
     text-wrap: nowrap;
     overflow: hidden;
-}
-
-span {
-    color: var(--color-light);
-}
-
-.dark a:hover {
-    background-color: var(--bg-darker0);
-
-    p {
-        color: var(--highlight);
-    }
 }
 </style>

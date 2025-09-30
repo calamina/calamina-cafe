@@ -6,6 +6,9 @@
 hey :)
 
 # DOING
+
+- add minis back, images are too big for project list
+
 - fix css var names !
 - fix projects next/previous -> adapt to current sort order
 - swap to TOML (aergh)

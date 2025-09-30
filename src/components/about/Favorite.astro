@@ -12,18 +12,20 @@ export interface Props {
 const { medias, title, size } = Astro.props;
 
 const span = size && (size === "large" ? "large" : "full");
-const display = size && (size === "large" ? "gridtwo" : "gridthree");
 ---
 
 <div class="wrapper" class:list={[span]}>
   <div class="header">
     <h3>{title}</h3>
-    <span>{medias.length}</span>
+    <div>
+      <button onclick="test">youpi</button>
+      <span>{medias.length}</span>
+    </div>
   </div>
-  <div class="medias" class:list={[display]}>
+  <div class="medias">
     {
       medias.map((media) => (
-        <LinkImageLabel url={media.url} label={media.label} src={media.src}>
+        <LinkImageLabel url={media.url} label={media.label}>
           <Image
             src={media.src}
             alt={media.label + " cover"}
@@ -46,6 +48,46 @@ const display = size && (size === "large" ? "gridtwo" : "gridthree");
 
     @media (max-width: 1280px) {
       grid-column: span 3;
+    }
+  }
+
+  .medias {
+    display: flex;
+    flex-flow: column;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.5rem;
+  }
+
+  .large {
+    grid-column: span 2;
+
+    .medias {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @media (max-width: 1280px) {
+      grid-column: span 2;
+      .medias {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+
+  .full {
+    grid-column: span 3;
+
+    .medias {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+
+      @media (max-width: 1280px) {
+        grid-column: span 2;
+        .medias {
+          grid-template-columns: 1fr;
+        }
+      }
     }
   }
 
@@ -90,39 +132,5 @@ const display = size && (size === "large" ? "gridtwo" : "gridthree");
     height: 2.5rem;
     width: 2.5rem;
     flex-shrink: 0;
-  }
-
-  .medias {
-    display: flex;
-    flex-flow: column;
-    gap: 0.5rem;
-    width: 100%;
-    padding: 0.5rem;
-
-    &.gridtwo {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    &.gridthree {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-  }
-
-  .large {
-    grid-column: span 2;
-
-    @media (max-width: 1280px) {
-      grid-column: 1;
-    }
-  }
-
-  .full {
-    grid-column: span 3;
-
-    @media (max-width: 1280px) {
-      grid-column: 1;
-    }
   }
 </style>
