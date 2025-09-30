@@ -32,7 +32,7 @@ const { moment } = defineProps<{
                 <!-- <LinkIcon label="Akuiteo" v-if="moment.url" :url="moment.url" /> -->
             </div>
             <p class="desc">{{ moment.desc }}</p>
-            <TimelineListCategory v-if="moment.skills" :items="moment.skills" />
+            <TimelineListCategory v-if="moment.skills?.length" :items="moment.skills" />
             <div class="categories">
                 <TimelineMomentCategory v-if="moment.languages" name="languages" :items="moment.languages" />
                 <TimelineMomentCategory v-if="moment.tools" name="tools" :items="moment.tools" />
@@ -59,7 +59,6 @@ div {
     border-radius: 0.5rem;
     padding: 0.5rem;
     display: grid;
-    gap: 0;
     grid-template-columns: 6ch 1.5rem auto;
 
     &:has(.date.now) {
@@ -175,7 +174,7 @@ div {
 }
 
 .desc {
-    padding: 1.25rem 1.25rem;
+    padding: 1.25rem 1.25rem 0.5rem;
     text-wrap: balance;
 }
 

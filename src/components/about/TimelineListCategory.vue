@@ -20,12 +20,9 @@ const toggle = () => toggled.value = !toggled.value
 
 <style scoped>
 .wrapper {
-    border: 1px solid var(--bg-darker);
-    border-left: none;
-    border-right: none;
     display: flex;
     flex-flow: column;
-    padding: 0.4rem 0 0.75rem;
+    padding-bottom: 0.75rem;
     gap: 0.4rem;
 }
 
@@ -33,13 +30,12 @@ button {
     display: grid;
     place-content: center;
     border: 1px solid var(--bg-darker);
-    background-color: var(--bg-darker0);
+    /* background-color: var(--bg-darker0); */
     width: fit-content;
     padding: 0 2rem;
     height: 1.5rem;
     border-radius: 0.5rem;
-    margin-left: 2.25rem;
-    margin-left: 0.5rem;
+    margin-left: 0.75rem;
 }
 
 .list {
@@ -47,7 +43,7 @@ button {
     flex-flow: column;
     gap: 0rem;
     padding: 0 0.5rem 0;
-    max-height: 15rem;
+    max-height: 20rem;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
 

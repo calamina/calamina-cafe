@@ -20,12 +20,4 @@ tools = [
   "Gitlab",
   "Jenkins",
 ]
-skills = [
-  "Maintenance days",
-  "Technical debt handling",
-  "Agile SCRUM Development, peer-programming, internal and customer demos",
-  "UI / UX propositions, existing components and services refactors",
-  "Unit and functional tests, API performance tests",
-  "Code review and production of technical documentation",
-  "Framework, libraries, and dependencies updates and maintaining",
-]
+skills = []
