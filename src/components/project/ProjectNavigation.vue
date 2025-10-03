@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { Project } from '../../models/Project';
-import ButtonHighlight from '../ButtonHighlight.vue';
 import Icon from '../Icon.vue';
 import IconArrowLeft from '../Icons/IconArrowLeft.vue';
 import IconArrowRight from '../Icons/IconArrowRight.vue';

@@ -2,9 +2,9 @@ import { getCollection, getEntry, type CollectionEntry, type CollectionKey } fro
 import type { Project } from "../models/Project";
 import type { ProjectCollection } from "./enum";
 
-export const getSurroundingProjects = (index: number, projects: CollectionEntry<ProjectCollection>[]): { prev: Project; next: Project } => ({
-  prev: projects[index - 1]?.data ?? null,
-  next: projects[index + 1]?.data ?? null,
+export const getSurroundingProjects = (index: number, projects: Project[]): { prev: Project; next: Project } => ({
+  prev: projects[index - 1] ?? null,
+  next: projects[index + 1] ?? null,
 });
 
 export const getPaths = async (collection: ProjectCollection): Promise<{ params: { project: string } }[]> => {

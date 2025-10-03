@@ -6,29 +6,22 @@
 hey :)
 
 # DOING
-
 - add minis back, images are too big for project list
-
 - fix css var names !
-- fix projects next/previous -> adapt to current sort order
 - swap to TOML (aergh)
 - polish about !
 
 # TODO
-- add stuff to home :)))
-- fix dark theme still flashing 
-
+- add stuff to home :)
 - check todos in code :)
 - refacto css variables (radius / gaps / etc) // clean themes
 - fix ascii rendering ? (font aliasing) + webgl fallback
 
 # DATA
 - add github info (https://api.github.com/repos/calamina/words) /!\ STANDBY : API calls restriction
+- maybe add sort by name again and update navigation but maybe not worth 
 - take new screens (same resolution)
-- add tools ? (flow / sites css ?)
-- WRITE HOME
-  - add last projects
-  - add link to now ?
+- add tools ? (flow launcher config / sites css ?)
 - fix & complete projects (aerg)
 - complete about
 - proper alt on images / proper images (highlights, etc)

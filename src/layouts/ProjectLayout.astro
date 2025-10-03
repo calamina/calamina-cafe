@@ -19,38 +19,23 @@ const { project, type } = Astro.props;
 const path = `/projects/${type.toLowerCase()}/`;
 const collection: ProjectCollection = ProjectCollection[type];
 
-const projects = await getCollection(collection);
+const projects = await getCollection(collection).then((collection) =>
+  collection
+    .map((entries) => entries.data)
+    .sort((a, b) => (b.updated?.getTime() ?? 0) - (a.updated?.getTime() ?? 0)),
+);
 const { name, url, tech, description, online } =
   (await queryOne<Project>(collection, project)) ?? {};
 
 const total = projects.length;
-const index = projects.findIndex((p) => p.data.name === name);
+const index = projects.findIndex((p) => p.name === name);
 const { prev, next } = getSurroundingProjects(index, projects);
 
 const images = getProjectImages(type, project);
 ---
 
-<!-- TODO :: WIP TOUCH --><!-- <script>
-  let x0: number | null = null;
-  const unify = (e: any) => (e.changedTouches ? e.changedTouches[0] : e);
-  const lock = (e: any) => (x0 = unify(e).clientX);
-
-  document.addEventListener("touchstart", lock, false);
-  document.addEventListener("touchmove", (e) => e.preventDefault(), false);
-  document.addEventListener("touchend", move, false);
-
-  async function move(e: any) {
-    if (x0 || x0 === 0) {
-      let dx = unify(e).clientX - x0;
-      let s = Math.sign(dx);
-      if (s < 0) window.location.assign("netstart");
-      if (s > 0) window.location.assign("atlast");
-      x0 = null;
-    }
-  }
-</script> -->
 <MainLayoutFooterless>
-  <div class="project" data-touch={{ total, path, prev, next }}>
+  <div class="project">
     <ProjectInfo
       name={name}
       url={url}
