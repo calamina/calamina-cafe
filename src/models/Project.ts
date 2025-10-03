@@ -2,7 +2,7 @@ import { z } from 'astro:content';
 
 export const ProjectSchema = z.object({
     created: z.date().optional(),
-    updated: z.string().optional(),
+    updated: z.date().optional(),
     name: z.string(),
     // git: z.string().optional(),
     url: z.string().optional(),

@@ -21,8 +21,13 @@ export const query = async <T>(collection: CollectionKey) =>
 export const queryOne = async <T>(collection: CollectionKey, slug: string) =>
   getEntry(collection, slug)?.then(results => results?.data as T);
 
-export const queryLast = async <T>(collection: CollectionKey) =>
-  getCollection(collection)?.then(results => results[0]?.data as T);
+export const queryLastProject = async (collection: ProjectCollection) =>
+  getCollection(collection).then(results => results
+    ?.map(result => result.data)
+    ?.filter(project => project.updated)
+    ?.sort((a, b) => b.updated!.getTime() - a.updated!.getTime())
+    ?.[0]
+  );
 
 export const queryFilter = async <T>(collection: CollectionKey, filterFunction: Function) =>
   getCollection(collection, filterFunction())?.then(results => results as T);
