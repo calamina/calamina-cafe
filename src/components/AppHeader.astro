@@ -1,9 +1,10 @@
 ---
-import { query } from "../utils/utils";
+import { queryWebProjects } from "../utils/utils";
 import AppHeaderProject from "./AppHeaderProject.vue";
 import SearchBar from "./SearchBar.vue";
 import ThemeSwitch from "./ThemeSwitch.vue";
-import { ProjectCollection } from "../utils/enum";
+import { ProjectType } from "../utils/enum";
+import type { TypedProject } from "../models/Types";
 
 const { project } = Astro.params;
 const route = Astro.originPathname;
@@ -20,13 +21,16 @@ const activeRoute = (): ROUTES => {
   return ROUTES.home;
 };
 
-const webprojects = await query(ProjectCollection.WEB);
-const phoneprojects = await query(ProjectCollection.PHONE);
-const projects = [...webprojects, ...phoneprojects];
-const list = projects.map((project: any) => ({
+// const webprojects = await query(ProjectCollection.WEB);
+// const phoneprojects = await query(ProjectCollection.PHONE);
+// const projects = [...webprojects, ...phoneprojects];
+const projects = await queryWebProjects();
+const list = projects.map((project: TypedProject) => ({
   name: project.name,
   desc: project.description,
-  url: (project.url ? "/projects/web/" : "/projects/phone/") + project.name,
+  url:
+    (project.type === ProjectType.WEB ? "/projects/web/" : "/projects/phone/") +
+    project.name,
 }));
 ---
 

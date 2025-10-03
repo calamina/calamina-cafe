@@ -1,7 +1,4 @@
 name: "planet"
-url: "https://planet.calamina.cafe"
-updated: "2024-08-03"
-online: true
 tech:
   tools:
   - 'threejs'

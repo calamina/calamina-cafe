@@ -1,7 +1,4 @@
 name: "mosatype"
-url: "https://mosatype.calamina.cafe"
-updated: "2025-09-04"
-online: true
 tech:
   tools:
   - "vite"

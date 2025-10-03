@@ -1,15 +1,14 @@
 ---
 import MainLayoutFooterless from "../layouts/MainLayoutFooterless.astro";
-import type { Project } from "../models/Project";
 import ProjectInfo from "../components/project/ProjectInfo.vue";
 import ProjectGallery from "../components/project/ProjectGallery.vue";
 import { Image } from "astro:assets";
 import ButtonImage from "../components/ButtonImage.vue";
-import { getCollection } from "astro:content";
 import ProjectNavigation from "../components/project/ProjectNavigation.vue";
-import { queryOne, getSurroundingProjects } from "../utils/utils.ts";
+import { getSurroundingProjects, queryProject } from "../utils/utils.ts";
 import { isVerticalImage, getProjectImages } from "../utils/images";
-import { ProjectCollection, ProjectType } from "../utils/enum";
+import { ProjectType } from "../utils/enum";
+import { queryWebProjects } from "../utils/utils.ts";
 
 export interface Props {
   project: string;
@@ -17,46 +16,25 @@ export interface Props {
 }
 const { project, type } = Astro.props;
 const path = `/projects/${type.toLowerCase()}/`;
-const collection: ProjectCollection = ProjectCollection[type];
 
-const projects = await getCollection(collection);
-const { name, url, tech, description, online } =
-  (await queryOne<Project>(collection, project)) ?? {};
+const projects = await queryWebProjects();
+const { name, tech, description, homepage } =
+  (await queryProject(project)) ?? {};
 
 const total = projects.length;
-const index = projects.findIndex((p) => p.data.name === name);
+const index = projects.findIndex((p) => p.name === name);
 const { prev, next } = getSurroundingProjects(index, projects);
 
 const images = getProjectImages(type, project);
 ---
 
-<!-- TODO :: WIP TOUCH --><!-- <script>
-  let x0: number | null = null;
-  const unify = (e: any) => (e.changedTouches ? e.changedTouches[0] : e);
-  const lock = (e: any) => (x0 = unify(e).clientX);
-
-  document.addEventListener("touchstart", lock, false);
-  document.addEventListener("touchmove", (e) => e.preventDefault(), false);
-  document.addEventListener("touchend", move, false);
-
-  async function move(e: any) {
-    if (x0 || x0 === 0) {
-      let dx = unify(e).clientX - x0;
-      let s = Math.sign(dx);
-      if (s < 0) window.location.assign("netstart");
-      if (s > 0) window.location.assign("atlast");
-      x0 = null;
-    }
-  }
-</script> -->
 <MainLayoutFooterless>
-  <div class="project" data-touch={{ total, path, prev, next }}>
+  <div class="project">
     <ProjectInfo
       name={name}
-      url={url}
+      url={homepage}
       tech={tech}
       description={description}
-      online={online}
     >
       <ProjectNavigation
         index={index}

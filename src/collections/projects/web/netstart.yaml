@@ -1,7 +1,4 @@
 name: "netstart"
-url: "https://net.calamina.cafe"
-updated: "2024-08-03"
-online: true
 tech:
   tools:
   - 'vue'

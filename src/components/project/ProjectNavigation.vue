@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import type { Project } from '../../models/Project';
-import ButtonHighlight from '../ButtonHighlight.vue';
+import type { TypedProject } from '../../models/Types';
 import Icon from '../Icon.vue';
 import IconArrowLeft from '../Icons/IconArrowLeft.vue';
 import IconArrowRight from '../Icons/IconArrowRight.vue';
@@ -8,8 +7,8 @@ import IconArrowRight from '../Icons/IconArrowRight.vue';
 const { index, path, next, prev, total, mobile } = defineProps<{
     index: number
     path: string
-    next: Project | null
-    prev: Project | null
+    next: TypedProject | null
+    prev: TypedProject | null
     total: number
     mobile?: boolean
 }>()
@@ -17,7 +16,7 @@ const { index, path, next, prev, total, mobile } = defineProps<{
 
 <template>
     <div class="navigation" :class="{ 'mobile': mobile }">
-        <div :key="prev?.url" class="prev">
+        <div :key="prev?.homepage" class="prev">
             <a class="button" :href="prev ? path + prev?.name : '/projects'">
                 <Icon :icon="IconArrowLeft" size="1.5rem" />
                 <h2>{{ prev?.name ?? 'back to projects' }}</h2>
@@ -26,7 +25,7 @@ const { index, path, next, prev, total, mobile } = defineProps<{
 
         <p class="id">{{ index + 1 }} / {{ total }}</p>
 
-        <div :key="next?.url" class="next">
+        <div :key="next?.homepage" class="next">
             <a class="button" :href="next ? path + next?.name : '/projects'">
                 <h2>{{ next?.name ?? 'back to projects' }}</h2>
                 <Icon :icon="IconArrowRight" size="1.5rem" />

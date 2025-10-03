@@ -1,7 +1,4 @@
 name: "flora"
-url: "https://flora.calamina.cafe"
-updated: "2024-12-03"
-online: true
 tech:
   tools:
   - 'vue'

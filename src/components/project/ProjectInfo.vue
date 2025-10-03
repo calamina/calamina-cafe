@@ -4,19 +4,18 @@ import LinkIcon from '../LinkIcon.vue';
 import ProjectName from './ProjectName.vue';
 import ProjectTech from './ProjectTech.vue';
 
-const { name, url = null, tech, description, online = undefined } = defineProps<{
+const { name, url = null, tech, description } = defineProps<{
   name: string | undefined
   tech: Project["tech"] | undefined
   description: string[] | undefined
   url?: string | undefined
-  online?: boolean | undefined
 }>()
 </script>
 
 <template>
   <div class="info">
     <ProjectName v-if="name" :name />
-    <LinkIcon v-if="url" :url="url" :online="online" />
+    <LinkIcon v-if="url" :url="url" :online="!!url" />
     <div class="description">
       <p v-for="line of description">{{ line }}</p>
     </div>

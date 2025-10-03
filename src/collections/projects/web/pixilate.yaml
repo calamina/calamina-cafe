@@ -1,7 +1,4 @@
 name: "pixilate"
-url: "https://pixilate.calamina.cafe"
-updated: "2024-04-21"
-online: true
 tech:
   tools:
   - 'p5js'

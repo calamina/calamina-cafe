@@ -21,13 +21,13 @@ const lel = await getImage(project.name, project.type)
       <div class="info-header">
         <p class="name"> {{ project.name }} </p>
         <div class="info-data">
-          <p class="date" v-if="project.updated">
+          <p class="date" v-if="project.updated_at || project.created_at">
             <Icon :icon="IconUpdate" size="0.9rem" />
-            {{ useTimeAgo(project.updated) }}
+            {{ useTimeAgo(project.updated_at || project.created_at || 0) }}
           </p>
-          <div v-if="project.type === ProjectType.WEB" class="status" :class="{ 'online': project.online }">
-            <p> {{ project.online ? "online" : "offline" }} </p>
-            <div class="status-indicator" inert :class="{ 'online': project.online }" />
+          <div v-if="project.type === ProjectType.WEB" class="status" :class="{ 'online': project.homepage }">
+            <p> {{ project.homepage ? "online" : "offline" }} </p>
+            <div class="status-indicator" inert :class="{ 'online': project.homepage }" />
           </div>
         </div>
       </div>

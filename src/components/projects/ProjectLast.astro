@@ -1,17 +1,12 @@
 ---
-import type { Project } from "../../models/Project";
-import { ProjectCollection, ProjectType } from "../../utils/enum";
-import { queryLast } from "../../utils/utils";
+import { queryLastProject } from "../../utils/utils";
 import ProjectsGridProject from "./ProjectsGridProject.vue";
 
-const lastProject = {
-  ...(await queryLast<Project>(ProjectCollection.WEB)),
-  type: ProjectType.WEB,
-};
+const lastProject = await queryLastProject();
 ---
 
 <div>
-  <h2>Last project :</h2>
+  <h2>Last (updated) project :</h2>
   <ProjectsGridProject project={lastProject} />
 </div>
 

@@ -1,7 +1,4 @@
 name: "atlast"
-url: "https://atlast.calamina.cafe"
-updated: "2025-09-01"
-online: true
 tech:
   tools:
   - "vue"

@@ -1,6 +1,4 @@
 name: "perpetua"
-url: "https://perpetua.calamina.cafe"
-online: false
 tech:
   languages:
   - 'html'
