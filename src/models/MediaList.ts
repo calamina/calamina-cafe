@@ -1,7 +1,7 @@
-import { z } from 'zod';
+import { z } from 'astro:content';
 import { MediaSchema } from './Media';
 
-export const MediaListSchema = z.object({
+const MediaListSchema = z.object({
   title: z.string(),
   medias: z.array(MediaSchema),
   toggled: z.boolean().optional(),

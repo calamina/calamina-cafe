@@ -1,4 +1,4 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
 import { file, glob } from 'astro/loaders';
 import { LinkSchema } from './models/Link';
 import { MediaSchema } from './models/Media';

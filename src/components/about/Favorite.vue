@@ -15,7 +15,6 @@ type MediaList = {
   size?: "large" | "full" | undefined;
 }
 
-
 const { medias, title, size, toggled } = defineProps<MediaList>();
 const active = ref(toggled ?? false)
 const toggle = () => active.value = !active.value

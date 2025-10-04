@@ -3,36 +3,42 @@
 </script>
 
 <template>
-  <!-- <div style="position: relative; height: 9rem">
-				<pre>
+  <div>
+    <pre>
  |\_|\   .
 ( ᵔ.ᵔ )  )
  > ~ &lt;  /
 /  #  \(
 \_Y—Y_/—°
 </pre>
-				<pre>
+    <pre>
  /\_/\  .
 ( ᵔ.ᵔ ) |
  > ~ &lt;  |
 /  #  \ |
 \_Y—Y_/—°
 </pre>
-				<pre>
+    <pre>
  /|_/| .
 ( ᵔ.ᵔ )(
  > ~ &lt;  \
 /  #  \  )
 \_Y—Y_/—°
 </pre>
-			</div> -->
+  </div>
 </template>
 
 <style scoped>
+div {
+  position: relative;
+  height: 6rem;
+}
+
 pre {
   visibility: hidden;
-  font-size: 1.5rem;
-  line-height: 1.75rem;
+  font-size: 1rem;
+  color: var(--color-light);
+  line-height: 1rem;
   position: absolute;
   animation: 1s cat infinite;
 

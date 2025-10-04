@@ -8,10 +8,9 @@ import { MomentType } from "../utils/enum";
 const jobs = await query<Moment>("jobs");
 // const studies = await query<Moment>("studies");
 
-const moments: TypedMoment[] = [
-  ...jobs.map((job) => ({ ...job, type: MomentType.JOB })),
-  // ...studies.map((study) => ({ ...study, type: MomentType.STUDIES })),
-].sort((a, b) => b.date.getTime() - a.date.getTime());
+const moments: TypedMoment[] = jobs
+  .map((job) => ({ ...job, type: MomentType.JOB }))
+  .sort((a, b) => b.date.getTime() - a.date.getTime());
 ---
 
 <div class="timeline">
