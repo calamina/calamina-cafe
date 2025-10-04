@@ -1,6 +1,4 @@
 name: "fatcat"
-url: "https://fatcat.calamina.cafe"
-online: false
 tech:
   languages:
   - 'html'

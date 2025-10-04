@@ -1,15 +1,14 @@
 ---
 import MainLayoutFooterless from "../layouts/MainLayoutFooterless.astro";
-import type { Project } from "../models/Project";
 import ProjectInfo from "../components/project/ProjectInfo.vue";
 import ProjectGallery from "../components/project/ProjectGallery.vue";
 import { Image } from "astro:assets";
 import ButtonImage from "../components/ButtonImage.vue";
-import { getCollection } from "astro:content";
 import ProjectNavigation from "../components/project/ProjectNavigation.vue";
-import { queryOne, getSurroundingProjects } from "../utils/utils.ts";
+import { getSurroundingProjects, queryProject } from "../utils/utils.ts";
 import { isVerticalImage, getProjectImages } from "../utils/images";
-import { ProjectCollection, ProjectType } from "../utils/enum";
+import { ProjectType } from "../utils/enum";
+import { queryWebProjects } from "../utils/utils.ts";
 
 export interface Props {
   project: string;
@@ -17,15 +16,10 @@ export interface Props {
 }
 const { project, type } = Astro.props;
 const path = `/projects/${type.toLowerCase()}/`;
-const collection: ProjectCollection = ProjectCollection[type];
 
-const projects = await getCollection(collection).then((collection) =>
-  collection
-    .map((entries) => entries.data)
-    .sort((a, b) => (b.updated?.getTime() ?? 0) - (a.updated?.getTime() ?? 0)),
-);
-const { name, url, tech, description, online } =
-  (await queryOne<Project>(collection, project)) ?? {};
+const projects = await queryWebProjects();
+const { name, tech, description, homepage } =
+  (await queryProject(project)) ?? {};
 
 const total = projects.length;
 const index = projects.findIndex((p) => p.name === name);
@@ -38,10 +32,9 @@ const images = getProjectImages(type, project);
   <div class="project">
     <ProjectInfo
       name={name}
-      url={url}
+      url={homepage}
       tech={tech}
       description={description}
-      online={online}
     >
       <ProjectNavigation
         index={index}

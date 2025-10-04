@@ -1,6 +1,4 @@
 name: "chaser"
-url: "https://chaser.calamina.cafe"
-online: false
 tech:
   languages:
   - 'html'

@@ -13,7 +13,7 @@ const { length } = defineProps<{
 
 const filters: Ref<ProjectFilters> = ref({
     type: "ALL",
-    sort: "date",
+    // sort: "date",
     order: "ASC"
 })
 

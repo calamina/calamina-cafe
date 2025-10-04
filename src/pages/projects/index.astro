@@ -1,21 +1,17 @@
 ---
 import MainLayoutFooterless from "../../layouts/MainLayoutFooterless.astro";
 import ProjectsView from "../../components/projects/ProjectsView.vue";
-import { query } from "../../utils/utils.ts";
-import type { Project } from "../../models/Project";
-import { ProjectCollection, ProjectType } from "../../utils/enum";
+import { queryWebProjects } from "../../utils/utils.ts";
+import type { TypedProject } from "../../models/Types";
 
-const webProjects = await query<Project>(ProjectCollection.WEB).then((res) =>
-    res.map((project) => ({ ...project, type: ProjectType.WEB })),
-);
+// const phoneProjects: TypedProject[] = await query<Project>(ProjectCollection.PHONE).then(
+//     (res) => res.map((project) => ({ ...project, type: ProjectType.PHONE })),
+// );
+// const projects = [...webProjects, ...phoneProjects].sort();
 
-const phoneProjects = await query<Project>(ProjectCollection.PHONE).then(
-    (res) => res.map((project) => ({ ...project, type: ProjectType.PHONE })),
-);
-
-const projects = [...webProjects, ...phoneProjects].sort();
+const webProjects: TypedProject[] = await queryWebProjects();
 ---
 
 <MainLayoutFooterless>
-    <ProjectsView projects={projects} client:only />
+    <ProjectsView projects={webProjects} client:only />
 </MainLayoutFooterless>
