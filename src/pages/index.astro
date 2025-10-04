@@ -2,6 +2,8 @@
 import AsciiScene from "../components/AsciiScene.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 import ProjectLast from "../components/projects/ProjectLast.astro";
+import Mimi from "../components/mimi.vue";
+import AppLogo from "../components/AppLogo.vue";
 ---
 
 <MainLayout>
@@ -23,6 +25,11 @@ import ProjectLast from "../components/projects/ProjectLast.astro";
       </div>
       <!-- <a href="/projects">projects</a> -->
     </div>
+  {
+    import.meta.env.DEV &&
+    <AppLogo />
+    <Mimi />
+  }
   </div>
 </MainLayout>
 

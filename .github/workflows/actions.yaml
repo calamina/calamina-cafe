@@ -1,0 +1,16 @@
+name: push
+run-name: ${{ github.actor }} [push]
+on: [ push ]
+jobs:
+  knip:
+    name: knip
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v5
+    - run: npx --yes knip@5.64.1 --no-exit-code
+  oxlint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v5
+    - run: npx --yes oxlint@1.16.0 --deny-warnings

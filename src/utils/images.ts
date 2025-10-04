@@ -16,23 +16,23 @@ export const getImage = (name: string, type: ProjectType) => {
 }
 
 // GLOBS
-export const webImages = Object.entries(
+const webImages = Object.entries(
   import.meta.glob<{ default: ImageMetadata }>(
     "/src/assets/img/content/projects/web/**/*.avif",
   ),
 );
-export const phoneImages = Object.entries(
+const phoneImages = Object.entries(
   import.meta.glob<{ default: ImageMetadata }>(
     "/src/assets/img/content/projects/phone/**/*.avif",
   ),
 );
 
-export const webCovers = Object.entries(
+const webCovers = Object.entries(
   import.meta.glob<{ default: ImageMetadata }>(
     "/src/assets/img/content/projects/web/*.avif",
   ))
 
-export const phoneCovers = Object.entries(
+const phoneCovers = Object.entries(
   import.meta.glob<{ default: ImageMetadata }>(
     "/src/assets/img/content/projects/phone/*.avif",
   ))
