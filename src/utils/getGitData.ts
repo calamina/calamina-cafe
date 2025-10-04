@@ -8,9 +8,11 @@ export const getGitData = async () => {
   };
 
   const response = await fetch(url, { headers });
-  const data = await response.json().then((data: GitProject[]) => {
-    // console.debug(data)
-    return data.map((project: GitProject) => ({
+  if (!response.ok) {
+    throw new Error(`Error fetching git projects. Response status: ${response.status}`);
+  }
+  const data = await response.json()?.then((projects: GitProject[]) =>
+    projects?.map((project: GitProject) => ({
       id: project.id,
       name: project.name,
       git_url: project.html_url,
@@ -19,8 +21,8 @@ export const getGitData = async () => {
       homepage: project.homepage,
       default_branch: project.default_branch,
       language: project.language,
-    }));
-  });
+    }))
+  );
 
   return data
 }

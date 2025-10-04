@@ -44,5 +44,4 @@ export const queryWebProjects = async () => {
 
 export const queryLastProject = async () => (await queryWebProjects())[0]
 
-export const queryProject = async (name: string) => (await queryWebProjects())
-  .find(res => res.name === name)
+export const queryProject = async (name: string) => (await queryWebProjects())?.find(res => res.name === name)
