@@ -117,16 +117,18 @@ const toggle = () => active.value = !active.value
   transition: border-bottom 0.2s;
   border-bottom: 0px solid transparent;
   background-color: transparent;
-
+  cursor: default;
 
   &:hover {
-    background-color: var(--bg-darker0);
+    background-color: transparent;
+  }
 
-    @media (min-width: 1280px) {
-      background-color: transparent;
+  @media (max-width: 1280px) {
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--bg-darker0);
     }
-
-    /* background-color: transparent; */
   }
 
   /* 
