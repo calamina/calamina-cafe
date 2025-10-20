@@ -46,9 +46,15 @@ const lel = await getImage(project.name, project.type)
   width: fit-content;
   transition: width 0.3s;
   width: 100%;
+  /* padding: 6px;
+  border: 2px solid transparent; */
 
   &:hover {
     background-color: transparent;
+    /* box-shadow: rgba(100, 100, 111, 0.08) 0px 0px 29px 0px;
+    border: 2px solid var(--bg-darker);
+    outline: 2px solid var(--bg-darker0);
+    outline-offset: 4px; */
 
     & .name {
       background-color: var(--highlight);

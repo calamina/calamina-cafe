@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import type { TypedMoment } from '../../models/Types';
-import LinkIcon from '../LinkIcon.vue';
+import type { Moment } from '../../models/Moment';
 import TimelineListCategory from './TimelineListCategory.vue';
 import TimelineMomentCategory from './TimelineMomentCategory.vue';
 
 const { moment } = defineProps<{
-    moment: TypedMoment
+    moment: Moment
 }>()
 </script>
 
@@ -13,33 +12,29 @@ const { moment } = defineProps<{
     <div class="moment">
         <div class="dateline" inert></div>
         <div class="date" :class="{ 'now': moment.now }">
-            <p>{{ moment.now ? "now" : moment.date.getFullYear() }}</p>
+            <p>{{ moment.now ? "now" : moment.start.getFullYear() }}</p>
             <template v-if="moment.start">
                 <p>↑</p>
-                <p>{{ moment.start }}</p>
+                <p>{{ moment.start.getFullYear() }}</p>
             </template>
         </div>
         <div class="momentlink" inert></div>
         <div class="info">
             <div class="header">
-                <!-- <div class="job"> -->
                 <p class="role"> {{ moment.role }} </p>
-                <!-- </div> -->
                 <div class="job">
                     <span>@</span>
                     <p class="company">{{ moment.company }} </p>
                 </div>
-                <!-- <LinkIcon label="Akuiteo" v-if="moment.url" :url="moment.url" /> -->
             </div>
             <p class="desc">{{ moment.desc }}</p>
+            <!-- <TimelineMomentCategory v-if="moment.skills?.length" name="" :items="moment.skills" /> -->
             <TimelineListCategory v-if="moment.skills?.length" :items="moment.skills" />
             <div class="categories">
                 <TimelineMomentCategory v-if="moment.languages" name="languages" :items="moment.languages" />
                 <TimelineMomentCategory v-if="moment.tools" name="tools" :items="moment.tools" />
             </div>
         </div>
-        <!-- <div class="momentlink"></div>
-        <p class="date">{{ moment.type }}</p> -->
     </div>
 </template>
 

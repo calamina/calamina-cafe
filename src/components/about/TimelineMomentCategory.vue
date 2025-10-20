@@ -9,7 +9,7 @@ const { name, items } = defineProps<{
     <div class="category">
         <div class="taglist">
             <p class="category-title">{{ name }}</p>
-            <span class="tag" :class="name" v-for="item in items">{{ item }}</span>
+            <span class="tag" :class="name + '-element'" v-for="item in items">{{ item }}</span>
         </div>
     </div>
 </template>
@@ -19,12 +19,7 @@ const { name, items } = defineProps<{
     width: 100%;
     display: flex;
     align-items: baseline;
-    padding-top: 0.25rem;
     gap: 0.5rem;
-
-    &:not(:last-of-type) {
-        padding-bottom: 0.5rem;
-    }
 }
 
 .category-title {
@@ -50,11 +45,11 @@ const { name, items } = defineProps<{
     color: var(--color-hover);
 }
 
-.tools {
+.tools-element {
     background-color: hsl(50, 50%, 77%);
 }
 
-.languages {
+.languages-element {
     background-color: hsl(144, 50%, 77%);
 }
 </style>

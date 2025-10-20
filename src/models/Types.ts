@@ -1,5 +1,4 @@
-import type { MomentType, ProjectType } from "../utils/enum"
-import type { Moment } from "./Moment"
+import type { ProjectType } from "../utils/enum"
 import type { Project } from "./Project"
 
 export interface TypedProject extends Project {
@@ -20,10 +19,6 @@ export interface GitProject extends Project {
   language: string;
   created_at: Date;
   pushed_at: Date;
-}
-
-export interface TypedMoment extends Moment {
-  type: MomentType
 }
 
 export interface ProjectFilters {

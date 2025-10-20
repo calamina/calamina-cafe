@@ -1,6 +1,6 @@
-# start= "6mon"
-date= 2022-01-01
-role= "Fullstack developer"
+start= 2022-02-06
+end= 2022-08-12
+role= "Fullstack dev"
 company= "SQLI"
 desc= "Developement of an internal human resources management tool in an agile team"
 url= "https=//www.sqli.com/fr-fr"
@@ -18,9 +18,9 @@ languages = [
   "java",
 ]
 skills = [
-  "Frontend performance improvements",
+  "performance improvements",
   "Technical debt reduction",
-  "Agile SCRUM development",
-  "Better interactions and animations",
-  "Unit and functional tests (90% coverage)",
+  "Agile SCRUM",
+  "interactions and animations",
+  "Unit and functional tests",
 ]

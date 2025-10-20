@@ -1,112 +1,81 @@
 ---
-import type { Link } from "../models/Link";
-import type { Media } from "../models/Media";
 import { query } from "../utils/utils.ts";
-import LinkList from "../components/LinkList.vue";
-import MediaRecent from "../components/MediaRecent.astro";
 import Favorites from "../components/about/Favorites.astro";
-import Timeline from "../components/Timeline.astro";
-import SectionTitle from "../components/SectionTitle.vue";
 import MainLayout from "../layouts/MainLayout.astro";
-import IconSmile from "../components/Icons/IconSmile.vue";
-import IconHeart from "../components/Icons/IconHeart.vue";
-import IconDatabase from "../components/Icons/IconDatabase.vue";
+import Timeline from "../components/TimelineNew.vue";
+import type { Moment } from "../models/Moment";
+// import type { Link } from "../models/Link";
+// import type { Media } from "../models/Media";
+// import SectionTitle from "../components/SectionTitle.vue";
+// import IconSmile from "../components/Icons/IconSmile.vue";
+// import LinkList from "../components/LinkList.vue";
+// import MediaRecent from "../components/MediaRecent.astro";
+// import IconDatabase from "../components/Icons/IconDatabase.vue";
 
-const links = await query<Link>("nowLinks");
-const medias = await query<Media>("nowMedia");
+// const links = await query<Link>("nowLinks");
+// const medias = await query<Media>("nowMedia");
+const jobs = await query<Moment>("jobs");
+
+const moments: Moment[] = jobs.sort(
+	(a, b) => b.start.getTime() - a.start.getTime(),
+);
 ---
 
 <MainLayout>
 	<div class="content">
-		<!-- <section class="intro">
-			<SectionTitle name="hey" />
-			<p>
-				Hello, I'm Grégoire.<br />
-				I'm a creative developper from Lyon, France.
-			</p>
-			<p>
-				calamina.cafe is the name of the first domain I ever purchased ~15 years
-				ago.<br />
-				<span class="discreet">(and shortly abandonned afterwards woopsi)</span>
-			</p>
-			<p>
-				For now I'm planning to use this website as a portfolio to showcase my
-				personnal projects.
-			</p>
-			<p>
-				I also have some ideas for blog posts but never really commited to that
-				part. (yet!)
-			</p>
+		<!-- TODO :: intro text! -->
+
+		<section>
+			<Timeline client:only moments={moments} />
 		</section>
 
 		<section>
-			<SectionTitle name="now" icon={IconSmile} />
-			<div class="technow">
-				<p>Working with these tools at the moment :</p>
-				<LinkList links={links} />
-			</div>
-			<MediaRecent medias={medias} />
-		</section> -->
-		<section>
-			<!-- <SectionTitle name="resume" icon={IconDatabase} /> -->
-			<Timeline />
-		</section>
-
-		<section>
-			<!-- <SectionTitle name="favorites" icon={IconHeart} /> -->
 			<Favorites />
 		</section>
 	</div>
-
-	<style scoped>
-		section {
-			counter-increment: section;
-		}
-
-		.intro {
-			display: flex;
-			flex-flow: column;
-
-			p {
-				max-width: 90rem;
-				text-wrap: balance;
-
-				&:not(:last-of-type) {
-					padding-bottom: 2rem;
-				}
-			}
-		}
-
-		.content {
-			counter-reset: section;
-			display: flex;
-			flex-flow: column;
-			align-items: start;
-			padding: 2rem 0 3rem;
-			gap: 4rem;
-			opacity: 1;
-			transform: translateY(0);
-			transition: transform 0.3s;
-		}
-
-		section {
-			width: 100%;
-			display: flex;
-			flex-flow: column;
-			align-items: center;
-		}
-
-		.technow {
-			display: flex;
-			flex-flow: column;
-			align-items: center;
-			margin-bottom: 1rem;
-		}
-
-		@media (max-width: 1280px) {
-			.content {
-				padding: 0 1rem;
-			}
-		}
-	</style>
 </MainLayout>
+
+<style scoped>
+	.intro {
+		display: flex;
+		flex-flow: column;
+
+		p {
+			max-width: 90rem;
+			text-wrap: balance;
+
+			&:not(:last-of-type) {
+				padding-bottom: 2rem;
+			}
+		}
+	}
+
+	.content {
+		display: flex;
+		flex-flow: column;
+		align-items: start;
+		padding: 2rem 0 3rem;
+		gap: 4rem;
+		width: 100%;
+	}
+
+	section {
+		width: 100%;
+		display: flex;
+		flex-flow: column;
+		align-items: center;
+	}
+
+	.technow {
+		display: flex;
+		flex-flow: column;
+		align-items: center;
+		margin-bottom: 1rem;
+	}
+
+	@media (max-width: 1280px) {
+		.content {
+			padding: 0 1rem;
+		}
+	}
+</style>

@@ -14,16 +14,13 @@ enum ROUTES {
   about = "about",
   projects = "projects",
 }
-const activeRoute = (): ROUTES => {
-  if (route === ROUTES.home) return ROUTES.home;
-  if (route.includes(ROUTES.about)) return ROUTES.about;
-  if (route.includes(ROUTES.projects)) return ROUTES.projects;
-  return ROUTES.home;
+
+const routes = {
+  home: route === ROUTES.home,
+  about: route.includes(ROUTES.about),
+  projects: route.includes(ROUTES.projects),
 };
 
-// const webprojects = await query(ProjectCollection.WEB);
-// const phoneprojects = await query(ProjectCollection.PHONE);
-// const projects = [...webprojects, ...phoneprojects];
 const projects = await queryWebProjects();
 const list = projects.map((project: TypedProject) => ({
   name: project.name,
@@ -40,16 +37,12 @@ const list = projects.map((project: TypedProject) => ({
     ></a
   >
   <nav>
-    <a href="/" class:list={[{ active: activeRoute() === ROUTES.home }]}>home</a
-    >
-    <a href="/about" class:list={[{ active: activeRoute() === ROUTES.about }]}
-      >about</a
-    >
+    <a href="/" class:list={[{ active: routes.home }]}> home </a>
+    <a href="/about" class:list={[{ active: routes.about }]}>about</a>
     <div class="projects">
-      <a
-        href="/projects"
-        class:list={[{ active: activeRoute() === ROUTES.projects }]}>projects</a
-      >
+      <a href="/projects" class:list={[{ active: routes.projects }]}>
+        projects
+      </a>
       <AppHeaderProject project={project} />
     </div>
   </nav>

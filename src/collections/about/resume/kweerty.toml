@@ -1,5 +1,6 @@
-date= 2021-01-01
-role= "Frontend developer / UI&UX Designer"
+start= 2021-06-01
+end= 2021-09-01
+role= "Front dev / UI&UX"
 company= "Kweerty"
 desc= "Creation of wireframes & mockups and Frontend development for three showcase sites"
 languages = [
@@ -13,8 +14,9 @@ tools = [
   "Github",
 ]
 skills = [
-  "Specifications and user stories",
-  "Wireframes, design system, components and mockups designs",
-  "Interactive mockups and component libraries",
-  "Web development of the components and pages",
+  "specs & user stories",
+  "Wireframes",
+  "design system",
+  "interactive mockups",
+  "components libraries",
 ]

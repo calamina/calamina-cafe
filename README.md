@@ -6,11 +6,13 @@
 hey :)
 
 # DOING
+- add left bar right under home button to track progress (about, favorites, ...) (with subrgrid for components.)
 - update readme img
 - add minis back, images are too big for project list
 - fix css var names !
 - swap to TOML (aergh)
 - polish about !
+- server is very slow with the sorts :/
 
 # TODO
 - add journal section, try parsing .md

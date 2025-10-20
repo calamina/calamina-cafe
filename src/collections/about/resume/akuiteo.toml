@@ -1,7 +1,7 @@
 # shortdesc= "Frontend developement in an agile team"
-date= 2025-06-04
-start= 2023
-role= "Frontend developer"
+start= 2023-04-02
+end= 2025-06-04
+role= "Front dev"
 company= "Akuiteo"
 desc= """
   Web development of the invoice dematerialization and the sales
@@ -21,12 +21,16 @@ tools = [
   "Jenkins",
 ]
 skills = [
-  "Creation of screens, components, services",
-  "Maintenance and technical debt handling",
-  "Agile SCRUM, peer & Mob programming",
-  "UI / UX propositions",
-  "Unit tests & API performance tests",
-  "Production of technical documentation",
-  "Libraries updates and maintenance",
+  # "Creation of screens, components, services",
+  "maintenance",
+  "technical debt",
+  "Agile SCRUM",
+  "Peer programming",
+  "Mob programming",
+  "UI & UX",
+  "Unit tests",
+  "API tests",
+  "technical doc",
+  "libraries updates",
 ]
 url= "https=//www.akuiteo.com/en/"

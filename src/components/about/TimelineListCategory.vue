@@ -5,16 +5,17 @@ const { items } = defineProps<{
     items: string[]
 }>()
 
-const toggled = ref(false)
-const toggle = () => toggled.value = !toggled.value
+// const toggled = ref(false)
+// const toggle = () => toggled.value = !toggled.value
 </script>
 
 <template>
     <div class="wrapper">
-        <div class="list" :class="{ 'short': !toggled }">
+        <!-- <div class="list" :class="{ 'short': !toggled }"> -->
+        <div class="list">
             <p v-for="item in items">{{ item }}</p>
         </div>
-        <button @click="toggle()">{{ toggled ? "- hide" : "+ show" }} activities</button>
+        <!-- <button @click="toggle()">{{ toggled ? "- hide" : "+ show" }} activities</button> -->
     </div>
 </template>
 
@@ -40,9 +41,11 @@ button {
 
 .list {
     display: flex;
-    flex-flow: column;
-    gap: 0rem;
-    padding: 0 0.5rem 0;
+    flex-flow: row wrap;
+    /* flex-flow: column; */
+    /* gap: 0rem; */
+    gap: 0.5rem;
+    padding: 0.25rem;
     max-height: 20rem;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
@@ -55,6 +58,12 @@ button {
 
 p {
     display: inline-block;
+    position: relative;
+    padding: 0.25rem 0.5rem 0.1rem;
+    border-radius: 0.5rem;
+    color: var(--color-hover);
+    background-color: var(--bg-darker0);
+    /* display: inline-block;
     position: relative;
     color: var(--color-dim);
     padding: 0.25rem 0.5rem 0.1rem;
@@ -70,6 +79,6 @@ p {
         line-height: 1.4rem;
         content: "— ";
         opacity: 0.15;
-    }
+    } */
 }
 </style>

@@ -2,8 +2,8 @@
 import AsciiScene from "../components/AsciiScene.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 import ProjectLast from "../components/projects/ProjectLast.astro";
-import Mimi from "../components/mimi.vue";
-import AppLogo from "../components/AppLogo.vue";
+// import Mimi from "../components/mimi.vue";
+// import AppLogo from "../components/AppLogo.vue";
 ---
 
 <MainLayout>
@@ -11,25 +11,24 @@ import AppLogo from "../components/AppLogo.vue";
     <div class="visual">
       <div class="intro">
         <p>Hello and welcome :)</p>
-        <!-- <p>This website is a work in progress !</p> -->
       </div>
       <AsciiScene>
         <div slot="fallback" class="loader">Loading ascii ...</div>
       </AsciiScene>
     </div>
     <div class="content">
-      <ProjectLast />
+      <ProjectLast client:load />
       <div class="disclaimer">
         <p>Work in progress !</p>
         <p class="kao">૮ ˶ᵔ ᵕ ᵔ˶ ა</p>
       </div>
       <!-- <a href="/projects">projects</a> -->
     </div>
-  {
+    <!-- {
     import.meta.env.DEV &&
     <AppLogo />
     <Mimi />
-  }
+  } -->
   </div>
 </MainLayout>
 

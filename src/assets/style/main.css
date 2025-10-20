@@ -18,6 +18,12 @@
     font-display: swap;
 }
 
+/* not yet :( */
+/* 
+@view-transition {
+    navigation: auto;
+} */
+
 *,
 *::before,
 *::after {
