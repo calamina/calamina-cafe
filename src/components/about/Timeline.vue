@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, ref, type Ref } from 'vue';
-import type { Moment } from '../models/Moment';
-import TimelineMomentCategory from './about/TimelineMomentCategory.vue';
-import TimelineListCategory from './about/TimelineListCategory.vue';
+import type { Moment } from '../../models/Moment';
+import TagList from '../atomic/tag/TagList.vue';
+import BaseTag from '../atomic/tag/BaseTag.vue';
 
 const { moments } = defineProps<{ moments: Moment[] }>()
 const active: Ref<Moment> = ref(moments[0])
@@ -35,7 +35,6 @@ const selectMoment = (index: number) => active.value = moments[index];
         <div class="time">{{ moment.start?.getFullYear() }}</div>
         <div class="dot"></div>
         <div class="role">{{ moment.company }}</div>
-        <div class="link"></div>
       </button>
       <button class="moment moment-dim" inert>
         <div class="time">1994</div>
@@ -46,22 +45,24 @@ const selectMoment = (index: number) => active.value = moments[index];
 
     <Transition mode="out-in">
       <div v-if="active" :key="active.start.getTime()" class="details">
-        <div class="description">
-          <div class="header">
-            <div class="job">
-              <p class="header-block"> {{ active.role }} </p>
-              <span> {{ duration }} </span>
-            </div>
-            <div class="job">
-              <span>@</span>
-              <p class="header-block">{{ active.company }} </p>
-            </div>
+        <div class="header">
+          <div class="header-section">
+            <BaseTag>{{ active.role }}</BaseTag>
+            <span> {{ duration }} </span>
           </div>
-          <p class="header-text">{{ active.desc }}</p>
+          <div class="header-section">
+            <span>@</span>
+            <BaseTag>{{ active.company }} </BaseTag>
+          </div>
         </div>
-        <TimelineListCategory class="skills" :items="active.skills ?? []" />
-        <TimelineMomentCategory class="tools" name="tools" :items="active.tools ?? []" />
-        <TimelineMomentCategory class="languages" name="languages" :items="active.languages ?? []" />
+        <div class="description">
+          <p>{{ active.desc }}</p>
+        </div>
+        <div class="details-content">
+          <TagList class="skills" :items="active.skills ?? []" />
+          <TagList class="tools" name="tools" color="hsl(50, 50%, 77%)" :items="active.tools ?? []" />
+          <TagList class="languages" name="languages" color="hsl(144, 50%, 77%)" :items="active.languages ?? []" />
+        </div>
       </div>
     </Transition>
   </div>
@@ -70,9 +71,11 @@ const selectMoment = (index: number) => active.value = moments[index];
 <style scoped>
 .moments {
   display: grid;
-  grid-template-columns: repeat(10, minmax(0px, 1fr));
+  grid-template-columns: auto auto;
+  gap: 2.5rem;
   width: 100%;
-  height: fit-content;
+  justify-content: center;
+  align-items: center;
 }
 
 .timeline {
@@ -82,8 +85,8 @@ const selectMoment = (index: number) => active.value = moments[index];
   justify-content: center;
   gap: 1.25rem;
   height: fit-content;
-  grid-column-start: 2;
-  grid-column-end: 4;
+  width: fit-content;
+  justify-self: flex-end;
 }
 
 .moment {
@@ -91,7 +94,7 @@ const selectMoment = (index: number) => active.value = moments[index];
   grid-template-columns: 6ch auto auto 1fr;
   width: 100%;
   padding: 0;
-  /* gap: calc(1rem + 4px); */
+  grid-column: 1;
 
   &.moment-dim {
     opacity: 0.4;
@@ -157,7 +160,6 @@ const selectMoment = (index: number) => active.value = moments[index];
   text-wrap: nowrap;
   outline: 2px solid transparent;
   transition: outline .2s, box-shadow .2s;
-  /* overflow: hidden; */
 
   &:before {
     left: -1rem;
@@ -173,22 +175,16 @@ const selectMoment = (index: number) => active.value = moments[index];
   }
 }
 
-/* .active .role {
-  color: var(--color);
-} */
-
 .dot {
   position: relative;
   height: 1rem;
   width: 1rem;
-  /* todo :: test diamond */
   border-radius: 50%;
   background-color: var(--bg-darker);
   outline: 2px solid var(--bg-darker);
   outline-offset: 4px;
   margin: 0 calc(1rem + 4px);
   transition: background-color 0.1s ease-out;
-
 
   &:after,
   &:before {
@@ -211,12 +207,8 @@ const selectMoment = (index: number) => active.value = moments[index];
     left: 50%;
     transform: translateX(-50%);
   }
-
-
-  /* &:last-of-type::after{} */
 }
 
-/* .moment:not(.moment-dim):first-of-type .dot:before { */
 .moment-first .dot:before {
   background: linear-gradient(var(--bg-darker0), var(--bg-darker));
 }
@@ -234,44 +226,20 @@ const selectMoment = (index: number) => active.value = moments[index];
   background-color: var(--highlight);
 }
 
-.link {
-  /* display: none; */
-  opacity: 0;
-  flex-shrink: 0;
-  display: flex;
-  height: 2px;
-  width: 100%;
-  background-color: var(--bg-darker);
-  transition: opacity .2s;
-  z-index: 4;
-}
-
-.active .link {
-  transition-delay: 0.1s;
-  opacity: 1;
-}
-
 .details {
-  /* TODO ::: change color */
-  /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
-  place-self: center;
+  container-type: inline-size;
   border: 2px solid var(--bg-darker);
   outline: 2px solid var(--bg-darker0);
   outline-offset: 4px;
   box-shadow: rgba(100, 100, 111, 0.08) 0px 0px 29px 0px;
-  display: grid;
-  transform-origin: 00% 50%;
-  grid-template-rows: auto auto auto;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.75rem 1.5rem;
-  grid-column-start: 4;
-  grid-column-end: 9;
-  width: 100%;
+  display: flex;
+  flex-flow: column;
+  gap: 0 1.5rem;
+  width: 50vw;
   max-height: 20rem;
-  padding: 1rem;
+  max-width: 50rem;
   border-radius: 0.5rem;
   overflow-y: scroll;
-  /* scrollbar-width: thin; */
   scrollbar-width: none;
   -ms-overflow-style: none;
   position: relative;
@@ -285,16 +253,12 @@ const selectMoment = (index: number) => active.value = moments[index];
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid var(--bg-darker);
+  padding: 0.75rem;
   gap: 0.5rem;
 }
 
-.header-block {
-  background-color: var(--bg-darker0);
-  padding: 0.25rem 0.5rem 0.1rem;
-  border-radius: 0.5rem;
-}
-
-.job {
+.header-section {
   display: flex;
   gap: 0.5rem;
   align-items: center;
@@ -305,17 +269,23 @@ const selectMoment = (index: number) => active.value = moments[index];
 }
 
 .description {
+  padding: 0 1rem 0.75rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--bg-darker);
+
   p {
     text-wrap: balance;
     max-width: 60ch;
   }
-
-  .header-text {
-    padding: 0.75rem 0.5rem;
-  }
 }
 
-.description,
+.details-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0.75rem;
+  gap: 1.5rem;
+}
+
 .skills {
   grid-column: span 2;
 }

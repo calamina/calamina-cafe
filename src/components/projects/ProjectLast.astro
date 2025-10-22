@@ -7,7 +7,7 @@ const lastProject = await queryLastProject();
 
 <div>
   <h2>Last (updated) project :</h2>
-  <ProjectsGridProject project={lastProject} />
+  <ProjectsGridProject client:load project={lastProject} />
 </div>
 
 <style>

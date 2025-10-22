@@ -14,7 +14,7 @@ tools = [
   "Bootstrap",
   "Figma",
   "Postman",
-  "SonarQube",
+  "Sonar",
   "Gitlab",
   "Jenkins",
 ]

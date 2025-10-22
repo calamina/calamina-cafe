@@ -5,33 +5,33 @@ import { getImage } from '../../utils/images';
 import { useTimeAgo } from '@vueuse/core';
 import Icon from '../Icon.vue';
 import IconUpdate from '../Icons/IconUpdate.vue';
+import BaseTag from '../atomic/tag/BaseTag.vue';
 
 const { project } = defineProps<{
   project: TypedProject
 }>()
 
 const url = "/projects/" + project.type.toLowerCase() + "/";
-const lel = await getImage(project.name, project.type)
+const image = await getImage(project.name, project.type)
 </script>
 
 <template>
   <a class="project" :href="url + project.name">
-    <img :src="lel.default.src" :alt="`${project.name} cover`">
+    <img :src="image.default.src" :alt="`${project.name} cover`">
     <div class="info">
       <div class="info-header">
-        <p class="name"> {{ project.name }} </p>
+        <BaseTag class="name" pad0> {{ project.name }} </BaseTag>
         <div class="info-data">
           <p class="date" v-if="project.updated_at || project.created_at">
             <Icon :icon="IconUpdate" size="0.9rem" />
             {{ useTimeAgo(project.updated_at || project.created_at || 0) }}
           </p>
-          <div v-if="project.type === ProjectType.WEB" class="status" :class="{ 'online': project.homepage }">
+          <BaseTag pad0 v-if="project.type === ProjectType.WEB" class="status" :class="{ 'online': project.homepage }">
             <p> {{ project.homepage ? "online" : "offline" }} </p>
             <div class="status-indicator" inert :class="{ 'online': project.homepage }" />
-          </div>
+          </BaseTag>
         </div>
       </div>
-      <!-- <p class="status">{{ project.type.toLowerCase() }}</p> -->
     </div>
   </a>
 </template>
@@ -46,15 +46,9 @@ const lel = await getImage(project.name, project.type)
   width: fit-content;
   transition: width 0.3s;
   width: 100%;
-  /* padding: 6px;
-  border: 2px solid transparent; */
 
   &:hover {
     background-color: transparent;
-    /* box-shadow: rgba(100, 100, 111, 0.08) 0px 0px 29px 0px;
-    border: 2px solid var(--bg-darker);
-    outline: 2px solid var(--bg-darker0);
-    outline-offset: 4px; */
 
     & .name {
       background-color: var(--highlight);
@@ -71,7 +65,6 @@ img {
   object-fit: contain;
   background-color: var(--bg-darker0);
 }
-
 
 .info {
   display: flex;
@@ -92,13 +85,6 @@ img {
   gap: 0.5rem;
 }
 
-.name {
-  padding: 0 0.75rem;
-  border-radius: 0.5rem;
-  background-color: var(--bg-darker0);
-  transition: padding 0.25s;
-}
-
 .date {
   padding: 0 0.75rem;
   display: flex;
@@ -109,18 +95,10 @@ img {
   text-transform: lowercase;
 }
 
-.status {
-  padding: 0 0.75rem;
-  display: flex;
-  border-radius: 0.5rem;
-  gap: 0.5rem;
-  align-items: center;
-  background-color: var(--bg-darker0);
-
-  &:not(.online) p {
-    color: var(--color-light);
-  }
+.status &:not(.online) p {
+  color: var(--color-light);
 }
+
 
 .status-indicator {
   width: 0.5rem;

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import BaseTag from './atomic/tag/BaseTag.vue';
+
 const { project = undefined } = defineProps<{
   project: string | undefined
 }>()
@@ -8,7 +10,7 @@ const { project = undefined } = defineProps<{
   <transition name="sublink" mode="out-in">
     <div class="project" v-if="project" :key="project">
       <p>:</p>
-      <p class="sublink">{{ project }}</p>
+      <BaseTag pad0>{{ project }}</BaseTag>
     </div>
   </transition>
 </template>
@@ -22,12 +24,6 @@ const { project = undefined } = defineProps<{
 
 .subtype {
   color: var(--color-light);
-}
-
-.sublink {
-  background-color: var(--bg-darker);
-  padding: 0 0.5rem;
-  border-radius: 0.5rem;
 }
 
 /* TRANSITIONS */
