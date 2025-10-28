@@ -33,7 +33,7 @@ footer {
     display: grid;
     grid-template-columns: 18ch 1fr 18ch;
     padding: 2rem 4rem;
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
     gap: 2rem;
     align-items: end;
 }

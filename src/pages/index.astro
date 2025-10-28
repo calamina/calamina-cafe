@@ -1,107 +1,114 @@
 ---
-import AsciiScene from "../components/AsciiScene.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 import ProjectLast from "../components/projects/ProjectLast.astro";
-// import Mimi from "../components/mimi.vue";
-// import AppLogo from "../components/AppLogo.vue";
 ---
 
+<script src="../utils/ascii"></script>
+
 <MainLayout>
+  <div id="container"></div>
   <div class="wrapper">
-    <div class="visual">
-      <div class="intro">
-        <p>Hello and welcome :)</p>
-      </div>
-      <AsciiScene>
-        <div slot="fallback" class="loader">Loading ascii ...</div>
-      </AsciiScene>
+    <div class="intro">
+      <p>Hello and welcome :)</p>
+      <p>Work in progress !</p>
+      <p class="kao">૮ ˶ᵔ ᵕ ᵔ˶ ა</p>
     </div>
-    <div class="content">
+
+    <p class="cta">move & click !</p>
+
+    <div class="last">
       <ProjectLast />
-      <div class="disclaimer">
-        <p>Work in progress !</p>
-        <p class="kao">૮ ˶ᵔ ᵕ ᵔ˶ ა</p>
-      </div>
-      <!-- <a href="/projects">projects</a> -->
     </div>
-    <!-- {
-    import.meta.env.DEV &&
-    <AppLogo />
-    <Mimi />
-  } -->
   </div>
 </MainLayout>
 
 <style>
+  #container {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100dvh;
+  }
+
   .wrapper {
-    padding: 2rem 0;
-    gap: 1rem;
     width: 100%;
+    height: calc(100dvh - 5rem);
     overflow-x: hidden;
-    height: fit-content;
-    width: fit-content;
     display: grid;
-    grid-template-columns: 1fr auto;
-    place-content: center;
-    align-self: center;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
 
     @media (max-width: 1280px) {
       grid-template-columns: 1fr;
+      grid-template-rows: auto auto auto;
     }
   }
 
-  .visual {
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    gap: 0.5rem;
+  .intro,
+  .last,
+  .cta {
+    width: fit-content;
+    height: fit-content;
+    margin-bottom: 2rem;
   }
 
-  .content {
-    display: flex;
-    flex-flow: column;
-    justify-content: space-between;
-    height: 100%;
-    gap: 1rem;
-  }
-
-  .disclaimer {
-    border: 2px solid var(--bg-darker0);
+  .cta {
+    grid-row: 2;
+    padding: 0.5rem 1.5rem;
     border-radius: 0.5rem;
-    width: 100%;
-    height: 100%;
-    position: relative;
+    background-color: var(--bg);
+    box-shadow: rgba(100, 100, 111, 0.08) 0px 0px 20px 0px;
+    outline: 2px solid var(--bg-darker0);
+    outline-offset: 4px;
+    border: 2px solid var(--bg-darker0);
+    width: fit-content;
+    align-self: flex-end;
+    font-style: oblique;
+    @media (max-width: 1280px) {
+      justify-self: center;
+      grid-row: 3;
+    }
+  }
+
+  .intro {
     display: flex;
     flex-flow: column;
-    align-items: center;
-    justify-content: center;
     gap: 0.5rem;
+    align-self: flex-end;
 
-    .kao {
-      transition: color 0.5s;
-      letter-spacing: -4px;
+    p {
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.5rem;
+      background-color: var(--bg-darker0);
+      width: fit-content;
     }
 
     &:hover .kao {
-      color: var(--highlight);
-    }
-
-    @media (max-width: 1280px) {
-      height: 10rem;
-
-      .kao {
-        letter-spacing: -2px;
-      }
+      background-color: var(--highlight);
     }
   }
 
-  .loader {
+  p.kao {
+    padding-right: 0.75rem;
+    transition: background-color 0.5s;
+    letter-spacing: -4px;
+    @media (max-width: 1280px) {
+      letter-spacing: -2px;
+    }
+  }
+
+  .last {
+    grid-row: 2;
+    grid-column: 2;
+    padding: 0.25rem;
     border-radius: 0.5rem;
-    width: 30rem;
-    height: 30rem;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background-color: var(--bg);
+    background-color: var(--bg-darker0);
+    place-self: end;
+    @media (max-width: 1280px) {
+      grid-column: 1;
+    }
   }
 </style>

@@ -7,8 +7,9 @@ import Icon from '../Icon.vue';
 import IconUpdate from '../Icons/IconUpdate.vue';
 import BaseTag from '../atomic/tag/BaseTag.vue';
 
-const { project } = defineProps<{
-  project: TypedProject
+const { project, fit = "contain" } = defineProps<{
+  project: TypedProject,
+  fit: "cover" | "contain"
 }>()
 
 const url = "/projects/" + project.type.toLowerCase() + "/";
@@ -17,7 +18,7 @@ const image = await getImage(project.name, project.type)
 
 <template>
   <a class="project" :href="url + project.name">
-    <img :src="image.default.src" :alt="`${project.name} cover`">
+    <img :src="image.default.src" :alt="`${project.name} cover`" :style="{ objectFit: fit }">
     <div class="info">
       <div class="info-header">
         <BaseTag class="name" pad0> {{ project.name }} </BaseTag>

@@ -7,13 +7,16 @@ const lastProject = await queryLastProject();
 
 <div>
   <h2>Last (updated) project :</h2>
-  <ProjectsGridProject client:load project={lastProject} />
+  <ProjectsGridProject client:only project={lastProject} fit="cover" />
 </div>
 
-<style>
+<style scoped>
   div {
+    width: fit-content;
     display: flex;
     flex-flow: column;
-    gap: 0.5rem;
+  }
+  h2 {
+    padding: 0.25rem 0.5rem;
   }
 </style>

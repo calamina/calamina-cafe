@@ -20,9 +20,3 @@ export interface GitProject extends Project {
   created_at: Date;
   pushed_at: Date;
 }
-
-export interface ProjectFilters {
-  type: ProjectType | "ALL"
-  // sort: 'date' | 'alpha'
-  order: "ASC" | "DESC"
-}
