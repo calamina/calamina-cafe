@@ -8,6 +8,28 @@ import ProjectLast from "../components/projects/ProjectLast.astro";
 <MainLayout>
   <div id="container"></div>
   <div class="wrapper">
+    <div class="card">
+      <h1>calamina cafe</h1>
+      <div class="desc">
+        <p>Hello and welcome :)</p>
+        <p class="small">Hello and welcome :)</p>
+      </div>
+      <div class="desc2">
+        <p>Work in progress !</p>
+        <p class="small">Work in progress !</p>
+      </div>
+      <div class="visual">
+        <p class="a">.</p>
+        <p class="b">*</p>
+        <p class="c">o</p>
+        <p class="d">@</p>
+      </div>
+      <div class="info">testinfo double</div>
+      <div class="status">online 2025</div>
+      <div class="mimi"><span class="dot"></span></div>
+    </div>
+  </div>
+  <!-- <div class="wrapper">
     <div class="intro">
       <p>Hello and welcome :)</p>
       <p>Work in progress !</p>
@@ -19,7 +41,7 @@ import ProjectLast from "../components/projects/ProjectLast.astro";
     <div class="last">
       <ProjectLast />
     </div>
-  </div>
+  </div> -->
 </MainLayout>
 
 <style>
@@ -35,7 +57,113 @@ import ProjectLast from "../components/projects/ProjectLast.astro";
   .wrapper {
     width: 100%;
     height: calc(100dvh - 5rem);
-    overflow-x: hidden;
+    display: grid;
+    align-items: end;
+    justify-content: start;
+    padding-bottom: 2.5rem;
+  }
+
+  .card {
+    width: fit-content;
+    height: fit-content;
+    display: grid;
+    background-color: var(--bg-darker0);
+    gap: 3px;
+    border: 0.5rem solid var(--bg);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    grid-template-areas:
+      "title title title  title  title"
+      "desc  desc  desc   visual visual"
+      "desc2 desc2 desc2  visual visual"
+      "info  info  status status mimi";
+    grid-template-rows: 1fr 1fr 1fr 2rem;
+
+    * {
+      background-color: var(--bg);
+      padding: 0.05rem 0.15rem;
+    }
+  }
+
+  h1 {
+    text-transform: capitalize;
+    grid-area: title;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    display: grid;
+    align-items: center;
+  }
+  .desc {
+    grid-area: desc;
+  }
+  .desc2 {
+    grid-area: desc2;
+  }
+  .visual {
+    grid-area: visual;
+    display: grid;
+    grid-template-areas:
+      ". . . . . ."
+      ". a . . . ."
+      ". . . b . ."
+      ". c c c . ."
+      ". . . . d ."
+      ". . . . . .";
+    grid-template-columns: 0.5rem repeat(4, 1fr) 0.5rem;
+    grid-template-rows: 0.5rem repeat(4, 1fr) 0.5rem;
+    line-height: 1rem;
+
+    .a {
+      grid-area: a;
+    }
+    .b {
+      grid-area: b;
+    }
+    .c {
+      grid-area: c;
+    }
+    .d {
+      grid-area: d;
+    }
+  }
+  .info {
+    grid-area: info;
+  }
+  .status {
+    grid-area: status;
+  }
+  .mimi {
+    grid-area: mimi;
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+
+    .dot {
+      flex-shrink: 0;
+      width: 0.4rem;
+      height: 0.4rem;
+      border-radius: 50%;
+      background-color: var(--highlight);
+    }
+  }
+  .info,
+  .status,
+  .mimi {
+    font-size: 0.9rem;
+    display: grid;
+    align-items: center;
+  }
+
+  .small {
+    font-size: 0.8rem;
+    line-height: 0.8rem;
+    color: var(--color-light);
+  }
+
+  /* .wrapper {
+    width: 100%;
+    height: calc(100dvh - 5rem);
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
@@ -110,5 +238,5 @@ import ProjectLast from "../components/projects/ProjectLast.astro";
     @media (max-width: 1280px) {
       grid-column: 1;
     }
-  }
+  } */
 </style>

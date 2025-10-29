@@ -10,7 +10,7 @@ let interval = 250
 let timer2 = 0;
 let interval2 = 20
 let state = 1
-let clickTimer = 1000
+let clickTimer = 0
 let mouseCol = 0
 let mouseRow = 0
 const history: MemoryPoint[] = []
@@ -45,6 +45,10 @@ export const script = (p5: p5) => {
     const mouseY = p5.mouseY !== 0 ? p5.mouseY / SIZE : window.innerHeight / SIZE / 2
     mouseCol = p5.floor(mouseX)
     mouseRow = p5.floor(mouseY)
+    if (timer < 1000) {
+      click.x = mouseCol
+      click.y = mouseRow
+    }
     const mouseMoved = p5.movedX || p5.movedY
 
     activecolor.setAlpha(255)
