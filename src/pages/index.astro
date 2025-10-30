@@ -9,13 +9,16 @@ import MainLayout from "../layouts/MainLayout.astro";
   <div id="container"></div>
   <div class="wrapper">
     <div class="card">
-      <h1>calamina cafe</h1>
+      <h1>
+        calamina cafe
+        <span>.:*</span>
+      </h1>
       <div class="desc">
-        <p>Hello and welcome :)</p>
+        <p>Hello and welcome :></p>
         <p class="small">enjoy the tour !</p>
       </div>
       <div class="desc2">
-        <p>Work in progress !</p>
+        <p>Work in progress /!\</p>
         <p class="small">i'm not done yet !</p>
       </div>
       <div class="visual">
@@ -29,19 +32,6 @@ import MainLayout from "../layouts/MainLayout.astro";
       <div class="mimi"><span class="dot"></span></div>
     </div>
   </div>
-  <!-- <div class="wrapper">
-    <div class="intro">
-      <p>Hello and welcome :)</p>
-      <p>Work in progress !</p>
-      <p class="kao">૮ ˶ᵔ ᵕ ᵔ˶ ა</p>
-    </div>
-
-    <p class="cta">move & click !</p>
-
-    <div class="last">
-      <ProjectLast />
-    </div>
-  </div> -->
 </MainLayout>
 
 <style>
@@ -60,10 +50,7 @@ import MainLayout from "../layouts/MainLayout.astro";
     display: grid;
     grid-template-columns: repeat(12, auto);
     grid-template-rows: repeat(12, auto);
-    /* align-items: end;
-    justify-content: start; */
     place-items: center;
-    /* padding-bottom: 2.5rem; */
   }
 
   .card {
@@ -98,8 +85,17 @@ import MainLayout from "../layouts/MainLayout.astro";
     font-size: 1.5rem;
     line-height: 1.5rem;
     padding-top: 0.4rem;
-    display: grid;
     align-items: center;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    width: 100%;
+  }
+  .card h1 span {
+    margin-left: auto;
+    line-height: 1rem;
+    font-size: 1rem;
+    align-self: center;
+    color: var(--highlight);
   }
   .desc {
     grid-area: desc;
@@ -120,6 +116,9 @@ import MainLayout from "../layouts/MainLayout.astro";
     grid-template-columns: 0.5rem repeat(4, 1fr) 0.5rem;
     grid-template-rows: 0.5rem repeat(4, 1fr) 0.5rem;
     line-height: 1rem;
+    & > * {
+      color: var(--bg-darker0x);
+    }
 
     .a {
       grid-area: a;
@@ -137,8 +136,10 @@ import MainLayout from "../layouts/MainLayout.astro";
   .info {
     grid-area: info;
   }
-  .status {
+  .card .status {
     grid-area: status;
+    text-align: center;
+    padding-top: 0.25rem;
   }
   .mimi {
     grid-area: mimi;
