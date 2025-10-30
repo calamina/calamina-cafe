@@ -11,15 +11,19 @@ const route = Astro.originPathname;
 
 enum ROUTES {
   home = "/",
-  about = "about",
-  projects = "projects",
+  about = "/about/",
+  projects = "/projects/",
 }
 
 const routes = {
   home: route === ROUTES.home,
-  about: route.includes(ROUTES.about),
-  projects: route.includes(ROUTES.projects),
+  about: route === ROUTES.about,
+  projects: route === ROUTES.projects,
+  inprojects: route.includes(ROUTES.projects),
 };
+
+console.debug(route);
+console.debug(routes.about);
 
 const projects = await queryWebProjects();
 const list = projects.map((project: TypedProject) => ({
@@ -32,15 +36,24 @@ const list = projects.map((project: TypedProject) => ({
 ---
 
 <header>
-  <a class="logo" href="/"
-    ><span class="logotext">calamina</span>ᴗ<span class="logotext">cafe</span
-    ></a
-  >
+  <a class="logo" href={routes.home ? "#" : "/"}>
+    <span class="logotext">calamina</span>
+    ᴗ
+    <span class="logotext">cafe</span>
+  </a>
   <nav>
-    <a href="/" class:list={[{ active: routes.home }]}> home </a>
-    <a href="/about" class:list={[{ active: routes.about }]}>about</a>
+    <a href={routes.home ? "#" : "/"} class:list={[{ active: routes.home }]}>
+      home
+    </a>
+    <a
+      href={routes.about ? "#" : "/about"}
+      class:list={[{ active: routes.about }]}>about</a
+    >
     <div class="projects">
-      <a href="/projects" class:list={[{ active: routes.projects }]}>
+      <a
+        href={routes.projects ? "#" : "/projects"}
+        class:list={[{ active: routes.inprojects }]}
+      >
         projects
       </a>
       <AppHeaderProject project={project} />

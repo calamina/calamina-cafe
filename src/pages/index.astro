@@ -1,6 +1,6 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import ProjectLast from "../components/projects/ProjectLast.astro";
+// import ProjectLast from "../components/projects/ProjectLast.astro";
 ---
 
 <script src="../utils/ascii"></script>
@@ -12,11 +12,11 @@ import ProjectLast from "../components/projects/ProjectLast.astro";
       <h1>calamina cafe</h1>
       <div class="desc">
         <p>Hello and welcome :)</p>
-        <p class="small">Hello and welcome :)</p>
+        <p class="small">enjoy the tour !</p>
       </div>
       <div class="desc2">
         <p>Work in progress !</p>
-        <p class="small">Work in progress !</p>
+        <p class="small">i'm not done yet !</p>
       </div>
       <div class="visual">
         <p class="a">.</p>
@@ -24,8 +24,8 @@ import ProjectLast from "../components/projects/ProjectLast.astro";
         <p class="c">o</p>
         <p class="d">@</p>
       </div>
-      <div class="info">testinfo double</div>
-      <div class="status">online 2025</div>
+      <div class="info">.... . .... .</div>
+      <div class="status">..::||::..</div>
       <div class="mimi"><span class="dot"></span></div>
     </div>
   </div>
@@ -58,18 +58,24 @@ import ProjectLast from "../components/projects/ProjectLast.astro";
     width: 100%;
     height: calc(100dvh - 5rem);
     display: grid;
-    align-items: end;
-    justify-content: start;
-    padding-bottom: 2.5rem;
+    grid-template-columns: repeat(12, auto);
+    grid-template-rows: repeat(12, auto);
+    /* align-items: end;
+    justify-content: start; */
+    place-items: center;
+    /* padding-bottom: 2.5rem; */
   }
 
   .card {
+    grid-column: 2;
+    grid-row: 10;
     width: fit-content;
     height: fit-content;
     display: grid;
-    background-color: var(--bg-darker0);
-    gap: 3px;
-    border: 0.5rem solid var(--bg);
+    background-color: var(--bg-darker);
+    gap: 1px;
+    outline: 0.75rem solid var(--bg);
+    border: 1px solid var(--bg-darker);
     border-radius: 0.5rem;
     overflow: hidden;
     grid-template-areas:
@@ -79,17 +85,19 @@ import ProjectLast from "../components/projects/ProjectLast.astro";
       "info  info  status status mimi";
     grid-template-rows: 1fr 1fr 1fr 2rem;
 
-    * {
+    & > * {
+      /* border-radius: 0.5rem; */
       background-color: var(--bg);
-      padding: 0.05rem 0.15rem;
+      padding: 0.1rem 0.5rem;
     }
   }
 
-  h1 {
+  .card h1 {
     text-transform: capitalize;
     grid-area: title;
     font-size: 1.5rem;
     line-height: 1.5rem;
+    padding-top: 0.4rem;
     display: grid;
     align-items: center;
   }

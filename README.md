@@ -7,7 +7,8 @@ hey :)
 
 # DOING
 - UTOPIA
-- add left bar right under home button to track progress (about, favorites, ...) (with subrgrid for components.)
+- add gyro support for ascii ! + make it funnier 
+- add left bar right under home button to track progress (about, favorites, ...) ? (with subgrid for components.)
 - update readme img
 - add minis back, images are too big for project list
 - fix css var names !
@@ -30,4 +31,4 @@ hey :)
 - fix & complete projects (aerg)
 - complete about
 - proper alt on images / proper images (highlights, etc)
-- add Quartier Lointain :3
+- add Quartier Lointain :3 + Gattaca
