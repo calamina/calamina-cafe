@@ -18,6 +18,15 @@ const random: MemoryPoint[] = []
 const click: Point = { x: 0, y: 0 }
 const chars = "..:/|I::~+¤#@0+. .,:il|li:._ _.:*oO0Oo.:iI%Ii:."
 
+// function setDevice() {
+//   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+//   if (isMobile) {
+//     window.addEventListener("deviceorientation", onDeviceRotate)
+//   } else {
+//     window.addEventListener("pointermove", onMouseMove)
+//   }
+// }
+
 export const script = (p5: p5) => {
   p5.setup = async () => {
     const canvas = p5.createCanvas(window.innerWidth, window.innerHeight);
@@ -205,6 +214,10 @@ export const script = (p5: p5) => {
 
   p5.windowResized = () => p5.resizeCanvas(window.innerWidth, window.innerHeight)
   p5.mouseMoved = () => history.push({ x: mouseCol, y: mouseRow, age: 1 })
+  p5.deviceMoved = () => {
+    click.x = p5.rotationY * SIZE;
+    click.y = p5.rotationX * SIZE;
+  }
 }
 
 window.onload = () => new p5(script)

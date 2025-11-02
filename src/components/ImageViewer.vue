@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { onMounted, ref, type Ref } from 'vue';
-import { onKeyStroke } from '@vueuse/core'
+import { onMounted, ref, type Ref, useTemplateRef } from 'vue';
+import { onKeyStroke, useSwipe } from '@vueuse/core'
 import IconEyeOff from './Icons/IconEyeOff.vue';
 import IconArrowLeft from './Icons/IconArrowLeft.vue';
 import IconArrowRight from './Icons/IconArrowRight.vue';
@@ -13,10 +13,15 @@ const { selected, images } = defineProps<{
 const emits = defineEmits(['unfocus'])
 
 const image: Ref<HTMLImageElement | null> = ref(selected)
-
-onMounted(() => {
-  document.documentElement.style.overflow = "hidden"
+const imageView = useTemplateRef('imageView')
+const { direction } = useSwipe(imageView, {
+  onSwipe() {
+    if (direction.value === 'left') nextImg()
+    if (direction.value === 'right') prevImg()
+  }
 })
+
+onMounted(() => document.documentElement.style.overflow = "hidden")
 
 onKeyStroke('ArrowLeft', () => prevImg())
 onKeyStroke('ArrowRight', () => nextImg())
@@ -42,7 +47,7 @@ function exit() {
 
 <template>
   <div v-if="image" class="overlay">
-    <div class="imageView">
+    <div class="imageView" ref="imageView">
       <div class="options">
         <div class="actions">
           <button @click="prevImg()" v-if="images.length > 1">
