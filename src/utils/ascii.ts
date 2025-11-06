@@ -17,17 +17,10 @@ const history: MemoryPoint[] = []
 const random: MemoryPoint[] = []
 const click: Point = { x: 0, y: 0 }
 const chars = "..:/|I::~+¤#@0+. .,:il|li:._ _.:*oO0Oo.:iI%Ii:."
-
-// function setDevice() {
-//   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-//   if (isMobile) {
-//     window.addEventListener("deviceorientation", onDeviceRotate)
-//   } else {
-//     window.addEventListener("pointermove", onMouseMove)
-//   }
-// }
+const isMobile = 'ontouchstart' in document.documentElement;
 
 export const script = (p5: p5) => {
+  p5.setMoveThreshold(1)
   p5.setup = async () => {
     const canvas = p5.createCanvas(window.innerWidth, window.innerHeight);
     canvas.parent("#container");
@@ -50,10 +43,16 @@ export const script = (p5: p5) => {
     discretecolor.setAlpha(150);
     p5.fill(textcolor);
 
-    const mouseX = p5.mouseX !== 0 ? p5.mouseX / SIZE : window.innerWidth / SIZE / 2
-    const mouseY = p5.mouseY !== 0 ? p5.mouseY / SIZE : window.innerHeight / SIZE / 2
-    mouseCol = p5.floor(mouseX)
-    mouseRow = p5.floor(mouseY)
+    if (!isMobile) {
+      const mouseX = p5.mouseX !== 0 ? p5.mouseX / SIZE : window.innerWidth / SIZE / 2
+      const mouseY = p5.mouseY !== 0 ? p5.mouseY / SIZE : window.innerHeight / SIZE / 2
+      mouseCol = p5.floor(mouseX)
+      mouseRow = p5.floor(mouseY)
+    } else {
+      mouseRow = p5.floor((p5.rotationX) * SIZE + (window.innerWidth / SIZE / 4));
+      mouseCol = p5.floor((p5.rotationY) * SIZE + (window.innerHeight / SIZE / 4));
+      history.push({ x: mouseCol, y: mouseRow, age: 0 })
+    }
     if (timer < 1000) {
       click.x = mouseCol
       click.y = mouseRow
@@ -70,8 +69,7 @@ export const script = (p5: p5) => {
       fillCircle(click, clickTimer, min < 0 ? 0 : min, chars)
     }
 
-
-    if (history.length > 32 || !mouseMoved) history.shift()
+    if (history.length > 32 || (!isMobile && !mouseMoved)) history.shift()
 
     history.forEach(({ x, y, age }) => {
       activecolor.setAlpha(255 / age / 1.5);
@@ -98,7 +96,7 @@ export const script = (p5: p5) => {
       if (age === 3) large(x, y)
       if (age === 4) largehollow(x, y)
       if (age === 5) largeempty(x, y)
-      if (age === 6) largeevoid(x, y)
+      if (age === 6) largevoid(x, y)
     })
 
 
@@ -121,9 +119,14 @@ export const script = (p5: p5) => {
 
   p5.mouseClicked = () => {
     if (clickTimer < 28) return
+    if (isMobile) {
+      mouseCol = p5.floor(p5.mouseX / SIZE)
+      mouseRow = p5.floor(p5.mouseY / SIZE)
+    }
     clickTimer = 0
-    click.x = p5.mouseX / SIZE
-    click.y = p5.mouseY / SIZE
+    click.x = p5.floor(p5.mouseX / SIZE)
+    click.y = p5.floor(p5.mouseY / SIZE)
+
   }
 
   function dot(col: number, row: number) {
@@ -175,7 +178,7 @@ export const script = (p5: p5) => {
     p5.text(".", col * SIZE + SIZE * 2, row * SIZE);
     p5.text(".", col * SIZE - SIZE * 2, row * SIZE);
   }
-  function largeevoid(col: number, row: number) {
+  function largevoid(col: number, row: number) {
     p5.text(".", col * SIZE, row * SIZE + SIZE * 2);
     p5.text(".", col * SIZE, row * SIZE - SIZE * 2);
     p5.text(".", col * SIZE + SIZE * 2, row * SIZE);
@@ -214,10 +217,6 @@ export const script = (p5: p5) => {
 
   p5.windowResized = () => p5.resizeCanvas(window.innerWidth, window.innerHeight)
   p5.mouseMoved = () => history.push({ x: mouseCol, y: mouseRow, age: 1 })
-  p5.deviceMoved = () => {
-    click.x = p5.rotationY * SIZE;
-    click.y = p5.rotationX * SIZE;
-  }
 }
 
 window.onload = () => new p5(script)

@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
+    "host": "astro dev --host",
     "lint": "npx --yes oxlint@1.16.0 --deny-warnings",
     "build": "astro build",
     "preview": "astro preview",
