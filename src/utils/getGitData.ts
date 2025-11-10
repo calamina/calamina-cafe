@@ -1,4 +1,4 @@
-import type { GitProject } from "../models/Types";
+import type { GitProject } from "@models/Project";
 
 export const getGitData = async () => {
   const url = `http://72.60.190.120:3000/api/github.getGithubRepositories?githubId=${import.meta.env.GIT_ID}`;

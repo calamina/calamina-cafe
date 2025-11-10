@@ -1,4 +1,5 @@
 import { z } from "astro/zod"
+import type { ProjectType } from "../utils/enum"
 
 export const ProjectSchema = z.object({
     name: z.string(),
@@ -13,3 +14,23 @@ export const ProjectSchema = z.object({
 })
 
 export type Project = z.infer<typeof ProjectSchema>
+
+export interface TypedProject extends Project {
+    type: ProjectType
+    homepage?: string,
+    default_branch?: string,
+    language?: string,
+    created_at?: Date,
+    updated_at?: Date,
+    git_url?: string,
+}
+
+export interface GitProject extends TypedProject {
+    id: string;
+    html_url: string;
+    homepage: string;
+    default_branch: string;
+    language: string;
+    created_at: Date;
+    pushed_at: Date;
+}

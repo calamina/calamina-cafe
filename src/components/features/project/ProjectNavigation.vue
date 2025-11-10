@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { TypedProject } from '../../models/Types';
-import Icon from '../Icon.vue';
-import IconArrowLeft from '../Icons/IconArrowLeft.vue';
-import IconArrowRight from '../Icons/IconArrowRight.vue';
+import Icon from '@components/icons/Icon.vue';
+import IconArrowLeft from '@components/icons/IconArrowLeft.vue';
+import IconArrowRight from '@components/icons/IconArrowRight.vue';
+import type { TypedProject } from '@models/Project';
 
 const { index, path, next, prev, total, mobile } = defineProps<{
     index: number

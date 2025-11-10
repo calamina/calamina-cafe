@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import Icon from '@components/icons/Icon.vue'
+import IconSearch from '@components/icons/IconSearch.vue'
 import { onClickOutside, onKeyStroke, useMagicKeys } from '@vueuse/core'
 import { useFocusTrap } from '@vueuse/integrations/useFocusTrap'
 import { computed, ref, watch } from 'vue'
-import Icon from './Icon.vue'
-import IconSearch from './Icons/IconSearch.vue'
 
 const { list } = defineProps<{
   list: any[]

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import BaseTag from './BaseTag.vue';
+import BaseTag from '@components/atomic/TagBase.vue';
 
 const { name, items, color } = defineProps<{
     items: string[]

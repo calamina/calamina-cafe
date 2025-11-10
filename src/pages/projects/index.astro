@@ -1,17 +1,40 @@
 ---
-import ProjectsView from "../../components/projects/ProjectsView.vue";
+import ProjectsGrid from "@components/features/project/ProjectsGrid.vue";
+import MainLayout from "@layouts/MainLayout.astro";
+import type { GitProject, TypedProject } from "@models/Project";
+import { ProjectType } from "../../utils/enum";
+import { getGitData } from "../../utils/getGitData";
 import { queryWebProjects } from "../../utils/utils.ts";
-import type { TypedProject } from "../../models/Types";
-import MainLayout from "../../layouts/MainLayout.astro";
-
-// const phoneProjects: TypedProject[] = await query<Project>(ProjectCollection.PHONE).then(
-//     (res) => res.map((project) => ({ ...project, type: ProjectType.PHONE })),
-// );
-// const projects = [...webProjects, ...phoneProjects].sort();
 
 const webProjects: TypedProject[] = await queryWebProjects();
+
+const webGirProjects = async () => {
+    const gitData = await getGitData();
+    return webProjects
+        .map((project) => {
+            const gitProject = gitData.find((git) => git.name === project.name);
+            return {
+                ...project,
+                ...(gitProject ?? null),
+                type: ProjectType.WEB,
+            } as GitProject;
+        })
+        .sort(
+            (a, b) =>
+                (b.updated_at?.getTime() ?? 0) - (a.updated_at?.getTime() ?? 0),
+        );
+};
 ---
 
 <MainLayout>
-    <ProjectsView projects={webProjects} client:load />
+    <div class="view">
+        <ProjectsGrid projects={await webGirProjects()} client:idle />
+    </div>
 </MainLayout>
+
+<style scoped>
+    .view {
+        width: 100%;
+        padding-bottom: 3rem;
+    }
+</style>

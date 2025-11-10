@@ -1,10 +1,10 @@
 <script setup lang="ts">
+import Icon from '@components/icons/Icon.vue';
+import IconArrowLeft from '@components/icons/IconArrowLeft.vue';
+import IconArrowRight from '@components/icons/IconArrowRight.vue';
+import IconEyeOff from '@components/icons/IconEyeOff.vue';
+import { onKeyStroke, useSwipe } from '@vueuse/core';
 import { onMounted, ref, type Ref, useTemplateRef } from 'vue';
-import { onKeyStroke, useSwipe } from '@vueuse/core'
-import IconEyeOff from './Icons/IconEyeOff.vue';
-import IconArrowLeft from './Icons/IconArrowLeft.vue';
-import IconArrowRight from './Icons/IconArrowRight.vue';
-import Icon from './Icon.vue';
 
 const { selected, images } = defineProps<{
   selected: HTMLImageElement | null

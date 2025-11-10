@@ -1,22 +1,11 @@
 <script setup lang="ts">
-import { computed, ref, type Ref } from 'vue';
-import type { Moment } from '../../models/Moment';
-import TagList from '../atomic/tag/TagList.vue';
-import BaseTag from '../atomic/tag/BaseTag.vue';
+import BaseTag from '@components/atomic/TagBase.vue';
+import TagList from '@components/atomic/TagList.vue';
+import type { Moment } from '@models/Moment';
+import { ref, type Ref } from 'vue';
 
 const { moments } = defineProps<{ moments: Moment[] }>()
 const active: Ref<Moment> = ref(moments[0])
-
-const duration = computed(() => {
-  const end = active.value.end ?? new Date()
-  const duration = new Date(end.getTime() - active.value.start.getTime());
-  const years = duration.getFullYear() === 1970 ? "" : duration.getFullYear() - 1970;
-  const months = duration.getMonth() === 0 ? "" : duration.getMonth();
-  const yearString = years ? `${years} year${years > 1 ? "s" : ""}` : "";
-  const monthString = months ? `${months} month${months > 1 ? "s" : ""}` : "";
-
-  return `${yearString} ${monthString}`
-})
 
 const selectMoment = (index: number) => active.value = moments[index];
 </script>
@@ -48,7 +37,7 @@ const selectMoment = (index: number) => active.value = moments[index];
         <div class="header">
           <div class="header-section">
             <BaseTag>{{ active.role }}</BaseTag>
-            <span> {{ duration }} </span>
+            <span> {{ active.duration }} </span>
           </div>
           <div class="header-section">
             <span>@</span>

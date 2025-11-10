@@ -1,5 +1,5 @@
-import type { ProjectType } from "../utils/enum"
-import type { Project } from "./Project"
+import type { ProjectType } from "../utils/enum";
+import type { Project } from "./Project";
 
 export interface TypedProject extends Project {
   type: ProjectType
@@ -11,7 +11,7 @@ export interface TypedProject extends Project {
   git_url?: string,
 }
 
-export interface GitProject extends Project {
+export interface GitProject extends TypedProject {
   id: string;
   html_url: string;
   homepage: string;

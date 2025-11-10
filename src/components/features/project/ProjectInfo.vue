@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { Project } from '../../models/Project';
-import LinkIcon from '../LinkIcon.vue';
-import ProjectName from './ProjectName.vue';
-import ProjectTech from './ProjectTech.vue';
+import LinkIcon from '@components/atomic/LinkIcon.vue';
+import ProjectName from '@components/features/project/ProjectName.vue';
+import ProjectTech from '@components/features/project/ProjectTech.vue';
+import type { Project } from '@models/Project';
 
 const { name, url = null, tech, description } = defineProps<{
   name: string | undefined

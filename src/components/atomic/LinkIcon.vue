@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import Icon from './Icon.vue';
-import IconAsterisk from './Icons/IconAsterisk.vue';
-import IconAstro from './Icons/IconAstro.vue';
-import IconClover from './Icons/IconClover.vue';
-import IconLink from './Icons/IconLink.vue';
-import IconLinkBroken from './Icons/IconLinkBroken.vue';
-import IconThree from './Icons/IconThree.vue';
-import IconVue from './Icons/IconVue.vue';
+import Icon from '@components/icons/Icon.vue';
+import IconAsterisk from '@components/icons/IconAsterisk.vue';
+import IconAstro from '@components/icons/IconAstro.vue';
+import IconClover from '@components/icons/IconClover.vue';
+import IconLink from '@components/icons/IconLink.vue';
+import IconLinkBroken from '@components/icons/IconLinkBroken.vue';
+import IconThree from '@components/icons/IconThree.vue';
+import IconVue from '@components/icons/IconVue.vue';
 
 const { url, label, online = undefined, icon } = defineProps<{
   url: string

@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [vue(), sitemap()],
+  integrations: [ vue(), sitemap() ],
   site: 'https://calamina.cafe',
-  devToolbar: {enabled: false}
+  devToolbar: { enabled: false }
 });

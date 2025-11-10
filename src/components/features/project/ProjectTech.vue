@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import type { Project } from '../../models/Project';
+import type { Project } from '@models/Project';
 
 const { tech } = defineProps<{
     tech: Project["tech"],
 }>()
 
-const categs = Object.entries(tech).filter(entry => entry[0] !== "colors") 
+const categs = tech ? Object.entries(tech)?.filter(entry => entry[0] !== "colors") : [] 
 </script>
 
 <template>

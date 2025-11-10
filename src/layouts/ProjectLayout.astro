@@ -1,14 +1,17 @@
 ---
-import MainLayoutFooterless from "../layouts/MainLayoutFooterless.astro";
-import ProjectInfo from "../components/project/ProjectInfo.vue";
-import ProjectGallery from "../components/project/ProjectGallery.vue";
+import ButtonImage from "@components/ButtonImage.vue";
+import ProjectGallery from "@components/features/project/ProjectGallery.vue";
+import ProjectInfo from "@components/features/project/ProjectInfo.vue";
+import ProjectNavigation from "@components/features/project/ProjectNavigation.vue";
+import MainLayoutFooterless from "@layouts/MainLayoutFooterless.astro";
+import { ProjectType } from "@utils/enum";
+import { getProjectImages, isVerticalImage } from "@utils/images";
+import {
+  getSurroundingProjects,
+  queryProject,
+  queryWebProjects,
+} from "@utils/utils.ts";
 import { Image } from "astro:assets";
-import ButtonImage from "../components/ButtonImage.vue";
-import ProjectNavigation from "../components/project/ProjectNavigation.vue";
-import { getSurroundingProjects, queryProject } from "../utils/utils.ts";
-import { isVerticalImage, getProjectImages } from "../utils/images";
-import { ProjectType } from "../utils/enum";
-import { queryWebProjects } from "../utils/utils.ts";
 
 export interface Props {
   project: string;

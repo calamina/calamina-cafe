@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import BaseTag from './atomic/tag/BaseTag.vue';
+import BaseTag from '@components/atomic/TagBase.vue';
 
 const { project = undefined } = defineProps<{
   project: string | undefined

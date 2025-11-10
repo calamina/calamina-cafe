@@ -1,13 +1,13 @@
 <script setup lang="ts">
+import Icon from '@components/icons/Icon.vue'
+import IconMoon from '@components/icons/IconMoon.vue'
+import IconMoonHalf from '@components/icons/IconMoonHalf.vue'
+import IconMoonHalfFilled from '@components/icons/IconMoonHalfFilled.vue'
+import IconMoonStars from '@components/icons/IconMoonStars.vue'
+import ThemeSwitchButton from '@components/ThemeSwitchButton.vue'
 import { onClickOutside, onKeyStroke } from '@vueuse/core'
 import { useFocusTrap } from '@vueuse/integrations/useFocusTrap'
 import { ref } from 'vue'
-import Icon from './Icon.vue'
-import IconMoon from './Icons/IconMoon.vue'
-import IconMoonHalf from './Icons/IconMoonHalf.vue'
-import IconMoonHalfFilled from './Icons/IconMoonHalfFilled.vue'
-import IconMoonStars from './Icons/IconMoonStars.vue'
-import ThemeSwitchButton from './ThemeSwitchButton.vue'
 
 const themePicker = ref(null)
 onClickOutside(themePicker, () => deactivate())

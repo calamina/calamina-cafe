@@ -12,7 +12,8 @@ export const MomentSchema = z.object({
   languages: z.array(z.string()).optional(),
   skills: z.array(z.string()).optional(),
   now: z.boolean().optional(),
-  url: z.string().optional()
+  url: z.string().optional(),
+  duration: z.string().optional(),
 })
 
 export type Moment = z.infer<typeof MomentSchema>

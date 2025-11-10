@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { onMounted, ref, type Ref } from 'vue'
-import ImageViewer from '../ImageViewer.vue';
-import { ProjectType } from '../../utils/enum';
+import ImageViewer from '@components/ImageViewer.vue';
+import { ProjectType } from '@utils/enum';
+import { onMounted, ref, type Ref } from 'vue';
 
 const { type = ProjectType.WEB } = defineProps<{
   type?: ProjectType

@@ -1,7 +1,6 @@
+import type { GitProject, TypedProject } from "@models/Project";
 import { getCollection, type CollectionKey } from "astro:content";
-import { ProjectCollection, ProjectType } from "./enum";
-import { getGitData } from "./getGitData";
-import type { TypedProject } from "../models/Types";
+import { ProjectCollection } from "./enum";
 
 export const getSurroundingProjects = (index: number, projects: TypedProject[]): { prev: TypedProject; next: TypedProject } => ({
   prev: projects[index - 1] ?? null,
@@ -27,18 +26,18 @@ export const query = async <T>(collection: CollectionKey) =>
 
 // Projects
 export const queryWebProjects = async () => {
-  const gitData = await getGitData()
+  // const gitData = await getGitData()
   return getCollection("webProjects").then(results => results
-    .map(result => result.data)
-    .map(project => {
-      const gitProject = gitData.find(git => git.name === project.name);
-      return {
-        type: ProjectType.WEB,
-        ...project,
-        ...(gitProject ?? null),
-      }
-    })
-    .sort((a, b) => (b.updated_at?.getTime() ?? 0) - (a.updated_at?.getTime() ?? 0))
+    .map(result => result.data as GitProject)
+    // .map(project => {
+    //   const gitProject = gitData.find(git => git.name === project.name);
+    //   return {
+    //     ...project,
+    //     ...(gitProject ?? null),
+    //     type: ProjectType.WEB,
+    //   }
+    // })
+    // .sort((a, b) => (b.updated_at?.getTime() ?? 0) - (a.updated_at?.getTime() ?? 0))
   )
 }
 

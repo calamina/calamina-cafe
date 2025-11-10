@@ -1,9 +1,9 @@
-import { defineCollection } from 'astro:content';
+import { LinkSchema } from '@models/Link';
+import { MediaSchema } from '@models/Media';
+import { MomentSchema } from '@models/Moment';
+import { ProjectSchema } from '@models/Project';
 import { file, glob } from 'astro/loaders';
-import { LinkSchema } from './models/Link';
-import { MediaSchema } from './models/Media';
-import { MomentSchema } from './models/Moment';
-import { ProjectSchema } from './models/Project';
+import { defineCollection } from 'astro:content';
 
 // ABOUT
 const nowLinks = defineCollection({

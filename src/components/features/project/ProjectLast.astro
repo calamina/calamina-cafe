@@ -1,6 +1,6 @@
 ---
-import { queryLastProject } from "../../utils/utils";
-import ProjectsGridProject from "./ProjectsGridProject.vue";
+import ProjectsGridProject from "@components/features/project/ProjectsGridProject.vue";
+import { queryLastProject } from "@utils/utils";
 
 const lastProject = await queryLastProject();
 ---

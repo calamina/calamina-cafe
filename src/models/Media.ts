@@ -9,3 +9,11 @@ export const MediaSchema = z.object({
 })
 
 export type Media = z.infer<typeof MediaSchema>
+
+
+export interface MediaList {
+  title: string,
+  medias: Media[],
+  toggled?: boolean,
+  size?: "large" | "full",
+}

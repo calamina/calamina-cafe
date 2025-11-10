@@ -1,15 +1,14 @@
 <script setup lang='ts'>
-import type { TypedProject } from '../../models/Types';
-import { ProjectType } from '../../utils/enum';
-import { getImage } from '../../utils/images';
+import BaseTag from '@components/atomic/TagBase.vue';
+import Icon from '@components/icons/Icon.vue';
+import IconUpdate from '@components/icons/IconUpdate.vue';
+import type { TypedProject } from '@models/Project';
+import { getImage } from '@utils/images';
 import { useTimeAgo } from '@vueuse/core';
-import Icon from '../Icon.vue';
-import IconUpdate from '../Icons/IconUpdate.vue';
-import BaseTag from '../atomic/tag/BaseTag.vue';
 
 const { project, fit = "contain" } = defineProps<{
   project: TypedProject,
-  fit: "cover" | "contain"
+  fit?: "cover" | "contain"
 }>()
 
 const url = "/projects/" + project.type.toLowerCase() + "/";
@@ -18,7 +17,7 @@ const image = await getImage(project.name, project.type)
 
 <template>
   <a class="project" :href="url + project.name">
-    <img :src="image.default.src" :alt="`${project.name} cover`" :style="{ objectFit: fit }">
+    <img :src="image?.default?.src" :alt="`${project.name} cover`" :style="{ objectFit: fit }">
     <div class="info">
       <div class="info-header">
         <BaseTag class="name" pad0> {{ project.name }} </BaseTag>
@@ -27,7 +26,7 @@ const image = await getImage(project.name, project.type)
             <Icon :icon="IconUpdate" size="0.9rem" />
             {{ useTimeAgo(project.updated_at || project.created_at || 0) }}
           </p>
-          <BaseTag pad0 v-if="project.type === ProjectType.WEB" class="status" :class="{ 'online': project.homepage }">
+          <BaseTag pad0 class="status" :class="{ 'online': project.homepage }">
             <p> {{ project.homepage ? "online" : "offline" }} </p>
             <div class="status-indicator" inert :class="{ 'online': project.homepage }" />
           </BaseTag>

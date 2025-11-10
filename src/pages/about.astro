@@ -1,36 +1,47 @@
 ---
-import { query } from "../utils/utils.ts";
-import Favorites from "../components/about/Favorites.astro";
-import MainLayout from "../layouts/MainLayout.astro";
-import Timeline from "../components/about/Timeline.vue";
-import type { Moment } from "../models/Moment";
-// import type { Link } from "../models/Link";
-// import type { Media } from "../models/Media";
-// import SectionTitle from "../components/SectionTitle.vue";
-// import IconSmile from "../components/Icons/IconSmile.vue";
-// import LinkList from "../components/LinkList.vue";
-// import MediaRecent from "../components/MediaRecent.astro";
-// import IconDatabase from "../components/Icons/IconDatabase.vue";
+import { query } from "@utils/utils.ts";
+import type { Moment } from "@models/Moment";
+import MainLayout from "@layouts/MainLayout.astro";
+import Timeline from "@components/Timeline.vue";
+import FavoritesNew from "@components/features/about/FavoritesNew.astro";
 
-// const links = await query<Link>("nowLinks");
-// const medias = await query<Media>("nowMedia");
 const jobs = await query<Moment>("jobs");
+jobs.forEach((job: Moment) => (job.duration = getDuration(job.start, job.end)));
 
 const moments: Moment[] = jobs.sort(
 	(a, b) => b.start.getTime() - a.start.getTime(),
 );
+
+function getDuration(startDate: Date, endDate?: Date) {
+	const end = endDate ?? new Date();
+	const duration = new Date(end.getTime() - startDate.getTime());
+	const years =
+		duration.getFullYear() === 1970 ? "" : duration.getFullYear() - 1970;
+	const months = duration.getMonth() === 0 ? "" : duration.getMonth();
+	const yearString = years ? `${years} year${years > 1 ? "s" : ""}` : "";
+	const monthString = months ? `${months} month${months > 1 ? "s" : ""}` : "";
+
+	return `${yearString} ${monthString}`;
+}
 ---
 
 <MainLayout>
 	<div class="content">
-		<!-- TODO :: intro text! -->
+		<section>
+			<p>yo yo yo ! comment ça va la team ?</p>
+		</section>
 
 		<section>
 			<Timeline client:only moments={moments} />
 		</section>
 
 		<section>
-			<Favorites />
+			<p>yo yo yo ! mes ptits trucs pref c'est cadeau</p>
+		</section>
+
+		<section>
+			<FavoritesNew />
+			<!-- <Favorites /> -->
 		</section>
 	</div>
 </MainLayout>

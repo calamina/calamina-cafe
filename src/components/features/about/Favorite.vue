@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import LinkImageLabel from "../LinkImageLabel.vue";
+import LinkImageLabel from "@components/atomic/LinkImageLabel.vue";
 import { ref } from "vue";
 
 type MediaList = {

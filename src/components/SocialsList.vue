@@ -1,10 +1,10 @@
 <script setup lang='ts'>
-import Icon from './Icon.vue';
-import IconBookmark from './Icons/IconBookmark.vue';
-import IconGithub from './Icons/IconGithub.vue';
-import IconLinkedin from './Icons/IconLinkedin.vue';
-import IconWikipedia from './Icons/IconWikipedia.vue';
-import IconYoutube from './Icons/IconYoutube.vue';
+import Icon from '@components/icons/Icon.vue';
+import IconBookmark from 'components/icons/IconBookmark.vue';
+import IconGithub from 'components/icons/IconGithub.vue';
+import IconLinkedin from 'components/icons/IconLinkedin.vue';
+import IconWikipedia from 'components/icons/IconWikipedia.vue';
+import IconYoutube from 'components/icons/IconYoutube.vue';
 </script>
 
 <template>

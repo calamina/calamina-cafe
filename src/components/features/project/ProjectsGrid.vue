@@ -1,5 +1,5 @@
 <script setup lang='ts'>
-import type { TypedProject } from "../../models/Types";
+import type { TypedProject } from "@models/Project";
 import ProjectsGridProject from "./ProjectsGridProject.vue";
 
 const { projects } = defineProps<{

@@ -1,8 +1,7 @@
 ---
-import type { Media } from "../../models/Media";
-import type { MediaList } from "../../models/MediaList";
-import { query } from "../../utils/utils.ts";
-import Favorite from "./Favorite.vue";
+import Favorite from "@components/features/about/Favorite.vue";
+import type { Media, MediaList } from "@models/Media";
+import { query } from "@utils/utils.ts";
 
 const movies = await query<Media>("favMovies");
 const moviesAnimated = await query<Media>("favMoviesAnimated");

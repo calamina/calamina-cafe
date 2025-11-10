@@ -1,5 +1,4 @@
 import p5 from "p5";
-
 interface Point { x: number, y: number }
 interface MemoryPoint extends Point { age: number }
 
@@ -13,13 +12,14 @@ let state = 1
 let clickTimer = 0
 let mouseCol = 0
 let mouseRow = 0
+const clickAnimationDuration = 28
 const history: MemoryPoint[] = []
 const random: MemoryPoint[] = []
 const click: Point = { x: 0, y: 0 }
-const chars = "..:/|I::~+¤#@0+. .,:il|li:._ _.:*oO0Oo.:iI%Ii:."
 const isMobile = 'ontouchstart' in document.documentElement;
 
-export const script = (p5: p5) => {
+const script = (p5: p5) => {
+
   p5.setMoveThreshold(1)
   p5.setup = async () => {
     const canvas = p5.createCanvas(window.innerWidth, window.innerHeight);
@@ -63,7 +63,8 @@ export const script = (p5: p5) => {
     p5.fill(activecolor)
 
     const min = clickTimer - 10
-    if (min < 28) {
+    if (min < clickAnimationDuration) {
+      const chars = "..:/|I::~+¤#@0+. .,:il|li:._ _.:*oO0Oo.:iI%Ii:."
       activecolor.setAlpha(255 - clickTimer * 5)
       p5.fill(activecolor)
       fillCircle(click, clickTimer, min < 0 ? 0 : min, chars)
@@ -82,7 +83,6 @@ export const script = (p5: p5) => {
         large(x, y)
       }
     })
-
 
     activecolor.setAlpha(255);
     p5.fill(activecolor)
@@ -117,8 +117,10 @@ export const script = (p5: p5) => {
     }
   };
 
+  p5.windowResized = () => p5.resizeCanvas(window.innerWidth, window.innerHeight)
+  p5.mouseMoved = () => history.push({ x: mouseCol, y: mouseRow, age: 1 })
   p5.mouseClicked = () => {
-    if (clickTimer < 28) return
+    if (clickTimer < clickAnimationDuration) return
     if (isMobile) {
       mouseCol = p5.floor(p5.mouseX / SIZE)
       mouseRow = p5.floor(p5.mouseY / SIZE)
@@ -126,12 +128,12 @@ export const script = (p5: p5) => {
     clickTimer = 0
     click.x = p5.floor(p5.mouseX / SIZE)
     click.y = p5.floor(p5.mouseY / SIZE)
-
   }
 
   function dot(col: number, row: number) {
     p5.text("@", col * SIZE, row * SIZE);
   }
+
   function small(col: number, row: number) {
     p5.text("@", col * SIZE, row * SIZE);
     p5.text("#", col * SIZE, row * SIZE + SIZE);
@@ -139,6 +141,7 @@ export const script = (p5: p5) => {
     p5.text("#", col * SIZE + SIZE, row * SIZE);
     p5.text("#", col * SIZE - SIZE, row * SIZE);
   }
+
   function large(col: number, row: number) {
     p5.text("@", col * SIZE, row * SIZE);
     p5.text("#", col * SIZE, row * SIZE + SIZE);
@@ -154,6 +157,7 @@ export const script = (p5: p5) => {
     p5.text("*", col * SIZE + SIZE * 2, row * SIZE);
     p5.text("*", col * SIZE - SIZE * 2, row * SIZE);
   }
+
   function largehollow(col: number, row: number) {
     p5.text("o", col * SIZE, row * SIZE + SIZE);
     p5.text("o", col * SIZE, row * SIZE - SIZE);
@@ -163,26 +167,28 @@ export const script = (p5: p5) => {
     p5.text("*", col * SIZE - SIZE, row * SIZE - SIZE);
     p5.text("*", col * SIZE + SIZE, row * SIZE - SIZE);
     p5.text("*", col * SIZE - SIZE, row * SIZE + SIZE);
-    p5.text(".", col * SIZE, row * SIZE + SIZE * 2);
-    p5.text(".", col * SIZE, row * SIZE - SIZE * 2);
-    p5.text(".", col * SIZE + SIZE * 2, row * SIZE);
-    p5.text(".", col * SIZE - SIZE * 2, row * SIZE);
+    p5.text("·", col * SIZE, row * SIZE + SIZE * 2);
+    p5.text("·", col * SIZE, row * SIZE - SIZE * 2);
+    p5.text("·", col * SIZE + SIZE * 2, row * SIZE);
+    p5.text("·", col * SIZE - SIZE * 2, row * SIZE);
   }
+
   function largeempty(col: number, row: number) {
     p5.text("*", col * SIZE + SIZE, row * SIZE + SIZE);
     p5.text("*", col * SIZE - SIZE, row * SIZE - SIZE);
     p5.text("*", col * SIZE + SIZE, row * SIZE - SIZE);
     p5.text("*", col * SIZE - SIZE, row * SIZE + SIZE);
-    p5.text(".", col * SIZE, row * SIZE + SIZE * 2);
-    p5.text(".", col * SIZE, row * SIZE - SIZE * 2);
-    p5.text(".", col * SIZE + SIZE * 2, row * SIZE);
-    p5.text(".", col * SIZE - SIZE * 2, row * SIZE);
+    p5.text("·", col * SIZE, row * SIZE + SIZE * 2);
+    p5.text("·", col * SIZE, row * SIZE - SIZE * 2);
+    p5.text("·", col * SIZE + SIZE * 2, row * SIZE);
+    p5.text("·", col * SIZE - SIZE * 2, row * SIZE);
   }
+
   function largevoid(col: number, row: number) {
-    p5.text(".", col * SIZE, row * SIZE + SIZE * 2);
-    p5.text(".", col * SIZE, row * SIZE - SIZE * 2);
-    p5.text(".", col * SIZE + SIZE * 2, row * SIZE);
-    p5.text(".", col * SIZE - SIZE * 2, row * SIZE);
+    p5.text("·", col * SIZE, row * SIZE + SIZE * 2);
+    p5.text("·", col * SIZE, row * SIZE - SIZE * 2);
+    p5.text("·", col * SIZE + SIZE * 2, row * SIZE);
+    p5.text("·", col * SIZE - SIZE * 2, row * SIZE);
   }
 
   function fillCircle(center: Point, radius: number, min: number = 0, chars: string) {
@@ -214,9 +220,6 @@ export const script = (p5: p5) => {
     const diff = p5.floor(p5.max(p5.abs(center.x - point.x), p5.abs(center.y - point.y)))
     return chars[diff]
   }
-
-  p5.windowResized = () => p5.resizeCanvas(window.innerWidth, window.innerHeight)
-  p5.mouseMoved = () => history.push({ x: mouseCol, y: mouseRow, age: 1 })
 }
 
 window.onload = () => new p5(script)

@@ -1,10 +1,9 @@
 ---
-import { queryWebProjects } from "../utils/utils";
-import AppHeaderProject from "./AppHeaderProject.vue";
-import SearchBar from "./SearchBar.vue";
-import ThemeSwitch from "./ThemeSwitch.vue";
-import { ProjectType } from "../utils/enum";
-import type { TypedProject } from "../models/Types";
+import AppHeaderProject from "@components/AppHeaderProject.vue";
+import ThemeSwitch from "@components/ThemeSwitch.vue";
+import type { TypedProject } from "@models/Project";
+import { ProjectType } from "@utils/enum";
+import { queryWebProjects } from "@utils/utils";
 
 const { project } = Astro.params;
 const route = Astro.originPathname;
@@ -21,9 +20,6 @@ const routes = {
   projects: route === ROUTES.projects,
   inprojects: route.includes(ROUTES.projects),
 };
-
-console.debug(route);
-console.debug(routes.about);
 
 const projects = await queryWebProjects();
 const list = projects.map((project: TypedProject) => ({
@@ -60,7 +56,7 @@ const list = projects.map((project: TypedProject) => ({
     </div>
   </nav>
   <div class="actions">
-    <SearchBar list={list} client:load />
+    <!-- <SearchBar list={list} client:load /> -->
     <ThemeSwitch client:load />
   </div>
 </header>
