@@ -1,196 +1,185 @@
 <script setup lang="ts">
-import LinkImageLabel from "@components/atomic/LinkImageLabel.vue";
-import { ref } from "vue";
+import { ref, type Ref } from 'vue';
 
-type MediaList = {
-  title: string;
-  medias: {
-    id: string;
-    url: string;
-    label: string;
-    src: string;
-    type?: string | undefined;
-  }[];
-  toggled?: boolean | undefined;
-  size?: "large" | "full" | undefined;
-}
+const { medias } = defineProps<{
+  medias: any
+}>();
 
-const { medias, title, size, toggled } = defineProps<MediaList>();
-const active = ref(toggled ?? false)
-const toggle = () => active.value = !active.value
+const sections = medias.map((media: any) => Object.keys(media)[0]);
+const active: Ref<string> = ref(sections[0]);
+const select = (index: number) => active.value = sections[index];
+console.debug(medias)
 </script>
 
 <template>
-  <div class="wrapper" :class="{ large: size === 'large', full: size === 'full' }">
-    <button class="header" @click="toggle()">
-      <h3>{{ title }}</h3>
-      <div class="action">
-        <!-- <button @click="toggle()">toggle</button> -->
-        <span>{{ medias.length }}</span>
-      </div>
-    </button>
-    <div class="medias" :class="{ 'active': active }">
-      <LinkImageLabel v-for="media in medias" :url="media.url" :label="media.label">
-        <img :src="media.src" :alt="media.label + 'cover'" width=50 height=50>
-      </LinkImageLabel>
+  <div class="favorites">
+    <div class="timeline">
+      <button v-for="(section, index) in sections" :key="index" @click="select(index)" @focus="select(index)"
+        class="moment"
+        :class="{ 'active': active === sections[index], 'moment-first': index === 0, 'moment-last': index === section.length - 1 }">
+        <div class="time">{{ section }}</div>
+        <div class="dot"></div>
+        <div class="role">{{ "yoyoyo" }}</div>
+      </button>
     </div>
   </div>
 </template>
 
 <style scoped>
-.wrapper {
-  display: flex;
-  flex-flow: column;
-  background-color: var(--bg);
-  border-radius: 0.5rem;
-
-  @media (max-width: 1280px) {
-    grid-column: span 3;
-  }
-}
-
-.medias {
-  display: flex;
-  flex-flow: column;
-  gap: 0.5rem;
+.favorites {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 2.5rem;
   width: 100%;
-  padding: 0.5rem;
-  /* padding-top: 0; */
-  overflow: hidden;
-  transition: max-height 0.2s, padding 0.2s;
-
-  @media (max-width: 1280px) {
-    max-height: 0;
-    padding: 0 0.5rem;
-  }
-
-  &.active {
-    @media (max-width: 1280px) {
-      max-height: 40rem;
-      padding: 0.5rem;
-      /* padding-top: 0; */
-    }
-  }
-}
-
-.large {
-  grid-column: span 2;
-
-  .medias {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  @media (max-width: 1280px) {
-    grid-column: span 3;
-
-    .medias {
-      grid-template-columns: 1fr;
-    }
-  }
-}
-
-.full {
-  grid-column: span 3;
-
-  .medias {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-
-    @media (max-width: 1280px) {
-      grid-column: span 3;
-
-      .medias {
-        grid-template-columns: 1fr;
-      }
-    }
-  }
-}
-
-.header {
-  display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid var(--bg-darker);
-  padding: 0.5rem;
-  gap: 0.5rem;
-  transition: border-bottom 0.2s;
-  border-bottom: 0px solid transparent;
-  background-color: transparent;
-  cursor: default;
+}
+
+.timeline {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  height: fit-content;
+  width: fit-content;
+  justify-self: flex-end;
+}
+
+.moment {
+  display: grid;
+  grid-template-columns: 6ch auto auto 1fr;
+  width: 100%;
+  padding: 0;
+  grid-column: 1;
+
+  &.moment-dim {
+    opacity: 0.4;
+    z-index: -1;
+  }
 
   &:hover {
-    background-color: transparent;
-  }
+    .time {
+      background-color: var(--bg-darker);
+      border-color: var(--bg-darker);
+    }
 
-  @media (max-width: 1280px) {
-    cursor: pointer;
-
-    &:hover {
-      background-color: var(--bg-darker0);
+    &:not(.active) .dot {
+      background-color: var(--bg-darker0x);
     }
   }
-
-  /* 
-  @media (max-width: 1280px) {
-    border-bottom: 0px solid transparent;
-  } */
 }
 
-.action {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-button {
+.time {
+  position: relative;
+  justify-self: flex-end;
+  border: 2px solid var(--bg-darker0);
   background-color: var(--bg-darker0);
-  padding: 0.25rem 0.75rem;
   border-radius: 0.5rem;
+  padding: 0.15rem 0.4rem 0;
+  color: var(--color-dim);
+  transition: background-color 0.1s ease-out, border-color 0.1s ease-out;
 
-  &:hover {
-    background-color: var(--highlight);
-    color: var(--color-hover);
-  }
-
-  @media (min-width: 1280px) {
-    display: none;
-  }
-}
-
-span {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  width: 4ch;
-  justify-content: end;
-  padding: 0 0.5rem;
-  color: var(--color-light);
-}
-
-h3 {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.25rem 1rem;
-  border-radius: 0.5rem;
-  background-color: var(--bg-darker0);
-
-  &::before {
-    content: "";
+  &:after {
+    right: -1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
     display: block;
-    width: 0.4rem;
-    height: 0.4rem;
-    border-radius: 50%;
-    background-color: var(--highlight);
+    content: "";
+    height: 2px;
+    width: 1rem;
+    background-color: var(--bg-darker);
   }
 }
 
-img {
+.active .time {
+  background-color: var(--bg-darker);
+  border-color: var(--bg-darker);
+}
+
+.active .role {
+  outline: 2px solid var(--bg-darker0);
+  box-shadow: rgba(100, 100, 111, 0.08) 0px 0px 20px 0px;
+}
+
+.role {
+  outline-offset: 4px;
+  position: relative;
+  border: 2px solid var(--bg-darker);
+  box-shadow: rgba(100, 100, 111, 0) 0px 0px 20px 0px;
+  color: var(--color-dim);
   border-radius: 0.5rem;
-  object-fit: cover;
-  height: 2.5rem;
-  width: 2.5rem;
-  flex-shrink: 0;
+  padding: 0.15rem 0.6rem 0;
+  justify-self: flex-start;
+  display: flex;
+  text-overflow: ellipsis;
+  text-wrap: nowrap;
+  outline: 2px solid transparent;
+  transition: outline .2s, box-shadow .2s;
+
+  &:before {
+    left: -1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+    display: block;
+    content: "";
+    height: 2px;
+    width: 1rem;
+    background-color: var(--bg-darker);
+    z-index: 4;
+  }
+}
+
+.dot {
+  position: relative;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 50%;
+  background-color: var(--bg-darker);
+  outline: 2px solid var(--bg-darker);
+  outline-offset: 4px;
+  margin: 0 calc(1rem + 4px);
+  transition: background-color 0.1s ease-out;
+
+  &:after,
+  &:before {
+    position: absolute;
+    display: block;
+    content: "";
+    height: 1rem;
+    width: 2px;
+    background-color: var(--bg-darker);
+  }
+
+  &:before {
+    top: calc(-1rem - 4px);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &:after {
+    bottom: calc(-1rem - 4px);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.moment-first .dot:before {
+  background: linear-gradient(var(--bg-darker0), var(--bg-darker));
+}
+
+.moment-last .dot:after {
+  background: linear-gradient(var(--bg-darker), var(--bg-darker0));
+}
+
+.moment:first-of-type .dot::before,
+.moment:last-of-type .dot::after {
+  display: none;
+}
+
+.active .dot {
+  background-color: var(--highlight);
 }
 </style>

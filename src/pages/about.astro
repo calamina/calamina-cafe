@@ -1,9 +1,9 @@
 ---
-import { query } from "@utils/utils.ts";
-import type { Moment } from "@models/Moment";
+import Favorites from "@components/features/about/Favorites.astro";
+import Timeline from "@components/features/about/Timeline.vue";
 import MainLayout from "@layouts/MainLayout.astro";
-import Timeline from "@components/Timeline.vue";
-import FavoritesNew from "@components/features/about/FavoritesNew.astro";
+import type { Moment } from "@models/Moment";
+import { query } from "@utils/utils.ts";
 
 const jobs = await query<Moment>("jobs");
 jobs.forEach((job: Moment) => (job.duration = getDuration(job.start, job.end)));
@@ -32,7 +32,7 @@ function getDuration(startDate: Date, endDate?: Date) {
 		</section>
 
 		<section>
-			<Timeline client:only moments={moments} />
+			<Timeline client:idle moments={moments} />
 		</section>
 
 		<section>
@@ -40,7 +40,7 @@ function getDuration(startDate: Date, endDate?: Date) {
 		</section>
 
 		<section>
-			<FavoritesNew />
+			<Favorites client:idle />
 			<!-- <Favorites /> -->
 		</section>
 	</div>
@@ -65,7 +65,7 @@ function getDuration(startDate: Date, endDate?: Date) {
 		display: flex;
 		flex-flow: column;
 		align-items: start;
-		padding: 2rem 0 3rem;
+		padding: 3rem 0 4rem;
 		gap: 4rem;
 		width: 100%;
 	}
@@ -86,7 +86,7 @@ function getDuration(startDate: Date, endDate?: Date) {
 
 	@media (max-width: 1280px) {
 		.content {
-			padding: 0 1rem;
+			padding: 3rem 0 4rem;
 		}
 	}
 </style>

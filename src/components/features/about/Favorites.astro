@@ -1,0 +1,27 @@
+---
+import Favorite from "@components/features/about/Favorite.vue";
+import type { Media } from "@models/Media";
+import { query } from "@utils/utils.ts";
+
+const movies = await query<Media>("favMovies");
+const moviesAnimated = await query<Media>("favMoviesAnimated");
+const moviesShort = await query<Media>("favMoviesShort");
+const series = await query<Media>("favSeries");
+const seriesAnimated = await query<Media>("favSeriesAnimated");
+const books = await query<Media>("favBooks");
+const booksVisual = await query<Media>("favBooksVisual");
+const games = await query<Media>("favGames");
+
+const list: any[] = [
+  { movies: [movies, moviesAnimated, moviesShort] },
+  { series: [series, seriesAnimated] },
+  { books: [books, booksVisual] },
+  { games: [games] },
+];
+---
+
+<div class="grid">
+  <Favorite medias={list} client:visible />
+</div>
+
+<style scoped></style>
