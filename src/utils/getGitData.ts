@@ -9,6 +9,7 @@ export const getGitData = async () => {
 
   const response = await fetch(url, { headers });
   if (!response.ok) {
+    console.debug(response)
     throw new Error(`Error fetching git projects. Response status: ${response.status}`);
   }
   const data = await response.json()?.then((projects: GitProject[]) =>

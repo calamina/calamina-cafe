@@ -7,9 +7,14 @@ const { color, pad0 } = defineProps<{
 }>()
 
 const style: StyleValue = {}
-if (color) style.backgroundColor = color
-if (pad0) style.paddingBottom = 0
-if (pad0) style.paddingTop = "0.05rem"
+if (color) {
+    style.backgroundColor = color
+    style.color = "var(--color-hover)"
+}
+if (pad0) {
+    style.paddingBottom = 0
+    style.paddingTop = "0.05rem"
+}
 </script>
 
 <template>
@@ -26,7 +31,8 @@ if (pad0) style.paddingTop = "0.05rem"
     position: relative;
     padding: 0.25rem 0.5rem 0.1rem;
     border-radius: 0.5rem;
-    color: var(--color-hover);
+    /* color: var(--color-hover); */
+    color: var(--color);
     background-color: var(--bg-darker0);
 }
 </style>

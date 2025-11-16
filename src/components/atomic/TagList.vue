@@ -11,7 +11,7 @@ const { name, items, color } = defineProps<{
 <template>
     <div class="category">
         <div class="taglist">
-            <BaseTag v-if="name" class="tag title">{{ name }}</Basetag>
+            <BaseTag v-if="name" class="title">{{ name }}</Basetag>
             <BaseTag :color="color" v-for="item in items">{{ item }}</BaseTag>
         </div>
     </div>
@@ -29,15 +29,6 @@ const { name, items, color } = defineProps<{
     display: flex;
     gap: 0.5rem;
     flex-flow: row wrap;
-}
-
-.tag {
-    display: inline-block;
-    position: relative;
-    padding: 0.25rem 0.5rem 0.1rem;
-    border-radius: 0.5rem;
-    color: var(--color-hover);
-    background-color: var(--bg-darker0);
 }
 
 .title {

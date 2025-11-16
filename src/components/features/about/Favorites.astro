@@ -12,11 +12,38 @@ const books = await query<Media>("favBooks");
 const booksVisual = await query<Media>("favBooksVisual");
 const games = await query<Media>("favGames");
 
-const list: any[] = [
-  { movies: [movies, moviesAnimated, moviesShort] },
-  { series: [series, seriesAnimated] },
-  { books: [books, booksVisual] },
-  { games: [games] },
+export interface Favorite {
+  name: string;
+  categories: { name: string; content: Media[] }[];
+}
+
+const list: Favorite[] = [
+  {
+    name: "movies",
+    categories: [
+      { name: "classic", content: movies },
+      { name: "animated", content: moviesAnimated },
+      { name: "shorts", content: moviesShort },
+    ],
+  },
+  {
+    name: "series",
+    categories: [
+      { name: "classic", content: series },
+      { name: "animated", content: seriesAnimated },
+    ],
+  },
+  {
+    name: "books",
+    categories: [
+      { name: "books", content: books },
+      { name: "graphic", content: booksVisual },
+    ],
+  },
+  {
+    name: "games",
+    categories: [{ name: "games", content: games }],
+  },
 ];
 ---
 
@@ -24,4 +51,8 @@ const list: any[] = [
   <Favorite medias={list} client:visible />
 </div>
 
-<style scoped></style>
+<style scoped>
+  .grid {
+    width: 100%;
+  }
+</style>

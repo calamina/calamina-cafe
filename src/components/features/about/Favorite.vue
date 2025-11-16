@@ -1,185 +1,170 @@
 <script setup lang="ts">
-import { ref, type Ref } from 'vue';
+import { computed, ref, type Ref } from 'vue';
+import type { Media } from '@models/Media';
+import IconFolder from '@components/icons/IconFolder.vue';
+import Icon from '@components/icons/Icon.vue';
+import IconFolderOpen from '@components/icons/IconFolderOpen.vue';
+import Fave from '@components/features/about/fave.vue';
+
+interface Favorite {
+  name: string;
+  categories: { name: string; content: Media[] }[];
+}
 
 const { medias } = defineProps<{
-  medias: any
+  medias: Favorite[]
 }>();
 
-const sections = medias.map((media: any) => Object.keys(media)[0]);
-const active: Ref<string> = ref(sections[0]);
-const select = (index: number) => active.value = sections[index];
-console.debug(medias)
+const folders = ref([
+  { open: true },
+  { open: false },
+  { open: false },
+  { open: false },
+])
+const activeIndex: Ref<number> = ref(0);
+// const active: Ref<Favorite> = computed(() => medias[activeIndex.value]);
+const subactive: Ref<{ name: string; content: Media[] }> = ref(medias[0].categories[0]);
+const subselect = (index: number, indexcateg: number) => subactive.value = medias[index].categories[indexcateg];
+
+const toggleFolder = (index: number) => {
+  folders.value[index].open = !folders.value[index].open
+};
 </script>
 
 <template>
   <div class="favorites">
-    <div class="timeline">
-      <button v-for="(section, index) in sections" :key="index" @click="select(index)" @focus="select(index)"
-        class="moment"
-        :class="{ 'active': active === sections[index], 'moment-first': index === 0, 'moment-last': index === section.length - 1 }">
-        <div class="time">{{ section }}</div>
-        <div class="dot"></div>
-        <div class="role">{{ "yoyoyo" }}</div>
-      </button>
+    <div class="tree">
+      <div v-for="(media, index) in medias" :key="media.name" class="folder">
+        <button class="folder-name" @click="toggleFolder(index)">
+          <Icon :icon="folders[index].open ? IconFolderOpen : IconFolder" />
+          <p>{{ media.name }}</p>
+        </button>
+        <div class="content" v-if="folders[index].open">
+          <button v-for="(category, indexcateg) in media.categories" :key="category.name"
+                  @click="subselect(index, indexcateg)" @focus="subselect(index, indexcateg)" class="category"
+                  :class="{ 'active': subactive.content[0].label === category.content[0].label, 'category-last': indexcateg === media.categories.length - 1 }">
+            <div class="time">{{ category.name }}</div>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="details">
+      <Fave v-for="favorite in subactive.content" :key="favorite.label" :label="favorite.label" :url="favorite.url"
+            :src="favorite.src" />
     </div>
   </div>
 </template>
 
 <style scoped>
 .favorites {
+  /* container-type: inline-size; */
+  border: 2px solid var(--bg-darker);
+  outline: 2px solid var(--bg-darker0);
+  outline-offset: 4px;
+  box-shadow: rgba(100, 100, 111, 0.08) 0px 0px 29px 0px;
+  height: 30rem;
   display: grid;
-  grid-template-columns: auto auto;
-  gap: 2.5rem;
+  grid-template-columns: 15rem 1fr;
   width: 100%;
   justify-content: center;
   align-items: center;
 }
 
-.timeline {
+.tree {
+  padding: 1rem;
+  padding-right: 0.75rem;
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: var(--scroll-color) transparent;
+  scrollbar-gutter: stable;
+  scroll-padding-top: 5rem;
   display: flex;
   flex-flow: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1.25rem;
-  height: fit-content;
+  gap: 1rem;
+  border-right: 1px solid var(--bg-darker);
+}
+
+.folder {
   width: fit-content;
-  justify-self: flex-end;
-}
-
-.moment {
-  display: grid;
-  grid-template-columns: 6ch auto auto 1fr;
-  width: 100%;
-  padding: 0;
-  grid-column: 1;
-
-  &.moment-dim {
-    opacity: 0.4;
-    z-index: -1;
-  }
-
-  &:hover {
-    .time {
-      background-color: var(--bg-darker);
-      border-color: var(--bg-darker);
-    }
-
-    &:not(.active) .dot {
-      background-color: var(--bg-darker0x);
-    }
-  }
-}
-
-.time {
-  position: relative;
-  justify-self: flex-end;
-  border: 2px solid var(--bg-darker0);
-  background-color: var(--bg-darker0);
-  border-radius: 0.5rem;
-  padding: 0.15rem 0.4rem 0;
-  color: var(--color-dim);
-  transition: background-color 0.1s ease-out, border-color 0.1s ease-out;
-
-  &:after {
-    right: -1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    position: absolute;
-    display: block;
-    content: "";
-    height: 2px;
-    width: 1rem;
-    background-color: var(--bg-darker);
-  }
-}
-
-.active .time {
-  background-color: var(--bg-darker);
-  border-color: var(--bg-darker);
-}
-
-.active .role {
-  outline: 2px solid var(--bg-darker0);
-  box-shadow: rgba(100, 100, 111, 0.08) 0px 0px 20px 0px;
-}
-
-.role {
-  outline-offset: 4px;
-  position: relative;
-  border: 2px solid var(--bg-darker);
-  box-shadow: rgba(100, 100, 111, 0) 0px 0px 20px 0px;
-  color: var(--color-dim);
-  border-radius: 0.5rem;
-  padding: 0.15rem 0.6rem 0;
-  justify-self: flex-start;
   display: flex;
-  text-overflow: ellipsis;
-  text-wrap: nowrap;
-  outline: 2px solid transparent;
-  transition: outline .2s, box-shadow .2s;
-
-  &:before {
-    left: -1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    position: absolute;
-    display: block;
-    content: "";
-    height: 2px;
-    width: 1rem;
-    background-color: var(--bg-darker);
-    z-index: 4;
-  }
+  flex-flow: column;
+  gap: 0.25rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  /* background-color: var(--bg-darker0); */
 }
 
-.dot {
+.folder-name {
+  width: 100%;
+  border-radius: 0.5rem;
+  background-color: var(--bg-darker0);
+  padding: 0.25rem 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.content {
+  display: flex;
+  flex-flow: column;
+  /* padding: 0.5rem; */
+  padding-top: 0;
+  gap: 0.25rem;
+}
+
+.category {
   position: relative;
-  height: 1rem;
-  width: 1rem;
-  border-radius: 50%;
-  background-color: var(--bg-darker);
-  outline: 2px solid var(--bg-darker);
-  outline-offset: 4px;
-  margin: 0 calc(1rem + 4px);
-  transition: background-color 0.1s ease-out;
+  display: flex;
+  padding-left: 1rem;
+  /* margin-left: 2rem; */
+  align-items: center;
+  gap: 0.5rem;
+  /* background-color: var(--bg-darker0x); */
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  width: 100%;
 
-  &:after,
-  &:before {
-    position: absolute;
-    display: block;
-    content: "";
-    height: 1rem;
-    width: 2px;
-    background-color: var(--bg-darker);
+  &.active {
+    background-color: var(--bg-darker0x);
+    background-color: var(--highlight);
+    color: var(--bg-darker);
+
+    /* &::before {
+      content: "";
+      display: flex;
+      width: 0.5rem;
+      height: 0.5rem;
+      background-color: var(--highlight);
+      border-radius: 50%;
+    } */
   }
 
-  &:before {
-    top: calc(-1rem - 4px);
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  &:after {
-    bottom: calc(-1rem - 4px);
-    left: 50%;
-    transform: translateX(-50%);
-  }
+  /* &::before {
+    content: "├──";
+    padding-right: 0.25rem;
+  } */
 }
 
-.moment-first .dot:before {
-  background: linear-gradient(var(--bg-darker0), var(--bg-darker));
-}
+/* .category-last::before {
+  content: "└──"
+} */
 
-.moment-last .dot:after {
-  background: linear-gradient(var(--bg-darker), var(--bg-darker0));
-}
-
-.moment:first-of-type .dot::before,
-.moment:last-of-type .dot::after {
-  display: none;
-}
-
-.active .dot {
-  background-color: var(--highlight);
+.details {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  padding: 1rem;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: var(--scroll-color) transparent;
+  scrollbar-gutter: stable;
+  scroll-padding-top: 5rem;
+  gap: 0.5rem;
+  flex: 1;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 </style>
