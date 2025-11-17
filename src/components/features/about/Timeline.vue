@@ -216,6 +216,7 @@ const selectMoment = (index: number) => active.value = moments[index];
 }
 
 .details {
+  position: relative;
   container-type: inline-size;
   border: 2px solid var(--bg-darker);
   outline: 2px solid var(--bg-darker0);
@@ -229,13 +230,9 @@ const selectMoment = (index: number) => active.value = moments[index];
   max-width: 50rem;
   border-radius: 0.5rem;
   overflow-y: scroll;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  position: relative;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
+  scrollbar-width: thin;
+  scrollbar-color: var(--scroll-color) transparent;
+  scrollbar-gutter: stable;
 }
 
 .header {

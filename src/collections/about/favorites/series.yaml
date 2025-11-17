@@ -18,7 +18,7 @@
   label: "Planet Earth"
   src: "https://media.senscritique.com/media/000006507385/100/planete_terre.jpg"
 
-- id: "5"
-  url: "https://www.senscritique.com/serie/severance/40631247"
-  label: "Severance"
-  src: "https://media.senscritique.com/media/000020547893/100/severance.png"
+# - id: "5"
+#   url: "https://www.senscritique.com/serie/severance/40631247"
+#   label: "Severance"
+#   src: "https://media.senscritique.com/media/000020547893/100/severance.png"

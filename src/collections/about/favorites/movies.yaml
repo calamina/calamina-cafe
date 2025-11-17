@@ -22,3 +22,8 @@
   url: "https://www.senscritique.com/film/les_nibelungen/408946"
   label: "Les Nibelungen"
   src: "https://media.senscritique.com/media/000022358379/100/les_nibelungen.jpg"
+
+- id: "6"
+  url: "https://www.senscritique.com/film/bienvenue_a_gattaca/488559"
+  label: "Gattaca"
+  src: "https://media.senscritique.com/media/000006383866/100/bienvenue_a_gattaca.jpg"
