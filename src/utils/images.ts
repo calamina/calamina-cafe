@@ -10,8 +10,7 @@ export const getProjectImages = (type: ProjectType, project: string) => {
 };
 
 export const getImage = (name: string, type: ProjectType) => {
-  return (type === ProjectType.WEB ? webCovers : phoneCovers)
-    .find((file) => file[0].includes(name))
+  return webCovers.find((file) => file[0].includes(name))
     ?.[1]() ?? new Promise(() => null);
 }
 

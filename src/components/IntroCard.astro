@@ -1,0 +1,162 @@
+<div class="wrapper">
+  <div class="card">
+    <h1>
+      calamina cafe
+      <span>.:*</span>
+    </h1>
+    <div class="desc">
+      <p>Hello and welcome :></p>
+      <p class="small">enjoy the tour !</p>
+    </div>
+    <div class="desc2">
+      <p>Work in progress /!\</p>
+      <p class="small">i'm not done yet !</p>
+    </div>
+    <div class="visual">
+      <p class="a">.</p>
+      <p class="b">*</p>
+      <p class="c">o</p>
+      <p class="d">@</p>
+    </div>
+    <div class="info">.... . .... .</div>
+    <div class="status">..::||::..</div>
+    <div class="mimi"><span class="dot"></span></div>
+  </div>
+</div>
+
+<style>
+  .wrapper {
+    height: 100%;
+    display: grid;
+    place-items: center;
+  }
+
+  .card {
+    /* grid-column: 2;
+    grid-row: 10; */
+    width: fit-content;
+    height: fit-content;
+    display: grid;
+    background-color: var(--bg);
+    gap: 1px;
+    outline: 0.75rem solid var(--bg);
+    /*border: 1px solid var(--bg-darker); */
+    border-radius: 0.5rem;
+    overflow: hidden;
+    grid-template-areas:
+      "title title title  title  title"
+      "desc  desc  desc   visual visual"
+      "desc2 desc2 desc2  visual visual"
+      "info  info  status status mimi";
+    grid-template-rows: 1fr 1fr 1fr 2rem;
+
+    & > * {
+      /* border-radius: 0.5rem; */
+      /* background-color: var(--bg); */
+      padding: 0.1rem 0.5rem;
+    }
+  }
+
+  .card h1 {
+    text-transform: capitalize;
+    grid-area: title;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    padding-top: 0.4rem;
+    align-items: center;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    width: 100%;
+  }
+
+  .card h1 span {
+    margin-left: auto;
+    line-height: 1rem;
+    font-size: 1rem;
+    align-self: center;
+    color: var(--highlight);
+  }
+
+  .desc {
+    grid-area: desc;
+  }
+
+  .desc2 {
+    grid-area: desc2;
+  }
+
+  .visual {
+    grid-area: visual;
+    display: grid;
+    grid-template-areas:
+      ". . . . . ."
+      ". a . . . ."
+      ". . . b . ."
+      ". c c c . ."
+      ". . . . d ."
+      ". . . . . .";
+    grid-template-columns: 0.5rem repeat(4, 1fr) 0.5rem;
+    grid-template-rows: 0.5rem repeat(4, 1fr) 0.5rem;
+    line-height: 1rem;
+
+    & > * {
+      color: var(--bg-darker0x);
+    }
+
+    .a {
+      grid-area: a;
+    }
+
+    .b {
+      grid-area: b;
+    }
+
+    .c {
+      grid-area: c;
+    }
+
+    .d {
+      grid-area: d;
+    }
+  }
+
+  .info {
+    grid-area: info;
+  }
+
+  .card .status {
+    grid-area: status;
+    text-align: center;
+    padding-top: 0.25rem;
+  }
+
+  .mimi {
+    grid-area: mimi;
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+
+    .dot {
+      flex-shrink: 0;
+      width: 0.4rem;
+      height: 0.4rem;
+      border-radius: 50%;
+      background-color: var(--highlight);
+    }
+  }
+
+  .info,
+  .status,
+  .mimi {
+    font-size: 0.9rem;
+    display: grid;
+    align-items: center;
+  }
+
+  .small {
+    font-size: 0.8rem;
+    line-height: 0.8rem;
+    color: var(--color-light);
+  }
+</style>

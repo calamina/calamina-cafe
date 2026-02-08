@@ -1,0 +1,110 @@
+---
+import BracketWrapper from "@components/BracketWrapper.astro";
+import type { TypedProject } from "@models/Project";
+import { getImage } from "@utils/images";
+
+export interface Props {
+  project: TypedProject;
+}
+
+const { project } = Astro.props;
+
+const url = "/projects/web/";
+const image = await getImage(project.name, project.type);
+---
+
+<a class="project" href={url + project.name}>
+  <div class="name">
+    <p class="bracket">[</p>
+    <p class="project-name">{project.name}</p>
+    <p class="bracket">]</p>
+  </div>
+  <BracketWrapper>
+    <img src={image?.default?.src} alt=`${project.name} cover` />
+  </BracketWrapper>
+</a>
+
+<style scoped>
+  .project {
+    position: relative;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    gap: 0.5rem;
+    width: fit-content;
+
+    &:hover {
+      background-color: transparent;
+
+      .name {
+        gap: 1rem;
+      }
+
+      .project-name {
+        padding: 0 1.25rem;
+        background-color: var(--bg-darkertsp);
+
+        &::before {
+          content: ".:";
+          width: 2ch;
+          padding-right: 0.25rem;
+          color: var(--color-light);
+        }
+        &::after {
+          content: ":.";
+          width: 2ch;
+          padding-left: 0.25rem;
+          color: var(--color-light);
+        }
+      }
+
+      .bracket {
+        color: var(--color);
+      }
+    }
+  }
+
+  .name {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    transition: gap 0.3s ease-out;
+  }
+
+  .bracket {
+    color: var(--bg-darker);
+  }
+
+  .project-name {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    transition:
+      padding 0.125s ease-out,
+      letter-spacing 0.125s ease-out;
+
+    &::before,
+    &::after {
+      display: flex;
+      content: "";
+      width: 0;
+      overflow: hidden;
+      padding: 0;
+      transition:
+        width 0.125s ease-out,
+        padding 0.125s ease-out;
+    }
+  }
+
+  img {
+    width: fit-content;
+    background-color: transparent;
+    /* outline: 2px solid var(--bg-darker);
+  outline-offset: -2px;
+  padding: 1rem; */
+    width: 45vw;
+    object-fit: contain;
+    transition: background-color 0.125s ease-out;
+  }
+</style>

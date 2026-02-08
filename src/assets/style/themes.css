@@ -30,6 +30,7 @@
     --bg: light-dark(var(--Grey-200), #282424);
     --bg-tsp: light-dark(#e1dedeaa, #282424aa);
     --bg-darker0: light-dark(var(--Grey-300), #322d2d);
+    --bg-darkertsp: light-dark(#d8d5d588, #322d2d);
     /* todo dark */
     --bg-darker0x: light-dark(var(--Grey-450), #3b3434);
     --bg-darker: light-dark(var(--Grey-400), #484444);

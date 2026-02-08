@@ -1,3 +1,4 @@
+import { ArticleSchema } from '@models/Article';
 import { LinkSchema } from '@models/Link';
 import { MediaSchema } from '@models/Media';
 import { MomentSchema } from '@models/Moment';
@@ -66,4 +67,11 @@ const phoneProjects = defineCollection({
   schema: ProjectSchema
 });
 
-export const collections = { nowLinks, nowMedia, favMovies, favMoviesAnimated, favMoviesShort, favSeries, favSeriesAnimated, favBooks, favBooksVisual, favGames, jobs, webProjects, phoneProjects };
+// ARTICLES
+const articles = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/collections/articles/" }),
+  schema: ArticleSchema
+});
+
+
+export const collections = { nowLinks, nowMedia, favMovies, favMoviesAnimated, favMoviesShort, favSeries, favSeriesAnimated, favBooks, favBooksVisual, favGames, jobs, webProjects, phoneProjects, articles };

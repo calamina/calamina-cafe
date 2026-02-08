@@ -1,22 +1,22 @@
 <script setup lang="ts">
 import BaseTag from '@components/atomic/TagBase.vue';
 
-const { project = undefined } = defineProps<{
-  project: string | undefined
+const { sublink = undefined } = defineProps<{
+  sublink: string | undefined
 }>()
 </script>
 
 <template>
   <transition name="sublink" mode="out-in">
-    <div class="project" v-if="project" :key="project">
+    <div class="sublink" v-if="sublink" :key="sublink">
       <p>:</p>
-      <BaseTag pad0>{{ project }}</BaseTag>
+      <BaseTag pad0>{{ sublink }}</BaseTag>
     </div>
   </transition>
 </template>
 
 <style scoped>
-.project {
+.sublink {
   display: flex;
   align-items: center;
   gap: 0.25rem;

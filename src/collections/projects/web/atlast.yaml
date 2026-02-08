@@ -2,7 +2,7 @@ name: "atlast"
 tech:
   tools:
   - "vue"
-  - "strapi"
+  - "indexedDB"
   languages:
   - "html"
   - "scss"

@@ -25,13 +25,16 @@ import SocialsList from "@components/SocialsList.vue";
 
 <style scoped>
     footer {
+        /* max-width: calc(var(--app-width) - 3rem); */
         max-width: var(--app-width);
         background-color: var(--bg-darker0);
         width: 100%;
         display: grid;
         grid-template-columns: 18ch 1fr 18ch;
         padding: 2rem 4rem;
-        /* margin-top: 1rem; */
+        /* margin: 1rem 1rem 2rem; */
+        /* border-top-left-radius: 1rem; */
+        /* border-top-right-radius: 1rem; */
         gap: 2rem;
         align-items: end;
     }
@@ -49,11 +52,10 @@ import SocialsList from "@components/SocialsList.vue";
 
         span {
             background-color: var(--highlight);
-            height: 0.5rem;
-            width: 0.5rem;
-            min-height: 0.5rem;
-            min-width: 0.5rem;
-            border-radius: 0.5rem;
+            height: 0.45rem;
+            width: 0.45rem;
+            flex-shrink: 0;
+            /* border-radius: 0.5rem; */
         }
     }
 

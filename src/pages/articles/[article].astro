@@ -1,0 +1,57 @@
+---
+import TagBase from "@components/atomic/TagBase.vue";
+import MainLayout from "@layouts/MainLayout.astro";
+import { getCollection, getEntry, render } from "astro:content";
+
+const { article } = Astro.params;
+const entry = await getEntry("articles", article ?? "lol");
+if (!entry) throw new Error("Could not find blog post 1");
+const { Content } = await render(entry);
+
+export async function getStaticPaths() {
+  const articles = await getCollection("articles");
+  return articles.map((article) => ({
+    params: { article: article.data.name },
+  }));
+}
+---
+
+<MainLayout>
+  <div class="article">
+    <TagBase>Published on: {entry.data.name}</TagBase>
+    <div class="content">
+      <Content />
+    </div>
+    <a class="back" href={"/articles"}>← back to articles</a>
+  </div>
+</MainLayout>
+
+<style>
+  .article {
+    padding: 2rem 0 3rem;
+    justify-self: flex-start;
+    width: 50rem;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: column;
+    gap: 1rem;
+    height: 100%;
+    flex-grow: 1;
+
+    @media screen and (max-width: 800px) {
+      width: 100%;
+    }
+  }
+
+  .content {
+    h1 {
+      font-size: 2.5rem;
+    }
+  }
+
+  .back {
+    text-align: center;
+    margin-top: auto;
+    text-decoration: underline;
+  }
+</style>

@@ -14,6 +14,22 @@
     transform: translateY(0.5rem);
 }
 
+/* APPEAR RIGHT */
+.appear-right-enter-active,
+.appear-right-leave-active {
+    transition: opacity 0.125s ease-out, transform 0.125s ease-out;
+}
+
+.appear-right-enter-from {
+    opacity: 0;
+    transform: translateX(-0.25rem);
+}
+
+.appear-right-leave-to {
+    opacity: 0;
+    transform: translateX(-0.25rem);
+}
+
 /* FADE */
 .fade-enter-active,
 .fade-leave-active {

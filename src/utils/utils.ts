@@ -1,4 +1,5 @@
-import type { GitProject, TypedProject } from "@models/Project";
+import type { Article } from "@models/Article";
+import type { TypedProject } from "@models/Project";
 import { getCollection, type CollectionKey } from "astro:content";
 import { ProjectCollection } from "./enum";
 
@@ -25,21 +26,16 @@ export const query = async <T>(collection: CollectionKey) =>
 //   getCollection(collection, filterFunction())?.then(results => results as T);
 
 // Projects
-export const queryWebProjects = async () => {
-  // const gitData = await getGitData()
-  return getCollection("webProjects").then(results => results
-    .map(result => result.data as GitProject)
-    // .map(project => {
-    //   const gitProject = gitData.find(git => git.name === project.name);
-    //   return {
-    //     ...project,
-    //     ...(gitProject ?? null),
-    //     type: ProjectType.WEB,
-    //   }
-    // })
-    // .sort((a, b) => (b.updated_at?.getTime() ?? 0) - (a.updated_at?.getTime() ?? 0))
+export const queryWebProjects = async () =>
+  getCollection("webProjects").then(results => results
+    .map(result => result.data as TypedProject)
   )
-}
+
+export const queryArticles = async () =>
+  getCollection("articles").then(results => results
+    .map(result => result.data as Article)
+  )
+
 
 export const queryLastProject = async () => (await queryWebProjects())[0]
 

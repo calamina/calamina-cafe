@@ -5,7 +5,9 @@ import ErrorFlower from "../components/ErrorFlower.vue";
 
 <BaseLayout>
   <div class="wrapper">
-    <h1>[ 404 error ]<br /> Page not found</h1>
+    <!-- <h1>[ Page not found ~ 404 ]</h1> -->
+    <h1>[ 404 ]<br /> Page not found !</h1>
+    <p></p>
     <p>
       Woopsi, you shouldn't be here ...<br /> That may be my fault, or that may be
       yours :^)
@@ -31,14 +33,20 @@ import ErrorFlower from "../components/ErrorFlower.vue";
   a,
   span {
     color: var(--color-error);
+    color: var(--highlight);
   }
 
   h1 {
     text-align: center;
+    font-size: 2rem;
   }
 
   a {
     text-decoration: underline;
+
+    &:hover {
+      background-color: transparent;
+    }
   }
 
   p {

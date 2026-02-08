@@ -1,35 +1,23 @@
 <script setup lang='ts'>
 import BaseTag from '@components/atomic/TagBase.vue';
-import Icon from '@components/icons/Icon.vue';
-import IconUpdate from '@components/icons/IconUpdate.vue';
 import type { TypedProject } from '@models/Project';
 import { getImage } from '@utils/images';
-import { useTimeAgo } from '@vueuse/core';
 
-const { project, fit = "contain" } = defineProps<{
+const { project } = defineProps<{
   project: TypedProject,
-  fit?: "cover" | "contain"
 }>()
 
-const url = "/projects/" + project.type.toLowerCase() + "/";
+const url = "/projects/web/";
 const image = await getImage(project.name, project.type)
 </script>
 
 <template>
   <a class="project" :href="url + project.name">
-    <img :src="image?.default?.src" :alt="`${project.name} cover`" :style="{ objectFit: fit }">
+    <img :src="image?.default?.src" :alt="`${project.name} cover`">
     <div class="info">
       <div class="info-header">
         <BaseTag class="name" pad0> {{ project.name }} </BaseTag>
         <div class="info-data">
-          <p class="date" v-if="project.updated_at || project.created_at">
-            <Icon :icon="IconUpdate" size="0.9rem" />
-            {{ useTimeAgo(project.updated_at || project.created_at || 0) }}
-          </p>
-          <BaseTag pad0 class="status" :class="{ 'online': project.homepage }">
-            <p> {{ project.homepage ? "online" : "offline" }} </p>
-            <div class="status-indicator" inert :class="{ 'online': project.homepage }" />
-          </BaseTag>
         </div>
       </div>
     </div>

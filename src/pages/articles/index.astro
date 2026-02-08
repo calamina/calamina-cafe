@@ -1,0 +1,21 @@
+---
+import ArticleList from "@components/ArticleList.astro";
+import MainLayout from "@layouts/MainLayout.astro";
+import type { Article } from "@models/Article";
+import { queryArticles } from "../../utils/utils.ts";
+
+const articles: Article[] = await queryArticles();
+---
+
+<MainLayout>
+    <div class="view">
+        <ArticleList articles={articles} />
+    </div>
+</MainLayout>
+
+<style scoped>
+    .view {
+        width: 100%;
+        padding-bottom: 3rem;
+    }
+</style>

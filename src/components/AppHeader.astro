@@ -1,34 +1,26 @@
 ---
-import AppHeaderProject from "@components/AppHeaderProject.vue";
+import AppHeaderSublink from "@components/AppHeaderSublink.vue";
 import ThemeSwitch from "@components/ThemeSwitch.vue";
-import type { TypedProject } from "@models/Project";
-import { ProjectType } from "@utils/enum";
-import { queryWebProjects } from "@utils/utils";
 
 const { project } = Astro.params;
+const { article } = Astro.params;
 const route = Astro.originPathname;
 
 enum ROUTES {
   home = "/",
   about = "/about/",
   projects = "/projects/",
+  articles = "/articles/",
 }
 
 const routes = {
   home: route === ROUTES.home,
   about: route === ROUTES.about,
   projects: route === ROUTES.projects,
+  articles: route === ROUTES.articles,
   inprojects: route.includes(ROUTES.projects),
+  inarticles: route.includes(ROUTES.articles),
 };
-
-const projects = await queryWebProjects();
-const list = projects.map((project: TypedProject) => ({
-  name: project.name,
-  desc: project.description,
-  url:
-    (project.type === ProjectType.WEB ? "/projects/web/" : "/projects/phone/") +
-    project.name,
-}));
 ---
 
 <header>
@@ -38,13 +30,13 @@ const list = projects.map((project: TypedProject) => ({
     <span class="logotext">cafe</span>
   </a>
   <nav>
-    <a href={routes.home ? "#" : "/"} class:list={[{ active: routes.home }]}>
+    <!-- <a href={routes.home ? "#" : "/"} class:list={[{ active: routes.home }]}>
       home
-    </a>
-    <a
+    </a> -->
+    <!-- <a
       href={routes.about ? "#" : "/about"}
       class:list={[{ active: routes.about }]}>about</a
-    >
+    > -->
     <div class="projects">
       <a
         href={routes.projects ? "#" : "/projects"}
@@ -52,7 +44,16 @@ const list = projects.map((project: TypedProject) => ({
       >
         projects
       </a>
-      <AppHeaderProject project={project} />
+      <AppHeaderSublink sublink={project} />
+    </div>
+    <div class="projects">
+      <a
+        href={routes.articles ? "#" : "/articles"}
+        class:list={[{ active: routes.inarticles }]}
+      >
+        articles
+      </a>
+      <AppHeaderSublink sublink={article} />
     </div>
   </nav>
   <div class="actions">
@@ -64,35 +65,41 @@ const list = projects.map((project: TypedProject) => ({
 <style scoped>
   header {
     max-width: var(--app-width);
-    position: fixed;
+    /* position: fixed; */
+    /* top: 0; */
     display: flex;
-    top: 0;
     height: 5rem;
     width: 100%;
     align-items: center;
     justify-content: space-between;
-    padding: 1.5rem 2rem;
+    padding: 1rem 1.5rem;
     z-index: 50;
-    pointer-events: none;
+    /* pointer-events: none; */
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   nav {
     display: flex;
-    gap: 1.25rem;
+    gap: 2rem;
     justify-self: center;
     background-color: var(--bg);
     /* backdrop-filter: blur(10px); */
-    box-shadow: var(--bg-tsp) 0px 0px 15px 15px;
+    /* box-shadow: var(--bg-tsp) 0px 0px 15px 15px; */
     /* box-shadow: #ffffff55 0px 0px 15px 15px; */
-    border-radius: 0.9rem;
+    /* border-radius: 0.9rem; */
     padding: 0.5rem;
+
+    @media screen (max-width: 800px) {
+      gap: 1rem;
+    }
   }
 
   a {
     pointer-events: auto;
     height: fit-content;
+    padding: 0.1rem 0.5rem 0;
+    border-radius: 0;
   }
 
   .logo {
@@ -100,6 +107,7 @@ const list = projects.map((project: TypedProject) => ({
     gap: 0.15rem;
     background-color: var(--highlight);
     color: var(--color-hover);
+    border-radius: 0;
 
     &:hover {
       .logotext {

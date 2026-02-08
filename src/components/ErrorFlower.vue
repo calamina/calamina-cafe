@@ -44,5 +44,6 @@ pre {
   line-height: 0.95rem;
   font-size: 0.8rem;
   color: var(--color-error);
+  color: var(--highlight);
 }
 </style>

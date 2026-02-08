@@ -26,7 +26,6 @@ function setTheme(value: 'light' | 'dark' | 'system') {
 button {
   width: 100%;
   padding: 0.5rem;
-  border-radius: 0.5rem;
   text-transform: capitalize;
 
   &.theme-picker {

@@ -7,7 +7,7 @@ const lastProject = await queryLastProject();
 
 <div>
   <h2>Last (updated) project :</h2>
-  <ProjectsGridProject client:only project={lastProject} fit="cover" />
+  <ProjectsGridProject project={lastProject} />
 </div>
 
 <style scoped>

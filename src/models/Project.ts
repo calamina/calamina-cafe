@@ -24,13 +24,3 @@ export interface TypedProject extends Project {
     updated_at?: Date,
     git_url?: string,
 }
-
-export interface GitProject extends TypedProject {
-    id: string;
-    html_url: string;
-    homepage: string;
-    default_branch: string;
-    language: string;
-    created_at: Date;
-    pushed_at: Date;
-}
