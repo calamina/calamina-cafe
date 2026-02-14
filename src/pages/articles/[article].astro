@@ -22,7 +22,7 @@ export async function getStaticPaths() {
     <div class="content">
       <Content />
     </div>
-    <a class="back" href={"/articles"}>← back to articles</a>
+    <a class="back" href={"/articles#" + entry.data.name}>← back to articles</a>
   </div>
 </MainLayout>
 

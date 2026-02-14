@@ -21,6 +21,7 @@ const { name, url = null, tech, description } = defineProps<{
     </div>
     <ProjectTech v-if="tech" :tech />
     <slot />
+    <a class="back" :href="'/projects#' + name">← back to projects</a>
   </div>
 </template>
 
@@ -36,7 +37,7 @@ const { name, url = null, tech, description } = defineProps<{
   position: sticky;
   top: 5rem;
   left: 0;
-  padding: 2rem 2rem 1rem;
+  padding: 1rem 2rem 1rem;
 }
 
 .description {
@@ -44,6 +45,13 @@ const { name, url = null, tech, description } = defineProps<{
   text-justify: distribute;
   opacity: 1;
   transform: translateX(0);
+}
+
+.back {
+  margin-top: auto;
+  text-align: center;
+  text-decoration: underline;
+  margin-bottom: 2rem;
 }
 
 /* MEDIA QUERIES */

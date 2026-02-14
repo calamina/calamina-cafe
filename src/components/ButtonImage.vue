@@ -11,7 +11,7 @@ button {
   background-color: var(--bg-darker0);
   outline-offset: -1px;
   max-height: 85vh;
-  border-radius: 0.5rem;
+  border-radius: 0.25rem;
   overflow: hidden;
 
   &:focus,

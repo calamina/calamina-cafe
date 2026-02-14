@@ -1,0 +1,44 @@
+---
+interface Props {
+  url: string;
+  type: string;
+  name: string;
+}
+
+const { type, name, url } = Astro.props;
+---
+
+<div>
+  <h2>latest updated {type}</h2>
+  <a href={url + name}>
+    {name} →
+  </a>
+</div>
+
+<style scoped>
+  div {
+    width: fit-content;
+    display: flex;
+    flex-flow: column;
+  }
+  h2 {
+    font-size: 1.1rem;
+    font-variant: small-caps;
+    padding: 0.25rem 0rem;
+    color: var(--color-light);
+    background-color: var(--bg);
+  }
+
+  a {
+    padding: 0.25rem 0.5rem;
+    background-color: var(--highlight);
+    text-transform: capitalize;
+    transition: padding 0.125s ease-out;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+      padding: 0.25rem 0.75rem;
+    }
+  }
+</style>

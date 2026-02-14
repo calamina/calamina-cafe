@@ -7,7 +7,7 @@ const articles = await getCollection("articles");
 <div>
   {
     articles.map((article) => (
-      <a href={`/articles/${article.id}`}>
+      <a id={article.id} href={`/articles/${article.id}`}>
         <BracketWrapper>
           <p>{article.id}</p>
         </BracketWrapper>

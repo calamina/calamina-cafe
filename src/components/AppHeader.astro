@@ -98,7 +98,7 @@ const routes = {
   a {
     pointer-events: auto;
     height: fit-content;
-    padding: 0.1rem 0.5rem 0;
+    /* padding: 0.1rem 0.5rem 0; */
     border-radius: 0;
   }
 
@@ -133,6 +133,20 @@ const routes = {
     gap: 0.25rem;
     pointer-events: auto;
     margin-right: auto;
+
+    &:has(.active) {
+      &::before {
+        content: "[";
+        color: var(--bg-darker);
+        padding-right: 0.25rem;
+        text-decoration: none;
+      }
+      &::after {
+        content: "]";
+        color: var(--bg-darker);
+        padding-left: 0.25rem;
+      }
+    }
   }
 
   .actions {

@@ -38,5 +38,6 @@ export const queryArticles = async () =>
 
 
 export const queryLastProject = async () => (await queryWebProjects())[0]
+export const queryLastArticle = async () => (await queryArticles())[0]
 
 export const queryProject = async (name: string) => (await queryWebProjects())?.find(res => res.name === name)
