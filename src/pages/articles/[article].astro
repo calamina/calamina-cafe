@@ -1,12 +1,14 @@
 ---
-import TagBase from "@components/atomic/TagBase.vue";
 import MainLayout from "@layouts/MainLayout.astro";
 import { getCollection, getEntry, render } from "astro:content";
 
 const { article } = Astro.params;
 const entry = await getEntry("articles", article ?? "lol");
 if (!entry) throw new Error("Could not find blog post 1");
-const { Content } = await render(entry);
+const { Content, headings } = await render(entry);
+const filteredHeadings = headings.filter(
+  (heading) => heading.depth > 1 && heading.depth < 4,
+);
 
 export async function getStaticPaths() {
   const articles = await getCollection("articles");
@@ -18,25 +20,42 @@ export async function getStaticPaths() {
 
 <MainLayout>
   <div class="article">
-    <TagBase>Published on: {entry.data.name}</TagBase>
+    <div class="headings">
+      <nav>
+        {
+          filteredHeadings.map((heading) => (
+            <a
+              href={"#" + heading.slug}
+              class={heading.depth === 2 ? "h2" : "h3"}
+            >
+              {heading.text}
+            </a>
+          ))
+        }
+      </nav>
+      <a class="back" href={"/articles#" + entry.data.name}
+        >← back to articles</a
+      >
+    </div>
     <div class="content">
       <Content />
     </div>
-    <a class="back" href={"/articles#" + entry.data.name}>← back to articles</a>
   </div>
 </MainLayout>
 
 <style>
   .article {
-    padding: 2rem 0 3rem;
     justify-self: flex-start;
-    width: 50rem;
-    margin: 0 auto;
     display: flex;
     flex-flow: column;
     gap: 1rem;
     height: 100%;
     flex-grow: 1;
+    display: grid;
+    padding: 0;
+    gap: 1.5rem;
+    grid-template-columns: 18rem auto 18rem;
+    padding-bottom: 4rem;
 
     @media screen and (max-width: 800px) {
       width: 100%;
@@ -44,14 +63,103 @@ export async function getStaticPaths() {
   }
 
   .content {
+    grid-column: 2;
+    max-width: 44rem;
+    padding: 0 1rem;
+    margin: 0 auto;
+
     h1 {
       font-size: 2.5rem;
+    }
+    h2 {
+      font-size: 1.75rem;
+      &:not(:first-child) {
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+      }
+    }
+    h3 {
+      font-size: 1.25rem;
+      &:not(:first-child) {
+        margin-top: 1.25rem;
+        margin-bottom: 1rem;
+      }
+    }
+    h4 {
+      font-size: 1.4rem;
+      &:not(:first-child) {
+        margin-top: 1rem;
+        margin-bottom: 0.75rem;
+      }
+    }
+
+    hr {
+      margin: 2rem 0;
+      color: var(--bg-light);
+    }
+
+    a {
+      text-decoration: underline;
+    }
+
+    p:not(:first-child) {
+      margin: 0.75rem 0;
+    }
+  }
+
+  .headings {
+    position: sticky;
+    top: 6rem;
+    display: flex;
+    flex-flow: column;
+    height: calc(100vh - 8rem);
+    border-right: 2px solid var(--bg-darker0);
+
+    nav {
+      display: flex;
+      flex-flow: column;
+      color: var(--color-light);
+      padding: 0;
+      padding-bottom: 2rem;
+      height: fit-content;
+      overflow: hidden;
+      border-radius: 0.25rem;
+
+      a {
+        display: flex;
+        text-decoration: none;
+        font-size: 0.9rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        gap: 0.5rem;
+        letter-spacing: -0.5px;
+
+        &:hover {
+          text-decoration: underline;
+          color: var(--color);
+        }
+      }
+    }
+
+    .h2 {
+      margin-bottom: 0.15rem;
+      &:not(:first-child) {
+        margin-top: 1rem;
+      }
+    }
+
+    .h3 {
+      color: var(--color-light);
     }
   }
 
   .back {
+    font-size: 0.9rem;
     text-align: center;
     margin-top: auto;
+    /* position: absolute;
+    bottom: 0; */
     text-decoration: underline;
   }
 </style>

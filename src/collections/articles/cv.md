@@ -1,0 +1,127 @@
+---
+name: cv
+description: curriculus vital
+---
+
+# CV
+
+## Akuiteo
+Développeur Frontend
+
+04/2023 - 06/2025  (2 years 3 months)
+
+### Projet / contexte
+Développement des clients web de la dématérialisation des factures et du portail ventes de l'ERP produit par l'entreprise.
+
+### Activités
+- Création des nouveaux écrans, composants, et fonctionnalités de l'outil
+- Jours de maintenance et réduction de la dette technique régulière
+- Création d'une nouvelle architecture pour la gestion des différentes pièces de vente
+- Développement agile SCRUM, peer-programming, démos internes et clients
+- Propositions UI / UX, refactorisation des composants et services existants
+- Tests unitaires et fonctionnels, tests de performance des API
+- Revue de code et rédaction de documentation technique
+- Mise à jour des différentes librairies et dépendances et du framework Angular
+
+### Environnement technique
+- Angular 18
+- Java 18 Spring
+- TypeScript /
+- HTML5 / CSS3
+- Sass / Tailwind
+- SQLServer
+- Postman
+- Git / Github / BitBucket
+- VSCode / Eclipse
+- Figma
+
+---
+
+## SQLI
+Développeur Frontend
+
+03/2022 - 08/2022  (6 months)
+
+### Projet / contexte  
+Développement d'un outil interne de gestion RH (réservation des salles / parking /calendriers, etc.)
+
+### Activités
+- Reprise de l'outil existant et passage sur Angular 13
+- Réduction de la dette technique sur les services existants, refactorisation des APIs
+- Amélioration des performances front et réduction des temps de requête
+- Développement agile SCRUM, peer-programming, démos internes et clients
+- Amélioration des écrans de chargement, des interactions, et des animations
+- Tests unitaires et fonctionnels (couverture à 90% sur le nouveau code)
+- Revue de code
+
+### Environnement technique
+- Angular 13
+- Java 17 Spring
+- TypeScript
+- HTML5/CSS3
+- Sass
+- PostGreSQL
+- Liquibase
+- Postman
+- Git/Gitlabs
+- IntelliJ Idea
+
+---
+
+## Kweerty
+Développeur Frontend & UI/UX
+
+06/2021 - 08/2021  (3 months)
+
+### Projet / contexte  
+Développement des maquettes puis de la partie front de trois sites vitrines.
+
+### Activités
+- Rendez-vous clients pour préciser les CdC et cibler les parcours utilisateurs
+- Création des wireframes, du design system, puis des composants et maquettes sous Figma
+- Présentation des maquettes interactives et des librairies de composants
+- Création des différents composants et écrans avec Vue
+- Développement semi-agile (équipe de deux), démos et prototypes réguliers
+- Travail en autonomie complète sur les parties Front et UI/UX, auto-formation et veille
+
+### Environnement technique
+- Vue 2
+- Git / Github
+- TypeScript
+- HTML5/CSS3
+- Sass
+- VSCode
+- Figma
+
+---
+
+## Yesouicom
+Développeur Frontend & UI/UX
+
+06/2020 - 08/2020  (3 months)
+
+### Projet / contexte  
+Propositions UI/UX et amélioration du site vitrine de l'entreprise
+
+### Activités
+
+- Audit UI : Accessibilité, contrastes, charte graphique, composition
+- Audit UX : Parcours clients, mise en avant des CTA, pénibilité d'usage
+- Audit technique : Performances(poids des images, animations lourdes, nombreux plugins)
+- Développement d'un wireframe puis d'une nouvelle maquette interactive
+- Développement de la nouvelle version du site sous WordPress
+- Réduction du nombre de plugins, développement natif HTML/CSS/JS des fonctionnalités
+- Mise à jour des différentes librairies, suppression de l'obsolète
+- Ecriture de documentation technique vulgarisée compréhensible par tous les membres de l'équipe
+
+### Environnement technique
+- Wordpress
+- Vue 2
+- JavaScript
+- HTML5/CSS3
+- Git
+- VSCode
+- Git / Github
+- TypeScript
+- HTML5/CSS3
+- Sass
