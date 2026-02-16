@@ -107,7 +107,7 @@ const routes = {
     gap: 0.15rem;
     background-color: var(--highlight);
     color: var(--color-hover);
-    border-radius: 0.25rem;
+    /* border-radius: 0.25rem; */
 
     &:hover {
       .logotext {
@@ -130,21 +130,41 @@ const routes = {
 
   .projects {
     display: flex;
+    align-items: baseline;
     gap: 0.25rem;
     pointer-events: auto;
     margin-right: auto;
 
-    &:has(.active) {
+    &::before,
+    &::after {
+      color: var(--bg-darker);
+      transition: padding 0.125s ease-out;
+    }
+
+    &::before {
+      content: "[";
+      padding-right: 0.1rem;
+    }
+    &::after {
+      content: "]";
+      padding-left: 0.1rem;
+    }
+
+    &:has(.active),
+    &:hover {
+      &::before,
+      &::after {
+        color: var(--color);
+      }
       &::before {
-        content: "[";
-        color: var(--bg-darker);
-        padding-right: 0.25rem;
-        text-decoration: none;
+        padding-right: 0.3rem;
       }
       &::after {
-        content: "]";
-        color: var(--bg-darker);
-        padding-left: 0.25rem;
+        padding-left: 0.3rem;
+      }
+
+      a {
+        text-decoration: none;
       }
     }
   }

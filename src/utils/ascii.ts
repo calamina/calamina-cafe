@@ -1,4 +1,6 @@
 import p5 from "p5";
+import apercu from "../assets/fonts/apercuMonoMedium.ttf";
+
 interface Point { x: number, y: number }
 interface MemoryPoint extends Point { age: number }
 
@@ -19,12 +21,12 @@ const click: Point = { x: 0, y: 0 }
 const isMobile = 'ontouchstart' in document.documentElement;
 
 const script = (p5: p5) => {
-
   p5.setMoveThreshold(1)
   p5.setup = async () => {
     const canvas = p5.createCanvas(window.innerWidth, window.innerHeight);
     canvas.parent("#container");
-    const font = await p5.loadFont("https://fonts.cdnfonts.com/s/66606/ApercuMonoProMedium.woff");
+    const font = await p5.loadFont(apercu);
+    // const font = await p5.loadFont(nectoUrl);
     p5.textSize(22)
     p5.textFont(font);
     p5.textAlign(p5.CENTER, p5.CENTER);
@@ -222,4 +224,4 @@ const script = (p5: p5) => {
   }
 }
 
-window.onload = () => new p5(script)
+export const useAscii = () => new p5(script)

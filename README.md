@@ -6,22 +6,23 @@
 hey :)
 
 # DOING
+- add header section to article in full width
+- mobile friendly articles
+- change name to 'journal' ?
+
 - UTOPIA
-- add gyro support for ascii ! + make it funnier 
+
 - add left bar right under home button to track progress (about, favorites, ...) ? (with subgrid for components.)
 - update readme img
 - add minis back, images are too big for project list
 - fix css var names !
-- swap to TOML (aergh)
-- polish about !
-- server is very slow with the sorts :/
+- swap to TOML ? (aergh)
+- polish about ! :/
 
 # TODO
-- add journal section, try parsing .md
 - add stuff to home :)
 - check todos in code :)
 - refacto css variables (radius / gaps / etc) // clean themes
-- fix ascii rendering ? (font aliasing) + webgl fallback
 
 # DATA
 - add dates to projects, add online ! (add size ?)

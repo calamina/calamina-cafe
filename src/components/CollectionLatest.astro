@@ -30,15 +30,16 @@ const { type, name, url } = Astro.props;
   }
 
   a {
-    padding: 0.25rem 0.5rem;
+    padding: 0.25rem 0.5rem 0.1rem;
     background-color: var(--highlight);
     text-transform: capitalize;
     transition: padding 0.125s ease-out;
+    /* border-radius: 0.25rem; */
 
     &:hover,
     &:focus {
       text-decoration: underline;
-      padding: 0.25rem 0.75rem;
+      padding: 0.25rem 0.75rem 0.1rem;
     }
   }
 </style>
