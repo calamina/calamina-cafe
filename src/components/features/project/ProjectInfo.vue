@@ -67,5 +67,9 @@ const { name, url = null, tech, description } = defineProps<{
   .description {
     padding: 0.5rem 0;
   }
+
+  .back {
+    display: none;
+  }
 }
 </style>

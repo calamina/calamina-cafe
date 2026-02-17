@@ -22,7 +22,7 @@ const { activate, deactivate, hasFocus } = useFocusTrap(themePicker)
       @click="hasFocus ? deactivate() : activate()">
       <Icon :icon="IconMoon" />
     </button>
-    <transition name="appear-right">
+    <transition name="appear">
       <div v-if="hasFocus" class="theme-menu">
         <ThemeSwitchButton theme="system" @clicked="deactivate()">
           <Icon :icon="IconMoonStars" />
@@ -44,48 +44,30 @@ const { activate, deactivate, hasFocus } = useFocusTrap(themePicker)
   position: relative;
   overflow: visible;
 
-  button {
+  .theme-picker {
+    background-color: var(--bg);
     width: 100%;
     padding: 0.5rem;
     border-radius: 0;
 
-    &.theme-picker {
+    &.activetheme,
+    &.active-theme:hover {
       background-color: var(--bg-darker0);
     }
-
-    &.activetheme,
-    &.theme-picker:hover {
-      background-color: var(--bg-darker);
-    }
-  }
-
-  & .active {
-    text-decoration: underline;
   }
 }
 
 .theme-menu {
   z-index: 200;
-  background-color: var(--bg-darker);
+  background-color: var(--bg-darker0);
   position: absolute;
   right: 0;
   display: flex;
   flex-flow: column;
-  align-items: start;
   gap: 0.25rem;
   padding: 0.5rem;
   right: 0rem;
-  /* top: 2.75rem; */
   top: 2rem;
   width: 9rem;
-
-  button {
-    gap: 0.75rem;
-    padding: 0.5rem 0.75rem;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
 }
 </style>

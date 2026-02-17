@@ -2,7 +2,6 @@
 import ButtonImage from "@components/ButtonImage.vue";
 import ProjectGallery from "@components/features/project/ProjectGallery.vue";
 import ProjectInfo from "@components/features/project/ProjectInfo.vue";
-import ProjectNavigation from "@components/features/project/ProjectNavigation.vue";
 import MainLayoutFooterless from "@layouts/MainLayoutFooterless.astro";
 import { ProjectType } from "@utils/enum";
 import { getProjectImages, isVerticalImage } from "@utils/images";
@@ -38,15 +37,7 @@ const images = getProjectImages(type, project);
       url={homepage}
       tech={tech}
       description={description}
-    >
-      <!-- <ProjectNavigation
-        index={index}
-        prev={prev}
-        next={next}
-        total={total}
-        path={path}
-      /> -->
-    </ProjectInfo>
+    />
     <ProjectGallery type={type} client:only>
       {
         images.map((image, index) =>
@@ -63,14 +54,7 @@ const images = getProjectImages(type, project);
         )
       }
     </ProjectGallery>
-    <ProjectNavigation
-      index={index}
-      prev={prev}
-      next={next}
-      total={total}
-      path={path}
-      mobile={true}
-    />
+    <a class="back" href={"/projects#" + name}>← back to projects</a>
   </div>
 </MainLayoutFooterless>
 
@@ -91,10 +75,22 @@ const images = getProjectImages(type, project);
   img.mobile {
     width: auto;
     height: 100%;
-    max-height: 85vh;
+    max-height: 85dvh;
+  }
+
+  .back {
+    display: none;
+    margin-top: auto;
+    text-align: center;
+    text-decoration: underline;
+    margin-bottom: 2rem;
   }
 
   @media (max-width: 1280px) {
+    .back {
+      display: flex;
+    }
+
     .project {
       display: flex;
       flex-flow: column;

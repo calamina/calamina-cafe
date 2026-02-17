@@ -6,6 +6,9 @@
 hey :)
 
 # DOING
+- refacto appHeader
+- mobile menu
+- remove vue :/
 - add header section to article in full width
 - mobile friendly articles
 - change name to 'journal' ?
