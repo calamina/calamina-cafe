@@ -6,7 +6,7 @@
 hey :)
 
 # DOING
-- refacto appHeader
+- refacto appHeader : finish theme popover with update on selection
 - mobile menu
 - remove vue :/
 - add header section to article in full width

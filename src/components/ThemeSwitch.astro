@@ -1,9 +1,6 @@
 ---
 import Icon from "@components/icons/Icon.vue";
 import IconMoon from "./icons/IconMoon.vue";
-import IconMoonHalf from "./icons/IconMoonHalf.vue";
-import IconMoonHalfFilled from "./icons/IconMoonHalfFilled.vue";
-import IconMoonStars from "./icons/IconMoonStars.vue";
 import ThemeSwitchButton from "./ThemeSwitchButton.vue";
 ---
 
@@ -11,16 +8,10 @@ import ThemeSwitchButton from "./ThemeSwitchButton.vue";
   <button title="theme picker" popovertarget="theme-menu" class="theme-picker">
     <Icon icon={IconMoon} />
   </button>
-  <div popover id="theme-menu" class="theme-menu">
-    <ThemeSwitchButton client:only theme="system">
-      <Icon icon={IconMoonStars} />
-    </ThemeSwitchButton>
-    <ThemeSwitchButton client:only theme="light">
-      <Icon icon={IconMoonHalf} />
-    </ThemeSwitchButton>
-    <ThemeSwitchButton client:only theme="dark">
-      <Icon icon={IconMoonHalfFilled} />
-    </ThemeSwitchButton>
+  <div popover id="theme-menu">
+    <ThemeSwitchButton client:only theme="system" icon="IconMoonStars" />
+    <ThemeSwitchButton client:only theme="light" icon="IconMoonHalf" />
+    <ThemeSwitchButton client:only theme="dark" icon="IconMoonHalfFilled" />
   </div>
 </div>
 
@@ -32,14 +23,18 @@ import ThemeSwitchButton from "./ThemeSwitchButton.vue";
     flex-flow: column;
     gap: 0.25rem;
     padding: 0.5rem;
-    top: 2rem;
+    position: absolute;
+    top: 3.5rem;
+    left: calc(100vw - 10.5rem);
     width: 9rem;
-    right: 2rem;
-    left: 10rem;
     opacity: 0;
     border: none;
     outline: none;
     transition: opacity 0.125s ease-out;
+
+    @media (max-width: 1280px) {
+      left: calc(100vw - 9.5rem);
+    }
 
     &:popover-open {
       opacity: 1;
@@ -55,7 +50,12 @@ import ThemeSwitchButton from "./ThemeSwitchButton.vue";
   .theme {
     display: flex;
     position: relative;
+    right: 0;
     overflow: visible;
+
+    &:has([popover]:popover-open) .theme-picker {
+      background-color: var(--bg-darker0);
+    }
 
     .theme-picker {
       background-color: var(--bg);
@@ -63,8 +63,7 @@ import ThemeSwitchButton from "./ThemeSwitchButton.vue";
       padding: 0.5rem;
       border-radius: 0;
 
-      &.activetheme,
-      &.active-theme:hover {
+      &:hover {
         background-color: var(--bg-darker0);
       }
     }

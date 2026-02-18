@@ -2,7 +2,7 @@
 import ArticleList from "@components/ArticleList.astro";
 import MainLayout from "@layouts/MainLayout.astro";
 import type { Article } from "@models/Article";
-import { queryArticles } from "../../utils/utils.ts";
+import { queryArticles } from "@utils/content.ts";
 
 const articles: Article[] = await queryArticles();
 ---

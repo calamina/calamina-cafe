@@ -2,7 +2,7 @@
 import ProjectsGrid from "@components/features/project/ProjectsGrid.astro";
 import MainLayout from "@layouts/MainLayout.astro";
 import type { TypedProject } from "@models/Project";
-import { queryWebProjects } from "../../utils/utils.ts";
+import { queryWebProjects } from "@utils/content.ts";
 
 const webProjects: TypedProject[] = await queryWebProjects();
 ---

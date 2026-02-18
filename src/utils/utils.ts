@@ -1,43 +1,9 @@
-import type { Article } from "@models/Article";
-import type { TypedProject } from "@models/Project";
-import { getCollection, type CollectionKey } from "astro:content";
-import { ProjectCollection } from "./enum";
+export const switchTextContent = (element: HTMLElement, choices: string[]) => {
+  if (!element) return;
+  let index = 0;
 
-export const getSurroundingProjects = (index: number, projects: TypedProject[]): { prev: TypedProject; next: TypedProject } => ({
-  prev: projects[index - 1] ?? null,
-  next: projects[index + 1] ?? null,
-});
-
-export const getPaths = async (collection: ProjectCollection): Promise<{ params: { project: string } }[]> => {
-  const projects = await getCollection(collection);
-  return projects.map((project) => ({
-    params: { project: project.data.name },
-  }));
+  setInterval(() => {
+    index = (index + 1) % choices.length;
+    element.textContent = choices[index];
+  }, 4000);
 }
-
-// QUERIES
-export const query = async <T>(collection: CollectionKey) =>
-  getCollection(collection).then(results => results.map(result => result.data) as T[]);
-
-// export const queryOne = async <T>(collection: CollectionKey, slug: string) =>
-//   getEntry(collection, slug)?.then(results => results?.data as T);
-
-// export const queryFilter = async <T>(collection: CollectionKey, filterFunction: Function) =>
-//   getCollection(collection, filterFunction())?.then(results => results as T);
-
-// Projects
-export const queryWebProjects = async () =>
-  getCollection("webProjects").then(results => results
-    .map(result => result.data as TypedProject)
-  )
-
-export const queryArticles = async () =>
-  getCollection("articles").then(results => results
-    .map(result => result.data as Article)
-  )
-
-
-export const queryLastProject = async () => (await queryWebProjects())[0]
-export const queryLastArticle = async () => (await queryArticles())[0]
-
-export const queryProject = async (name: string) => (await queryWebProjects())?.find(res => res.name === name)

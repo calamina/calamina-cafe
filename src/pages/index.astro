@@ -1,7 +1,7 @@
 ---
 import CollectionLatest from "@components/CollectionLatest.astro";
 import MainLayout from "@layouts/MainLayout.astro";
-import { queryLastArticle, queryLastProject } from "@utils/utils";
+import { queryLastArticle, queryLastProject } from "@utils/content";
 
 const latestProject = await queryLastProject();
 const latestArticle = await queryLastArticle();
@@ -9,51 +9,43 @@ const latestArticle = await queryLastArticle();
 
 <script>
   import { useAscii } from "@utils/ascii";
-  useAscii();
+  import { switchTextContent } from "@utils/utils";
 
-  // const titles = ["Grégoire Belliere", "@calamina"];
-  // const titles = ["creative", "frontend", "hesitant"];
+  const state = document.querySelector(".state") as HTMLElement;
   const states = ["unfinished", "human made"];
-  let index = 0;
 
-  // const title = document.querySelector(".title");
-  const state = document.querySelector(".state");
-
-  setInterval(() => {
-    if (!state) return;
-    index = (index + 1) % states.length;
-    state.textContent = states[index];
-  }, 3900);
-  // if (!title || !state) return;
-  // title.textContent = titles[index];
+  switchTextContent(state, states);
+  useAscii();
 </script>
 
 <MainLayout>
   <div id="container"></div>
-  <h1>
-    <span class="a">calamina</span>
-    <span class="b">cafe</span>
-  </h1>
-  <div class="bottom">
-    <div class="latest">
-      <CollectionLatest
-        name={latestArticle?.name}
-        type="article"
-        url="articles/"
-      />
-      <CollectionLatest
-        name={latestProject?.name}
-        type="project"
-        url="projects/web/"
-      />
-    </div>
-    <div class="description">
-      <p>
-        <span class="ball"></span>Personnal website of creative developper <span
-          >Grégoire Belliere</span
-        >
-      </p>
-      <p>Forever <span class="state">unfinished</span>, forever changing.</p>
+  <div class="core">
+    <h1>
+      <span class="a">calamina</span>
+      <span class="b">cafe</span>
+    </h1>
+    <div class="bottom">
+      <div class="latest">
+        <CollectionLatest
+          name={latestArticle?.name}
+          type="article"
+          url="articles/"
+        />
+        <CollectionLatest
+          name={latestProject?.name}
+          type="project"
+          url="projects/web/"
+        />
+      </div>
+      <div class="description">
+        <p>
+          <span class="ball"></span>Personnal website of creative developper <span
+            >Grégoire Belliere</span
+          >
+        </p>
+        <p>Forever <span class="state">unfinished</span>, forever changing.</p>
+      </div>
     </div>
   </div>
 </MainLayout>
@@ -68,36 +60,26 @@ const latestArticle = await queryLastArticle();
     height: 100dvh;
   }
 
-  h1 {
-    font-size: 3.5rem;
-    font-size: 13rem;
-    font-family: "Redaction", serif;
-    /* font-family: "Foss", serif; */
-    /* font-family: "Grotesk", serif; */
-    font-weight: 500;
-    letter-spacing: -10px;
-    /* max-width: calc(var(--app-width) - 5rem); */
-    /* overflow-x: hidden; */
-    /* font-style: italic; */
-    /* font-variant: small-caps; */
-    line-height: 9rem;
+  .core {
+    padding: 0;
+    margin: 0;
     display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    height: calc(100dvh - 5rem);
+    width: 100%;
     place-items: center;
-    text-align: center;
-    text-align: end;
-    margin-bottom: 8rem;
-    /* text-transform: capitalize; */
-    /* text-transform: uppercase; */
+    overflow-x: hidden;
   }
 
   h1 {
+    grid-row: 2;
     display: flex;
     flex-flow: column;
-    grid-template-columns: 1fr auto;
     width: fit-content;
-    margin: 0 auto 8rem;
     gap: 0 2rem;
+    align-self: start;
     align-items: end;
+    padding-bottom: 1rem;
 
     span {
       font-size: 13rem;
@@ -108,12 +90,6 @@ const latestArticle = await queryLastArticle();
       display: grid;
       text-align: center;
       text-align: end;
-      /* font-family: "Foss", serif; */
-      /* font-family: "Grotesk", serif; */
-      /* text-transform: capitalize; */
-      /* text-transform: uppercase; */
-      /* font-style: italic; */
-      /* font-variant: small-caps; */
 
       @media (max-width: 50rem) {
         font-size: 7rem;
@@ -125,13 +101,18 @@ const latestArticle = await queryLastArticle();
   }
 
   .bottom {
-    position: absolute;
-    bottom: 4rem;
-    left: 4rem;
-    right: 4rem;
+    width: 100%;
+    grid-row: 3;
+    align-self: end;
     display: flex;
     align-items: end;
     justify-content: space-between;
+    height: fit-content;
+    padding: 0 2rem 4rem;
+
+    @media (max-width: 1280px) {
+      padding: 0 1rem 1.5rem;
+    }
   }
 
   .latest {

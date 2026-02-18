@@ -3,7 +3,7 @@ import Favorites from "@components/features/about/Favorites.astro";
 import Timeline from "@components/features/about/Timeline.vue";
 import MainLayout from "@layouts/MainLayout.astro";
 import type { Moment } from "@models/Moment";
-import { query } from "@utils/utils.ts";
+import { query } from "@utils/content.ts";
 
 const jobs = await query<Moment>("jobs");
 jobs.forEach((job: Moment) => (job.duration = getDuration(job.start, job.end)));

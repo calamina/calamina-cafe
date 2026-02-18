@@ -1,23 +1,24 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { defineAsyncComponent, ref } from 'vue';
+import Icon from './icons/Icon.vue';
 
-const { theme } = defineProps<{
+const { theme, icon } = defineProps<{
   theme: 'light' | 'dark' | 'system'
+  icon: string
 }>()
 
-const emit = defineEmits(['clicked'])
-const active = ref(localStorage.getItem("theme") === theme)
+const iconComponent = defineAsyncComponent(async () => import(`./icons/${icon}.vue`))
+const active = ref(localStorage?.getItem("theme") === theme)
 
 function setTheme(value: 'light' | 'dark' | 'system') {
   document.documentElement.setAttribute('data-theme', value);
   localStorage.setItem("theme", value)
-  emit('clicked')
 }
 </script>
 
 <template>
   <button :title="'theme-' + theme" :class="{ 'active': active }" @click="setTheme(theme)">
-    <slot />
+    <icon :icon=iconComponent />
     <span>{{ theme }}</span>
   </button>
 </template>

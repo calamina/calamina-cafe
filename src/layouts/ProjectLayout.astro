@@ -3,13 +3,13 @@ import ButtonImage from "@components/ButtonImage.vue";
 import ProjectGallery from "@components/features/project/ProjectGallery.vue";
 import ProjectInfo from "@components/features/project/ProjectInfo.vue";
 import MainLayoutFooterless from "@layouts/MainLayoutFooterless.astro";
-import { ProjectType } from "@utils/enum";
-import { getProjectImages, isVerticalImage } from "@utils/images";
 import {
   getSurroundingProjects,
   queryProject,
   queryWebProjects,
-} from "@utils/utils.ts";
+} from "@utils/content.ts";
+import { ProjectType } from "@utils/enum";
+import { getProjectImages, isVerticalImage } from "@utils/images";
 import { Image } from "astro:assets";
 
 export interface Props {
