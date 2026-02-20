@@ -6,10 +6,15 @@
 hey :)
 
 # DOING
+- remove vue :/
+- finish gallery with dialog
+- make generic desktop/mobile classes
+- toggle mobile/desktop 'back to articles' link
+
 - invert Icon : import Baseicon in every icon component & direct call
+  - later, need to remove all vue to import astro inside :'(
 - refacto big components (header ...)
 - mobile menu
-- remove vue :/
 - add header section to article in full width
 - mobile friendly articles
 - change name to 'journal' ?

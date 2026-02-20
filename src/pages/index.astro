@@ -12,10 +12,10 @@ const latestArticle = await queryLastArticle();
   import { useAscii } from "@utils/ascii";
   import { switchTextContent } from "@utils/utils";
 
-  const states = ["unfinished?", "human made"];
-  const state = document.querySelector(".state") as HTMLElement;
+  const stateList = ["human made", "half ready", ".-- .--.-."];
+  const stateElement = document.querySelector(".state") as HTMLElement;
 
-  switchTextContent(state, states);
+  switchTextContent(stateElement, stateList);
   useAscii();
 </script>
 
@@ -41,11 +41,11 @@ const latestArticle = await queryLastArticle();
       </div>
       <div class="description">
         <p>
-          <span class="ball"></span>Personnal website of creative developper <span
+          <span class="ball"></span>Personnal website of developper <span
             >Grégoire Belliere</span
           >
         </p>
-        <p>Forever <span class="state">unfinished?</span>, forever changing.</p>
+        <p>Forever <span class="state">human made</span> &</p>
       </div>
     </div>
   </div>
@@ -129,13 +129,13 @@ const latestArticle = await queryLastArticle();
     text-wrap: balance;
     padding: 0;
     border-radius: 0.4rem;
+    width: 100%;
 
     p {
       background-color: var(--bg);
       /* background-color: var(--bg-darker0); */
       line-height: 1.25rem;
       color: var(--color-light);
-
       &:first-of-type {
         display: inline-flex;
         gap: 0.5rem;
@@ -164,11 +164,11 @@ const latestArticle = await queryLastArticle();
     }
 
     .description {
-      margin-left: auto;
-
-      p,
-      span {
-        line-height: 0.9rem;
+      gap: 0.5rem;
+      span,
+      p {
+        flex-wrap: wrap;
+        line-height: 0.6rem;
         letter-spacing: -0.5px;
         font-size: 0.8rem;
       }
@@ -178,5 +178,9 @@ const latestArticle = await queryLastArticle();
   .state {
     display: inline-block;
     width: 10ch;
+
+    @media (max-width: 50rem) {
+      width: 9.5ch;
+    }
   }
 </style>

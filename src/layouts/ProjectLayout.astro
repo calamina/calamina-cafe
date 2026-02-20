@@ -1,25 +1,18 @@
 ---
-import ButtonImage from "@components/ButtonImage.astro";
-import ProjectGallery from "@components/features/project/ProjectGallery.vue";
+import ProjectGallery from "@components/features/project/ProjectGallery.astro";
 import ProjectInfo from "@components/features/project/ProjectInfo.astro";
 import MainLayoutFooterless from "@layouts/MainLayoutFooterless.astro";
 import { queryProject } from "@utils/content.ts";
-import { ProjectType } from "@utils/enum";
-import { getProjectImages, isVerticalImage } from "@utils/images";
-import { Image } from "astro:assets";
 
-export interface Props {
+interface Props {
   project: string;
-  type: ProjectType;
 }
-const { project, type } = Astro.props;
+const { project } = Astro.props;
 
 const { name, tech, description, homepage } = (await queryProject(project)) ?? {
   name: "",
   description: [],
 };
-
-const images = getProjectImages(type, project);
 ---
 
 <MainLayoutFooterless>
@@ -30,22 +23,7 @@ const images = getProjectImages(type, project);
       tech={tech}
       description={description}
     />
-    <ProjectGallery type={type} client:only>
-      {
-        images.map((image, index) =>
-          image.then((img) => (
-            <ButtonImage>
-              <Image
-                src={image}
-                alt={`${name} gallery picture ${index + 1}`}
-                loading={"eager"}
-                class:list={[{ mobile: isVerticalImage(img) }]}
-              />
-            </ButtonImage>
-          )),
-        )
-      }
-    </ProjectGallery>
+    <ProjectGallery project={project} name={name} />
     <a class="back" href={"/projects#" + name}>← back to projects</a>
   </div>
 </MainLayoutFooterless>
@@ -56,18 +34,6 @@ const images = getProjectImages(type, project);
     grid-template-columns: repeat(10, minmax(0px, 1fr));
     gap: 0.5rem;
     width: 100%;
-  }
-
-  img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-  }
-
-  img.mobile {
-    width: auto;
-    height: 100%;
-    max-height: 85dvh;
   }
 
   .back {

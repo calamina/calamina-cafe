@@ -3,8 +3,8 @@ import { ProjectType } from "./enum";
 
 export const isVerticalImage = (image: { default: ImageMetadata }) => image.default.width / image.default.height < 1;
 
-export const getProjectImages = (type: ProjectType, project: string) => {
-  return (type === ProjectType.WEB ? webImages : phoneImages)
+export const getProjectImages = (project: string) => {
+  return webImages
     .filter((file) => file[0].includes(project))
     .map((file) => file[1]());
 };
