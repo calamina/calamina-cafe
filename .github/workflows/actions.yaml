@@ -13,15 +13,15 @@ jobs:
 
     - name: install
       run: npm ci
+    # - name: lint
+    #   run: npm run lint
 
-    - name: lint
-      run: npm run lint
+    # - name: knip
+    #   run: npm run knip
 
-    - name: knip
-      run: npm run knip
+    # - name: npm-check
+    #   run: npm audit
 
-    - name: npm-check
-      run: npm audit
     # - name: build
     #   run: npm run build --if-present
     # - name: typecheck

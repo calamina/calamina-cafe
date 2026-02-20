@@ -1,0 +1,75 @@
+---
+import LinkIcon from "@components/atomic/LinkIcon.astro";
+import ProjectName from "@components/features/project/ProjectName.astro";
+import ProjectTech from "@components/features/project/ProjectTech.astro";
+import type { Project } from "@models/Project";
+
+interface Props {
+  name: string;
+  tech: Project["tech"];
+  description: string[];
+  url?: string;
+}
+
+const { name, url = null, tech, description } = Astro.props;
+---
+
+<div class="info">
+  <ProjectName name={name} />
+  {url && <LinkIcon url={url} online={!!url} />}
+  <div class="description">
+    {description?.map((line) => <p>{line}</p>)}
+  </div>
+  <ProjectTech tech={tech} />
+  <slot />
+  <a class="back" href={"/projects#" + name}>← back to projects</a>
+</div>
+
+<style>
+  .info {
+    display: flex;
+    flex-flow: column;
+    gap: 0.25rem;
+    height: calc(100dvh - 5rem);
+    flex: 1;
+    grid-column-start: 1;
+    grid-column-end: 5;
+    position: sticky;
+    top: 5rem;
+    left: 0;
+    padding: 1rem 2rem 1rem;
+  }
+
+  .description {
+    padding: 1.5rem 0;
+    text-justify: distribute;
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .back {
+    margin-top: auto;
+    text-align: center;
+    text-decoration: underline;
+    margin-bottom: 2rem;
+  }
+
+  /* MEDIA QUERIES */
+  @media (max-width: 1280px) {
+    .info {
+      height: auto;
+      flex: 0;
+      position: relative;
+      top: 0;
+      padding-bottom: 0.75rem;
+    }
+
+    .description {
+      padding: 0.5rem 0;
+    }
+
+    .back {
+      display: none;
+    }
+  }
+</style>

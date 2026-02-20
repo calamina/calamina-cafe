@@ -1,5 +1,6 @@
 ---
 import CollectionLatest from "@components/CollectionLatest.astro";
+import IntroCard from "@components/IntroCard.astro";
 import MainLayout from "@layouts/MainLayout.astro";
 import { queryLastArticle, queryLastProject } from "@utils/content";
 
@@ -11,8 +12,8 @@ const latestArticle = await queryLastArticle();
   import { useAscii } from "@utils/ascii";
   import { switchTextContent } from "@utils/utils";
 
+  const states = ["unfinished?", "human made"];
   const state = document.querySelector(".state") as HTMLElement;
-  const states = ["unfinished", "human made"];
 
   switchTextContent(state, states);
   useAscii();
@@ -44,7 +45,7 @@ const latestArticle = await queryLastArticle();
             >Grégoire Belliere</span
           >
         </p>
-        <p>Forever <span class="state">unfinished</span>, forever changing.</p>
+        <p>Forever <span class="state">unfinished?</span>, forever changing.</p>
       </div>
     </div>
   </div>
@@ -132,9 +133,7 @@ const latestArticle = await queryLastArticle();
     p {
       background-color: var(--bg);
       /* background-color: var(--bg-darker0); */
-      font-variant: all-small-caps;
-      font-size: 1.05rem;
-      line-height: 1.2rem;
+      line-height: 1.25rem;
       color: var(--color-light);
 
       &:first-of-type {
@@ -178,6 +177,6 @@ const latestArticle = await queryLastArticle();
 
   .state {
     display: inline-block;
-    width: 8.5ch;
+    width: 10ch;
   }
 </style>

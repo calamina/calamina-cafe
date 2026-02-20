@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import Fave from '@components/features/about/fave.vue';
 import Icon from '@components/icons/Icon.vue';
 import IconFolder from '@components/icons/IconFolder.vue';
 import IconFolderOpen from '@components/icons/IconFolderOpen.vue';
 import type { Media } from '@models/Media';
 import { ref, type Ref } from 'vue';
+// import Fave from './fave.astro';
 
 interface Favorite {
   name: string;
@@ -50,8 +50,8 @@ const toggleFolder = (index: number) => {
     <div class="details">
       <Transition mode="out-in">
         <div class="list" :key="subactive.content[0].label">
-          <Fave v-for="favorite in subactive.content" :key="favorite.label" :label="favorite.label" :url="favorite.url"
-            :src="favorite.src" />
+          <!-- <Fave v-for="favorite in subactive.content" :key="favorite.label" :label="favorite.label" :url="favorite.url"
+            :src="favorite.src" /> -->
         </div>
       </Transition>
     </div>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import BaseTag from '@components/atomic/TagBase.vue';
-import TagList from '@components/atomic/TagList.vue';
+// import TagList from '@components/atomic/TagList.astro';
 import type { Moment } from '@models/Moment';
 import { ref, type Ref } from 'vue';
 
@@ -48,9 +48,9 @@ const selectMoment = (index: number) => active.value = moments[index];
           <p>{{ active.desc }}</p>
         </div>
         <div class="details-content">
-          <TagList class="skills" :items="active.skills ?? []" />
+          <!-- <TagList class="skills" :items="active.skills ?? []" />
           <TagList class="tools" name="tools" color="hsl(50, 50%, 77%)" :items="active.tools ?? []" />
-          <TagList class="languages" name="languages" color="hsl(144, 50%, 77%)" :items="active.languages ?? []" />
+          <TagList class="languages" name="languages" color="hsl(144, 50%, 77%)" :items="active.languages ?? []" /> -->
         </div>
       </div>
     </Transition>

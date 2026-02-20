@@ -9,7 +9,7 @@ const { type, name, url } = Astro.props;
 ---
 
 <div>
-  <h2>latest updated {type}</h2>
+  <h2>Latest {type}</h2>
   <a href={url + name}>
     {name} →
   </a>
@@ -22,8 +22,6 @@ const { type, name, url } = Astro.props;
     flex-flow: column;
   }
   h2 {
-    font-size: 1.1rem;
-    font-variant: small-caps;
     padding: 0.25rem 0rem;
     color: var(--color-light);
     background-color: var(--bg);
@@ -38,7 +36,6 @@ const { type, name, url } = Astro.props;
     background-color: var(--highlight);
     text-transform: capitalize;
     transition: padding 0.125s ease-out;
-    /* border-radius: 0.25rem; */
 
     &:hover,
     &:focus {

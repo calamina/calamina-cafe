@@ -1,6 +1,6 @@
 ---
-import AppHeaderSublink from "@components/AppHeaderSublink.vue";
-import ThemeSwitch from "./ThemeSwitch.astro";
+import AppHeaderSublink from "@components/AppHeaderSublink.astro";
+import ThemeSwitch from "./features/theme/ThemeSwitch.astro";
 
 const { project } = Astro.params;
 const { article } = Astro.params;
@@ -30,13 +30,6 @@ const routes = {
     <span class="logotext">cafe</span>
   </a>
   <nav class="desktop">
-    <!-- <a href={routes.home ? "#" : "/"} class:list={[{ active: routes.home }]}>
-      home
-    </a> -->
-    <!-- <a
-      href={routes.about ? "#" : "/about"}
-      class:list={[{ active: routes.about }]}>about</a
-    > -->
     <div class="projects">
       <a
         href={routes.projects ? "#" : "/projects"}
@@ -67,8 +60,6 @@ const routes = {
 <style scoped>
   header {
     max-width: var(--app-width);
-    /* position: fixed; */
-    /* top: 0; */
     display: flex;
     height: 5rem;
     width: 100%;
@@ -76,7 +67,6 @@ const routes = {
     justify-content: space-between;
     padding: 1rem 1.5rem;
     z-index: 50;
-    /* pointer-events: none; */
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
 
@@ -90,11 +80,6 @@ const routes = {
     display: flex;
     gap: 2rem;
     justify-self: center;
-    /* background-color: var(--bg); */
-    /* backdrop-filter: blur(10px); */
-    /* box-shadow: var(--bg-tsp) 0px 0px 15px 15px; */
-    /* box-shadow: #ffffff55 0px 0px 15px 15px; */
-    /* border-radius: 0.9rem; */
     padding: 0.5rem;
 
     @media screen (max-width: 800px) {
@@ -105,7 +90,6 @@ const routes = {
   a {
     pointer-events: auto;
     height: fit-content;
-    /* padding: 0.1rem 0.5rem 0; */
     border-radius: 0;
   }
 
@@ -114,9 +98,10 @@ const routes = {
     gap: 0.15rem;
     background-color: var(--highlight);
     color: var(--color-hover);
-    /* border-radius: 0.25rem; */
+    border-radius: 0.25rem;
 
-    &:hover {
+    &:hover,
+    &:focus {
       .logotext {
         &:first-of-type {
           width: 8ch;
@@ -144,17 +129,17 @@ const routes = {
 
     &::before,
     &::after {
+      content: "";
+      width: 1ch;
       color: var(--bg-darker);
-      transition: padding 0.125s ease-out;
+      transition: transform 0.125s ease-out;
     }
 
-    &::before {
-      content: "[";
-      padding-right: 0.1rem;
+    &:before {
+      transform: translateX(-0.1rem);
     }
-    &::after {
-      content: "]";
-      padding-left: 0.1rem;
+    &:after {
+      transform: translateX(0.1rem);
     }
 
     &:has(.active),
@@ -164,15 +149,26 @@ const routes = {
         color: var(--color);
       }
       &::before {
-        padding-right: 0.3rem;
+        content: "[";
+        transform: translateX(-0.3rem);
       }
       &::after {
-        padding-left: 0.3rem;
+        content: "]";
+        transform: translateX(0.3rem);
       }
 
-      a {
-        text-decoration: none;
+      &:has(.active) a {
+        background-color: var(--bg-darker0);
+        text-decoration: underline;
       }
+
+      &:has(a:hover) a {
+        background-color: var(--highlight);
+      }
+    }
+
+    a {
+      text-decoration: none;
     }
   }
 

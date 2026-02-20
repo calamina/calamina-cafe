@@ -1,13 +1,9 @@
 ---
-import ButtonImage from "@components/ButtonImage.vue";
+import ButtonImage from "@components/ButtonImage.astro";
 import ProjectGallery from "@components/features/project/ProjectGallery.vue";
-import ProjectInfo from "@components/features/project/ProjectInfo.vue";
+import ProjectInfo from "@components/features/project/ProjectInfo.astro";
 import MainLayoutFooterless from "@layouts/MainLayoutFooterless.astro";
-import {
-  getSurroundingProjects,
-  queryProject,
-  queryWebProjects,
-} from "@utils/content.ts";
+import { queryProject } from "@utils/content.ts";
 import { ProjectType } from "@utils/enum";
 import { getProjectImages, isVerticalImage } from "@utils/images";
 import { Image } from "astro:assets";
@@ -17,15 +13,11 @@ export interface Props {
   type: ProjectType;
 }
 const { project, type } = Astro.props;
-const path = `/projects/${type.toLowerCase()}/`;
 
-const projects = await queryWebProjects();
-const { name, tech, description, homepage } =
-  (await queryProject(project)) ?? {};
-
-const total = projects.length;
-const index = projects.findIndex((p) => p.name === name);
-const { prev, next } = getSurroundingProjects(index, projects);
+const { name, tech, description, homepage } = (await queryProject(project)) ?? {
+  name: "",
+  description: [],
+};
 
 const images = getProjectImages(type, project);
 ---

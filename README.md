@@ -6,14 +6,15 @@
 hey :)
 
 # DOING
-- refacto appHeader : finish theme popover with update on selection
+- invert Icon : import Baseicon in every icon component & direct call
+- refacto big components (header ...)
 - mobile menu
 - remove vue :/
 - add header section to article in full width
 - mobile friendly articles
 - change name to 'journal' ?
 
-- UTOPIA
+- UTOPIA (type scale)
 
 - add left bar right under home button to track progress (about, favorites, ...) ? (with subgrid for components.)
 - update readme img

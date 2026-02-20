@@ -1,0 +1,109 @@
+---
+import Icon from "@components/icons/Icon.vue";
+import IconMoon from "@components/icons/IconMoon.vue";
+import ThemeSwitchButton from "./ThemeSwitchButton.astro";
+import IconMoonStars from "@components/icons/IconMoonStars.vue";
+import IconMoonHalf from "@components/icons/IconMoonHalf.vue";
+import IconMoonHalfFilled from "@components/icons/IconMoonHalfFilled.vue";
+---
+
+<script>
+  type Theme = "light" | "dark" | "system";
+
+  setupButtons();
+
+  function setupButtons() {
+    const buttons: NodeListOf<HTMLButtonElement> =
+      document.querySelectorAll("button[data-theme]");
+    if (!buttons?.length) return;
+    for (const button of buttons) {
+      setActive(buttons);
+      button.addEventListener("click", () => {
+        setTheme(button);
+        setActive(buttons);
+      });
+    }
+  }
+
+  function setTheme(button: HTMLButtonElement) {
+    const theme = button.getAttribute("data-theme") as Theme;
+    if (!theme) return;
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }
+
+  function setActive(buttons: NodeListOf<HTMLButtonElement>) {
+    for (const button of buttons) {
+      const active =
+        localStorage?.getItem("theme") === button.getAttribute("data-theme");
+      button.classList = active ? "active" : "";
+    }
+  }
+</script>
+
+<div class="theme">
+  <button title="theme picker" popovertarget="theme-menu" class="theme-picker">
+    <Icon icon={IconMoon} />
+  </button>
+  <div popover id="theme-menu">
+    <ThemeSwitchButton theme="system" icon={IconMoonStars} />
+    <ThemeSwitchButton theme="light" icon={IconMoonHalf} />
+    <ThemeSwitchButton theme="dark" icon={IconMoonHalfFilled} />
+  </div>
+</div>
+
+<style scoped>
+  [popover] {
+    z-index: 200;
+    background-color: var(--bg-darker0);
+    position: absolute;
+    flex-flow: column;
+    gap: 0.25rem;
+    padding: 0.5rem;
+    width: 9rem;
+    justify-self: anchor-bottom;
+    opacity: 0;
+    border: none;
+    outline: none;
+    transition: opacity 4.125s ease-out;
+    inset: auto;
+    margin: 0;
+    top: 3.5rem;
+    right: 1.5rem;
+
+    @media (max-width: 1280px) {
+      left: calc(100vw - 9.5rem);
+    }
+
+    &:popover-open {
+      opacity: 1;
+    }
+  }
+
+  .theme {
+    display: flex;
+    position: relative;
+    right: 0;
+    overflow: visible;
+
+    &:has([popover]:popover-open) .theme-picker {
+      background-color: var(--bg-darker0);
+    }
+
+    .theme-picker {
+      background-color: var(--bg);
+      width: 100%;
+      padding: 0.5rem;
+      border-radius: 0;
+
+      &:hover {
+        background-color: var(--bg-darker0);
+      }
+
+      &:focus {
+        outline: 2px solid var(--color);
+        outline-offset: -3px;
+      }
+    }
+  }
+</style>

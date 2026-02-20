@@ -9,7 +9,7 @@ export const getProjectImages = (type: ProjectType, project: string) => {
     .map((file) => file[1]());
 };
 
-export const getImage = (name: string, type: ProjectType) => {
+export const getImage = (name: string, _type: ProjectType) => {
   return webCovers.find((file) => file[0].includes(name))
     ?.[1]() ?? new Promise(() => null);
 }
@@ -29,9 +29,4 @@ const phoneImages = Object.entries(
 const webCovers = Object.entries(
   import.meta.glob<{ default: ImageMetadata }>(
     "/src/assets/img/content/projects/web/*.avif",
-  ))
-
-const phoneCovers = Object.entries(
-  import.meta.glob<{ default: ImageMetadata }>(
-    "/src/assets/img/content/projects/phone/*.avif",
   ))
