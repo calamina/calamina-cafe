@@ -2,37 +2,93 @@
 import Ascii from "@components/ascii.astro";
 import LinkContact from "@components/atomic/LinkContact.astro";
 import SocialsList from "@components/SocialsList.astro";
+
+const path = Astro.originPathname;
+console.debug(path);
+// TODO : split path and display breadcrumbs ?
 ---
 
 <footer>
-    <div class="info">
-        <div class="thanks">
-            <p>Thanks</p>
-            <p>for</p>
-            <p>visiting <span></span></p>
+    <div class="main">
+        <div class="info">
+            <div class="thanks">
+                <p>Thanks</p>
+                <p>for</p>
+                <p>visiting <span></span></p>
+            </div>
+            <div class="rights">
+                <a target="_blank" href="https://github.com/calamina"
+                    >calamina</a
+                >
+                <span>~ {new Date().getFullYear()}</span>
+            </div>
         </div>
-        <div class="rights">
-            <a target="_blank" href="https://github.com/calamina">calamina</a>
-            <span>~ {new Date().getFullYear()}</span>
+        <div class="center">
+            <Ascii />
+            <LinkContact />
         </div>
+        <SocialsList />
     </div>
-    <div class="center">
-        <Ascii class="ascii" />
-        <LinkContact class="contact" />
+    <div class="sub">
+        <div class="ariane">
+            <p>You are here :</p>
+            <a href="#">{path}</a>
+        </div>
+        <nav>
+            <a href="/accessibility">accessibility</a>
+            <a href="/privacy">privacy</a>
+        </nav>
     </div>
-    <SocialsList class="socials" />
 </footer>
 
 <style scoped>
     footer {
-        max-width: var(--app-width);
-        background-color: var(--bg-darker0);
+        /* max-width: var(--app-width); */
         width: 100%;
+    }
+
+    .main {
+        padding: 2rem 4rem;
+        background-color: var(--bg-darker0);
         display: grid;
         grid-template-columns: 18ch 1fr 18ch;
-        padding: 2rem 4rem;
         gap: 2rem;
         align-items: end;
+    }
+
+    .sub {
+        border-top: 1px solid var(--bg-darker);
+        /* background-color: var(--bg-darker); */
+        /* background-color: var(--bg); */
+        background-color: var(--bg-darker0);
+        height: 4rem;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 4rem;
+
+        a {
+            position: relative;
+            width: fit-content;
+
+            &::before {
+                content: "";
+                position: absolute;
+                left: -1rem;
+                background-color: var(--highlight);
+                height: 0.45rem;
+                width: 0.45rem;
+                flex-shrink: 0;
+                border-radius: 0.5rem;
+            }
+        }
+    }
+
+    .ariane,
+    nav {
+        display: flex;
+        gap: 3rem;
     }
 
     .thanks {
@@ -58,24 +114,7 @@ import SocialsList from "@components/SocialsList.astro";
     .center {
         height: 100%;
         justify-content: space-between;
-    }
-
-    .contact {
-        width: fit-content;
-        justify-self: center;
-    }
-
-    .socials {
-        width: fit-content;
-        justify-self: center;
-        justify-self: end;
-    }
-
-    .ascii {
-        grid-column: 2 / 3;
-        align-self: start;
-        justify-self: center;
-        height: 100%;
+        overflow: hidden;
     }
 
     .info {
@@ -106,11 +145,19 @@ import SocialsList from "@components/SocialsList.astro";
     }
 
     @media (max-width: 1280px) {
-        footer {
+        .main {
             display: flex;
             flex-flow: column;
             align-items: center;
             padding: 3rem 1rem;
+        }
+
+        .sub {
+            flex-flow: column;
+            align-items: center;
+            padding: 1rem;
+            height: auto;
+            gap: 1rem;
         }
 
         .info {
