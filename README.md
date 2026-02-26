@@ -11,8 +11,6 @@ hey :)
 - make generic desktop/mobile classes
 - toggle mobile/desktop 'back to articles' link
 
-- invert Icon : import Baseicon in every icon component & direct call
-  - later, need to remove all vue to import astro inside :'(
 - refacto big components (header ...)
 - mobile menu
 - add header section to article in full width

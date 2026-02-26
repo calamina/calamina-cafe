@@ -1,11 +1,10 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
-import vue from '@astrojs/vue';
 import sitemap from '@astrojs/sitemap';
+import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [ vue(), sitemap() ],
+  integrations: [ sitemap() ],
   site: 'https://calamina.cafe',
   devToolbar: { enabled: false }
 });

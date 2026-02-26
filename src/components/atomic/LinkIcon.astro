@@ -1,8 +1,5 @@
 ---
-import Icon from "@components/icons/Icon.vue";
-import IconLink from "@components/icons/IconLink.vue";
-import IconLinkBroken from "@components/icons/IconLinkBroken.vue";
-import { defineAsyncComponent } from "vue";
+import Icon from "@components/icons/Icon.astro";
 
 interface Props {
   url: string;
@@ -14,10 +11,6 @@ interface Props {
 const { url, label, online = undefined, icon } = Astro.props;
 
 const disabled = online === undefined ? false : !online;
-
-const iconComponent = defineAsyncComponent(
-  async () => import(`./icons/${icon}.vue`),
-);
 ---
 
 <template>
@@ -25,16 +18,12 @@ const iconComponent = defineAsyncComponent(
     disabled ? (
       <p inert class="disabled">
         offline (for now!)
-        <Icon icon={IconLinkBroken} />
+        <Icon icon="IconLinkBroken" />
       </p>
     ) : (
       <a v-if="!disabled" href={url} target="_blank">
         {label ?? "visit"}
-        {iconComponent ? (
-          <Icon icon={iconComponent} />
-        ) : (
-          <Icon icon={IconLink} />
-        )}
+        <Icon icon="IconLink" />
       </a>
     )
   }

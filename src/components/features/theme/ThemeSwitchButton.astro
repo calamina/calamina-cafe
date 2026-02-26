@@ -1,10 +1,9 @@
 ---
-import Icon from "@components/icons/Icon.vue";
-import type { Component } from "vue";
+import Icon from "@components/icons/Icon.astro";
 
 interface Props {
   theme: "light" | "dark" | "system";
-  icon: Component;
+  icon: any;
 }
 
 const { theme, icon } = Astro.props;

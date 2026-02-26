@@ -1,10 +1,6 @@
 ---
-import Icon from "@components/icons/Icon.vue";
-import IconMoon from "@components/icons/IconMoon.vue";
+import Icon from "@components/icons/Icon.astro";
 import ThemeSwitchButton from "./ThemeSwitchButton.astro";
-import IconMoonStars from "@components/icons/IconMoonStars.vue";
-import IconMoonHalf from "@components/icons/IconMoonHalf.vue";
-import IconMoonHalfFilled from "@components/icons/IconMoonHalfFilled.vue";
 ---
 
 <script>
@@ -43,12 +39,12 @@ import IconMoonHalfFilled from "@components/icons/IconMoonHalfFilled.vue";
 
 <div class="theme">
   <button title="theme picker" popovertarget="theme-menu" class="theme-picker">
-    <Icon icon={IconMoon} />
+    <Icon icon="IconMoon" />
   </button>
   <div popover id="theme-menu">
-    <ThemeSwitchButton theme="system" icon={IconMoonStars} />
-    <ThemeSwitchButton theme="light" icon={IconMoonHalf} />
-    <ThemeSwitchButton theme="dark" icon={IconMoonHalfFilled} />
+    <ThemeSwitchButton theme="system" icon="IconMoonStars" />
+    <ThemeSwitchButton theme="light" icon="IconMoonHalf" />
+    <ThemeSwitchButton theme="dark" icon="IconMoonHalfFilled" />
   </div>
 </div>
 

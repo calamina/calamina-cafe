@@ -1,0 +1,28 @@
+---
+interface Props {
+  icon: string;
+  size?: string;
+  color?: string;
+}
+
+const { icon, size = "18px", color = "var(--color)" } = Astro.props;
+const { default: innerHTML } = await import(`./${icon}.svg?raw`);
+---
+
+<div class="svg-icon">
+  <Fragment set:html={innerHTML} class="icon" />
+</div>
+
+<style define:vars={{ size, color }}>
+  .svg-icon {
+    display: contents;
+  }
+  .svg-icon :global(svg) {
+    height: var(--size);
+    width: var(--size);
+    min-width: var(--size);
+    color: var(--color);
+    stroke: var(--color);
+    fill: var(--color);
+  }
+</style>

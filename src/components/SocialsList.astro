@@ -1,31 +1,26 @@
 ---
-import Icon from "@components/icons/Icon.vue";
-import IconBookmark from "components/icons/IconBookmark.vue";
-import IconGithub from "components/icons/IconGithub.vue";
-import IconLinkedin from "components/icons/IconLinkedin.vue";
-import IconWikipedia from "components/icons/IconWikipedia.vue";
-import IconYoutube from "components/icons/IconYoutube.vue";
+import Icon from "@components/icons/Icon.astro";
 ---
 
 <nav>
   <a target="”_blank”" href="https://github.com/calamina">
-    <Icon icon={IconGithub} />
+    <Icon icon="IconGithub" />
     github
   </a>
   <a target="”_blank”" href="https://www.linkedin.com/in/gregoire-belliere/">
-    <Icon icon={IconLinkedin} />
+    <Icon icon="IconLinkedin" />
     linkedin
   </a>
   <a target="”_blank”" href="https://en.wikipedia.org/wiki/User:Calamina *">
-    <Icon icon={IconWikipedia} />
+    <Icon icon="IconWikipedia" />
     wikipedia
   </a>
   <a target="”_blank”" href="https://www.youtube.com/@calamina">
-    <Icon icon={IconYoutube} />
+    <Icon icon="IconYoutube" />
     youtube
   </a>
   <a target="”_blank”" href="https://www.senscritique.com/calamina">
-    <Icon icon={IconBookmark} />
+    <Icon icon="IconBookmark" />
     senscritique
   </a>
 </nav>

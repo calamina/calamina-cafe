@@ -1,8 +1,8 @@
 ---
 import ProjectGallery from "@components/features/project/ProjectGallery.astro";
 import ProjectInfo from "@components/features/project/ProjectInfo.astro";
-import MainLayoutFooterless from "@layouts/MainLayoutFooterless.astro";
 import { queryProject } from "@utils/content.ts";
+import MainLayout from "./MainLayout.astro";
 
 interface Props {
   project: string;
@@ -15,7 +15,7 @@ const { name, tech, description, homepage } = (await queryProject(project)) ?? {
 };
 ---
 
-<MainLayoutFooterless>
+<MainLayout>
   <div class="project">
     <ProjectInfo
       name={name}
@@ -26,7 +26,7 @@ const { name, tech, description, homepage } = (await queryProject(project)) ?? {
     <ProjectGallery project={project} name={name} />
     <a class="back" href={"/projects#" + name}>← back to projects</a>
   </div>
-</MainLayoutFooterless>
+</MainLayout>
 
 <style scoped>
   .project {
