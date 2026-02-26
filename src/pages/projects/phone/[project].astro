@@ -1,7 +1,7 @@
 ---
 import ProjectLayout from "@layouts/ProjectLayout.astro";
 import { getPaths } from "@utils/content.ts";
-import { ProjectCollection, ProjectType } from "@utils/enum";
+import { ProjectCollection } from "@utils/enum";
 
 const { project } = Astro.params;
 
@@ -10,4 +10,4 @@ export function getStaticPaths() {
 }
 ---
 
-<ProjectLayout type={ProjectType.PHONE} project={project} />
+<ProjectLayout project={project} />

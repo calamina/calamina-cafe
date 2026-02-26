@@ -11,53 +11,20 @@ const { project, name } = Astro.props;
 const images = getProjectImages(project);
 ---
 
-<script>
-  const dialog = document.querySelector("dialog");
-  const buttons: HTMLButtonElement[] = Array.from(
-    document.querySelector(".gallery")?.querySelectorAll("button") ?? [],
-  );
-
-  buttons.forEach((button) => {
-    button.addEventListener("click", (e: MouseEvent) => {
-      // const imgEvent = (
-      //   e.target instanceof HTMLButtonElement ? e.target.children[0] : e.target
-      //   ) as HTMLImageElement | null;
-      //   focusImage(imgEvent);
-      dialog?.showModal();
-    });
-  });
-
-  // function focusImage(e: HTMLImageElement | null) {
-  //   console.debug(e);
-  //   // todo:: openmodal
-  // }
-
-  // closeButton.addEventListener("click", () => {
-  //   dialog.close();
-  // });
-</script>
-
 <div class="wrapper">
   <div class="gallery">
     {
       images.map((image, index) => (
-        <button>
+        <div class="imgwrap">
           <Image
             src={image}
             alt={`${name} gallery picture ${index + 1}`}
             loading="eager"
           />
-        </button>
+        </div>
       ))
     }
   </div>
-  <dialog>
-    <p>Salutations à tous les biniouss !</p>
-    <img id="selectImage" src="" alt="" />
-    <form method="dialog">
-      <button>Bye!</button>
-    </form>
-  </dialog>
 </div>
 
 <style scoped>
@@ -68,37 +35,42 @@ const images = getProjectImages(project);
     width: 100%;
     padding-bottom: 1.5rem;
     grid-column-start: 5;
-    grid-column-end: 11;
+    grid-column-end: 13;
   }
 
   .gallery {
     display: grid;
     gap: 0.5rem;
     padding-top: 0;
-    grid-template-columns: repeat(2, minmax(0px, 1fr));
+    grid-template-columns: 1fr;
+    display: flex;
+    flex-flow: column;
+    /* display: grid;
+    grid-template-columns: repeat(2, minmax(0px, 1fr)); */
   }
 
-  img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-  }
-
-  button {
+  .imgwrap {
     display: flex;
     justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color);
     background-color: var(--bg-darker0);
-    /* outline-offset: -2px; */
-    max-height: 85dvh;
+    padding: 2rem 1.25rem;
     border-radius: 0.25rem;
-    overflow: hidden;
+    max-height: 70vh;
 
-    &:hover {
-      outline: 2px solid var(--color);
-    }
     &:first-of-type {
       grid-column: span 2;
     }
+  }
+
+  img {
+    border-radius: 0.25rem;
+    width: auto;
+    height: 100%;
+    /* object-fit: cover; */
   }
 
   @media (max-width: 1280px) {

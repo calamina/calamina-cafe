@@ -7,7 +7,7 @@ hey :)
 
 # DOING
 - remove vue :/
-- finish gallery with dialog
+- fix crumbs duplicating articles/ !
 - make generic desktop/mobile classes
 - toggle mobile/desktop 'back to articles' link
 

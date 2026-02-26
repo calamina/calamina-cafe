@@ -1,6 +1,6 @@
 ---
-import Favorites from "@components/features/about/Favorites.astro";
-import Timeline from "@components/features/about/Timeline.vue";
+// import Favorites from "@components/features/about/Favorites.astro";
+// import Timeline from "@components/features/about/Timeline.vue";
 import MainLayout from "@layouts/MainLayout.astro";
 import type { Moment } from "@models/Moment";
 import { query } from "@utils/content.ts";
@@ -32,7 +32,7 @@ function getDuration(startDate: Date, endDate?: Date) {
 		</section>
 
 		<section>
-			<Timeline client:idle moments={moments} />
+			<!-- <Timeline client:idle moments={moments} /> -->
 		</section>
 
 		<section>
@@ -40,7 +40,6 @@ function getDuration(startDate: Date, endDate?: Date) {
 		</section>
 
 		<section>
-			<Favorites />
 			<!-- <Favorites /> -->
 		</section>
 	</div>
