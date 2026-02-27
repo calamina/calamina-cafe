@@ -6,8 +6,6 @@
 hey :)
 
 # DOING
-- remove vue :/
-- fix crumbs duplicating articles/ !
 - make generic desktop/mobile classes
 - toggle mobile/desktop 'back to articles' link
 
@@ -15,28 +13,25 @@ hey :)
 - mobile menu
 - add header section to article in full width
 - mobile friendly articles
-- change name to 'journal' ?
+- change articles to journal/notes ?
 
 - UTOPIA (type scale)
 
 - add left bar right under home button to track progress (about, favorites, ...) ? (with subgrid for components.)
 - update readme img
-- add minis back, images are too big for project list
 - fix css var names !
-- swap to TOML ? (aergh)
-- polish about ! :/
+- swap projects to TOML/md ? (aergh)
 
 # TODO
-- add stuff to home :)
 - check todos in code :)
 - refacto css variables (radius / gaps / etc) // clean themes
 
 # DATA
 - add dates to projects, add online ! (add size ?)
-- maybe add sort by name again and update navigation but maybe not worth 
+- sort projects by date 
 - take new screens (same resolution)
 - add tools ? (flow launcher config / sites css ?)
 - fix & complete projects (aerg)
 - complete about
 - proper alt on images / proper images (highlights, etc)
-- add Quartier Lointain :3 + Gattaca
+- (add Quartier Lointain :3 + Gattaca)

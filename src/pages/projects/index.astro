@@ -1,21 +1,29 @@
 ---
-import ProjectsGrid from "@components/features/project/ProjectsGrid.astro";
+import ProjectPreview from "@components/features/project/ProjectPreview.astro";
 import MainLayout from "@layouts/MainLayout.astro";
 import type { TypedProject } from "@models/Project";
 import { queryWebProjects } from "@utils/content.ts";
 
-const webProjects: TypedProject[] = await queryWebProjects();
+const projects: TypedProject[] = await queryWebProjects();
 ---
 
 <MainLayout>
-    <div class="view">
-        <ProjectsGrid projects={webProjects} />
+    <div class="projects">
+        {projects.map((project) => <ProjectPreview project={project} />)}
     </div>
 </MainLayout>
 
-<style scoped>
-    .view {
+<style>
+    .projects {
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: center;
         width: 100%;
-        padding-bottom: 3rem;
+        margin: 0 auto;
+        gap: 5rem;
+        padding: 4rem 1rem 10rem;
+        display: flex;
+        flex-flow: column;
     }
 </style>
