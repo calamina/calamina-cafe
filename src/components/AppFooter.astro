@@ -17,7 +17,7 @@ function getCrumbs(): Crumb[] {
     if (path.length < 2) return [];
 
     for (const [index, name] of pathArray?.entries()) {
-        const url = index === 0 ? name : list[index - 1]?.url + "/" + name;
+        const url = index === 0 ? `/${name}` : `${list[index - 1]?.url}/${name}`;
         list.push({ url, name });
     }
     return list;
@@ -62,10 +62,10 @@ function getCrumbs(): Crumb[] {
                 {!!crumbs.length && <p>~</p>}
                 {
                     crumbs.map((crumb, index) => (
-                        <>
+                        <Fragment>
                             <a href={crumb.url}>{crumb.name}</a>
                             {index !== crumbs.length - 1 && <p>~</p>}
-                        </>
+                        </Fragment>
                     ))
                 }
             </nav>
