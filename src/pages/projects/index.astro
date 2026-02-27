@@ -22,8 +22,13 @@ const projects: TypedProject[] = await queryWebProjects();
         width: 100%;
         margin: 0 auto;
         gap: 5rem;
-        padding: 4rem 1rem 10rem;
+        padding: 5rem 1rem;
         display: flex;
         flex-flow: column;
+
+        @media (max-width: 1280px) {
+            padding: 2rem 1rem;
+            gap: 2rem;
+        }
     }
 </style>

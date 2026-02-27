@@ -1,5 +1,4 @@
 ---
-import BracketWrapper from "@components/BracketWrapper.astro";
 import type { TypedProject } from "@models/Project";
 import { getImage } from "@utils/images";
 
@@ -8,105 +7,102 @@ export interface Props {
 }
 
 const { project } = Astro.props;
-
 const url = "/projects/";
 const image = await getImage(project.name, project.type);
 ---
 
 <a class="project" id={project.name} href={url + project.name}>
-  <div class="name">
-    <p class="bracket">[</p>
-    <p class="project-name">{project.name}</p>
-    <p class="bracket">]</p>
+  <img src={image?.default?.src} alt=`${project.name} cover` />
+  <div class="info">
+    <p class="project-name"><span>{project.name}</span></p>
+    <div class="data">
+      {project.tech?.tools?.map((tool) => <p>{tool}</p>)}
+      {project.tech?.languages?.map((lng) => <p>{lng}</p>)}
+    </div>
   </div>
-  <BracketWrapper>
-    <img src={image?.default?.src} alt=`${project.name} cover` />
-  </BracketWrapper>
 </a>
 
 <style scoped>
   .project {
     position: relative;
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    gap: 0.5rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    /* gap: 0.5rem; */
+    /* display: flex;
+    flex-flow: column; */
+    gap: 0;
     width: fit-content;
+    width: 80vw;
     outline: none;
+    justify-content: start;
+    align-items: start;
+    background-color: transparent;
+    border-radius: 0.25rem;
+    overflow: hidden;
+    background-color: var(--bg-darker0);
+
+    @media (max-width: 1280px) {
+      width: 100%;
+    }
 
     &:hover,
     &:focus {
-      background-color: transparent;
-
-      .name {
-        gap: 1rem;
-      }
-
+      /* img {
+        transform: scale(0.95);
+      } */
       .project-name {
-        padding: 0 1.25rem;
-        background-color: var(--bg-darkertsp);
-
+        span {
+          background-color: var(--highlight);
+          height: 100%;
+          display: inline-flex;
+        }
+        &::before,
+        &::after {
+          color: var(--color);
+        }
         &::before {
-          content: ".:";
-          width: 2ch;
-          padding-right: 0.25rem;
-          color: var(--color-light);
+          content: "[";
+          transform: translateX(-0.3rem);
         }
         &::after {
-          content: ":.";
-          width: 2ch;
-          padding-left: 0.25rem;
-          color: var(--color-light);
+          content: "]";
+          transform: translateX(0.3rem);
         }
-      }
-
-      .bracket {
-        color: var(--color);
       }
     }
   }
 
-  .name {
+  .info {
     display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    width: 100%;
-    transition: gap 0.3s ease-out;
+    flex-flow: column;
+    height: 100%;
+    padding: 1rem;
   }
 
-  .bracket {
-    color: var(--bg-darker);
+  .data {
+    margin-top: auto;
+    padding-left: 1ch;
+
+    p {
+      color: var(--color-light);
+    }
   }
 
   .project-name {
-    display: flex;
-    justify-content: center;
-    padding: 0;
-    transition:
-      padding 0.125s ease-out,
-      letter-spacing 0.125s ease-out;
-
+    width: fit-content;
     &::before,
     &::after {
-      display: flex;
+      display: inline-flex;
       content: "";
-      width: 0;
-      overflow: hidden;
-      padding: 0;
-      transition:
-        width 0.125s ease-out,
-        padding 0.125s ease-out;
+      width: 1ch;
+      transition: transform 0.125s ease-out;
     }
   }
 
   img {
-    width: fit-content;
-    background-color: transparent;
-    /* outline: 2px solid var(--bg-darker);
-  outline-offset: -2px;
-  padding: 1rem; */
-    width: 45vw;
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
     object-fit: contain;
-    transition: background-color 0.125s ease-out;
   }
 </style>
