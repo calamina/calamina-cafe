@@ -53,8 +53,10 @@ const categs = tech
 
     .taggroup {
         display: flex;
+        flex-flow: wrap;
         padding-top: 0.25rem;
         gap: 0.5rem;
+        overflow: hidden;
     }
 
     .tag {
@@ -62,6 +64,9 @@ const categs = tech
         padding: 0 0.5rem;
         border-radius: 0.5rem;
         color: var(--color-hover);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     html.dark .tag {

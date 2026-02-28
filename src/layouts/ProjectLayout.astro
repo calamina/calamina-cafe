@@ -9,7 +9,7 @@ interface Props {
 }
 const { project } = Astro.props;
 
-const { name, tech, description, homepage } = (await queryProject(project)) ?? {
+const { name, tech, description } = (await queryProject(project)) ?? {
   name: "",
   description: [],
 };
@@ -17,12 +17,8 @@ const { name, tech, description, homepage } = (await queryProject(project)) ?? {
 
 <MainLayout>
   <div class="project">
-    <ProjectInfo
-      name={name}
-      url={homepage}
-      tech={tech}
-      description={description}
-    />
+    <!-- url={homepage} -->
+    <ProjectInfo name={name} tech={tech} description={description} />
     <ProjectGallery project={project} name={name} />
     <a class="back" href={"/projects#" + name}>← back to projects</a>
   </div>
@@ -34,6 +30,8 @@ const { name, tech, description, homepage } = (await queryProject(project)) ?? {
     grid-template-columns: repeat(12, minmax(0px, 1fr));
     gap: 0.5rem;
     width: 100%;
+    padding-bottom: 8rem;
+    padding-top: 4rem;
   }
 
   .back {
