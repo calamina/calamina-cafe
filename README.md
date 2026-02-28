@@ -6,10 +6,12 @@
 hey :)
 
 # DOING
-- maybe P3 canvas for projects .. with floating elements ?
+- try better projects display (interaction etc.)
 - get apercu fonts !
 - make generic desktop/mobile classes
 - toggle mobile/desktop 'back to articles' link
+- work on search (remove from accessibility ...)
+- proper images with aspect-ratio
 
 - refacto big components (header ...)
 - mobile menu

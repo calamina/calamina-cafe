@@ -14,36 +14,26 @@ enum ROUTES {
 }
 
 const routes = {
-  home: route === ROUTES.home,
-  about: route === ROUTES.about,
-  projects: route === ROUTES.projects,
-  articles: route === ROUTES.articles,
   inprojects: route.includes(ROUTES.projects),
   inarticles: route.includes(ROUTES.articles),
 };
 ---
 
 <header>
-  <a class="logo" href={routes.home ? "#" : "/"}>
+  <a class="logo" href="/">
     <span class="logotext">calamina</span>
     ᴗ
     <span class="logotext">cafe</span>
   </a>
   <nav class="desktop">
     <div class="projects">
-      <a
-        href={routes.projects ? "#" : "/projects"}
-        class:list={[{ active: routes.inprojects }]}
-      >
+      <a href="/projects" class:list={[{ active: routes.inprojects }]}>
         projects
       </a>
       <AppHeaderSublink sublink={project} />
     </div>
     <div class="projects">
-      <a
-        href={routes.articles ? "#" : "/articles"}
-        class:list={[{ active: routes.inarticles }]}
-      >
+      <a href="/articles" class:list={[{ active: routes.inarticles }]}>
         articles
       </a>
       <AppHeaderSublink sublink={article} />

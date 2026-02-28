@@ -23,8 +23,9 @@ const isMobile = 'ontouchstart' in document.documentElement;
 const script = (p5: p5) => {
   p5.setMoveThreshold(1)
   p5.setup = async () => {
+    if (!container) return
     const canvas = p5.createCanvas(window.innerWidth, window.innerHeight);
-    canvas.parent("#container");
+    canvas.parent(container);
     const font = await p5.loadFont(apercu);
     // const font = await p5.loadFont(nectoUrl);
     p5.textSize(22)

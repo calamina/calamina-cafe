@@ -1,6 +1,7 @@
 ---
 import type { Project } from "@models/Project";
 import { getImage } from "@utils/images";
+import { Image } from "astro:assets";
 
 export interface Props {
   project: Project;
@@ -12,50 +13,41 @@ const image = await getImage(project.name);
 ---
 
 <a class="project" id={project.name} href={url + project.name}>
-  <img src={image?.default?.src} alt=`${project.name} cover` />
-  <div class="info">
-    <p class="project-name"><span>{project.name}</span></p>
-    <div class="data">
-      {project.tech?.tools?.map((tool) => <p>{tool}</p>)}
-      {project.tech?.languages?.map((lng) => <p>{lng}</p>)}
-    </div>
-  </div>
+  <Image src={image.default} alt=`${project.name} cover` loading="eager" />
+  <p class="project-name">{project.name}</p>
 </a>
 
 <style scoped>
   .project {
     position: relative;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    /* gap: 0.5rem; */
-    /* display: flex;
-    flex-flow: column; */
+    display: flex;
+    flex-flow: column;
     gap: 0;
-    width: fit-content;
-    width: 80vw;
+    height: fit-content;
     outline: none;
-    justify-content: start;
-    align-items: start;
+    width: 15ch;
     background-color: transparent;
-    border-radius: 0.25rem;
-    overflow: hidden;
-    background-color: var(--bg-darker0);
 
     @media (max-width: 1280px) {
       width: 100%;
+      gap: 0.5rem;
+      img {
+        width: 100%;
+      }
     }
 
     &:hover,
     &:focus {
-      /* img {
-        transform: scale(0.95);
-      } */
+      img {
+        /* border-radius: 0; */
+        outline: 2px solid var(--color);
+        /* border-bottom-left-radius: 2ch;
+        border-top-right-radius: 2ch; */
+      }
+
       .project-name {
-        span {
-          background-color: var(--highlight);
-          height: 100%;
-          display: inline-flex;
-        }
+        text-decoration: underline;
+
         &::before,
         &::after {
           color: var(--color);
@@ -72,37 +64,38 @@ const image = await getImage(project.name);
     }
   }
 
-  .info {
-    display: flex;
-    flex-flow: column;
-    height: 100%;
-    padding: 1rem;
-  }
-
-  .data {
-    margin-top: auto;
-    padding-left: 1ch;
-
-    p {
-      color: var(--color-light);
-    }
-  }
-
   .project-name {
     width: fit-content;
+    text-align: center;
+    height: 2.5ch;
+
     &::before,
     &::after {
-      display: inline-flex;
       content: "";
+      display: inline-flex;
       width: 1ch;
+      color: var(--bg-darker);
       transition: transform 0.125s ease-out;
+    }
+
+    &:before {
+      transform: translateX(-0.1rem);
+    }
+    &:after {
+      transform: translateX(0.1rem);
     }
   }
 
   img {
-    box-sizing: border-box;
-    width: 100%;
-    height: auto;
-    object-fit: contain;
+    aspect-ratio: 1;
+    width: 15ch;
+    height: 15ch;
+    object-fit: cover;
+    border-top-left-radius: 2ch;
+    border-bottom-right-radius: 2ch;
+    outline: 2px solid transparent;
+    transition:
+      border-radius 0.125s ease-out,
+      outline 0.125s ease-out;
   }
 </style>

@@ -7,28 +7,38 @@ import { queryWebProjects } from "@utils/content.ts";
 const projects: Project[] = await queryWebProjects();
 ---
 
+<script>
+    import { useProjects } from "@utils/projects";
+    useProjects();
+</script>
+
 <MainLayout>
-    <div class="projects">
+    <div class="projects" id="projects">
         {projects.map((project) => <ProjectPreview project={project} />)}
     </div>
 </MainLayout>
 
 <style>
     .projects {
-        display: flex;
-        flex-flow: column;
-        align-items: center;
-        justify-content: center;
+        position: relative;
+        height: calc(100dvh - 7.5rem);
         width: 100%;
-        margin: 0 auto;
-        gap: 5rem;
-        padding: 5rem 1rem;
-        display: flex;
-        flex-flow: column;
+        margin-bottom: auto;
+        transition: opacity 0.125s ease-out;
+        transition-delay: 0.2s;
+
+        @starting-style {
+            opacity: 0;
+        }
 
         @media (max-width: 1280px) {
-            padding: 2rem 1rem;
-            gap: 2rem;
+            padding: 2rem 0;
+            gap: 3rem;
+            grid-template-columns: 1fr;
+            width: 100%;
+        }
+        canvas {
+            display: none !important;
         }
     }
 </style>

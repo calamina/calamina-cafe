@@ -16,6 +16,7 @@
     "@astrojs/sitemap": "^3.7.0",
     "@types/p5": "^1.7.7",
     "astro": "^5.18.0",
+    "minisearch": "^7.2.0",
     "p5": "^2.0.5"
   },
   "devDependencies": {

@@ -2,10 +2,52 @@
 import MainLayout from "@layouts/MainLayout.astro";
 ---
 
+<script>
+  import MiniSearch from "minisearch";
+  let miniSearch = new MiniSearch({
+    fields: ["name", "text"], // fields to index for full-text search
+    storeFields: ["name", "url"], // fields to return with search results
+  });
+
+  let body: {
+    slug: string;
+    name: string;
+    text: string;
+  }[] = [];
+
+  const init = async () => {
+    try {
+      const response = await fetch("./search.json");
+      body = await response.json();
+      miniSearch.addAll(body);
+    } catch (err) {
+      console.error("Error while searching", err);
+    }
+  };
+
+  init();
+
+  const input = document.querySelector("#search") as HTMLInputElement;
+  input?.addEventListener("input", () => {
+    const data = input.value;
+    let results = miniSearch.search(data, { prefix: true });
+    const elt = document.querySelector("#results") as HTMLInputElement;
+    const html: string[] = [];
+    for (const result of results) {
+      html.push(`<div><p>${result.id}</p><a href="${result.url}">go!</a>`);
+    }
+    elt.innerHTML = html.join("");
+  });
+</script>
+
 <MainLayout>
   <div>
     <p>I try to make this website accessible !</p>
     <p>/!\ WIP /!\</p>
+
+    <p>Search test</p>
+    <input type="search" name="search" id="search" placeholder="search" />
+    <div id="results"></div>
   </div>
 </MainLayout>
 

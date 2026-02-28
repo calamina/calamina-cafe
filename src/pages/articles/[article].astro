@@ -16,6 +16,9 @@ export async function getStaticPaths() {
     params: { article: article.data.name },
   }));
 }
+
+const wordCount = entry?.body?.split(/\s+/).length;
+const readingTime = Math.ceil((wordCount ?? 0) / 200);
 ---
 
 <MainLayout>
@@ -38,6 +41,7 @@ export async function getStaticPaths() {
       >
     </div>
     <div class="content">
+      <p>~ {readingTime} minutes read</p>
       <Content />
     </div>
   </div>
