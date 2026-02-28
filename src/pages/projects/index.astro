@@ -1,10 +1,10 @@
 ---
 import ProjectPreview from "@components/features/project/ProjectPreview.astro";
 import MainLayout from "@layouts/MainLayout.astro";
-import type { TypedProject } from "@models/Project";
+import type { Project } from "@models/Project";
 import { queryWebProjects } from "@utils/content.ts";
 
-const projects: TypedProject[] = await queryWebProjects();
+const projects: Project[] = await queryWebProjects();
 ---
 
 <MainLayout>

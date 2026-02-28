@@ -1,14 +1,14 @@
 ---
-import type { TypedProject } from "@models/Project";
+import type { Project } from "@models/Project";
 import { getImage } from "@utils/images";
 
 export interface Props {
-  project: TypedProject;
+  project: Project;
 }
 
 const { project } = Astro.props;
 const url = "/projects/";
-const image = await getImage(project.name, project.type);
+const image = await getImage(project.name);
 ---
 
 <a class="project" id={project.name} href={url + project.name}>

@@ -6,6 +6,8 @@
 hey :)
 
 # DOING
+- maybe P3 canvas for projects .. with floating elements ?
+- get apercu fonts !
 - make generic desktop/mobile classes
 - toggle mobile/desktop 'back to articles' link
 

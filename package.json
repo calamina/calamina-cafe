@@ -13,10 +13,9 @@
     "typecheck": "npx tsc --noEmit"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.6.0",
+    "@astrojs/sitemap": "^3.7.0",
     "@types/p5": "^1.7.7",
-    "astro": "^5.14.1",
-    "focus-trap": "^7.6.4",
+    "astro": "^5.18.0",
     "p5": "^2.0.5"
   },
   "devDependencies": {

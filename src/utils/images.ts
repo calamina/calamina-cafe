@@ -1,7 +1,4 @@
 import type { ImageMetadata } from "astro";
-import { ProjectType } from "./enum";
-
-export const isVerticalImage = (image: { default: ImageMetadata }) => image.default.width / image.default.height < 1;
 
 export const getProjectImages = (project: string) => {
   return webImages
@@ -9,7 +6,7 @@ export const getProjectImages = (project: string) => {
     .map((file) => file[1]());
 };
 
-export const getImage = (name: string, _type: ProjectType) => {
+export const getImage = (name: string) => {
   return webCovers.find((file) => file[0].includes(name))
     ?.[1]() ?? new Promise(() => null);
 }
