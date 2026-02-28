@@ -7,6 +7,7 @@ hey :)
 
 # DOING
 - try better projects display (interaction etc.)
+- clean projects !!!
 - get apercu fonts !
 - make generic desktop/mobile classes
 - toggle mobile/desktop 'back to articles' link

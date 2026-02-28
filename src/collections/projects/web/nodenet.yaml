@@ -1,0 +1,26 @@
+name: "nodenet"
+tech:
+  tools:
+  - "vue"
+  - "XML parser"
+  languages:
+  - "html"
+  - "scss"
+  - "typescript"
+  colors:
+  - "#fff"
+  - "#efefef"
+  - "#323232"
+  - "#dfcfe8"
+  - "#dc6389"
+  fonts:
+  - "amstir"
+  - "IBM Plex Mono"
+  icons:
+  - "tabler"
+
+description:
+- 'Homepage with features :'
+- '- Regular links & categories'
+- '- TODO list'
+- '- Youtube feed'

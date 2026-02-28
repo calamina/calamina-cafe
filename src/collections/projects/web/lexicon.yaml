@@ -1,4 +1,4 @@
-name: "words"
+name: "lexicon"
 tech:
   tools:
   - 'vue'

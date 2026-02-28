@@ -7,11 +7,10 @@ import { queryWebProjects } from "@utils/content.ts";
 const projects: Project[] = await queryWebProjects();
 ---
 
-<script>
+<!-- <script>
     import { useProjects } from "@utils/projects";
     useProjects();
-</script>
-
+</script> -->
 <MainLayout>
     <div class="projects" id="projects">
         {projects.map((project) => <ProjectPreview project={project} />)}
@@ -21,11 +20,16 @@ const projects: Project[] = await queryWebProjects();
 <style>
     .projects {
         position: relative;
-        height: calc(100dvh - 7.5rem);
+        margin: 0 auto;
         width: 100%;
-        margin-bottom: auto;
+        padding: 0 4rem 2rem;
+        padding-bottom: 2rem;
+        gap: 1rem 0;
         transition: opacity 0.125s ease-out;
         transition-delay: 0.2s;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        place-items: center;
 
         @starting-style {
             opacity: 0;
@@ -34,7 +38,6 @@ const projects: Project[] = await queryWebProjects();
         @media (max-width: 1280px) {
             padding: 2rem 0;
             gap: 3rem;
-            grid-template-columns: 1fr;
             width: 100%;
         }
         canvas {
