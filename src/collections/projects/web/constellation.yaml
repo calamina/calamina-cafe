@@ -4,6 +4,9 @@ url: "https://constellation.calamina.cafe"
 description:
 - 3D experiment showing rotating planets and their information.
 
+tags:
+- 3d
+
 tech:
   tools:
   - 'threejs'

@@ -14,7 +14,7 @@ const { articles, url = "articles" } = Astro.props;
     articles.map((article) => (
       <a id={article.name} href={`/${url}/${article.name}`}>
         <BracketWrapper>
-          <p>{article.name}</p>
+          <p>{article.title}</p>
         </BracketWrapper>
       </a>
     ))

@@ -1,4 +1,8 @@
 name: "consola"
+
+tags:
+- startpage
+
 tech:
   tools:
   - 'vue'

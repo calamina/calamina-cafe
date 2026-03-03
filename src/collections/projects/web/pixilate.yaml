@@ -1,4 +1,8 @@
 name: "pixilate"
+
+tags:
+- 2d
+
 tech:
   tools:
   - 'p5js'

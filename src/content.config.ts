@@ -15,15 +15,14 @@ const phoneProjects = defineCollection({
 
 // ARTICLES
 const articles = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/collections/articles/" }),
+  loader: glob({ pattern: "**/*.mdx", base: "./src/collections/articles/" }),
   schema: ArticleSchema
 });
 
 // Notes
 const notes = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/collections/notes/" }),
+  loader: glob({ pattern: "**/*.mdx", base: "./src/collections/notes/" }),
   schema: ArticleSchema
 });
-
 
 export const collections = { webProjects, phoneProjects, articles, notes };

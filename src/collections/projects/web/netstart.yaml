@@ -1,4 +1,8 @@
 name: "netstart"
+
+tags:
+- startpage
+
 tech:
   tools:
   - 'vue'

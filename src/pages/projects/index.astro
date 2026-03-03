@@ -5,40 +5,140 @@ import type { Project } from "@models/Project";
 import { queryWebProjects } from "@utils/content.ts";
 
 const projects: Project[] = await queryWebProjects();
+
+const sort = (a: Project, b: Project) =>
+    a.name.localeCompare(b.name, "en", { sensitivity: "base" });
+
+const tags: Set<string> = new Set();
+projects.map((project) => project.tags?.forEach((tag) => tags.add(tag)));
+
+const countTags = (tagname: string) => {
+    return projects.filter((project) =>
+        project.tags?.some((tag) => tag === tagname),
+    ).length;
+};
 ---
 
-<!-- <script>
-    import { useProjects } from "@utils/projects";
-    useProjects();
-</script> -->
+<script>
+    import { useProjectFilters } from "@utils/projects-filters";
+    useProjectFilters();
+</script>
+
 <MainLayout>
-    <div class="projects" id="projects">
-        {projects.map((project) => <ProjectPreview project={project} />)}
+    <div class="container">
+        <div class="intro">
+            <div class="title">
+                <h1>Web projects</h1>
+                <span class="limit"></span>
+                <p>[ {projects.length} entries ]</p>
+            </div>
+            <p>Collection of small personnal web projects.</p>
+            <nav>
+                {
+                    tags.values().map((tag) => (
+                        <button class="tagSelector" value={tag}>
+                            {tag}
+                            <span class="count">{countTags(tag)}</span>
+                        </button>
+                    ))
+                }
+                <button class="reset">all</button>
+            </nav>
+        </div>
+        <div class="projects" id="projects">
+            {
+                projects
+                    .sort((a, b) => sort(a, b))
+                    .map((project) => <ProjectPreview project={project} />)
+            }
+        </div>
     </div>
 </MainLayout>
 
 <style>
-    .projects {
-        position: relative;
-        margin: 0 auto;
-        /* width: 100%; */
+    .container {
         width: 70vw;
+        margin: 0 auto;
         padding: 4rem 4rem 8rem;
-        gap: 1.75rem 0.25rem;
-        transition: opacity 0.125s ease-out;
-        transition-delay: 0.2s;
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        place-items: center;
-
-        @starting-style {
-            opacity: 0;
-        }
+        display: flex;
+        flex-flow: column;
+        gap: 3rem;
 
         @media (max-width: 1280px) {
-            padding: 2rem 0;
-            gap: 3rem;
+            padding: 2rem;
             width: 100%;
+        }
+    }
+
+    .intro {
+        display: flex;
+        flex-flow: column;
+        gap: 0.25rem;
+    }
+
+    .title {
+        display: flex;
+        align-items: baseline;
+        gap: 1rem;
+        justify-content: space-between;
+    }
+
+    .limit {
+        height: 1px;
+        height: 100%;
+        border-bottom: 1px solid var(--bg-darker);
+        display: flex;
+        flex: 1;
+    }
+
+    nav {
+        padding-top: 1rem;
+        display: flex;
+        gap: 1rem;
+    }
+
+    button {
+        display: flex;
+        align-items: baseline;
+        gap: 1ch;
+        padding: 0 0.5rem 0.15rem 0.4rem;
+        border-top-left-radius: 0.5rem;
+        border-bottom-right-radius: 0.5rem;
+        background-color: var(--bg-darker0);
+
+        &:hover {
+            background-color: var(--bg-darker);
+        }
+
+        &.reset {
+            margin-left: auto;
+            background-color: var(--bg-darker0);
+        }
+
+        &.active,
+        &:hover.active {
+            background-color: var(--highlight);
+            .count {
+                color: var(--color-dim);
+            }
+        }
+    }
+
+    .count {
+        color: var(--color-light);
+        font-size: 0.8rem;
+    }
+
+    .projects {
+        position: relative;
+        width: 100%;
+        gap: 1.75rem 3rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        place-items: center;
+
+        @media (max-width: 1280px) {
+            grid-template-columns: 1fr;
         }
     }
 </style>

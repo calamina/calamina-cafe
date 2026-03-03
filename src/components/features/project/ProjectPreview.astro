@@ -12,7 +12,12 @@ const url = "/projects/";
 const image = await getImage(project.name);
 ---
 
-<a class="project" id={project.name} href={url + project.name}>
+<a
+  class="project"
+  class:list={project.tags}
+  id={project.name}
+  href={url + project.name}
+>
   <Image src={image.default} alt=`${project.name} cover` loading="eager" />
   <p class="project-name">{project.name}</p>
 </a>
@@ -23,18 +28,16 @@ const image = await getImage(project.name);
     display: flex;
     flex-flow: column;
     gap: 0.15rem;
-    height: fit-content;
     outline: none;
-    width: 15ch;
+    width: 100%;
     background-color: transparent;
+    transition:
+      opacity 0.05s ease-out,
+      filter 0.05s ease-out;
 
     @media (max-width: 1280px) {
       width: fit-content;
       gap: 0.5rem;
-      img {
-        width: 24ch;
-        height: 24ch;
-      }
     }
 
     &:hover,
@@ -86,11 +89,17 @@ const image = await getImage(project.name);
 
   img {
     aspect-ratio: 1;
-    width: 15ch;
-    height: 15ch;
+    /* width: 15ch;
+    height: 15ch; */
+    height: auto;
     object-fit: cover;
     border-top-left-radius: 2ch;
     border-bottom-right-radius: 2ch;
     transition: border-radius 0.125s ease-out;
+  }
+
+  .discrete {
+    opacity: 0.3;
+    filter: grayscale(1);
   }
 </style>

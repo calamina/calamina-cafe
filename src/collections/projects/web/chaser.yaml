@@ -1,4 +1,8 @@
 name: "chaser"
+
+tags:
+- 2d
+
 tech:
   languages:
   - 'html'

@@ -1,4 +1,8 @@
 name: "onsen"
+
+tags:
+- 3d
+
 tech:
   tools:
   - 'threejs'

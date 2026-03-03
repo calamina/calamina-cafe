@@ -1,4 +1,8 @@
 name: "fatcat"
+
+tags:
+- startpage
+
 tech:
   languages:
   - 'html'

@@ -11,6 +11,7 @@ export const ProjectSchema = z.object({
         icons: z.array(z.string()).optional(),
     }).optional(),
     url: z.string().optional(),
+    tags: z.array(z.string()).optional()
 })
 
 export type Project = z.infer<typeof ProjectSchema>

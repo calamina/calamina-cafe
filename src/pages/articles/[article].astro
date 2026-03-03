@@ -41,7 +41,10 @@ const readingTime = Math.ceil((wordCount ?? 0) / 200);
       >
     </div>
     <div class="content">
-      <p>~ {readingTime} minutes read</p>
+      <h1>{entry.data.title}</h1>
+      <p class="time">
+        ~ {readingTime} minute{readingTime > 1 ? "s" : ""} read
+      </p>
       <Content />
     </div>
   </div>
@@ -67,31 +70,38 @@ const readingTime = Math.ceil((wordCount ?? 0) / 200);
     }
   }
 
+  .time {
+    display: flex;
+    padding-bottom: 1rem;
+    color: var(--color-dim);
+  }
+
   .content {
     grid-column: 2;
     max-width: 44rem;
-    padding: 0 1rem;
+    padding: 0 1rem 10rem;
     margin: 0 auto;
 
     h1 {
-      font-size: 2.5rem;
+      font-size: 3rem;
+      text-transform: capitalize;
     }
     h2 {
-      font-size: 1.75rem;
+      font-size: 2rem;
       &:not(:first-child) {
-        margin-top: 1.5rem;
-        margin-bottom: 1rem;
+        margin-top: 3rem;
+        margin-bottom: 0.5rem;
       }
     }
     h3 {
-      font-size: 1.25rem;
+      font-size: 1.5rem;
       &:not(:first-child) {
-        margin-top: 1.25rem;
-        margin-bottom: 1rem;
+        margin-top: 2rem;
+        margin-bottom: 0.5rem;
       }
     }
     h4 {
-      font-size: 1.4rem;
+      font-size: 1.25rem;
       &:not(:first-child) {
         margin-top: 1rem;
         margin-bottom: 0.75rem;

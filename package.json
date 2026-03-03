@@ -13,6 +13,7 @@
     "typecheck": "npx tsc --noEmit"
   },
   "dependencies": {
+    "@astrojs/mdx": "^4.3.13",
     "@astrojs/sitemap": "^3.7.0",
     "@types/p5": "^1.7.7",
     "astro": "^5.18.0",

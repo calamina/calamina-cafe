@@ -1,4 +1,8 @@
 name: "mosatype"
+
+tags:
+- 2d
+
 tech:
   tools:
   - "vite"

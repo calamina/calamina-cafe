@@ -1,5 +1,9 @@
 name: "nodenet"
 url: "https://nodenet.calamina.cafe"
+
+tags:
+- startpage
+
 tech:
   tools:
   - "vue"
