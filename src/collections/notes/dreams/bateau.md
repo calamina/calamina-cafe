@@ -1,0 +1,13 @@
+---
+name: bateau
+description: bateau article
+---
+
+Je veux aller aux toilettes, on me dit qu'ils sont a l'extérieur. Je vois un petit escalier et je me retrouve sur un petit bateau ouvert a étage en haut duquel il y a un wc ou je vois tout le monde et tout le monde me voit ...
+Il est a quai quand je m'assois mais d'un coup il part sur sa tournee automatique ou un truc du genre.
+Au debut tout va bien il va tout droit. Mais d'un coup il y a un bateau devant et le mien décide de doubler en accelerant a balle. Évidemment tout le monde de l'autre bateau me voit sur le trône.
+A partir de la mon bateau wc se met a accélérer vite puis perdre le controle et faire un tour sur lui meme régulièrement.
+Au début ça fait un peu flipper mais je suis vite mort de rire parce que tout le monde me voit faire caca sur le fleuve et c'est un peu la pagaille.
+A un moment dans un 180 je me retrouve face aux gens d'un bateau bus qui applaudissent alors que je fais un 180, je leur fais une révérence.
+Je ne fais que rigoler et le rêve passe de bizarre a trop chouette, je double tous les bateaux a fond avant de faire un 180 face aux gens ou a coté du bateau et repartir encore plus vite.
+10/10

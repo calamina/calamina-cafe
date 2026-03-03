@@ -1,5 +1,5 @@
 import p5 from "p5";
-import apercu from "../assets/fonts/apercuMonoMedium.ttf";
+import apercu from "../assets/fonts/ApercuMonoProMedium.ttf";
 
 interface Point { x: number, y: number }
 interface MemoryPoint extends Point { age: number }

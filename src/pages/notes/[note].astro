@@ -2,18 +2,16 @@
 import MainLayout from "@layouts/MainLayout.astro";
 import { getCollection, getEntry, render } from "astro:content";
 
-const { article } = Astro.params;
-const entry = await getEntry("articles", article ?? "lol");
+const { note } = Astro.params;
+const entry = await getEntry("notes", "dreams/" + note);
+console.debug(note);
 if (!entry) throw new Error("Could not find blog post 1");
-const { Content, headings } = await render(entry);
-const filteredHeadings = headings.filter(
-  (heading) => heading.depth > 1 && heading.depth < 4,
-);
+const { Content } = await render(entry);
 
 export async function getStaticPaths() {
-  const articles = await getCollection("articles");
-  return articles.map((article) => ({
-    params: { article: article.data.name },
+  const notes = await getCollection("notes");
+  return notes.map((note) => ({
+    params: { note: note.data.name },
   }));
 }
 
@@ -23,25 +21,10 @@ const readingTime = Math.ceil((wordCount ?? 0) / 200);
 
 <MainLayout>
   <div class="article">
-    <div class="headings">
-      <nav>
-        {
-          filteredHeadings.map((heading) => (
-            <a
-              href={"#" + heading.slug}
-              class={heading.depth === 2 ? "h2" : "h3"}
-            >
-              {heading.text}
-            </a>
-          ))
-        }
-      </nav>
-      <a class="back" href={"/articles#" + entry.data.name}
-        >← back to articles</a
-      >
-    </div>
     <div class="content">
+      <h1>{note}</h1>
       <p>~ {readingTime} minutes read</p>
+
       <Content />
     </div>
   </div>
@@ -75,6 +58,7 @@ const readingTime = Math.ceil((wordCount ?? 0) / 200);
 
     h1 {
       font-size: 2.5rem;
+      text-transform: capitalize;
     }
     h2 {
       font-size: 1.75rem;

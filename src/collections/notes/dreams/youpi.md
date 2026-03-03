@@ -1,0 +1,14 @@
+---
+name: youpi
+description: youpi article
+---
+
+On est avec Justine et maman au bord d'une espèce de rivière étang.
+
+Il y a un panneau en bois qui avertit qu'un canard mignon qui s'appelle Youpi a tendance à courir vers les gens car il aime les câlins.
+
+On s'approche du bord de l'eau et on ne voit qu'un seul canard qui mange des champignons autour d'un buisson. 
+
+Je m'approche un peu pour le voir, et la Youpi sort de je sais pas où et arrive en courant couinant a fond sur moi. 
+Et ce trou du cul m'attrape le doigt et le pince super fort ! 
+Mais bon je commence a le caresser et en fait il est vraiment très mignon et choupi donc je le pardonne et on passe un petit moment avec lui.

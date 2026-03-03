@@ -20,6 +20,11 @@ export const queryArticles = async () =>
     .map(result => result.data as Article)
   )
 
+export const queryNotes = async () =>
+  getCollection("notes").then(results => results
+    .map(result => result.data as Article)
+  )
+
 
 export const queryLastProject = async () => (await queryWebProjects())[0]
 export const queryLastArticle = async () => (await queryArticles())[0]

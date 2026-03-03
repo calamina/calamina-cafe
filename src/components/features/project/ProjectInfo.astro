@@ -11,12 +11,12 @@ interface Props {
   url?: string;
 }
 
-const { name, url = null, tech, description } = Astro.props;
+const { name, url, tech, description } = Astro.props;
 ---
 
 <div class="info">
   <ProjectName name={name} />
-  {url && <LinkIcon url={url} online={!!url} />}
+  {url && <LinkIcon url={url} />}
   <div class="description">
     {description?.map((line) => <p>{line}</p>)}
   </div>
@@ -45,6 +45,10 @@ const { name, url = null, tech, description } = Astro.props;
     text-justify: distribute;
     opacity: 1;
     transform: translateX(0);
+
+    p {
+      font-family: "Apercu Regular";
+    }
   }
 
   .back {

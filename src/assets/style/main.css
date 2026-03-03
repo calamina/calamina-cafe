@@ -6,73 +6,17 @@
     font-family: 'Apercu';
     font-style: normal;
     font-weight: 400;
-    src: url('../fonts/apercuMonoMedium.ttf') format('woff2');
+    src: url('../fonts/ApercuMonoProMedium.ttf') format('woff2');
+    /* src: url('../fonts/ApercuMonoProRegular.ttf') format('woff2'); */
+    /* src: url('../fonts/apercuMonoMedium.ttf') format('woff2'); */
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Apercu Light';
+    font-family: 'Apercu Regular';
     font-style: normal;
     font-weight: 400;
-    src: url('../fonts/apercuMono.ttf') format('woff2');
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Necto';
-    font-style: normal;
-    font-weight: 400;
-    src: url('../fonts/NectoMono-Regular.woff2') format('woff2');
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Necto open';
-    font-style: normal;
-    font-weight: 400;
-    src: url('../fonts/NectoMono-Regular.otf') format('opentype');
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Foss';
-    font-style: normal;
-    font-weight: 400;
-    src: url('../fonts/FOSS-Modern-Bold.woff2') format('opentype');
-    /* src: url('../fonts/FOSSSERIF-Regular.woff2') format('opentype'); */
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Foss';
-    font-style: normal;
-    font-weight: 400;
-    src: url('../fonts/FOSS-Modern-Bold.woff2') format('opentype');
-    src: url('../fonts/FOSSSERIF-Regular.woff2') format('opentype');
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Nightingale';
-    font-style: normal;
-    font-weight: 400;
-    src: url('../fonts/DTNightingale-Light.ttf') format('ttf');
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Grotesk';
-    font-style: normal;
-    font-weight: 400;
-    src: url('../fonts/HostGrotesk-VariableFont_wght.ttf') format('ttf');
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    src: url('../fonts/Inter-VariableFont_opszwght.ttf') format('ttf');
+    src: url('../fonts/ApercuMonoProRegular.ttf') format('woff2');
     font-display: swap;
 }
 
@@ -80,17 +24,9 @@
     font-family: 'Redaction';
     font-style: normal;
     font-weight: 400;
-    /* src: url('../fonts/Redaction_10-Regular.woff2') format('woff2'); */
-    /* src: url('../fonts/Redaction_100-Regular.woff2') format('woff2'); */
     src: url('../fonts/Redaction_100-Regular.woff2') format('woff2');
     font-display: swap;
 }
-
-/* not yet :( */
-/* 
-@view-transition {
-    navigation: auto;
-} */
 
 *,
 *::before,

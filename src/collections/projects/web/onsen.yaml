@@ -1,6 +1,4 @@
 name: "onsen"
-url: "https://onsen.calamina.cafe"
-online: false
 tech:
   tools:
   - 'threejs'

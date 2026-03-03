@@ -1,15 +1,20 @@
 ---
-import { getCollection } from "astro:content";
+import type { Article } from "@models/Article";
 import BracketWrapper from "./BracketWrapper.astro";
-const articles = await getCollection("articles");
+interface Props {
+  articles: Article[];
+  url?: string;
+}
+
+const { articles, url = "articles" } = Astro.props;
 ---
 
 <div>
   {
     articles.map((article) => (
-      <a id={article.id} href={`/articles/${article.id}`}>
+      <a id={article.name} href={`/${url}/${article.name}`}>
         <BracketWrapper>
-          <p>{article.id}</p>
+          <p>{article.name}</p>
         </BracketWrapper>
       </a>
     ))

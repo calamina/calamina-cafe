@@ -22,7 +22,7 @@ const image = await getImage(project.name);
     position: relative;
     display: flex;
     flex-flow: column;
-    gap: 0;
+    gap: 0.15rem;
     height: fit-content;
     outline: none;
     width: 15ch;
@@ -40,10 +40,7 @@ const image = await getImage(project.name);
     &:hover,
     &:focus {
       img {
-        /* border-radius: 0; */
         outline: 2px solid var(--color);
-        /* border-bottom-left-radius: 2ch;
-        border-top-right-radius: 2ch; */
       }
 
       .project-name {
@@ -94,9 +91,6 @@ const image = await getImage(project.name);
     object-fit: cover;
     border-top-left-radius: 2ch;
     border-bottom-right-radius: 2ch;
-    outline: 2px solid transparent;
-    transition:
-      border-radius 0.125s ease-out,
-      outline 0.125s ease-out;
+    transition: border-radius 0.125s ease-out;
   }
 </style>

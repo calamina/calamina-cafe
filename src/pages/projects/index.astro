@@ -21,9 +21,10 @@ const projects: Project[] = await queryWebProjects();
     .projects {
         position: relative;
         margin: 0 auto;
-        width: 100%;
+        /* width: 100%; */
+        width: 70vw;
         padding: 4rem 4rem 8rem;
-        gap: 1rem 0;
+        gap: 1.75rem 0.25rem;
         transition: opacity 0.125s ease-out;
         transition-delay: 0.2s;
         display: grid;
@@ -38,9 +39,6 @@ const projects: Project[] = await queryWebProjects();
             padding: 2rem 0;
             gap: 3rem;
             width: 100%;
-        }
-        canvas {
-            display: none !important;
         }
     }
 </style>

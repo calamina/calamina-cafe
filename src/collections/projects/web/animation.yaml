@@ -1,6 +1,4 @@
 name: "animation"
-url: "https://animation.calamina.cafe"
-online: false
 tech:
   tools:
   - 'vue'

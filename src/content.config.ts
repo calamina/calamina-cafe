@@ -19,5 +19,11 @@ const articles = defineCollection({
   schema: ArticleSchema
 });
 
+// Notes
+const notes = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/collections/notes/" }),
+  schema: ArticleSchema
+});
 
-export const collections = { webProjects, phoneProjects, articles };
+
+export const collections = { webProjects, phoneProjects, articles, notes };

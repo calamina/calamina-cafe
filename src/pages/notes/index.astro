@@ -1,0 +1,21 @@
+---
+import ArticleList from "@components/ArticleList.astro";
+import MainLayout from "@layouts/MainLayout.astro";
+import type { Article } from "@models/Article";
+import { queryNotes } from "@utils/content.ts";
+
+const notes: Article[] = await queryNotes();
+---
+
+<MainLayout>
+    <div class="view">
+        <ArticleList articles={notes} url="notes" />
+    </div>
+</MainLayout>
+
+<style scoped>
+    .view {
+        width: 100%;
+        padding-bottom: 3rem;
+    }
+</style>

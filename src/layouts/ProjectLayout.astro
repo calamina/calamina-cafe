@@ -9,16 +9,17 @@ interface Props {
 }
 const { project } = Astro.props;
 
-const { name, tech, description } = (await queryProject(project)) ?? {
-  name: "",
-  description: [],
-};
+const {
+  name = "",
+  tech,
+  description = [],
+  url,
+} = (await queryProject(project)) ?? {};
 ---
 
 <MainLayout>
   <div class="project">
-    <!-- url={homepage} -->
-    <ProjectInfo name={name} tech={tech} description={description} />
+    <ProjectInfo name={name} tech={tech} description={description} url={url} />
     <ProjectGallery project={project} name={name} />
     <a class="back" href={"/projects#" + name}>← back to projects</a>
   </div>

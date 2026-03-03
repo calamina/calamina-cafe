@@ -1,6 +1,4 @@
 name: "consola"
-url: "https://consola.calamina.cafe"
-online: false
 tech:
   tools:
   - 'vue'
