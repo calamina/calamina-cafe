@@ -27,7 +27,8 @@ const readingTime = Math.ceil((wordCount ?? 0) / 200);
         ~ {readingTime} minute{readingTime > 1 ? "s" : ""} read
       </p>
       <Content />
-      <a class="back" href={"/notes#" + entry.data.name}> ← back to notes </a>
+      <a class="back" href="/notes"> ← back to notes </a>
+      <!-- <a class="back" href={"/notes#" + entry.data.name}> ← back to notes </a> -->
     </div>
   </div>
 </MainLayout>
@@ -56,17 +57,21 @@ const readingTime = Math.ceil((wordCount ?? 0) / 200);
     display: flex;
     padding-bottom: 1rem;
     color: var(--color-dim);
+    justify-content: center;
+    width: 100%;
   }
 
   .content {
     grid-column: 2;
     max-width: 44rem;
-    padding: 0 1rem 10rem;
+    padding: 4rem 1rem 10rem;
     margin: 0 auto;
 
     h1 {
       font-size: 2.5rem;
       text-transform: capitalize;
+      text-align: center;
+      /* letter-spacing: -1px; */
     }
     h2 {
       font-size: 1.75rem;
@@ -106,6 +111,17 @@ const readingTime = Math.ceil((wordCount ?? 0) / 200);
     p,
     li {
       font-family: "Apercu regular";
+    }
+
+    ul,
+    ol {
+      display: flex;
+      flex-flow: column;
+      gap: 0.5rem;
+    }
+
+    li {
+      line-height: 1.2rem;
     }
 
     @media (max-width: 1280px) {

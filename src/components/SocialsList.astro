@@ -5,23 +5,23 @@ import Icon from "@components/icons/Icon.astro";
 <nav>
   <a target="”_blank”" href="https://github.com/calamina">
     <Icon icon="IconGithub" />
-    github
+    <span>github</span>
   </a>
   <a target="”_blank”" href="https://www.linkedin.com/in/gregoire-belliere/">
     <Icon icon="IconLinkedin" />
-    linkedin
+    <span>linkedin</span>
   </a>
   <a target="”_blank”" href="https://en.wikipedia.org/wiki/User:Calamina *">
     <Icon icon="IconWikipedia" />
-    wikipedia
+    <span>wikipedia</span>
   </a>
   <a target="”_blank”" href="https://www.youtube.com/@calamina">
     <Icon icon="IconYoutube" />
-    youtube
+    <span>youtube</span>
   </a>
   <a target="”_blank”" href="https://www.senscritique.com/calamina">
     <Icon icon="IconBookmark" />
-    senscritique
+    <span>senscritique</span>
   </a>
 </nav>
 
@@ -39,7 +39,17 @@ import Icon from "@components/icons/Icon.astro";
     }
   }
 
-  nav a:hover * {
-    color: var(--color-hover);
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    span {
+      padding-bottom: 0.15rem;
+    }
+
+    &:hover * {
+      color: var(--color-hover);
+    }
   }
 </style>

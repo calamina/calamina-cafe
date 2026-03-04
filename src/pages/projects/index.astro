@@ -29,8 +29,12 @@ const countTags = (tagname: string) => {
         <div class="intro">
             <div class="title">
                 <h1>Web projects</h1>
-                <span class="limit"></span>
-                <p>[ {projects.length} entries ]</p>
+                <span class="limit" inert></span>
+                <p class="entries">
+                    <span inert>(</span>
+                    {projects.length} entries
+                    <span inert>)</span>
+                </p>
             </div>
             <p>Collection of small personnal web projects.</p>
             <nav>
@@ -91,6 +95,11 @@ const countTags = (tagname: string) => {
         flex: 1;
     }
 
+    .entries,
+    .entries span {
+        color: var(--color-light);
+    }
+
     nav {
         padding-top: 1rem;
         display: flex;
@@ -118,6 +127,10 @@ const countTags = (tagname: string) => {
         &.active,
         &:hover.active {
             background-color: var(--highlight);
+        }
+
+        &:hover,
+        &.active {
             .count {
                 color: var(--color-dim);
             }
