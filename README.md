@@ -6,19 +6,15 @@
 hey :)
 
 # DOING
-- try better projects display (interaction etc.)
+- check if article layout feels right, else split in smaller specific layout & separate notes(content, headings ..)
 - clean projects !!!
-- get apercu fonts !
 - make generic desktop/mobile classes
-- toggle mobile/desktop 'back to articles' link
+
 - work on search (remove from accessibility ...)
 - proper images with aspect-ratio
 
 - refacto big components (header ...)
 - mobile menu
-- add header section to article in full width
-- mobile friendly articles
-- change articles to journal/notes ?
 
 - UTOPIA (type scale)
 
