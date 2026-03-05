@@ -79,6 +79,8 @@ const readingTime = Math.ceil((wordCount ?? 0) / 200);
     }
   }
 
+  /* TODO :: maybe ? */
+  /* @import '/content.css'; */
   .content {
     grid-column: 2;
     max-width: 44rem;
@@ -141,6 +143,29 @@ const readingTime = Math.ceil((wordCount ?? 0) / 200);
 
     ul {
       list-style-type: square;
+    }
+
+    figure {
+      width: 100%;
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      margin-top: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    figcaption {
+      font-size: 0.85rem;
+      color: var(--color-dim);
+      font-family: "Apercu Regular";
+      opacity: 0.8;
+      font-style: italic;
+    }
+
+    img {
+      border-radius: 0.25rem;
+      max-width: 100%;
+      height: auto;
     }
 
     sup {
@@ -262,7 +287,7 @@ const readingTime = Math.ceil((wordCount ?? 0) / 200);
       border-radius: 0.25rem;
 
       a {
-        display: flex;
+        display: block;
         text-decoration: none;
         font-size: 0.9rem;
         white-space: nowrap;
@@ -281,6 +306,8 @@ const readingTime = Math.ceil((wordCount ?? 0) / 200);
     .h1,
     .h2,
     .h3 {
+      overflow: hidden;
+
       a:focus-visible,
       a:hover {
         background-color: var(--highlight);
