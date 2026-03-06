@@ -1,15 +1,35 @@
 ---
 import ArticleList from "@components/ArticleList.astro";
 import MainLayout from "@layouts/MainLayout.astro";
-import type { Article } from "@models/Article";
-import { queryNotes } from "@utils/content.ts";
+import { getCollection } from "astro:content";
 
-const notes: Article[] = await queryNotes();
+const notes = await getCollection("notes");
+const tidyNotes = Map.groupBy(notes, ({ id }) => id.split("/")[0])
+    .values()
+    .map((category) => ({
+        id: category[0].id.split("/")[0],
+        content: category.map((note) => note.data),
+    }));
+
+export async function getStaticPaths() {
+    const notes = await getCollection("notes");
+    return notes.map((note) => ({
+        params: { note: note.data.name },
+    }));
+}
 ---
 
 <MainLayout>
     <div class="view">
-        <ArticleList articles={notes} url="notes" />
+        {
+            tidyNotes.map((category) => (
+                <ArticleList
+                    entries={category.content}
+                    url="notes"
+                    listTitle={category.id}
+                />
+            ))
+        }
     </div>
 </MainLayout>
 
@@ -17,5 +37,9 @@ const notes: Article[] = await queryNotes();
     .view {
         width: 100%;
         padding-bottom: 3rem;
+        display: flex;
+        flex-flow: column;
+        gap: 5rem;
+        padding: 6rem 4rem 8rem;
     }
 </style>

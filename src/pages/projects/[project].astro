@@ -1,12 +1,14 @@
 ---
 import ProjectLayout from "@layouts/ProjectLayout.astro";
-import { getPaths } from "@utils/content.ts";
-import { ProjectCollection } from "@utils/enum";
+import { getCollection } from "astro:content";
 
 const { project } = Astro.params;
 
-export function getStaticPaths() {
-  return getPaths(ProjectCollection.WEB);
+export async function getStaticPaths() {
+  const collection = await getCollection("projects");
+  return collection.map((entry) => ({
+    params: { project: entry.data.name },
+  }));
 }
 ---
 

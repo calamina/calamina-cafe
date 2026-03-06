@@ -2,9 +2,9 @@
 import ProjectPreview from "@components/features/project/ProjectPreview.astro";
 import MainLayout from "@layouts/MainLayout.astro";
 import type { Project } from "@models/Project";
-import { queryWebProjects } from "@utils/content.ts";
+import { queryProjects } from "@utils/content.ts";
 
-const projects: Project[] = await queryWebProjects();
+const projects: Project[] = await queryProjects();
 
 const sort = (a: Project, b: Project) =>
     a.name.localeCompare(b.name, "en", { sensitivity: "base" });
@@ -32,7 +32,7 @@ const countTags = (tagname: string) => {
                 <span class="limit" inert></span>
                 <p class="entries">
                     <span inert>(</span>
-                    {projects.length} entries
+                    {projects.length} entr{projects.length > 1 ? "ies" : "y"}
                     <span inert>)</span>
                 </p>
             </div>

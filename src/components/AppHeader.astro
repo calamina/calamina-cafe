@@ -4,6 +4,7 @@ import ThemeSwitch from "./features/theme/ThemeSwitch.astro";
 
 const { project } = Astro.params;
 const { article } = Astro.params;
+const { note } = Astro.params;
 const route = Astro.originPathname;
 
 enum ROUTES {
@@ -11,11 +12,13 @@ enum ROUTES {
   about = "/about/",
   projects = "/projects/",
   articles = "/articles/",
+  notes = "/notes/",
 }
 
 const routes = {
   inprojects: route.includes(ROUTES.projects),
   inarticles: route.includes(ROUTES.articles),
+  innotes: route.includes(ROUTES.notes),
 };
 ---
 
@@ -26,17 +29,21 @@ const routes = {
     <span class="logotext">cafe</span>
   </a>
   <nav class="desktop">
-    <div class="projects">
+    <div class="category">
       <a href="/projects" class:list={[{ active: routes.inprojects }]}>
         projects
       </a>
       <AppHeaderSublink sublink={project} />
     </div>
-    <div class="projects">
+    <div class="category">
       <a href="/articles" class:list={[{ active: routes.inarticles }]}>
         articles
       </a>
       <AppHeaderSublink sublink={article} />
+    </div>
+    <div class="category">
+      <a href="/notes" class:list={[{ active: routes.innotes }]}> notes </a>
+      <AppHeaderSublink sublink={note} />
     </div>
   </nav>
   <div class="actions desktop">
@@ -110,7 +117,7 @@ const routes = {
     transition: width 0.25s;
   }
 
-  .projects {
+  .category {
     display: flex;
     align-items: baseline;
     gap: 0.25rem;

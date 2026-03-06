@@ -1,32 +1,26 @@
 import type { Article } from "@models/Article";
 import type { Project } from "@models/Project";
 import { getCollection } from "astro:content";
-import { ProjectCollection } from "./enum";
 
-export const getPaths = async (collection: ProjectCollection): Promise<{ params: { project: string } }[]> => {
-  const projects = await getCollection(collection);
-  return projects.map((project) => ({
-    params: { project: project.data.name },
-  }));
-}
-
-export const queryWebProjects = async () =>
-  getCollection("webProjects").then(results => results
-    .map(result => result.data as Project)
-  )
-
-export const queryArticles = async () =>
+// ARTICLES
+export const queryArticles = async (): Promise<Article[]> =>
   getCollection("articles").then(results => results
-    .map(result => result.data as Article)
+    .map(result => result.data)
   )
+export const queryLastArticle = async () => (await queryArticles())[0]
 
+// NOTES
 export const queryNotes = async () =>
   getCollection("notes").then(results => results
     .map(result => result.data as Article)
   )
 
+// PROJECTS
+export const queryProjects = async (): Promise<Project[]> =>
+  getCollection("projects").then(results => results
+    .map(result => result.data as Project)
+  )
+export const queryProject = async (name: string) => (await queryProjects())?.find(res => res.name === name)
+export const queryLastProject = async () => (await queryProjects())[0]
 
-export const queryLastProject = async () => (await queryWebProjects())[0]
-export const queryLastArticle = async () => (await queryArticles())[0]
 
-export const queryProject = async (name: string) => (await queryWebProjects())?.find(res => res.name === name)

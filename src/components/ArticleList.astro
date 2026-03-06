@@ -1,29 +1,42 @@
 ---
 import type { Article } from "@models/Article";
 interface Props {
-  articles: Article[];
+  entries: Article[];
   url?: string;
+  listTitle?: string;
 }
 
-const { articles, url = "articles" } = Astro.props;
+const { entries, url = "articles", listTitle = null } = Astro.props;
 ---
 
-<div>
+<div class="list">
   {
-    articles.map((article) => (
-      <a id={article.name} href={`/${url}/${article.name}`}>
-        {article.title}
+    listTitle && (
+      <div class="title">
+        <h2>{listTitle}</h2>
+        <span class="limit" inert />
+        <p class="entries">
+          <span inert>(</span>
+          {entries.length} entr{entries.length > 1 ? "ies" : "y"}
+          <span inert>)</span>
+        </p>
+      </div>
+    )
+  }
+  {
+    entries.map((entry) => (
+      <a id={entry.name} href={`/${url}/${entry.name}`}>
+        {entry.title}
       </a>
     ))
   }
 </div>
 
 <style>
-  div {
+  .list {
     display: flex;
     flex-flow: column;
     gap: 1rem;
-    padding: 4rem 4rem 8rem;
     width: 70vw;
     margin: 0 auto;
     display: grid;
@@ -37,12 +50,40 @@ const { articles, url = "articles" } = Astro.props;
     }
   }
 
+  .title {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+  }
+
+  .limit {
+    height: 1px;
+    height: 100%;
+    border-bottom: 1px solid var(--bg-darker);
+    display: flex;
+    flex: 1;
+  }
+
+  .entries,
+  .entries span {
+    color: var(--color-light);
+  }
+
+  nav {
+    padding-top: 1rem;
+    display: flex;
+    gap: 1rem;
+  }
+
   a {
     width: 100%;
     padding: 0.75rem;
-    text-transform: capitalize;
+    /* text-transform: capitalize; */
     outline: 2px solid var(--bg-darker);
     transition: padding-left 0.125s ease-out;
+
     &:after {
       content: "->";
       color: transparent;

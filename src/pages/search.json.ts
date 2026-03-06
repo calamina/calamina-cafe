@@ -1,7 +1,7 @@
 import { getCollection } from "astro:content"
 
 export async function GET() {
-  // const projects = await getCollection("webProjects")
+  // const projects = await getCollection("projects")
   const notes = await getCollection("articles")
 
   const index = await Promise.all(
