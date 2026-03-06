@@ -6,33 +6,32 @@
 hey :)
 
 # DOING
+- refacto big components (header ...)
 - check if article layout feels right, else split in smaller specific layout & separate notes(content, headings ..)
 - clean projects !!!
-- make generic desktop/mobile classes
 
 - work on search (remove from accessibility ...)
-- proper images with aspect-ratio
 
-- refacto big components (header ...)
 - mobile menu
 
+# DESIGN
 - UTOPIA (type scale)
-
-- add left bar right under home button to track progress (about, favorites, ...) ? (with subgrid for components.)
-- update readme img
+- refacto css variables (radius / gaps / etc) // clean themes
 - fix css var names !
-- swap projects to TOML/md ? (aergh)
+- proper CSS design system
 
 # TODO
 - check todos in code :)
-- refacto css variables (radius / gaps / etc) // clean themes
 
-# DATA
-- add dates to projects, add online ! (add size ?)
-- sort projects by date 
+# CONTENT
+- add article status and display it !
+- proper images with aspect-ratio
+- update readme img
+- swap projects to TOML/mdx ? (aergh)
+- add dates to projects ! (add size ?)
+- sort projects by date ?
 - take new screens (same resolution)
 - add tools ? (flow launcher config / sites css ?)
 - fix & complete projects (aerg)
 - complete about
 - proper alt on images / proper images (highlights, etc)
-- (add Quartier Lointain :3 + Gattaca)
