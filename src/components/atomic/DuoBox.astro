@@ -1,0 +1,33 @@
+---
+interface Props {
+  one: string;
+  two: string;
+}
+
+const { one, two } = Astro.props;
+const oneline = one.split("").map(() => "─");
+const twoline = two.split("").map(() => "─");
+---
+
+<p class="table" inert>
+  ╭─{oneline}─┬─{twoline}─╮
+</p>
+<p class="table">│ <span>{one}</span> │ <span>{two}</span> │</p>
+<p class="table" inert>
+  ╰─{oneline}─┴─{twoline}─╯
+</p>
+
+<style is:global>
+  p.table {
+    padding: 0 !important;
+    margin: 0 !important;
+    font-family: monospace !important;
+    color: var(--bg-darker) !important;
+    line-height: 1.5rem !important;
+
+    span {
+      color: var(--color) !important;
+      font-family: monospace !important;
+    }
+  }
+</style>

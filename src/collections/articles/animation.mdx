@@ -4,18 +4,20 @@ title: Animation.gif
 description: animation article
 ---
 
+import DuoBox from '../../components/atomic/DuoBox.astro'
+
+
 <figure>![Image d'intro, traintraversant la ville — Perfect Blue](../../assets/img/content/articles/animation/intro.webp)<figcaption>Perfect Blue</figcaption></figure>
 
-On est en 2010, je tiens un blog pour lequel je fabrique des gifs<sup>1</sup> de mes dessins animés favoris. [xanatu](https://xanatu.tumblr.com)
+On est en 2012 et je regarde une quantité impressionante de films et séries d'animation. J'adore ça au point de vouloir en garder des passages.
+
+Je décide de créer un blog pour lequel je fabrique puis publie des gifs<sup>1</sup> de mes oeuvres favorites ou de celles se prêtant à l'exercice. [xanatu](https://xanatu.tumblr.com)
 
 <span class="info"><sup>1</sup> Un [GIF](https://en.wikipedia.org/wiki/GIF) est une image souvent animée, elle est jouée et se répète en boucle automatiquement sur le web contrairement à la plupart des vidéos.</span>
 
-{/* Pour créer un gif il existe plein d'outils très pratiques.<br/>
-Je n'en connaissais aucun ... */}
+Ma technique (très limitée) consiste à parcourir la séquence qui m'intéresse image par image, à enregistrer ces images une par une, puis à les ré-assembler.
 
-Ma "technique" consiste à parcourir la séquence qui m'intéresse image par image, enregistrer ces images une par une, puis les ré-assembler.
-
-Pendant le processus, deux aspects sont très *intriguants*.
+Et avec l'habitude, deux aspects se révèlent *très intriguants*.
 
 ---
 
@@ -27,7 +29,7 @@ Chaque image apparait deux, trois, quatre fois d'affilée. Je pense à un bug de
 
 Bizarrement, les images de films d'animation sortis au cinéma (*Ghibli*, *Disney*) sont dupliquées une fois, ou alors pas du tout.
 
-Pour les dessins animés aux budgets bien moindres qui passent à la télé (*Dragon Ball*), les images se répètent jusque 3 ou 4 fois.
+Pour les dessins animés aux budgets plus limités qui passent à la télé (*Dragon Ball*), les images se répètent jusque 3 ou 4 fois.
 
 {/* Mais lors de scènes rapides (combat, course-poursuite), les images sont très souvent toutes différentes ... */}
 {/* Des éléments comme la pluie changent à chaque image, alors que les personnages ne bougent que toutes les deux images ... */}
@@ -36,8 +38,15 @@ Pour les dessins animés aux budgets bien moindres qui passent à la télé (*Dr
 
 **⯀ La répétition de séquence**
 
+Un gif se répète en boucle indéfiniment. La transition quand cette boucle arrive à sa fin et reprend du début est souvent un peu brutale.
 
-Je trouve régulièrement des "boucles parfaites"<sup>2</sup>, peu importe la qualité d'animation et le budget. C'est précisément ce que je commence à rechercher — l'action se répète sans transition, idéal pour un gif.
+Pour mes premiers essais je prends simplement des passages que je trouve cools et je n'y fais pas attention.
+Mais lors d'un épisode je me rends compte d'un passage dans lequel les personnages reprennent exactement la même position qu'au début de la séquence.
+Et ça donne un gif idéal dans lequel on ne distinge pas quand l'action recommence.
+
+{/* Pour certaines oeuvres impossible de réussir à faire le moindre gif correct. L'animation ne s'y prête pas ou  */}
+
+Je trouve régulièrement des "boucles parfaites"<sup>2</sup>, peu importe la qualité d'animation et le budget. C'est précisément ce que je commence à rechercher — l'action se répète sans transition.
 
 <span class="info"><sup>2</sup> La fumée monte lentement d'une cheminée dans le même mouvement, des personnages dansent et reviennent à leur position initiale avant de repartir pour un tour.</span>
 
@@ -47,32 +56,25 @@ Je trouve régulièrement des "boucles parfaites"<sup>2</sup>, peu importe la qu
 
 Un personnage se transforme exactement de la même manière à chaque épisode. */}
 
----
 
-J'imagine bien que tout est très certainement lié à *l'argent* et au *temps*. Et puis je réalise que je n'ai qu'une très vague idée de la manière dont est conçu un dessin animé.
-
+{/* On imagine facilement que tout est très certainement lié à *l'argent* et au *temps*. Et puis je réalise que je n'ai qu'une très vague idée de la manière dont est conçu un dessin animé. */}
+{/* 
 Ce que je retiens pour le moment :
 
 ⯀ Chaque image d'un dessin animé n'est pas (forcément) unique<br/>
-⯀ Les animateurs ont l'air d'avoir plus d'un tour dans leur sac
+⯀ Les animateurs ont l'air d'avoir plus d'un tour dans leur sac */}
 
 
 <br/>
 <br/>
 
-## C'est quoi l'animation?
+## L'animation en bref
 
-Ou c'est quoi le cinéma, c'est quoi une vidéo, et pourquoi on fait comme ça. (en bref!)
+Ou pourquoi l'action parait parfois si réaliste, tandis qu'elle semble molle ou saccadée à d'autres moments ?
 
-#todo
 
-Parcours pour décrire l'animation 2D : 
-- différence avec la 3D = dessin
-- une image / un dessin = *une frame*
-- 24 frames = *une seconde* (p-ê expliquer que c'est un choix stylistique + exemples)
-- 1h = *3600 secondes*, donc ...
-- 1h de film = *86400 dessins* : c'est **ENORME**, ça prend des années et c'est **CHER**
 
+C'est quoi le cinéma, c'est quoi une vidéo, et pourquoi on fait comme ça. (en bref!)
 
 *24fps* (http://www.grospixels.com/site/animation1.php)
 
@@ -91,12 +93,33 @@ Pour vous faire un ordre d'idée, voici quelques framerates typiques:
 - Jeu console NTSC (US/JP) : 30 ou 60 FPS.
 
 
+
+Dans le cadre d'undessin animé traditionnel en 2D : 
+
+<DuoBox one="24 frames" two ="1 seconde" />
+
+<DuoBox one="1 heure" two ="3600 secondes" />
+
+<DuoBox one="1h de film" two ="86400 dessins" />
+
+---
+
+- différence avec la 3D = dessin
+- une image / un dessin = *une frame*
+- 24 frames = *une seconde* (p-ê expliquer que c'est un choix stylistique + exemples)
+- 1h = *3600 secondes*, donc ...
+- 1h de film = *86400 dessins* : c'est **ENORME**, ça prend des années et c'est **CHER**
+
+
+
+
+
 ## Les techniques
 
 Comment réduire le nombre de dessins, comment combiner différentes méthodes, comment on peut voir à l'oeil quels studios ont des sous, quels types de dessins animés ont tendance à être quali (spoiler pas spoiler : Disney (et puis bon le cinéma en général mais à une époque les dessins animés au cinéma = Disney / Ghibli))
 
 
-### Le secret 
+### One two three four
 
 - animes +- saccadés & gifs (rapide/lent + 2/3) & Disney/Miyazaki ! DBZ 
 
@@ -110,34 +133,53 @@ les techniques
 	- 1 image background + traveling et éléments animés & motion blur (http://i.imgur.com/xnGbDts.gif)
 	- réutilisation d'animations Disney, répétitions mêmes animations (magical girls : Sailor Moon)
 
+### Overcrank & Undercrank
+
+### Traveling & Motion blur
+
+### Animation partielle
+
+### Réutilisation de séquence
+
 est-ce que ... ?
 
-## Les deux Zinzins en 24fps
+## Un dessin animé en 24 fps ?
 
-The Thief & the Cobbler
-	- vidéo
-	- animation + plans
-	- histoire & Aladin
-
-Akira
+### Akira
 	- vidéo
 	- histoire + gifs + animation
+
+	[It was all a lie ...](https://exploringakira.wordpress.com/2020/09/30/akira-the-24-frames-per-second-myth/)
+
+### The Thief & the Cobbler
+	- vidéo
+	- animation + plans
+	- histoire & Aladin (dans son propre article ? ou alors avec les 4 autres ? ou simplement refaire au propre Animation truc !!!)
+
+	[It was all a lie AS WELL ARG](https://exploringakira.wordpress.com/2020/09/30/akira-the-24-frames-per-second-myth/)
 
 ## Mentions honorables
 
 Dessins animés /animes
+
+### Redline 
 	- Redline - 7ans et 500000 dessins
+
+### L'homme qui plantait des arbres	
 	- L'homme qui plantait des arbres - solo/jsépacbddetps
+
+### Les aventures du prince Achmed	
 	- Les aventures du prince Achmed
+
+### Le roi et l'oiseau ??
 	- (+recherches a faire pour des autres)
 
-Liens intéressants / utiles
 
 ## Conclusion ?
 
 ## Sources
 
-### The Thief and the Cobbler
+*The Thief and the Cobbler*
 
 - [movie](https://www.youtube.com/watch?v=bggDbbKyuXk)
 - [wikipedia](https://en.wikipedia.org/wiki/The_Thief_and_the_Cobbler)
@@ -145,7 +187,8 @@ Liens intéressants / utiles
 - [Richard Williams documentary](https://www.google.fr/search?q=The+Thief+who+never+gave+up&ie=utf-8&oe=utf-8&gws_rd=cr&ei=cjYiV8rEH4H3Ury1lpAB)
 - [Aladdin (wikipedia)](https://en.wikipedia.org/wiki/Aladdin_(1992_Disney_film))
 
-### General
+*General*
+
 - http://www.awn.com/forum/thread/1003230
 - [L'homme qui plantait des arbres (frames)](https://www.google.fr/search?q=%22The+Man+Who+Planted+Trees%22+was+probably+done+on+fours&ie=utf-8&oe=utf-8&gws_rd=cr&ei=GY0iV8jDA4HpUKGygsAC#newwindow=1&safe=off&q=l%27homme+qui+plantait+des+arbres+nombre+de+dessins)
 - [L'homme qui plantait des arbres (wikipedia)](https://en.wikipedia.org/wiki/The_Man_Who_Planted_Trees_(film))
