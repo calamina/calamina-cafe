@@ -9,7 +9,7 @@ import DuoBox from '../../components/atomic/DuoBox.astro'
 
 <figure>![Image d'intro, traintraversant la ville — Perfect Blue](../../assets/img/content/articles/animation/intro.webp)<figcaption>Perfect Blue</figcaption></figure>
 
-On est en 2012 et je regarde une quantité impressionante de films et séries d'animation. J'adore ça au point de vouloir en garder des passages.
+On est en 2012, je regarde une quantité assez impressionante de films et séries d'animation. J'adore ça au point de vouloir en garder des passages.
 
 Je décide de créer un blog pour lequel je fabrique puis publie des gifs<sup>1</sup> de mes oeuvres favorites ou de celles se prêtant à l'exercice. [xanatu](https://xanatu.tumblr.com)
 
@@ -72,14 +72,16 @@ Ce que je retiens pour le moment :
 
 Ou pourquoi l'action parait parfois si réaliste, tandis qu'elle semble molle ou saccadée à d'autres moments ?
 
-
-
 C'est quoi le cinéma, c'est quoi une vidéo, et pourquoi on fait comme ça. (en bref!)
 
 *24fps* (http://www.grospixels.com/site/animation1.php)
 
-*extract :*
+<figure>
+	![Différences de FPS](https://cdn.shopify.com/s/files/1/1724/5213/files/basketball.gif?v=1762548699)
+	<figcaption>Différence de perception des FPS</figcaption>
+</figure>
 
+*[extract] :*
 Lorsqu'on regarde un film, ce que l'on voit en réalité, ce sont des images statiques diffusées l'une après l'autre très rapidement. Une sorte de diaporama, mais avec 24 diapositives par seconde. 
 Chaque image est légèrement différente de la précédente, de telle sorte que le cerveau croit qu'il est en train d'en voir une seule en mouvement. 
 
@@ -92,14 +94,16 @@ Pour vous faire un ordre d'idée, voici quelques framerates typiques:
 - Jeu console PAL (EU) : 25 ou 50 FPS.
 - Jeu console NTSC (US/JP) : 30 ou 60 FPS.
 
+<figure>
+	![Différences de FPS se lon les médias](https://cinetext.wordpress.com/wp-content/uploads/2013/05/step-printing.jpg)
+	<figcaption>Différence des FPS selon les médias</figcaption>
+</figure>
 
 
-Dans le cadre d'undessin animé traditionnel en 2D : 
+Dans le cadre d'un dessin animé traditionnel en 2D : 
 
 <DuoBox one="24 frames" two ="1 seconde" />
-
 <DuoBox one="1 heure" two ="3600 secondes" />
-
 <DuoBox one="1h de film" two ="86400 dessins" />
 
 ---
@@ -110,36 +114,127 @@ Dans le cadre d'undessin animé traditionnel en 2D :
 - 1h = *3600 secondes*, donc ...
 - 1h de film = *86400 dessins* : c'est **ENORME**, ça prend des années et c'est **CHER**
 
-
+On est tout le temps en 24 FPS, Qu'est ce qui fait alors qu'on perçoit une différence entre différents dessins animés ? (rythme saccadé, lenteur, etc.)
 
 
 
 ## Les techniques
 
-Comment réduire le nombre de dessins, comment combiner différentes méthodes, comment on peut voir à l'oeil quels studios ont des sous, quels types de dessins animés ont tendance à être quali (spoiler pas spoiler : Disney (et puis bon le cinéma en général mais à une époque les dessins animés au cinéma = Disney / Ghibli))
+Comment réduire le nombre de dessins, comment combiner différentes méthodes, comment on peut voir à l'oeil quels studios ont des sous, quels types de dessins animés ont tendance à être quali.
+
+### Vitesse
+
+**⯀ One two three four**
 
 
-### One two three four
+Le nombre de dessins affiché par seconde varie en fonction du dessin animé !
 
-- animes +- saccadés & gifs (rapide/lent + 2/3) & Disney/Miyazaki ! DBZ 
+On parle soit du nombre de répétitions : 2/3/4 -> twos/threes/fours, soit du nombre de dessins présents dans une seconde de film : 12/8/6
 
-En gros les dessins animés cheap qui sont super giga saccadés, l'animation est moche on dirait un powerpoint mal foutu, soit tout le temps soit pendant les dialogues ou autres scenes molles et d'un coup paf un combat et bizarrement la l'animation se tient et devient correcte.
--> En fait le rythme et le nombre de dessins ne sont pas constants ! 
+-> Tableau comparatif [2/3/4 -> 12/8/6]
 
-twos/threes/fours 12/8/6
 
-les techniques
-	- mélange twos/threes/fours (&overcrank/undercrank) & gifs (cache background/premier plan + neige/pluie ones) 
-	- 1 image background + traveling et éléments animés & motion blur (http://i.imgur.com/xnGbDts.gif)
-	- réutilisation d'animations Disney, répétitions mêmes animations (magical girls : Sailor Moon)
 
-### Overcrank & Undercrank
+<figure>![Comparaison ones and twos](https://stopmotionatparsons.wordpress.com/wp-content/uploads/2012/01/1svs2s.jpg?w=584)<figcaption>Comparaison d'une animation sur ones et twos</figcaption></figure>
 
-### Traveling & Motion blur
+-> Todo : image de comparaison maison [ones/twos/threes/fours]
 
-### Animation partielle
+Ce rythme et le nombre de dessins ne sont pas constants et varient très souvent au cours d'une même oeuvre !
 
-### Réutilisation de séquence
+Soit dans différentes scènes :<br/> 
+Les moments phares (combats, scène de fin, etc.) sont animés de manière plus quali -> on augmente le nombre de dessins. 
+Les scènes de dialogues ou plans "WOW" sont souvent lents et peu animés -> moins de dessins
+
+Soit dans la même scène !<br/>
+De la pluie tombe : ones facile a faire car répétitif ([Loops](#répétition)). 
+Les personnages bougent : twos.
+Un truc s'agite lentement en arrière plan : fours.
+
+-> mélange twos/threes/fours & gifs (cache background/premier plan + neige/pluie ones) 
+
+**⯀ Animation Bump, Overcrank & Undercrank**
+
+Correspond au fait que lors de séquences "wouaw" l'animation est plus quali, dessins comme vitesse (donc souvent fours > twos etc.)
+[AnimationBump](https://tvtropes.org/pmwiki/pmwiki.php/Main/AnimationBump)
+
+On parle d'Overcrank quand on augmente le nombre de dessins par rapport à notre référentiel.
+Pour l'Undercrank il s'agit de diminuer le nombre de dessins.
+
+[Undercrank](https://tvtropes.org/pmwiki/pmwiki.php/Main/Undercrank)
+
+[Overcrank](https://tvtropes.org/pmwiki/pmwiki.php/Main/Overcrank)
+
+**⯀ Animation partielle**
+
+eg: Un train animé passe tandis que le background reste complètement figé.
+La météo est la seule chose animée.
+Au contraire les personnages sont fixes tandis que les arbres bougent avec le vent.
+etc.
+
+---
+
+### Mouvement
+
+**⯀ Motion blur & Motion Parallax**
+
+[exemple motion blur 24FPS](http://i.imgur.com/xnGbDts.gif)
+
+[MotionBlur](https://tvtropes.org/pmwiki/pmwiki.php/Main/MotionBlur)
+
+[MotionParallax](https://tvtropes.org/pmwiki/pmwiki.php/Main/MotionParallax)
+
+[Multiplane Camera](https://en.wikipedia.org/wiki/Multiplane_camera)
+
+**⯀ Traveling**
+
+[Pan](https://tvtropes.org/pmwiki/pmwiki.php/Main/Pan)
+
+---
+
+### Répétition
+
+**⯀ Réutilisation de séquence**
+
+[Stock Footage](https://tvtropes.org/pmwiki/pmwiki.php/Main/StockFootage)
+
+répétitions mêmes animations (magical girls : Sailor Moon)
+[Transformation Sequence](https://tvtropes.org/pmwiki/pmwiki.php/Main/TransformationSequence)
+
+**⯀ Recyclage de séquence**
+
+réutilisation d'animations Disney (danse Mowgli + arsitochats il me semble)
+[Recycled Animation](https://tvtropes.org/pmwiki/pmwiki.php/Main/RecycledAnimation)
+
+
+**⯀ Répétition de mouvement**
+
+[Everybody Do The Endless Loop](https://tvtropes.org/pmwiki/pmwiki.php/Main/EverybodyDoTheEndlessLoop)
+
+**⯀ Wraparound background**
+
+[Wraparound Background](https://tvtropes.org/pmwiki/pmwiki.php/Main/WraparoundBackground)
+
+---
+
+### Rythme
+
+**⯀ Leave the camera running**
+
+[Leave The Camera Running](https://tvtropes.org/pmwiki/pmwiki.php/Main/LeaveTheCameraRunning)
+
+**⯀ Limited Animation**
+
+[Limited Animation](https://tvtropes.org/pmwiki/pmwiki.php/Main/LimitedAnimation)
+
+**⯀ Lazy Lipsync**
+
+[LipLock](https://tvtropes.org/pmwiki/pmwiki.php/Main/LipLock)
+
+[Cheeky Mouth](https://tvtropes.org/pmwiki/pmwiki.php/Main/CheekyMouth)
+
+[Motionless Chin](https://tvtropes.org/pmwiki/pmwiki.php/Main/MotionlessChin)
+
+[Filming For Easy Dub](https://tvtropes.org/pmwiki/pmwiki.php/Main/FilmingForEasyDub)
 
 est-ce que ... ?
 
@@ -173,6 +268,11 @@ Dessins animés /animes
 
 ### Le roi et l'oiseau ??
 	- (+recherches a faire pour des autres)
+
+
+## Divagations
+
+Comment animer la course : https://animationobsessive.substack.com/p/hayao-miyazaki-on-running
 
 
 ## Conclusion ?

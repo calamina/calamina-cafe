@@ -2,21 +2,36 @@
 @import './reset.css';
 @import './transitions.css';
 
+
 @font-face {
     font-family: 'Apercu';
     font-style: normal;
-    font-weight: 400;
-    src: url('../fonts/ApercuMonoProMedium.ttf') format('woff2');
-    /* src: url('../fonts/ApercuMonoProRegular.ttf') format('woff2'); */
-    /* src: url('../fonts/apercuMonoMedium.ttf') format('woff2'); */
+    font-weight: 100;
+    src: url('../fonts/ApercuMonoPro-Light.woff2') format('woff2');
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Apercu Regular';
+    font-family: 'Apercu';
     font-style: normal;
-    font-weight: 400;
-    src: url('../fonts/ApercuMonoProRegular.ttf') format('woff2');
+    font-weight: 300;
+    src: url('../fonts/ApercuMonoPro-Regular.woff2') format('woff2');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Apercu';
+    font-style: normal;
+    font-weight: 500;
+    src: url('../fonts/ApercuMonoPro-Medium.woff2') format('woff2');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Apercu';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/ApercuMonoPro-Bold.woff2') format('woff2');
     font-display: swap;
 }
 
@@ -53,6 +68,10 @@
 body {
     background-color: var(--bg);
     position: relative;
+    font-synthesis: none;
+    text-rendering: optimizelegibility;
+    direction: ltr;
+    /* overflow-wrap: break-word; */
 }
 
 html {
@@ -64,6 +83,7 @@ html {
     scroll-behavior: smooth;
     transition: scrollbar-color 0.1s;
     transition-delay: 0.6s;
+    text-wrap: pretty;
 }
 
 main {
