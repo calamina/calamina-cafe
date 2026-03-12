@@ -1,24 +1,29 @@
 ---
-import MainLayout from "@layouts/MainLayout.astro";
+import StatementLayout from "@layouts/StatementLayout.astro";
 ---
 
-<MainLayout>
-  <div>
-    <p>I do not collect data !</p>
-    <p>/!\ WIP /!\</p>
-  </div>
-</MainLayout>
+<StatementLayout>
+  <h1>Privacy statement</h1>
+  <p class="deco" inert>:._.~*'*~._.:</p>
+  <p>I do not collect data nor do I track any analytics !</p>
+  <p>
+    There is only one stored parameter : your preferred theme (if you ever chose
+    one, else the site simply respects your computer defaults).
+  </p>
+  <p>For information because I wasn't so sure myself until recently :</p>
+  <p>
+    The <a
+      class="out"
+      href="https://en.wikipedia.org/wiki/General_Data_Protection_Regulation"
+      >GDPR</a
+    > annoying cookie tracking popup question you see on most websites isn't needed
+    for things like user preferences since they don't store any sensitive or personnal
+    data :)
+  </p>
+  <p class="deco" inert>*`':._.:'`*</p>
+  <a class="home" href="/">← go back home</a>
+</StatementLayout>
 
 <style>
-  div {
-    padding: 0;
-    margin: 0;
-    display: grid;
-    width: 100%;
-    place-items: center;
-  }
-
-  p {
-    width: fit-content;
-  }
+  @import "../assets/style/statement.css";
 </style>

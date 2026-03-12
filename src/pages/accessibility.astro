@@ -1,5 +1,5 @@
 ---
-import MainLayout from "@layouts/MainLayout.astro";
+import StatementLayout from "@layouts/StatementLayout.astro";
 ---
 
 <script>
@@ -7,6 +7,7 @@ import MainLayout from "@layouts/MainLayout.astro";
   let miniSearch = new MiniSearch({
     fields: ["name", "text"], // fields to index for full-text search
     storeFields: ["name", "url"], // fields to return with search results
+    searchOptions: { prefix: true, boost: { title: 2 } },
   });
 
   let body: {
@@ -30,38 +31,127 @@ import MainLayout from "@layouts/MainLayout.astro";
   const input = document.querySelector("#search") as HTMLInputElement;
   input?.addEventListener("input", () => {
     const data = input.value;
-    let results = miniSearch.search(data, { prefix: true });
     const elt = document.querySelector("#results") as HTMLInputElement;
+    if (data.length < 2) return (elt.innerHTML = "");
+    let results = miniSearch.search(data);
     const html: string[] = [];
     for (const result of results) {
-      html.push(`<div><p>${result.id}</p><a href="${result.url}">go!</a>`);
+      console.debug(result);
+      const name = result.url.slice(1).replace("/", " : ");
+      html.push(`
+        <a href="${result.url}" class="results">
+          <div class="result">
+            <p>${name}</p>
+            <p class="content">${result.terms.slice(0, 4).join(" ")}</p>
+          </div>
+        </a>
+      `);
     }
     elt.innerHTML = html.join("");
   });
 </script>
 
-<MainLayout>
-  <div>
-    <p>I try to make this website accessible !</p>
-    <p>/!\ WIP /!\</p>
-
-    <p>Search test</p>
-    <input type="search" name="search" id="search" placeholder="search" />
+<StatementLayout>
+  <div class="search">
+    <input
+      autofocus
+      type="search"
+      name="search"
+      id="search"
+      placeholder="search"
+    />
     <div id="results"></div>
   </div>
-</MainLayout>
+  <h1>Accessibility statement</h1>
+  <p class="deco" inert>:._.~*'*~._.:</p>
+  <p>12 of March 2026</p>
+  <p>
+    I'm trying to make this website accessible. This is something I've always
+    had in mind but I didn't know much about accessibility by the time I started
+    developping :(
+  </p>
+  <p>
+    Right now the site is using proper HTML semantics, every interactive element
+    is highlighted when focused, in the correct sequence. Every image has a
+    correct caption.
+  </p>
+  <p>What I need to work on :</p>
+  <ul>
+    <li>
+      Fix contrast problems (there is a lot on decoration elements but also on
+      secondary text)
+    </li>
+    <li>Add titles to every button and link</li>
+    <li>Proper Accessibility statement and checks</li>
+  </ul>
+  <p>
+    Don't hesitate to contact me at <a href="mailto:gbelliere@gmail.com"
+      >gbelliere@gmail.com</a
+    > for any question, suggestion, or anything else :)
+  </p>
+
+  <p class="deco" inert>*`':._.:'`*</p>
+  <a class="home" href="/">← go back home</a>
+</StatementLayout>
 
 <style>
-  div {
-    padding: 0;
-    margin: 0;
-    display: grid;
-    width: 100%;
-    place-items: center;
-    justify-content: space-around;
+  @import "../assets/style/statement.css";
+
+  .search {
+    position: relative;
+    margin: 1rem 0;
+    /* background-color: var(--bg-darker); */
+    padding: 1rem;
   }
 
-  p {
-    width: fit-content;
+  input[type="search"] {
+    height: 2.5rem;
+  }
+
+  #results {
+    /* position: absolute; */
+    /* top: 4rem; */
+    /* width: calc(100% - 2rem); */
+    width: 100%;
+    /* right: 1rem; */
+    margin-top: 0.25rem;
+    display: flex;
+    flex-flow: column;
+    gap: 0.25rem;
+
+    .result {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      border-radius: 0.25rem;
+      overflow: hidden;
+      padding: 0.5rem;
+      background-color: var(--bg-darker0);
+      /* transition: background-color 0.02s ease-out; */
+
+      &:hover,
+      &:focus-within {
+        background-color: var(--bg-darker);
+
+        .content {
+          color: var(--color-dim);
+        }
+      }
+    }
+
+    p {
+      background-color: var(--bg);
+      height: 100%;
+      width: fit-content;
+      display: grid;
+      place-items: center;
+      padding: 0.1rem 0.5rem 0.2rem;
+      border-radius: 0.25rem;
+    }
+
+    .content {
+      color: var(--color-light);
+      background-color: transparent;
+    }
   }
 </style>
