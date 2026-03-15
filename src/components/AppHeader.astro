@@ -1,6 +1,7 @@
 ---
 import AppHeaderSublink from "@components/AppHeaderSublink.astro";
 import ThemeSwitch from "./features/theme/ThemeSwitch.astro";
+import AppSearch from "./AppSearch.astro";
 
 const { project } = Astro.params;
 const { article } = Astro.params;
@@ -47,6 +48,7 @@ const routes = {
     </div>
   </nav>
   <div class="actions desktop">
+    <AppSearch />
     <ThemeSwitch />
   </div>
   <div class="actions mobile">

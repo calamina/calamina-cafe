@@ -22,6 +22,7 @@ const { theme, icon } = Astro.props;
     justify-content: center;
     padding: 0.5rem;
     gap: 1rem;
+    border-radius: 0.25rem;
 
     &:hover:not(.active) {
       background-color: var(--bg-darker);
@@ -36,6 +37,9 @@ const { theme, icon } = Astro.props;
 
     &:focus {
       outline: 2px solid var(--color);
+    }
+    &:focus:not(.active) {
+      background-color: var(--bg-darker);
     }
   }
 
