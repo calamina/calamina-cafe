@@ -1,47 +1,44 @@
 :root {
-    color-scheme: light dark;
+
+    /*_____________ VARIOUS _____________*/
+
     --app-width: 100vw;
 
-    /* COLORS */
+    /*______________ COLORS _____________*/
+
     --highlight: oklch(80% 0.1 320);
-    --highlight-light: oklch(90% 0.1 320);
 
-    --red: #960843;
-    --Grey-0: #ffffff;
-    --Grey-50: #f9f6f6;
-    --Grey-100: #edeaea;
-    --Grey-200: #e1dede;
-    --Grey-300: #d8d5d5;
-    --Grey-400: #c8c5c5;
-    --Grey-450: #b8b5b5;
-    --Grey-500: #a8a5a5;
-    --Grey-600: #696666;
-    --Grey-700: #353232;
-    --Grey-800: #272424;
-    --Grey-900: #262225;
-    --Grey-950: #1E1B1B;
-    --Grey-1000: #1b1818;
-    --Grey-1050: #131010;
+    --red: oklch(43.558% 0.1702 5.884);
 
-    /* THEMES */
-    --color: light-dark(var(--Grey-1000), var(--Grey-200));
-    --color-dim: light-dark(var(--Grey-600), var(--Grey-500));
-    --color-lightest: light-dark(var(--Grey-100), var(--Grey-800));
-    --color-light: light-dark(var(--Grey-500), var(--Grey-600));
+    --color-25: oklch(0.902 0.003 17.587);
+    --color-50: oklch(0.835 0.006 17.587);
+    --color-100: oklch(0.769 0.009 17.587);
+    --color-150: oklch(0.734 0.012 17.587);
+    --color-200: oklch(0.702 0.012 17.587);
+    --color-300: oklch(0.635 0.016 17.587);
+    --color-400: oklch(0.569 0.015 17.587);
+    --color-500: oklch(0.502 0.013 17.587);
+    --color-600: oklch(0.435 0.011 17.587);
+    --color-700: oklch(0.369 0.009 17.587);
+    --color-800: oklch(0.302 0.008 17.587);
+    --color-900: oklch(0.235 0.006 17.587);
+    --color-950: oklch(0.169 0.004 17.587);
+    --color-975: oklch(0.102 0.003 17.587);
+
+    /*______________ THEMES _____________*/
+
+    --color: light-dark(var(--color-950), var(--color-25));
+    --color-dim: light-dark(var(--color-600), var(--color-300));
+    --color-lightest: light-dark(var(--color-100), var(--color-800));
+    --color-light: light-dark(var(--color-300), var(--color-600));
     --color-hover: light-dark(var(--color), var(--bg));
+    --bg: light-dark(var(--color-25), var(--color-950));
+    --bg-darker0: light-dark(var(--color-50), var(--color-900));
+    --bg-darker0x: light-dark(var(--color-200), var(--color-600));
+    --bg-darker: light-dark(var(--color-150), var(--color-700));
+    --bg-light: light-dark(var(--color-50), var(--color-950));
+    --scroll-color: light-dark(var(--color-500), var(--color-700));
     --color-error: var(--red);
-    --bg: light-dark(var(--Grey-200), var(--Grey-1000));
-    --bg-tsp: light-dark(#e1dedeaa, #353232aa);
-    --bg-darker0: light-dark(var(--Grey-300), var(--Grey-900));
-    --bg-darkertsp: light-dark(#d8d5d588, #27242488);
-    /* todo dark */
-    --bg-darker0x: light-dark(var(--Grey-450), var(--Grey-600));
-    --bg-darker: light-dark(var(--Grey-400), var(--Grey-700));
-    --bg-darkest: light-dark(var(--Grey-1000), var(--Grey-600));
-    --bg-light: light-dark(var(--Grey-100), var(--Grey-950));
-    --bg-lighter: light-dark(var(--Grey-50), var(--Grey-950));
-    --border-color: light-dark(var(--Grey-200), var(--Grey-200));
-    --scroll-color: light-dark(var(--Grey-500), var(--Grey-700));
 }
 
 html[data-theme="light"] {

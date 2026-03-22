@@ -7,12 +7,8 @@ hey :)
 
 # DOING
 - refacto big components (header ...)
-- check if article layout feels right, else split in smaller specific layout & separate notes(content, headings ..)
 - clean projects !!!
 - fix hover color : crumbs & headings 
-
-- work on search (remove from accessibility ...)
-
 - mobile menu
 
 # DESIGN
@@ -23,6 +19,7 @@ hey :)
 
 # TODO
 - check todos in code :)
+- resources page ? (icons, utf8 footer ...)
 
 # CONTENT
 - add article status and display it !
