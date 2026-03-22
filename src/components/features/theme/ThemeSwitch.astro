@@ -64,7 +64,8 @@ import ThemeSwitchButton from "./ThemeSwitchButton.astro";
     transition: opacity 4.125s ease-out;
     inset: auto;
     margin: 0;
-    top: 3.5rem;
+    border-radius: 0.25rem;
+    top: 4.25rem;
     right: 1.5rem;
 
     @media (max-width: 1280px) {
@@ -73,6 +74,7 @@ import ThemeSwitchButton from "./ThemeSwitchButton.astro";
 
     &:popover-open {
       opacity: 1;
+      /* outline: 2px solid var(--bg-darker); */
     }
   }
 
@@ -90,7 +92,7 @@ import ThemeSwitchButton from "./ThemeSwitchButton.astro";
       background-color: var(--bg);
       width: 100%;
       padding: 0.5rem;
-      border-radius: 0;
+      border-radius: 0.25rem;
 
       &:hover {
         background-color: var(--bg-darker0);

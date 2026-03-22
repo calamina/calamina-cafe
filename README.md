@@ -9,7 +9,7 @@ hey :)
 - refacto big components (header ...)
 - check if article layout feels right, else split in smaller specific layout & separate notes(content, headings ..)
 - clean projects !!!
-- fix outline color for dark theme
+- fix hover color : crumbs & headings 
 
 - work on search (remove from accessibility ...)
 

@@ -124,10 +124,6 @@ const readingTime = Math.ceil((wordCount ?? 0) / 200);
       border-top: 1px solid var(--bg-darker);
     }
 
-    a {
-      text-decoration: underline;
-    }
-
     p:not(:first-child) {
       margin: 0.75rem 0;
     }
@@ -141,13 +137,18 @@ const readingTime = Math.ceil((wordCount ?? 0) / 200);
     ul,
     ol {
       padding-left: 2ch;
+      padding-inline-start: 1lh;
+      display: flex;
+      flex-flow: column;
+      gap: 0.5rem;
     }
 
     ul {
       list-style-type: square;
-      padding-inline-start: 1lh;
 
       li {
+        line-height: 1.2rem;
+
         &::marker {
           color: var(--color-light);
         }

@@ -1,0 +1,200 @@
+---
+import Icon from "@components/icons/Icon.astro";
+---
+
+<script>
+  import MiniSearch from "minisearch";
+  let miniSearch = new MiniSearch({
+    fields: ["name", "text"], // fields to index for full-text search
+    storeFields: ["name", "url"], // fields to return with search results
+    searchOptions: { prefix: true, boost: { title: 2 } },
+  });
+
+  let body: {
+    slug: string;
+    name: string;
+    text: string;
+  }[] = [];
+
+  const init = async () => {
+    try {
+      const response = await fetch("/search.json");
+      body = await response.json();
+      miniSearch.addAll(body);
+    } catch (err) {
+      console.error("Error while searching", err);
+    }
+  };
+
+  init();
+
+  const input = document.querySelector("#search") as HTMLInputElement;
+  input?.addEventListener("input", (event: Event) => {
+    const data = input.value;
+    const elt = document.querySelector("#results") as HTMLInputElement;
+    console.debug(event as KeyboardEvent);
+    if ((event as KeyboardEvent).key == "escape") {
+      //put what you want here...
+      window.alert("Escape key pressed!");
+    }
+    if (data.length < 2) return (elt.innerHTML = "");
+    let results = miniSearch.search(data);
+    const html: string[] = [];
+    for (const result of results) {
+      const name = result.url
+        .slice(1)
+        .replace("/", "<span class='sep'>:</span>");
+      html.push(`
+        <a href="${result.url}" class="result" title="${result.id}">
+          <p class="name">${name}</p>
+          <p class="content">${result.terms.slice(0, 4).join(" ")}</p>
+        </a>
+      `);
+    }
+    elt.innerHTML = html.join("");
+  });
+
+  const search = document.querySelector(".search");
+  search?.addEventListener(
+    "blur",
+    () => {
+      setTimeout(() => {
+        if (!search.contains(document.activeElement)) resetSearch();
+      }, 200);
+    },
+    true,
+  );
+
+  document.addEventListener("keyup", (e) => {
+    if (e.key === "Escape" && search?.contains(document.activeElement)) {
+      resetSearch(true);
+    }
+  });
+
+  const resetSearch = (focus?: boolean) => {
+    const input = document.querySelector("#search") as HTMLInputElement;
+    const elt = document.querySelector("#results") as HTMLInputElement;
+    input.value = "";
+    elt.innerHTML = "";
+    if (focus) input.focus();
+  };
+</script>
+
+<!-- TODO :: test dialog -->
+<div class="search">
+  <div class="input">
+    <input type="search" name="search" id="search" placeholder="search" />
+    <Icon icon="IconSearch" />
+  </div>
+  <div id="results"></div>
+</div>
+
+<style>
+  .search {
+    position: relative;
+    display: flex;
+    width: fit-content;
+    justify-content: end;
+  }
+
+  .input {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 16rem;
+
+    *:not(input) {
+      position: absolute;
+      right: 0.5rem;
+      height: 1rem;
+      width: 1rem;
+      /* background-color: red; */
+    }
+  }
+
+  input[type="search"] {
+    height: 2.5rem;
+    padding-right: 2rem;
+    width: 100%;
+
+    &:focus-within {
+      outline: 2px solid var(--color);
+    }
+  }
+
+  #results {
+    position: absolute;
+    top: 2.75rem;
+    right: 0;
+    width: 30rem;
+    margin-top: 0.25rem;
+    display: flex;
+    flex-flow: column;
+    gap: 0.25rem;
+    background-color: var(--bg-darker0);
+    max-height: 30rem;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--scroll-color) transparent;
+    scroll-behavior: smooth;
+    border-radius: 0.25rem;
+
+    &:focus {
+      outline: 2px solid var(--color);
+    }
+
+    &:has(.result) {
+      padding: 0.5rem;
+    }
+
+    .result {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      border-radius: 0.25rem;
+      overflow-x: hidden;
+      padding: 0.25rem;
+      background-color: var(--bg-darker0);
+      flex-shrink: 0;
+      outline-offset: 0;
+
+      &:hover,
+      &:focus-within {
+        background-color: var(--bg-darker);
+
+        .content {
+          color: var(--color-dim);
+        }
+      }
+    }
+
+    p {
+      background-color: var(--bg);
+      height: 100%;
+      width: fit-content;
+      display: grid;
+      place-items: center;
+      padding: 0.1rem 0.5rem 0.2rem;
+      border-radius: 0.25rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .name {
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    .content {
+      display: inline-block;
+      color: var(--color-light);
+      background-color: transparent;
+      font-weight: 300;
+    }
+
+    .sep {
+      color: var(--color-light);
+    }
+  }
+</style>

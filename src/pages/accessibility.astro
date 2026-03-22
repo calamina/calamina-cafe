@@ -1,67 +1,40 @@
 ---
-import MainLayout from "@layouts/MainLayout.astro";
+import StatementLayout from "@layouts/StatementLayout.astro";
 ---
 
-<script>
-  import MiniSearch from "minisearch";
-  let miniSearch = new MiniSearch({
-    fields: ["name", "text"], // fields to index for full-text search
-    storeFields: ["name", "url"], // fields to return with search results
-  });
+<StatementLayout>
+  <h1>Accessibility statement</h1>
+  <p class="deco" inert>:._.~*'*~._.:</p>
+  <p>12 of March 2026</p>
+  <p>
+    I'm trying to make this website accessible. This is something I've always
+    had in mind but I didn't know much about accessibility by the time I started
+    developping :(
+  </p>
+  <p>
+    Right now the site is using proper HTML semantics, every interactive element
+    is highlighted when focused, in the correct sequence. Every image has a
+    correct caption.
+  </p>
+  <p>What I need to work on :</p>
+  <ul>
+    <li>
+      Fix contrast problems (there is a lot on decoration elements but also on
+      secondary text)
+    </li>
+    <li>Add titles to every button and link</li>
+    <li>Proper Accessibility statement and checks</li>
+  </ul>
+  <p>
+    Don't hesitate to contact me at <a href="mailto:gbelliere@gmail.com"
+      >gbelliere@gmail.com</a
+    > for any question, suggestion, or anything else :)
+  </p>
 
-  let body: {
-    slug: string;
-    name: string;
-    text: string;
-  }[] = [];
-
-  const init = async () => {
-    try {
-      const response = await fetch("./search.json");
-      body = await response.json();
-      miniSearch.addAll(body);
-    } catch (err) {
-      console.error("Error while searching", err);
-    }
-  };
-
-  init();
-
-  const input = document.querySelector("#search") as HTMLInputElement;
-  input?.addEventListener("input", () => {
-    const data = input.value;
-    let results = miniSearch.search(data, { prefix: true });
-    const elt = document.querySelector("#results") as HTMLInputElement;
-    const html: string[] = [];
-    for (const result of results) {
-      html.push(`<div><p>${result.id}</p><a href="${result.url}">go!</a>`);
-    }
-    elt.innerHTML = html.join("");
-  });
-</script>
-
-<MainLayout>
-  <div>
-    <p>I try to make this website accessible !</p>
-    <p>/!\ WIP /!\</p>
-
-    <p>Search test</p>
-    <input type="search" name="search" id="search" placeholder="search" />
-    <div id="results"></div>
-  </div>
-</MainLayout>
+  <p class="deco" inert>*`':._.:'`*</p>
+  <a class="home" href="/">← go back home</a>
+</StatementLayout>
 
 <style>
-  div {
-    padding: 0;
-    margin: 0;
-    display: grid;
-    width: 100%;
-    place-items: center;
-    justify-content: space-around;
-  }
-
-  p {
-    width: fit-content;
-  }
+  @import "../assets/style/statement.css";
 </style>
