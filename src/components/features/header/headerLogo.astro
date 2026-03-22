@@ -1,0 +1,34 @@
+<a href="/">
+  <span>calamina</span>
+  ᴗ
+  <span>cafe</span>
+</a>
+
+<style>
+  a {
+    padding: 0.15rem 1rem 0.3rem;
+    gap: 0.15rem;
+    background-color: var(--highlight);
+    color: var(--color-hover);
+    border-radius: 0.25rem;
+
+    &:hover,
+    &:focus {
+      span {
+        &:first-of-type {
+          width: 8ch;
+        }
+        &:last-of-type {
+          width: 4ch;
+        }
+      }
+    }
+  }
+
+  span {
+    width: 1ch;
+    overflow: hidden;
+    color: var(--color-hover);
+    transition: width 0.25s ease-out;
+  }
+</style>

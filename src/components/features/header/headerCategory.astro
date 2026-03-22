@@ -1,0 +1,88 @@
+---
+interface Props {
+  name: string;
+  link: string | undefined;
+}
+const { link, name } = Astro.props;
+
+const url = Astro.originPathname;
+const route = `/${name}/`;
+const active = url.includes(route);
+---
+
+<div class="category">
+  <a href={"/" + name} class:list={[{ active: active }]}> {name} </a>
+  {
+    link && (
+      <p class="param">
+        <span>:</span>
+        {link}
+      </p>
+    )
+  }
+</div>
+
+<style>
+  .category {
+    display: flex;
+    align-items: baseline;
+    gap: 0.25rem;
+    pointer-events: auto;
+    margin-right: auto;
+
+    &::before,
+    &::after {
+      content: "";
+      width: 1ch;
+      color: var(--bg-darker);
+      transition: transform 0.125s ease-out;
+    }
+
+    &:before {
+      transform: translateX(-0.1rem);
+    }
+    &:after {
+      transform: translateX(0.1rem);
+    }
+
+    &:has(.active),
+    &:has(a:hover) {
+      &::before,
+      &::after {
+        color: var(--color);
+      }
+      &::before {
+        content: "[";
+        transform: translateX(-0.3rem);
+      }
+      &::after {
+        content: "]";
+        transform: translateX(0.3rem);
+      }
+
+      &:has(.active) a {
+        background-color: var(--bg-darker0);
+        text-decoration: underline;
+      }
+
+      &:has(a:hover) a {
+        background-color: var(--highlight);
+      }
+    }
+
+    a {
+      text-decoration: none;
+      padding: 0 0 0.15rem;
+    }
+  }
+
+  .param {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .subtype {
+    color: var(--color-light);
+  }
+</style>

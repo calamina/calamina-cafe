@@ -1,0 +1,89 @@
+---
+import AppSearch from "@components/AppSearch.astro";
+import ThemeSwitch from "../../features/theme/ThemeSwitch.astro";
+import HeaderCategory from "./headerCategory.astro";
+import HeaderLogo from "./headerLogo.astro";
+
+const { project } = Astro.params;
+const { article } = Astro.params;
+const { note } = Astro.params;
+---
+
+<header>
+  <HeaderLogo />
+  <nav class="desktop">
+    <HeaderCategory name="projects" link={project} />
+    <HeaderCategory name="articles" link={article} />
+    <HeaderCategory name="notes" link={note} />
+  </nav>
+  <div class="actions desktop">
+    <AppSearch />
+    <ThemeSwitch />
+  </div>
+  <div class="actions mobile">
+    <button class="mobile menu">MEnu</button>
+  </div>
+</header>
+
+<style>
+  header {
+    max-width: var(--app-width);
+    display: flex;
+    height: 5rem;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    z-index: 50;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    @media (max-width: 1280px) {
+      display: flex;
+      width: 100%;
+    }
+  }
+
+  nav {
+    display: flex;
+    gap: 2rem;
+    justify-self: center;
+    padding: 0.5rem;
+
+    @media (max-width: 800px) {
+      gap: 1rem;
+    }
+  }
+
+  .actions {
+    justify-self: end;
+    display: flex;
+    gap: 0.5rem;
+    pointer-events: auto;
+    margin-left: auto;
+  }
+
+  .menu {
+    margin-left: auto;
+    width: fit-content;
+  }
+
+  .desktop {
+    display: flex;
+    @media (max-width: 1200px) {
+      display: none;
+    }
+  }
+  .mobile {
+    display: none;
+    @media (max-width: 1200px) {
+      display: flex;
+    }
+  }
+
+  @media (max-width: 1280px) {
+    header {
+      padding: 1rem;
+    }
+  }
+</style>

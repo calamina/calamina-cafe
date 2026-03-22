@@ -3,10 +3,10 @@ import Icon from "@components/icons/Icon.astro";
 ---
 
 <script>
-  import MiniSearch from "minisearch";
+  import MiniSearch, { type SearchResult } from "minisearch";
   let miniSearch = new MiniSearch({
-    fields: ["name", "text"], // fields to index for full-text search
-    storeFields: ["name", "url"], // fields to return with search results
+    fields: ["name", "text"],
+    storeFields: ["name", "url"],
     searchOptions: { prefix: true, boost: { title: 2 } },
   });
 
@@ -29,29 +29,16 @@ import Icon from "@components/icons/Icon.astro";
   init();
 
   const input = document.querySelector("#search") as HTMLInputElement;
-  input?.addEventListener("input", (event: Event) => {
+  input?.addEventListener("input", () => {
     const data = input.value;
     const elt = document.querySelector("#results") as HTMLInputElement;
-    console.debug(event as KeyboardEvent);
-    if ((event as KeyboardEvent).key == "escape") {
-      //put what you want here...
-      window.alert("Escape key pressed!");
-    }
+
     if (data.length < 2) return (elt.innerHTML = "");
-    let results = miniSearch.search(data);
-    const html: string[] = [];
-    for (const result of results) {
-      const name = result.url
-        .slice(1)
-        .replace("/", "<span class='sep'>:</span>");
-      html.push(`
-        <a href="${result.url}" class="result" title="${result.id}">
-          <p class="name">${name}</p>
-          <p class="content">${result.terms.slice(0, 4).join(" ")}</p>
-        </a>
-      `);
-    }
-    elt.innerHTML = html.join("");
+
+    const results = miniSearch.search(data);
+    const processedResults = processResults(results);
+
+    elt.innerHTML = processedResults;
   });
 
   const search = document.querySelector(".search");
@@ -77,6 +64,31 @@ import Icon from "@components/icons/Icon.astro";
     input.value = "";
     elt.innerHTML = "";
     if (focus) input.focus();
+  };
+
+  const processResults = (results: SearchResult[]) => {
+    const html: string[] = [];
+
+    for (const result of results) {
+      const name = formatName(result.url);
+      const formattedResult = formatResult(result, name);
+      html.push(formattedResult);
+    }
+
+    return html.join("");
+  };
+
+  const formatName = (url: string) => {
+    return url.slice(1).replace("/", "<span class='sep'>:</span>");
+  };
+
+  const formatResult = (result: SearchResult, name: string) => {
+    return `
+        <a href="${result.url}" class="result" title="${result.id}">
+          <p class="name">${name}</p>
+          <p class="content">${result.terms.slice(0, 4).join(" ")}</p>
+        </a>
+      `;
   };
 </script>
 

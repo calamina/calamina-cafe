@@ -6,7 +6,7 @@
 hey :)
 
 # DOING
-- refacto big components (header ...)
+- refacto big components (index, footer)
 - clean projects !!!
 - fix hover color : crumbs & headings 
 - mobile menu
