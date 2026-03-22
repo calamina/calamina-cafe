@@ -101,30 +101,34 @@ import Icon from "@components/icons/Icon.astro";
     position: relative;
     display: flex;
     align-items: center;
-    width: 16rem;
 
     *:not(input) {
       position: absolute;
       right: 0.5rem;
+      top: 0.65rem;
       height: 1rem;
       width: 1rem;
+      color: var(--color-dim);
       /* background-color: red; */
     }
   }
 
   input[type="search"] {
-    height: 2.5rem;
+    height: 2.25rem;
     padding-right: 2rem;
     width: 100%;
+    width: calc(10ch + 2rem);
+    transition: width 0.075s ease-out;
 
     &:focus-within {
       outline: 2px solid var(--color);
+      width: 16rem;
     }
   }
 
   #results {
     position: absolute;
-    top: 2.75rem;
+    top: 2.6rem;
     right: 0;
     width: 30rem;
     margin-top: 0.25rem;
