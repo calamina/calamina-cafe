@@ -3,8 +3,8 @@
     --app-width: 100vw;
 
     /* COLORS */
-    --highlight: light-dark(oklch(80% 0.1 320), oklch(60% 0.1 300));
-    --highlight-light: light-dark(oklch(90% 0.1 320), oklch(80% 0.1 300));
+    --highlight: oklch(80% 0.1 320);
+    --highlight-light: oklch(90% 0.1 320);
 
     --red: #960843;
     --Grey-0: #ffffff;
@@ -18,22 +18,25 @@
     --Grey-600: #696666;
     --Grey-700: #353232;
     --Grey-800: #272424;
+    --Grey-900: #262225;
+    --Grey-950: #1E1B1B;
     --Grey-1000: #1b1818;
+    --Grey-1050: #131010;
 
     /* THEMES */
-    --color: light-dark(var(--Grey-1000), var(--Grey-500));
+    --color: light-dark(var(--Grey-1000), var(--Grey-200));
     --color-dim: light-dark(var(--Grey-600), var(--Grey-100));
     --color-lightest: light-dark(var(--Grey-100), var(--Grey-800));
     --color-light: light-dark(var(--Grey-500), var(--Grey-600));
     --color-hover: light-dark(var(--color), var(--bg));
     --color-error: var(--red);
-    --bg: light-dark(var(--Grey-200), #282424);
-    --bg-tsp: light-dark(#e1dedeaa, #282424aa);
-    --bg-darker0: light-dark(var(--Grey-300), #322d2d);
-    --bg-darkertsp: light-dark(#d8d5d588, #322d2d);
+    --bg: light-dark(var(--Grey-200), var(--Grey-1000));
+    --bg-tsp: light-dark(#e1dedeaa, #353232aa);
+    --bg-darker0: light-dark(var(--Grey-300), var(--Grey-900));
+    --bg-darkertsp: light-dark(#d8d5d588, #27242488);
     /* todo dark */
-    --bg-darker0x: light-dark(var(--Grey-450), #3b3434);
-    --bg-darker: light-dark(var(--Grey-400), #484444);
+    --bg-darker0x: light-dark(var(--Grey-450), var(--Grey-600));
+    --bg-darker: light-dark(var(--Grey-400), var(--Grey-700));
     --bg-darkest: light-dark(var(--Grey-1000), var(--Grey-600));
     --bg-light: light-dark(var(--Grey-100), #181414);
     --bg-lighter: light-dark(var(--Grey-50), #141010);
