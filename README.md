@@ -13,7 +13,7 @@ hey :)
 
 # DESIGN
 - UTOPIA (type scale)
-- refacto css variables (radius / gaps / etc) // clean themes
+- refacto css variables (radius / gaps / etc)
 - fix css var names !
 - proper CSS design system
 
