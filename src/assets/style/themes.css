@@ -7,9 +7,9 @@
     /*______________ COLORS _____________*/
 
     --highlight: oklch(80% 0.1 320);
-
     --red: oklch(43.558% 0.1702 5.884);
 
+    /* LIGHT */
     --color-25: oklch(0.902 0.003 17.587);
     --color-50: oklch(0.835 0.006 17.587);
     --color-100: oklch(0.769 0.009 17.587);
@@ -25,30 +25,35 @@
     --color-950: oklch(0.169 0.004 17.587);
     --color-975: oklch(0.102 0.003 17.587);
 
+    /* DARK */
+    --dark-25: oklch(0.902 0.003 300);
+    --dark-50: oklch(0.835 0.006 300);
+    --dark-100: oklch(0.769 0.009 300);
+    --dark-150: oklch(0.734 0.012 300);
+    --dark-200: oklch(0.702 0.012 300);
+    --dark-300: oklch(0.635 0.016 300);
+    --dark-400: oklch(0.569 0.015 300);
+    --dark-500: oklch(0.502 0.013 300);
+    --dark-600: oklch(0.435 0.011 300);
+    --dark-700: oklch(0.369 0.009 300);
+    --dark-800: oklch(0.302 0.008 300);
+    --dark-900: oklch(0.235 0.006 300);
+    --dark-950: oklch(0.169 0.004 300);
+    --dark-975: oklch(0.102 0.003 300);
+
     /*______________ THEMES _____________*/
 
-    --color: light-dark(var(--color-950), var(--color-950));
-    --color-dim: light-dark(var(--color-600), var(--color-800));
-    --color-lightest: light-dark(var(--color-100), var(--color-300));
-    --color-light: light-dark(var(--color-300), var(--color-600));
-    --color-hover: light-dark(var(--color), var(--color));
-    --bg: light-dark(var(--color-25), var(--color-300));
-    --bg-darker0: light-dark(var(--color-50), var(--color-400));
-    --bg-darker0x: light-dark(var(--color-200), var(--color-600));
-    --bg-darker: light-dark(var(--color-150), var(--color-500));
-    --bg-light: light-dark(var(--color-50), var(--color-400));
-    --scroll-color: light-dark(var(--color-500), var(--color-800));
-    /* --color: light-dark(var(--color-950), var(--color-25));
-    --color-dim: light-dark(var(--color-600), var(--color-300));
-    --color-lightest: light-dark(var(--color-100), var(--color-800));
-    --color-light: light-dark(var(--color-300), var(--color-400));
+    --color: light-dark(var(--color-950), var(--dark-25));
+    --color-dim: light-dark(var(--color-600), var(--dark-200));
+    --color-light: light-dark(var(--color-300), var(--dark-300));
+    --color-lightest: light-dark(var(--color-100), var(--dark-300));
     --color-hover: light-dark(var(--color), var(--bg));
-    --bg: light-dark(var(--color-25), var(--color-900));
-    --bg-darker0: light-dark(var(--color-50), var(--color-800));
-    --bg-darker0x: light-dark(var(--color-200), var(--color-600));
-    --bg-darker: light-dark(var(--color-150), var(--color-700));
-    --bg-light: light-dark(var(--color-50), var(--color-800));
-    --scroll-color: light-dark(var(--color-500), var(--color-700)); */
+    --scroll-color: light-dark(var(--color-500), var(--dark-800));
+    --bg: light-dark(var(--color-25), var(--dark-800));
+    --bg-darker0: light-dark(var(--color-50), var(--dark-700));
+    --bg-light: light-dark(var(--color-50), var(--dark-700));
+    --bg-darker: light-dark(var(--color-150), var(--dark-600));
+    --bg-darker0x: light-dark(var(--color-200), var(--dark-400));
     --color-error: var(--red);
 }
 
