@@ -81,11 +81,17 @@ function getCrumbs(): Crumb[] {
     footer {
         max-width: var(--app-width);
         width: 100%;
+        width: calc(100% - 3rem);
+        margin-bottom: 1.5rem;
         background-color: var(--bg-darker0);
+        border-radius: .25rem;
+        border-top-left-radius: 1.5rem;
+        border-bottom-right-radius: 1.5rem;
+        overflow-x: hidden;
     }
 
     .main {
-        padding: 2rem 4rem;
+        padding: 2rem 3rem;
         display: grid;
         grid-template-columns: 18ch 1fr 18ch;
         gap: 2rem;
@@ -94,24 +100,24 @@ function getCrumbs(): Crumb[] {
 
     .ascii-separator {
         height: 1rem;
-        margin: 0 auto;
+        margin: .5rem auto 0;
         overflow: hidden;
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 3rem;
-        /* width: calc(100% - 2rem); */
+        width: calc(100% - 1rem);
 
         p {
             color: var(--bg-darker0x);
         }
     }
     .sub {
-        height: 4rem;
+        height: 5rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 0 4rem;
+        padding: 0 3rem;
     }
 
     .statements {

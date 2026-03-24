@@ -42,7 +42,7 @@ const script = (p5: p5) => {
 
     const activecolor: p5.Color = p5.color("oklch(80% 0.1 320)");
     const textcolor: p5.Color = p5.color("#a8a5a5");
-    const discretecolor: p5.Color = p5.color("#c8c5c5");
+    const discretecolor: p5.Color = p5.color("#bab2b2");
     discretecolor.setAlpha(150);
     p5.fill(textcolor);
 

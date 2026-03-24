@@ -1,0 +1,21 @@
+---
+import { queryLastArticle, queryLastProject } from "@utils/content";
+import Latest from "./latest.astro";
+
+const latestProject = await queryLastProject();
+const latestArticle = await queryLastArticle();
+---
+
+<div class="latest">
+  <Latest name={latestArticle?.name} type="article" url="articles/" />
+  <Latest name={latestProject?.name} type="project" url="projects/" />
+</div>
+
+<style>
+  .latest {
+    display: flex;
+    flex-flow: column;
+    gap: 0.75rem;
+    flex-shrink: 0;
+  }
+</style>
