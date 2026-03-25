@@ -61,6 +61,8 @@ const readingTime = Math.ceil((wordCount ?? 0) / 200);
 </MainLayout>
 
 <style>
+  @import url("../assets/style/pages/content.css");
+
   .article {
     justify-self: flex-start;
     display: flex;
@@ -80,202 +82,6 @@ const readingTime = Math.ceil((wordCount ?? 0) / 200);
     }
   }
 
-  /* TODO :: maybe ? */
-  /* @import '/content.css'; */
-  .content {
-    grid-column: 2;
-    max-width: 44rem;
-    padding: 4rem 1rem 10rem;
-    margin: 0 auto;
-
-    h1 {
-      font-size: 3rem;
-      text-align: center;
-      letter-spacing: -0.5px;
-      line-height: 3.5rem;
-    }
-    h2 {
-      font-size: 2.5rem;
-      line-height: 2.4rem;
-
-      &:not(:first-child) {
-        margin-top: 3.5rem;
-        margin-bottom: 1.25rem;
-      }
-    }
-    h3 {
-      font-size: 1.5rem;
-      &:not(:first-child) {
-        margin-top: 2rem;
-        margin-bottom: 0.5rem;
-      }
-    }
-    h4 {
-      font-size: 1.25rem;
-      &:not(:first-child) {
-        margin-top: 1rem;
-        margin-bottom: 0.75rem;
-      }
-    }
-
-    hr {
-      margin: 2rem 0;
-      color: transparent;
-      border-top: 1px solid var(--bg-darker);
-    }
-
-    p:not(:first-child) {
-      margin: 0.75rem 0;
-    }
-
-    p,
-    li,
-    span {
-      font-weight: 300;
-    }
-
-    ul,
-    ol {
-      padding-left: 2ch;
-      padding-inline-start: 1lh;
-      display: flex;
-      flex-flow: column;
-      gap: 0.5rem;
-    }
-
-    ul {
-      list-style-type: square;
-
-      li {
-        line-height: 1.2rem;
-
-        &::marker {
-          color: var(--color-light);
-        }
-        &:has(+ li) {
-          padding-bottom: 0.4rem;
-        }
-      }
-    }
-
-    figure {
-      width: 100%;
-      display: flex;
-      flex-flow: column;
-      align-items: center;
-      margin-top: 1rem;
-      margin-bottom: 1.5rem;
-    }
-
-    figcaption {
-      font-size: 0.85rem;
-      color: var(--color-dim);
-      font-weight: 300;
-      opacity: 0.8;
-      font-style: italic;
-    }
-
-    img {
-      border-radius: 0.25rem;
-      max-width: 100%;
-      height: auto;
-    }
-
-    sup {
-      font-size: 0.7rem;
-      font-family: "Apercu";
-      color: var(--color-dim);
-
-      &::before,
-      &::after {
-        font-size: 0.7rem;
-      }
-      &::before {
-        content: "[";
-      }
-      &::after {
-        content: "]";
-      }
-    }
-
-    .info {
-      font-size: 0.9rem;
-      background-color: var(--bg-darker0);
-      color: var(--color-dim);
-
-      a {
-        font-size: 0.9rem;
-        padding: 0;
-        color: var(--color-dim);
-
-        &:hover,
-        &:focus-visible {
-          color: var(--color);
-          background-color: transparent;
-        }
-
-        &:after {
-          display: none;
-        }
-      }
-    }
-
-    p {
-      line-height: 1.65rem;
-
-      &:not(:first-of-type) {
-        padding-top: 0.5rem;
-      }
-      &:not(:last-of-type) {
-        padding-bottom: 0.5rem;
-      }
-
-      &:has(+ ul),
-      &:has(+ ol) {
-        padding-bottom: 0;
-      }
-    }
-
-    a {
-      position: relative;
-      padding-right: 1.5ch;
-      text-decoration: underline;
-
-      &:after {
-        position: absolute;
-        right: 0;
-        display: inline-block;
-        content: " ->";
-      }
-    }
-
-    p.time {
-      display: flex;
-      color: var(--color-dim);
-      justify-content: center;
-      width: fit-content;
-      padding: 0 1rem 0.15rem;
-      background-color: var(--bg-darker0);
-      margin: 0.75rem auto 2.5rem;
-      border-radius: 0.25rem;
-    }
-
-    ul,
-    ol {
-      display: flex;
-      flex-flow: column;
-      gap: 0.5rem;
-    }
-
-    li {
-      line-height: 1.2rem;
-    }
-
-    @media (max-width: 1280px) {
-      grid-column: 1;
-    }
-  }
-
   .headings {
     position: sticky;
     top: 5rem;
@@ -285,13 +91,13 @@ const readingTime = Math.ceil((wordCount ?? 0) / 200);
     grid-template-rows: 1fr 2rem;
     align-items: center;
     height: calc(100dvh - 9rem);
-    border-right: 2px solid var(--bg-darker0);
+    border-right: 2px solid var(--bg-alt);
     /* height: calc(100dvh - 7rem); */
 
     nav {
       display: flex;
       flex-flow: column;
-      color: var(--color-light);
+      color: var(--color-alter);
       padding: 0 1rem 2rem 0;
       gap: 0.15rem;
       padding-bottom: 2rem;
@@ -342,16 +148,16 @@ const readingTime = Math.ceil((wordCount ?? 0) / 200);
       a {
         padding-left: 1ch;
         width: 100%;
-        color: var(--color-dim);
+        color: var(--color-alt);
         font-weight: 300;
-        transition: color 0.08s ease-out;
+        transition: color var(--timing-xs);
         line-height: 1.3rem;
       }
 
       &:before {
         position: absolute;
         left: 0;
-        color: var(--color-light);
+        color: var(--color-alter);
         font-weight: 100;
         line-height: 1.3rem;
         background-color: transparent;

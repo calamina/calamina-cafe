@@ -1,47 +1,11 @@
-@import './themes.css';
-@import './reset.css';
-@import './transitions.css';
-
-
-@font-face {
-    font-family: 'Apercu';
-    font-style: normal;
-    font-weight: 100;
-    src: url('../fonts/ApercuMonoPro-Light.woff2') format('woff2');
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Apercu';
-    font-style: normal;
-    font-weight: 300;
-    src: url('../fonts/ApercuMonoPro-Regular.woff2') format('woff2');
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Apercu';
-    font-style: normal;
-    font-weight: 500;
-    src: url('../fonts/ApercuMonoPro-Medium.woff2') format('woff2');
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Apercu';
-    font-style: normal;
-    font-weight: 700;
-    src: url('../fonts/ApercuMonoPro-Bold.woff2') format('woff2');
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Redaction';
-    font-style: normal;
-    font-weight: 400;
-    src: url('../fonts/Redaction_100-Regular.woff2') format('woff2');
-    font-display: swap;
-}
+@import './system/reset.css';
+@import './system/app.css';
+@import './system/colors.css';
+@import './system/themes.css';
+@import './system/shaping.css';
+@import './system/transitions.css';
+@import './system/typography.css';
+@import './system/fonts.css';
 
 *,
 *::before,
@@ -51,7 +15,6 @@
     font-weight: normal;
     font-size: 17px;
     font-family: 'Apercu', monospace;
-    /* font-family: 'Necto', monospace; */
 }
 
 @media (max-width: 1280px) {
@@ -71,7 +34,6 @@ body {
     font-synthesis: none;
     text-rendering: optimizelegibility;
     direction: ltr;
-    /* overflow-wrap: break-word; */
 }
 
 html {
@@ -81,15 +43,12 @@ html {
     scrollbar-gutter: stable;
     scroll-padding-top: 5rem;
     scroll-behavior: smooth;
-    transition: scrollbar-color 0.1s;
-    transition-delay: 0.6s;
     text-wrap: pretty;
 }
 
 main {
     padding: 0 1rem;
 }
-
 
 a {
     display: inline-flex;
@@ -98,7 +57,6 @@ a {
     text-decoration: none;
     color: var(--color);
     width: fit-content;
-    /* border-radius: 0.5rem; */
 
     &:hover {
         outline: none;
@@ -115,23 +73,6 @@ a {
     }
 }
 
-Icon {
-    color: var(--color);
-}
-
-.dark a:hover {
-    background-color: var(--bg-darker);
-    color: var(--highlight);
-}
-
-.center {
-    flex: 1;
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    justify-content: center;
-}
-
 p,
 h1,
 h2,
@@ -143,14 +84,6 @@ span,
 button,
 .icon {
     color: var(--color);
-}
-
-.lookin {
-    cursor: url("../img/svg/EyeIn.svg") 16 16, pointer;
-}
-
-.lookout {
-    cursor: url("../img/svg/EyeOff.svg") 16 16, pointer;
 }
 
 button {
@@ -167,34 +100,7 @@ button {
     }
 }
 
-input[type="search"] {
-    border: none;
-    outline: none;
-    box-shadow: none;
-    background-color: var(--bg-darker0);
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.5rem;
-
-    &::placeholder {
-        color: var(--color);
-        opacity: 0.6;
-    }
-}
-
-p,
-a,
-span,
-h1,
-h2,
-h3,
-h4,
-h5,
-pre {
-    &::selection {
-        background-color: var(--color-light);
-    }
-}
-
-img {
-    max-height: 100%;
+* ::selection {
+    color: var(--bg);
+    background-color: var(--color);
 }

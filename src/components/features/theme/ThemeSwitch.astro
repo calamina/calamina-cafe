@@ -51,7 +51,7 @@ import ThemeSwitchButton from "./ThemeSwitchButton.astro";
 <style scoped>
   [popover] {
     z-index: 200;
-    background-color: var(--bg-darker0);
+    background-color: var(--bg-alt);
     position: absolute;
     flex-flow: column;
     gap: 0.25rem;
@@ -61,10 +61,9 @@ import ThemeSwitchButton from "./ThemeSwitchButton.astro";
     opacity: 0;
     border: none;
     outline: none;
-    transition: opacity 4.125s ease-out;
     inset: auto;
     margin: 0;
-    border-radius: 0.25rem;
+    border-radius: var(--radius-sm);
     top: 4.25rem;
     right: 1.5rem;
 
@@ -74,7 +73,7 @@ import ThemeSwitchButton from "./ThemeSwitchButton.astro";
 
     &:popover-open {
       opacity: 1;
-      /* outline: 2px solid var(--bg-darker); */
+      /* outline: 2px solid var(--bg-alter); */
     }
   }
 
@@ -85,17 +84,17 @@ import ThemeSwitchButton from "./ThemeSwitchButton.astro";
     overflow: visible;
 
     &:has([popover]:popover-open) .theme-picker {
-      background-color: var(--bg-darker0);
+      background-color: var(--bg-alt);
     }
 
     .theme-picker {
       background-color: var(--bg);
       width: 100%;
       padding: 0.5rem;
-      border-radius: 0.25rem;
+      border-radius: var(--radius-sm);
 
       &:hover {
-        background-color: var(--bg-darker0);
+        background-color: var(--bg-alt);
       }
 
       &:focus {

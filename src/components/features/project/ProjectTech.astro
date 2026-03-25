@@ -35,10 +35,10 @@ const categs = tech
         align-items: baseline;
         padding-top: 0.25rem;
         padding-bottom: 0.5rem;
-        transition: padding-left 0.2s;
+        transition: padding-left var(--timing-md);
 
         &:not(:last-of-type) {
-            border-bottom: 1px solid var(--bg-darker);
+            border-bottom: 1px solid var(--bg-alter);
         }
 
         &:hover {
@@ -60,9 +60,9 @@ const categs = tech
     }
 
     .tag {
-        background-color: var(--bg-darker);
+        background-color: var(--bg-alter);
         padding: 0 0.5rem;
-        border-radius: 0.5rem;
+        border-radius: var(--radius-sm);
         color: var(--color-hover);
         white-space: nowrap;
         overflow: hidden;
@@ -71,7 +71,7 @@ const categs = tech
     }
 
     html.dark .tag {
-        color: var(--bg-darker);
+        color: var(--bg-alter);
     }
 
     .tools {

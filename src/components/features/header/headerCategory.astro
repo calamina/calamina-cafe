@@ -34,8 +34,8 @@ const active = url.includes(route);
     &::after {
       content: "";
       width: 1ch;
-      color: var(--bg-darker);
-      transition: transform 0.125s ease-out;
+      color: var(--bg-alter);
+      transition: transform var(--timing-md);
     }
 
     &:before {
@@ -61,7 +61,7 @@ const active = url.includes(route);
       }
 
       &:has(.active) a {
-        background-color: var(--bg-darker0);
+        background-color: var(--bg-alt);
         text-decoration: underline;
       }
 
@@ -83,6 +83,6 @@ const active = url.includes(route);
   }
 
   .subtype {
-    color: var(--color-light);
+    color: var(--color-alter);
   }
 </style>

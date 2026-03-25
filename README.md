@@ -6,16 +6,17 @@
 hey :)
 
 # DOING
+- continue proper CSS design system
 - refacto big components (index, footer)
-- clean projects !!!
-- fix hover color : crumbs & headings 
 - mobile menu
+- export article headings in component
+- clean projects !!!
+- add "back to xxx ->" component
+- add "link ->" component
 
 # DESIGN
 - UTOPIA (type scale)
-- refacto css variables (radius / gaps / etc)
-- fix css var names !
-- proper CSS design system
+- fix hover color : crumbs & headings 
 
 # TODO
 - check todos in code :)
@@ -33,3 +34,4 @@ hey :)
 - fix & complete projects (aerg)
 - complete about
 - proper alt on images / proper images (highlights, etc)
+- add "gear" and favourite stuff to about

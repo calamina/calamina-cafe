@@ -23,7 +23,7 @@ const { type, name, url } = Astro.props;
   }
   h2 {
     padding: 0.25rem 0rem;
-    color: var(--color-light);
+    color: var(--color-alter);
     background-color: var(--bg);
 
     @media (max-width: 50rem) {
@@ -36,7 +36,7 @@ const { type, name, url } = Astro.props;
     padding: 0.25rem 0.5rem 0.1rem;
     background-color: var(--highlight);
     text-transform: capitalize;
-    transition: padding 0.125s ease-out;
+    transition: padding var(--timing-md);
 
     &:hover,
     &:focus {

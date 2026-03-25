@@ -45,7 +45,7 @@ function getCrumbs(): Crumb[] {
         </div>
         <SocialsList />
     </div>
-    <div class="ascii-separator">
+    <div class="ascii-separator" inert>
         {
             new Array(5).fill("").map(() => (
                 <p>*:._.~'`'~._.:*'-._.:*</p>
@@ -83,8 +83,8 @@ function getCrumbs(): Crumb[] {
         width: 100%;
         width: calc(100% - 3rem);
         margin-bottom: 1.5rem;
-        background-color: var(--bg-darker0);
-        border-radius: .25rem;
+        background-color: var(--bg-alt);
+        border-radius: var(--radius-sm);
         border-top-left-radius: 1.5rem;
         border-bottom-right-radius: 1.5rem;
         overflow-x: hidden;
@@ -109,7 +109,7 @@ function getCrumbs(): Crumb[] {
         width: calc(100% - 1rem);
 
         p {
-            color: var(--color-light);
+            color: var(--color-alter);
         }
     }
     .sub {
@@ -135,7 +135,7 @@ function getCrumbs(): Crumb[] {
                 height: 0.45rem;
                 width: 0.45rem;
                 flex-shrink: 0;
-                border-radius: 0.5rem;
+                border-radius: var(--radius-md);
             }
         }
     }
@@ -151,9 +151,9 @@ function getCrumbs(): Crumb[] {
 
         a {
             color: var(--color);
-            background-color: var(--bg-darker);
+            background-color: var(--bg-alter);
             padding: 0rem 0.4rem 0.12rem;
-            border-radius: 0.25rem;
+            border-radius: var(--radius-sm);
 
             &:hover,
             &:focus-visible {
@@ -162,7 +162,7 @@ function getCrumbs(): Crumb[] {
         }
 
         p {
-            color: var(--color-light);
+            color: var(--color-alter);
         }
     }
 
@@ -182,7 +182,7 @@ function getCrumbs(): Crumb[] {
             height: 0.45rem;
             width: 0.45rem;
             flex-shrink: 0;
-            border-radius: 0.5rem;
+            border-radius: var(--radius-md);
         }
     }
 

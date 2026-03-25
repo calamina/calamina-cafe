@@ -90,14 +90,14 @@ const countTags = (tagname: string) => {
     .limit {
         height: 1px;
         height: 100%;
-        border-bottom: 1px solid var(--bg-darker);
+        border-bottom: 1px solid var(--bg-alter);
         display: flex;
         flex: 1;
     }
 
     .entries,
     .entries span {
-        color: var(--color-light);
+        color: var(--color-alter);
     }
 
     nav {
@@ -113,15 +113,15 @@ const countTags = (tagname: string) => {
         padding: 0 0.5rem 0.15rem 0.4rem;
         border-top-left-radius: 0.5rem;
         border-bottom-right-radius: 0.5rem;
-        background-color: var(--bg-darker0);
+        background-color: var(--bg-alt);
 
         &:hover {
-            background-color: var(--bg-darker);
+            background-color: var(--bg-alter);
         }
 
         &.reset {
             margin-left: auto;
-            background-color: var(--bg-darker0);
+            background-color: var(--bg-alt);
         }
 
         &.active,
@@ -132,13 +132,13 @@ const countTags = (tagname: string) => {
         &:hover,
         &.active {
             .count {
-                color: var(--color-dim);
+                color: var(--color-alt);
             }
         }
     }
 
     .count {
-        color: var(--color-light);
+        color: var(--color-alter);
         font-size: 0.8rem;
     }
 

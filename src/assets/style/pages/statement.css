@@ -5,7 +5,7 @@ li {
 
 
   &.deco {
-    color: var(--color-light);
+    color: var(--color-alter);
     text-align: center;
   }
 }
@@ -55,7 +55,7 @@ ul {
     line-height: 1.2rem;
 
     &::marker {
-      color: var(--color-light);
+      color: var(--color-alter);
     }
 
     &:has(+ li) {

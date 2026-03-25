@@ -1,0 +1,6 @@
+:root {
+    --timing-xs: .05s ease-out;
+    --timing-sm: .08s ease-out;
+    --timing-md: .125s ease-out;
+    --timing-lg: 0.25s ease-out;
+}

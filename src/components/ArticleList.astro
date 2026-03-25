@@ -61,7 +61,7 @@ const { entries, url = "articles", listTitle = null } = Astro.props;
   .limit {
     height: 1px;
     height: 100%;
-    border-bottom: 1px solid var(--bg-darker);
+    border-bottom: 1px solid var(--bg-alter);
     opacity: 0.6;
     display: flex;
     flex: 1;
@@ -69,7 +69,7 @@ const { entries, url = "articles", listTitle = null } = Astro.props;
 
   .entries,
   .entries span {
-    color: var(--color-light);
+    color: var(--color-alter);
   }
 
   nav {
@@ -83,16 +83,16 @@ const { entries, url = "articles", listTitle = null } = Astro.props;
     width: 100%;
     padding: 0.75rem;
     /* text-transform: capitalize; */
-    outline: 2px solid var(--bg-darker);
-    transition: padding-left 0.125s ease-out;
+    outline: 2px solid var(--bg-alter);
+    transition: padding-left var(--timing-md);
 
     &:after {
       content: "->";
       color: transparent;
       transform: translateX(-0.25rem);
       transition:
-        transform 0.125s ease-out,
-        color 0.125s ease-out;
+        transform var(--timing-md),
+        color var(--timing-md);
     }
 
     &:hover,

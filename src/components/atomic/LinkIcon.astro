@@ -19,12 +19,12 @@ const { url, label } = Astro.props;
     margin-top: 0.5rem;
     display: flex;
     align-content: center;
-    border-radius: 0.5rem;
+    border-radius: var(--radius-md);
     gap: 0.5rem;
     align-items: center;
     width: fit-content;
     padding: 0.25rem 0.5rem 0.15rem;
-    background-color: var(--bg-darker0);
+    background-color: var(--bg-alt);
 
     &:hover {
       background-color: var(--highlight);
@@ -32,7 +32,7 @@ const { url, label } = Astro.props;
   }
 
   html.dark a:hover {
-    background-color: var(--bg-darker0);
+    background-color: var(--bg-alt);
     color: var(--highlight);
   }
 </style>

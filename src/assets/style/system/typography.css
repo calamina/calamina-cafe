@@ -1,0 +1,10 @@
+:root {
+  /* FONT FAMILY */
+  --font-reg: "Apercu", monospace;
+
+  /* LINEHEIGHT */
+  -lh-md: 1.5;
+}
+
+/* STYLE H1 H2 H3 ETC */
+/* :headings {} */
