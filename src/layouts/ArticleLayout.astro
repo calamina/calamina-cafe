@@ -76,9 +76,10 @@ const readingTime = Math.ceil((wordCount ?? 0) / 200);
     grid-template-columns: 18rem auto 18rem;
     padding-bottom: 4rem;
 
-    @media screen and (max-width: 800px) {
+    @media screen and (max-width: 1280px) {
       width: 100%;
       grid-template-columns: 1fr;
+      padding-bottom: 2rem;
     }
   }
 
@@ -209,6 +210,10 @@ const readingTime = Math.ceil((wordCount ?? 0) / 200);
       &::after {
         display: none;
       }
+    }
+
+    @media (max-width: 1280px) {
+      display: none;
     }
   }
 </style>

@@ -29,6 +29,15 @@ const active = url.includes(route);
     gap: 0.25rem;
     pointer-events: auto;
     margin-right: auto;
+    background-color: var(--bg);
+    border-radius: var(--radius-md);
+
+    /* Test for mobile nav */
+    /* @media (max-width: 1280px) {
+      &:not(:has(a.active)) {
+        display: none;
+      }
+    } */
 
     &::before,
     &::after {
@@ -80,9 +89,5 @@ const active = url.includes(route);
     display: flex;
     align-items: center;
     gap: 0.25rem;
-  }
-
-  .subtype {
-    color: var(--color-alter);
   }
 </style>

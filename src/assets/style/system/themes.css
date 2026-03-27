@@ -5,6 +5,7 @@
     --color-hover: light-dark(var(--color), var(--bg));
     --bg: light-dark(var(--color-25), var(--dark-800));
     --bg-alt: light-dark(var(--color-50), var(--dark-700));
+    --bg-tsp: light-dark(var(--color-25-tsp), var(--dark-800-tsp));
     --bg-alter: light-dark(var(--color-150), var(--dark-600));
     --scroll-color: light-dark(var(--color-150), var(--dark-500));
     --color-error: var(--red);

@@ -1,0 +1,27 @@
+---
+import MenuCategory from "./MenuCategory.astro";
+const { project, article, note } = Astro.params;
+---
+
+<nav>
+  <MenuCategory name="projects" link={project} />
+  <MenuCategory name="articles" link={article} />
+  <MenuCategory name="notes" link={note} />
+</nav>
+
+<style>
+  nav {
+    display: flex;
+    flex-flow: column;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    flex: 1;
+    height: 100%;
+
+    @media (max-width: 1280px) {
+      gap: 1rem;
+    }
+  }
+</style>

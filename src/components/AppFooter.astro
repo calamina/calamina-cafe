@@ -2,26 +2,7 @@
 import Ascii from "@components/ascii.astro";
 import LinkContact from "@components/atomic/LinkContact.astro";
 import SocialsList from "@components/SocialsList.astro";
-
-interface Crumb {
-    url: string;
-    name: string;
-}
-
-const path = Astro.originPathname;
-const pathArray = path.substring(1, path.length - 1).split("/");
-const crumbs: Crumb[] = getCrumbs();
-
-function getCrumbs(): Crumb[] {
-    const list: Crumb[] = [];
-    if (path.length < 2) return [];
-
-    for (const [index, name] of pathArray?.entries()) {
-        const url = index === 0 ? `/${name}` : `${list[index - 1]?.url}/${name}`;
-        list.push({ url, name });
-    }
-    return list;
-}
+import Ariane from "./Ariane.astro";
 ---
 
 <footer>
@@ -55,21 +36,7 @@ function getCrumbs(): Crumb[] {
         }
     </div>
     <div class="sub">
-        <div class="ariane">
-            <p>You are here :</p>
-            <nav class="crumbs">
-                <a href="/">home</a>
-                {!!crumbs.length && <p>~</p>}
-                {
-                    crumbs.map((crumb, index) => (
-                        <Fragment>
-                            <a href={crumb.url}>{crumb.name}</a>
-                            {index !== crumbs.length - 1 && <p>~</p>}
-                        </Fragment>
-                    ))
-                }
-            </nav>
-        </div>
+        <Ariane />
         <nav class="statements">
             <a href="/accessibility">Accessibility</a>
             <a href="/privacy">Privacy</a>
@@ -88,6 +55,15 @@ function getCrumbs(): Crumb[] {
         border-top-left-radius: 1.5rem;
         border-bottom-right-radius: 1.5rem;
         overflow-x: hidden;
+
+        @media (max-width: 1280px) {
+            width: calc(100% - 1.5rem);
+            width: 100%;
+            margin-bottom: 0;
+            border-radius: 0;
+            gap: 0.5rem;
+            padding-bottom: 1rem;
+        }
     }
 
     .main {
@@ -96,6 +72,14 @@ function getCrumbs(): Crumb[] {
         grid-template-columns: 18ch 1fr 18ch;
         gap: 2rem;
         align-items: end;
+
+        @media (max-width: 1280px) {
+            padding: 2rem 1rem 1rem;
+            gap: 1rem;
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+        }
     }
 
     .ascii-separator {
@@ -118,6 +102,14 @@ function getCrumbs(): Crumb[] {
         align-items: center;
         justify-content: space-between;
         padding: 0 3rem;
+
+        @media (max-width: 1280px) {
+            flex-flow: column;
+            align-items: center;
+            padding: 1rem 1rem 1.5rem;
+            height: auto;
+            gap: 0.25rem;
+        }
     }
 
     .statements {
@@ -137,32 +129,6 @@ function getCrumbs(): Crumb[] {
                 flex-shrink: 0;
                 border-radius: var(--radius-md);
             }
-        }
-    }
-
-    .ariane {
-        display: flex;
-        gap: 1ch;
-    }
-
-    .crumbs {
-        display: flex;
-        gap: 0.5ch;
-
-        a {
-            color: var(--color);
-            background-color: var(--bg-alter);
-            padding: 0rem 0.4rem 0.12rem;
-            border-radius: var(--radius-sm);
-
-            &:hover,
-            &:focus-visible {
-                background-color: var(--highlight);
-            }
-        }
-
-        p {
-            color: var(--color-alter);
         }
     }
 
@@ -190,6 +156,10 @@ function getCrumbs(): Crumb[] {
         height: 100%;
         justify-content: space-between;
         overflow: hidden;
+
+        @media (max-width: 1280px) {
+            padding-bottom: .5rem;
+        }
     }
 
     .info {
@@ -209,28 +179,7 @@ function getCrumbs(): Crumb[] {
         }
     }
 
-    @media (max-width: 1500px) {
-        footer {
-            gap: 0.5rem;
-        }
-    }
-
     @media (max-width: 1280px) {
-        .main {
-            display: flex;
-            flex-flow: column;
-            align-items: center;
-            padding: 3rem 1rem;
-        }
-
-        .sub {
-            flex-flow: column;
-            align-items: center;
-            padding: 1.25rem 1rem 1rem;
-            height: auto;
-            gap: 0.25rem;
-        }
-
         .info {
             gap: 0.5rem;
             align-items: center;
@@ -243,11 +192,6 @@ function getCrumbs(): Crumb[] {
             p {
                 width: fit-content;
             }
-        }
-
-        .center {
-            gap: 1rem;
-            padding: 0 1rem 1rem;
         }
     }
 </style>

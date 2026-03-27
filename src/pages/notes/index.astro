@@ -33,7 +33,7 @@ export async function getStaticPaths() {
     </div>
 </MainLayout>
 
-<style scoped>
+<style>
     .view {
         width: 100%;
         padding-bottom: 3rem;
@@ -41,5 +41,10 @@ export async function getStaticPaths() {
         flex-flow: column;
         gap: 5rem;
         padding: 6rem 4rem 8rem;
+
+        @media (max-width: 1280px) {
+            gap: 1rem;
+            padding: 0 0 2rem;
+        }
     }
 </style>

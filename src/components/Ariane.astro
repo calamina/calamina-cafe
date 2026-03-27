@@ -1,0 +1,80 @@
+---
+interface Crumb {
+  url: string;
+  name: string;
+}
+
+const path = Astro.originPathname;
+const pathArray = path.substring(1, path.length - 1).split("/");
+const crumbs: Crumb[] = getCrumbs();
+
+function getCrumbs(): Crumb[] {
+  const list: Crumb[] = [];
+  if (path.length < 2) return [];
+
+  for (const [index, name] of pathArray?.entries()) {
+    const url = index === 0 ? `/${name}` : `${list[index - 1]?.url}/${name}`;
+    list.push({ url, name });
+  }
+  return list;
+}
+---
+
+<div class="ariane">
+  <p>You are here :</p>
+  <nav class="crumbs">
+    <a href="/">home</a>
+    {!!crumbs.length && <p>~</p>}
+    {
+      crumbs.map((crumb, index) => (
+        <Fragment>
+          <a href={crumb.url}>{crumb.name}</a>
+          {index !== crumbs.length - 1 && <p>~</p>}
+        </Fragment>
+      ))
+    }
+  </nav>
+</div>
+
+<style>
+  .ariane {
+    display: flex;
+    gap: 1ch;
+
+    @media (max-width: 1280px) {
+      gap: 0.5rem;
+      flex-flow: column;
+      align-items: center;
+      margin-bottom: 1rem;
+      margin-top: 0.5rem;
+    }
+  }
+
+  p {
+    @media (max-width: 1280px) {
+      display: none;
+    }
+  }
+
+  .crumbs {
+    display: flex;
+    align-items: center;
+    gap: 0.5ch;
+
+    a {
+      color: var(--color);
+      background-color: var(--bg-alter);
+      padding: 0rem 0.4rem 0.12rem;
+      border-radius: var(--radius-sm);
+
+      &:hover,
+      &:focus-visible {
+        background-color: var(--highlight);
+      }
+    }
+
+    p {
+      color: var(--color-alter);
+    }
+  }
+</style>

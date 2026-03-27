@@ -1,0 +1,143 @@
+---
+import Icon from "@components/icons/Icon.astro";
+import HeaderLogo from "../header/HeaderLogo.astro";
+import ThemeSwitchButton from "../theme/ThemeSwitchButton.astro";
+import MenuCategories from "./MenuCategories.astro";
+---
+
+<div class="menu">
+  <button
+    class="show-button"
+    title="open menu"
+    popovertarget="mobile-menu"
+    popovertargetaction="show"
+  >
+    <Icon icon="IconAsterisk" />
+  </button>
+  <div popover id="mobile-menu">
+    <div class="menu-header">
+      <HeaderLogo />
+      <button
+        class="hide-button"
+        title="close menu"
+        popovertarget="mobile-menu"
+        popovertargetaction="hide"
+      >
+        <Icon icon="IconAsterisk" />
+      </button>
+    </div>
+    <div class="menu-content">
+      <MenuCategories />
+      <div class="theme">
+        <ThemeSwitchButton theme="system" icon="IconMoonStars" />
+        <ThemeSwitchButton theme="light" icon="IconMoonHalf" />
+        <ThemeSwitchButton theme="dark" icon="IconMoonHalfFilled" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .menu:has([popover]:popover-open) .show-button {
+    background-color: var(--bg-alt);
+  }
+
+  button {
+    background-color: var(--bg);
+    padding: 0.5rem;
+    border-radius: var(--radius-sm);
+
+    &:hover {
+      background-color: var(--bg-alt);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color);
+      outline-offset: -3px;
+    }
+
+    &.hide-button {
+      transform: none;
+      transition: transform var(--timing-xl) 0.2s;
+      background-color: var(--bg-alt);
+
+      @starting-style {
+        transform: rotate(360deg);
+      }
+    }
+  }
+
+  [popover] {
+    z-index: 200;
+    background-color: var(--bg-alt);
+    border-radius: var(--radius-md);
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    top: 0.75rem;
+    right: 0.5rem;
+    left: 0.5rem;
+    bottom: 0.75rem;
+    width: calc(100vw - 1rem);
+    height: calc(100dvh - 1.5rem);
+    opacity: 0;
+    transition:
+      opacity var(--timing-md),
+      display var(--timing-md) allow-discrete;
+
+    &:popover-open {
+      display: flex;
+      flex-flow: column;
+      opacity: 1;
+      align-items: center;
+      justify-content: center;
+
+      @starting-style {
+        opacity: 0;
+      }
+    }
+
+    &::backdrop {
+      transition: background-color var(--timing-md);
+      background-color: var(--bg-tsp);
+
+      @starting-style {
+        background-color: transparent;
+      }
+    }
+  }
+
+  html:has([popover]:popover-open) {
+    overflow: hidden;
+  }
+
+  .menu-header {
+    height: 3.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+  }
+
+  .menu-title {
+    color: var(--color-alt);
+    padding: 0.15rem 1rem 0.3rem;
+  }
+
+  .menu-content {
+    display: flex;
+    flex-flow: column;
+    flex: 1;
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .theme {
+    margin-top: auto;
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+  }
+</style>

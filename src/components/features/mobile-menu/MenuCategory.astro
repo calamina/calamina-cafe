@@ -1,0 +1,107 @@
+---
+interface Props {
+  name: string;
+  link: string | undefined;
+}
+const { name, link } = Astro.props;
+
+const url = Astro.originPathname;
+const route = `/${name}/`;
+const active = url.includes(route);
+---
+
+<div class="category">
+  <a href={"/" + name} class:list={[{ active: active }]}> {name} </a>
+  {
+    link && (
+      <p>
+        <span>:</span>
+        {link}
+      </p>
+    )
+  }
+</div>
+
+<style>
+  .category {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0 0.75rem;
+
+    a {
+      color: var(--color-alter);
+      text-decoration: none;
+      padding: 0 0 0.15rem;
+      font-size: 1.2rem;
+    }
+
+    p {
+      display: flex;
+      align-items: baseline;
+      gap: 0.25rem;
+      padding: 0 0 0.15rem;
+      font-size: 1.2rem;
+    }
+
+    span {
+      font-size: 1.2rem;
+    }
+
+    &::before,
+    &::after {
+      font-size: 1.2rem;
+      content: "";
+      width: 1ch;
+      color: var(--bg-alter);
+      transition: transform var(--timing-md);
+    }
+
+    &:before {
+      transform: translateX(-0.3rem);
+    }
+    &:after {
+      transform: translateX(0.3rem);
+    }
+
+    &:active,
+    &:hover {
+      background-color: var(--bg-alter);
+
+      a,
+      p,
+      span,
+      &::before,
+      &::after {
+        color: var(--color);
+      }
+
+      a {
+        background-color: transparent;
+      }
+    }
+
+    &:has(.active) {
+      background-color: var(--highlight);
+
+      a,
+      p,
+      span,
+      &::before,
+      &::after {
+        color: var(--color-hover);
+      }
+
+      a {
+        text-decoration: underline;
+      }
+
+      &::before {
+        content: "[";
+      }
+      &::after {
+        content: "]";
+      }
+    }
+  }
+</style>

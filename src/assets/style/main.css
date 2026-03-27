@@ -6,6 +6,7 @@
 @import './system/transitions.css';
 @import './system/typography.css';
 @import './system/fonts.css';
+@import './system/utilities.css';
 
 *,
 *::before,
@@ -19,7 +20,7 @@
 
 @media (max-width: 1280px) {
     * {
-        font-size: 15px;
+        font-size: 16px;
 
         &::after,
         &::before {

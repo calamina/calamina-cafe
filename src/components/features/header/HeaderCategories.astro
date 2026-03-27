@@ -1,0 +1,23 @@
+---
+import HeaderCategory from "./HeaderCategory.astro";
+const { project, article, note } = Astro.params;
+---
+
+<nav class="desktop">
+  <HeaderCategory name="projects" link={project} />
+  <HeaderCategory name="articles" link={article} />
+  <HeaderCategory name="notes" link={note} />
+</nav>
+
+<style>
+  nav {
+    display: flex;
+    gap: 2rem;
+    justify-self: center;
+    padding: 0.5rem;
+
+    @media (max-width: 1280px) {
+      gap: 1rem;
+    }
+  }
+</style>

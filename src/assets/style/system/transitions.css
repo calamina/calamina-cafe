@@ -3,4 +3,5 @@
     --timing-sm: .08s ease-out;
     --timing-md: .125s ease-out;
     --timing-lg: 0.25s ease-out;
+    --timing-xl: 0.5s ease-in-out;
 }

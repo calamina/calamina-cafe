@@ -8,7 +8,7 @@ hey :)
 # DOING
 - continue proper CSS design system
 - refacto big components (index, footer)
-- mobile menu
+- test bigger mobile header width nav/ariane under buttons ! 
 - export article headings in component
 - clean projects !!!
 - add "back to xxx ->" component
@@ -19,8 +19,10 @@ hey :)
 - fix hover color : crumbs & headings 
 
 # TODO
+- tablet / better responsive (some content gets too big inbetween breakpoints)
 - check todos in code :)
 - resources page ? (icons, utf8 footer ...)
+- add title to all buttons, and aria-label to all icon-buttons
 
 # CONTENT
 - add article status and display it !

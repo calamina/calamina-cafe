@@ -23,7 +23,7 @@ const images = getProjectImages(project);
   </div>
 </div>
 
-<style scoped>
+<style>
   .wrapper {
     display: flex;
     flex-flow: column;
@@ -61,13 +61,17 @@ const images = getProjectImages(project);
     /* &:first-of-type {
       grid-column: span 2;
     } */
+
+    @media (max-width: 1280px) {
+      max-height: unset;
+    }
   }
 
   img {
     border-radius: var(--radius-sm);
-    width: auto;
     width: 100%;
     height: auto;
+    max-height: 100%;
 
     /* object-fit: cover; */
     object-fit: contain;
