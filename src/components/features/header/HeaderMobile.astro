@@ -1,0 +1,19 @@
+---
+import Ariane from "@components/Ariane.astro";
+const url = Astro.originPathname;
+---
+
+<div>
+  {url !== "/" && <Ariane discrete={true} />}
+</div>
+
+<style>
+  div {
+    display: flex;
+    width: 100%;
+    padding: 0 1rem;
+    flex-flow: column;
+    align-items: start;
+    justify-content: start;
+  }
+</style>

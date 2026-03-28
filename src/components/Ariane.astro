@@ -4,6 +4,12 @@ interface Crumb {
   name: string;
 }
 
+interface Props {
+  discrete?: boolean;
+}
+
+const { discrete } = Astro.props;
+
 const path = Astro.originPathname;
 const pathArray = path.substring(1, path.length - 1).split("/");
 const crumbs: Crumb[] = getCrumbs();
@@ -20,7 +26,7 @@ function getCrumbs(): Crumb[] {
 }
 ---
 
-<div class="ariane">
+<div class="ariane" class:list={{ discrete: discrete }}>
   <p>You are here :</p>
   <nav class="crumbs">
     <a href="/">home</a>
@@ -50,9 +56,24 @@ function getCrumbs(): Crumb[] {
     }
   }
 
-  p {
+  .ariane > p {
     @media (max-width: 1280px) {
       display: none;
+    }
+  }
+
+  .discrete {
+    margin: 0 0 0.5rem;
+
+    .crumbs a {
+      background-color: var(--bg-alt);
+      height: 2.25rem;
+      padding: 0rem 0.75rem 0.12rem;
+
+      &:hover,
+      &:focus-visible {
+        background-color: var(--bg-alter);
+      }
     }
   }
 

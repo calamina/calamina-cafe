@@ -6,12 +6,15 @@ interface Props {
 const { name, link } = Astro.props;
 
 const url = Astro.originPathname;
-const route = `/${name}/`;
-const active = url.includes(route);
+const isHome = name === "home";
+const route = isHome ? "/" : `/${name}`;
+const active = isHome ? url === "/" : url.includes(route);
 ---
 
 <div class="category">
-  <a href={"/" + name} class:list={[{ active: active }]}> {name} </a>
+  <a href={route} class:list={{ active: active }}>
+    {name}
+  </a>
   {
     link && (
       <p>

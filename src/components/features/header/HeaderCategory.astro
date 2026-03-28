@@ -11,7 +11,7 @@ const active = url.includes(route);
 ---
 
 <div class="category">
-  <a href={"/" + name} class:list={[{ active: active }]}> {name} </a>
+  <a href={"/" + name} class:list={{ active: active }}> {name} </a>
   {
     link && (
       <p class="param">

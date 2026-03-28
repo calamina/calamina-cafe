@@ -1,6 +1,5 @@
 ---
 import Icon from "@components/icons/Icon.astro";
-import Logo from "@components/Logo.astro";
 import ThemeSwitchButton from "../theme/ThemeSwitchButton.astro";
 import MenuCategories from "./MenuCategories.astro";
 ---
@@ -16,7 +15,7 @@ import MenuCategories from "./MenuCategories.astro";
   </button>
   <div popover id="mobile-menu">
     <div class="menu-header">
-      <Logo />
+      <!-- <Logo />  -->
       <button
         class="hide-button"
         title="close menu"
@@ -27,6 +26,8 @@ import MenuCategories from "./MenuCategories.astro";
       </button>
     </div>
     <div class="menu-content">
+      <!-- todo search -->
+      <!-- <AppSearch /> -->
       <MenuCategories />
       <div class="theme">
         <ThemeSwitchButton theme="system" icon="IconMoonStars" />
@@ -116,7 +117,8 @@ import MenuCategories from "./MenuCategories.astro";
     height: 3.5rem;
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    justify-content: end;
     align-items: center;
     padding: 0.5rem;
   }

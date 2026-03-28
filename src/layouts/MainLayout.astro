@@ -1,11 +1,13 @@
 ---
 import AppFooter from "@components/AppFooter.astro";
 import Header from "@components/features/header/Header.astro";
+import HeaderMobile from "@components/features/header/HeaderMobile.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 ---
 
 <BaseLayout>
 	<Header />
+	<HeaderMobile />
 	<main>
 		<slot />
 	</main>

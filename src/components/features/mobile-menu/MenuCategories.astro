@@ -4,6 +4,7 @@ const { project, article, note } = Astro.params;
 ---
 
 <nav>
+  <MenuCategory name="home" link={undefined} />
   <MenuCategory name="projects" link={project} />
   <MenuCategory name="articles" link={article} />
   <MenuCategory name="notes" link={note} />

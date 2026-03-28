@@ -78,7 +78,8 @@ const readingTime = Math.ceil((wordCount ?? 0) / 200);
 
     @media screen and (max-width: 1280px) {
       width: 100%;
-      grid-template-columns: 1fr;
+      display: flex;
+      flex-flow: column;
       padding-bottom: 2rem;
     }
   }
