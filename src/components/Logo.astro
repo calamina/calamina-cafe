@@ -13,14 +13,16 @@
     border-radius: var(--radius-sm);
     height: 2.25rem;
 
-    &:hover,
-    &:focus {
-      span {
-        &:first-of-type {
-          width: 8ch;
-        }
-        &:last-of-type {
-          width: 4ch;
+    @media (min-width: 1280px) {
+      &:hover,
+      &:focus {
+        span {
+          &:first-of-type {
+            width: 8ch;
+          }
+          &:last-of-type {
+            width: 4ch;
+          }
         }
       }
     }
