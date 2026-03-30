@@ -15,6 +15,7 @@
       "@models/*": ["./models/*"],
       "@layouts/*": ["./layouts/*"],
       "@utils/*": ["./utils/*"],
+      "@data/*": ["./data/*"],
     },
   }
 }

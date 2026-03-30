@@ -1,8 +1,14 @@
 ---
 import MainLayout from "./MainLayout.astro";
+
+interface Props {
+  description?: string | undefined;
+}
+
+const { description } = Astro.props;
 ---
 
-<MainLayout>
+<MainLayout description={description}>
   <div>
     <slot />
   </div>

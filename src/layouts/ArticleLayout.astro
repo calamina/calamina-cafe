@@ -22,7 +22,7 @@ const wordCount = entry?.body?.split(/\s+/).length;
 const readingTime = Math.ceil((wordCount ?? 0) / 200);
 ---
 
-<MainLayout>
+<MainLayout description={entry.data.description}>
   <div class="article">
     {
       displayToc && (

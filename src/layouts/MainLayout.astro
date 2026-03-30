@@ -2,9 +2,15 @@
 import AppFooter from "@components/AppFooter.astro";
 import Header from "@components/features/header/Header.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
+
+interface Props {
+	description?: string | undefined;
+}
+
+const { description } = Astro.props;
 ---
 
-<BaseLayout>
+<BaseLayout description={description}>
 	<Header />
 	<main>
 		<slot />

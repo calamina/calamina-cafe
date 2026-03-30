@@ -1,5 +1,4 @@
 import { getCollection } from "astro:content"
-import { object } from "astro:schema"
 
 export async function GET() {
   const projects = await getCollection("projects")

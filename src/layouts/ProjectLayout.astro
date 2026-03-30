@@ -17,7 +17,7 @@ const {
 } = (await queryProject(project)) ?? {};
 ---
 
-<MainLayout>
+<MainLayout description={description.join(" ")}>
   <div class="project">
     <ProjectInfo name={name} tech={tech} description={description} url={url} />
     <ProjectGallery project={project} name={name} />

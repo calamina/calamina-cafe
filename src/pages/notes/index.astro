@@ -1,5 +1,6 @@
 ---
 import ArticleList from "@components/ArticleList.astro";
+import { description } from "@data/description";
 import MainLayout from "@layouts/MainLayout.astro";
 import { getCollection } from "astro:content";
 
@@ -19,7 +20,7 @@ export async function getStaticPaths() {
 }
 ---
 
-<MainLayout>
+<MainLayout description={description.notes}>
     <div class="view">
         {
             tidyNotes.map((category) => (

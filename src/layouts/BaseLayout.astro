@@ -1,5 +1,11 @@
 ---
 import "../assets/style/main.css";
+
+interface Props {
+	description?: string | undefined;
+}
+
+const { description } = Astro.props;
 const path = Astro.originPathname.slice(1, -1).split("/").pop();
 const prettyRoute = path ? path[0].toUpperCase() + path.slice(1) + " — " : "";
 const title = prettyRoute + "calamina cafe";
@@ -16,10 +22,7 @@ const title = prettyRoute + "calamina cafe";
 		<title>{title}</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
-		<meta
-			name="description"
-			content="Welcome ~ calamina is Grégoire Belliere"
-		/>
+		<meta name="description" content={description} />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="sitemap" href="/sitemap-index.xml" />
 	</head>

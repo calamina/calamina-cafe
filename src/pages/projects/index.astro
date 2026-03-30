@@ -1,5 +1,6 @@
 ---
 import ProjectPreview from "@components/features/project/ProjectPreview.astro";
+import { description } from "@data/description";
 import MainLayout from "@layouts/MainLayout.astro";
 import type { Project } from "@models/Project";
 import { queryProjects } from "@utils/content.ts";
@@ -24,7 +25,7 @@ const countTags = (tagname: string) => {
     useProjectFilters();
 </script>
 
-<MainLayout>
+<MainLayout description={description.projects}>
     <div class="container">
         <div class="intro">
             <div class="title">
