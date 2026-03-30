@@ -49,13 +49,13 @@ const readingTime = Math.ceil((wordCount ?? 0) / 200);
         ~ {readingTime} minute{readingTime > 1 ? "s" : ""} read
       </p>
       <Content />
-      {
+      <!-- {
         !displayToc && (
           <a class="back end" href={`/${type}#${entry.data.name}`}>
             ← back to {type}
           </a>
         )
-      }
+      } -->
     </div>
   </div>
 </MainLayout>
