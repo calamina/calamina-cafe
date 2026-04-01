@@ -43,7 +43,7 @@ import MenuCategories from "./MenuCategories.astro";
   }
 
   button {
-    background-color: var(--bg);
+    /* background-color: var(--bg); */
     padding: 0.5rem;
     border-radius: var(--radius-sm);
 
@@ -56,10 +56,16 @@ import MenuCategories from "./MenuCategories.astro";
       outline-offset: -3px;
     }
 
+    &.show-button {
+      position: fixed;
+      right: 1rem;
+      top: 1rem;
+      backdrop-filter: blur(5px);
+    }
+
     &.hide-button {
       transform: none;
       transition: transform var(--timing-xl) 0.2s;
-      background-color: var(--bg-alt);
 
       @starting-style {
         transform: rotate(360deg);
@@ -69,32 +75,25 @@ import MenuCategories from "./MenuCategories.astro";
 
   [popover] {
     z-index: 200;
-    background-color: var(--bg-alt);
-    border-radius: var(--radius-md);
-    margin: 0;
+    background-color: var(--bg);
     padding: 0;
     border: none;
     outline: none;
-    top: 0.5rem;
-    right: 0.5rem;
-    left: 0.5rem;
-    bottom: 0.5rem;
-    width: calc(100vw - 1rem);
-    opacity: 0;
-    transition:
-      opacity var(--timing-md),
-      display var(--timing-md) allow-discrete;
+    inset: 0;
+    width: 100vw;
+    border-bottom: 1px solid var(--bg-alt);
+    display: none;
+    overflow: hidden;
 
     &:popover-open {
       display: flex;
       flex-flow: column;
-      opacity: 1;
       align-items: center;
       justify-content: center;
-
-      @starting-style {
-        opacity: 0;
-      }
+      box-shadow:
+        var(--bg) 0px 1px 1px 0px inset,
+        var(--bg) 0px 50px 100px -20px,
+        var(--bg) 0px 30px 60px -30px;
     }
   }
 
@@ -105,7 +104,7 @@ import MenuCategories from "./MenuCategories.astro";
     /* justify-content: space-between; */
     justify-content: end;
     align-items: center;
-    padding: 0.5rem;
+    padding: 2rem 1rem;
   }
 
   .menu-title {

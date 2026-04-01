@@ -1,0 +1,30 @@
+---
+const arr =new Array(5).fill("")
+---
+
+<div class="ascii-separator" inert>
+    {
+        arr.map(() => (
+            <p>*:._.~'`'~._.:*'-._.:*</p>
+            <p>*`':._.:'`*</p>
+            <p>*:._.~'`'~._.:*'-._.:*</p>
+        ))
+    }
+</div>
+
+<style>
+  .ascii-separator {
+    height: 1rem;
+    margin: .5rem auto 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    width: calc(100% - 1rem);
+
+    p {
+        color: var(--bg-alt);
+    }
+  }
+</style>

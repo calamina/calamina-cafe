@@ -1,7 +1,8 @@
 ---
+import ProjectFilters from "@components/features/project/ProjectFilters.astro";
 import ProjectPreview from "@components/features/project/ProjectPreview.astro";
 import { description } from "@data/description";
-import MainLayout from "@layouts/MainLayout.astro";
+import PageLayout from "@layouts/PageLayout.astro";
 import type { Project } from "@models/Project";
 import { queryProjects } from "@utils/content.ts";
 
@@ -9,31 +10,13 @@ const projects: Project[] = await queryProjects();
 
 const sort = (a: Project, b: Project) =>
     a.name.localeCompare(b.name, "en", { sensitivity: "base" });
-
-const tags: Set<string> = new Set();
-projects.map((project) => project.tags?.forEach((tag) => tags.add(tag)));
-
-const countTags = (tagname: string) => {
-    return projects.filter((project) =>
-        project.tags?.some((tag) => tag === tagname),
-    ).length;
-};
 ---
 
-<script>
-    import { useProjectFilters } from "@utils/projects-filters";
-    useProjectFilters();
-</script>
-
-<MainLayout description={description.projects}>
-    <div class="container">
-        <div class="header">
-            <h1>Projects</h1>
-            <p>{description.projects}</p>
-        </div>
+<PageLayout title="Projects" description={description.projects}>
+    <div class="content">
         <div class="intro">
             <div class="title">
-                <h1>Web projects</h1>
+                <h2>Web projects</h2>
                 <span class="limit" inert></span>
                 <p class="entries">
                     <span inert>(</span>
@@ -42,7 +25,8 @@ const countTags = (tagname: string) => {
                 </p>
             </div>
             <p>Collection of small personnal web projects.</p>
-            <nav>
+            <ProjectFilters projects={projects} />
+            <!-- <nav>
                 {
                     tags.values().map((tag) => (
                         <button class="tagSelector" value={tag}>
@@ -52,7 +36,7 @@ const countTags = (tagname: string) => {
                     ))
                 }
                 <button class="reset">all</button>
-            </nav>
+            </nav> -->
         </div>
         <div class="projects" id="projects">
             {
@@ -62,34 +46,13 @@ const countTags = (tagname: string) => {
             }
         </div>
     </div>
-</MainLayout>
+</PageLayout>
 
 <style>
-    .header {
+    .content {
         display: flex;
         flex-flow: column;
-        gap: 0.25rem;
-        width: fit-content;
-
-        h1 {
-            font-size: 3rem;
-            letter-spacing: -2px;
-            line-height: 3.5rem;
-        }
-    }
-
-    .container {
-        width: 60rem;
-        margin: 0 auto;
-        padding: 4rem 4rem 8rem;
-        display: flex;
-        flex-flow: column;
-        gap: 3rem;
-
-        @media (max-width: 1280px) {
-            padding: 2rem;
-            width: 100%;
-        }
+        gap: 2rem;
     }
 
     .intro {
@@ -115,60 +78,6 @@ const countTags = (tagname: string) => {
     .entries,
     .entries span {
         color: var(--color-alter);
-    }
-
-    nav {
-        padding-top: 1rem;
-        display: flex;
-        gap: 1rem;
-
-        @media (max-width: 1280px) {
-            flex-flow: row wrap;
-        }
-    }
-
-    button {
-        display: flex;
-        align-items: baseline;
-        gap: 1ch;
-        padding: 0 0.5rem 0.15rem 0.4rem;
-        border-top-left-radius: 0.5rem;
-        border-bottom-right-radius: 0.5rem;
-        background-color: var(--bg-alt);
-
-        @media (max-width: 1280px) {
-            width: fit-content;
-        }
-
-        &:hover {
-            background-color: var(--bg-alter);
-        }
-
-        &.reset {
-            margin-left: auto;
-            background-color: var(--bg-alt);
-
-            @media (max-width: 1280px) {
-                margin-left: 0;
-            }
-        }
-
-        &.active,
-        &:hover.active {
-            background-color: var(--highlight);
-        }
-
-        &:hover,
-        &.active {
-            .count {
-                color: var(--color-alt);
-            }
-        }
-    }
-
-    .count {
-        color: var(--color-alter);
-        font-size: 0.8rem;
     }
 
     .projects {

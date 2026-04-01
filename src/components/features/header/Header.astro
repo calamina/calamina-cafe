@@ -1,8 +1,8 @@
 ---
 import AppSearch from "@components/AppSearch.astro";
+import Logo from "@components/atomic/Logo.astro";
 import Menu from "@components/features/mobile-menu/Menu.astro";
 import ThemeSwitch from "@components/features/theme/ThemeSwitch.astro";
-import Logo from "@components/Logo.astro";
 import HeaderCategories from "./HeaderCategories.astro";
 import HeaderMobile from "./HeaderMobile.astro";
 ---
@@ -24,11 +24,11 @@ import HeaderMobile from "./HeaderMobile.astro";
   header {
     max-width: var(--app-width);
     display: flex;
-    height: 5rem;
+    height: 6rem;
     width: 100%;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem 1.5rem;
+    padding: 1rem 2rem;
     z-index: 50;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));

@@ -1,0 +1,92 @@
+---
+import Blinker from "@components/atomic/Blinker.astro";
+import TagList from "@components/atomic/TagList.astro";
+import type { Article } from "@models/Article";
+
+interface Props {
+  entry: Article;
+  char: string;
+  url: string;
+}
+
+const { char, entry, url } = Astro.props;
+---
+
+<a id={entry.name} href={url}>
+  <p class="link">{entry.title}</p>
+  {
+    char && (
+      <div class="info">
+        <TagList tags={entry.tags} />
+        <Blinker char={char} />
+      </div>
+    )
+  }
+</a>
+
+<style>
+  a {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    gap: 0;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+
+    &:hover,
+    &:focus-visible {
+      .link {
+        color: var(--color-hover);
+        background-color: var(--highlight);
+        padding-left: 1.25rem;
+
+        &:after {
+          content: "->";
+          color: var(--color-hover);
+          transform: translateX(0);
+        }
+      }
+      span {
+        animation-play-state: running;
+      }
+      .info {
+        border-color: var(--highlight);
+      }
+    }
+  }
+
+  .link {
+    color: var(--color);
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--bg-alt);
+    transition: padding-left var(--timing-md);
+    border-top-left-radius: var(--radius-sm);
+    border-top-right-radius: var(--radius-sm);
+
+    &:after {
+      content: "->";
+      color: transparent;
+      transform: translateX(-0.25rem);
+      padding-left: 1ch;
+      transition:
+        transform var(--timing-md),
+        color var(--timing-md);
+    }
+  }
+
+  .info {
+    background-color: var(--bg);
+    border: 2px solid var(--bg-alt);
+    border-bottom-left-radius: var(--radius-sm);
+    border-bottom-right-radius: var(--radius-sm);
+    border-top: none;
+    width: 100%;
+    height: 2.5rem;
+    padding: 0 1ch;
+    gap: 1ch;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+</style>

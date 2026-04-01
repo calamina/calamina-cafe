@@ -1,7 +1,7 @@
 ---
 import ArticleList from "@components/ArticleList.astro";
 import { description } from "@data/description";
-import MainLayout from "@layouts/MainLayout.astro";
+import PageLayout from "@layouts/PageLayout.astro";
 import { getCollection } from "astro:content";
 
 const notes = await getCollection("notes");
@@ -20,50 +20,14 @@ export async function getStaticPaths() {
 }
 ---
 
-<MainLayout description={description.notes}>
-    <div class="view">
-        <div class="header">
-            <h1>Notes</h1>
-            <p>{description.notes}</p>
-        </div>
-        {
-            tidyNotes.map((category) => (
-                <ArticleList
-                    entries={category.content}
-                    url="notes"
-                    listTitle={category.id}
-                />
-            ))
-        }
-    </div>
-</MainLayout>
-
-<style>
-    .header {
-        display: flex;
-        flex-flow: column;
-        gap: 0.25rem;
-        width: fit-content;
-
-        h1 {
-            font-size: 3rem;
-            letter-spacing: -2px;
-            line-height: 3.5rem;
-        }
+<PageLayout title="Notes" description={description.notes}>
+    {
+        tidyNotes.map((category) => (
+            <ArticleList
+                url="notes"
+                entries={category.content}
+                listTitle={category.id}
+            />
+        ))
     }
-
-    .view {
-        width: 100%;
-        padding: 4rem 0;
-        width: 50rem;
-        margin: 0 auto;
-        display: flex;
-        flex-flow: column;
-        gap: 3rem;
-
-        @media (max-width: 1280px) {
-            padding: 4rem 2rem;
-            width: 100%;
-        }
-    }
-</style>
+</PageLayout>

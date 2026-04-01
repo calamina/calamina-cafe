@@ -42,7 +42,7 @@ html {
     scrollbar-width: thin;
     scrollbar-color: var(--scroll-color) transparent;
     scrollbar-gutter: stable;
-    scroll-padding-top: 5rem;
+    scroll-padding-top: 6rem;
     scroll-behavior: smooth;
     text-wrap: pretty;
 

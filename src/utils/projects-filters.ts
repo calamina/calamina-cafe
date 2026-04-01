@@ -1,8 +1,4 @@
 export const useProjectFilters = () => {
-  // Dynamic project grid (will probably discard aeugh)
-  // import { useProjects } from "@utils/projects";
-  // useProjects();
-
   const reset = document.querySelector(".reset");
   const projects = document.querySelectorAll(".project");
   const buttons = document.querySelectorAll(".tagSelector");

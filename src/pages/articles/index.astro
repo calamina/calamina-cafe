@@ -1,7 +1,7 @@
 ---
 import ArticleList from "@components/ArticleList.astro";
 import { description } from "@data/description";
-import MainLayout from "@layouts/MainLayout.astro";
+import PageLayout from "@layouts/PageLayout.astro";
 import type { Article } from "@models/Article";
 import { queryArticles } from "@utils/content.ts";
 
@@ -16,60 +16,14 @@ const tidyArticles = Map.groupBy(articles, ({ status }) => status)
     }));
 ---
 
-<MainLayout description={description.articles}>
-    <div class="view">
-        <div class="header">
-            <h1>Articles</h1>
-            <p>{description.articles}</p>
-        </div>
-        {
-            tidyArticles.map((articles) => (
-                <ArticleList
-                    entries={articles.list}
-                    listTitle={articles.status}
-                />
-            ))
-        }
-    </div>
-</MainLayout>
-
-<style>
-    .test {
-        background-color: var(--bg-alt);
-        width: 100%;
-        height: 3rem;
-        border-radius: var(--radius-sm);
-        overflow-x: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+<PageLayout title="Articles" description={description.articles}>
+    {
+        tidyArticles.map((articles) => (
+            <ArticleList
+                url="articles"
+                entries={articles.list}
+                listTitle={articles.status}
+            />
+        ))
     }
-
-    .header {
-        display: flex;
-        flex-flow: column;
-        gap: 0.25rem;
-        width: fit-content;
-
-        h1 {
-            font-size: 3rem;
-            letter-spacing: -2px;
-            line-height: 3.5rem;
-        }
-    }
-
-    .view {
-        width: 100%;
-        padding: 4rem 0;
-        width: 50rem;
-        margin: 0 auto;
-        display: flex;
-        flex-flow: column;
-        gap: 3rem;
-
-        @media (max-width: 1280px) {
-            padding: 4rem 2rem;
-            width: 100%;
-        }
-    }
-</style>
+</PageLayout>

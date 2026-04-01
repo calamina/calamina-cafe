@@ -51,7 +51,7 @@ import MainLayout from "@layouts/MainLayout.astro";
     margin: 0;
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
-    height: calc(100dvh - 5rem);
+    height: calc(100dvh - 6rem);
     width: 100%;
     place-items: center;
     overflow-x: hidden;
@@ -76,12 +76,12 @@ import MainLayout from "@layouts/MainLayout.astro";
       font-family: "Redaction", serif;
       font-weight: 500;
       letter-spacing: -10px;
-      line-height: 9rem;
+      line-height: 10.5rem;
       display: grid;
       text-align: center;
       text-align: end;
 
-      @media (max-width: 1280rem) {
+      @media (max-width: 1280px) {
         font-size: 7rem;
         letter-spacing: -4px;
         letter-spacing: -4px;
@@ -102,6 +102,13 @@ import MainLayout from "@layouts/MainLayout.astro";
 
     @media (max-width: 1280px) {
       padding: 0 1rem 1.5rem;
+      left: 3rem;
+      right: 3rem;
+      bottom: 2rem;
+      display: flex;
+      flex-flow: column;
+      align-items: start;
+      gap: 6rem;
     }
   }
 
@@ -113,11 +120,23 @@ import MainLayout from "@layouts/MainLayout.astro";
     padding: 0;
     width: 100%;
 
+    @media (max-width: 1280px) {
+      gap: 0.5rem;
+
+      span,
+      p {
+        flex-wrap: wrap;
+        line-height: 0.6rem;
+        letter-spacing: -0.5px;
+        font-size: 0.8rem;
+      }
+    }
+
     p {
       background-color: var(--bg);
       line-height: 1.25rem;
       color: var(--color-alter);
-      padding: 0.5rem 0.75rem;
+      padding: 0.5rem 0 0.5rem 0.5rem;
       border-radius: var(--radius-sm);
 
       &:first-of-type {
@@ -132,29 +151,6 @@ import MainLayout from "@layouts/MainLayout.astro";
           flex-shrink: 0;
           border-radius: var(--radius-md);
         }
-      }
-    }
-  }
-
-  @media (max-width: 1280px) {
-    .bottom {
-      left: 3rem;
-      right: 3rem;
-      bottom: 2rem;
-      display: flex;
-      flex-flow: column;
-      align-items: start;
-      gap: 6rem;
-    }
-
-    .description {
-      gap: 0.5rem;
-      span,
-      p {
-        flex-wrap: wrap;
-        line-height: 0.6rem;
-        letter-spacing: -0.5px;
-        font-size: 0.8rem;
       }
     }
   }

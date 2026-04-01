@@ -6,11 +6,11 @@
 <style>
   div {
     display: flex;
-    width: 100%;
     gap: 1ch;
     justify-content: center;
     width: fit-content;
-    justify-self: center;
+    flex-shrink: 0;
+    padding: 2px 0;
   }
 
   a {
@@ -19,7 +19,6 @@
     padding-left: 0.25rem;
     padding-right: 0.35rem;
     border-radius: var(--radius-no);
-    transition: padding var(--timing-md);
   }
 
   p {

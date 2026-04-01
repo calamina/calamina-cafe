@@ -3,6 +3,7 @@ import Ascii from "@components/ascii.astro";
 import LinkContact from "@components/atomic/LinkContact.astro";
 import SocialsList from "@components/SocialsList.astro";
 import Ariane from "./Ariane.astro";
+import AsciiSeparator from "./atomic/AsciiSeparator.astro";
 ---
 
 <footer>
@@ -14,9 +15,9 @@ import Ariane from "./Ariane.astro";
                 <p>visiting <span></span></p>
             </div>
             <div class="rights">
-                <a target="_blank" href="https://github.com/calamina"
-                    >calamina</a
-                >
+                <a target="_blank" href="https://github.com/calamina">
+                    calamina
+                </a>
                 <span>~ {new Date().getFullYear()}</span>
             </div>
         </div>
@@ -26,15 +27,7 @@ import Ariane from "./Ariane.astro";
         </div>
         <SocialsList />
     </div>
-    <div class="ascii-separator" inert>
-        {
-            new Array(5).fill("").map(() => (
-                <p>*:._.~'`'~._.:*'-._.:*</p>
-                <p>*`':._.:'`*</p>
-                <p>*:._.~'`'~._.:*'-._.:*</p>
-            ))
-        }
-    </div>
+    <AsciiSeparator />
     <div class="sub">
         <Ariane />
         <nav class="statements">
@@ -46,19 +39,12 @@ import Ariane from "./Ariane.astro";
 
 <style>
     footer {
+        position: relative;
         max-width: var(--app-width);
-        width: calc(100% - 3rem);
-        margin-bottom: 1.5rem;
-        background-color: var(--bg-alt);
-        border-radius: var(--radius-sm);
+        background-color: var(--bg);
+        border-top: 1px solid var(--bg-alt);
         overflow-x: hidden;
-
-        @media (max-width: 1280px) {
-            width: calc(100% - 2rem);
-            width: 100%;
-            margin-bottom: 0;
-            padding: 2rem 0;
-        }
+        padding: 2rem 0;
     }
 
     .main {
@@ -76,33 +62,17 @@ import Ariane from "./Ariane.astro";
         }
     }
 
-    .ascii-separator {
-        height: 1rem;
-        margin: .5rem auto 0;
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 3rem;
-        width: calc(100% - 1rem);
-
-        p {
-            color: var(--color-alter);
-        }
-    }
     .sub {
-        height: 5rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 0 3rem;
+        padding: 2rem 3rem 1rem;
 
         @media (max-width: 1280px) {
             flex-flow: column;
             align-items: center;
             padding: 1.5rem 1rem 1.5rem;
-            height: auto;
-            gap: 1.5rem;
+            gap: 1rem;
         }
     }
 
@@ -112,16 +82,21 @@ import Ariane from "./Ariane.astro";
         a {
             position: relative;
             width: fit-content;
+            padding: 0 0.5rem;
 
             &::before {
                 content: "";
                 position: absolute;
-                left: -1rem;
+                left: -0.75rem;
                 background-color: var(--highlight);
                 height: 0.45rem;
                 width: 0.45rem;
                 flex-shrink: 0;
                 border-radius: var(--radius-md);
+            }
+
+            &:focus-within {
+                background-color: var(--highlight);
             }
         }
     }
@@ -152,10 +127,10 @@ import Ariane from "./Ariane.astro";
         height: 100%;
         justify-content: center;
         align-items: center;
-        overflow: hidden;
+        overflow-x: hidden;
 
         @media (max-width: 1280px) {
-            padding-bottom: .5rem;
+            padding-bottom: 0.5rem;
         }
     }
 

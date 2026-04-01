@@ -1,0 +1,49 @@
+---
+import MainLayout from "./MainLayout.astro";
+
+interface Props {
+	title: string;
+	description?: string | undefined;
+}
+
+const { title, description } = Astro.props;
+---
+
+<MainLayout description={description}>
+	<div class="container">
+		<div class="header">
+			<h1>{title}</h1>
+			<p>{description}</p>
+		</div>
+		<slot />
+	</div>
+</MainLayout>
+
+<style>
+	.header {
+		display: flex;
+		flex-flow: column;
+		gap: 0.25rem;
+		width: fit-content;
+
+		h1 {
+			font-size: 3rem;
+			letter-spacing: -2px;
+			line-height: 3.5rem;
+		}
+	}
+
+	.container {
+		width: 44rem;
+		margin: 0 auto;
+		padding: 4rem 0 8rem;
+		display: flex;
+		flex-flow: column;
+		gap: 4rem;
+
+		@media (max-width: 1280px) {
+			padding: 2rem;
+			width: 100%;
+		}
+	}
+</style>

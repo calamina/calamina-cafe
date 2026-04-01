@@ -7,11 +7,8 @@ hey :)
 
 # DOING
 - continue proper CSS design system
-- refacto big components (index, footer)
-- test bigger mobile header width nav/ariane under buttons ! 
-- export article headings in component
+- split large components (index, footer)
 - clean projects !!!
-- add "back to xxx ->" component
 - add "link ->" component
 
 # DESIGN
@@ -25,7 +22,6 @@ hey :)
 - add title to all buttons, and aria-label to all icon-buttons
 
 # CONTENT
-- add article status and display it !
 - proper images with aspect-ratio
 - update readme img
 - swap projects to TOML/mdx ? (aergh)
@@ -35,5 +31,5 @@ hey :)
 - add tools ? (flow launcher config / sites css ?)
 - fix & complete projects (aerg)
 - complete about
+  - add "gear" and favourite stuff
 - proper alt on images / proper images (highlights, etc)
-- add "gear" and favourite stuff to about

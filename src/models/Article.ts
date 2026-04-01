@@ -8,6 +8,7 @@ export const ArticleSchema = z.object({
     category: z.string().optional(),
     created: z.date().optional(),
     updated: z.date().optional(),
+    tags: z.array(z.string()).optional(),
 })
 
 export type Article = z.infer<typeof ArticleSchema>
