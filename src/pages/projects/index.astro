@@ -27,6 +27,10 @@ const countTags = (tagname: string) => {
 
 <MainLayout description={description.projects}>
     <div class="container">
+        <div class="header">
+            <h1>Projects</h1>
+            <p>{description.projects}</p>
+        </div>
         <div class="intro">
             <div class="title">
                 <h1>Web projects</h1>
@@ -61,8 +65,21 @@ const countTags = (tagname: string) => {
 </MainLayout>
 
 <style>
+    .header {
+        display: flex;
+        flex-flow: column;
+        gap: 0.25rem;
+        width: fit-content;
+
+        h1 {
+            font-size: 3rem;
+            letter-spacing: -2px;
+            line-height: 3.5rem;
+        }
+    }
+
     .container {
-        width: 70vw;
+        width: 60rem;
         margin: 0 auto;
         padding: 4rem 4rem 8rem;
         display: flex;
@@ -89,9 +106,8 @@ const countTags = (tagname: string) => {
     }
 
     .limit {
-        height: 1px;
         height: 100%;
-        border-bottom: 1px solid var(--bg-alter);
+        border-bottom: 2px solid var(--bg-alter);
         display: flex;
         flex: 1;
     }
@@ -105,6 +121,10 @@ const countTags = (tagname: string) => {
         padding-top: 1rem;
         display: flex;
         gap: 1rem;
+
+        @media (max-width: 1280px) {
+            flex-flow: row wrap;
+        }
     }
 
     button {
@@ -116,6 +136,10 @@ const countTags = (tagname: string) => {
         border-bottom-right-radius: 0.5rem;
         background-color: var(--bg-alt);
 
+        @media (max-width: 1280px) {
+            width: fit-content;
+        }
+
         &:hover {
             background-color: var(--bg-alter);
         }
@@ -123,6 +147,10 @@ const countTags = (tagname: string) => {
         &.reset {
             margin-left: auto;
             background-color: var(--bg-alt);
+
+            @media (max-width: 1280px) {
+                margin-left: 0;
+            }
         }
 
         &.active,
@@ -153,6 +181,7 @@ const countTags = (tagname: string) => {
 
         @media (max-width: 1280px) {
             grid-template-columns: 1fr 1fr;
+            gap: 2rem 3rem;
         }
     }
 </style>

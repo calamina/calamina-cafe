@@ -47,7 +47,6 @@ import Ariane from "./Ariane.astro";
 <style>
     footer {
         max-width: var(--app-width);
-        width: 100%;
         width: calc(100% - 3rem);
         margin-bottom: 1.5rem;
         background-color: var(--bg-alt);
@@ -55,12 +54,10 @@ import Ariane from "./Ariane.astro";
         overflow-x: hidden;
 
         @media (max-width: 1280px) {
-            width: calc(100% - 1.5rem);
+            width: calc(100% - 2rem);
             width: 100%;
             margin-bottom: 0;
-            border-radius: 0;
-            gap: 0.5rem;
-            padding-bottom: 1rem;
+            padding: 2rem 0;
         }
     }
 
@@ -72,8 +69,7 @@ import Ariane from "./Ariane.astro";
         align-items: end;
 
         @media (max-width: 1280px) {
-            padding: 2rem 1rem 1rem;
-            gap: 1rem;
+            padding: 2rem;
             display: flex;
             flex-flow: column;
             align-items: center;
@@ -104,9 +100,9 @@ import Ariane from "./Ariane.astro";
         @media (max-width: 1280px) {
             flex-flow: column;
             align-items: center;
-            padding: 1rem 1rem 1.5rem;
+            padding: 1.5rem 1rem 1.5rem;
             height: auto;
-            gap: 0.25rem;
+            gap: 1.5rem;
         }
     }
 
@@ -151,8 +147,11 @@ import Ariane from "./Ariane.astro";
     }
 
     .center {
+        display: flex;
+        flex-flow: column;
         height: 100%;
-        justify-content: space-between;
+        justify-content: center;
+        align-items: center;
         overflow: hidden;
 
         @media (max-width: 1280px) {

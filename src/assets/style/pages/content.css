@@ -14,11 +14,12 @@
   h1 {
     font-size: 3rem;
     text-align: center;
-    letter-spacing: -0.5px;
+    letter-spacing: -2px;
     line-height: 3.5rem;
   }
 
   h2 {
+    letter-spacing: -2px;
     font-size: 2.5rem;
     line-height: 2.4rem;
 
@@ -29,6 +30,7 @@
   }
 
   h3 {
+    letter-spacing: -1px;
     font-size: 1.5rem;
 
     &:not(:first-child) {
@@ -196,6 +198,10 @@
     background-color: var(--bg-alt);
     margin: 0.75rem auto 2.5rem;
     border-radius: var(--radius-sm);
+
+    @media screen and (max-width: 1280px) {
+      padding: 0.3rem 1rem 0.15rem;
+    }
   }
 
   ul,

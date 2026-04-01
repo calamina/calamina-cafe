@@ -15,8 +15,10 @@ const { name, url, tech, description } = Astro.props;
 ---
 
 <div class="info">
-  <ProjectName name={name} />
-  {url && <LinkIcon url={url} />}
+  <div class="header">
+    <ProjectName name={name} />
+    {url && <LinkIcon url={url} />}
+  </div>
   <div class="description">
     {description?.map((line) => <p>{line}</p>)}
   </div>
@@ -38,16 +40,25 @@ const { name, url, tech, description } = Astro.props;
     top: 5rem;
     left: 0;
     padding: 1rem 1rem 1rem 0;
+
+    @media (max-width: 1280px) {
+      height: auto;
+      flex: 0;
+      position: relative;
+      top: 0;
+      gap: 2rem;
+      padding-bottom: 1rem;
+    }
   }
 
   .description {
     padding: 1.5rem 0;
     text-justify: distribute;
     opacity: 1;
-    transform: translateX(0);
+    font-weight: 300;
 
-    p {
-      font-weight: 300;
+    @media (max-width: 1280px) {
+      padding: 0.5rem 0 0;
     }
   }
 
@@ -56,23 +67,8 @@ const { name, url, tech, description } = Astro.props;
     text-align: center;
     text-decoration: underline;
     margin-bottom: 2rem;
-  }
 
-  /* MEDIA QUERIES */
-  @media (max-width: 1280px) {
-    .info {
-      height: auto;
-      flex: 0;
-      position: relative;
-      top: 0;
-      padding-bottom: 0.75rem;
-    }
-
-    .description {
-      padding: 0.5rem 0;
-    }
-
-    .back {
+    @media (max-width: 1280px) {
       display: none;
     }
   }

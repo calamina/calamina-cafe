@@ -55,6 +55,10 @@ import MainLayout from "@layouts/MainLayout.astro";
     width: 100%;
     place-items: center;
     overflow-x: hidden;
+
+    @media (max-width: 1280px) {
+      height: calc(100dvh - 3.75rem);
+    }
   }
 
   h1 {

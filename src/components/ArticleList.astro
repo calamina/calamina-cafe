@@ -1,5 +1,7 @@
 ---
 import type { Article } from "@models/Article";
+import Wintrading from "./features/articles/Wintrading.astro";
+
 interface Props {
   entries: Article[];
   url?: string;
@@ -7,6 +9,12 @@ interface Props {
 }
 
 const { entries, url = "articles", listTitle = null } = Astro.props;
+
+const charMap: Record<string, string[]> = {
+  animation: ["@", "@", "@", "@", "@", "@"],
+  wintrading: ["$", "$", "$", "$", "$", "$"],
+  shadow: ["?", "?", "?", "?", "?", "?"],
+};
 ---
 
 <div class="list">
@@ -25,9 +33,11 @@ const { entries, url = "articles", listTitle = null } = Astro.props;
   }
   {
     entries.map((entry) => (
-      <a id={entry.name} href={`/${url}/${entry.name}`}>
-        {entry.title}
-      </a>
+      <Wintrading chars={charMap[entry.name]}>
+        <a id={entry.name} href={`/${url}/${entry.name}`}>
+          {entry.title}
+        </a>
+      </Wintrading>
     ))
   }
 </div>
@@ -37,15 +47,6 @@ const { entries, url = "articles", listTitle = null } = Astro.props;
     display: flex;
     flex-flow: column;
     gap: 1rem;
-    width: 70vw;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr;
-
-    @media (max-width: 1280px) {
-      padding: 2rem 1rem;
-      width: 100%;
-    }
   }
 
   .title {
@@ -53,14 +54,11 @@ const { entries, url = "articles", listTitle = null } = Astro.props;
     align-items: baseline;
     gap: 1rem;
     justify-content: space-between;
-    margin-bottom: 0.5rem;
   }
 
   .limit {
-    height: 1px;
     height: 100%;
-    border-bottom: 1px solid var(--bg-alter);
-    opacity: 0.6;
+    border-bottom: 2px solid var(--bg-alter);
     display: flex;
     flex: 1;
   }
@@ -80,8 +78,8 @@ const { entries, url = "articles", listTitle = null } = Astro.props;
     color: var(--color);
     width: 100%;
     padding: 0.75rem;
-    /* text-transform: capitalize; */
-    outline: 2px solid var(--bg-alter);
+    background-color: var(--bg-alt);
+    /* border-radius: var(--radius-sm); */
     transition: padding-left var(--timing-md);
 
     &:after {
@@ -96,8 +94,7 @@ const { entries, url = "articles", listTitle = null } = Astro.props;
     &:hover,
     &:focus-visible {
       color: var(--color);
-      background-color: transparent;
-      outline: 2px solid var(--color);
+      /* background-color: var(--bg-alter); */
       padding-left: 1.25rem;
 
       &:after {

@@ -24,6 +24,10 @@ const { theme, icon } = Astro.props;
     gap: 1rem;
     border-radius: var(--radius-sm);
 
+    @media (max-width: 1280px) {
+      gap: 0.5rem;
+    }
+
     &:hover:not(.active) {
       background-color: var(--bg-alter);
       text-decoration: none;

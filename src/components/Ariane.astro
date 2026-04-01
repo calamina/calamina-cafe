@@ -27,7 +27,7 @@ function getCrumbs(): Crumb[] {
 ---
 
 <div class="ariane" class:list={{ discrete: discrete }}>
-  <p>You are here :</p>
+  <p>You are here</p>
   <nav class="crumbs">
     <a href="/" class="home">home</a>
     {!!crumbs.length && <p>~</p>}
@@ -58,7 +58,7 @@ function getCrumbs(): Crumb[] {
 
   .ariane > p {
     @media (max-width: 1280px) {
-      display: none;
+      /* display: none; */
     }
   }
 
@@ -66,10 +66,15 @@ function getCrumbs(): Crumb[] {
     margin: 0;
     padding: 0;
 
+    & > p {
+      display: none;
+    }
+
     .crumbs a {
       background-color: var(--bg-alt);
-      height: 2.25rem;
-      padding: 0rem 0.5rem 0.12rem;
+      color: var(--color-alt);
+      height: 2rem;
+      padding: 0rem 0.5rem;
 
       &:hover,
       &:focus-visible {

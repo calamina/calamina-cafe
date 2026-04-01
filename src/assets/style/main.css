@@ -45,7 +45,14 @@ html {
     scroll-padding-top: 5rem;
     scroll-behavior: smooth;
     text-wrap: pretty;
+
+    /* &:has([popover]:popover-open) {
+        overflow: hidden;
+        user-select: none;
+        pointer-events: none;
+    } */
 }
+
 
 main {
     padding: 0 1rem;
