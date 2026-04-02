@@ -16,7 +16,7 @@ const { description } = Astro.props;
 
 <style>
   div {
-    padding: 4rem 0 8rem;
+    padding: 4rem 0 6rem;
     margin: 0;
     display: flex;
     flex-flow: column;
@@ -24,5 +24,9 @@ const { description } = Astro.props;
     width: 100%;
     max-width: 44rem;
     margin: 0 auto;
+
+    @media (max-width: 1280px) {
+      padding: 2rem 0;
+    }
   }
 </style>
