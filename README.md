@@ -6,6 +6,7 @@
 hey :)
 
 # DOING
+- use title component !! css duplicated 3 times !!
 - continue proper CSS design system
 - split large components (index, footer)
 - clean projects !!!

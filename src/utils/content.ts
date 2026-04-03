@@ -14,6 +14,7 @@ export const queryNotes = async () =>
   getCollection("notes").then(results => results
     .map(result => result.data as Article)
   )
+export const queryLastNote = async () => (await queryNotes())[0]
 
 // PROJECTS
 export const queryProjects = async (): Promise<Project[]> =>

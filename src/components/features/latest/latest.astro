@@ -26,14 +26,14 @@ const { type, name, url } = Astro.props;
     color: var(--color-alter);
     background-color: var(--bg);
 
-    @media (max-width: 1280rem) {
+    @media (max-width: 1280px) {
       padding: 0;
     }
   }
 
   a {
     color: var(--color-hover);
-    padding: 0.25rem 0.5rem 0.1rem;
+    padding: 0.1rem 0.5rem 0.2rem;
     background-color: var(--highlight);
     text-transform: capitalize;
     transition: padding var(--timing-md);
@@ -42,6 +42,10 @@ const { type, name, url } = Astro.props;
     &:hover,
     &:focus {
       text-decoration: underline;
+      padding: 0.1rem 0.75rem 0.2rem;
+    }
+
+    @media (max-width: 1280px) {
       padding: 0.25rem 0.75rem 0.1rem;
     }
   }

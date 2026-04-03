@@ -1,14 +1,20 @@
 ---
-import { queryLastArticle, queryLastProject } from "@utils/content";
+import {
+  queryLastArticle,
+  queryLastNote,
+  queryLastProject,
+} from "@utils/content";
 import Latest from "./latest.astro";
 
 const latestProject = await queryLastProject();
 const latestArticle = await queryLastArticle();
+const latestNote = await queryLastNote();
 ---
 
 <div class="latest">
   <Latest name={latestArticle?.name} type="article" url="articles/" />
   <Latest name={latestProject?.name} type="project" url="projects/" />
+  <Latest name={latestNote?.name} type="note" url="notes/" />
 </div>
 
 <style>

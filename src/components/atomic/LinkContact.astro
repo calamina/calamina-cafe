@@ -16,9 +16,13 @@
   a {
     background-color: var(--highlight);
     color: var(--color-hover);
-    padding-left: 0.25rem;
-    padding-right: 0.35rem;
-    border-radius: var(--radius-no);
+    padding-left: 0.5rem;
+    padding: 0 0.5rem 0.125rem;
+    border-radius: var(--radius-sm);
+
+    @media (max-width: 1280px) {
+      padding: 0.2rem 0.5rem 0.15rem;
+    }
   }
 
   p {

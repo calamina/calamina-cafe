@@ -1,7 +1,7 @@
 .content {
   grid-column: 2;
   max-width: 44rem;
-  padding: 4rem 0 6rem;
+  padding: 3rem 0 6rem;
   margin: 0 auto;
 
   @media (max-width: 1280px) {

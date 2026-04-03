@@ -1,0 +1,67 @@
+<h1>
+  <span class="cala">cala</span>
+  <span class="mina">mina</span>
+  <span class="cafe">cafe</span>
+</h1>
+
+<style>
+  h1 {
+    grid-row: 2;
+    display: flex;
+    flex-flow: column;
+    gap: 1.5vw;
+    gap: 0;
+    align-items: center;
+
+    @media (max-width: 1280px) {
+    }
+  }
+  span {
+    padding-bottom: 0.5vw;
+    display: inline-block;
+    line-height: 7.5vw;
+    font-size: 9vw;
+    font-family: "Redaction", serif;
+    font-family: "Apercu", serif;
+    font-weight: 300;
+
+    @media (max-width: 1280px) {
+      /* font-size: 10rem; */
+      padding: 0 0.5rem 0.5rem;
+      font-size: 12vw;
+      line-height: 18vw;
+      /* letter-spacing: -4px; */
+    }
+  }
+
+  .cala {
+    margin-right: 4ch;
+    animation: intro var(--timing-xl) 0.2s backwards;
+  }
+
+  .mina {
+    margin: 0 2ch;
+    animation: intro var(--timing-xl) 0.4s backwards;
+  }
+
+  .cafe {
+    margin-left: 4ch;
+    animation: intro var(--timing-xl) 0.6s backwards;
+  }
+
+  @keyframes intro {
+    0% {
+      opacity: 0;
+    }
+    33% {
+      opacity: 1;
+      transform: translateY(-1rem);
+    }
+    66% {
+      transform: translateY(1rem);
+    }
+    100% {
+      transform: translateY(0rem);
+    }
+  }
+</style>

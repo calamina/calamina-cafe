@@ -1,4 +1,5 @@
 ---
+import TitleDisplay from "@components/atomic/TitleDisplay.astro";
 import LatestList from "@components/features/latest/latestList.astro";
 import { description } from "@data/description";
 import MainLayout from "@layouts/MainLayout.astro";
@@ -18,10 +19,15 @@ import MainLayout from "@layouts/MainLayout.astro";
 <MainLayout description={description.home}>
   <div id="container"></div>
   <div class="core">
-    <h1>
+    <TitleDisplay />
+    <!-- <h1>
       <span class="a">calamina</span>
-      <span class="b">cafe</span>
-    </h1>
+      <span class="b">mina</span>
+      <span class="b">mina</span>
+    </h1> -->
+    <!-- <span class="b">:)</span> -->
+    <!-- <span class="a">calamina</span>
+      <span class="b">cafe</span> -->
     <div class="bottom">
       <LatestList />
       <div class="description">
@@ -50,43 +56,18 @@ import MainLayout from "@layouts/MainLayout.astro";
     padding: 0;
     margin: 0;
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: 0.75fr 1fr 1fr;
     height: calc(100svh - 6rem);
+    gap: 0;
     width: 100%;
     place-items: center;
     overflow-x: hidden;
+    padding: 0 0 3rem;
 
     @media (max-width: 1280px) {
+      grid-template-rows: 0.25fr 1fr 1fr;
       height: calc(100svh - 8rem);
-    }
-  }
-
-  h1 {
-    grid-row: 2;
-    display: flex;
-    flex-flow: column;
-    width: fit-content;
-    gap: 0 2rem;
-    align-self: start;
-    align-items: end;
-    padding-bottom: 1rem;
-
-    span {
-      font-size: 13rem;
-      font-family: "Redaction", serif;
-      font-weight: 500;
-      letter-spacing: -10px;
-      line-height: 10.5rem;
-      display: grid;
-      text-align: center;
-      text-align: end;
-
-      @media (max-width: 1280px) {
-        font-size: 6.5rem;
-        letter-spacing: -4px;
-        letter-spacing: -4px;
-        line-height: 5.5rem;
-      }
+      padding: 0;
     }
   }
 
@@ -98,13 +79,12 @@ import MainLayout from "@layouts/MainLayout.astro";
     align-items: end;
     justify-content: space-between;
     height: fit-content;
-    padding: 0 2rem 4rem;
 
     @media (max-width: 1280px) {
       padding: 0 0 1rem;
       left: 3rem;
       right: 3rem;
-      bottom: 2rem;
+      bottom: 0;
       display: flex;
       flex-flow: column;
       align-items: start;
@@ -118,7 +98,7 @@ import MainLayout from "@layouts/MainLayout.astro";
     align-items: end;
     text-wrap: balance;
     padding: 0;
-    width: 100%;
+    width: fit-content;
 
     @media (max-width: 1280px) {
       gap: 0.5rem;
@@ -136,7 +116,6 @@ import MainLayout from "@layouts/MainLayout.astro";
       background-color: var(--bg);
       line-height: 1.25rem;
       color: var(--color-alter);
-      padding: 0.5rem 0 0.5rem 0.5rem;
       border-radius: var(--radius-sm);
 
       &:first-of-type {
