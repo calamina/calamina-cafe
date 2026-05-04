@@ -36,7 +36,7 @@ import MainLayout from "@layouts/MainLayout.astro";
 
 <style>
   #container {
-    position: fixed;
+    position: absolute;
     z-index: -1;
     top: 0;
     left: 0;
@@ -53,7 +53,6 @@ import MainLayout from "@layouts/MainLayout.astro";
     gap: 0;
     width: 100%;
     place-items: center;
-    overflow-x: hidden;
     padding: 0 0 3rem;
 
     @media (max-width: 1280px) {
@@ -89,8 +88,12 @@ import MainLayout from "@layouts/MainLayout.astro";
     flex-flow: column;
     align-items: end;
     text-wrap: balance;
-    padding: 0;
     width: fit-content;
+    background-color: var(--bg);
+    box-shadow:
+      var(--bg) 0 0 100px 60px,
+      var(--bg) 0 0 60px 30px,
+      var(--bg) 0 0 30px 10px;
 
     @media (max-width: 1280px) {
       gap: 0.5rem;
@@ -105,10 +108,8 @@ import MainLayout from "@layouts/MainLayout.astro";
     }
 
     p {
-      background-color: var(--bg);
       line-height: 1.25rem;
       color: var(--color-alter);
-      border-radius: var(--radius-sm);
 
       &:first-of-type {
         display: inline-flex;
