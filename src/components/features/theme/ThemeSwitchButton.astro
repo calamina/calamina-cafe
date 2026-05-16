@@ -4,12 +4,18 @@ import Icon from "@components/icons/Icon.astro";
 interface Props {
   theme: "light" | "dark" | "system";
   icon: any;
+  mobile?: boolean;
 }
 
-const { theme, icon } = Astro.props;
+const { theme, icon, mobile } = Astro.props;
+console.debug(mobile);
 ---
 
-<button title={"theme-" + theme} data-theme={theme}>
+<button
+  title={"theme-" + theme}
+  data-theme={theme}
+  class:list={{ mobile: mobile }}
+>
   <Icon icon={icon} />
   <span>{theme}</span>
 </button>
@@ -47,8 +53,17 @@ const { theme, icon } = Astro.props;
     }
   }
 
-  & .active {
+  .active {
     text-decoration: none;
     background-color: var(--bg);
+  }
+
+  .mobile {
+    &:hover:not(.active) {
+      background-color: var(--bg-alt);
+    }
+    &.active {
+      background-color: var(--bg-alt);
+    }
   }
 </style>
