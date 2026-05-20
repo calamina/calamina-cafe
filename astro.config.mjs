@@ -8,5 +8,9 @@ import mdx from '@astrojs/mdx';
 export default defineConfig({
   integrations: [sitemap(), mdx()],
   site: 'https://calamina.cafe',
+  server: {
+		host: true,
+		port: 3000
+	}
   // devToolbar: { enabled: false }
 });
