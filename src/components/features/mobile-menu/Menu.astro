@@ -29,9 +29,13 @@ import MenuCategories from "./MenuCategories.astro";
       <!-- <AppSearch /> -->
       <MenuCategories />
       <div class="theme">
-        <ThemeSwitchButton theme="system" icon="IconMoonStars" />
-        <ThemeSwitchButton theme="light" icon="IconMoonHalf" />
-        <ThemeSwitchButton theme="dark" icon="IconMoonHalfFilled" />
+        <ThemeSwitchButton theme="system" icon="IconMoonStars" mobile={true} />
+        <ThemeSwitchButton theme="light" icon="IconMoonHalf" mobile={true} />
+        <ThemeSwitchButton
+          theme="dark"
+          icon="IconMoonHalfFilled"
+          mobile={true}
+        />
       </div>
     </div>
   </div>

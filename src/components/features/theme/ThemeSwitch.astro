@@ -32,7 +32,11 @@ import ThemeSwitchButton from "./ThemeSwitchButton.astro";
     for (const button of buttons) {
       const active =
         localStorage?.getItem("theme") === button.getAttribute("data-theme");
-      button.classList = active ? "active" : "";
+      if (active) {
+        button.classList.add("active");
+      } else {
+        button.classList.remove("active");
+      }
     }
   }
 </script>

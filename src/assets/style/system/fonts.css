@@ -29,11 +29,3 @@
   src: url('../../fonts/ApercuMonoPro-Bold.woff2') format('woff2');
   font-display: swap;
 }
-
-@font-face {
-  font-family: 'Redaction';
-  font-style: normal;
-  font-weight: 400;
-  src: url('../../fonts/Redaction_100-Regular.woff2') format('woff2');
-  font-display: swap;
-}
