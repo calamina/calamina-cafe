@@ -7,19 +7,34 @@ import MainLayout from "@layouts/MainLayout.astro";
 
 <script>
   import { useAscii } from "@utils/ascii";
-  import { switchTextContent } from "@utils/utils";
-
-  const stateList = ["human made", "half ready", ".-- .--.-."];
-  const stateElement = document.querySelector(".state") as HTMLElement;
-
-  switchTextContent(stateElement, stateList);
   useAscii();
+
+  const goElement = document.querySelector(".go");
+  const links = document.querySelectorAll("a");
+
+  links.forEach((link) => {
+    link.addEventListener("mouseenter", () => {
+      goElement?.classList.add("active-cta");
+      goElement?.classList.remove("inactive-cta");
+    });
+    link.addEventListener("mouseleave", () => {
+      goElement?.classList.add("inactive-cta");
+      goElement?.classList.remove("active-cta");
+    });
+  });
 </script>
 
 <MainLayout description={description.home}>
   <div id="container"></div>
   <div class="core">
     <TitleDisplay />
+    <div class="cta">
+      <!-- add coordinates ? -->
+      <!-- replace with log like journal ? -->
+      <span class="move">.: move :.</span>
+      <span class="click">:: click ::</span>
+      <span class="go">·: go :·</span>
+    </div>
     <div class="bottom">
       <LatestList />
       <div class="description">
@@ -36,7 +51,7 @@ import MainLayout from "@layouts/MainLayout.astro";
 
 <style>
   #container {
-    position: absolute;
+    position: fixed;
     z-index: -1;
     top: 0;
     left: 0;
@@ -60,6 +75,55 @@ import MainLayout from "@layouts/MainLayout.astro";
       height: calc(100svh - 8rem);
       padding: 0;
     }
+  }
+
+  .cta {
+    position: absolute;
+    display: flex;
+    flex-flow: column;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    height: calc(100svh - 16rem);
+    top: 8rem;
+    gap: 0.5rem;
+    /* padding-bottom: 6rem; */
+  }
+
+  .cta span {
+    border-radius: var(--radius-sm);
+    color: var(--color-alt);
+    text-align: center;
+    opacity: 0.3;
+
+    /* width: 6ch; */
+
+    &::before {
+      position: absolute;
+      left: -2ch;
+      /* content: ".:"; */
+    }
+    &::after {
+      position: absolute;
+      right: -2ch;
+      /* content: ":."; */
+    }
+  }
+
+  .active-cta {
+    animation: activate 0.125s;
+    animation-fill-mode: both;
+    opacity: 1;
+    color: var(--color);
+    background-color: var(--highlight);
+  }
+
+  .inactive-cta {
+    animation-fill-mode: both;
+    animation: deactivate 0.3s;
+    opacity: 0.3;
+    color: var(--color-alt);
+    background-color: transparent;
   }
 
   .bottom {
@@ -89,11 +153,6 @@ import MainLayout from "@layouts/MainLayout.astro";
     align-items: end;
     text-wrap: balance;
     width: fit-content;
-    background-color: var(--bg);
-    box-shadow:
-      var(--bg) 0 0 60px 40px,
-      var(--bg) 0 0 30px 20px,
-      var(--bg) 0 0 15px 8px;
 
     @media (max-width: 1280px) {
       gap: 0.5rem;
@@ -133,6 +192,31 @@ import MainLayout from "@layouts/MainLayout.astro";
 
     @media (max-width: 1280px) {
       width: 9.5ch;
+    }
+  }
+
+  @keyframes activate {
+    0% {
+      opacity: 0.3;
+      color: var(--color-alt);
+      transition: all 0.5 ease-out;
+    }
+    100% {
+      opacity: 1;
+      color: var(--color);
+      background-color: var(--highlight);
+    }
+  }
+  @keyframes deactivate {
+    100% {
+      opacity: 0.3;
+      color: var(--color-alt);
+      transition: all 0.5 ease-out;
+    }
+    0% {
+      opacity: 1;
+      color: var(--color);
+      background-color: var(--highlight);
     }
   }
 </style>
