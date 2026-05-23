@@ -5,8 +5,6 @@ interface Point { x: number, y: number }
 interface MemoryPoint extends Point { age: number }
 
 const container = document.querySelector("#container")
-const moveElement = document.querySelector(".move")
-const clickElement = document.querySelector(".click")
 
 let isMobile = 'ontouchstart' in document.documentElement;
 let SIZE = 22;
@@ -22,10 +20,24 @@ const clickAnimationDuration = 28
 const history: MemoryPoint[] = []
 const click: Point = { x: 0, y: 0 }
 
+const logOptions = {
+  START: "start logging",
+  MOVE: "mouse moved",
+  STOP: "mouse stopped",
+  CLICK: "mouse clicked",
+  LINK: "link hovered",
+}
+const logLength = 6
+// TODO :: on load replace loading by logActive
+let logActive: string = logOptions.START
+const logList: string[] = [];
+
 const script = (p5: p5) => {
   p5.setMoveThreshold(1)
   p5.setup = async () => {
     if (!container) return
+    manageLogLinks()
+
     const canvas = p5.createCanvas(window.innerWidth, window.innerHeight);
     canvas.parent(container);
     const font = await p5.loadFont(apercu);
@@ -61,12 +73,6 @@ const script = (p5: p5) => {
       click.x = mouseCol
       click.y = mouseRow
     }
-    const mouseMoved = p5.movedX || p5.movedY
-
-    if (!mouseMoved) {
-      moveElement?.classList.remove("active-cta")
-      moveElement?.classList.add("inactive-cta")
-    }
 
     activecolor.setAlpha(255)
     p5.fill(activecolor)
@@ -91,6 +97,9 @@ const script = (p5: p5) => {
       timer2 = p5.millis();
     }
 
+    const mouseMoved = p5.movedX || p5.movedY
+    // todo :: Find a way to not activate STOP so eagerly 
+    // if (!mouseMoved && logActive === logOptions.MOVE) logActive = logOptions.STOP
     if (history.length > 32 || (!isMobile && !mouseMoved)) history.shift()
 
     history.forEach(({ x, y, age }) => {
@@ -108,6 +117,9 @@ const script = (p5: p5) => {
     activecolor.setAlpha(255);
     p5.fill(activecolor)
     large(mouseCol, mouseRow)
+
+    manageCoords(mouseCol, mouseRow)
+    manageLog()
   };
 
   p5.windowResized = () => {
@@ -118,12 +130,10 @@ const script = (p5: p5) => {
 
   p5.mouseMoved = () => {
     history.push({ x: mouseCol, y: mouseRow, age: 1 })
-    moveElement?.classList.add("active-cta")
-    moveElement?.classList.remove("inactive-cta")
+    logActive = logOptions.MOVE
   }
 
   p5.mousePressed = () => {
-    // if (clickTimer < clickAnimationDuration) return
     if (isMobile) {
       mouseCol = p5.floor(p5.mouseX / SIZE)
       mouseRow = p5.floor(p5.mouseY / SIZE)
@@ -132,13 +142,7 @@ const script = (p5: p5) => {
     click.x = p5.floor(p5.mouseX / SIZE)
     click.y = p5.floor(p5.mouseY / SIZE)
 
-    clickElement?.classList.add("active-cta")
-    clickElement?.classList.remove("inactive-cta")
-  }
-
-  p5.mouseReleased = () => {
-    clickElement?.classList.remove("active-cta")
-    clickElement?.classList.add("inactive-cta")
+    logActive = logOptions.CLICK
   }
 
   function dot(col: number, row: number) {
@@ -217,6 +221,49 @@ const script = (p5: p5) => {
     const diff = p5.floor(p5.max(p5.abs(center.x - point.x), p5.abs(center.y - point.y)))
     return chars[diff]
   }
+
+  function manageLogLinks() {
+    const links = document.querySelectorAll("a");
+    links.forEach((link) => link.addEventListener("mouseenter", () => logActive = logOptions.LINK));
+  }
+
+  function manageLog() {
+    const logElement = document.querySelector(".logList")
+    if (!logElement) return
+
+    if (!logActive.length || logActive === logList.at(-1)) return
+
+    if (logList.length === logLength) logList.shift();
+
+    logList.push(logActive)
+
+    const log = logList.at(-1)
+    const date = new Date()
+    const hours = date.getHours().toString().padStart(2, "0")
+    const mins = date.getMinutes().toString().padStart(2, "0")
+    const secs = date.getSeconds().toString().padStart(2, "0")
+    const node = document.createElement("p")
+
+    node.classList.add("log")
+    node.textContent = `[${hours}:${mins}:${secs}] ${log}`
+
+    if (logElement.childNodes.length > logLength && logElement.firstChild) {
+      logElement.removeChild(logElement.firstChild)
+    }
+    logElement.appendChild(node)
+  }
+
+  function manageCoords(mouseCol: number, mouseRow: number) {
+    const coordElement = document.querySelector(".coords")
+    if (!coordElement) return
+
+    const x = mouseCol.toString().padStart(2, "0")
+    const y = mouseRow.toString().padStart(2, "0")
+    const text = `[:${x}  ${y}:]`
+
+    coordElement.textContent = text
+  }
 }
 
 export const useAscii = () => new p5(script)
+

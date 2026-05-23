@@ -8,32 +8,25 @@ import MainLayout from "@layouts/MainLayout.astro";
 <script>
   import { useAscii } from "@utils/ascii";
   useAscii();
-
-  const goElement = document.querySelector(".go");
-  const links = document.querySelectorAll("a");
-
-  links.forEach((link) => {
-    link.addEventListener("mouseenter", () => {
-      goElement?.classList.add("active-cta");
-      goElement?.classList.remove("inactive-cta");
-    });
-    link.addEventListener("mouseleave", () => {
-      goElement?.classList.add("inactive-cta");
-      goElement?.classList.remove("active-cta");
-    });
-  });
 </script>
 
 <MainLayout description={description.home}>
   <div id="container"></div>
   <div class="core">
     <TitleDisplay />
-    <div class="cta">
-      <!-- add coordinates ? -->
-      <!-- replace with log like journal ? -->
-      <span class="move">.: move :.</span>
-      <span class="click">:: click ::</span>
-      <span class="go">·: go :·</span>
+    <div class="center">
+      <div class="info">
+        <div class="position">
+          <p>coord</p>
+          <p class="coords">[:xx xx:]</p>
+        </div>
+        <div class="logger">
+          <p>log</p>
+          <div class="logList">
+            <p class="log">[xx:xx:xx] loading ...</p>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="bottom">
       <LatestList />
@@ -77,53 +70,19 @@ import MainLayout from "@layouts/MainLayout.astro";
     }
   }
 
-  .cta {
+  .center {
     position: absolute;
     display: flex;
-    flex-flow: column;
-    flex: 1;
     align-items: center;
-    justify-content: center;
+    flex: 1;
     height: calc(100svh - 16rem);
     top: 8rem;
-    gap: 0.5rem;
-    /* padding-bottom: 6rem; */
   }
 
-  .cta span {
-    border-radius: var(--radius-sm);
-    color: var(--color-alt);
-    text-align: center;
-    opacity: 0.3;
-
-    /* width: 6ch; */
-
-    &::before {
-      position: absolute;
-      left: -2ch;
-      /* content: ".:"; */
-    }
-    &::after {
-      position: absolute;
-      right: -2ch;
-      /* content: ":."; */
-    }
-  }
-
-  .active-cta {
-    animation: activate 0.125s;
-    animation-fill-mode: both;
-    opacity: 1;
-    color: var(--color);
-    background-color: var(--highlight);
-  }
-
-  .inactive-cta {
-    animation-fill-mode: both;
-    animation: deactivate 0.3s;
-    opacity: 0.3;
-    color: var(--color-alt);
-    background-color: transparent;
+  .info {
+    display: flex;
+    flex-flow: column;
+    gap: 2ch;
   }
 
   .bottom {
