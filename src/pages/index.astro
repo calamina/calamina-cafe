@@ -1,5 +1,6 @@
 ---
 import TitleDisplay from "@components/atomic/TitleDisplay.astro";
+import AsciiInfo from "@components/features/home/AsciiInfo.astro";
 import LatestList from "@components/features/latest/latestList.astro";
 import { description } from "@data/description";
 import MainLayout from "@layouts/MainLayout.astro";
@@ -14,20 +15,7 @@ import MainLayout from "@layouts/MainLayout.astro";
   <div id="container"></div>
   <div class="core">
     <TitleDisplay />
-    <div class="center">
-      <div class="info">
-        <div class="position">
-          <p>coord</p>
-          <p class="coords">[:xx xx:]</p>
-        </div>
-        <div class="logger">
-          <p>log</p>
-          <div class="logList">
-            <p class="log">[xx:xx:xx] loading ...</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    <AsciiInfo />
     <div class="bottom">
       <LatestList />
       <div class="description">
@@ -68,21 +56,6 @@ import MainLayout from "@layouts/MainLayout.astro";
       height: calc(100svh - 8rem);
       padding: 0;
     }
-  }
-
-  .center {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    flex: 1;
-    height: calc(100svh - 16rem);
-    top: 8rem;
-  }
-
-  .info {
-    display: flex;
-    flex-flow: column;
-    gap: 2ch;
   }
 
   .bottom {

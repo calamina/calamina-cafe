@@ -6,6 +6,7 @@
 hey :)
 
 # DOING
+- refacto/organize ascii with clean methods
 - use title component !! css duplicated 3 times !!
 - continue proper CSS design system
 - split large components (index, footer)

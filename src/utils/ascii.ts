@@ -1,8 +1,7 @@
+import type { MemoryPoint, Offset, Point } from "@models/Ascii";
 import p5 from "p5";
 import apercu from "../assets/fonts/ApercuMonoPro-Medium.woff2";
-
-interface Point { x: number, y: number }
-interface MemoryPoint extends Point { age: number }
+import { useGem } from "./ascii-gem";
 
 const container = document.querySelector("#container")
 
@@ -10,33 +9,34 @@ let isMobile = 'ontouchstart' in document.documentElement;
 let SIZE = 22;
 let timer = 0;
 let interval = 250
-let timer2 = 0;
-let interval2 = 20
-let state = 1
-let clickTimer = 0
-let mouseCol = 0
-let mouseRow = 0
-const clickAnimationDuration = 28
+const active: Point = { x: 0, y: 0 }
 const history: MemoryPoint[] = []
+
+let clickInterval = 20
+let clickTimer = 0;
+let clickAnimationTimer = 0
+const clickAnimationDuration = 28
 const click: Point = { x: 0, y: 0 }
 
-const logOptions = {
-  START: "start logging",
-  MOVE: "mouse moved",
-  STOP: "mouse stopped",
-  CLICK: "mouse clicked",
-  LINK: "link hovered",
-}
-const logLength = 6
-// TODO :: on load replace loading by logActive
-let logActive: string = logOptions.START
-const logList: string[] = [];
+let activecolor: p5.Color | null = null;
+let discretecolor: p5.Color | null = null;
 
 const script = (p5: p5) => {
+  const { gem,
+    checkGem,
+    drawGem,
+    setGemPosition,
+    updateGems,
+    updateGemHistory,
+    updateGemPosition } = useGem(p5);
+
   p5.setMoveThreshold(1)
+
   p5.setup = async () => {
     if (!container) return
-    manageLogLinks()
+    setColors()
+    ManageThemeSwitch()
+    setGemPosition(SIZE)
 
     const canvas = p5.createCanvas(window.innerWidth, window.innerHeight);
     canvas.parent(container);
@@ -53,73 +53,77 @@ const script = (p5: p5) => {
     p5.noStroke();
     p5.clear();
 
-    const activecolor: p5.Color = p5.color("oklch(80% 0.1 320)");
-    const textcolor: p5.Color = p5.color("#a8a5a5");
-    const discretecolor: p5.Color = p5.color("#bab2b2");
-    discretecolor.setAlpha(150);
-    p5.fill(textcolor);
-
     if (!isMobile) {
       const mouseX = p5.mouseX !== 0 ? p5.mouseX / SIZE : window.innerWidth / SIZE / 2
       const mouseY = p5.mouseY !== 0 ? p5.mouseY / SIZE : window.innerHeight / SIZE / 2
-      mouseCol = p5.floor(mouseX)
-      mouseRow = p5.floor(mouseY)
+      active.x = p5.floor(mouseX)
+      active.y = p5.floor(mouseY)
     } else {
-      mouseRow = p5.floor((p5.rotationX) * SIZE + (window.innerWidth / SIZE / 4));
-      mouseCol = p5.floor((p5.rotationY) * SIZE + (window.innerHeight / SIZE / 4));
-      history.push({ x: mouseCol, y: mouseRow, age: 0 })
+      active.y = p5.floor((p5.rotationX) * SIZE + (window.innerWidth / SIZE / 4));
+      active.x = p5.floor((p5.rotationY) * SIZE + (window.innerHeight / SIZE / 4));
+      history.push({ x: active.x, y: active.y, age: 0 })
     }
+
     if (timer < 1000) {
-      click.x = mouseCol
-      click.y = mouseRow
+      click.x = active.x
+      click.y = active.y
     }
 
-    activecolor.setAlpha(255)
-    p5.fill(activecolor)
+    p5.fill(activecolor!)
 
-    const min = clickTimer - 10
+    history.push({ x: active.x, y: active.y, age: 1 })
+    checkGem(active, (point: Point) => clickAnimation(point), SIZE)
+
+    function clickAnimation(point: Point) {
+      clickAnimationTimer = 0
+      click.x = p5.floor(point.x)
+      click.y = p5.floor(point.y)
+    }
+
+    const min = clickAnimationTimer - 10
     if (min < clickAnimationDuration) {
       const chars = "..:/|I::~+¤#@0+. .,:il|li:._ _.:*oO0Oo.:iI%Ii:."
-      activecolor.setAlpha(255 - clickTimer * 5)
-      p5.fill(activecolor)
-      fillCircle(click, clickTimer, min < 0 ? 0 : min, chars)
+      activecolor?.setAlpha(255 - clickAnimationTimer * 5)
+      p5.fill(activecolor!)
+      fillCircle(click, clickAnimationTimer, min < 0 ? 0 : min, chars)
     }
 
     if (p5.millis() - timer > interval) {
-      state = state !== 3 ? state + 1 : 1
-      p5.fill(discretecolor)
+      p5.fill(discretecolor!)
       history.forEach(moment => moment.age++)
       timer = p5.millis();
+      updateGemPosition()
     }
 
-    if (p5.millis() - timer2 > interval2) {
-      clickTimer++
-      timer2 = p5.millis();
+    if (p5.millis() - clickTimer > clickInterval) {
+      clickAnimationTimer++
+      clickTimer = p5.millis();
     }
+
+    if (p5.millis() - gem.timer > gem.interval) {
+      updateGems(p5.millis())
+    }
+
+    drawGem(discretecolor, small)
 
     const mouseMoved = p5.movedX || p5.movedY
-    // todo :: Find a way to not activate STOP so eagerly 
-    // if (!mouseMoved && logActive === logOptions.MOVE) logActive = logOptions.STOP
     if (history.length > 32 || (!isMobile && !mouseMoved)) history.shift()
 
-    history.forEach(({ x, y, age }) => {
-      activecolor.setAlpha(255 / age / 1.5);
-      p5.fill(activecolor)
-      if (age > 2) dot(x, y)
-      if (age > 1) small(x, y)
-      else if (p5.mouseIsPressed) {
-        largehollow(x, y)
-      } else {
-        large(x, y)
-      }
+    history.forEach(point => {
+      const age = point.age
+      activecolor!.setAlpha(255 / age / 1.5);
+      p5.fill(activecolor!)
+      if (age > 2) dot(point)
+      if (age > 1) small(point)
+      else large(point)
     })
 
-    activecolor.setAlpha(255);
-    p5.fill(activecolor)
-    large(mouseCol, mouseRow)
+    updateGemHistory((point: Point, age: number) => hollow(point, age))
 
-    manageCoords(mouseCol, mouseRow)
-    manageLog()
+    activecolor?.setAlpha(255);
+    p5.fill(activecolor!)
+    large(active)
+    manageCoords()
   };
 
   p5.windowResized = () => {
@@ -128,68 +132,66 @@ const script = (p5: p5) => {
     isMobile = window.innerWidth < 600
   }
 
-  p5.mouseMoved = () => {
-    history.push({ x: mouseCol, y: mouseRow, age: 1 })
-    logActive = logOptions.MOVE
-  }
-
   p5.mousePressed = () => {
-    if (isMobile) {
-      mouseCol = p5.floor(p5.mouseX / SIZE)
-      mouseRow = p5.floor(p5.mouseY / SIZE)
-    }
-    clickTimer = 0
+    clickAnimationTimer = 0
     click.x = p5.floor(p5.mouseX / SIZE)
     click.y = p5.floor(p5.mouseY / SIZE)
-
-    logActive = logOptions.CLICK
   }
 
-  function dot(col: number, row: number) {
-    p5.text("@", col * SIZE, row * SIZE);
+  function dot(point: Point) {
+    drawChar("@", point)
   }
 
-  function small(col: number, row: number) {
-    p5.square((col * SIZE - SIZE / 2), (row * SIZE - SIZE / 2), SIZE);
-
-    p5.text("@", col * SIZE, row * SIZE);
-    p5.text("#", col * SIZE, row * SIZE + SIZE);
-    p5.text("#", col * SIZE, row * SIZE - SIZE);
-    p5.text("#", col * SIZE + SIZE, row * SIZE);
-    p5.text("#", col * SIZE - SIZE, row * SIZE);
+  function small(point: Point) {
+    drawSquare(point)
+    const positions = [[0, 1], [0, -1], [1, 0], [-1, 0]]
+    drawCharArray("#", point, positions)
   }
 
-  function large(col: number, row: number) {
-    p5.square((col * SIZE - SIZE / 2), (row * SIZE - SIZE / 2), SIZE);
+  function large(point: Point) {
+    drawSquare(point)
 
-    p5.text("@", col * SIZE, row * SIZE);
-    p5.text("#", col * SIZE, row * SIZE + SIZE);
-    p5.text("#", col * SIZE, row * SIZE - SIZE);
-    p5.text("#", col * SIZE + SIZE, row * SIZE);
-    p5.text("#", col * SIZE - SIZE, row * SIZE);
-    p5.text("o", col * SIZE + SIZE, row * SIZE + SIZE);
-    p5.text("o", col * SIZE - SIZE, row * SIZE - SIZE);
-    p5.text("o", col * SIZE + SIZE, row * SIZE - SIZE);
-    p5.text("o", col * SIZE - SIZE, row * SIZE + SIZE);
-    p5.text("*", col * SIZE, row * SIZE + SIZE * 2);
-    p5.text("*", col * SIZE, row * SIZE - SIZE * 2);
-    p5.text("*", col * SIZE + SIZE * 2, row * SIZE);
-    p5.text("*", col * SIZE - SIZE * 2, row * SIZE);
+    const positions1 = [[0, 1], [0, -1], [1, 0], [-1, 0]]
+    drawCharArray("#", point, positions1)
+
+    const positions2 = [[1, 1], [-1, -1], [1, -1], [-1, 1]]
+    drawCharArray("o", point, positions2)
+
+    const positions3 = [[0, 2], [0, -2], [2, 0], [-2, 0]]
+    drawCharArray("*", point, positions3)
   }
 
-  function largehollow(col: number, row: number) {
-    p5.text("o", col * SIZE, row * SIZE + SIZE);
-    p5.text("o", col * SIZE, row * SIZE - SIZE);
-    p5.text("o", col * SIZE + SIZE, row * SIZE);
-    p5.text("o", col * SIZE - SIZE, row * SIZE);
-    p5.text("*", col * SIZE + SIZE, row * SIZE + SIZE);
-    p5.text("*", col * SIZE - SIZE, row * SIZE - SIZE);
-    p5.text("*", col * SIZE + SIZE, row * SIZE - SIZE);
-    p5.text("*", col * SIZE - SIZE, row * SIZE + SIZE);
-    p5.text("·", col * SIZE, row * SIZE + SIZE * 2);
-    p5.text("·", col * SIZE, row * SIZE - SIZE * 2);
-    p5.text("·", col * SIZE + SIZE * 2, row * SIZE);
-    p5.text("·", col * SIZE - SIZE * 2, row * SIZE);
+  function drawSquare(center: Point, offset?: Offset) {
+    const offsetX = offset?.x ? SIZE * offset?.x : 0
+    const offsetY = offset?.y ? SIZE * offset?.y : 0
+
+    p5.square(
+      center.x * SIZE + offsetX - SIZE / 2,
+      center.y * SIZE + offsetY - SIZE / 2,
+      SIZE
+    );
+  }
+
+  function drawChar(char: string, center: Point, offset?: Offset) {
+    const offsetX = offset?.x ? SIZE * offset?.x : 0
+    const offsetY = offset?.y ? SIZE * offset?.y : 0
+
+    p5.text(
+      char,
+      center.x * SIZE + offsetX,
+      center.y * SIZE + offsetY
+    );
+  }
+
+  function drawCharArray(char: string, center: Point, offsets: number[][]) {
+    offsets.forEach(([x, y]) => drawChar(char, center, { x, y }))
+  }
+
+  function hollow(center: Point, age: number) {
+    p5.fill(discretecolor!)
+    const chars = "·*o~· *·"
+    const min = age - 3
+    fillCircle(center, age, min, chars)
   }
 
   function fillCircle(center: Point, radius: number, min: number = 0, chars: string) {
@@ -222,48 +224,32 @@ const script = (p5: p5) => {
     return chars[diff]
   }
 
-  function manageLogLinks() {
-    const links = document.querySelectorAll("a");
-    links.forEach((link) => link.addEventListener("mouseenter", () => logActive = logOptions.LINK));
+  function ManageThemeSwitch() {
+    const buttons = document.querySelectorAll("button[data-theme]");
+    buttons.forEach(button => button.addEventListener("click", () => setColors()));
   }
 
-  function manageLog() {
-    const logElement = document.querySelector(".logList")
-    if (!logElement) return
+  function setColors() {
+    const colorActiveVar = getComputedStyle(document.body).getPropertyValue('--highlight');
+    const colorDiscreteTheme = getComputedStyle(document.body).getPropertyValue('--bg-alt');
+    const theme = document.querySelector("html")?.getAttribute("data-theme")
+    const colorDiscreteVars = colorDiscreteTheme.slice(11).split(',')
+    const colorDiscreteVar = theme === "light" ? colorDiscreteVars[0] : colorDiscreteVars[1]
 
-    if (!logActive.length || logActive === logList.at(-1)) return
-
-    if (logList.length === logLength) logList.shift();
-
-    logList.push(logActive)
-
-    const log = logList.at(-1)
-    const date = new Date()
-    const hours = date.getHours().toString().padStart(2, "0")
-    const mins = date.getMinutes().toString().padStart(2, "0")
-    const secs = date.getSeconds().toString().padStart(2, "0")
-    const node = document.createElement("p")
-
-    node.classList.add("log")
-    node.textContent = `[${hours}:${mins}:${secs}] ${log}`
-
-    if (logElement.childNodes.length > logLength && logElement.firstChild) {
-      logElement.removeChild(logElement.firstChild)
-    }
-    logElement.appendChild(node)
-  }
-
-  function manageCoords(mouseCol: number, mouseRow: number) {
-    const coordElement = document.querySelector(".coords")
-    if (!coordElement) return
-
-    const x = mouseCol.toString().padStart(2, "0")
-    const y = mouseRow.toString().padStart(2, "0")
-    const text = `[:${x}  ${y}:]`
-
-    coordElement.textContent = text
+    activecolor = p5.color(colorActiveVar);
+    discretecolor = p5.color(colorDiscreteVar);
   }
 }
 
 export const useAscii = () => new p5(script)
 
+function manageCoords() {
+  const coordElement = document.querySelector(".coords")
+  if (!coordElement) return
+
+  const x = active.x.toString().padStart(2, "0")
+  const y = active.y.toString().padStart(2, "0")
+  const text = `[${x}|${y}]`
+
+  coordElement.textContent = text
+}

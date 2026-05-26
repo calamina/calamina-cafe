@@ -1,0 +1,71 @@
+<div class="log-center">
+  <div class="log-infos">
+    <div class="log-info">
+      <p>pos</p>
+      <p class="log-infotext coords">[:xx xx:]</p>
+    </div>
+    <div class="log-info">
+      <p>gems</p>
+      <p class="log-infotext gems">[000]</p>
+    </div>
+    <!-- <div class="log-info log">
+      <p class="log-infotext">[xx:xx:xx] loading ...</p>
+    </div> -->
+    <!-- <p class="log-infotext log">(click resets gem position)</p> -->
+  </div>
+</div>
+
+<style is:global>
+  .log-center {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    flex: 1;
+    height: calc(100svh - 16rem);
+    top: 8rem;
+  }
+
+  .log-infos {
+    display: flex;
+    flex-flow: column;
+    gap: 1ch;
+    display: flex;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    /* border: 1px solid var(--bg-alt); */
+    border-radius: var(--radius-sm);
+    background-color: var(--bg);
+    padding: 0.5rem;
+  }
+
+  .log-info {
+    background-color: var(--bg-alt);
+    border-radius: var(--radius-sm);
+    padding: 0.15rem 0.4rem 0.25rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1ch;
+  }
+
+  .log {
+    grid-column: span 2;
+    display: flex;
+    flex-flow: column;
+  }
+
+  .log-infotext {
+    width: fit-content;
+    color: var(--color-alter);
+    animation: log-fade 0.5s both;
+  }
+
+  @keyframes log-fade {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+</style>
