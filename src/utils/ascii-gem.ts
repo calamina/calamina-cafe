@@ -45,7 +45,7 @@ export const useGem = (p5: p5) => {
     gem.position = { x, y }
   }
 
-  function checkGem(active: Point, successFn: (point: Point) => void, SIZE: number) {
+  function checkGem(active: Point, history: number, successFn: (point: Point) => void, SIZE: number) {
     const { x, y } = gem.position
     const interval = {
       x: [x - 1, x, x + 1],
@@ -55,7 +55,10 @@ export const useGem = (p5: p5) => {
     const xMatch = interval.x.includes(active.x)
     const yMatch = interval.y.includes(active.y)
 
-    if (xMatch && yMatch) updateGem((point: Point) => successFn(point), SIZE)
+    if (xMatch && yMatch) {
+      updateGem((point: Point) => successFn(point), SIZE)
+      return history + 1
+    }
   }
 
   function updateGem(successFn: (point: Point) => void, SIZE: number) {
@@ -63,19 +66,7 @@ export const useGem = (p5: p5) => {
     gem.count++
     gem.history.push({ ...gem.position, age: 0 })
     setGemPosition(SIZE)
-    manageGemElement()
     if (gem.count % 10 === 0) successFn(pos)
-  }
-
-
-  function manageGemElement() {
-    const gemElement = document.querySelector(".gems")
-    if (!gemElement) return
-
-    const res = gem.count.toString().padStart(3, "0")
-    const text = `[${res}]`
-
-    gemElement.textContent = text
   }
 
   return {

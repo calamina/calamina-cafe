@@ -11,10 +11,11 @@ let timer = 0;
 let interval = 250
 const active: Point = { x: 0, y: 0 }
 const history: MemoryPoint[] = []
+let length = 0
 
 let clickInterval = 20
 let clickTimer = 0;
-let clickAnimationTimer = 0
+let clickAnimationTimer = 255
 const clickAnimationDuration = 28
 const click: Point = { x: 0, y: 0 }
 
@@ -22,13 +23,15 @@ let activecolor: p5.Color | null = null;
 let discretecolor: p5.Color | null = null;
 
 const script = (p5: p5) => {
-  const { gem,
+  const {
+    gem,
     checkGem,
     drawGem,
     setGemPosition,
     updateGems,
     updateGemHistory,
-    updateGemPosition } = useGem(p5);
+    updateGemPosition
+  } = useGem(p5);
 
   p5.setMoveThreshold(1)
 
@@ -41,7 +44,7 @@ const script = (p5: p5) => {
     const canvas = p5.createCanvas(window.innerWidth, window.innerHeight);
     canvas.parent(container);
     const font = await p5.loadFont(apercu);
-    p5.textSize(SIZE)
+    p5.textSize(SIZE - 2)
     p5.textFont(font);
     p5.textAlign(p5.CENTER, p5.CENTER);
     p5.background(p5.color("#e1dede"));
@@ -61,18 +64,11 @@ const script = (p5: p5) => {
     } else {
       active.y = p5.floor((p5.rotationX) * SIZE + (window.innerWidth / SIZE / 4));
       active.x = p5.floor((p5.rotationY) * SIZE + (window.innerHeight / SIZE / 4));
-      history.push({ x: active.x, y: active.y, age: 0 })
     }
 
-    if (timer < 1000) {
-      click.x = active.x
-      click.y = active.y
-    }
-
-    p5.fill(activecolor!)
-
-    history.push({ x: active.x, y: active.y, age: 1 })
-    checkGem(active, (point: Point) => clickAnimation(point), SIZE)
+    if (length > 3) history.push({ x: active.x, y: active.y, age: 1 })
+    const res = checkGem(active, length, (point: Point) => clickAnimation(point), SIZE)
+    if (res && length < 30) length++
 
     function clickAnimation(point: Point) {
       clickAnimationTimer = 0
@@ -107,7 +103,7 @@ const script = (p5: p5) => {
     drawGem(discretecolor, small)
 
     const mouseMoved = p5.movedX || p5.movedY
-    if (history.length > 32 || (!isMobile && !mouseMoved)) history.shift()
+    if (history.length > length || !mouseMoved) history.shift()
 
     history.forEach(point => {
       const age = point.age
@@ -120,10 +116,13 @@ const script = (p5: p5) => {
 
     updateGemHistory((point: Point, age: number) => hollow(point, age))
 
-    activecolor?.setAlpha(255);
-    p5.fill(activecolor!)
-    large(active)
-    manageCoords()
+    if (length > 0) {
+      activecolor?.setAlpha(255);
+      p5.fill(activecolor!)
+      if (length === 1) dot(active)
+      if (length === 2) small(active)
+      if (length > 2) large(active)
+    }
   };
 
   p5.windowResized = () => {
@@ -139,13 +138,13 @@ const script = (p5: p5) => {
   }
 
   function dot(point: Point) {
-    drawChar("@", point)
+    drawSquare(point)
   }
 
   function small(point: Point) {
     drawSquare(point)
     const positions = [[0, 1], [0, -1], [1, 0], [-1, 0]]
-    drawCharArray("#", point, positions)
+    drawCharArray("¤", point, positions)
   }
 
   function large(point: Point) {
@@ -188,7 +187,7 @@ const script = (p5: p5) => {
   }
 
   function hollow(center: Point, age: number) {
-    p5.fill(discretecolor!)
+    p5.fill(activecolor!)
     const chars = "·*o~· *·"
     const min = age - 3
     fillCircle(center, age, min, chars)
@@ -242,14 +241,3 @@ const script = (p5: p5) => {
 }
 
 export const useAscii = () => new p5(script)
-
-function manageCoords() {
-  const coordElement = document.querySelector(".coords")
-  if (!coordElement) return
-
-  const x = active.x.toString().padStart(2, "0")
-  const y = active.y.toString().padStart(2, "0")
-  const text = `[${x}|${y}]`
-
-  coordElement.textContent = text
-}
