@@ -1,6 +1,5 @@
 ---
 import TitleDisplay from "@components/atomic/TitleDisplay.astro";
-import AsciiInfo from "@components/features/home/AsciiInfo.astro";
 import LatestList from "@components/features/latest/latestList.astro";
 import { description } from "@data/description";
 import MainLayout from "@layouts/MainLayout.astro";
@@ -15,17 +14,12 @@ import MainLayout from "@layouts/MainLayout.astro";
   <div id="container"></div>
   <div class="core">
     <TitleDisplay />
-    <!-- <AsciiInfo /> -->
     <div class="bottom">
       <LatestList />
-      <div class="description">
-        <p>
-          <span class="ball"></span>Personnal website of developper <span
-            >Grégoire Belliere</span
-          >
-        </p>
-        <!-- <p>Forever <span class="state">human made</span> &</p> -->
-      </div>
+      <p class="description">
+        <span class="ball"></span>
+        <span class="gem-message">Catch that pesky cuboid please ...</span>
+      </p>
     </div>
   </div>
 </MainLayout>
@@ -75,80 +69,37 @@ import MainLayout from "@layouts/MainLayout.astro";
       display: flex;
       flex-flow: column;
       align-items: start;
-      gap: 4rem;
+      gap: 2rem;
     }
   }
 
   .description {
-    display: flex;
-    flex-flow: column;
-    align-items: end;
-    text-wrap: balance;
+    display: inline-flex;
+    gap: 0.5rem;
+    align-items: center;
     width: fit-content;
+    background-color: var(--bg-alt);
+    padding: 0.1rem 0.75rem 0.2rem;
 
     @media (max-width: 1280px) {
       gap: 0.5rem;
-
-      span,
-      p {
-        flex-wrap: wrap;
-        line-height: 0.6rem;
-        letter-spacing: -0.5px;
-        font-size: 0.8rem;
-      }
+      padding: 0.1rem 0.75rem 0rem;
     }
 
-    p {
-      line-height: 1.25rem;
-      color: var(--color-alter);
-
-      &:first-of-type {
-        display: inline-flex;
-        gap: 0.5rem;
-        align-items: center;
-
-        .ball {
-          background-color: var(--highlight);
-          height: 0.45rem;
-          width: 0.45rem;
-          flex-shrink: 0;
-          border-radius: var(--radius-md);
-        }
-      }
-    }
-  }
-
-  .state {
-    display: inline-block;
-    width: 10ch;
-
-    @media (max-width: 1280px) {
-      width: 9.5ch;
-    }
-  }
-
-  @keyframes activate {
-    0% {
-      opacity: 0.3;
+    .gem-message {
       color: var(--color-alt);
-      transition: all 0.5 ease-out;
     }
-    100% {
-      opacity: 1;
-      color: var(--color);
-      background-color: var(--highlight);
-    }
-  }
-  @keyframes deactivate {
-    100% {
-      opacity: 0.3;
-      color: var(--color-alt);
-      transition: all 0.5 ease-out;
-    }
-    0% {
-      opacity: 1;
-      color: var(--color);
-      background-color: var(--highlight);
+
+    .ball {
+      background-color: var(--color-alter);
+      height: 0.45rem;
+      width: 0.45rem;
+      margin-top: 0.1rem;
+      flex-shrink: 0;
+
+      @media (max-width: 1280px) {
+        margin-top: 0rem;
+      }
     }
   }
 </style>

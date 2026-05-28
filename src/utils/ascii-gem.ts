@@ -11,6 +11,38 @@ const gem: Gem = {
   MAX_AGE: 10,
 }
 
+const gemMessages = [
+  "Catch that pesky cuboid please ...",
+  "Thanks. Wait, there is one more ?",
+  "Again !?",
+  "Did you grow larger ??",
+  "Wow another one ...",
+  "You are getting BIG !",
+  "Still more cubes ...",
+  "Where are they coming from ???",
+  "What is that dragging behind you?",
+  "You're making a mess ...",
+  "Is that a tail?",
+  "Are you EATING them !?",
+  "Just catch the cubes please ...",
+  "I HATE THEM !",
+  "WHERE ARE THEY COMING FROM ?",
+  "And Will you stop growing please !?",
+  "Well, It's funny ...",
+  "You became the mess we hated ...",
+  "A big mass of cubes",
+  "Very creepy, but thanks for trying !",
+  "Ok we are DONE !",
+  "Hope you enjoyed this :)",
+  "Nothing will change anymore ...",
+  "This is not some addictive mobile game",
+  "The reward here is ...",
+  "You get endless cubes forever !",
+  "Well done !",
+  "Maybe something happens at 999999 cubes ?",
+  "(This is a lie) (do not try please)",
+];
+
 export const useGem = (p5: p5) => {
 
   function updateGems(time: number) {
@@ -35,12 +67,17 @@ export const useGem = (p5: p5) => {
     gem.position = { x, y }
   }
 
-  function updateGemPosition() {
-    // TODO :: prevent gem from going out of bounds
+  function updateGemPosition(SIZE: number) {
     if (p5.random() > 0.35) return
 
-    const x = gem.position.x + p5.round(p5.random(2)) - 1
-    const y = gem.position.y + p5.round(p5.random(2)) - 1
+    let x = gem.position.x + p5.round(p5.random(2)) - 1
+    let y = gem.position.y + p5.round(p5.random(2)) - 1
+
+    if (window.innerWidth / SIZE - x <= 5) x = x - 3
+    if (x <= 5) x = x + 3
+
+    if (window.innerHeight / SIZE - y <= 5) y = y - 3
+    if (y <= 5) y = y + 3
 
     gem.position = { x, y }
   }
@@ -66,7 +103,15 @@ export const useGem = (p5: p5) => {
     gem.count++
     gem.history.push({ ...gem.position, age: 0 })
     setGemPosition(SIZE)
+    updateGemMessage()
     if (gem.count % 10 === 0) successFn(pos)
+  }
+
+  function updateGemMessage() {
+    const element: HTMLParagraphElement | null = document.querySelector(".gem-message")
+    if (!element || gem.count > 30) return
+
+    element.textContent = gemMessages[gem.count] ?? "Well done !"
   }
 
   return {

@@ -40,6 +40,7 @@ const script = (p5: p5) => {
     setColors()
     ManageThemeSwitch()
     setGemPosition(SIZE)
+    if (isMobile) length++
 
     const canvas = p5.createCanvas(window.innerWidth, window.innerHeight);
     canvas.parent(container);
@@ -88,7 +89,7 @@ const script = (p5: p5) => {
       p5.fill(discretecolor!)
       history.forEach(moment => moment.age++)
       timer = p5.millis();
-      updateGemPosition()
+      updateGemPosition(SIZE)
     }
 
     if (p5.millis() - clickTimer > clickInterval) {
@@ -103,7 +104,7 @@ const script = (p5: p5) => {
     drawGem(discretecolor, small)
 
     const mouseMoved = p5.movedX || p5.movedY
-    if (history.length > length || !mouseMoved) history.shift()
+    if (history.length > length || (!mouseMoved && !isMobile)) history.shift()
 
     history.forEach(point => {
       const age = point.age
@@ -126,6 +127,7 @@ const script = (p5: p5) => {
   };
 
   p5.windowResized = () => {
+    setGemPosition(SIZE)
     p5.resizeCanvas(window.innerWidth, window.innerHeight)
     p5.textSize(SIZE)
     isMobile = window.innerWidth < 600

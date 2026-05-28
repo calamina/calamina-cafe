@@ -1,8 +1,10 @@
 :root {
   /* BORDER */
   --radius-no: 0;
-  --radius-sm: .25rem;
-  --radius-md: .5rem;
+  --radius-sm: 0;
+  --radius-md: 0;
+  /* --radius-sm: .25rem;
+  --radius-md: .5rem; */
 
   /* DISTANCE */
   --d-xs: ;
