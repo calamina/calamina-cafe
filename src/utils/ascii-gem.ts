@@ -1,21 +1,13 @@
-import type { Gem, Point } from "@models/Ascii";
+import type { Colors, Gem, Point } from "@models/Ascii";
 import p5 from "p5";
-
-const gem: Gem = {
-  position: { x: 0, y: 0 },
-  history: [],
-  count: 0,
-  timer: 0,
-  interval: 80,
-  MARGIN: 4,
-  MAX_AGE: 10,
-}
+import { useAsciiClick } from "./ascii-click";
+import { useAsciiUtils } from "./ascii-utils";
 
 const gemMessages = [
-  "Catch that pesky cuboid please ...",
+  "",
   "Thanks. Wait, there is one more ?",
   "Again !?",
-  "Did you grow larger ??",
+  "Oh, you grew larger !?",
   "Wow another one ...",
   "You are getting BIG !",
   "Still more cubes ...",
@@ -27,47 +19,54 @@ const gemMessages = [
   "Just catch the cubes please ...",
   "I HATE THEM !",
   "WHERE ARE THEY COMING FROM ?",
-  "And Will you stop growing please !?",
-  "Well, It's funny ...",
+  "Stop growing please !?",
+  "Well, It's funny",
   "You became the mess we hated ...",
-  "A big mass of cubes",
-  "Very creepy, but thanks for trying !",
-  "Ok we are DONE !",
+  "You are a big mess ...",
+  "Thanks for trying though !",
+  "Oh, you're not growing anymore",
+  "Nothing will change now ...",
+  "This is not some addictive mobile game !",
   "Hope you enjoyed this :)",
-  "Nothing will change anymore ...",
-  "This is not some addictive mobile game",
   "The reward here is ...",
-  "You get endless cubes forever !",
-  "Well done !",
+  "You get endless cubes forever",
   "Maybe something happens at 999999 cubes ?",
   "(This is a lie) (do not try please)",
+  "Well done !",
 ];
 
-export const useGem = (p5: p5) => {
-
-  function updateGems(time: number) {
-    gem.history.forEach(gem => gem.age++)
-    gem.timer = time;
+export const useAsciiGem = (p5: p5, SIZE: number) => {
+  const gem: Gem = {
+    position: { x: 0, y: 0 },
+    history: [],
+    count: 0,
+    timer: 0,
+    interval: 80,
+    MARGIN: 4,
+    MAX_AGE: 10,
   }
 
-  function drawGem(color: p5.Color | null, drawGem: (point: Point) => void) {
+  function drawGem(color: p5.Color | null) {
+    const { small } = useAsciiUtils(p5, SIZE)
     if (color) p5.fill(color)
-    drawGem(gem.position)
+    small(gem.position)
   }
 
-  function updateGemHistory(drawHistory: (point: Point, age: number) => void) {
+  function updateGemExplosions(color: p5.Color) {
+    const { hollow } = useAsciiUtils(p5, SIZE)
+
     gem.history = gem.history.filter(point => point.age < gem.MAX_AGE)
-    gem.history.forEach(point => drawHistory(point, point.age))
+    gem.history.forEach(point => hollow(point, point.age, color))
   }
 
-  function setGemPosition(SIZE: number) {
+  function setGemPosition() {
     const x = p5.floor(p5.random(gem.MARGIN, window.innerWidth / SIZE - gem.MARGIN))
     const y = p5.floor(p5.random(gem.MARGIN, window.innerHeight / SIZE - gem.MARGIN))
 
     gem.position = { x, y }
   }
 
-  function updateGemPosition(SIZE: number) {
+  function updateGemPosition() {
     if (p5.random() > 0.35) return
 
     let x = gem.position.x + p5.round(p5.random(2)) - 1
@@ -82,7 +81,7 @@ export const useGem = (p5: p5) => {
     gem.position = { x, y }
   }
 
-  function checkGem(active: Point, history: number, successFn: (point: Point) => void, SIZE: number) {
+  function checkGem(active: Point) {
     const { x, y } = gem.position
     const interval = {
       x: [x - 1, x, x + 1],
@@ -93,16 +92,17 @@ export const useGem = (p5: p5) => {
     const yMatch = interval.y.includes(active.y)
 
     if (xMatch && yMatch) {
-      updateGem((point: Point) => successFn(point), SIZE)
-      return history + 1
+      const { clicked } = useAsciiClick(p5)
+      updateGem((point: Point) => clicked(point))
+      return true
     }
   }
 
-  function updateGem(successFn: (point: Point) => void, SIZE: number) {
+  function updateGem(successFn: (point: Point) => void) {
     const pos = gem.position
     gem.count++
     gem.history.push({ ...gem.position, age: 0 })
-    setGemPosition(SIZE)
+    setGemPosition()
     updateGemMessage()
     if (gem.count % 10 === 0) successFn(pos)
   }
@@ -114,13 +114,30 @@ export const useGem = (p5: p5) => {
     element.textContent = gemMessages[gem.count] ?? "Well done !"
   }
 
+  function manageGemTimer() {
+    if (p5.millis() - gem.timer > gem.interval) {
+      updateGems(p5.millis())
+    }
+  }
+
+  function updateGems(time: number) {
+    gem.history.forEach(gem => gem.age++)
+    gem.timer = time;
+  }
+
+  function manageGem(active: Point, colors: Colors) {
+    const gotGem = checkGem(active)
+
+    manageGemTimer()
+    drawGem(colors.discrete)
+    updateGemExplosions(colors.active!)
+
+    if (gotGem) return true
+  }
+
   return {
-    gem,
-    checkGem,
-    drawGem,
     setGemPosition,
-    updateGemHistory,
     updateGemPosition,
-    updateGems,
+    manageGem
   }
 }
