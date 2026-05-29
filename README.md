@@ -6,10 +6,10 @@
 hey :)
 
 # DOING
-- refacto/organize ascii with clean methods
+- add gem boss !?
 - use title component !! css duplicated 3 times !!
 - continue proper CSS design system
-- split large components (index, footer)
+- split large components (footer)
 - clean projects !!!
 - add "link ->" component
 
@@ -33,5 +33,5 @@ hey :)
 - add tools ? (flow launcher config / sites css ?)
 - fix & complete projects (aerg)
 - complete about
-  - add "gear" and favourite stuff
+  - add "gear" and favourite stuff ?
 - proper alt on images / proper images (highlights, etc)
