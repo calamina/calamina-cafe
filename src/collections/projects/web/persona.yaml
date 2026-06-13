@@ -1,0 +1,24 @@
+name: "persona"
+url: "https://persona.calamina.cafe"
+
+description:
+- Another personal dashboard experiment...
+- Tools may vary and change a lot until stable...
+
+tech:
+  tools:
+  - 'Drizzle'
+  - 'Astro'
+  - 'Resend'
+  - 'Better-auth'
+  languages:
+  - 'html'
+  - 'scss'
+  - 'typescript'
+  colors:
+  - '#lelele'
+  - '#tetete'
+  fonts:
+  - 'necto mono'
+  icons:
+  - 'tabler'
