@@ -1,0 +1,101 @@
+<div class="sequence">
+  <div class="window">
+    <div class="legend">24FPS - Classic</div>
+    <div class="content">
+      <p class="drawing"></p>
+    </div>
+  </div>
+  <div class="window">
+    <div class="legend">24FPS - Motion Blur</div>
+    <div class="content">
+      <p class="drawing"></p>
+      <p class="drawing"></p>
+      <p class="drawing"></p>
+      <p class="drawing"></p>
+      <p class="drawing"></p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .sequence {
+    display: grid;
+    gap: 2ch;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .window {
+    border: 1px solid var(--bg-alter);
+    display: grid;
+    grid-template-rows: 4ch 15ch;
+    border-radius: 1ch;
+    place-items: center;
+  }
+
+  .legend {
+    height: 4ch;
+    border-bottom: 1px solid var(--bg-alter);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-alter);
+  }
+
+  .content {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: end;
+    container-type: inline-size;
+  }
+
+  .drawing {
+    position: absolute;
+    left: 0;
+    top: 5ch;
+    display: block;
+    height: 5ch;
+    width: 5ch;
+    border-radius: 5ch;
+    background-color: var(--highlight);
+    animation: animateBlur 1s infinite alternate steps(24, jump-none);
+    animation-delay: calc(var(--i) * 20ms);
+  }
+  
+  .drawing:nth-child(1) {
+    --i: 0;
+  }
+  .drawing:nth-child(2) {
+    --i: -2;
+    filter: blur(6px);
+    opacity: 0.4;
+  }
+  .drawing:nth-child(3) {
+    --i: -1;
+    filter: blur(3px);
+    opacity: 0.6;
+  }
+  .drawing:nth-child(4) {
+    --i: 1;
+    filter: blur(3px);
+    opacity: 0.8;
+  }
+  .drawing:nth-child(5) {
+    --i: 2;
+    filter: blur(6px);
+    opacity: 0.4;
+  }
+  
+  @keyframes animateBlur {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(100cqw - 100%));
+    }
+  }
+</style>

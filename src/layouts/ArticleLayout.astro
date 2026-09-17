@@ -2,6 +2,7 @@
 import ArticleHeadings from "@components/features/article/ArticleHeadings.astro";
 import { getEntry, render } from "astro:content";
 import MainLayout from "./MainLayout.astro";
+import "../assets/style/pages/prose.css";
 
 interface Props {
   name: string;
@@ -21,8 +22,8 @@ const readingTime = Math.ceil((wordCount ?? 0) / 200);
 
 <MainLayout description={entry.data.description}>
   <div class="article">
-    {displayToc && <ArticleHeadings headings={headings} article={entry.data} />}
-    <div class="content">
+    <!-- {displayToc && <ArticleHeadings headings={headings} article={entry.data} />} -->
+    <div class="prose">
       <h1 id={entry.data.name}>{entry.data.title}</h1>
       <p class="time">
         ~ {readingTime} minute{readingTime > 1 ? "s" : ""} read
@@ -33,8 +34,6 @@ const readingTime = Math.ceil((wordCount ?? 0) / 200);
 </MainLayout>
 
 <style>
-  @import url("../assets/style/pages/content.css");
-
   .article {
     justify-self: flex-start;
     display: flex;

@@ -1,0 +1,210 @@
+<script>
+  const configs = {
+    Classic: { fps: "ones", preview: "preview-ones" },
+    Twos: { fps: "twos", preview: "preview-twos" },
+    Threes: { fps: "threes", preview: "preview-threes" },
+    Fours: { fps: "fours", preview: "preview-fours" },
+  };
+
+  const buttons = document.querySelectorAll(".controls button");
+  const fpsEl = document.querySelector(".fps");
+  const previewEl = document.querySelector(".preview");
+
+  buttons.forEach((button) =>
+    button.addEventListener("click", () =>
+      setActive(button as HTMLButtonElement),
+    ),
+  );
+
+  const setActive = (button: HTMLButtonElement) => {
+    buttons.forEach((b) => b.classList.remove("active"));
+    button.classList.add("active");
+
+    const text = button.textContent.trim() as keyof typeof configs;
+    const config = configs[text];
+
+    if (config && fpsEl && previewEl) {
+      fpsEl.className = `fps ${config.fps}`;
+      previewEl.className = `preview ${config.preview}`;
+    }
+  };
+</script>
+
+<div class="wrapper">
+  <div class="element">
+    <div class="fps ones">
+      <span></span><span></span><span></span><span></span><span></span><span
+      ></span><span></span><span></span><span></span><span></span><span
+      ></span><span></span><span></span><span></span><span></span><span
+      ></span><span></span><span></span><span></span><span></span><span
+      ></span><span></span><span></span><span></span>
+    </div>
+    <div class="preview preview-ones">
+      <span></span>
+    </div>
+  </div>
+  <div class="controls">
+    <button class="active">Classic</button>
+    <button>Twos</button>
+    <button>Threes</button>
+    <button>Fours</button>
+  </div>
+</div>
+
+<style>
+  .wrapper {
+    display: flex;
+    flex-flow: column;
+    gap: 1rem;
+  }
+
+  .element {
+    display: grid;
+    grid-template-columns: auto auto;
+    border: 1px solid var(--bg-alter);
+    border-radius: 1rem;
+    height: 16ch;
+    place-items: center;
+    overflow: clip;
+  }
+
+  .fps {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(24, 1ch);
+    gap: 1ch;
+    width: fit-content;
+    transform: translateX(-1.5ch);
+
+    span {
+      position: relative;
+      width: 4ch;
+      height: 4ch;
+      border: 1px solid var(--bg-alt);
+      border-radius: 50%;
+      --i: calc((sibling-index() - 1) * 15deg);
+      transform: rotate(var(--i));
+      opacity: 0.75;
+
+      &:after {
+        position: absolute;
+        display: block;
+        content: "";
+        height: 1ch;
+        width: 1ch;
+        border-radius: 50%;
+        top: 0;
+        left: 1.5ch;
+        background-color: var(--bg-alt);
+      }
+    }
+  }
+
+  .ones span {
+    --i: calc((sibling-index() - 1) * 15deg);
+  }
+
+  .twos span {
+    --i: calc(round(down, (sibling-index() - 1) / 2, 1) * 30deg);
+  }
+
+  .threes span {
+    --i: calc(round(down, (sibling-index() - 1) / 3, 1) * 45deg);
+  }
+
+  .fours span {
+    --i: calc(round(down, (sibling-index() - 1) / 4, 1) * 60deg);
+  }
+
+  .ones span,
+  .twos span:nth-child(odd),
+  .threes span:nth-child(3n + 1),
+  .fours span:nth-child(4n + 1) {
+    opacity: 1;
+    border-color: var(--bg-alter);
+
+    &:after {
+      background-color: var(--highlight);
+    }
+  }
+
+  .preview {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+    border-left: 1px solid var(--bg-alter);
+
+    span {
+      position: relative;
+      width: 4ch;
+      height: 4ch;
+      border: 1px solid var(--bg-alter);
+      border-radius: 50%;
+      animation: animationTimings 1s infinite linear;
+
+      &:after {
+        position: absolute;
+        display: block;
+        content: "";
+        height: 1ch;
+        width: 1ch;
+        border-radius: 50%;
+        top: 0;
+        left: 1.5ch;
+        background-color: var(--highlight);
+      }
+    }
+  }
+
+  @keyframes animationTimings {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .preview-ones span {
+    animation-timing-function: steps(24, start);
+  }
+
+  .preview-twos span {
+    animation-timing-function: steps(12, start);
+  }
+
+  .preview-threes span {
+    animation-timing-function: steps(8, start);
+  }
+
+  .preview-fours span {
+    animation-timing-function: steps(6, start);
+  }
+
+  .controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 2ch;
+
+    button {
+      border: 1px solid var(--bg-alter);
+      color: var(--color-alt);
+      border-radius: 1rem;
+      padding: 0.25ch 1ch;
+      display: grid;
+      place-items: center;
+
+      &.active {
+        background-color: var(--highlight);
+        color: var(--highlight-contrast);
+        border-color: var(--highlight);
+      }
+
+      &:not(.active):hover {
+        color: var(--color);
+        border-color: var(--color-alter);
+      }
+    }
+  }
+</style>

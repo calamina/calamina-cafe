@@ -1,0 +1,51 @@
+<div class="wrapper">
+  <div class="element">
+    <p>1 frame</p>
+    <p>1 drawing</p>
+  </div>
+
+  <p class="action">&times; 24</p>
+  
+  <div class="element">
+    <p>1 second</p>
+    <p>24 drawings</p>
+  </div>
+
+  <p class="action">&times; 3600</p>
+
+  <div class="element">
+    <p>1 hour</p>
+    <p><strong>86400 drawings</strong> </p>
+  </div>
+</div>
+
+
+<style>
+  .wrapper {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    gap: 1ch;
+    align-items: center;
+  }
+
+  .element {
+    display: grid;
+    border: 1px solid var(--bg-alter);
+    border-radius: 1ch;
+    
+    p {
+      padding: 0.5ch 1ch;
+      text-align: center;
+      &:first-of-type {
+        border-bottom: 1px solid var(--bg-alter);
+      }
+    }
+  }
+
+  .action {
+    border-radius: 1rem;
+    padding: 0 1ch;
+    background-color: var(--highlight);
+    color: var(--highlight-contrast);
+  }
+</style>

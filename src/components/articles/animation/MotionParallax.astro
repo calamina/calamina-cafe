@@ -1,0 +1,86 @@
+<div class="window">
+  <div class="legend">Horizontal Parallax</div>
+  <div class="content">
+    <div class="drawing mountains"></div>
+    <div class="drawing boxes"></div>
+    <div class="drawing sphere"></div>
+  </div>
+</div>
+
+<style>
+  .window {
+    border: 1px solid var(--bg-alter);
+    display: grid;
+    grid-template-rows: 4ch 14ch; 
+    overflow: hidden;
+    border-radius: 1ch;
+    width: 100%;
+  }
+
+  .legend {
+    border-bottom: 1px solid var(--bg-alter);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-alter);
+  }
+
+  .content {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    container-type: inline-size;
+  }
+
+  .drawing {
+    position: absolute;
+    bottom: 0;
+    display: block;
+    will-change: transform;
+  }
+  
+  .sphere {
+    height: 4ch;
+    width: 4ch;
+    border-radius: 50%;
+    background: var(--highlight);
+    z-index: 3;
+    bottom: 1ch; 
+    animation: animateParallax 3s infinite linear  alternate;
+  }
+  
+  .boxes {
+    height: 6ch;
+    width: 10ch;
+    background: var(--bg-alter);
+    border-radius: 4px 4px 0 0;
+    bottom: -1px;
+    z-index: 2;
+    animation: animateParallax2 3s infinite linear alternate;
+  }
+  
+  .mountains {
+    height: 10ch;
+    width: 18ch;
+    bottom: -1px;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    background: var(--bg-alt);
+    z-index: 1;
+    animation: animateParallax3 3s infinite linear alternate;
+  }
+
+  @keyframes animateParallax {
+    0% { transform: translateX(10cqw); }
+    100% { transform: translateX(calc(90cqw - 100%)); }
+  }
+  @keyframes animateParallax2 {
+    0% { transform: translateX(20cqw); }
+    100% { transform: translateX(calc(80cqw - 100%)); }
+  }
+  @keyframes animateParallax3 {
+    0% { transform: translateX(30cqw); }
+    100% { transform: translateX(calc(70cqw - 100%)); }
+  }
+</style>

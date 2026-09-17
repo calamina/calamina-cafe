@@ -1,0 +1,77 @@
+<div class="sequence">
+    <div class="window">
+      <div class="controls"><span></span><span></span><span></span></div>
+      <p class="drawing">=^..^=</p>
+    </div>
+  
+  <div class="action">next frame</div>
+  
+    <div class="window">
+      <div class="controls"><span></span><span></span><span></span></div>
+      <p class="drawing">=^..^=</p>
+    </div>
+  
+  <div class="action">next frame</div>
+  
+    <div class="window">
+      <div class="controls"><span></span><span></span><span></span></div>
+      <p class="drawing">=^..^=</p>
+  </div>
+</div>
+
+<style>
+  .sequence {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    align-items: center;
+    justify-content: center;
+    gap: 1ch;
+  }
+
+  .window {
+    border: 1px solid var(--bg-alter);
+    display: grid;
+    grid-template-rows: 2ch 8ch;
+    border-radius: 1ch;
+    place-items: center;
+  }
+
+  .controls {
+    height: 2ch;
+    border-bottom: 1px solid var(--bg-alter);
+    width: 100%;
+    display: flex;
+    gap: 0.5ch;
+    align-items: center;
+    justify-content: end;
+    padding-right: 0.5ch;
+    
+    span {
+      display: block;
+      width: 1ch;
+      height: 1ch;
+      border-radius: 1ch;
+      border: 1px solid var(--bg-alter);
+    }
+  }
+  
+  .drawing {
+    display: grid;
+    place-items: center;
+    height: 8ch;
+    color: var(--color-alter);
+  }
+  
+  .action {
+    display: grid;
+    height: fit-content;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--highlight);
+    background-color: var(--highlight);
+    border-radius: 1rem;
+    padding: 0 1ch;
+    color: var(--highlight-contrast);
+  }
+</style>

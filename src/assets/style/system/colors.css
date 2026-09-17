@@ -1,5 +1,6 @@
 :root {
   --highlight: oklch(80% 0.1 320);
+  --highlight-contrast: oklch(48% 0.12 320);
   --red: oklch(43.558% 0.1702 5.884);
 
   /*________ LIGHT ________*/

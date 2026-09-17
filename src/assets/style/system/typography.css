@@ -1,9 +1,13 @@
 :root {
   /* FONT FAMILY */
-  --font-reg: "Apercu", monospace;
+  --font-reg: "Cascadia", monospace;
 
   /* LINEHEIGHT */
   -lh-md: 1.5;
+}
+
+a {
+  text-underline-offset: 4px;
 }
 
 /* STYLE H1 H2 H3 ETC */

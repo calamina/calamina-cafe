@@ -7,129 +7,120 @@ tags:
  - media
 ---
 
-<figure>![Image d'intro, traintraversant la ville — Perfect Blue](../../assets/img/content/articles/animation/intro.webp)<figcaption>Perfect Blue</figcaption></figure>
+import Separator from '../../components/features/article/ArticleSeparator.astro'
+import FrameRepetition from '@components/articles/animation/FrameRepetition.astro'
+import FramesPerSecond from '@components/articles/animation/FramesPerSecond.astro'
+import MotionBlur from '@components/articles/animation/MotionBlur.astro'
+import MotionParallax from '@components/articles/animation/MotionParallax.astro'
+import DrawingCount from '@components/articles/animation/DrawingCount.astro'
+import OneTwoThreeFour from '@components/articles/animation/OneTwoThreeFour.astro'
 
-On est en 2012, je regarde une quantité assez impressionante de films et séries d'animation. J'adore ça au point de vouloir en garder des passages.
+<figure>![Train going through the city — Perfect Blue](../../assets/img/content/articles/animation/intro.webp)<figcaption>Perfect Blue</figcaption></figure>
 
-Je décide de créer un blog pour lequel je fabrique puis publie des gifs<sup>1</sup> de mes oeuvres favorites ou de celles se prêtant à l'exercice. [xanatu](https://xanatu.tumblr.com)
+{/* We're in 2012, I watch lots of animated content. Movies, series, shorts, everything I can put my hands on. */}
 
-<span class="info"><sup>1</sup> Un [GIF](https://en.wikipedia.org/wiki/GIF) est une image souvent animée, elle est jouée et se répète en boucle automatiquement sur le web contrairement à la plupart des vidéos.</span>
+{/* I'm fond of animation, particularly 2D animation and its gorgeous painted backgrounds and realistic characters and movement. */}
+I love animation, particularly hand-drawn 2D animation. My mom buying all kind of VHS movies when I was young probably played a huge part in this. I got to see stuff ranging from Disney's [Golden age](https://www.thedisneyclassics.com/blog/thedisneyeras), to dark japanese versions of Andersen's fairy tales (a *[Call of the Wild](https://www.imdb.com/title/tt12230096/)* where everyone dies, a *[Little Mermaid](https://en.wikipedia.org/wiki/Hans_Christian_Andersen%27s_The_Little_Mermaid_(1975_film))* where she evaporates in bubbles), to Ghibli movies I watched a bit too soon (hello *Princess Mononoke* and sliced body parts).
 
-Ma technique (très limitée) consiste à parcourir la séquence qui m'intéresse image par image, à enregistrer ces images une par une, puis à les ré-assembler.
+Years go by to circa 2012. My fondness has only developed. [insert why i'm not doing animation myself]. I want to keep fragments of moments I enjoy the most. Capturing screenshots seems fine at first, but these lack the very thing I want to capture - movement. I settle for something quite trendy at the time: Gifs<sup>1</sup>. 
+The plan is set : I'll pick some sequence I enjoy, somehow make a GIF out of it and then make a [blog](https://xanatu.tumblr.com) to post these all.
 
-Deux aspects se révèlent très rapidement *intriguants*.
+<p class="info"><sup>1</sup> A [GIF](https://en.wikipedia.org/wiki/GIF) is an animated image played on repeat.</p>
 
----
+<div class="bordered">
+***2012 GIF making recipe :***
+1. Get to the sequence you want to record
+2. Setup two media player shortcuts : *screenshot* & *go to next frame<sup>2</sup>* 
+3. Run through the sequence, mashing shortcuts alternatively 
+4. Open Editing software -> *do some magic* -> export as gif
+</div>
 
-**⯀ La répétition d'images**
+<p class="info"><sup>2</sup> A [frame](https://en.wikipedia.org/wiki/Film_frame) is one of the many single images in a motion picture.</p>
 
-Chaque image apparait deux, trois, quatre fois d'affilée. Je pense à un bug de mon lecteur vidéo, ça m'énerve, mais je prends l'habitude de sauter ou supprimer les doublons.
+The process is quite long and tedious, I probably stumbled upon a blog post saying this was the best method and instantly decided that was true. It doesn't take long to see that **something feels off ! Two things start catching my attention quite often ~**
 
-<figure>![Image identique répétée trois fois — The Garden of Words](../../assets/img/content/articles/animation/repeat-x.png)<figcaption>The Garden of Words</figcaption></figure>
+### Frame repetition
 
-Bizarrement, les images de films d'animation sortis au cinéma (*Ghibli*, *Disney*) sont dupliquées une fois, ou alors pas du tout.
+When pressing *next frame* I often see no change at all. Same image, sometimes one, two, three times in a row. I think media player bug and brush it off, but soon find the pictures are indeed being repeated.
 
-Pour les dessins animés aux budgets plus limités qui passent à la télé (*Dragon Ball*), les images se répètent jusque 3 ou 4 fois.
+Images from feature movies that got theatrical releases *(Ghibli, Disney)* are most often duplicated once, or not at all. Limited budget media on the other hand *(Dragon Ball)* have most images being repeated 3 or even 4 times.
 
-{/* Mais lors de scènes rapides (combat, course-poursuite), les images sont très souvent toutes différentes ... */}
-{/* Des éléments comme la pluie changent à chaque image, alors que les personnages ne bougent que toutes les deux images ... */}
+<FrameRepetition />
 
----
 
-**⯀ La répétition de séquence**
+{/* <figure>![Identical image repeated three times — The Garden of Words](../../assets/img/content/articles/animation/repeat-x.png)<figcaption>The Garden of Words</figcaption></figure> */}
 
-Un gif se répète en boucle indéfiniment. La transition quand cette boucle arrive à sa fin et reprend du début est souvent un peu brutale.
 
-Pour mes premiers essais je prends simplement des passages que je trouve cools et je n'y fais pas attention.
-Mais lors d'un épisode je me rends compte d'un passage dans lequel les personnages reprennent exactement la même position qu'au début de la séquence.
-Et ça donne un gif idéal dans lequel on ne distinge pas quand l'action recommence.
+### Sequence repetition
 
+{/* A gif loops infinitely. The transition when the loops starts again can be somewhat *brutal*. During my first attempts I pick moments without paying attention to the stutter caused by the sudden repetition. */}
+
+Eventually I come across a sequence where the image ends up looking exactly what it was seconds ago. The result is an ideal gif with perpetual uncut motion, where we can't distinguish start from end.
 {/* Pour certaines oeuvres impossible de réussir à faire le moindre gif correct. L'animation ne s'y prête pas ou  */}
 
-Je trouve régulièrement des "boucles parfaites"<sup>2</sup>, peu importe la qualité d'animation et le budget. C'est précisément ce que je commence à rechercher — l'action se répète sans transition.
-
-<span class="info"><sup>2</sup> La fumée monte lentement d'une cheminée dans le même mouvement, des personnages dansent et reviennent à leur position initiale avant de repartir pour un tour.</span>
+These *'perfect loops'* turn out to appear quite frequently, with seemingly no relation to animation quality or budget. They become precisely what I look for — action repeating infinitely without transition.
 
 <figure>![Le mouvement de l'eau se répète — Princesse Mononoke](../../assets/img/content/articles/animation/repeat.webp)<figcaption>Princesse Mononoke</figcaption></figure>
 
-{/* Notre fumée s'élève donc dans le ciel pendant toute une scène alors que son mouvement se répète chaque seconde. 
+<Separator/>
 
-Un personnage se transforme exactement de la même manière à chaque épisode. */}
+## What is animation ?!
 
+Before trying to understand why these pictures and moments repeat I ask myself : How does this actually all work ?
+I have some clues : loads of drawings, but I don't really know how anything is done behind the scenes.
 
-{/* On imagine facilement que tout est très certainement lié à *l'argent* et au *temps*. Et puis je réalise que je n'ai qu'une très vague idée de la manière dont est conçu un dessin animé. */}
-{/* 
-Ce que je retiens pour le moment :
+With cinema and motion capture : A video is simply a sequence of still images shown one after the other very quickly, a quick diaporama, but when do we go from one image to the next, how do we set the diaporama speed ?
 
-⯀ Chaque image d'un dessin animé n'est pas (forcément) unique<br/>
-⯀ Les animateurs ont l'air d'avoir plus d'un tour dans leur sac */}
+### Frames per second
 
-## L'animation en bref
+Let me introduce Frames per Second or **FPS** :
+blablabla about fps, maybe talk about Hz for a bit
+	
 
-Ou pourquoi l'action parait parfois si réaliste, tandis qu'elle semble molle ou saccadée à d'autres moments ?
+|60 FPS | 24 FPS |
+|---|---|
+|Matches the historical refresh rate of standard screens and offers a natural visual sweet spot| Lowest and cheapest speed that still created smooth motion when sound was added to film, nowadays used for its *'cinematic'* effect |
 
-C'est quoi le cinéma, c'est quoi une vidéo, et pourquoi on fait comme ça. (en bref!)
+	{/* - 60fps : it matches the historical refresh rate of standard screens and offers a natural visual sweet spot
+	- 24fps : standard because it was the lowest and cheapest speed that still created smooth motion when sound was added to film, nowadays used because it gives a *'cinematic'* effect */}
 
-Pourquoi *24fps* ? [C'est quoi un Hertz ?](http://www.grospixels.com/site/animation1.php)
+<FramesPerSecond />
 
-<figure>![Différences de FPS](https://cdn.shopify.com/s/files/1/1724/5213/files/basketball.gif?v=1762548699)
-<figcaption>Différence de perception des FPS</figcaption></figure>
+This seems like a good start to understanding why some media appear so choppy or resembles a slideshow.
+*But* (obviously there is a but) the industry standards since the end of silent movies can only project or display at 24 frames per second and up. 
 
-*[extract] :*
-Lorsqu'on regarde un film, ce que l'on voit en réalité, ce sont des images statiques diffusées l'une après l'autre très rapidement. Une sorte de diaporama, mais avec 24 diapositives par seconde. 
-Chaque image est légèrement différente de la précédente, de telle sorte que le cerveau croit qu'il est en train d'en voir une seule en mouvement. 
+### How this translates to 2D animation
 
-Le processus est identique que l'on soit devant un écran de cinéma, de télévision ou d'ordinateur. Les seules choses qui changent sont la manière dont les images (en anglais frames) sont affichées (projection, tube cathodique...) et la vitesse du diaporama, ou framerate. On exprime celui-ci en images par seconde (IPS, ou FPS pour frames per second si vous êtes un inconditionnel de la langue de Britney Shakespeare). 
+2D animation always stuck with the cinema standard of 24FPS, so basically 24 images in a second.
+Seeing how it is hand drawn would then mean 24 new drawings for each second. Let's imagine the result :
 
-Pour vous faire un ordre d'idée, voici quelques framerates typiques:
-- Film de cinéma : 24 FPS.
-- Dessin animé de bonne qualité (Disney au cinéma) : 12 FPS, avec des pointes à 24 quand ils sortent les images de synthèse.
-- Dessin animé de mauvaise qualité (Dragon Ball Z à la télé) : oscille entre 4 et 12 FPS, avec une moyenne aux alentours de 6.
-- Jeu console PAL (EU) : 25 ou 50 FPS.
-- Jeu console NTSC (US/JP) : 30 ou 60 FPS.
+<DrawingCount />
 
-<figure>![Différences de FPS selon les médias](https://cinetext.wordpress.com/wp-content/uploads/2013/05/step-printing.jpg)
-<figcaption>Différence des FPS selon les médias</figcaption></figure>
-
-
- Dans le cadre d'un dessin animé traditionnel en 2D : 
-
-- 24 frames = 1 seconde
-- 1 heure = 3600 secondes
-- 1h de film = 86400 dessins
-
---- 
-
-- différence avec la 3D = dessin
-- une image / un dessin = *une frame*
-- 24 frames = *une seconde* (p-ê expliquer que c'est un choix stylistique + exemples)
-- 1h = *3600 secondes*, donc ...
-- 1h de film = *86400 dessins* : c'est **ENORME**, ça prend des années et c'est **CHER**
-
-On est tout le temps en 24 FPS, Qu'est ce qui fait alors qu'on perçoit une différence entre différents dessins animés ? (rythme saccadé, lenteur, etc.)
+This is an absurd amount of work, and would prove to be way too much time-consuming and costly even for the biggest studios. There definitely is a catch here, some media undeniably look like they have a lower framerate and feel jerky
 
 
 
-## Les techniques
+
+## Methods and tricks
 
 Comment réduire le nombre de dessins, comment combiner différentes méthodes, comment on peut voir à l'oeil quels studios ont des sous, quels types de dessins animés ont tendance à être quali.
 
-### Vitesse
+### Speed / quantity
 
-**⯀ One two three four**
+#### One two three four
 
+Showing 24 frames per second doesn't mean showing 24 **different** frames per second.
+This is very simply done by duping frames, with the more duplication giving rougher animation.
 
-Le nombre de dessins affiché par seconde varie en fonction du dessin animé !
+Animators talk about it in two ways. The number of repetitions : 2 / 3 / 4, animating on twos, threes, fours. Or the number of different drawings in one second :  12 / 8 / 6.
 
-On parle soit du nombre de répétitions : 2/3/4 -> twos/threes/fours, soit du nombre de dessins présents dans une seconde de film : 12/8/6
+<OneTwoThreeFour />
 
--> Tableau comparatif [2/3/4 -> 12/8/6]
+{/* - Tableau comparatif [2/3/4 -> 12/8/6]
+- Todo : image de comparaison maison [ones/twos/threes/fours] */}
 
+{/* <figure>![Comparaison ones and twos](https://stopmotionatparsons.wordpress.com/wp-content/uploads/2012/01/1svs2s.jpg?w=584)<figcaption>Comparaison d'une animation sur ones et twos</figcaption></figure> */}
 
-
-<figure>![Comparaison ones and twos](https://stopmotionatparsons.wordpress.com/wp-content/uploads/2012/01/1svs2s.jpg?w=584)<figcaption>Comparaison d'une animation sur ones et twos</figcaption></figure>
-
--> Todo : image de comparaison maison [ones/twos/threes/fours]
 
 Ce rythme et le nombre de dessins ne sont pas constants et varient très souvent au cours d'une même oeuvre !
 
@@ -144,7 +135,7 @@ Un truc s'agite lentement en arrière plan : fours.
 
 -> mélange twos/threes/fours & gifs (cache background/premier plan + neige/pluie ones) 
 
-**⯀ Animation Bump, Overcrank & Undercrank**
+#### Animation Bump, Overcrank & Undercrank
 
 Correspond au fait que lors de séquences "wouaw" l'animation est plus quali, dessins comme vitesse (donc souvent fours > twos etc.)
 [AnimationBump](https://tvtropes.org/pmwiki/pmwiki.php/Main/AnimationBump)
@@ -152,83 +143,110 @@ Correspond au fait que lors de séquences "wouaw" l'animation est plus quali, de
 On parle d'[Overcrank](https://tvtropes.org/pmwiki/pmwiki.php/Main/Overcrank) quand on augmente le nombre de dessins par rapport à notre référentiel.
 Pour l'[Undercrank](https://tvtropes.org/pmwiki/pmwiki.php/Main/Undercrank) il s'agit de diminuer le nombre de dessins.
 
-<figure>![Animation bump exemple](../../assets/img/content/articles/animation/animation-bump.avif)
-<figcaption>King Dedede glowup</figcaption></figure>
+{/* <figure>![Animation bump exemple](../../assets/img/content/articles/animation/animation-bump.avif)
+<figcaption>King Dedede glowup</figcaption></figure> */}
+
+#### Limited Animation
+
+Limited animation is a process that reuses frames of character animation (either full or simply body parts).
+[Limited Animation](https://tvtropes.org/pmwiki/pmwiki.php/Main/LimitedAnimation)
 
 
-**⯀ Animation partielle**
+### Movement / Camera work
+
+#### Partial animation
 
 eg: Un train animé passe tandis que le background reste complètement figé.
 La météo est la seule chose animée.
 Au contraire les personnages sont fixes tandis que les arbres bougent avec le vent.
 etc.
 
-### Mouvement
+#### Motion blur & Motion Parallax
 
-**⯀ Motion blur & Motion Parallax**
+{/* <figure>![Motion blur difference](http://i.imgur.com/xnGbDts.gif)
+<figcaption>The effects of motion blur</figcaption></figure>
+[exemple motion blur 24FPS](http://i.imgur.com/xnGbDts.gif) */}
 
-[exemple motion blur 24FPS](http://i.imgur.com/xnGbDts.gif)
+##### Motion blur
 
-[MotionBlur](https://tvtropes.org/pmwiki/pmwiki.php/Main/MotionBlur)
+{/* - [MotionBlur](https://tvtropes.org/pmwiki/pmwiki.php/Main/MotionBlur)  */}
 
-[MotionParallax](https://tvtropes.org/pmwiki/pmwiki.php/Main/MotionParallax)
+This method is used to artificially reproduce the blur created by movement in our field of vision or in real motion pictures. It is used by either literally blurring the characters or background, stretching the object in motion (smear), or showing it multiple times. 
 
-[Multiplane Camera](https://en.wikipedia.org/wiki/Multiplane_camera)
+<MotionBlur />
 
-**⯀ Traveling**
+##### Motion Parallax
 
-[Pan](https://tvtropes.org/pmwiki/pmwiki.php/Main/Pan)
+{/* [MotionParallax](https://tvtropes.org/pmwiki/pmwiki.php/Main/MotionParallax) */}
 
-### Répétition
+Motion Parallax is a technic using different layers moving at different speeds to simulate depth (the farther being the slower). It is also very much used in video games and very visible in the *Mario* franchise for example. This will often be used with background, trees being on their own layer, then mountains, then the sky ...
 
-**⯀ Réutilisation de séquence**
+<MotionParallax />
 
-[Stock Footage](https://tvtropes.org/pmwiki/pmwiki.php/Main/StockFootage)
+This effect was first made possible with the use of the famous [Multiplane Camera](https://en.wikipedia.org/wiki/Multiplane_camera)
 
-Répétitions mêmes animations (magical girls : Sailor Moon) 
-[Transformation Sequence](https://tvtropes.org/pmwiki/pmwiki.php/Main/TransformationSequence)
+#### Pan & Dolly & Zoom
+
+##### Pan
+
+{/* [Pan](https://tvtropes.org/pmwiki/pmwiki.php/Main/Pan) */}
+
+For panning the background is a very large piece and instead of drawing it multiple times it is simply sled under the camera (which is fixed in place) to produce movement with a single drawing. The movement follows the x & y axes, making the scene move left, right, up or down. 
+
+##### Dolly & zoom
+
+{/* [Dolly](https://tvtropes.org/pmwiki/pmwiki.php/Main/Dolly)
+[Zoom](https://tvtropes.org/pmwiki/pmwiki.php/Main/Zoom) */}
+
+Dolly is a similar effect but instead of moving either left & right or up & down the scene gets closer or farther. The real Dolly effect involves moving the camera closer or farther to the picture. The effect used the most is siply zooming in and out, since without a parallax setup it will produce the same result for 2D animation. (In live action the effects are different, the depth of the image being changed)
+
+### Recycling
+
+#### Recycled Sequence
+
+{/* [Stock Footage](https://tvtropes.org/pmwiki/pmwiki.php/Main/StockFootage) */}
+
+Basically showing exactly the same thing at different points in the media. It is very often used on cheap productions and long series, the most noticeable examples can be found in the magical girl genre (*Sailor Moon*) with the [Transformation Sequence](https://tvtropes.org/pmwiki/pmwiki.php/Main/TransformationSequence).
 
 <figure>![Sailor Moon transformation sequence](https://static0.cbrimages.com/wordpress/wp-content/uploads/2020/08/Super-Sailor-Moon-and-Chibi-Moon-from-Sailor-Moon.jpg)
 <figcaption>Sailor Moon</figcaption></figure>
 
-**⯀ Recyclage de séquence**
+#### Recycled Animation
 
-réutilisation d'animations Disney (danse Mowgli + arsitochats il me semble)
-[Recycled Animation](https://tvtropes.org/pmwiki/pmwiki.php/Main/RecycledAnimation)
+This is very close to the previous trick *EXCEPT* it is used cross-media. Disney is pretty famous for this with the same dances going on in different movies. There are changes, characters and drawings are modified to match the current movie but the groundwork for the animation and movement is already done.
+{/* réutilisation d'animations Disney (danse Mowgli + arsitochats il me semble) */}
+{/* [Recycled Animation](https://tvtropes.org/pmwiki/pmwiki.php/Main/RecycledAnimation) */}
 
 <figure>![Disney recyclage animation dance](https://geekdad.com/wp-content/uploads/2015/06/recycled-disney.jpg)
-<figcaption>Blanche neige & Robin des Bois</figcaption></figure>
+<figcaption>White snow and Robin Hood</figcaption></figure>
 
 
-**⯀ Répétition de mouvement**
+#### Recycled movement
 
-[Everybody Do The Endless Loop](https://tvtropes.org/pmwiki/pmwiki.php/Main/EverybodyDoTheEndlessLoop)
+This is what made me realise there were loops in animation, [the characters come to the same position](https://tvtropes.org/pmwiki/pmwiki.php/Main/EverybodyDoTheEndlessLoop) they had at some point, and the movement starts again. This saves time by using the same frames several times.
 
-**⯀ Wraparound background**
+It is often used for part of the animation. Character movement, weather, particles ... It is very visible with weather like snowflakes, waterfalls etc.
+{/* 
+#### Recycled background
 
-[Wraparound Background](https://tvtropes.org/pmwiki/pmwiki.php/Main/WraparoundBackground)
+Mostly used in Hannah Barbera was the [Wraparound Background](https://tvtropes.org/pmwiki/pmwiki.php/Main/WraparoundBackground) which is a Pan+ where the background is made to seamlessly loop. You'll see the same 2 trees and 3 houses several times while the characters run or drive by. */}
 
-### Rythme
+{/* ### Rythm
 
-**⯀ Leave the camera running**
+#### Leave the camera running
 
-[Leave The Camera Running](https://tvtropes.org/pmwiki/pmwiki.php/Main/LeaveTheCameraRunning)
+When the scene has ended but it takes time, too much time, to get to the next one. It is often used in cheap animation to scrape for some seconds. It is often very visible because the scene is completely still for some seconds, or with a slow pan showing nothing more really. */}
 
-**⯀ Limited Animation**
+{/* [Leave The Camera Running](https://tvtropes.org/pmwiki/pmwiki.php/Main/LeaveTheCameraRunning) */}
 
-[Limited Animation](https://tvtropes.org/pmwiki/pmwiki.php/Main/LimitedAnimation)
+{/* #### Lazy Lipsync
 
-**⯀ Lazy Lipsync**
+- [LipLock](https://tvtropes.org/pmwiki/pmwiki.php/Main/LipLock)
+- [Cheeky Mouth](https://tvtropes.org/pmwiki/pmwiki.php/Main/CheekyMouth)
+- [Motionless Chin](https://tvtropes.org/pmwiki/pmwiki.php/Main/MotionlessChin)
+- [Filming For Easy Dub](https://tvtropes.org/pmwiki/pmwiki.php/Main/FilmingForEasyDub)
 
-[LipLock](https://tvtropes.org/pmwiki/pmwiki.php/Main/LipLock)
-
-[Cheeky Mouth](https://tvtropes.org/pmwiki/pmwiki.php/Main/CheekyMouth)
-
-[Motionless Chin](https://tvtropes.org/pmwiki/pmwiki.php/Main/MotionlessChin)
-
-[Filming For Easy Dub](https://tvtropes.org/pmwiki/pmwiki.php/Main/FilmingForEasyDub)
-
-est-ce que ... ?
+est-ce que ... ? */}
 
 ## Un dessin animé en 24 fps ?
 
@@ -263,12 +281,12 @@ Les aventures du prince Achmed
 (+recherches a faire pour des autres)
 
 
-## Divagations
+{/* ## Divagations
 
-[Hayao Miyazaki on Running](https://animationobsessive.substack.com/p/hayao-miyazaki-on-running)
+[Hayao Miyazaki on Running](https://animationobsessive.substack.com/p/hayao-miyazaki-on-running) */}
 
 
-## Conclusion ?
+{/* ## Conclusion ? */}
 
 ## Sources
 todo :: source images and every link used

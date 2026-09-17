@@ -1,6 +1,6 @@
 import type { Colors, MemoryPoint, Point } from "@models/Ascii";
 import p5 from "p5";
-import apercu from "../assets/fonts/ApercuMonoPro-Medium.woff2";
+import Cascadia from "../assets/fonts/CascadiaCode.woff2";
 import { useAsciiClick } from "./ascii-click";
 import { useAsciiGem } from "./ascii-gem";
 import { useAsciiUtils } from "./ascii-utils";
@@ -56,7 +56,7 @@ const script = (p5: p5) => {
     canvas.parent(container);
     p5.background(p5.color("#e1dede"));
 
-    const font = await p5.loadFont(apercu);
+    const font = await p5.loadFont(Cascadia);
     p5.textSize(SIZE - 2)
     p5.textFont(font);
     p5.textAlign(p5.CENTER, p5.CENTER);

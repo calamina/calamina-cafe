@@ -1,0 +1,90 @@
+<div class="sequence">
+  <div class="window">
+    <div class="legend">60fps</div>
+    <div class="content">
+      <p class="drawing sixty"></p>
+    </div>
+  </div>
+
+  <div class="window">
+    <div class=" legend">24fps</div>
+    <div class="content">
+      <p class="drawing twentyfour"></p>
+    </div>
+  </div>
+
+  <div class="window">
+    <div class=" legend">12fps</div>
+    <div class="content">
+      <p class="drawing twelve"></p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .sequence {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2ch;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .window {
+    border: 1px solid var(--bg-alter);
+    display: grid;
+    grid-template-rows: 4ch 10ch;
+    border-radius: 1ch;
+    place-items: center;
+  }
+
+  .legend {
+    height: 4ch;
+    border-bottom: 1px solid var(--bg-alter);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* font-size: 0.9rem; */
+    color: var(--color-alter);
+  }
+
+  .content {
+    position: relative;
+    height: 10ch;
+    width: 100%;
+    display: flex;
+    align-items: end;
+    container-type: inline-size; 
+  }
+
+  .drawing {
+    position: absolute;
+    left: 0;
+    top: 3ch;
+    display: block;
+    height: 4ch;
+    width: 4ch;
+    border-radius: 4ch;
+    background-color: var(--highlight);
+  }
+
+  .sixty {
+    animation: animateFPS 1s infinite alternate steps(60, jump-none);
+  }
+  .twentyfour {
+    animation: animateFPS 1s infinite alternate steps(24, jump-none);
+  }
+  .twelve {
+    animation: animateFPS 1s infinite alternate steps(12, jump-none);
+  }
+
+  @keyframes animateFPS {
+    0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(100cqw - 100%));
+  }
+  }
+</style>
