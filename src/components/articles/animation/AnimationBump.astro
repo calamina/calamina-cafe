@@ -1,0 +1,70 @@
+<div class="window">
+  <div class="legend">Animation Bump</div>
+  <div class="content">
+    <div class="drawing sphere"></div>
+  </div>
+</div>
+
+<style>
+  .window {
+    border: 1px solid var(--bg-alter);
+    display: grid;
+    grid-template-rows: 4ch 14ch; 
+    overflow: hidden;
+    border-radius: 1ch;
+    width: 100%;
+  }
+
+  .legend {
+    border-bottom: 1px solid var(--bg-alter);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-alter);
+  }
+
+  .content {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    container-type: inline-size;
+  }
+
+  .drawing {
+    display: block;
+    will-change: transform;
+  }
+  
+  .sphere {
+    height: 4ch;
+    width: 4ch;
+    border-radius: 50%;
+    background: var(--highlight);
+    z-index: 3;
+    animation: animateAnimationBump 3s infinite linear alternate;
+  }
+
+   @keyframes animateAnimationBump {
+    0% {
+      transform: translateX(10cqw);
+      animation-timing-function: steps(12, end);
+    }
+
+    30% {
+      transform: translateX(20cqw);
+      animation-timing-function: steps(36, end);
+    }
+
+    70% {
+      transform: translateX(calc(80cqw - 100%));
+      animation-timing-function: steps(12, end);
+    }
+
+    100% {
+      transform: translateX(calc(90cqw - 100%));
+    }
+  }
+</style>

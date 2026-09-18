@@ -14,13 +14,14 @@ import MotionBlur from '@components/articles/animation/MotionBlur.astro'
 import MotionParallax from '@components/articles/animation/MotionParallax.astro'
 import DrawingCount from '@components/articles/animation/DrawingCount.astro'
 import OneTwoThreeFour from '@components/articles/animation/OneTwoThreeFour.astro'
+import AnimationBump from '@components/articles/animation/AnimationBump.astro'
 
 <figure>![Train going through the city — Perfect Blue](../../assets/img/content/articles/animation/intro.webp)<figcaption>Perfect Blue</figcaption></figure>
 
 {/* We're in 2012, I watch lots of animated content. Movies, series, shorts, everything I can put my hands on. */}
 
 {/* I'm fond of animation, particularly 2D animation and its gorgeous painted backgrounds and realistic characters and movement. */}
-I love animation, particularly hand-drawn 2D animation. My mom buying all kind of VHS movies when I was young probably played a huge part in this. I got to see stuff ranging from Disney's [Golden age](https://www.thedisneyclassics.com/blog/thedisneyeras), to dark japanese versions of Andersen's fairy tales (a *[Call of the Wild](https://www.imdb.com/title/tt12230096/)* where everyone dies, a *[Little Mermaid](https://en.wikipedia.org/wiki/Hans_Christian_Andersen%27s_The_Little_Mermaid_(1975_film))* where she evaporates in bubbles), to Ghibli movies I watched a bit too soon (hello *Princess Mononoke* and sliced body parts).
+I love animation, particularly hand-drawn 2D animation. My mom buying all kind of VHS movies when I was young probably played a huge part in this. I got to see stuff ranging from Disney's [Golden age](https://www.thedisneyclassics.com/blog/thedisneyeras) collection, dark japanese versions of Andersen's tales (a *[Call of the Wild](https://www.imdb.com/title/tt12230096/)* where everyone dies, a *[Little Mermaid](https://en.wikipedia.org/wiki/Hans_Christian_Andersen%27s_The_Little_Mermaid_(1975_film))* where she evaporates in bubbles), to Ghibli movies I watched a bit too soon (hello *Princess Mononoke* and sliced body parts).
 
 Years go by to circa 2012. My fondness has only developed. [insert why i'm not doing animation myself]. I want to keep fragments of moments I enjoy the most. Capturing screenshots seems fine at first, but these lack the very thing I want to capture - movement. I settle for something quite trendy at the time: Gifs<sup>1</sup>. 
 The plan is set : I'll pick some sequence I enjoy, somehow make a GIF out of it and then make a [blog](https://xanatu.tumblr.com) to post these all.
@@ -58,7 +59,7 @@ Images from feature movies that got theatrical releases *(Ghibli, Disney)* are m
 Eventually I come across a sequence where the image ends up looking exactly what it was seconds ago. The result is an ideal gif with perpetual uncut motion, where we can't distinguish start from end.
 {/* Pour certaines oeuvres impossible de réussir à faire le moindre gif correct. L'animation ne s'y prête pas ou  */}
 
-These *'perfect loops'* turn out to appear quite frequently, with seemingly no relation to animation quality or budget. They become precisely what I look for — action repeating infinitely without transition.
+These *'perfect loops'* turn out to appear quite frequently, with seemingly no relation to animation quality or budget. They become precisely what I look for — motion repeating without transition.
 
 <figure>![Le mouvement de l'eau se répète — Princesse Mononoke](../../assets/img/content/articles/animation/repeat.webp)<figcaption>Princesse Mononoke</figcaption></figure>
 
@@ -92,7 +93,7 @@ This seems like a good start to understanding why some media appear so choppy or
 ### How this translates to 2D animation
 
 2D animation always stuck with the cinema standard of 24FPS, so basically 24 images in a second.
-Seeing how it is hand drawn would then mean 24 new drawings for each second. Let's imagine the result :
+Seeing how it is hand drawn would then mean 24 new drawings for each second. Let's imagine the result:
 
 <DrawingCount />
 
@@ -124,7 +125,8 @@ Animators talk about it in two ways. The number of repetitions : 2 / 3 / 4, anim
 
 Ce rythme et le nombre de dessins ne sont pas constants et varient très souvent au cours d'une même oeuvre !
 
-Soit dans différentes scènes :<br/> 
+Maybe explain the two most used in paragraphs instead of titled sections. Better full FPS for focused moments and Partial differences in FPS for different elements. 
+{/* Soit dans différentes scènes :<br/> 
 Les moments phares (combats, scène de fin, etc.) sont animés de manière plus quali -> on augmente le nombre de dessins. 
 Les scènes de dialogues ou plans "WOW" sont souvent lents et peu animés -> moins de dessins
 
@@ -132,8 +134,7 @@ Soit dans la même scène !<br/>
 De la pluie tombe : ones facile a faire car répétitif ([Loops](#répétition)). 
 Les personnages bougent : twos.
 Un truc s'agite lentement en arrière plan : fours.
-
--> mélange twos/threes/fours & gifs (cache background/premier plan + neige/pluie ones) 
+-> mélange twos/threes/fours & gifs (cache background/premier plan + neige/pluie ones)  */}
 
 #### Animation Bump, Overcrank & Undercrank
 
@@ -143,16 +144,7 @@ Correspond au fait que lors de séquences "wouaw" l'animation est plus quali, de
 On parle d'[Overcrank](https://tvtropes.org/pmwiki/pmwiki.php/Main/Overcrank) quand on augmente le nombre de dessins par rapport à notre référentiel.
 Pour l'[Undercrank](https://tvtropes.org/pmwiki/pmwiki.php/Main/Undercrank) il s'agit de diminuer le nombre de dessins.
 
-{/* <figure>![Animation bump exemple](../../assets/img/content/articles/animation/animation-bump.avif)
-<figcaption>King Dedede glowup</figcaption></figure> */}
-
-#### Limited Animation
-
-Limited animation is a process that reuses frames of character animation (either full or simply body parts).
-[Limited Animation](https://tvtropes.org/pmwiki/pmwiki.php/Main/LimitedAnimation)
-
-
-### Movement / Camera work
+{/* <AnimationBump /> */}
 
 #### Partial animation
 
@@ -160,6 +152,8 @@ eg: Un train animé passe tandis que le background reste complètement figé.
 La météo est la seule chose animée.
 Au contraire les personnages sont fixes tandis que les arbres bougent avec le vent.
 etc.
+
+### Movement / Camera work
 
 #### Motion blur & Motion Parallax
 
@@ -226,6 +220,13 @@ This is very close to the previous trick *EXCEPT* it is used cross-media. Disney
 This is what made me realise there were loops in animation, [the characters come to the same position](https://tvtropes.org/pmwiki/pmwiki.php/Main/EverybodyDoTheEndlessLoop) they had at some point, and the movement starts again. This saves time by using the same frames several times.
 
 It is often used for part of the animation. Character movement, weather, particles ... It is very visible with weather like snowflakes, waterfalls etc.
+
+
+#### Limited Animation
+
+Limited animation is a process that reuses frames of character animation (either full or simply body parts).
+[Limited Animation](https://tvtropes.org/pmwiki/pmwiki.php/Main/LimitedAnimation)
+
 {/* 
 #### Recycled background
 
