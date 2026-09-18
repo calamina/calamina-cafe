@@ -14,10 +14,11 @@ hey :)
 - add "link ->" component
 
 # DESIGN
-- UTOPIA (type scale)
 - fix hover color : crumbs & headings 
 
 # TODO
+- i18n
+- a11y
 - tablet / better responsive (some content gets too big inbetween breakpoints)
 - check todos in code :)
 - resources page ? (icons, utf8 footer ...)

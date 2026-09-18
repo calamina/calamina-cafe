@@ -44,7 +44,7 @@ The process is quite long and tedious, I probably stumbled upon a blog post sayi
 
 When pressing *next frame* I often see no change at all. Same image, sometimes one, two, three times in a row. I think media player bug and brush it off, but soon find the pictures are indeed being repeated.
 
-Images from feature movies that got theatrical releases *(Ghibli, Disney)* are most often duplicated once, or not at all. Limited budget media on the other hand *(Dragon Ball)* have most images being repeated 3 or even 4 times.
+Images from feature movies that got theatrical releases (Ghibli, Disney) are most often duplicated once, or not at all. Limited budget media on the other hand *(Dragon Ball)* have most images being repeated 3 or even 4 times.
 
 <FrameRepetition />
 
@@ -56,7 +56,7 @@ Images from feature movies that got theatrical releases *(Ghibli, Disney)* are m
 
 {/* A gif loops infinitely. The transition when the loops starts again can be somewhat *brutal*. During my first attempts I pick moments without paying attention to the stutter caused by the sudden repetition. */}
 
-Eventually I come across a sequence where the image ends up looking exactly what it was seconds ago. The result is an ideal gif with perpetual uncut motion, where we can't distinguish start from end.
+I eventually come across a sequence where the image ends up looking exactly what it was seconds ago. The result is an ideal gif with perpetual uncut motion, where we can't distinguish start from end.
 {/* Pour certaines oeuvres impossible de réussir à faire le moindre gif correct. L'animation ne s'y prête pas ou  */}
 
 These *'perfect loops'* turn out to appear quite frequently, with seemingly no relation to animation quality or budget. They become precisely what I look for — motion repeating without transition.
@@ -113,7 +113,9 @@ Comment réduire le nombre de dessins, comment combiner différentes méthodes, 
 Showing 24 frames per second doesn't mean showing 24 **different** frames per second.
 This is very simply done by duping frames, with the more duplication giving rougher animation.
 
-Animators talk about it in two ways. The number of repetitions : 2 / 3 / 4, animating on twos, threes, fours. Or the number of different drawings in one second :  12 / 8 / 6.
+Animators talk about animating on twos, threes, fours, counting how each frame is repeated.
+
+*(The example is simplified as animation is often non-linear, to emphasize acceleration, fluidity, realism, or even to account for the duplicated frames !)*
 
 <OneTwoThreeFour />
 
@@ -122,10 +124,15 @@ Animators talk about it in two ways. The number of repetitions : 2 / 3 / 4, anim
 
 {/* <figure>![Comparaison ones and twos](https://stopmotionatparsons.wordpress.com/wp-content/uploads/2012/01/1svs2s.jpg?w=584)<figcaption>Comparaison d'une animation sur ones et twos</figcaption></figure> */}
 
+#### Variation
 
-Ce rythme et le nombre de dessins ne sont pas constants et varient très souvent au cours d'une même oeuvre !
+Most media don't stick to a single framerate and the range can vary in a single piece from animating a full 24 frames for action-packed sequences to fours for very slow scenes (dialogue, scenery exposition ...)
 
-Maybe explain the two most used in paragraphs instead of titled sections. Better full FPS for focused moments and Partial differences in FPS for different elements. 
+Pilot episodes for example often boast a higher overall framerate to attract viewers. Though in some cases we see the opposite with production going for low costs to assess if viewership will follow before bumping the quality.
+
+Boosting the framerate often comes with a general improvement of the whole animation. Better drawing quality and motion gives a polished and fluid feeling, the process is aptly called [Animation Bump](https://tvtropes.org/pmwiki/pmwiki.php/Main/AnimationBump).
+
+{/* Maybe explain the two most used in paragraphs instead of titled sections. Better full FPS for focused moments and Partial differences in FPS for different elements.  */}
 {/* Soit dans différentes scènes :<br/> 
 Les moments phares (combats, scène de fin, etc.) sont animés de manière plus quali -> on augmente le nombre de dessins. 
 Les scènes de dialogues ou plans "WOW" sont souvent lents et peu animés -> moins de dessins
@@ -136,22 +143,26 @@ Les personnages bougent : twos.
 Un truc s'agite lentement en arrière plan : fours.
 -> mélange twos/threes/fours & gifs (cache background/premier plan + neige/pluie ones)  */}
 
-#### Animation Bump, Overcrank & Undercrank
+{/* #### Animation Bump, Overcrank & Undercrank
 
 Correspond au fait que lors de séquences "wouaw" l'animation est plus quali, dessins comme vitesse (donc souvent fours > twos etc.)
-[AnimationBump](https://tvtropes.org/pmwiki/pmwiki.php/Main/AnimationBump)
+[Animation Bump](https://tvtropes.org/pmwiki/pmwiki.php/Main/AnimationBump) */}
 
-On parle d'[Overcrank](https://tvtropes.org/pmwiki/pmwiki.php/Main/Overcrank) quand on augmente le nombre de dessins par rapport à notre référentiel.
-Pour l'[Undercrank](https://tvtropes.org/pmwiki/pmwiki.php/Main/Undercrank) il s'agit de diminuer le nombre de dessins.
+{/* On parle d'[Overcrank](https://tvtropes.org/pmwiki/pmwiki.php/Main/Overcrank) quand on augmente le nombre de dessins par rapport à notre référentiel.
+Pour l'[Undercrank](https://tvtropes.org/pmwiki/pmwiki.php/Main/Undercrank) il s'agit de diminuer le nombre de dessins. */}
 
 {/* <AnimationBump /> */}
 
-#### Partial animation
+#### Partial animation & cels
+
+[explain cel method] : characters being drawn on transparent layers in front of the background so only part of the drawing needs to be animated - and thus redrawn.
 
 eg: Un train animé passe tandis que le background reste complètement figé.
 La météo est la seule chose animée.
 Au contraire les personnages sont fixes tandis que les arbres bougent avec le vent.
 etc.
+
+This can sometimes be a spoiler of its own kind. Who didn't catch part of a *Looney toons* scene where a piece of decor had distinguishable contours and was expected to explode / fall / etc.
 
 ### Movement / Camera work
 
@@ -196,26 +207,28 @@ Dolly is a similar effect but instead of moving either left & right or up & down
 
 ### Recycling
 
-#### Recycled Sequence
+#### Stock Footage
 
 {/* [Stock Footage](https://tvtropes.org/pmwiki/pmwiki.php/Main/StockFootage) */}
 
 Basically showing exactly the same thing at different points in the media. It is very often used on cheap productions and long series, the most noticeable examples can be found in the magical girl genre (*Sailor Moon*) with the [Transformation Sequence](https://tvtropes.org/pmwiki/pmwiki.php/Main/TransformationSequence).
 
-<figure>![Sailor Moon transformation sequence](https://static0.cbrimages.com/wordpress/wp-content/uploads/2020/08/Super-Sailor-Moon-and-Chibi-Moon-from-Sailor-Moon.jpg)
-<figcaption>Sailor Moon</figcaption></figure>
+{/* <figure>![Sailor Moon transformation sequence](https://static0.cbrimages.com/wordpress/wp-content/uploads/2020/08/Super-Sailor-Moon-and-Chibi-Moon-from-Sailor-Moon.jpg)
+<figcaption>Sailor Moon</figcaption></figure> */}
 
-#### Recycled Animation
+#### Recycled Footage
+
+(probably mix with stock footage)
 
 This is very close to the previous trick *EXCEPT* it is used cross-media. Disney is pretty famous for this with the same dances going on in different movies. There are changes, characters and drawings are modified to match the current movie but the groundwork for the animation and movement is already done.
 {/* réutilisation d'animations Disney (danse Mowgli + arsitochats il me semble) */}
 {/* [Recycled Animation](https://tvtropes.org/pmwiki/pmwiki.php/Main/RecycledAnimation) */}
 
-<figure>![Disney recyclage animation dance](https://geekdad.com/wp-content/uploads/2015/06/recycled-disney.jpg)
-<figcaption>White snow and Robin Hood</figcaption></figure>
+{/* <figure>![Disney recyclage animation dance](https://geekdad.com/wp-content/uploads/2015/06/recycled-disney.jpg)
+<figcaption>White snow and Robin Hood</figcaption></figure> */}
 
 
-#### Recycled movement
+#### Animation loops
 
 This is what made me realise there were loops in animation, [the characters come to the same position](https://tvtropes.org/pmwiki/pmwiki.php/Main/EverybodyDoTheEndlessLoop) they had at some point, and the movement starts again. This saves time by using the same frames several times.
 
@@ -224,8 +237,9 @@ It is often used for part of the animation. Character movement, weather, particl
 
 #### Limited Animation
 
-Limited animation is a process that reuses frames of character animation (either full or simply body parts).
-[Limited Animation](https://tvtropes.org/pmwiki/pmwiki.php/Main/LimitedAnimation)
+{/* [Limited Animation](https://tvtropes.org/pmwiki/pmwiki.php/Main/LimitedAnimation) */}
+
+Limited animation is a more vague process. It can consist of reusing frames of character animation - full body or simply portions (often used with moving the mouth only during dialogue for example). In a scene with a person in a rocking chair the same image will simply be tilted, with only the head being redrawn ([source](https://en.wikipedia.org/wiki/Traditional_animation#Limited_animation)). 
 
 {/* 
 #### Recycled background
@@ -249,7 +263,11 @@ When the scene has ended but it takes time, too much time, to get to the next on
 
 est-ce que ... ? */}
 
+<Separator />
+
 ## Un dessin animé en 24 fps ?
+
+We can still wonder : was there ever someone crazy enough to pull out a full 24 FPS traditional animation movie.
 
 ### Akira
 	- vidéo
@@ -273,13 +291,16 @@ Dessins animés /animes
 Redline - 7ans et 500000 dessins
 
 ### L'homme qui plantait des arbres	
-L'homme qui plantait des arbres - solo/jsépacbddetps
-
-### Les aventures du prince Achmed	
-Les aventures du prince Achmed
+Solo work !
+{/* L'homme qui plantait des arbres - solo/jsépacbddetps */}
 
 ### Le roi et l'oiseau ??
-(+recherches a faire pour des autres)
+Production time !
+{/* (+recherches a faire pour des autres) */}
+
+### Les aventures du prince Achmed	
+Not really animation but the same process of shooting each picture to then assemble a movie.
+{/* Les aventures du prince Achmed */}
 
 
 {/* ## Divagations
