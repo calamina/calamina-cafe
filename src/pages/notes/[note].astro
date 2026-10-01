@@ -3,13 +3,13 @@ import ArticleLayout from "@layouts/ArticleLayout.astro";
 import { getCollection } from "astro:content";
 
 const { note } = Astro.params;
-const { fullname } = Astro.props;
+const { fullname, toc } = Astro.props;
 
 export async function getStaticPaths() {
   const collection = await getCollection("notes");
   return collection.map((entry) => ({
     params: { note: entry.data.name },
-    props: { fullname: entry.id },
+    props: { fullname: entry.id, toc: entry.data.toc ?? false },
   }));
 }
 ---
@@ -18,5 +18,5 @@ export async function getStaticPaths() {
   name={note}
   fullname={fullname}
   type="notes"
-  displayToc={false}
+  displayToc={toc}
 />

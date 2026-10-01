@@ -1,8 +1,9 @@
 ---
-import ArticleHeadings from "@components/features/article/ArticleHeadings.astro";
+// import ArticleHeadings from "@components/features/article/ArticleHeadings.astro";
 import { getEntry, render } from "astro:content";
 import MainLayout from "./MainLayout.astro";
 import "../assets/style/pages/prose.css";
+import ArticleHeadings from "@components/features/article/ArticleHeadings.astro";
 
 interface Props {
   name: string;
@@ -10,7 +11,7 @@ interface Props {
   displayToc?: boolean;
   fullname?: string;
 }
-const { name, type, fullname, displayToc = true } = Astro.props;
+const { name, type, fullname, displayToc } = Astro.props;
 
 const entry = await getEntry(type, fullname ?? name);
 if (!entry) throw new Error(`Could not find ${type} ${name}`);
@@ -22,7 +23,7 @@ const readingTime = Math.ceil((wordCount ?? 0) / 200);
 
 <MainLayout description={entry.data.description}>
   <div class="article">
-    <!-- {displayToc && <ArticleHeadings headings={headings} article={entry.data} />} -->
+    {displayToc && <ArticleHeadings headings={headings} article={entry.data} />}
     <div class="prose">
       <h1 id={entry.data.name}>{entry.data.title}</h1>
       <p class="time">

@@ -9,13 +9,12 @@
   ],
   "compilerOptions": {
     "jsx": "preserve",
-    "baseUrl": "src",
     "paths": {
-      "@components/*": ["./components/*"],
-      "@models/*": ["./models/*"],
-      "@layouts/*": ["./layouts/*"],
-      "@utils/*": ["./utils/*"],
-      "@data/*": ["./data/*"],
+      "@components/*": ["./src/components/*"],
+      "@models/*": ["./src/models/*"],
+      "@layouts/*": ["./src/layouts/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@data/*": ["./src/data/*"],
     },
   }
 }
